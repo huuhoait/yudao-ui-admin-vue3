@@ -253,7 +253,7 @@ watch(
     } else if (formData.value.type === BpmModelType.SIMPLE) {
       processData.value = formData.value.simpleModel
     }
-    console.log('加载流程数据', processData.value)
+
   },
   {
     immediate: true

@@ -354,12 +354,12 @@ const resetTaskForm = () => {
 const changeCandidateStrategy = () => {
   userTaskForm.value.candidateParam = []
   deptLevel.value = 1
-  if (userTaskForm.value.candidateStrategy === CandidateStrategy.FORM_USER) {
+//  if (userTaskForm.value.candidateStrategy === CandidateStrategy.FORM_USER) {
     // 特殊处理表单内用户字段，当只有发起人选项时应选中发起人
-    if (!userFieldOnFormOptions.value || userFieldOnFormOptions.value.length <= 1) {
-      userTaskForm.value.candidateStrategy = CandidateStrategy.START_USER
-    }
-  }
+//    if (!userFieldOnFormOptions.value || userFieldOnFormOptions.value.length <= 1) {
+//      userTaskForm.value.candidateStrategy = CandidateStrategy.START_USER
+//    }
+//  }
   updateElementTask()
 }
 

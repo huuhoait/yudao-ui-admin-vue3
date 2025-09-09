@@ -5,6 +5,10 @@ import request from '@/config/axios'
  */
 export enum TaskStatusEnum {
   /**
+   * 跳过
+   */
+  SKIP = -2,
+  /**
    * 未开始
    */
   NOT_START = -1,
@@ -100,6 +104,11 @@ export const signDeleteTask = async (data: any) => {
 // 抄送
 export const copyTask = async (data: any) => {
   return await request.put({ url: '/bpm/task/copy', data })
+}
+
+// 撤回
+export const withdrawTask = async (taskId: string) => {
+  return await request.put({ url: '/bpm/task/withdraw', params: { taskId } })
 }
 
 // 获取我的待办任务

@@ -33,13 +33,13 @@
     <!-- 与Simple设计器配置合并，保留以前的代码 -->
     <el-form label-width="90px">
       <el-form-item :label="$t('bpm.design.quickConfig')">
-        <el-button size="small" @click="changeConfig($t('bpm.design.sequentialApproval'))">{{
+        <el-button size="small" @click="changeConfig('SequentialApproval')">{{
           $t('bpm.design.sequentialApproval')
         }}</el-button>
-        <el-button size="small" @click="changeConfig($t('bpm.design.countersign'))">{{
+        <el-button size="small" @click="changeConfig('CounterSign')">{{
           $t('bpm.design.countersign')
         }}</el-button>
-        <el-button size="small" @click="changeConfig($t('bpm.design.orSign'))">{{
+        <el-button size="small" @click="changeConfig('OrSign')">{{
           $t('bpm.design.orSign')
         }}</el-button>
       </el-form-item>
@@ -304,14 +304,14 @@ const updateLoopAsync = (key) => {
 }
 
 const changeConfig = (config) => {
-  if (config === '依次审批') {
+  if (config === 'SequentialApproval') {
     changeLoopCharacteristicsType('SequentialMultiInstance')
     updateLoopCardinality('1')
     updateLoopCondition('${ nrOfCompletedInstances >= nrOfInstances }')
-  } else if (config === '会签') {
+  } else if (config === 'CounterSign') {
     changeLoopCharacteristicsType('ParallelMultiInstance')
     updateLoopCondition('${ nrOfCompletedInstances >= nrOfInstances }')
-  } else if (config === '或签') {
+  } else if (config === 'OrSign') {
     changeLoopCharacteristicsType('ParallelMultiInstance')
     updateLoopCondition('${ nrOfCompletedInstances > 0 }')
   }

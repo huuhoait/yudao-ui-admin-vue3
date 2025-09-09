@@ -114,8 +114,8 @@
             :rules="{ required: true, trigger: ['blur', 'change'], message: '请选择脚本类型' }"
           >
             <el-select v-model="listenerForm.scriptType">
-              <el-option label="内联脚本" value="inlineScript" />
-              <el-option label="外部脚本" value="externalScript" />
+              <el-option label="inlineScript" value="inlineScript" />
+              <el-option label="externalScript" value="externalScript" />
             </el-select>
           </el-form-item>
           <el-form-item
