@@ -9,25 +9,25 @@
       class="-mb-15px"
       label-width="68px"
     >
-      <el-form-item :label="t('role.name')" prop="name">
+      <el-form-item :label="t('sys.role.name')" prop="name">
         <el-input
           v-model="queryParams.name"
           class="!w-240px"
           clearable
-          :placeholder="t('role.namePlaceholder')"
+          :placeholder="t('sys.role.namePlaceholder')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item :label="t('role.code')" prop="code">
+      <el-form-item :label="t('sys.role.code')" prop="code">
         <el-input
           v-model="queryParams.code"
           class="!w-240px"
           clearable
-          :placeholder="t('role.codePlaceholder')"
+          :placeholder="t('sys.role.codePlaceholder')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item :label="t('role.status')" prop="status">
+      <el-form-item :label="t('sys.role.status')" prop="status">
         <el-select v-model="queryParams.status" class="!w-240px" clearable :placeholder="t('common.selectText')">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -37,7 +37,7 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('role.createTime')" prop="createTime">
+      <el-form-item :label="t('sys.role.createTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
@@ -95,16 +95,16 @@
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
       <el-table-column align="center" :label="t('common.index')" prop="id" />
-      <el-table-column align="center" :label="t('role.name')" prop="name" />
-      <el-table-column :label="t('role.type')" align="center" prop="type">
+      <el-table-column align="center" :label="t('sys.role.name')" prop="name" />
+      <el-table-column :label="t('sys.role.type')" align="center" prop="type">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_ROLE_TYPE" :value="scope.row.type" />
         </template>
       </el-table-column>
-      <el-table-column align="center" :label="t('role.code')" prop="code" />
-      <el-table-column align="center" :label="t('role.sort')" prop="sort" />
-      <el-table-column align="center" :label="t('role.remark')" prop="remark" />
-      <el-table-column align="center" :label="t('role.status')" prop="status">
+      <el-table-column align="center" :label="t('sys.role.code')" prop="code" />
+      <el-table-column align="center" :label="t('sys.role.sort')" prop="sort" />
+      <el-table-column align="center" :label="t('sys.role.remark')" prop="remark" />
+      <el-table-column align="center" :label="t('sys.role.status')" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
@@ -112,11 +112,11 @@
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="t('role.createTime')"
+        :label="t('sys.role.createTime')"
         prop="createTime"
         width="180"
       />
-      <el-table-column :width="300" align="center" :label="t('role.operation')">
+      <el-table-column :width="300" align="center" :label="t('sys.role.operation')">
         <template #default="scope">
           <el-button
             v-hasPermi="['system:role:update']"
@@ -130,21 +130,21 @@
             v-hasPermi="['system:permission:assign-role-menu']"
             link
             preIcon="ep:basketball"
-            :title="t('role.menuPermission')"
+            :title="t('sys.role.menuPermission')"
             type="primary"
             @click="openAssignMenuForm(scope.row)"
           >
-            {{ t('role.menuPermission') }}
+            {{ t('sys.role.menuPermission') }}
           </el-button>
           <el-button
             v-hasPermi="['system:permission:assign-role-data-scope']"
             link
             preIcon="ep:coin"
-            :title="t('role.dataPermission')"
+            :title="t('sys.role.dataPermission')"
             type="primary"
             @click="openDataPermissionForm(scope.row)"
           >
-            {{ t('role.dataPermission') }}
+            {{ t('sys.role.dataPermission') }}
           </el-button>
           <el-button
             v-hasPermi="['system:role:delete']"
@@ -282,7 +282,7 @@ const handleExport = async () => {
     // 发起导出
     exportLoading.value = true
     const data = await RoleApi.exportRole(queryParams)
-    download.excel(data, t('role.title') + '.xls')
+    download.excel(data, t('sys.role.title') + '.xls')
   } catch {
   } finally {
     exportLoading.value = false

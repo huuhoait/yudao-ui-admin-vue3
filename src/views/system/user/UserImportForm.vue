@@ -48,6 +48,7 @@ import download from '@/utils/download'
 defineOptions({ name: 'SystemUserImportForm' })
 
 const message = useMessage() // 消息弹窗
+const { t } = useI18n() // 国际化
 
 const dialogVisible = ref(false) // 弹窗的是否展示
 const formLoading = ref(false) // 表单的加载中

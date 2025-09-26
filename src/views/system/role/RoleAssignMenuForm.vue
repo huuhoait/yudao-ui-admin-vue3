@@ -1,16 +1,16 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('role.assignMenu')">
+  <Dialog v-model="dialogVisible" :title="t('sys.role.assignMenu')">
     <el-form ref="formRef" v-loading="formLoading" :model="formData" label-width="80px">
-      <el-form-item :label="t('role.name')">
+      <el-form-item :label="t('sys.role.name')">
         <el-tag>{{ formData.name }}</el-tag>
       </el-form-item>
-      <el-form-item :label="t('role.code')">
+      <el-form-item :label="t('sys.role.code')">
         <el-tag>{{ formData.code }}</el-tag>
       </el-form-item>
-      <el-form-item :label="t('role.menuPermission')">
+      <el-form-item :label="t('sys.role.menuPermission')">
         <el-card class="w-full h-400px !overflow-y-scroll" shadow="never">
           <template #header>
-            {{ t('role.selectAllNone') }}:
+            {{ t('sys.role.selectAllNone') }}:
             <el-switch
               v-model="treeNodeAll"
               :active-text="t('common.yes')"
@@ -18,7 +18,7 @@
               inline-prompt
               @change="handleCheckedTreeNodeAll"
             />
-            {{ t('role.expandCollapseAll') }}:
+            {{ t('sys.role.expandCollapseAll') }}:
             <el-switch
               v-model="menuExpand"
               :active-text="t('common.expand')"

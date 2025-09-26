@@ -90,6 +90,8 @@ import { CACHE_KEY, useCache } from '@/hooks/web/useCache'
 
 defineOptions({ name: 'SystemMenu' })
 
+const { t } = useI18n() // 国际化
+
 // 虚拟列表表格
 const columns = [
   {
@@ -204,7 +206,6 @@ const columns = [
 ]
 
 const { wsCache } = useCache()
-const { t } = useI18n() // 国际化
 const message = useMessage() // 消息弹窗
 
 const loading = ref(true) // 列表的加载中

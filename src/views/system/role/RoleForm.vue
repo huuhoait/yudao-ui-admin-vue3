@@ -7,16 +7,16 @@
       :rules="formRules"
       label-width="80px"
     >
-      <el-form-item :label="t('role.name')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('role.namePlaceholder')" />
+      <el-form-item :label="t('sys.role.name')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('sys.role.namePlaceholder')" />
       </el-form-item>
-      <el-form-item :label="t('role.code')" prop="code">
-        <el-input v-model="formData.code" :placeholder="t('role.codePlaceholder')" />
+      <el-form-item :label="t('sys.role.code')" prop="code">
+        <el-input v-model="formData.code" :placeholder="t('sys.role.codePlaceholder')" />
       </el-form-item>
-      <el-form-item :label="t('role.sort')" prop="sort">
-        <el-input v-model="formData.sort" :placeholder="t('role.sortPlaceholder')" />
+      <el-form-item :label="t('sys.role.sort')" prop="sort">
+        <el-input v-model="formData.sort" :placeholder="t('sys.role.sortPlaceholder')" />
       </el-form-item>
-      <el-form-item :label="t('role.status')" prop="status">
+      <el-form-item :label="t('sys.role.status')" prop="status">
         <el-select v-model="formData.status" clearable :placeholder="t('common.selectText')">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -26,8 +26,8 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('role.remark')" prop="remark">
-        <el-input v-model="formData.remark" :placeholder="t('role.remarkPlaceholder')" type="textarea" />
+      <el-form-item :label="t('sys.role.remark')" prop="remark">
+        <el-input v-model="formData.remark" :placeholder="t('sys.role.remarkPlaceholder')" type="textarea" />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -59,11 +59,11 @@ const formData = ref({
   remark: ''
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('role.nameRequired'), trigger: 'blur' }],
-  code: [{ required: true, message: t('role.codeRequired'), trigger: 'change' }],
-  sort: [{ required: true, message: t('role.sortRequired'), trigger: 'change' }],
-  status: [{ required: true, message: t('role.statusRequired'), trigger: 'change' }],
-  remark: [{ required: false, message: t('role.remarkPlaceholder'), trigger: 'blur' }]
+  name: [{ required: true, message: t('sys.role.nameRequired'), trigger: 'blur' }],
+  code: [{ required: true, message: t('sys.role.codeRequired'), trigger: 'change' }],
+  sort: [{ required: true, message: t('sys.role.sortRequired'), trigger: 'change' }],
+  status: [{ required: true, message: t('sys.role.statusRequired'), trigger: 'change' }],
+  remark: [{ required: false, message: t('sys.role.remarkPlaceholder'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

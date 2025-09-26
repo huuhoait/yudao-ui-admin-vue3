@@ -97,7 +97,7 @@
                   />
                   <span class="text-16px">{{ item.name }}</span>
                 </div>
-                <div class="mt-12px text-12px text-gray-400">{{ t(`projects.${item.message}`) }}</div>
+                <div class="mt-12px text-12px text-gray-400">AAAAA</div>
                 <div class="mt-12px flex justify-between text-12px text-gray-400">
                   <span>{{ item.personal }}</span>
                   <span>{{ formatTime(item.time, 'yyyy-MM-dd') }}</span>

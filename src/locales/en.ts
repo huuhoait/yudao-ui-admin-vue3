@@ -622,7 +622,7 @@ export default {
       alwaysShow: 'Always Show',
       keepAlive: 'Cache Status',
       componentPath: 'Component Path',
-      componentPathTip: 'Permission character on the Controller method, e.g., @PreAuthorize(`@ss.hasPermission(\'system:user:list\')`)',
+      componentPathTip: 'Permission character on the Controller method, e.g., @PreAuthorize(`@ss.hasPermission(''system:user:list'')`)',
       componentPlaceholder: 'e.g.: system/user/index',
       componentNamePlaceholder: 'e.g.: SystemUser',
       permissionTip: 'Permission character on the Controller method, e.g., @PreAuthorize(`@ss.hasPermission(\'system:user:list\')`)',
@@ -724,6 +724,7 @@ export default {
     btn_zoom_out: 'Zoom out',
     preview: 'Preivew'
   },
+  'OAuth 2.0': 'OAuth 2.0',
   projects: {
     'github.com/YunaiV/ruoyi-vue-pro': 'github.com/YunaiV/ruoyi-vue-pro',
     'github.com/yudaocode/yudao-ui-admin-vue3': 'github.com/yudaocode/yudao-ui-admin-vue3'

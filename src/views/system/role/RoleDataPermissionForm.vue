@@ -1,13 +1,13 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('role.assignDataScope')" width="800">
+  <Dialog v-model="dialogVisible" :title="t('sys.role.assignDataScope')" width="800">
     <el-form ref="formRef" v-loading="formLoading" :model="formData" label-width="80px">
-      <el-form-item :label="t('role.name')">
+      <el-form-item :label="t('sys.role.name')">
         <el-tag>{{ formData.name }}</el-tag>
       </el-form-item>
-      <el-form-item :label="t('role.code')">
+      <el-form-item :label="t('sys.role.code')">
         <el-tag>{{ formData.code }}</el-tag>
       </el-form-item>
-      <el-form-item :label="t('role.permissionScope')">
+      <el-form-item :label="t('sys.role.permissionScope')">
         <el-select v-model="formData.dataScope">
           <el-option
             v-for="item in getIntDictOptions(DICT_TYPE.SYSTEM_DATA_SCOPE)"
@@ -20,12 +20,12 @@
     </el-form>
     <el-form-item
       v-if="formData.dataScope === SystemDataScopeEnum.DEPT_CUSTOM"
-      :label="t('role.deptScope')"
+      :label="t('sys.role.deptScope')"
       label-width="80px"
     >
       <el-card class="w-full h-400px !overflow-y-scroll" shadow="never">
         <template #header>
-          {{ t('role.selectAllNone') }}:
+          {{ t('sys.role.selectAllNone') }}:
           <el-switch
             v-model="treeNodeAll"
             :active-text="t('common.yes')"
@@ -33,7 +33,7 @@
             inline-prompt
             @change="handleCheckedTreeNodeAll()"
           />
-          {{ t('role.expandCollapseAll') }}:
+          {{ t('sys.role.expandCollapseAll') }}:
           <el-switch
             v-model="deptExpand"
             :active-text="t('common.expand')"
@@ -41,7 +41,7 @@
             inline-prompt
             @change="handleCheckedTreeExpand"
           />
-          {{ t('role.linkParentChild') }}
+          {{ t('sys.role.linkParentChild') }}
           <el-switch v-model="checkStrictly" :active-text="t('common.yes')" :inactive-text="t('common.no')" inline-prompt />
         </template>
         <el-tree
