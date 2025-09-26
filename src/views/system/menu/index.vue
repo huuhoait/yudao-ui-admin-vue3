@@ -94,14 +94,14 @@ defineOptions({ name: 'SystemMenu' })
 const columns = [
   {
     key: 'name',
-    title: '菜单名称',
+    title: t('sys.menu.name'),
     dataKey: 'name',
     width: 250,
     fixed: TableV2FixedDir.LEFT
   },
   {
     key: 'icon',
-    title: '图标',
+    title: t('sys.menu.icon'),
     dataKey: 'icon',
     width: 100,
     align: 'center',
@@ -109,31 +109,31 @@ const columns = [
   },
   {
     key: 'sort',
-    title: '排序',
+    title: t('sys.menu.sort'),
     dataKey: 'sort',
     width: 60
   },
   {
     key: 'permission',
-    title: '权限标识',
+    title: t('sys.menu.permission'),
     dataKey: 'permission',
     width: 300
   },
   {
     key: 'component',
-    title: '组件路径',
+    title: t('sys.menu.component'),
     dataKey: 'component',
     width: 500
   },
   {
     key: 'componentName',
-    title: '组件名称',
+    title: t('sys.menu.componentName'),
     dataKey: 'componentName',
     width: 200
   },
   {
     key: 'status',
-    title: '状态',
+    title: t('sys.menu.status'),
     dataKey: 'status',
     width: 60,
     fixed: TableV2FixedDir.RIGHT,
@@ -158,7 +158,7 @@ const columns = [
   },
   {
     key: 'operations',
-    title: '操作',
+    title: t('sys.menu.operation'),
     align: 'center',
     width: 160,
     fixed: TableV2FixedDir.RIGHT,
@@ -170,7 +170,7 @@ const columns = [
       if (checkPermi(['system:menu:update'])) {
         buttons.push(
           <ElButton key="edit" link type="primary" onClick={() => openForm('update', rowData.id)}>
-            修改
+            {t('action.edit')}
           </ElButton>
         )
       }
@@ -182,14 +182,14 @@ const columns = [
             type="primary"
             onClick={() => openForm('create', undefined, rowData.id)}
           >
-            新增
+            {t('action.create')}
           </ElButton>
         )
       }
       if (checkPermi(['system:menu:delete'])) {
         buttons.push(
           <ElButton key="delete" link type="danger" onClick={() => handleDelete(rowData.id)}>
-            删除
+            {t('action.delete')}
           </ElButton>
         )
       }

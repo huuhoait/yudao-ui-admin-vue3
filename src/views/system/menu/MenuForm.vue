@@ -43,25 +43,31 @@
         </template>
         <el-input v-model="formData.path" clearable :placeholder="t('sys.menu.pathPlaceholder')" />
       </el-form-item>
-      <el-form-item v-if="formData.type === 2" label="组件地址" prop="component">
-        <el-input v-model="formData.component" clearable placeholder="例如说：system/user/index" />
-      </el-form-item>
-      <el-form-item v-if="formData.type === 2" label="组件名字" prop="componentName">
-        <el-input v-model="formData.componentName" clearable placeholder="例如说：SystemUser" />
-      </el-form-item>
-      <el-form-item v-if="formData.type !== 1" label="权限标识" prop="permission">
+      <el-form-item v-if="formData.type === 2" :label="t('sys.menu.componentPath')" prop="component">
         <template #label>
           <Tooltip
-            message="Controller 方法上的权限字符，如：@PreAuthorize(`@ss.hasPermission('system:user:list')`)"
-            title="权限标识"
+            :message="t('sys.menu.componentPathTip')"
+            :title="t('sys.menu.componentPath')"
           />
         </template>
-        <el-input v-model="formData.permission" clearable placeholder="请输入权限标识" />
+        <el-input v-model="formData.component" clearable :placeholder="t('sys.menu.componentPlaceholder')" />
       </el-form-item>
-      <el-form-item label="显示排序" prop="sort">
+      <el-form-item v-if="formData.type === 2" :label="t('sys.menu.componentName')" prop="componentName">
+        <el-input v-model="formData.componentName" clearable :placeholder="t('sys.menu.componentNamePlaceholder')" />
+      </el-form-item>
+      <el-form-item v-if="formData.type !== 1" :label="t('sys.menu.permission')" prop="permission">
+        <template #label>
+          <Tooltip
+            :message="t('sys.menu.permissionTip')"
+            :title="t('sys.menu.permission')"
+          />
+        </template>
+        <el-input v-model="formData.permission" clearable :placeholder="t('sys.menu.permissionPlaceholder')" />
+      </el-form-item>
+      <el-form-item :label="t('sys.menu.sort')" prop="sort">
         <el-input-number v-model="formData.sort" :min="0" clearable controls-position="right" />
       </el-form-item>
-      <el-form-item label="菜单状态" prop="status">
+      <el-form-item :label="t('sys.menu.status')" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -72,43 +78,43 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="formData.type !== 3" label="显示状态" prop="visible">
+      <el-form-item v-if="formData.type !== 3" :label="t('sys.menu.visible')" prop="visible">
         <template #label>
-          <Tooltip message="选择隐藏时，路由将不会出现在侧边栏，但仍然可以访问" title="显示状态" />
+          <Tooltip :message="t('sys.menu.visibleTip')" :title="t('sys.menu.visible')" />
         </template>
         <el-radio-group v-model="formData.visible">
-          <el-radio key="true" :value="true" border>显示</el-radio>
-          <el-radio key="false" :value="false" border>隐藏</el-radio>
+          <el-radio key="true" :value="true" border>{{ t('common.yes') }}</el-radio>
+          <el-radio key="false" :value="false" border>{{ t('common.no') }}</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="formData.type !== 3" label="总是显示" prop="alwaysShow">
+      <el-form-item v-if="formData.type !== 3" :label="t('sys.menu.alwaysShow')" prop="alwaysShow">
         <template #label>
           <Tooltip
-            message="选择不是时，当该菜单只有一个子菜单时，不展示自己，直接展示子菜单"
-            title="总是显示"
+            :message="t('sys.menu.alwaysShowTip')"
+            :title="t('sys.menu.alwaysShow')"
           />
         </template>
         <el-radio-group v-model="formData.alwaysShow">
-          <el-radio key="true" :value="true" border>总是</el-radio>
-          <el-radio key="false" :value="false" border>不是</el-radio>
+          <el-radio key="true" :value="true" border>{{ t('common.yes') }}</el-radio>
+          <el-radio key="false" :value="false" border>{{ t('common.no') }}</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="formData.type === 2" label="缓存状态" prop="keepAlive">
+      <el-form-item v-if="formData.type === 2" :label="t('sys.menu.keepAlive')" prop="keepAlive">
         <template #label>
           <Tooltip
-            message="选择缓存时，则会被 `keep-alive` 缓存，必须填写「组件名称」字段"
-            title="缓存状态"
+            :message="t('sys.menu.keepAliveTip')"
+            :title="t('sys.menu.keepAlive')"
           />
         </template>
         <el-radio-group v-model="formData.keepAlive">
-          <el-radio key="true" :value="true" border>缓存</el-radio>
-          <el-radio key="false" :value="false" border>不缓存</el-radio>
+          <el-radio key="true" :value="true" border>{{ t('common.yes') }}</el-radio>
+          <el-radio key="false" :value="false" border>{{ t('common.no') }}</el-radio>
         </el-radio-group>
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>

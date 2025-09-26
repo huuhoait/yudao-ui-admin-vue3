@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-model="dialogVisible" title="用户导入" width="400">
+  <Dialog v-model="dialogVisible" :title="t('sys.user.userImport')" width="400">
     <el-upload
       ref="uploadRef"
       v-model:file-list="fileList"
@@ -15,28 +15,28 @@
       drag
     >
       <Icon icon="ep:upload" />
-      <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+      <div class="el-upload__text">{{ t('common.dropTip') }}<em>{{ t('common.clickUpload') }}</em></div>
       <template #tip>
         <div class="el-upload__tip text-center">
           <div class="el-upload__tip">
             <el-checkbox v-model="updateSupport" />
-            是否更新已经存在的用户数据
+            {{ t('sys.user.userImportTip') }}
           </div>
-          <span>仅允许导入 xls、xlsx 格式文件。</span>
+          <span>{{ t('common.xlsFormatTip') }}</span>
           <el-link
             :underline="false"
             style="font-size: 12px; vertical-align: baseline"
             type="primary"
             @click="importTemplate"
           >
-            下载模板
+            {{ t('common.downloadTemplate') }}
           </el-link>
         </div>
       </template>
     </el-upload>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>

@@ -8,19 +8,19 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item label="部门名称" prop="name">
+      <el-form-item :label="t('sys.dept.name')" prop="name">
         <el-input
           v-model="queryParams.name"
-          placeholder="请输入部门名称"
+          :placeholder="t('sys.dept.namePlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="部门状态" prop="status">
+      <el-form-item :label="t('sys.dept.status')" prop="status">
         <el-select
           v-model="queryParams.status"
-          placeholder="请选择部门状态"
+          :placeholder="t('sys.dept.selectStatus')"
           clearable
           class="!w-240px"
         >
@@ -33,18 +33,18 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
         <el-button
           type="primary"
           plain
           @click="openForm('create')"
           v-hasPermi="['system:dept:create']"
         >
-          <Icon icon="ep:plus" class="mr-5px" /> 新增
+          <Icon icon="ep:plus" class="mr-5px" /> {{ t('action.create') }}
         </el-button>
         <el-button type="danger" plain @click="toggleExpandAll">
-          <Icon icon="ep:sort" class="mr-5px" /> 展开/折叠
+          <Icon icon="ep:sort" class="mr-5px" /> {{ t('sys.dept.deptManagement') }}/{{ t('sys.dept.deptAdd') }}
         </el-button>
         <el-button
           type="danger"
@@ -53,7 +53,7 @@
           @click="handleDeleteBatch"
           v-hasPermi="['system:dept:delete']"
         >
-          <Icon icon="ep:delete" class="mr-5px" /> 批量删除
+          <Icon icon="ep:delete" class="mr-5px" /> {{ t('action.delete') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -70,26 +70,26 @@
       @selection-change="handleRowCheckboxChange"
     >
       <el-table-column type="selection" width="55" />
-      <el-table-column prop="name" label="部门名称" />
-      <el-table-column prop="leader" label="负责人">
+      <el-table-column prop="name" :label="t('sys.dept.name')" />
+      <el-table-column prop="leader" :label="t('sys.dept.leader')">
         <template #default="scope">
           {{ userList.find((user) => user.id === scope.row.leaderUserId)?.nickname }}
         </template>
       </el-table-column>
-      <el-table-column prop="sort" label="排序" />
-      <el-table-column prop="status" label="状态">
+      <el-table-column prop="sort" :label="t('sys.dept.sort')" />
+      <el-table-column prop="status" :label="t('sys.dept.status')">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
       <el-table-column
-        label="创建时间"
+        :label="t('sys.dept.createTime')"
         align="center"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column label="操作" align="center">
+      <el-table-column :label="t('sys.dept.operation')" align="center">
         <template #default="scope">
           <el-button
             link
@@ -97,7 +97,7 @@
             @click="openForm('update', scope.row.id)"
             v-hasPermi="['system:dept:update']"
           >
-            修改
+            {{ t('action.edit') }}
           </el-button>
           <el-button
             link
@@ -105,7 +105,7 @@
             @click="handleDelete(scope.row.id)"
             v-hasPermi="['system:dept:delete']"
           >
-            删除
+            {{ t('action.delete') }}
           </el-button>
         </template>
       </el-table-column>
