@@ -3,7 +3,7 @@
     v-model="dialogVisible"
     align-center
     class="app-infra-codegen-preview-container"
-    title="代码预览"
+    :title="t('infra.codegen.preview.title')"
     width="80%"
   >
     <div class="flex">
@@ -12,7 +12,7 @@
         v-loading="loading"
         :gutter="12"
         class="w-1/3"
-        element-loading-text="生成文件目录中..."
+        :element-loading-text="t('infra.codegen.preview.loadingTree')"
         shadow="hover"
       >
         <el-scrollbar height="calc(100vh - 88px - 40px)">
@@ -32,7 +32,7 @@
         v-loading="loading"
         :gutter="12"
         class="ml-3 w-2/3"
-        element-loading-text="加载代码中..."
+        :element-loading-text="t('infra.codegen.preview.loadingCode')"
         shadow="hover"
       >
         <el-tabs v-model="preview.activeName">

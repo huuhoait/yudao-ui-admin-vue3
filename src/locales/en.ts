@@ -1360,6 +1360,669 @@ export default {
       common: {
         millisecondValue: '{value} ms'
       }
+    },
+    apiAccessLog: {
+      doc: {
+        title: 'System Log'
+      },
+      searchForm: {
+        userId: 'User ID',
+        userIdPlaceholder: 'Enter user ID',
+        userType: 'User Type',
+        userTypePlaceholder: 'Select user type',
+        applicationName: 'Application Name',
+        applicationNamePlaceholder: 'Enter application name',
+        requestTime: 'Request Time',
+        requestTimeStartPlaceholder: 'Start date',
+        requestTimeEndPlaceholder: 'End date',
+        duration: 'Duration',
+        durationPlaceholder: 'Enter duration (ms)',
+        resultCode: 'Result Code',
+        resultCodePlaceholder: 'Enter result code'
+      },
+      table: {
+        id: 'Log ID',
+        userId: 'User ID',
+        userType: 'User Type',
+        applicationName: 'Application Name',
+        requestMethod: 'Request Method',
+        requestUrl: 'Request URL',
+        requestTime: 'Request Time',
+        duration: 'Duration',
+        operateResult: 'Operation Result',
+        operateModule: 'Operation Module',
+        operateName: 'Operation Name',
+        operateType: 'Operation Type',
+        durationValue: '{value} ms',
+        resultSuccess: 'Success',
+        resultFail: 'Failure ({msg})'
+      },
+      detail: {
+        title: 'Log Detail',
+        id: 'Log ID',
+        traceId: 'Trace ID',
+        applicationName: 'Application Name',
+        userInfo: 'User Info',
+        userIp: 'User IP',
+        userAgent: 'User Agent',
+        requestInfo: 'Request Info',
+        requestParams: 'Request Parameters',
+        responseBody: 'Response Body',
+        requestTime: 'Request Time',
+        requestDuration: 'Request Duration',
+        durationValue: '{value} ms',
+        result: 'Operation Result',
+        resultSuccess: 'Success',
+        resultFail: 'Failure | {code} | {msg}',
+        operateModule: 'Operation Module',
+        operateName: 'Operation Name',
+        operateType: 'Operation Type'
+      },
+      fileName: {
+        export: 'api-access-log.xls'
+      }
+    },
+    apiErrorLog: {
+      doc: {
+        title: 'System Log'
+      },
+      searchForm: {
+        userId: 'User ID',
+        userIdPlaceholder: 'Enter user ID',
+        userType: 'User Type',
+        userTypePlaceholder: 'Select user type',
+        applicationName: 'Application Name',
+        applicationNamePlaceholder: 'Enter application name',
+        exceptionTime: 'Exception Time',
+        exceptionTimeStartPlaceholder: 'Start date',
+        exceptionTimeEndPlaceholder: 'End date',
+        processStatus: 'Process Status',
+        processStatusPlaceholder: 'Select process status'
+      },
+      table: {
+        id: 'Log ID',
+        userId: 'User ID',
+        userType: 'User Type',
+        applicationName: 'Application Name',
+        requestMethod: 'Request Method',
+        requestUrl: 'Request URL',
+        exceptionTime: 'Exception Time',
+        exceptionName: 'Exception Name',
+        processStatus: 'Process Status'
+      },
+      actions: {
+        detail: 'Detail',
+        markDone: 'Mark Processed',
+        markIgnore: 'Mark Ignored'
+      },
+      status: {
+        done: 'Processed',
+        ignore: 'Ignored'
+      },
+      msg: {
+        markConfirm: 'Confirm mark as {type}?',
+        markSuccess: '{type} successfully'
+      },
+      fileName: {
+        export: 'api-error-log.xls'
+      },
+      detail: {
+        title: 'Error Log Detail',
+        id: 'Log ID',
+        traceId: 'Trace ID',
+        applicationName: 'Application Name',
+        userInfo: 'User Info',
+        userIp: 'User IP',
+        userAgent: 'User Agent',
+        requestInfo: 'Request Info',
+        requestParams: 'Request Parameters',
+        exceptionTime: 'Exception Time',
+        exceptionName: 'Exception Name',
+        exceptionStackTrace: 'Exception Stack',
+        processStatus: 'Process Status',
+        processUserId: 'Processor',
+        processTime: 'Process Time'
+      }
+    },
+    codegen: {
+      doc: {
+        single: 'Code Generation (Single Table)',
+        tree: 'Code Generation (Tree Table)',
+        masterSub: 'Code Generation (Master-Sub Table)',
+        unitTest: 'Unit Test'
+      },
+      searchForm: {
+        tableName: 'Table Name',
+        tableNamePlaceholder: 'Enter table name',
+        tableComment: 'Table Comment',
+        tableCommentPlaceholder: 'Enter table comment',
+        createTime: 'Created At',
+        createTimeStartPlaceholder: 'Start date',
+        createTimeEndPlaceholder: 'End date'
+      },
+      table: {
+        dataSource: 'Data Source',
+        tableName: 'Table Name',
+        tableComment: 'Table Comment',
+        className: 'Entity',
+        createTime: 'Created At',
+        updateTime: 'Updated At'
+      },
+      actions: {
+        import: 'Import',
+        batchDelete: 'Batch Delete',
+        sync: 'Sync',
+        generate: 'Generate Code'
+      },
+      msg: {
+        syncConfirm: 'Force sync table "{table}" structure?',
+        syncSuccess: 'Sync succeeded'
+      },
+      import: {
+        title: 'Import Table',
+        searchForm: {
+          dataSource: 'Data Source',
+          dataSourcePlaceholder: 'Select data source',
+          tableName: 'Table Name',
+          tableNamePlaceholder: 'Enter table name',
+          tableComment: 'Table Comment',
+          tableCommentPlaceholder: 'Enter table comment'
+        },
+        table: {
+          tableName: 'Table Name',
+          tableComment: 'Table Comment'
+        },
+        actions: {
+          import: 'Import',
+          close: 'Close'
+        },
+        msg: {
+          success: 'Import succeeded'
+        }
+      },
+      edit: {
+        tabs: {
+          basic: 'Basic Info',
+          column: 'Column Info',
+          generate: 'Generation Settings'
+        },
+        actions: {
+          save: 'Save',
+          back: 'Back'
+        }
+      },
+      basicForm: {
+        tableName: 'Table Name',
+        tableNamePlaceholder: 'Enter table name',
+        tableComment: 'Table Comment',
+        tableCommentPlaceholder: 'Enter description',
+        className: 'Entity Class Name',
+        classNamePlaceholder: 'Enter entity class name',
+        classNameTooltip:
+          'Prefixes are removed by default. Add manually to avoid MyBatis alias conflicts when duplicated.',
+        author: 'Author',
+        authorPlaceholder: 'Enter author',
+        remark: 'Remark',
+        remarkPlaceholder: 'Enter remark',
+        rules: {
+          tableNameRequired: 'Table name is required',
+          tableCommentRequired: 'Table comment is required',
+          classNameRequired: 'Entity class name is required',
+          authorRequired: 'Author is required'
+        }
+      },
+      column: {
+        columnName: 'Column Name',
+        columnComment: 'Column Comment',
+        dataType: 'Data Type',
+        javaType: 'Java Type',
+        javaField: 'Java Field',
+        insert: 'Insert',
+        edit: 'Edit',
+        list: 'List',
+        query: 'Query',
+        queryType: 'Query Condition',
+        allowNull: 'Allow Null',
+        htmlType: 'UI Type',
+        dictType: 'Dictionary',
+        dictRefresh: 'Load latest dictionaries',
+        example: 'Example',
+        queryTypes: {
+          eq: '=',
+          ne: '!=',
+          gt: '>',
+          ge: '>=',
+          lt: '<',
+          le: '<=',
+          like: 'LIKE',
+          between: 'BETWEEN'
+        },
+        htmlTypes: {
+          input: 'Input',
+          textarea: 'Textarea',
+          select: 'Select',
+          radio: 'Radio',
+          checkbox: 'Checkbox',
+          datetime: 'Datetime',
+          imageUpload: 'Image Upload',
+          fileUpload: 'File Upload',
+          editor: 'Rich Text'
+        }
+      },
+      generate: {
+        templateType: 'Template',
+        frontType: 'Frontend Type',
+        scene: 'Scenario',
+        parentMenu: 'Parent Menu',
+        parentMenuTooltip: 'Assign under a specific menu, e.g. System Management',
+        parentMenuPlaceholder: 'Select menu',
+        moduleName: 'Module Name',
+        moduleNameTooltip: 'First-level directory, e.g. system, infra, tool',
+        businessName: 'Business Name',
+        businessNameTooltip: 'Second-level directory, e.g. user, permission, dict',
+        className: 'Class Name',
+        classNameTooltip: 'Capitalized class name, e.g. SysUser, SysMenu',
+        classComment: 'Class Description',
+        classCommentTooltip: 'Used as class description, e.g. User',
+        genPath: 'Custom Path',
+        genPathTooltip: 'Absolute disk path. Leave empty to generate under current project',
+        genPathQuickSelect: 'Quick Path Select',
+        genPathReset: 'Restore default path',
+        treeInfoTitle: 'Tree Table Info',
+        treeParentColumn: 'Parent Field',
+        treeParentColumnTooltip: 'Parent field name, e.g. parent_id',
+        treeNameColumn: 'Name Field',
+        treeNameColumnTooltip: 'Display name field, e.g. dept_name',
+        masterInfoTitle: 'Master Table Info',
+        masterTable: 'Master Table',
+        masterTableTooltip: 'Master table name, e.g. system_user',
+        masterTablePlaceholder: 'Select master table',
+        subJoinColumn: 'Join Field',
+        subJoinColumnTooltip: 'Sub-table join field, e.g. user_id',
+        relation: 'Relation',
+        relationTooltip: 'Relationship between master and sub-table',
+        relationOneToMany: 'One-to-Many',
+        relationOneToOne: 'One-to-One',
+        treeColumnPlaceholder: 'Select column',
+        rules: {
+          templateTypeRequired: 'Template is required',
+          frontTypeRequired: 'Frontend type is required',
+          sceneRequired: 'Scenario is required',
+          moduleNameRequired: 'Module name is required',
+          businessNameRequired: 'Business name is required',
+          businessPackageRequired: 'Business package is required',
+          classNameRequired: 'Class name is required',
+          classCommentRequired: 'Class description is required',
+          masterTableRequired: 'Master table is required',
+          subJoinColumnRequired: 'Join field is required',
+          subJoinManyRequired: 'Relation is required',
+          treeParentColumnRequired: 'Parent field is required',
+          treeNameColumnRequired: 'Name field is required'
+        }
+      },
+      preview: {
+        title: 'Code Preview',
+        loadingTree: 'Generating file tree...',
+        loadingCode: 'Loading code...'
+      }
+    },
+    dataSourceConfig: {
+      actions: {
+        batchDelete: 'Batch Delete'
+      },
+      table: {
+        id: 'ID',
+        name: 'Data Source Name',
+        url: 'Connection URL',
+        username: 'Username',
+        createTime: 'Created At'
+      },
+      form: {
+        name: 'Data Source Name',
+        namePlaceholder: 'Enter data source name',
+        url: 'Connection URL',
+        urlPlaceholder: 'Enter connection URL',
+        username: 'Username',
+        usernamePlaceholder: 'Enter username',
+        password: 'Password',
+        passwordPlaceholder: 'Enter password',
+        rules: {
+          nameRequired: 'Data source name is required',
+          urlRequired: 'Connection URL is required',
+          usernameRequired: 'Username is required',
+          passwordRequired: 'Password is required'
+        }
+      }
+    },
+    config: {
+      doc: {
+        title: 'Configuration Center'
+      },
+      searchForm: {
+        name: 'Parameter Name',
+        namePlaceholder: 'Enter parameter name',
+        key: 'Parameter Key',
+        keyPlaceholder: 'Enter parameter key',
+        type: 'Built-in',
+        typePlaceholder: 'Select built-in type',
+        createTime: 'Created At',
+        createTimeStartPlaceholder: 'Start date',
+        createTimeEndPlaceholder: 'End date'
+      },
+      actions: {
+        batchDelete: 'Batch Delete'
+      },
+      table: {
+        id: 'Parameter ID',
+        category: 'Category',
+        name: 'Parameter Name',
+        key: 'Parameter Key',
+        value: 'Parameter Value',
+        visible: 'Visible',
+        type: 'Built-in',
+        remark: 'Remark',
+        createTime: 'Created At'
+      },
+      fileName: {
+        export: 'config.xls'
+      },
+      form: {
+        category: 'Category',
+        categoryPlaceholder: 'Enter category',
+        name: 'Parameter Name',
+        namePlaceholder: 'Enter parameter name',
+        key: 'Parameter Key',
+        keyPlaceholder: 'Enter parameter key',
+        value: 'Parameter Value',
+        valuePlaceholder: 'Enter parameter value',
+        visible: 'Visible',
+        remark: 'Remark',
+        remarkPlaceholder: 'Enter remark',
+        rules: {
+          categoryRequired: 'Category is required',
+          nameRequired: 'Parameter name is required',
+          keyRequired: 'Parameter key is required',
+          valueRequired: 'Parameter value is required',
+          visibleRequired: 'Visibility is required'
+        }
+      }
+    },
+    file: {
+      doc: {
+        title: 'Upload & Download'
+      },
+      searchForm: {
+        path: 'File Path',
+        pathPlaceholder: 'Enter file path',
+        type: 'File Type',
+        typePlaceholder: 'Enter file type',
+        createTime: 'Created At',
+        createTimeStartPlaceholder: 'Start date',
+        createTimeEndPlaceholder: 'End date'
+      },
+      actions: {
+        upload: 'Upload File',
+        batchDelete: 'Batch Delete'
+      },
+      table: {
+        name: 'File Name',
+        path: 'File Path',
+        url: 'URL',
+        size: 'File Size',
+        type: 'File Type',
+        content: 'Content',
+        uploadTime: 'Uploaded At',
+        preview: 'Preview',
+        download: 'Download',
+        copyLink: 'Copy Link'
+      },
+      msg: {
+        copySuccess: 'Link copied',
+        uploadRequired: 'Please upload a file',
+        uploadSuccess: 'Upload succeeded',
+        uploadError: 'Upload failed, please retry',
+        exceedLimit: 'Only one file can be uploaded'
+      },
+      form: {
+        title: 'Upload File',
+        dragText: 'Drop file here, or',
+        clickText: 'click to upload',
+        tip: 'Tip: Only jpg, png, gif files are allowed'
+      }
+    },
+    fileConfig: {
+      doc: {
+        title: 'File Storage'
+      },
+      searchForm: {
+        name: 'Configuration Name',
+        namePlaceholder: 'Enter configuration name',
+        storage: 'Storage',
+        storagePlaceholder: 'Select storage',
+        createTime: 'Created At',
+        createTimeStartPlaceholder: 'Start date',
+        createTimeEndPlaceholder: 'End date'
+      },
+      actions: {
+        batchDelete: 'Batch Delete',
+        setMaster: 'Set Primary',
+        test: 'Test'
+      },
+      table: {
+        id: 'ID',
+        name: 'Configuration Name',
+        storage: 'Storage',
+        remark: 'Remark',
+        master: 'Primary',
+        createTime: 'Created At'
+      },
+      msg: {
+        masterConfirm: 'Set configuration #{id} as primary?',
+        testConfirmTitle: 'Upload Test',
+        testConfirmMessage: 'Open the uploaded file?'
+      },
+      form: {
+        name: 'Configuration Name',
+        namePlaceholder: 'Enter configuration name',
+        remark: 'Remark',
+        remarkPlaceholder: 'Enter remark',
+        storage: 'Storage',
+        storagePlaceholder: 'Select storage',
+        basePath: 'Base Path',
+        basePathPlaceholder: 'Enter base path',
+        host: 'Host',
+        hostPlaceholder: 'Enter host',
+        port: 'Port',
+        portPlaceholder: 'Enter port',
+        username: 'Username',
+        usernamePlaceholder: 'Enter username',
+        password: 'Password',
+        passwordPlaceholder: 'Enter password',
+        mode: 'Connection Mode',
+        modeActive: 'Active',
+        modePassive: 'Passive',
+        endpoint: 'Endpoint',
+        endpointPlaceholder: 'Enter endpoint',
+        bucket: 'Bucket',
+        bucketPlaceholder: 'Enter bucket',
+        accessKey: 'Access Key',
+        accessKeyPlaceholder: 'Enter accessKey',
+        accessSecret: 'Access Secret',
+        accessSecretPlaceholder: 'Enter accessSecret',
+        enablePathStyleAccess: 'Path Style Access',
+        enableOption: 'Enable',
+        disableOption: 'Disable',
+        domain: 'Custom Domain',
+        domainPlaceholder: 'Enter custom domain',
+        rules: {
+          nameRequired: 'Configuration name is required',
+          storageRequired: 'Storage is required',
+          basePathRequired: 'Base path is required',
+          hostRequired: 'Host is required',
+          portRequired: 'Port is required',
+          usernameRequired: 'Username is required',
+          passwordRequired: 'Password is required',
+          modeRequired: 'Connection mode is required',
+          endpointRequired: 'Endpoint is required',
+          bucketRequired: 'Bucket is required',
+          accessKeyRequired: 'Access key is required',
+          accessSecretRequired: 'Access secret is required',
+          enablePathStyleRequired: 'Path Style access option is required',
+          domainRequired: 'Custom domain is required'
+        }
+      }
+    },
+    demo: {
+      demo01: {
+        searchForm: {
+          name: 'Name',
+          namePlaceholder: 'Enter name',
+          sex: 'Gender',
+          sexPlaceholder: 'Select gender',
+          createTime: 'Created At',
+          createTimeStartPlaceholder: 'Start date',
+          createTimeEndPlaceholder: 'End date'
+        },
+        actions: {
+          create: 'Create',
+          export: 'Export',
+          batchDelete: 'Batch Delete'
+        },
+        table: {
+          id: 'ID',
+          name: 'Name',
+          sex: 'Gender',
+          birthday: 'Birth Year',
+          description: 'Description',
+          avatar: 'Avatar',
+          createTime: 'Created At'
+        },
+        fileName: {
+          export: 'demo01-contact.xls'
+        },
+        form: {
+          name: 'Name',
+          namePlaceholder: 'Enter name',
+          sex: 'Gender',
+          birthday: 'Birth Year',
+          birthdayPlaceholder: 'Select birth year',
+          description: 'Description',
+          descriptionPlaceholder: 'Enter description',
+          avatar: 'Avatar',
+          rules: {
+            nameRequired: 'Name is required',
+            sexRequired: 'Gender is required',
+            birthdayRequired: 'Birth year is required',
+            descriptionRequired: 'Description is required'
+          }
+        }
+      }
+    },
+    build: {
+      actions: {
+        generateJson: 'Generate JSON',
+        generateOptions: 'Generate Options',
+        generateComponent: 'Generate Component'
+      },
+      dialog: {
+        generateJson: 'Generate JSON',
+        generateOptions: 'Generate Options',
+        generateComponent: 'Generate Component'
+      }
+    },
+    server: {
+      doc: {
+        title: 'Service Monitor'
+      }
+    },
+    druid: {
+      doc: {
+        title: 'Database & MyBatis',
+        dynamic: 'Dynamic Data Source'
+      }
+    },
+    swagger: {
+      doc: {
+        title: 'API Documentation'
+      }
+    },
+    skywalking: {
+      doc: {
+        title: 'Service Monitor'
+      }
+    },
+    redis: {
+      doc: {
+        redis: 'Redis Cache',
+        local: 'Local Cache'
+      },
+      basicInfo: {
+        title: 'Basic Info',
+        redisVersion: 'Redis Version',
+        runMode: 'Mode',
+        runModeStandalone: 'Standalone',
+        runModeCluster: 'Cluster',
+        port: 'Port',
+        clients: 'Clients',
+        uptimeDays: 'Uptime (days)',
+        usedMemory: 'Used Memory',
+        usedCpu: 'CPU Usage',
+        maxMemory: 'Max Memory',
+        aofEnabled: 'AOF Enabled',
+        aofYes: 'Yes',
+        aofNo: 'No',
+        rdbStatus: 'RDB Last Status',
+        keyCount: 'Key Count',
+        netIO: 'Network In/Out',
+        netIOUnit: '{in} kps / {out} kps'
+      },
+      charts: {
+        usedMemoryTitle: 'Memory Usage',
+        peakName: 'Peak',
+        commandStatsTitle: 'Command Stats',
+        commandSeriesName: 'Commands'
+      }
+    },
+    webSocket: {
+      doc: {
+        title: 'WebSocket Real-time Communication'
+      },
+      connection: {
+        title: 'Connection',
+        statusLabel: 'Status:',
+        serverLabel: 'Server'
+      },
+      status: {
+        open: 'OPEN',
+        closed: 'CLOSED'
+      },
+      actions: {
+        open: 'Open Connection',
+        close: 'Close Connection',
+        send: 'Send'
+      },
+      labels: {
+        messageInput: 'Message Input',
+        messageLog: 'Message Log',
+        received: 'Received:'
+      },
+      placeholders: {
+        message: 'Enter the message to send',
+        user: 'Select recipient'
+      },
+      options: {
+        all: 'Everyone'
+      },
+      log: {
+        receiveSingle: '[Single] User({userId}): {text}',
+        receiveGroup: '[Group] User({userId}): {text}',
+        receiveSystem: '[System] {title}'
+      },
+      errors: {
+        unknownType: 'Unknown message type: {value}',
+        unhandled: 'Unhandled message: {value}',
+        process: 'Processing message failed: {value}'
+      }
     }
   }
 

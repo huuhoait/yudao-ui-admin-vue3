@@ -7,22 +7,36 @@
       :rules="formRules"
       label-width="100px"
     >
-      <el-form-item label="数据源名称" prop="name">
-        <el-input v-model="formData.name" placeholder="请输入参数名称" />
+      <el-form-item :label="t('infra.dataSourceConfig.form.name')" prop="name">
+        <el-input
+          v-model="formData.name"
+          :placeholder="t('infra.dataSourceConfig.form.namePlaceholder')"
+        />
       </el-form-item>
-      <el-form-item label="数据源连接" prop="url">
-        <el-input v-model="formData.url" placeholder="请输入数据源连接" />
+      <el-form-item :label="t('infra.dataSourceConfig.form.url')" prop="url">
+        <el-input
+          v-model="formData.url"
+          :placeholder="t('infra.dataSourceConfig.form.urlPlaceholder')"
+        />
       </el-form-item>
-      <el-form-item label="用户名" prop="username">
-        <el-input v-model="formData.username" placeholder="请输入用户名" />
+      <el-form-item :label="t('infra.dataSourceConfig.form.username')" prop="username">
+        <el-input
+          v-model="formData.username"
+          :placeholder="t('infra.dataSourceConfig.form.usernamePlaceholder')"
+        />
       </el-form-item>
-      <el-form-item label="密码" prop="password">
-        <el-input v-model="formData.password" placeholder="请输入密码" />
+      <el-form-item :label="t('infra.dataSourceConfig.form.password')" prop="password">
+        <el-input
+          v-model="formData.password"
+          :placeholder="t('infra.dataSourceConfig.form.passwordPlaceholder')"
+        />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">
+        {{ t('common.confirm') }}
+      </el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -46,10 +60,10 @@ const formData = ref<DataSourceConfigApi.DataSourceConfigVO>({
   password: ''
 })
 const formRules = reactive({
-  name: [{ required: true, message: '数据源名称不能为空', trigger: 'blur' }],
-  url: [{ required: true, message: '数据源连接不能为空', trigger: 'blur' }],
-  username: [{ required: true, message: '用户名不能为空', trigger: 'blur' }],
-  password: [{ required: true, message: '密码不能为空', trigger: 'blur' }]
+  name: [{ required: true, message: t('infra.dataSourceConfig.form.rules.nameRequired'), trigger: 'blur' }],
+  url: [{ required: true, message: t('infra.dataSourceConfig.form.rules.urlRequired'), trigger: 'blur' }],
+  username: [{ required: true, message: t('infra.dataSourceConfig.form.rules.usernameRequired'), trigger: 'blur' }],
+  password: [{ required: true, message: t('infra.dataSourceConfig.form.rules.passwordRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="系统日志" url="https://doc.iocoder.cn/system-log/" />
+  <doc-alert :title="t('infra.apiErrorLog.doc.title')" url="https://doc.iocoder.cn/system-log/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,19 +10,19 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item label="用户编号" prop="userId">
+      <el-form-item :label="t('infra.apiErrorLog.searchForm.userId')" prop="userId">
         <el-input
           v-model="queryParams.userId"
-          placeholder="请输入用户编号"
+          :placeholder="t('infra.apiErrorLog.searchForm.userIdPlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="用户类型" prop="userType">
+      <el-form-item :label="t('infra.apiErrorLog.searchForm.userType')" prop="userType">
         <el-select
           v-model="queryParams.userType"
-          placeholder="请选择用户类型"
+          :placeholder="t('infra.apiErrorLog.searchForm.userTypePlaceholder')"
           clearable
           class="!w-240px"
         >
@@ -34,30 +34,30 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="应用名" prop="applicationName">
+      <el-form-item :label="t('infra.apiErrorLog.searchForm.applicationName')" prop="applicationName">
         <el-input
           v-model="queryParams.applicationName"
-          placeholder="请输入应用名"
+          :placeholder="t('infra.apiErrorLog.searchForm.applicationNamePlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="异常时间" prop="exceptionTime">
+      <el-form-item :label="t('infra.apiErrorLog.searchForm.exceptionTime')" prop="exceptionTime">
         <el-date-picker
           v-model="queryParams.exceptionTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
+          :start-placeholder="t('infra.apiErrorLog.searchForm.exceptionTimeStartPlaceholder')"
+          :end-placeholder="t('infra.apiErrorLog.searchForm.exceptionTimeEndPlaceholder')"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="处理状态" prop="processStatus">
+      <el-form-item :label="t('infra.apiErrorLog.searchForm.processStatus')" prop="processStatus">
         <el-select
           v-model="queryParams.processStatus"
-          placeholder="请选择处理状态"
+          :placeholder="t('infra.apiErrorLog.searchForm.processStatusPlaceholder')"
           clearable
           class="!w-240px"
         >
@@ -70,8 +70,8 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
         <el-button
           type="success"
           plain
@@ -79,7 +79,7 @@
           :loading="exportLoading"
           v-hasPermi="['infra:api-error-log:export']"
         >
-          <Icon icon="ep:download" class="mr-5px" /> 导出
+          <Icon icon="ep:download" class="mr-5px" /> {{ t('action.export') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -88,25 +88,25 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="日志编号" align="center" prop="id" />
-      <el-table-column label="用户编号" align="center" prop="userId" />
-      <el-table-column label="用户类型" align="center" prop="userType">
+      <el-table-column :label="t('infra.apiErrorLog.table.id')" align="center" prop="id" />
+      <el-table-column :label="t('infra.apiErrorLog.table.userId')" align="center" prop="userId" />
+      <el-table-column :label="t('infra.apiErrorLog.table.userType')" align="center" prop="userType">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.USER_TYPE" :value="scope.row.userType" />
         </template>
       </el-table-column>
-      <el-table-column label="应用名" align="center" prop="applicationName" width="200" />
-      <el-table-column label="请求方法" align="center" prop="requestMethod" width="80" />
-      <el-table-column label="请求地址" align="center" prop="requestUrl" width="180" />
+      <el-table-column :label="t('infra.apiErrorLog.table.applicationName')" align="center" prop="applicationName" width="200" />
+      <el-table-column :label="t('infra.apiErrorLog.table.requestMethod')" align="center" prop="requestMethod" width="80" />
+      <el-table-column :label="t('infra.apiErrorLog.table.requestUrl')" align="center" prop="requestUrl" width="180" />
       <el-table-column
-        label="异常发生时间"
+        :label="t('infra.apiErrorLog.table.exceptionTime')"
         align="center"
         prop="exceptionTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column label="异常名" align="center" prop="exceptionName" width="180" />
-      <el-table-column label="处理状态" align="center" prop="processStatus">
+      <el-table-column :label="t('infra.apiErrorLog.table.exceptionName')" align="center" prop="exceptionName" width="180" />
+      <el-table-column :label="t('infra.apiErrorLog.table.processStatus')" align="center" prop="processStatus">
         <template #default="scope">
           <dict-tag
             :type="DICT_TYPE.INFRA_API_ERROR_LOG_PROCESS_STATUS"
@@ -114,7 +114,7 @@
           />
         </template>
       </el-table-column>
-      <el-table-column label="操作" align="center" width="200">
+      <el-table-column :label="t('common.operation')" align="center" width="200">
         <template #default="scope">
           <el-button
             link
@@ -122,7 +122,7 @@
             @click="openDetail(scope.row)"
             v-hasPermi="['infra:api-error-log:query']"
           >
-            详细
+            {{ t('infra.apiErrorLog.actions.detail') }}
           </el-button>
           <el-button
             link
@@ -131,7 +131,7 @@
             @click="handleProcess(scope.row.id, InfraApiErrorLogProcessStatusEnum.DONE)"
             v-hasPermi="['infra:api-error-log:update-status']"
           >
-            已处理
+            {{ t('infra.apiErrorLog.actions.markDone') }}
           </el-button>
           <el-button
             link
@@ -140,7 +140,7 @@
             @click="handleProcess(scope.row.id, InfraApiErrorLogProcessStatusEnum.IGNORE)"
             v-hasPermi="['infra:api-error-log:update-status']"
           >
-            已忽略
+            {{ t('infra.apiErrorLog.actions.markIgnore') }}
           </el-button>
         </template>
       </el-table-column>
@@ -168,6 +168,7 @@ import { InfraApiErrorLogProcessStatusEnum } from '@/utils/constants'
 
 defineOptions({ name: 'InfraApiErrorLog' })
 
+const { t } = useI18n() // 国际化
 const message = useMessage() // 消息弹窗
 
 const loading = ref(true) // 列表的加载中
@@ -220,11 +221,14 @@ const openDetail = (data: ApiErrorLogApi.ApiErrorLogVO) => {
 const handleProcess = async (id: number, processStatus: number) => {
   try {
     // 操作的二次确认
-    const type = processStatus === InfraApiErrorLogProcessStatusEnum.DONE ? '已处理' : '已忽略'
-    await message.confirm('确认标记为' + type + '?')
+    const statusText =
+      processStatus === InfraApiErrorLogProcessStatusEnum.DONE
+        ? t('infra.apiErrorLog.status.done')
+        : t('infra.apiErrorLog.status.ignore')
+    await message.confirm(t('infra.apiErrorLog.msg.markConfirm', { type: statusText }))
     // 执行操作
     await ApiErrorLogApi.updateApiErrorLogPage(id, processStatus)
-    await message.success(type)
+    await message.success(t('infra.apiErrorLog.msg.markSuccess', { type: statusText }))
     // 刷新列表
     await getList()
   } catch {}
@@ -238,7 +242,7 @@ const handleExport = async () => {
     // 发起导出
     exportLoading.value = true
     const data = await ApiErrorLogApi.exportApiErrorLog(queryParams)
-    download.excel(data, '异常日志.xls')
+    download.excel(data, t('infra.apiErrorLog.fileName.export'))
   } catch {
   } finally {
     exportLoading.value = false

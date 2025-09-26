@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="上传下载" url="https://doc.iocoder.cn/file/" />
+  <doc-alert :title="t('infra.file.doc.title')" url="https://doc.iocoder.cn/file/" />
   <!-- 搜索 -->
   <ContentWrap>
     <el-form
@@ -9,40 +9,40 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item label="文件路径" prop="path">
+      <el-form-item :label="t('infra.file.searchForm.path')" prop="path">
         <el-input
           v-model="queryParams.path"
-          placeholder="请输入文件路径"
+          :placeholder="t('infra.file.searchForm.pathPlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="文件类型" prop="type" width="80">
+      <el-form-item :label="t('infra.file.searchForm.type')" prop="type" width="80">
         <el-input
           v-model="queryParams.type"
-          placeholder="请输入文件类型"
+          :placeholder="t('infra.file.searchForm.typePlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="创建时间" prop="createTime">
+      <el-form-item :label="t('infra.file.searchForm.createTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
+          :start-placeholder="t('infra.file.searchForm.createTimeStartPlaceholder')"
+          :end-placeholder="t('infra.file.searchForm.createTimeEndPlaceholder')"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
         <el-button type="primary" plain @click="openForm">
-          <Icon icon="ep:upload" class="mr-5px" /> 上传文件
+          <Icon icon="ep:upload" class="mr-5px" /> {{ t('infra.file.actions.upload') }}
         </el-button>
         <el-button
           type="danger"
@@ -51,7 +51,7 @@
           @click="handleDeleteBatch"
           v-hasPermi="['infra:file:delete']"
         >
-          <Icon icon="ep:delete" class="mr-5px" /> 批量删除
+          <Icon icon="ep:delete" class="mr-5px" /> {{ t('infra.file.actions.batchDelete') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -61,18 +61,33 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column label="文件名" align="center" prop="name" :show-overflow-tooltip="true" />
-      <el-table-column label="文件路径" align="center" prop="path" :show-overflow-tooltip="true" />
-      <el-table-column label="URL" align="center" prop="url" :show-overflow-tooltip="true" />
       <el-table-column
-        label="文件大小"
+        :label="t('infra.file.table.name')"
+        align="center"
+        prop="name"
+        :show-overflow-tooltip="true"
+      />
+      <el-table-column
+        :label="t('infra.file.table.path')"
+        align="center"
+        prop="path"
+        :show-overflow-tooltip="true"
+      />
+      <el-table-column
+        :label="t('infra.file.table.url')"
+        align="center"
+        prop="url"
+        :show-overflow-tooltip="true"
+      />
+      <el-table-column
+        :label="t('infra.file.table.size')"
         align="center"
         prop="size"
         width="120"
         :formatter="fileSizeFormatter"
       />
-      <el-table-column label="文件类型" align="center" prop="type" width="180px" />
-      <el-table-column label="文件内容" align="center" prop="url" width="110px">
+      <el-table-column :label="t('infra.file.table.type')" align="center" prop="type" width="180px" />
+      <el-table-column :label="t('infra.file.table.content')" align="center" prop="url" width="110px">
         <template #default="{ row }">
           <el-image
             v-if="row.type.includes('image')"
@@ -89,24 +104,24 @@
             :href="row.url"
             :underline="false"
             target="_blank"
-            >预览</el-link
+            >{{ t('infra.file.table.preview') }}</el-link
           >
           <el-link v-else type="primary" download :href="row.url" :underline="false" target="_blank"
-            >下载</el-link
+            >{{ t('infra.file.table.download') }}</el-link
           >
         </template>
       </el-table-column>
       <el-table-column
-        label="上传时间"
+        :label="t('infra.file.table.uploadTime')"
         align="center"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column label="操作" align="center">
+      <el-table-column :label="t('common.operation')" align="center">
         <template #default="scope">
           <el-button link type="primary" @click="copyToClipboard(scope.row.url)">
-            复制链接
+            {{ t('infra.file.table.copyLink') }}
           </el-button>
           <el-button
             link
@@ -114,7 +129,7 @@
             @click="handleDelete(scope.row.id)"
             v-hasPermi="['infra:file:delete']"
           >
-            删除
+            {{ t('action.delete') }}
           </el-button>
         </template>
       </el-table-column>
@@ -188,7 +203,7 @@ const openForm = () => {
 /** 复制到剪贴板方法 */
 const copyToClipboard = (text: string) => {
   navigator.clipboard.writeText(text).then(() => {
-    message.success('复制成功')
+    message.success(t('infra.file.msg.copySuccess'))
   })
 }
 

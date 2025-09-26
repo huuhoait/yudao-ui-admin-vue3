@@ -1,8 +1,14 @@
 <template>
-  <doc-alert title="代码生成（单表）" url="https://doc.iocoder.cn/new-feature/" />
-  <doc-alert title="代码生成（树表）" url="https://doc.iocoder.cn/new-feature/tree/" />
-  <doc-alert title="代码生成（主子表）" url="https://doc.iocoder.cn/new-feature/master-sub/" />
-  <doc-alert title="单元测试" url="https://doc.iocoder.cn/unit-test/" />
+  <doc-alert :title="t('infra.codegen.doc.single')" url="https://doc.iocoder.cn/new-feature/" />
+  <doc-alert
+    :title="t('infra.codegen.doc.tree')"
+    url="https://doc.iocoder.cn/new-feature/tree/"
+  />
+  <doc-alert
+    :title="t('infra.codegen.doc.masterSub')"
+    url="https://doc.iocoder.cn/new-feature/master-sub/"
+  />
+  <doc-alert :title="t('infra.codegen.doc.unitTest')" url="https://doc.iocoder.cn/unit-test/" />
 
   <!-- 搜索 -->
   <ContentWrap>
@@ -13,31 +19,31 @@
       class="-mb-15px"
       label-width="68px"
     >
-      <el-form-item label="表名称" prop="tableName">
+      <el-form-item :label="t('infra.codegen.searchForm.tableName')" prop="tableName">
         <el-input
           v-model="queryParams.tableName"
           class="!w-240px"
           clearable
-          placeholder="请输入表名称"
+          :placeholder="t('infra.codegen.searchForm.tableNamePlaceholder')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="表描述" prop="tableComment">
+      <el-form-item :label="t('infra.codegen.searchForm.tableComment')" prop="tableComment">
         <el-input
           v-model="queryParams.tableComment"
           class="!w-240px"
           clearable
-          placeholder="请输入表描述"
+          :placeholder="t('infra.codegen.searchForm.tableCommentPlaceholder')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="创建时间" prop="createTime">
+      <el-form-item :label="t('infra.codegen.searchForm.createTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
-          end-placeholder="结束日期"
-          start-placeholder="开始日期"
+          :end-placeholder="t('infra.codegen.searchForm.createTimeEndPlaceholder')"
+          :start-placeholder="t('infra.codegen.searchForm.createTimeStartPlaceholder')"
           type="daterange"
           value-format="YYYY-MM-DD HH:mm:ss"
         />
@@ -45,15 +51,15 @@
       <el-form-item>
         <el-button @click="handleQuery">
           <Icon class="mr-5px" icon="ep:search" />
-          搜索
+          {{ t('common.query') }}
         </el-button>
         <el-button @click="resetQuery">
           <Icon class="mr-5px" icon="ep:refresh" />
-          重置
+          {{ t('common.reset') }}
         </el-button>
         <el-button v-hasPermi="['infra:codegen:create']" type="primary" @click="openImportTable()">
           <Icon class="mr-5px" icon="ep:zoom-in" />
-          导入
+          {{ t('infra.codegen.actions.import') }}
         </el-button>
         <el-button
           v-hasPermi="['infra:codegen:delete']"
@@ -62,7 +68,7 @@
           @click="handleDeleteBatch"
         >
           <Icon class="mr-5px" icon="ep:delete" />
-          批量删除
+          {{ t('infra.codegen.actions.batchDelete') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -72,37 +78,47 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column align="center" label="数据源">
+      <el-table-column :label="t('infra.codegen.table.dataSource')" align="center">
         <template #default="scope">
           {{
             dataSourceConfigList.find((config) => config.id === scope.row.dataSourceConfigId)?.name
           }}
         </template>
       </el-table-column>
-      <el-table-column align="center" label="表名称" prop="tableName" width="200" />
+      <el-table-column
+        :label="t('infra.codegen.table.tableName')"
+        align="center"
+        prop="tableName"
+        width="200"
+      />
       <el-table-column
         :show-overflow-tooltip="true"
         align="center"
-        label="表描述"
+        :label="t('infra.codegen.table.tableComment')"
         prop="tableComment"
         width="200"
       />
-      <el-table-column align="center" label="实体" prop="className" width="200" />
+      <el-table-column
+        :label="t('infra.codegen.table.className')"
+        align="center"
+        prop="className"
+        width="200"
+      />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        label="创建时间"
+        :label="t('infra.codegen.table.createTime')"
         prop="createTime"
         width="180"
       />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        label="更新时间"
+        :label="t('infra.codegen.table.updateTime')"
         prop="createTime"
         width="180"
       />
-      <el-table-column align="center" fixed="right" label="操作" width="300px">
+      <el-table-column :label="t('common.operation')" align="center" fixed="right" width="300px">
         <template #default="scope">
           <el-button
             v-hasPermi="['infra:codegen:preview']"
@@ -110,7 +126,7 @@
             type="primary"
             @click="handlePreview(scope.row)"
           >
-            预览
+            {{ t('action.preview') }}
           </el-button>
           <el-button
             v-hasPermi="['infra:codegen:update']"
@@ -118,7 +134,7 @@
             type="primary"
             @click="handleUpdate(scope.row.id)"
           >
-            编辑
+            {{ t('action.edit') }}
           </el-button>
           <el-button
             v-hasPermi="['infra:codegen:delete']"
@@ -126,7 +142,7 @@
             type="danger"
             @click="handleDelete(scope.row.id)"
           >
-            删除
+            {{ t('action.delete') }}
           </el-button>
           <el-button
             v-hasPermi="['infra:codegen:update']"
@@ -134,7 +150,7 @@
             type="primary"
             @click="handleSyncDB(scope.row)"
           >
-            同步
+            {{ t('infra.codegen.actions.sync') }}
           </el-button>
           <el-button
             v-hasPermi="['infra:codegen:download']"
@@ -142,7 +158,7 @@
             type="primary"
             @click="handleGenTable(scope.row)"
           >
-            生成代码
+            {{ t('infra.codegen.actions.generate') }}
           </el-button>
         </template>
       </el-table-column>
@@ -265,9 +281,9 @@ const handleSyncDB = async (row: CodegenApi.CodegenTableVO) => {
   // 基于 DB 同步
   const tableName = row.tableName
   try {
-    await message.confirm('确认要强制同步' + tableName + '表结构吗?', t('common.reminder'))
+    await message.confirm(t('infra.codegen.msg.syncConfirm', { table: tableName }), t('common.reminder'))
     await CodegenApi.syncCodegenFromDB(row.id)
-    message.success('同步成功')
+    message.success(t('infra.codegen.msg.syncSuccess'))
   } catch {}
 }
 

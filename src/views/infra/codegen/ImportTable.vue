@@ -1,12 +1,12 @@
 <template>
-  <Dialog v-model="dialogVisible" title="导入表" width="800px">
+  <Dialog v-model="dialogVisible" :title="t('infra.codegen.import.title')" width="800px">
     <!-- 搜索栏 -->
     <el-form ref="queryFormRef" :inline="true" :model="queryParams" label-width="68px">
-      <el-form-item label="数据源" prop="dataSourceConfigId">
+      <el-form-item :label="t('infra.codegen.import.searchForm.dataSource')" prop="dataSourceConfigId">
         <el-select
           v-model="queryParams.dataSourceConfigId"
           class="!w-240px"
-          placeholder="请选择数据源"
+          :placeholder="t('infra.codegen.import.searchForm.dataSourcePlaceholder')"
         >
           <el-option
             v-for="config in dataSourceConfigList"
@@ -16,32 +16,32 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="表名称" prop="name">
+      <el-form-item :label="t('infra.codegen.import.searchForm.tableName')" prop="name">
         <el-input
           v-model="queryParams.name"
           class="!w-240px"
           clearable
-          placeholder="请输入表名称"
+          :placeholder="t('infra.codegen.import.searchForm.tableNamePlaceholder')"
           @keyup.enter="getList"
         />
       </el-form-item>
-      <el-form-item label="表描述" prop="comment">
+      <el-form-item :label="t('infra.codegen.import.searchForm.tableComment')" prop="comment">
         <el-input
           v-model="queryParams.comment"
           class="!w-240px"
           clearable
-          placeholder="请输入表描述"
+          :placeholder="t('infra.codegen.import.searchForm.tableCommentPlaceholder')"
           @keyup.enter="getList"
         />
       </el-form-item>
       <el-form-item>
         <el-button @click="getList">
           <Icon class="mr-5px" icon="ep:search" />
-          搜索
+          {{ t('common.query') }}
         </el-button>
         <el-button @click="resetQuery">
           <Icon class="mr-5px" icon="ep:refresh" />
-          重置
+          {{ t('common.reset') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -56,8 +56,16 @@
         @selection-change="handleSelectionChange"
       >
         <el-table-column type="selection" width="55" />
-        <el-table-column :show-overflow-tooltip="true" label="表名称" prop="name" />
-        <el-table-column :show-overflow-tooltip="true" label="表描述" prop="comment" />
+        <el-table-column
+          :show-overflow-tooltip="true"
+          :label="t('infra.codegen.import.table.tableName')"
+          prop="name"
+        />
+        <el-table-column
+          :show-overflow-tooltip="true"
+          :label="t('infra.codegen.import.table.tableComment')"
+          prop="comment"
+        />
       </el-table>
     </el-row>
     <!-- 操作 -->
@@ -67,9 +75,9 @@
         type="primary"
         @click="handleImportTable"
       >
-        导入
+        {{ t('infra.codegen.import.actions.import') }}
       </el-button>
-      <el-button @click="close">关闭</el-button>
+      <el-button @click="close">{{ t('infra.codegen.import.actions.close') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -80,6 +88,7 @@ import { ElTable } from 'element-plus'
 
 defineOptions({ name: 'InfraCodegenImportTable' })
 
+const { t } = useI18n()
 const message = useMessage() // 消息弹窗
 
 const dialogVisible = ref(false) // 弹窗的是否展示
@@ -149,7 +158,7 @@ const handleImportTable = async () => {
       dataSourceConfigId: queryParams.dataSourceConfigId,
       tableNames: tableList.value
     })
-    message.success('导入成功')
+    message.success(t('infra.codegen.import.msg.success'))
     emit('success')
     close()
   } finally {

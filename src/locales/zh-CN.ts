@@ -1333,6 +1333,668 @@ export default {
       common: {
         millisecondValue: '{value} 毫秒'
       }
+    },
+    apiAccessLog: {
+      doc: {
+        title: '系统日志'
+      },
+      searchForm: {
+        userId: '用户编号',
+        userIdPlaceholder: '请输入用户编号',
+        userType: '用户类型',
+        userTypePlaceholder: '请选择用户类型',
+        applicationName: '应用名',
+        applicationNamePlaceholder: '请输入应用名',
+        requestTime: '请求时间',
+        requestTimeStartPlaceholder: '开始日期',
+        requestTimeEndPlaceholder: '结束日期',
+        duration: '执行时长',
+        durationPlaceholder: '请输入执行时长',
+        resultCode: '结果码',
+        resultCodePlaceholder: '请输入结果码'
+      },
+      table: {
+        id: '日志编号',
+        userId: '用户编号',
+        userType: '用户类型',
+        applicationName: '应用名',
+        requestMethod: '请求方法',
+        requestUrl: '请求地址',
+        requestTime: '请求时间',
+        duration: '执行时长',
+        operateResult: '操作结果',
+        operateModule: '操作模块',
+        operateName: '操作名',
+        operateType: '操作类型',
+        durationValue: '{value} 毫秒',
+        resultSuccess: '成功',
+        resultFail: '失败({msg})'
+      },
+      detail: {
+        title: '访问日志详情',
+        id: '日志主键',
+        traceId: '链路追踪',
+        applicationName: '应用名',
+        userInfo: '用户信息',
+        userIp: '用户 IP',
+        userAgent: '用户 UA',
+        requestInfo: '请求信息',
+        requestParams: '请求参数',
+        responseBody: '请求结果',
+        requestTime: '请求时间',
+        requestDuration: '请求耗时',
+        durationValue: '{value} 毫秒',
+        result: '操作结果',
+        resultSuccess: '正常',
+        resultFail: '失败 | {code} | {msg}',
+        operateModule: '操作模块',
+        operateName: '操作名',
+        operateType: '操作类型'
+      },
+      fileName: {
+        export: 'API 访问日志.xls'
+      }
+    },
+    apiErrorLog: {
+      doc: {
+        title: '系统日志'
+      },
+      searchForm: {
+        userId: '用户编号',
+        userIdPlaceholder: '请输入用户编号',
+        userType: '用户类型',
+        userTypePlaceholder: '请选择用户类型',
+        applicationName: '应用名',
+        applicationNamePlaceholder: '请输入应用名',
+        exceptionTime: '异常时间',
+        exceptionTimeStartPlaceholder: '开始日期',
+        exceptionTimeEndPlaceholder: '结束日期',
+        processStatus: '处理状态',
+        processStatusPlaceholder: '请选择处理状态'
+      },
+      table: {
+        id: '日志编号',
+        userId: '用户编号',
+        userType: '用户类型',
+        applicationName: '应用名',
+        requestMethod: '请求方法',
+        requestUrl: '请求地址',
+        exceptionTime: '异常发生时间',
+        exceptionName: '异常名',
+        processStatus: '处理状态'
+      },
+      actions: {
+        detail: '详细',
+        markDone: '标记已处理',
+        markIgnore: '标记已忽略'
+      },
+      status: {
+        done: '已处理',
+        ignore: '已忽略'
+      },
+      msg: {
+        markConfirm: '确认标记为{type}?',
+        markSuccess: '已标记为{type}'
+      },
+      fileName: {
+        export: '异常日志.xls'
+      },
+      detail: {
+        title: '异常日志详情',
+        id: '日志主键',
+        traceId: '链路追踪',
+        applicationName: '应用名',
+        userInfo: '用户信息',
+        userIp: '用户 IP',
+        userAgent: '用户 UA',
+        requestInfo: '请求信息',
+        requestParams: '请求参数',
+        exceptionTime: '异常时间',
+        exceptionName: '异常名',
+        exceptionStackTrace: '异常堆栈',
+        processStatus: '处理状态',
+        processUserId: '处理人',
+        processTime: '处理时间'
+      }
+    },
+    codegen: {
+      doc: {
+        single: '代码生成（单表）',
+        tree: '代码生成（树表）',
+        masterSub: '代码生成（主子表）',
+        unitTest: '单元测试'
+      },
+      searchForm: {
+        tableName: '表名称',
+        tableNamePlaceholder: '请输入表名称',
+        tableComment: '表描述',
+        tableCommentPlaceholder: '请输入表描述',
+        createTime: '创建时间',
+        createTimeStartPlaceholder: '开始日期',
+        createTimeEndPlaceholder: '结束日期'
+      },
+      table: {
+        dataSource: '数据源',
+        tableName: '表名称',
+        tableComment: '表描述',
+        className: '实体',
+        createTime: '创建时间',
+        updateTime: '更新时间'
+      },
+      actions: {
+        import: '导入',
+        batchDelete: '批量删除',
+        sync: '同步',
+        generate: '生成代码'
+      },
+      msg: {
+        syncConfirm: '确认要强制同步表 "{table}" 的表结构吗?',
+        syncSuccess: '同步成功'
+      },
+      import: {
+        title: '导入表',
+        searchForm: {
+          dataSource: '数据源',
+          dataSourcePlaceholder: '请选择数据源',
+          tableName: '表名称',
+          tableNamePlaceholder: '请输入表名称',
+          tableComment: '表描述',
+          tableCommentPlaceholder: '请输入表描述'
+        },
+        table: {
+          tableName: '表名称',
+          tableComment: '表描述'
+        },
+        actions: {
+          import: '导入',
+          close: '关闭'
+        },
+        msg: {
+          success: '导入成功'
+        }
+      },
+      edit: {
+        tabs: {
+          basic: '基本信息',
+          column: '字段信息',
+          generate: '生成信息'
+        },
+        actions: {
+          save: '保存',
+          back: '返回'
+        }
+      },
+      basicForm: {
+        tableName: '表名称',
+        tableNamePlaceholder: '请输入表名称',
+        tableComment: '表描述',
+        tableCommentPlaceholder: '请输入表描述',
+        className: '实体类名称',
+        classNamePlaceholder: '请输入实体类名称',
+        classNameTooltip: '默认去除表前缀，如有重复请手动添加前缀，避免 MyBatis 别名冲突',
+        author: '作者',
+        authorPlaceholder: '请输入作者',
+        remark: '备注',
+        remarkPlaceholder: '请输入备注',
+        rules: {
+          tableNameRequired: '表名称不能为空',
+          tableCommentRequired: '表描述不能为空',
+          classNameRequired: '实体类名称不能为空',
+          authorRequired: '作者不能为空'
+        }
+      },
+      column: {
+        columnName: '字段列名',
+        columnComment: '字段描述',
+        dataType: '物理类型',
+        javaType: 'Java 类型',
+        javaField: 'Java 属性',
+        insert: '插入',
+        edit: '编辑',
+        list: '列表',
+        query: '查询',
+        queryType: '查询方式',
+        allowNull: '允许空',
+        htmlType: '显示类型',
+        dictType: '字典类型',
+        dictRefresh: '加载最新字典',
+        example: '示例',
+        queryTypes: {
+          eq: '=',
+          ne: '!=',
+          gt: '>',
+          ge: '>=',
+          lt: '<',
+          le: '<=',
+          like: 'LIKE',
+          between: 'BETWEEN'
+        },
+        htmlTypes: {
+          input: '文本框',
+          textarea: '文本域',
+          select: '下拉框',
+          radio: '单选框',
+          checkbox: '复选框',
+          datetime: '日期控件',
+          imageUpload: '图片上传',
+          fileUpload: '文件上传',
+          editor: '富文本控件'
+        }
+      },
+      generate: {
+        templateType: '生成模板',
+        frontType: '前端类型',
+        scene: '生成场景',
+        parentMenu: '上级菜单',
+        parentMenuTooltip: '分配到指定菜单下，例如 系统管理',
+        parentMenuPlaceholder: '请选择系统菜单',
+        moduleName: '模块名',
+        moduleNameTooltip: '一级目录，例如 system、infra、tool 等',
+        businessName: '业务名',
+        businessNameTooltip: '二级目录，例如 user、permission、dict 等',
+        className: '类名称',
+        classNameTooltip: '类名称（首字母大写），例如 SysUser、SysMenu',
+        classComment: '类描述',
+        classCommentTooltip: '用作类描述，例如 用户',
+        genPath: '自定义路径',
+        genPathTooltip: '填写磁盘绝对路径，若不填写则生成到当前 Web 项目下',
+        genPathQuickSelect: '最近路径快速选择',
+        genPathReset: '恢复默认的生成基础路径',
+        treeInfoTitle: '树表信息',
+        treeParentColumn: '父编号字段',
+        treeParentColumnTooltip: '树显示的父编码字段名，如：parent_id',
+        treeNameColumn: '树名称字段',
+        treeNameColumnTooltip: '树节点的显示名称字段名，如：dept_name',
+        masterInfoTitle: '主表信息',
+        masterTable: '关联的主表',
+        masterTableTooltip: '关联主表（父表）的表名，如：system_user',
+        masterTablePlaceholder: '请选择主表',
+        subJoinColumn: '子表关联字段',
+        subJoinColumnTooltip: '子表关联的字段，如：user_id',
+        relation: '关联关系',
+        relationTooltip: '主表与子表的关联关系',
+        relationOneToMany: '一对多',
+        relationOneToOne: '一对一',
+        treeColumnPlaceholder: '请选择字段',
+        rules: {
+          templateTypeRequired: '生成模板不能为空',
+          frontTypeRequired: '前端类型不能为空',
+          sceneRequired: '生成场景不能为空',
+          moduleNameRequired: '模块名不能为空',
+          businessNameRequired: '业务名不能为空',
+          businessPackageRequired: '业务包不能为空',
+          classNameRequired: '类名称不能为空',
+          classCommentRequired: '类描述不能为空',
+          masterTableRequired: '主表不能为空',
+          subJoinColumnRequired: '子表关联字段不能为空',
+          subJoinManyRequired: '关联关系不能为空',
+          treeParentColumnRequired: '父编号字段不能为空',
+          treeNameColumnRequired: '树名称字段不能为空'
+        }
+      },
+      preview: {
+        title: '代码预览',
+        loadingTree: '生成文件目录中...',
+        loadingCode: '加载代码中...'
+      }
+    },
+    dataSourceConfig: {
+      actions: {
+        batchDelete: '批量删除'
+      },
+      table: {
+        id: '主键编号',
+        name: '数据源名称',
+        url: '数据源连接',
+        username: '用户名',
+        createTime: '创建时间'
+      },
+      form: {
+        name: '数据源名称',
+        namePlaceholder: '请输入数据源名称',
+        url: '数据源连接',
+        urlPlaceholder: '请输入数据源连接',
+        username: '用户名',
+        usernamePlaceholder: '请输入用户名',
+        password: '密码',
+        passwordPlaceholder: '请输入密码',
+        rules: {
+          nameRequired: '数据源名称不能为空',
+          urlRequired: '数据源连接不能为空',
+          usernameRequired: '用户名不能为空',
+          passwordRequired: '密码不能为空'
+        }
+      }
+    },
+    config: {
+      doc: {
+        title: '配置中心'
+      },
+      searchForm: {
+        name: '参数名称',
+        namePlaceholder: '请输入参数名称',
+        key: '参数键名',
+        keyPlaceholder: '请输入参数键名',
+        type: '系统内置',
+        typePlaceholder: '请选择系统内置',
+        createTime: '创建时间',
+        createTimeStartPlaceholder: '开始日期',
+        createTimeEndPlaceholder: '结束日期'
+      },
+      actions: {
+        batchDelete: '批量删除'
+      },
+      table: {
+        id: '参数主键',
+        category: '参数分类',
+        name: '参数名称',
+        key: '参数键名',
+        value: '参数键值',
+        visible: '是否可见',
+        type: '系统内置',
+        remark: '备注',
+        createTime: '创建时间'
+      },
+      fileName: {
+        export: '参数配置.xls'
+      },
+      form: {
+        category: '参数分类',
+        categoryPlaceholder: '请输入参数分类',
+        name: '参数名称',
+        namePlaceholder: '请输入参数名称',
+        key: '参数键名',
+        keyPlaceholder: '请输入参数键名',
+        value: '参数键值',
+        valuePlaceholder: '请输入参数键值',
+        visible: '是否可见',
+        remark: '备注',
+        remarkPlaceholder: '请输入内容',
+        rules: {
+          categoryRequired: '参数分类不能为空',
+          nameRequired: '参数名称不能为空',
+          keyRequired: '参数键名不能为空',
+          valueRequired: '参数键值不能为空',
+          visibleRequired: '是否可见不能为空'
+        }
+      }
+    },
+    file: {
+      doc: {
+        title: '上传下载'
+      },
+      searchForm: {
+        path: '文件路径',
+        pathPlaceholder: '请输入文件路径',
+        type: '文件类型',
+        typePlaceholder: '请输入文件类型',
+        createTime: '创建时间',
+        createTimeStartPlaceholder: '开始日期',
+        createTimeEndPlaceholder: '结束日期'
+      },
+      actions: {
+        upload: '上传文件',
+        batchDelete: '批量删除'
+      },
+      table: {
+        name: '文件名',
+        path: '文件路径',
+        url: 'URL',
+        size: '文件大小',
+        type: '文件类型',
+        content: '文件内容',
+        uploadTime: '上传时间',
+        preview: '预览',
+        download: '下载',
+        copyLink: '复制链接'
+      },
+      msg: {
+        copySuccess: '复制成功',
+        uploadRequired: '请上传文件',
+        uploadSuccess: '上传成功',
+        uploadError: '上传失败，请您重新上传！',
+        exceedLimit: '最多只能上传一个文件！'
+      },
+      form: {
+        title: '上传文件',
+        dragText: '将文件拖到此处，或',
+        clickText: '点击上传',
+        tip: '提示：仅允许导入 jpg、png、gif 格式文件！'
+      }
+    },
+    fileConfig: {
+      doc: {
+        title: '文件存储配置'
+      },
+      searchForm: {
+        name: '配置名',
+        namePlaceholder: '请输入配置名',
+        storage: '存储器',
+        storagePlaceholder: '请选择存储器',
+        createTime: '创建时间',
+        createTimeStartPlaceholder: '开始日期',
+        createTimeEndPlaceholder: '结束日期'
+      },
+      actions: {
+        batchDelete: '批量删除',
+        setMaster: '主配置',
+        test: '测试'
+      },
+      table: {
+        id: '编号',
+        name: '配置名',
+        storage: '存储器',
+        remark: '备注',
+        master: '主配置',
+        createTime: '创建时间'
+      },
+      msg: {
+        masterConfirm: '是否确认修改配置编号为"{id}"的数据项为主配置?',
+        testConfirmTitle: '测试上传成功',
+        testConfirmMessage: '是否要访问该文件？'
+      },
+      form: {
+        name: '配置名',
+        namePlaceholder: '请输入配置名',
+        remark: '备注',
+        remarkPlaceholder: '请输入备注',
+        storage: '存储器',
+        storagePlaceholder: '请选择存储器',
+        basePath: '基础路径',
+        basePathPlaceholder: '请输入基础路径',
+        host: '主机地址',
+        hostPlaceholder: '请输入主机地址',
+        port: '主机端口',
+        portPlaceholder: '请输入主机端口',
+        username: '用户名',
+        usernamePlaceholder: '请输入用户名',
+        password: '密码',
+        passwordPlaceholder: '请输入密码',
+        mode: '连接模式',
+        modeActive: '主动模式',
+        modePassive: '被动模式',
+        endpoint: '节点地址',
+        endpointPlaceholder: '请输入节点地址',
+        bucket: '存储 bucket',
+        bucketPlaceholder: '请输入 bucket',
+        accessKey: 'accessKey',
+        accessKeyPlaceholder: '请输入 accessKey',
+        accessSecret: 'accessSecret',
+        accessSecretPlaceholder: '请输入 accessSecret',
+        enablePathStyleAccess: '是否 Path Style',
+        enableOption: '启用',
+        disableOption: '禁用',
+        domain: '自定义域名',
+        domainPlaceholder: '请输入自定义域名',
+        rules: {
+          nameRequired: '配置名不能为空',
+          storageRequired: '存储器不能为空',
+          basePathRequired: '基础路径不能为空',
+          hostRequired: '主机地址不能为空',
+          portRequired: '主机端口不能为空',
+          usernameRequired: '用户名不能为空',
+          passwordRequired: '密码不能为空',
+          modeRequired: '连接模式不能为空',
+          endpointRequired: '节点地址不能为空',
+          bucketRequired: '存储 bucket 不能为空',
+          accessKeyRequired: 'accessKey 不能为空',
+          accessSecretRequired: 'accessSecret 不能为空',
+          enablePathStyleRequired: '是否 PathStyle 访问不能为空',
+          domainRequired: '自定义域名不能为空'
+        }
+      }
+    },
+    demo: {
+      demo01: {
+        searchForm: {
+          name: '名字',
+          namePlaceholder: '请输入名字',
+          sex: '性别',
+          sexPlaceholder: '请选择性别',
+          createTime: '创建时间',
+          createTimeStartPlaceholder: '开始日期',
+          createTimeEndPlaceholder: '结束日期'
+        },
+        actions: {
+          create: '新增',
+          export: '导出',
+          batchDelete: '批量删除'
+        },
+        table: {
+          id: '编号',
+          name: '名字',
+          sex: '性别',
+          birthday: '出生年',
+          description: '简介',
+          avatar: '头像',
+          createTime: '创建时间'
+        },
+        fileName: {
+          export: '示例联系人.xls'
+        },
+        form: {
+          name: '名字',
+          namePlaceholder: '请输入名字',
+          sex: '性别',
+          birthday: '出生年',
+          birthdayPlaceholder: '选择出生年',
+          description: '简介',
+          descriptionPlaceholder: '请输入简介',
+          avatar: '头像',
+          rules: {
+            nameRequired: '名字不能为空',
+            sexRequired: '性别不能为空',
+            birthdayRequired: '出生年不能为空',
+            descriptionRequired: '简介不能为空'
+          }
+        }
+      }
+    },
+    build: {
+      actions: {
+        generateJson: '生成 JSON',
+        generateOptions: '生成 Options',
+        generateComponent: '生成组件'
+      },
+      dialog: {
+        generateJson: '生成 JSON',
+        generateOptions: '生成 Options',
+        generateComponent: '生成组件'
+      }
+    },
+    server: {
+      doc: {
+        title: '服务监控'
+      }
+    },
+    druid: {
+      doc: {
+        title: '数据库 MyBatis',
+        dynamic: '多数据源（读写分离）'
+      }
+    },
+    swagger: {
+      doc: {
+        title: '接口文档'
+      }
+    },
+    skywalking: {
+      doc: {
+        title: '服务监控'
+      }
+    },
+    redis: {
+      doc: {
+        redis: 'Redis 缓存',
+        local: '本地缓存'
+      },
+      basicInfo: {
+        title: '基本信息',
+        redisVersion: 'Redis 版本',
+        runMode: '运行模式',
+        runModeStandalone: '单机',
+        runModeCluster: '集群',
+        port: '端口',
+        clients: '客户端数',
+        uptimeDays: '运行时间(天)',
+        usedMemory: '使用内存',
+        usedCpu: '使用 CPU',
+        maxMemory: '内存配置',
+        aofEnabled: 'AOF 是否开启',
+        aofYes: '是',
+        aofNo: '否',
+        rdbStatus: 'RDB 是否成功',
+        keyCount: 'Key 数量',
+        netIO: '网络入口/出口',
+        netIOUnit: '{in}kps/{out}kps'
+      },
+      charts: {
+        usedMemoryTitle: '内存使用情况',
+        peakName: '峰值',
+        commandStatsTitle: '命令统计',
+        commandSeriesName: '命令'
+      }
+    },
+    webSocket: {
+      doc: {
+        title: 'WebSocket 实时通信'
+      },
+      connection: {
+        title: '连接',
+        statusLabel: '连接状态:',
+        serverLabel: '服务地址'
+      },
+      status: {
+        open: 'OPEN',
+        closed: 'CLOSED'
+      },
+      actions: {
+        open: '开启连接',
+        close: '关闭连接',
+        send: '发送'
+      },
+      labels: {
+        messageInput: '消息输入框',
+        messageLog: '消息记录',
+        received: '收到消息:'
+      },
+      placeholders: {
+        message: '请输入你要发送的消息',
+        user: '请选择发送人'
+      },
+      options: {
+        all: '所有人'
+      },
+      log: {
+        receiveSingle: '【单发】用户编号({userId})：{text}',
+        receiveGroup: '【群发】用户编号({userId})：{text}',
+        receiveSystem: '【系统通知】：{title}'
+      },
+      errors: {
+        unknownType: '未知的消息类型：{value}',
+        unhandled: '未处理消息：{value}',
+        process: '处理消息发生异常：{value}'
+      }
     }
   }
 

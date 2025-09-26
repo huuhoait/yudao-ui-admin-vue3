@@ -511,20 +511,20 @@ const inputChange = () => {
 <template>
   <el-input v-model="defaultValue" class="input-with-select" v-bind="$attrs" @input="inputChange">
     <template #append>
-      <el-select v-model="select" placeholder="生成器" style="width: 115px">
-        <el-option label="每分钟" value="0 * * * * ?" />
-        <el-option label="每小时" value="0 0 * * * ?" />
-        <el-option label="每天零点" value="0 0 0 * * ?" />
-        <el-option label="每月一号零点" value="0 0 0 1 * ?" />
-        <el-option label="每月最后一天零点" value="0 0 0 L * ?" />
-        <el-option label="每周星期日零点" value="0 0 0 ? * 1" />
+      <el-select v-model="select" placeholder="Generator" style="width: 115px">
+        <el-option label="Every minute" value="0 * * * * ?" />
+        <el-option label="Every hour" value="0 0 * * * ?" />
+        <el-option label="Every day" value="0 0 0 * * ?" />
+        <el-option label="Every first day of month" value="0 0 0 1 * ?" />
+        <el-option label="Every last day of  month" value="0 0 0 L * ?" />
+        <el-option label="Every Sunday" value="0 0 0 ? * 1" />
         <el-option
           v-for="(item, index) in shortcuts"
           :key="index"
           :label="item.text"
           :value="item.value"
         />
-        <el-option label="自定义" value="custom" />
+        <el-option label="Custom" value="custom" />
       </el-select>
     </template>
   </el-input>

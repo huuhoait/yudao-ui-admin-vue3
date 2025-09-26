@@ -2,22 +2,22 @@
   <el-table ref="dragTable" :data="formData" :max-height="tableHeight" row-key="columnId">
     <el-table-column
       :show-overflow-tooltip="true"
-      label="字段列名"
+      :label="t('infra.codegen.column.columnName')"
       min-width="10%"
       prop="columnName"
     />
-    <el-table-column label="字段描述" min-width="10%">
+    <el-table-column :label="t('infra.codegen.column.columnComment')" min-width="10%">
       <template #default="scope">
         <el-input v-model="scope.row.columnComment" />
       </template>
     </el-table-column>
     <el-table-column
       :show-overflow-tooltip="true"
-      label="物理类型"
+      :label="t('infra.codegen.column.dataType')"
       min-width="10%"
       prop="dataType"
     />
-    <el-table-column label="Java类型" min-width="11%">
+    <el-table-column :label="t('infra.codegen.column.javaType')" min-width="11%">
       <template #default="scope">
         <el-select v-model="scope.row.javaType">
           <el-option label="Long" value="Long" />
@@ -30,22 +30,22 @@
         </el-select>
       </template>
     </el-table-column>
-    <el-table-column label="java属性" min-width="10%">
+    <el-table-column :label="t('infra.codegen.column.javaField')" min-width="10%">
       <template #default="scope">
         <el-input v-model="scope.row.javaField" />
       </template>
     </el-table-column>
-    <el-table-column label="插入" min-width="4%">
+    <el-table-column :label="t('infra.codegen.column.insert')" min-width="4%">
       <template #default="scope">
         <el-checkbox v-model="scope.row.createOperation" false-value="false" true-value="true" />
       </template>
     </el-table-column>
-    <el-table-column label="编辑" min-width="4%">
+    <el-table-column :label="t('infra.codegen.column.edit')" min-width="4%">
       <template #default="scope">
         <el-checkbox v-model="scope.row.updateOperation" false-value="false" true-value="true" />
       </template>
     </el-table-column>
-    <el-table-column label="列表" min-width="4%">
+    <el-table-column :label="t('infra.codegen.column.list')" min-width="4%">
       <template #default="scope">
         <el-checkbox
           v-model="scope.row.listOperationResult"
@@ -54,53 +54,59 @@
         />
       </template>
     </el-table-column>
-    <el-table-column label="查询" min-width="4%">
+    <el-table-column :label="t('infra.codegen.column.query')" min-width="4%">
       <template #default="scope">
         <el-checkbox v-model="scope.row.listOperation" false-value="false" true-value="true" />
       </template>
     </el-table-column>
-    <el-table-column label="查询方式" min-width="10%">
+    <el-table-column :label="t('infra.codegen.column.queryType')" min-width="10%">
       <template #default="scope">
         <el-select v-model="scope.row.listOperationCondition">
-          <el-option label="=" value="=" />
-          <el-option label="!=" value="!=" />
-          <el-option label=">" value=">" />
-          <el-option label=">=" value=">=" />
-          <el-option label="<" value="<>" />
-          <el-option label="<=" value="<=" />
-          <el-option label="LIKE" value="LIKE" />
-          <el-option label="BETWEEN" value="BETWEEN" />
+          <el-option :label="t('infra.codegen.column.queryTypes.eq')" value="=" />
+          <el-option :label="t('infra.codegen.column.queryTypes.ne')" value="!=" />
+          <el-option :label="t('infra.codegen.column.queryTypes.gt')" value=">" />
+          <el-option :label="t('infra.codegen.column.queryTypes.ge')" value=">=" />
+          <el-option :label="t('infra.codegen.column.queryTypes.lt')" value="<>" />
+          <el-option :label="t('infra.codegen.column.queryTypes.le')" value="<=" />
+          <el-option :label="t('infra.codegen.column.queryTypes.like')" value="LIKE" />
+          <el-option :label="t('infra.codegen.column.queryTypes.between')" value="BETWEEN" />
         </el-select>
       </template>
     </el-table-column>
-    <el-table-column label="允许空" min-width="5%">
+    <el-table-column :label="t('infra.codegen.column.allowNull')" min-width="5%">
       <template #default="scope">
         <el-checkbox v-model="scope.row.nullable" false-value="false" true-value="true" />
       </template>
     </el-table-column>
-    <el-table-column label="显示类型" min-width="12%">
+    <el-table-column :label="t('infra.codegen.column.htmlType')" min-width="12%">
       <template #default="scope">
         <el-select v-model="scope.row.htmlType">
-          <el-option label="文本框" value="input" />
-          <el-option label="文本域" value="textarea" />
-          <el-option label="下拉框" value="select" />
-          <el-option label="单选框" value="radio" />
-          <el-option label="复选框" value="checkbox" />
-          <el-option label="日期控件" value="datetime" />
-          <el-option label="图片上传" value="imageUpload" />
-          <el-option label="文件上传" value="fileUpload" />
-          <el-option label="富文本控件" value="editor" />
+          <el-option :label="t('infra.codegen.column.htmlTypes.input')" value="input" />
+          <el-option :label="t('infra.codegen.column.htmlTypes.textarea')" value="textarea" />
+          <el-option :label="t('infra.codegen.column.htmlTypes.select')" value="select" />
+          <el-option :label="t('infra.codegen.column.htmlTypes.radio')" value="radio" />
+          <el-option :label="t('infra.codegen.column.htmlTypes.checkbox')" value="checkbox" />
+          <el-option :label="t('infra.codegen.column.htmlTypes.datetime')" value="datetime" />
+          <el-option :label="t('infra.codegen.column.htmlTypes.imageUpload')" value="imageUpload" />
+          <el-option :label="t('infra.codegen.column.htmlTypes.fileUpload')" value="fileUpload" />
+          <el-option :label="t('infra.codegen.column.htmlTypes.editor')" value="editor" />
         </el-select>
       </template>
     </el-table-column>
-    <el-table-column label="字典类型" min-width="12%">
+    <el-table-column :label="t('infra.codegen.column.dictType')" min-width="12%">
       <template #default="scope">
-        <el-select v-model="scope.row.dictType" :value-on-clear="''" clearable filterable placeholder="请选择">
+        <el-select
+          v-model="scope.row.dictType"
+          :value-on-clear="''"
+          clearable
+          filterable
+          :placeholder="t('common.selectText')"
+        >
           <template #header>
             <div class="flex justify-end">
               <el-popover
                 class="box-item"
-                content="加载最新字典"
+                :content="t('infra.codegen.column.dictRefresh')"
                 placement="top-start"
               >
                 <template #reference>
@@ -118,7 +124,7 @@
         </el-select>
       </template>
     </el-table-column>
-    <el-table-column label="示例" min-width="10%">
+    <el-table-column :label="t('infra.codegen.column.example')" min-width="10%">
       <template #default="scope">
         <el-input v-model="scope.row.example" />
       </template>
@@ -140,6 +146,7 @@ const props = defineProps({
   }
 })
 
+const { t } = useI18n()
 const formData = ref<CodegenApi.CodegenColumnVO[]>([])
 const tableHeight = document.documentElement.scrollHeight - 350 + 'px'
 
