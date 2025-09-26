@@ -1,43 +1,43 @@
 <template>
-  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" title="详情" width="800">
+  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" :title="t('sys.operatelog.detail')" width="800">
     <el-descriptions :column="1" border>
-      <el-descriptions-item label="日志主键" min-width="120">
+      <el-descriptions-item :label="t('sys.operatelog.logId')" min-width="120">
         {{ detailData.id }}
       </el-descriptions-item>
-      <el-descriptions-item label="链路追踪" v-if="detailData.traceId">
+      <el-descriptions-item v-if="detailData.traceId" :label="t('sys.operatelog.traceId')">
         {{ detailData.traceId }}
       </el-descriptions-item>
-      <el-descriptions-item label="操作人编号">
+      <el-descriptions-item :label="t('sys.operatelog.userId')">
         {{ detailData.userId }}
       </el-descriptions-item>
-      <el-descriptions-item label="操作人名字">
+      <el-descriptions-item :label="t('sys.operatelog.userName')">
         {{ detailData.userName }}
       </el-descriptions-item>
-      <el-descriptions-item label="操作人 IP">
+      <el-descriptions-item :label="t('sys.operatelog.userIp')">
         {{ detailData.userIp }}
       </el-descriptions-item>
-      <el-descriptions-item label="操作人 UA">
+      <el-descriptions-item :label="t('sys.operatelog.userAgent')">
         {{ detailData.userAgent }}
       </el-descriptions-item>
-      <el-descriptions-item label="操作模块">
+      <el-descriptions-item :label="t('sys.operatelog.type')">
         {{ detailData.type }}
       </el-descriptions-item>
-      <el-descriptions-item label="操作名">
+      <el-descriptions-item :label="t('sys.operatelog.subType')">
         {{ detailData.subType }}
       </el-descriptions-item>
-      <el-descriptions-item label="操作内容">
+      <el-descriptions-item :label="t('sys.operatelog.action')">
         {{ detailData.action }}
       </el-descriptions-item>
-      <el-descriptions-item v-if="detailData.extra" label="操作拓展参数">
+      <el-descriptions-item v-if="detailData.extra" :label="t('sys.operatelog.extra')">
         {{ detailData.extra }}
       </el-descriptions-item>
-      <el-descriptions-item label="请求 URL">
+      <el-descriptions-item :label="t('sys.operatelog.requestUrl')">
         {{ detailData.requestMethod }} {{ detailData.requestUrl }}
       </el-descriptions-item>
-      <el-descriptions-item label="操作时间">
+      <el-descriptions-item :label="t('sys.operatelog.createTime')">
         {{ formatDate(detailData.createTime) }}
       </el-descriptions-item>
-      <el-descriptions-item label="业务编号">
+      <el-descriptions-item :label="t('sys.operatelog.bizId')">
         {{ detailData.bizId }}
       </el-descriptions-item>
     </el-descriptions>
@@ -48,6 +48,8 @@ import { formatDate } from '@/utils/formatTime'
 import * as OperateLogApi from '@/api/system/operatelog'
 
 defineOptions({ name: 'SystemOperateLogDetail' })
+
+const { t } = useI18n() // 国际化
 
 const dialogVisible = ref(false) // 弹窗的是否展示
 const detailLoading = ref(false) // 表单的加载中

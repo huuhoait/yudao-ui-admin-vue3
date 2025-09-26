@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="邮件配置" url="https://doc.iocoder.cn/mail" />
+  <doc-alert :title="t('sys.mail.log.mailLogManagement')" url="https://doc.iocoder.cn/mail" />
 
   <!-- 搜索工作栏 -->
   <ContentWrap>
@@ -25,7 +25,7 @@
           @click="openDetail(row.id)"
           v-hasPermi="['system:mail-log:query']"
         >
-          详情
+          {{ t('sys.mail.log.detail') }}
         </el-button>
       </template>
     </Table>
@@ -40,6 +40,8 @@ import * as MailLogApi from '@/api/system/mail/log'
 import MailLogDetail from './MailLogDetail.vue'
 
 defineOptions({ name: 'SystemMailLog' })
+
+const { t } = useI18n() // 国际化
 
 // tableObject：表格的属性对象，可获得分页大小、条数等属性
 // tableMethods：表格的操作对象，可进行获得分页、删除记录等操作

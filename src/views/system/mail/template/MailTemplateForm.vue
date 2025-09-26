@@ -8,19 +8,21 @@
   >
     <Form ref="formRef" v-loading="formLoading" :rules="rules" :schema="allSchemas.formSchema" />
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
 <script lang="ts" setup>
 import * as MailTemplateApi from '@/api/system/mail/template'
-import { allSchemas, rules } from './template.data'
+import { getSchemas, getRules } from './template.data'
 
 defineOptions({ name: 'SystemMailTemplateForm' })
 
 const { t } = useI18n() // 国际化
 const message = useMessage() // 消息弹窗
+const { allSchemas } = getSchemas() // 获取表格配置
+const rules = getRules() // 获取表单验证规则
 
 const dialogVisible = ref(false) // 弹窗的是否展示
 const dialogTitle = ref('') // 弹窗的标题

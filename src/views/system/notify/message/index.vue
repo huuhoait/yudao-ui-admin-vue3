@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="站内信配置" url="https://doc.iocoder.cn/notify/" />
+  <doc-alert :title="t('sys.notify.message.notifyMessageManagement')" url="https://doc.iocoder.cn/notify/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,19 +10,19 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item label="用户编号" prop="userId">
+      <el-form-item :label="t('sys.notify.message.userId')" prop="userId">
         <el-input
           v-model="queryParams.userId"
-          placeholder="请输入用户编号"
+          :placeholder="t('sys.notify.message.userIdPlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="用户类型" prop="userType">
+      <el-form-item :label="t('sys.notify.message.userType')" prop="userType">
         <el-select
           v-model="queryParams.userType"
-          placeholder="请选择用户类型"
+          :placeholder="t('sys.notify.message.userTypePlaceholder')"
           clearable
           class="!w-240px"
         >
@@ -34,19 +34,19 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="模板编码" prop="templateCode">
+      <el-form-item :label="t('sys.notify.message.templateCode')" prop="templateCode">
         <el-input
           v-model="queryParams.templateCode"
-          placeholder="请输入模板编码"
+          :placeholder="t('sys.notify.message.templateCodePlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="模版类型" prop="templateType">
+      <el-form-item :label="t('sys.notify.message.templateType')" prop="templateType">
         <el-select
           v-model="queryParams.templateType"
-          placeholder="请选择模版类型"
+          :placeholder="t('sys.notify.message.templateTypePlaceholder')"
           clearable
           class="!w-240px"
         >
@@ -58,20 +58,20 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="创建时间" prop="createTime">
+      <el-form-item :label="t('sys.notify.message.createTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
+          :start-placeholder="t('common.startTimeText')"
+          :end-placeholder="t('common.endTimeText')"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.notify.message.search') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.notify.message.reset') }}</el-button>
       </el-form-item>
     </el-form>
   </ContentWrap>
@@ -79,24 +79,24 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="编号" align="center" prop="id" />
-      <el-table-column label="用户类型" align="center" prop="userType">
+      <el-table-column :label="t('sys.notify.message.id')" align="center" prop="id" />
+      <el-table-column :label="t('sys.notify.message.userType')" align="center" prop="userType">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.USER_TYPE" :value="scope.row.userType" />
         </template>
       </el-table-column>
-      <el-table-column label="用户编号" align="center" prop="userId" width="80" />
-      <el-table-column label="模板编码" align="center" prop="templateCode" width="80" />
-      <el-table-column label="发送人名称" align="center" prop="templateNickname" width="180" />
+      <el-table-column :label="t('sys.notify.message.userId')" align="center" prop="userId" width="80" />
+      <el-table-column :label="t('sys.notify.message.templateCode')" align="center" prop="templateCode" width="80" />
+      <el-table-column :label="t('sys.notify.message.templateNickname')" align="center" prop="templateNickname" width="180" />
       <el-table-column
-        label="模版内容"
+        :label="t('sys.notify.message.templateContent')"
         align="center"
         prop="templateContent"
         width="200"
         show-overflow-tooltip
       />
       <el-table-column
-        label="模版参数"
+        :label="t('sys.notify.message.templateParams')"
         align="center"
         prop="templateParams"
         width="180"
@@ -104,31 +104,31 @@
       >
         <template #default="scope"> {{ scope.row.templateParams }}</template>
       </el-table-column>
-      <el-table-column label="模版类型" align="center" prop="templateType" width="120">
+      <el-table-column :label="t('sys.notify.message.templateType')" align="center" prop="templateType" width="120">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_NOTIFY_TEMPLATE_TYPE" :value="scope.row.templateType" />
         </template>
       </el-table-column>
-      <el-table-column label="是否已读" align="center" prop="readStatus" width="100">
+      <el-table-column :label="t('sys.notify.message.readStatus')" align="center" prop="readStatus" width="100">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_BOOLEAN_STRING" :value="scope.row.readStatus" />
         </template>
       </el-table-column>
       <el-table-column
-        label="阅读时间"
+        :label="t('sys.notify.message.readTime')"
         align="center"
         prop="readTime"
         width="180"
         :formatter="dateFormatter"
       />
       <el-table-column
-        label="创建时间"
+        :label="t('sys.notify.message.createTime')"
         align="center"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column label="操作" align="center" fixed="right">
+      <el-table-column :label="t('sys.notify.message.operation')" align="center" fixed="right">
         <template #default="scope">
           <el-button
             link
@@ -136,7 +136,7 @@
             @click="openDetail(scope.row)"
             v-hasPermi="['system:notify-message:query']"
           >
-            详情
+            {{ t('sys.notify.message.detail') }}
           </el-button>
         </template>
       </el-table-column>
@@ -160,6 +160,8 @@ import * as NotifyMessageApi from '@/api/system/notify/message'
 import NotifyMessageDetail from './NotifyMessageDetail.vue'
 
 defineOptions({ name: 'SystemNotifyMessage' })
+
+const { t } = useI18n() // 国际化
 
 const loading = ref(true) // 列表的加载中
 const total = ref(0) // 列表的总页数

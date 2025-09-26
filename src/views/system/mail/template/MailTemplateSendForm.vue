@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-model="dialogVisible" title="测试">
+  <Dialog v-model="dialogVisible" :title="t('sys.mail.template.test')">
     <el-form
       ref="formRef"
       v-loading="formLoading"
@@ -7,27 +7,27 @@
       :rules="formRules"
       label-width="120px"
     >
-      <el-form-item label="模板内容" prop="content">
+      <el-form-item :label="t('sys.mail.template.content')" prop="content">
         <Editor :model-value="formData.content" height="150px" readonly />
       </el-form-item>
-      <el-form-item label="收件邮箱" prop="mail">
-        <el-input v-model="formData.mail" placeholder="请输入收件邮箱" />
+      <el-form-item :label="t('sys.mail.template.mailPlaceholder')" prop="mail">
+        <el-input v-model="formData.mail" :placeholder="t('sys.mail.template.mailPlaceholder')" />
       </el-form-item>
       <el-form-item
         v-for="param in formData.params"
         :key="param"
-        :label="'参数 {' + param + '}'"
+        :label="t('common.param') + ' {' + param + '}'"
         :prop="'templateParams.' + param"
       >
         <el-input
           v-model="formData.templateParams[param]"
-          :placeholder="'请输入 ' + param + ' 参数'"
+          :placeholder="t('common.paramPlaceholder', { param: param })"
         />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -36,20 +36,21 @@ import * as MailTemplateApi from '@/api/system/mail/template'
 
 defineOptions({ name: 'SystemMailTemplateSendForm' })
 
+const { t } = useI18n() // 国际化
 const message = useMessage() // 消息弹窗
 
 const dialogVisible = ref(false) // 弹窗的是否展示
 const formLoading = ref(false) // 表单的加载中：1）修改时的数据加载；2）提交的按钮禁用
 const formData = ref({
   content: '',
-  params: {},
+  params: [],
   mail: '',
   templateCode: '',
-  templateParams: new Map()
+  templateParams: {}
 })
 const formRules = reactive({
-  mail: [{ required: true, message: '邮箱不能为空', trigger: 'blur' }],
-  templateCode: [{ required: true, message: '模版编号不能为空', trigger: 'blur' }],
+  mail: [{ required: true, message: t('sys.mail.template.mailRequired'), trigger: 'blur' }],
+  templateCode: [{ required: true, message: t('sys.mail.template.templateCodeRequired'), trigger: 'blur' }],
   templateParams: {}
 })
 const formRef = ref() // 表单 Ref
@@ -71,7 +72,7 @@ const open = async (id: number) => {
       return obj
     }, {})
     formRules.templateParams = data.params.reduce((obj, item) => {
-      obj[item] = { required: true, message: '参数 ' + item + ' 不能为空', trigger: 'blur' }
+      obj[item] = { required: true, message: t('sys.mail.template.paramRequired', { param: item }), trigger: 'blur' }
       return obj
     }, {})
   } finally {
@@ -92,7 +93,7 @@ const submitForm = async () => {
     const data = formData.value as MailTemplateApi.MailSendReqVO
     const logId = await MailTemplateApi.sendMail(data)
     if (logId) {
-      message.success('提交发送成功！发送结果，见发送日志编号：' + logId)
+      message.success(t('sys.mail.template.testSuccess') + logId)
     }
     dialogVisible.value = false
   } finally {
@@ -104,10 +105,10 @@ const submitForm = async () => {
 const resetForm = () => {
   formData.value = {
     content: '',
-    params: {},
+    params: [],
     mail: '',
     templateCode: '',
-    templateParams: new Map()
+    templateParams: {}
   }
   formRules.templateParams = {}
   formRef.value?.resetFields()

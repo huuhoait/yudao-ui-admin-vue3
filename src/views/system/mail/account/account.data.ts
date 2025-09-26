@@ -1,29 +1,36 @@
 import type { CrudSchema } from '@/hooks/web/useCrudSchemas'
+import { useCrudSchemas } from '@/hooks/web/useCrudSchemas'
 import { dateFormatter } from '@/utils/formatTime'
-const { t } = useI18n() // 国际化
+import { DICT_TYPE } from '@/utils/dict'
+import { useI18n } from 'vue-i18n'
 
-// 表单校验
-export const rules = reactive({
+// 表单校验 - 需要在组件中使用 useI18n 来获取 t 函数
+export const getRules = () => {
+  const { t } = useI18n()
+  return reactive({
   mail: [
-    { required: true, message: t('profile.rules.mail'), trigger: 'blur' },
+    { required: true, message: t('sys.mail.account.mailRequired'), trigger: 'blur' },
     {
       type: 'email',
-      message: t('profile.rules.truemail'),
+      message: t('sys.mail.account.mailInvalid'),
       trigger: ['blur', 'change']
     }
   ],
-  username: [required],
-  password: [required],
-  host: [required],
-  port: [required],
-  sslEnable: [required],
-  starttlsEnable: [required]
-})
+  username: [{ required: true, message: t('sys.mail.account.usernameRequired'), trigger: 'blur' }],
+  password: [{ required: true, message: t('sys.mail.account.passwordRequired'), trigger: 'blur' }],
+  host: [{ required: true, message: t('sys.mail.account.hostRequired'), trigger: 'blur' }],
+  port: [{ required: true, message: t('sys.mail.account.portRequired'), trigger: 'blur' }],
+  sslEnable: [{ required: true, message: t('sys.mail.account.sslEnable'), trigger: 'blur' }],
+  starttlsEnable: [{ required: true, message: t('sys.mail.account.starttlsEnable'), trigger: 'blur' }]
+  })
+}
 
 // CrudSchema：https://doc.iocoder.cn/vue3/crud-schema/
-const crudSchemas = reactive<CrudSchema[]>([
+export const getCrudSchemas = () => {
+  const { t } = useI18n()
+  return reactive<CrudSchema[]>([
   {
-    label: '邮箱',
+    label: t('sys.mail.account.mail'),
     field: 'mail',
     isSearch: true,
     search: {
@@ -35,7 +42,7 @@ const crudSchemas = reactive<CrudSchema[]>([
     }
   },
   {
-    label: '用户名',
+    label: t('sys.mail.account.username'),
     field: 'username',
     isSearch: true,
     search: {
@@ -47,16 +54,16 @@ const crudSchemas = reactive<CrudSchema[]>([
     }
   },
   {
-    label: '密码',
+    label: t('sys.mail.account.password'),
     field: 'password',
     isTable: false
   },
   {
-    label: 'SMTP 服务器域名',
+    label: t('sys.mail.account.host'),
     field: 'host'
   },
   {
-    label: 'SMTP 服务器端口',
+    label: t('sys.mail.account.port'),
     field: 'port',
     form: {
       component: 'InputNumber',
@@ -64,7 +71,7 @@ const crudSchemas = reactive<CrudSchema[]>([
     }
   },
   {
-    label: '是否开启 SSL',
+    label: t('sys.mail.account.sslEnable'),
     field: 'sslEnable',
     dictType: DICT_TYPE.INFRA_BOOLEAN_STRING,
     dictClass: 'boolean',
@@ -73,7 +80,7 @@ const crudSchemas = reactive<CrudSchema[]>([
     }
   },
   {
-    label: '是否开启 STARTTLS',
+    label: t('sys.mail.account.starttlsEnable'),
     field: 'starttlsEnable',
     dictType: DICT_TYPE.INFRA_BOOLEAN_STRING,
     dictClass: 'boolean',
@@ -82,7 +89,7 @@ const crudSchemas = reactive<CrudSchema[]>([
     }
   },
   {
-    label: '创建时间',
+    label: t('sys.mail.account.createTime'),
     field: 'createTime',
     isForm: false,
     formatter: dateFormatter,
@@ -91,10 +98,15 @@ const crudSchemas = reactive<CrudSchema[]>([
     }
   },
   {
-    label: '操作',
+    label: t('sys.mail.account.operation'),
     field: 'action',
     isForm: false,
     isDetail: false
   }
-])
-export const { allSchemas } = useCrudSchemas(crudSchemas)
+  ])
+}
+
+export const getSchemas = () => {
+  const crudSchemas = getCrudSchemas()
+  return useCrudSchemas(crudSchemas)
+}

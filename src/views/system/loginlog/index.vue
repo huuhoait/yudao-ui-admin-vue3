@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="系统日志" url="https://doc.iocoder.cn/system-log/" />
+  <doc-alert :title="t('sys.loginlog.loginLogManagement')" url="https://doc.iocoder.cn/system-log/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,38 +10,38 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item label="用户名称" prop="username">
+      <el-form-item :label="t('sys.loginlog.username')" prop="username">
         <el-input
           v-model="queryParams.username"
-          placeholder="请输入用户名称"
+          :placeholder="t('sys.loginlog.usernamePlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="登录地址" prop="userIp">
+      <el-form-item :label="t('sys.loginlog.userIp')" prop="userIp">
         <el-input
           v-model="queryParams.userIp"
-          placeholder="请输入登录地址"
+          :placeholder="t('sys.loginlog.userIpPlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="登录日期" prop="createTime">
+      <el-form-item :label="t('sys.loginlog.createTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
+          :start-placeholder="t('sys.loginlog.startTimePlaceholder')"
+          :end-placeholder="t('sys.loginlog.endTimePlaceholder')"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.loginlog.search') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.loginlog.reset') }}</el-button>
         <el-button
           type="success"
           plain
@@ -49,7 +49,7 @@
           :loading="exportLoading"
           v-hasPermi="['system:login-log:export']"
         >
-          <Icon icon="ep:download" class="mr-5px" /> 导出
+          <Icon icon="ep:download" class="mr-5px" /> {{ t('sys.loginlog.export') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -58,28 +58,28 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="日志编号" align="center" prop="id" />
-      <el-table-column label="操作类型" align="center" prop="logType">
+      <el-table-column :label="t('sys.loginlog.logId')" align="center" prop="id" />
+      <el-table-column :label="t('sys.loginlog.logType')" align="center" prop="logType">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_TYPE" :value="scope.row.logType" />
         </template>
       </el-table-column>
-      <el-table-column label="用户名称" align="center" prop="username" width="180" />
-      <el-table-column label="登录地址" align="center" prop="userIp" width="180" />
-      <el-table-column label="浏览器" align="center" prop="userAgent" />
-      <el-table-column label="登陆结果" align="center" prop="result">
+      <el-table-column :label="t('sys.loginlog.username')" align="center" prop="username" width="180" />
+      <el-table-column :label="t('sys.loginlog.userIp')" align="center" prop="userIp" width="180" />
+      <el-table-column :label="t('sys.loginlog.userAgent')" align="center" prop="userAgent" />
+      <el-table-column :label="t('sys.loginlog.result')" align="center" prop="result">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_RESULT" :value="scope.row.result" />
         </template>
       </el-table-column>
       <el-table-column
-        label="登录日期"
+        :label="t('sys.loginlog.createTime')"
         align="center"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column label="操作" align="center">
+      <el-table-column :label="t('sys.loginlog.operation')" align="center">
         <template #default="scope">
           <el-button
             link
@@ -87,7 +87,7 @@
             @click="openDetail(scope.row)"
             v-hasPermi="['system:login-log:query']"
           >
-            详情
+            {{ t('sys.loginlog.detail') }}
           </el-button>
         </template>
       </el-table-column>
@@ -114,6 +114,7 @@ import LoginLogDetail from './LoginLogDetail.vue'
 defineOptions({ name: 'SystemLoginLog' })
 
 const message = useMessage() // 消息弹窗
+const { t } = useI18n() // 国际化
 
 const loading = ref(true) // 列表的加载中
 const total = ref(0) // 列表的总页数

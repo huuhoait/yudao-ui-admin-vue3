@@ -7,14 +7,14 @@
       :rules="formRules"
       label-width="80px"
     >
-      <el-form-item label="公告标题" prop="title">
-        <el-input v-model="formData.title" placeholder="请输入公告标题" />
+      <el-form-item :label="t('sys.notice.noticeTitle')" prop="title">
+        <el-input v-model="formData.title" :placeholder="t('sys.notice.titlePlaceholder')" />
       </el-form-item>
-      <el-form-item label="公告内容" prop="content">
+      <el-form-item :label="t('sys.notice.content')" prop="content">
         <Editor v-model="formData.content" height="150px" />
       </el-form-item>
-      <el-form-item label="公告类型" prop="type">
-        <el-select v-model="formData.type" clearable placeholder="请选择公告类型">
+      <el-form-item :label="t('sys.notice.noticeType')" prop="type">
+        <el-select v-model="formData.type" clearable :placeholder="t('sys.notice.typePlaceholder')">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_NOTICE_TYPE)"
             :key="parseInt(dict.value as any)"
@@ -23,8 +23,8 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="状态" prop="status">
-        <el-select v-model="formData.status" clearable placeholder="请选择状态">
+      <el-form-item :label="t('sys.notice.noticeStatus')" prop="status">
+        <el-select v-model="formData.status" clearable :placeholder="t('sys.notice.statusPlaceholder')">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
             :key="parseInt(dict.value as any)"
@@ -33,13 +33,13 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="备注" prop="remark">
-        <el-input v-model="formData.remark" placeholder="请输备注" type="textarea" />
+      <el-form-item :label="t('sys.notice.remark')" prop="remark">
+        <el-input v-model="formData.remark" :placeholder="t('sys.notice.remarkPlaceholder')" type="textarea" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -66,10 +66,10 @@ const formData = ref({
   remark: ''
 })
 const formRules = reactive({
-  title: [{ required: true, message: '公告标题不能为空', trigger: 'blur' }],
-  type: [{ required: true, message: '公告类型不能为空', trigger: 'change' }],
-  status: [{ required: true, message: '状态不能为空', trigger: 'change' }],
-  content: [{ required: true, message: '公告内容不能为空', trigger: 'blur' }]
+  title: [{ required: true, message: t('sys.notice.titleRequired'), trigger: 'blur' }],
+  type: [{ required: true, message: t('sys.notice.typeRequired'), trigger: 'change' }],
+  status: [{ required: true, message: t('sys.notice.statusRequired'), trigger: 'change' }],
+  content: [{ required: true, message: t('sys.notice.contentRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

@@ -1,26 +1,37 @@
 import type { CrudSchema } from '@/hooks/web/useCrudSchemas'
+import { useCrudSchemas } from '@/hooks/web/useCrudSchemas'
 import { dateFormatter } from '@/utils/formatTime'
 import { TableColumn } from '@/types/table'
 import * as MailAccountApi from '@/api/system/mail/account'
+import { DICT_TYPE } from '@/utils/dict'
+import { useI18n } from 'vue-i18n'
+
+
 
 // 邮箱账号的列表
 const accountList = await MailAccountApi.getSimpleMailAccountList()
 
 // 表单校验
-export const rules = reactive({
-  name: [required],
-  code: [required],
-  accountId: [required],
-  label: [required],
-  content: [required],
-  params: [required],
-  status: [required]
+export const getRules = () => {
+  const { t } = useI18n()
+  return reactive({
+  name: [{ required: true, message: t('sys.mail.template.nameRequired'), trigger: 'blur' }],
+  code: [{ required: true, message: t('sys.mail.template.codeRequired'), trigger: 'blur' }],
+  accountId: [{ required: true, message: t('sys.mail.template.accountIdRequired'), trigger: 'blur' }],
+  title: [{ required: true, message: t('sys.mail.template.nameRequired'), trigger: 'blur' }],
+  content: [{ required: true, message: t('sys.mail.template.contentRequired'), trigger: 'blur' }],
+  params: [{ required: true, message: t('sys.mail.template.paramsRequired'), trigger: 'blur' }],
+  status: [{ required: true, message: t('sys.mail.template.statusRequired'), trigger: 'blur' }]
 })
+}
 
 // CrudSchema：https://doc.iocoder.cn/vue3/crud-schema/
-const crudSchemas = reactive<CrudSchema[]>([
+export const getCrudSchemas = () => {
+  const { t } = useI18n()
+  return reactive<CrudSchema[]>([
+
   {
-    label: '模板编码',
+    label: t('sys.mail.template.code'),
     field: 'code',
     isSearch: true,
     search: {
@@ -32,7 +43,7 @@ const crudSchemas = reactive<CrudSchema[]>([
     }
   },
   {
-    label: '模板名称',
+    label: t('sys.mail.template.name'),
     field: 'name',
     isSearch: true,
     search: {
@@ -44,11 +55,11 @@ const crudSchemas = reactive<CrudSchema[]>([
     }
   },
   {
-    label: '模板标题',
+    label: t('sys.mail.template.titleField'),
     field: 'title'
   },
   {
-    label: '模板内容',
+    label: t('sys.mail.template.content'),
     field: 'content',
     form: {
       component: 'Editor',
@@ -59,7 +70,7 @@ const crudSchemas = reactive<CrudSchema[]>([
     }
   },
   {
-    label: '邮箱账号',
+    label: t('sys.mail.template.accountId'),
     field: 'accountId',
     width: '200px',
     formatter: (_: Recordable, __: TableColumn, cellValue: number) => {
@@ -91,11 +102,11 @@ const crudSchemas = reactive<CrudSchema[]>([
     }
   },
   {
-    label: '发送人名称',
+    label: t('sys.mail.template.nickname'),
     field: 'nickname'
   },
   {
-    label: '开启状态',
+    label: t('sys.mail.template.status'),
     field: 'status',
     isSearch: true,
     dictType: DICT_TYPE.COMMON_STATUS,
@@ -109,12 +120,12 @@ const crudSchemas = reactive<CrudSchema[]>([
     }
   },
   {
-    label: '备注',
+    label: t('sys.mail.template.remark'),
     field: 'remark',
     isTable: false
   },
   {
-    label: '创建时间',
+    label: t('sys.mail.template.createTime'),
     field: 'createTime',
     isForm: false,
     formatter: dateFormatter,
@@ -132,9 +143,13 @@ const crudSchemas = reactive<CrudSchema[]>([
     }
   },
   {
-    label: '操作',
+    label: t('sys.mail.template.operation'),
     field: 'action',
     isForm: false
   }
 ])
-export const { allSchemas } = useCrudSchemas(crudSchemas)
+}
+export const getSchemas = () => {
+  const crudSchemas = getCrudSchemas()
+  return useCrudSchemas(crudSchemas)
+}

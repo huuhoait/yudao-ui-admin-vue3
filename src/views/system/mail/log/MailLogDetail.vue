@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" title="详情">
+  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" :title="t('sys.mail.log.detail')">
     <Descriptions :data="detailData" :schema="allSchemas.detailSchema">
       <!-- 展示 HTML 内容 -->
       <template #templateContent="{ row }">
@@ -13,6 +13,8 @@ import * as MailLogApi from '@/api/system/mail/log'
 import { allSchemas } from './log.data'
 
 defineOptions({ name: 'SystemMailLogDetail' })
+
+const { t } = useI18n() // 国际化
 
 const dialogVisible = ref(false) // 弹窗的是否展示
 const detailLoading = ref(false) // 表单的加载中

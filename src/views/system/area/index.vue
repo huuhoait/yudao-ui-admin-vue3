@@ -1,10 +1,10 @@
 <template>
-  <doc-alert title="地区 & IP" url="https://doc.iocoder.cn/area-and-ip/" />
+  <doc-alert :title="t('sys.area.areaManagement')" url="https://doc.iocoder.cn/area-and-ip/" />
 
   <!-- 操作栏 -->
   <ContentWrap>
     <el-button type="primary" plain @click="openForm()">
-      <Icon icon="ep:plus" class="mr-5px" /> IP 查询
+      <Icon icon="ep:plus" class="mr-5px" /> {{ t('sys.area.ipQuery') }}
     </el-button>
   </ContentWrap>
 
@@ -38,18 +38,20 @@ import * as AreaApi from '@/api/system/area'
 
 defineOptions({ name: 'SystemArea' })
 
+const { t } = useI18n() // 国际化
+
 // 表格的 column 字段
 const columns: Column[] = [
   {
     dataKey: 'id', // 需要渲染当前列的数据字段
-    title: '编号', // 显示在单元格表头的文本
+    title: t('sys.area.id'), // 显示在单元格表头的文本
     width: 400, // 当前列的宽度，必须设置
     fixed: true, // 是否固定列
     key: 'id' // 树形展开对应的 key
   },
   {
     dataKey: 'name',
-    title: '地名',
+    title: t('sys.area.name'),
     width: 200
   }
 ]

@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="系统日志" url="https://doc.iocoder.cn/system-log/" />
+  <doc-alert :title="t('sys.operatelog.operateLogManagement')" url="https://doc.iocoder.cn/system-log/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,12 +10,12 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item label="操作人" prop="userId">
+      <el-form-item :label="t('sys.operatelog.userName')" prop="userId">
         <el-select
           v-model="queryParams.userId"
           clearable
           filterable
-          placeholder="请输入操作人员"
+          :placeholder="t('sys.operatelog.userIdPlaceholder')"
           class="!w-240px"
         >
           <el-option
@@ -26,56 +26,56 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="操作模块" prop="type">
+      <el-form-item :label="t('sys.operatelog.type')" prop="type">
         <el-input
           v-model="queryParams.type"
-          placeholder="请输入操作模块"
+          :placeholder="t('sys.operatelog.typePlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="操作名" prop="subType">
+      <el-form-item :label="t('sys.operatelog.subType')" prop="subType">
         <el-input
           v-model="queryParams.subType"
-          placeholder="请输入操作名"
+          :placeholder="t('sys.operatelog.subTypePlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="操作内容" prop="action">
+      <el-form-item :label="t('sys.operatelog.action')" prop="action">
         <el-input
           v-model="queryParams.action"
-          placeholder="请输入操作名"
+          :placeholder="t('sys.operatelog.actionPlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="操作时间" prop="createTime">
+      <el-form-item :label="t('sys.operatelog.createTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
+          :start-placeholder="t('sys.operatelog.startTimePlaceholder')"
+          :end-placeholder="t('sys.operatelog.endTimePlaceholder')"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="业务编号" prop="bizId">
+      <el-form-item :label="t('sys.operatelog.bizId')" prop="bizId">
         <el-input
           v-model="queryParams.bizId"
-          placeholder="请输入业务编号"
+          :placeholder="t('sys.operatelog.bizIdPlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.operatelog.search') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.operatelog.reset') }}</el-button>
         <el-button
           type="success"
           plain
@@ -83,7 +83,7 @@
           :loading="exportLoading"
           v-hasPermi="['system:operate-log:export']"
         >
-          <Icon icon="ep:download" class="mr-5px" /> 导出
+          <Icon icon="ep:download" class="mr-5px" /> {{ t('sys.operatelog.export') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -92,21 +92,21 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="日志编号" align="center" prop="id" width="100" />
-      <el-table-column label="操作人" align="center" prop="userName" width="120" />
-      <el-table-column label="操作模块" align="center" prop="type" width="120" />
-      <el-table-column label="操作名" align="center" prop="subType" width="160" />
-      <el-table-column label="操作内容" align="center" prop="action" />
+      <el-table-column :label="t('sys.operatelog.logId')" align="center" prop="id" width="100" />
+      <el-table-column :label="t('sys.operatelog.userName')" align="center" prop="userName" width="120" />
+      <el-table-column :label="t('sys.operatelog.type')" align="center" prop="type" width="120" />
+      <el-table-column :label="t('sys.operatelog.subType')" align="center" prop="subType" width="160" />
+      <el-table-column :label="t('sys.operatelog.action')" align="center" prop="action" />
       <el-table-column
-        label="操作时间"
+        :label="t('sys.operatelog.createTime')"
         align="center"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column label="业务编号" align="center" prop="bizId" width="120" />
-      <el-table-column label="操作 IP" align="center" prop="userIp" width="120" />
-      <el-table-column label="操作" align="center" fixed="right" width="60">
+      <el-table-column :label="t('sys.operatelog.bizId')" align="center" prop="bizId" width="120" />
+      <el-table-column :label="t('sys.operatelog.userIp')" align="center" prop="userIp" width="120" />
+      <el-table-column :label="t('sys.operatelog.operation')" align="center" fixed="right" width="60">
         <template #default="scope">
           <el-button
             link
@@ -114,7 +114,7 @@
             @click="openDetail(scope.row)"
             v-hasPermi="['system:operate-log:query']"
           >
-            详情
+            {{ t('sys.operatelog.detail') }}
           </el-button>
         </template>
       </el-table-column>
@@ -142,6 +142,7 @@ const userList = ref<UserApi.UserVO[]>([]) // 用户列表
 defineOptions({ name: 'SystemOperateLog' })
 
 const message = useMessage() // 消息弹窗
+const { t } = useI18n() // 国际化
 
 const loading = ref(true) // 列表的加载中
 const total = ref(0) // 列表的总页数
