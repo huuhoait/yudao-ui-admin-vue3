@@ -1218,5 +1218,122 @@ export default {
       asyncState: '异步状态',
       loopCardinality: '循环基数'
     }
+  },
+
+  infra: {
+    job: {
+      doc: {
+        cron: '定时任务',
+        async: '异步任务',
+        mq: '消息队列'
+      },
+      searchForm: {
+        name: '任务名称',
+        namePlaceholder: '请输入任务名称',
+        status: '任务状态',
+        statusPlaceholder: '请选择任务状态',
+        handlerName: '处理器的名字',
+        handlerNamePlaceholder: '请输入处理器的名字'
+      },
+      table: {
+        id: '任务编号',
+        name: '任务名称',
+        status: '任务状态',
+        handlerName: '处理器的名字',
+        handlerParam: '处理器的参数',
+        cronExpression: 'CRON 表达式'
+      },
+      form: {
+        name: '任务名称',
+        namePlaceholder: '请输入任务名称',
+        handlerName: '处理器的名字',
+        handlerNamePlaceholder: '请输入处理器的名字',
+        handlerParam: '处理器的参数',
+        handlerParamPlaceholder: '请输入处理器的参数',
+        cronExpression: 'CRON 表达式',
+        retryCount: '重试次数',
+        retryCountPlaceholder: '请输入重试次数。设置为 0 时，不进行重试',
+        retryInterval: '重试间隔',
+        retryIntervalPlaceholder: '请输入重试间隔，单位：毫秒。设置为 0 时，无需间隔',
+        monitorTimeout: '监控超时时间',
+        monitorTimeoutPlaceholder: '请输入监控超时时间，单位：毫秒',
+        rules: {
+          nameRequired: '任务名称不能为空',
+          handlerNameRequired: '处理器的名字不能为空',
+          cronExpressionRequired: 'CRON 表达式不能为空',
+          retryCountRequired: '重试次数不能为空',
+          retryIntervalRequired: '重试间隔不能为空'
+        }
+      },
+      detail: {
+        title: '任务详细',
+        id: '任务编号',
+        name: '任务名称',
+        status: '任务状态',
+        handlerName: '处理器的名字',
+        handlerParam: '处理器的参数',
+        cronExpression: 'CRON 表达式',
+        retryCount: '重试次数',
+        retryInterval: '重试间隔',
+        monitorTimeout: '监控超时时间',
+        monitorTimeoutDisabled: '未开启',
+        nextTimes: '后续执行时间',
+        nextExecution: '第 {index} 次'
+      },
+      log: {
+        searchForm: {
+          handlerName: '处理器的名字',
+          handlerNamePlaceholder: '请输入处理器的名字',
+          beginTime: '开始执行时间',
+          beginTimePlaceholder: '选择开始执行时间',
+          endTime: '结束执行时间',
+          endTimePlaceholder: '选择结束执行时间',
+          status: '任务状态',
+          statusPlaceholder: '请选择任务状态'
+        },
+        table: {
+          id: '日志编号',
+          jobId: '任务编号',
+          executeIndex: '第几次执行',
+          executeTime: '执行时间',
+          duration: '执行时长',
+          status: '任务状态'
+        },
+        detail: {
+          title: '执行日志详情',
+          id: '日志编号',
+          jobId: '任务编号',
+          executeIndex: '第几次执行',
+          executeTime: '执行时间',
+          duration: '执行时长',
+          status: '任务状态',
+          result: '执行结果'
+        }
+      },
+      actions: {
+        batchDelete: '批量删除',
+        jobLog: '执行日志',
+        enable: '开启',
+        disable: '关闭',
+        pause: '暂停',
+        runOnce: '执行一次',
+        detail: '任务详细',
+        scheduleLog: '调度日志'
+      },
+      msg: {
+        changeStatusConfirm: '确认要{action}定时任务编号为"{id}"的数据项?',
+        changeStatusSuccess: '{action}成功',
+        runConfirm: '确认要立即执行一次{jobName}?',
+        runSuccess: '执行成功'
+      },
+      fileName: {
+        jobList: '定时任务.xls',
+        jobLog: '定时任务执行日志.xls'
+      },
+      common: {
+        millisecondValue: '{value} 毫秒'
+      }
+    }
   }
+
 }

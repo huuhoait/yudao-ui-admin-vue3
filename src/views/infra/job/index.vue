@@ -1,7 +1,7 @@
 <template>
-  <doc-alert title="定时任务" url="https://doc.iocoder.cn/job/" />
-  <doc-alert title="异步任务" url="https://doc.iocoder.cn/async-task/" />
-  <doc-alert title="消息队列" url="https://doc.iocoder.cn/message-queue/" />
+  <doc-alert :title="t('infra.job.doc.cron')" url="https://doc.iocoder.cn/job/" />
+  <doc-alert :title="t('infra.job.doc.async')" url="https://doc.iocoder.cn/async-task/" />
+  <doc-alert :title="t('infra.job.doc.mq')" url="https://doc.iocoder.cn/message-queue/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -12,19 +12,19 @@
       :inline="true"
       label-width="100px"
     >
-      <el-form-item label="任务名称" prop="name">
+      <el-form-item :label="t('infra.job.searchForm.name')" prop="name">
         <el-input
           v-model="queryParams.name"
-          placeholder="请输入任务名称"
+          :placeholder="t('infra.job.searchForm.namePlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="任务状态" prop="status">
+      <el-form-item :label="t('infra.job.searchForm.status')" prop="status">
         <el-select
           v-model="queryParams.status"
-          placeholder="请选择任务状态"
+          :placeholder="t('infra.job.searchForm.statusPlaceholder')"
           clearable
           class="!w-240px"
         >
@@ -36,25 +36,25 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="处理器的名字" prop="handlerName">
+      <el-form-item :label="t('infra.job.searchForm.handlerName')" prop="handlerName">
         <el-input
           v-model="queryParams.handlerName"
-          placeholder="请输入处理器的名字"
+          :placeholder="t('infra.job.searchForm.handlerNamePlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
         <el-button
           type="primary"
           plain
           @click="openForm('create')"
           v-hasPermi="['infra:job:create']"
         >
-          <Icon icon="ep:plus" class="mr-5px" /> 新增
+          <Icon icon="ep:plus" class="mr-5px" /> {{ t('action.create') }}
         </el-button>
         <el-button
           type="danger"
@@ -63,7 +63,7 @@
           @click="handleDeleteBatch"
           v-hasPermi="['infra:job:delete']"
         >
-          <Icon icon="ep:delete" class="mr-5px" /> 批量删除
+          <Icon icon="ep:delete" class="mr-5px" /> {{ t('infra.job.actions.batchDelete') }}
         </el-button>
         <el-button
           type="success"
@@ -72,10 +72,10 @@
           :loading="exportLoading"
           v-hasPermi="['infra:job:export']"
         >
-          <Icon icon="ep:download" class="mr-5px" /> 导出
+          <Icon icon="ep:download" class="mr-5px" /> {{ t('action.export') }}
         </el-button>
         <el-button type="info" plain @click="handleJobLog()" v-hasPermi="['infra:job:query']">
-          <Icon icon="ep:zoom-in" class="mr-5px" /> 执行日志
+          <Icon icon="ep:zoom-in" class="mr-5px" /> {{ t('infra.job.actions.jobLog') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -85,17 +85,17 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column label="任务编号" align="center" prop="id" />
-      <el-table-column label="任务名称" align="center" prop="name" />
-      <el-table-column label="任务状态" align="center" prop="status">
+      <el-table-column :label="t('infra.job.table.id')" align="center" prop="id" />
+      <el-table-column :label="t('infra.job.table.name')" align="center" prop="name" />
+      <el-table-column :label="t('infra.job.table.status')" align="center" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_JOB_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column label="处理器的名字" align="center" prop="handlerName" />
-      <el-table-column label="处理器的参数" align="center" prop="handlerParam" />
-      <el-table-column label="CRON 表达式" align="center" prop="cronExpression" />
-      <el-table-column label="操作" align="center" width="200">
+      <el-table-column :label="t('infra.job.table.handlerName')" align="center" prop="handlerName" />
+      <el-table-column :label="t('infra.job.table.handlerParam')" align="center" prop="handlerParam" />
+      <el-table-column :label="t('infra.job.table.cronExpression')" align="center" prop="cronExpression" />
+      <el-table-column :label="t('common.operation')" align="center" width="200">
         <template #default="scope">
           <el-button
             type="primary"
@@ -103,7 +103,7 @@
             @click="openForm('update', scope.row.id)"
             v-hasPermi="['infra:job:update']"
           >
-            修改
+            {{ t('action.edit') }}
           </el-button>
           <el-button
             type="primary"
@@ -111,7 +111,11 @@
             @click="handleChangeStatus(scope.row)"
             v-hasPermi="['infra:job:update']"
           >
-            {{ scope.row.status === InfraJobStatusEnum.STOP ? '开启' : '暂停' }}
+            {{
+              scope.row.status === InfraJobStatusEnum.STOP
+                ? t('infra.job.actions.enable')
+                : t('infra.job.actions.pause')
+            }}
           </el-button>
           <el-button
             type="danger"
@@ -119,23 +123,23 @@
             @click="handleDelete(scope.row.id)"
             v-hasPermi="['infra:job:delete']"
           >
-            删除
+            {{ t('action.delete') }}
           </el-button>
           <el-dropdown
             @command="(command) => handleCommand(command, scope.row)"
             v-hasPermi="['infra:job:trigger', 'infra:job:query']"
           >
-            <el-button type="primary" link><Icon icon="ep:d-arrow-right" /> 更多</el-button>
+            <el-button type="primary" link><Icon icon="ep:d-arrow-right" /> {{ t('action.more') }}</el-button>
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item command="handleRun" v-if="checkPermi(['infra:job:trigger'])">
-                  执行一次
+                  {{ t('infra.job.actions.runOnce') }}
                 </el-dropdown-item>
                 <el-dropdown-item command="openDetail" v-if="checkPermi(['infra:job:query'])">
-                  任务详细
+                  {{ t('infra.job.actions.detail') }}
                 </el-dropdown-item>
                 <el-dropdown-item command="handleJobLog" v-if="checkPermi(['infra:job:query'])">
-                  调度日志
+                  {{ t('infra.job.actions.scheduleLog') }}
                 </el-dropdown-item>
               </el-dropdown-menu>
             </template>
@@ -217,7 +221,7 @@ const handleExport = async () => {
     // 发起导出
     exportLoading.value = true
     const data = await JobApi.exportJob(queryParams)
-    download.excel(data, '定时任务.xls')
+    download.excel(data, t('infra.job.fileName.jobList'))
   } catch {
   } finally {
     exportLoading.value = false
@@ -234,15 +238,18 @@ const openForm = (type: string, id?: number) => {
 const handleChangeStatus = async (row: JobApi.JobVO) => {
   try {
     // 修改状态的二次确认
-    const text = row.status === InfraJobStatusEnum.STOP ? '开启' : '关闭'
+    const actionText =
+      row.status === InfraJobStatusEnum.STOP
+        ? t('infra.job.actions.enable')
+        : t('infra.job.actions.disable')
     await message.confirm(
-      '确认要' + text + '定时任务编号为"' + row.id + '"的数据项?',
+      t('infra.job.msg.changeStatusConfirm', { action: actionText, id: row.id }),
       t('common.reminder')
     )
     const status =
       row.status === InfraJobStatusEnum.STOP ? InfraJobStatusEnum.NORMAL : InfraJobStatusEnum.STOP
     await JobApi.updateJobStatus(row.id, status)
-    message.success(text + '成功')
+    message.success(t('infra.job.msg.changeStatusSuccess', { action: actionText }))
     // 刷新列表
     await getList()
   } catch {}
@@ -300,10 +307,10 @@ const handleCommand = (command, row) => {
 const handleRun = async (row: JobApi.JobVO) => {
   try {
     // 二次确认
-    await message.confirm('确认要立即执行一次' + row.name + '?', t('common.reminder'))
+    await message.confirm(t('infra.job.msg.runConfirm', { jobName: row.name }), t('common.reminder'))
     // 提交执行
     await JobApi.runJob(row.id)
-    message.success('执行成功')
+    message.success(t('infra.job.msg.runSuccess'))
     // 刷新列表
     await getList()
   } catch {}

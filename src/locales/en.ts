@@ -1245,5 +1245,122 @@ export default {
       asyncState: 'Async State',
       loopCardinality: 'Loop Cardinality'
     }
+  },
+
+  infra: {
+    job: {
+      doc: {
+        cron: 'Scheduled Tasks',
+        async: 'Async Tasks',
+        mq: 'Message Queue'
+      },
+      searchForm: {
+        name: 'Task Name',
+        namePlaceholder: 'Enter task name',
+        status: 'Task Status',
+        statusPlaceholder: 'Select task status',
+        handlerName: 'Handler Name',
+        handlerNamePlaceholder: 'Enter handler name'
+      },
+      table: {
+        id: 'Task ID',
+        name: 'Task Name',
+        status: 'Task Status',
+        handlerName: 'Handler Name',
+        handlerParam: 'Handler Parameters',
+        cronExpression: 'CRON Expression'
+      },
+      form: {
+        name: 'Task Name',
+        namePlaceholder: 'Enter task name',
+        handlerName: 'Handler Name',
+        handlerNamePlaceholder: 'Enter handler name',
+        handlerParam: 'Handler Parameters',
+        handlerParamPlaceholder: 'Enter handler parameters',
+        cronExpression: 'CRON Expression',
+        retryCount: 'Retry Count',
+        retryCountPlaceholder: 'Enter retry count. Use 0 to disable retries',
+        retryInterval: 'Retry Interval',
+        retryIntervalPlaceholder: 'Enter retry interval in milliseconds. Use 0 for no delay',
+        monitorTimeout: 'Monitor Timeout',
+        monitorTimeoutPlaceholder: 'Enter monitor timeout in milliseconds',
+        rules: {
+          nameRequired: 'Task name is required',
+          handlerNameRequired: 'Handler name is required',
+          cronExpressionRequired: 'CRON expression is required',
+          retryCountRequired: 'Retry count is required',
+          retryIntervalRequired: 'Retry interval is required'
+        }
+      },
+      detail: {
+        title: 'Task Details',
+        id: 'Task ID',
+        name: 'Task Name',
+        status: 'Task Status',
+        handlerName: 'Handler Name',
+        handlerParam: 'Handler Parameters',
+        cronExpression: 'CRON Expression',
+        retryCount: 'Retry Count',
+        retryInterval: 'Retry Interval',
+        monitorTimeout: 'Monitor Timeout',
+        monitorTimeoutDisabled: 'Disabled',
+        nextTimes: 'Upcoming Execution Times',
+        nextExecution: 'Run #{index}'
+      },
+      log: {
+        searchForm: {
+          handlerName: 'Handler Name',
+          handlerNamePlaceholder: 'Enter handler name',
+          beginTime: 'Start Time',
+          beginTimePlaceholder: 'Select start time',
+          endTime: 'End Time',
+          endTimePlaceholder: 'Select end time',
+          status: 'Task Status',
+          statusPlaceholder: 'Select task status'
+        },
+        table: {
+          id: 'Log ID',
+          jobId: 'Task ID',
+          executeIndex: 'Execution #',
+          executeTime: 'Execution Time',
+          duration: 'Duration',
+          status: 'Task Status'
+        },
+        detail: {
+          title: 'Execution Log Details',
+          id: 'Log ID',
+          jobId: 'Task ID',
+          executeIndex: 'Execution #',
+          executeTime: 'Execution Time',
+          duration: 'Duration',
+          status: 'Task Status',
+          result: 'Execution Result'
+        }
+      },
+      actions: {
+        batchDelete: 'Batch Delete',
+        jobLog: 'Execution Logs',
+        enable: 'Enable',
+        disable: 'Disable',
+        pause: 'Pause',
+        runOnce: 'Run Once',
+        detail: 'Task Details',
+        scheduleLog: 'Schedule Logs'
+      },
+      msg: {
+        changeStatusConfirm: 'Confirm to {action} the scheduled task with ID "{id}"?',
+        changeStatusSuccess: '{action} succeeded',
+        runConfirm: 'Run {jobName} once immediately?',
+        runSuccess: 'Execution succeeded'
+      },
+      fileName: {
+        jobList: 'scheduled-jobs.xls',
+        jobLog: 'scheduled-job-logs.xls'
+      },
+      common: {
+        millisecondValue: '{value} ms'
+      }
+    }
   }
+
 }

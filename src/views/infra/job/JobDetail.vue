@@ -1,41 +1,45 @@
 <template>
-  <Dialog v-model="dialogVisible" title="任务详细" width="700px">
+  <Dialog v-model="dialogVisible" :title="t('infra.job.detail.title')" width="700px">
     <el-descriptions :column="1" border>
-      <el-descriptions-item label="任务编号" min-width="60">
+      <el-descriptions-item :label="t('infra.job.detail.id')" min-width="60">
         {{ detailData.id }}
       </el-descriptions-item>
-      <el-descriptions-item label="任务名称">
+      <el-descriptions-item :label="t('infra.job.detail.name')">
         {{ detailData.name }}
       </el-descriptions-item>
-      <el-descriptions-item label="任务状态">
+      <el-descriptions-item :label="t('infra.job.detail.status')">
         <dict-tag :type="DICT_TYPE.INFRA_JOB_STATUS" :value="detailData.status" />
       </el-descriptions-item>
-      <el-descriptions-item label="处理器的名字">
+      <el-descriptions-item :label="t('infra.job.detail.handlerName')">
         {{ detailData.handlerName }}
       </el-descriptions-item>
-      <el-descriptions-item label="处理器的参数">
+      <el-descriptions-item :label="t('infra.job.detail.handlerParam')">
         {{ detailData.handlerParam }}
       </el-descriptions-item>
-      <el-descriptions-item label="Cron 表达式">
+      <el-descriptions-item :label="t('infra.job.detail.cronExpression')">
         {{ detailData.cronExpression }}
       </el-descriptions-item>
-      <el-descriptions-item label="重试次数">
+      <el-descriptions-item :label="t('infra.job.detail.retryCount')">
         {{ detailData.retryCount }}
       </el-descriptions-item>
-      <el-descriptions-item label="重试间隔">
-        {{ detailData.retryInterval + ' 毫秒' }}
+      <el-descriptions-item :label="t('infra.job.detail.retryInterval')">
+        {{ t('infra.job.common.millisecondValue', { value: detailData.retryInterval }) }}
       </el-descriptions-item>
-      <el-descriptions-item label="监控超时时间">
-        {{ detailData.monitorTimeout > 0 ? detailData.monitorTimeout + ' 毫秒' : '未开启' }}
+      <el-descriptions-item :label="t('infra.job.detail.monitorTimeout')">
+        {{
+          detailData.monitorTimeout > 0
+            ? t('infra.job.common.millisecondValue', { value: detailData.monitorTimeout })
+            : t('infra.job.detail.monitorTimeoutDisabled')
+        }}
       </el-descriptions-item>
-      <el-descriptions-item label="后续执行时间">
+      <el-descriptions-item :label="t('infra.job.detail.nextTimes')">
         <el-timeline>
           <el-timeline-item
             v-for="(nextTime, index) in nextTimes"
             :key="index"
             :timestamp="formatDate(nextTime)"
           >
-            第 {{ index + 1 }} 次
+            {{ t('infra.job.detail.nextExecution', { index: index + 1 }) }}
           </el-timeline-item>
         </el-timeline>
       </el-descriptions-item>
@@ -49,6 +53,7 @@ import * as JobApi from '@/api/infra/job'
 
 defineOptions({ name: 'InfraJobDetail' })
 
+const { t } = useI18n() // 国际化
 const dialogVisible = ref(false) // 弹窗的是否展示
 const detailLoading = ref(false) // 表单的加载中
 const detailData = ref({} as JobApi.JobVO) // 详情数据
