@@ -1442,6 +1442,264 @@ export default {
         }
       }
     },
+    processInstance: {
+      index: {
+        docAlertTitle: 'Process Start, Cancel, and Restart',
+        form: {
+          namePlaceholder: 'Please enter process name',
+          categoryPlaceholder: 'Please select process category',
+          statusPlaceholder: 'Please select process status'
+        },
+        advancedFilter: {
+          open: 'Advanced Filter',
+          processLabel: 'Process',
+          processPlaceholder: 'Please select process definition',
+          createTime: 'Initiation Time',
+          startDatePlaceholder: 'Start Date',
+          endDatePlaceholder: 'End Date',
+          clear: 'Clear'
+        },
+        table: {
+          name: 'Process Name',
+          summary: 'Summary',
+          category: 'Process Category',
+          status: 'Process Status',
+          startTime: 'Start Time',
+          endTime: 'End Time'
+        },
+        status: {
+          singleReviewing: '({taskName}) awaiting approval',
+          multiReviewing: 'and {count} others ({taskName}) awaiting approval'
+        },
+        actions: {
+          restart: 'Restart'
+        },
+        messages: {
+          businessFormRestartError: 'Failed to restart process: business forms cannot be restarted',
+          cancelPromptMessage: 'Please enter a cancellation reason',
+          cancelPromptTitle: 'Cancel Process',
+          cancelReasonRequired: 'Cancellation reason is required',
+          cancelSuccess: 'Cancelled successfully'
+        }
+      },
+      manager: {
+        docAlertTitle: 'Workflow Manual',
+        form: {
+          startUser: 'Initiator',
+          startUserPlaceholder: 'Please select initiator',
+          name: 'Process Name',
+          namePlaceholder: 'Please enter process name',
+          processDefinitionId: 'Process Definition',
+          processDefinitionIdPlaceholder: 'Please enter process definition ID',
+          category: 'Process Category',
+          categoryPlaceholder: 'Please select process category',
+          status: 'Process Status',
+          statusPlaceholder: 'Please select process status',
+          createTime: 'Start Time',
+          startDatePlaceholder: 'Start Date',
+          endDatePlaceholder: 'End Date'
+        },
+        table: {
+          name: 'Process Name',
+          category: 'Process Category',
+          startUser: 'Initiator',
+          startDept: 'Initiator Department',
+          status: 'Process Status',
+          startTime: 'Start Time',
+          endTime: 'End Time',
+          duration: 'Duration',
+          currentTasks: 'Current Tasks',
+          id: 'Process ID'
+        },
+        messages: {
+          cancelPromptMessage: 'Please enter a cancellation reason',
+          cancelPromptTitle: 'Cancel Process',
+          cancelReasonRequired: 'Cancellation reason is required',
+          cancelSuccess: 'Cancelled successfully'
+        }
+      },
+      report: {
+        docAlertTitle: 'Workflow Manual',
+        form: {
+          startUser: 'Initiator',
+          startUserPlaceholder: 'Please select initiator',
+          name: 'Process Name',
+          namePlaceholder: 'Please enter process name',
+          status: 'Process Status',
+          statusPlaceholder: 'Please select process status',
+          startTime: 'Start Time',
+          startDatePlaceholder: 'Start Date',
+          endDatePlaceholder: 'End Date',
+          endTime: 'End Time',
+          endStartPlaceholder: 'Start Date',
+          endEndPlaceholder: 'End Date',
+          dynamicPlaceholder: 'Please enter {title}'
+        },
+        table: {
+          name: 'Process Name',
+          startUser: 'Initiator',
+          status: 'Process Status',
+          startTime: 'Start Time',
+          endTime: 'End Time'
+        },
+        messages: {
+          cancelPromptMessage: 'Please enter a cancellation reason',
+          cancelPromptTitle: 'Cancel Process',
+          cancelReasonRequired: 'Cancellation reason is required',
+          cancelSuccess: 'Cancelled successfully'
+        }
+      },
+      create: {
+        searchPlaceholder: 'Please enter process name',
+        empty: 'No results found',
+        messages: {
+          restartInstanceMissing: 'Failed to restart process: process instance not found',
+          restartDefinitionMissing: 'Failed to restart process: process definition not found'
+        },
+        detail: {
+          processLabel: 'Process: {name}',
+          tabs: {
+            form: 'Form',
+            diagram: 'Process Diagram'
+          },
+          actions: {
+            submit: 'Submit'
+          },
+          messages: {
+            approvalDetailMissing: 'Unable to fetch approval details!',
+            selectAssignee: 'Please select approvers for {taskName}',
+            submitSuccess: 'Process initiated successfully'
+          }
+        }
+      },
+      detail: {
+        header: {
+          id: 'ID: {id}',
+          submittedAt: '{time} submitted'
+        },
+        tabs: {
+          form: 'Approval Detail',
+          diagram: 'Process Diagram',
+          record: 'Flow Records',
+          comment: 'Comments',
+          commentContent: 'Flow Comments'
+        },
+        common: {
+          nodeType: {
+            handle: 'Handle',
+            approve: 'Approve'
+          }
+        },
+        approve: {
+          fillForm: 'Fill form 【{name}】',
+          opinionLabel: '{nodeTypeName} Comment',
+          opinionPlaceholder: 'Please enter {nodeTypeName} comment',
+          nextAssigneeLabel: 'Next approvers',
+          signatureLabel: 'Signature',
+          signatureButton: 'Sign'
+        },
+        reject: {
+          opinionLabel: 'Comment',
+          opinionPlaceholder: 'Please enter comment'
+        },
+        copy: {
+          usersLabel: 'CC Users',
+          usersPlaceholder: 'Select CC users',
+          reasonLabel: 'CC Comment',
+          reasonPlaceholder: 'Enter CC comment'
+        },
+        transfer: {
+          userLabel: 'New Approver',
+          opinionLabel: 'Comment',
+          opinionPlaceholder: 'Enter comment'
+        },
+        delegate: {
+          userLabel: 'Delegate To',
+          opinionLabel: 'Comment',
+          opinionPlaceholder: 'Enter comment'
+        },
+        addSign: {
+          userLabel: 'Additional Approvers',
+          opinionLabel: 'Comment',
+          opinionPlaceholder: 'Enter comment',
+          before: 'Before {label}',
+          after: 'After {label}'
+        },
+        deleteSign: {
+          button: 'Remove Approver',
+          userLabel: 'Approvers to Remove',
+          opinionLabel: 'Comment',
+          opinionPlaceholder: 'Enter comment',
+          submit: 'Remove',
+          userLabelWithDept: '{nickname} ( Dept: {deptName} )'
+        },
+        return: {
+          nodeLabel: 'Return Node',
+          reasonLabel: 'Return Reason',
+          reasonPlaceholder: 'Enter return reason'
+        },
+        cancel: {
+          reasonLabel: 'Cancel Reason',
+          tip: 'After cancellation the approval flow will end automatically',
+          reasonPlaceholder: 'Enter cancel reason'
+        },
+        recreate: {
+          button: 'Submit Again'
+        },
+        taskList: {
+          node: 'Task Node',
+          assignee: 'Approver',
+          startTime: 'Start Time',
+          endTime: 'End Time',
+          status: 'Status',
+          reason: 'Comment',
+          viewForm: 'View Form',
+          duration: 'Duration',
+          formTitle: 'Form Detail'
+        },
+        messages: {
+          approvalDetailMissing: 'Unable to fetch approval details!',
+          definitionMissing: 'Unable to fetch process info!',
+          formInvalid: 'Form validation failed, please complete required fields',
+          noReturnNode: 'No returnable nodes available',
+          nextAssigneeMissing: 'Next step approvers cannot be empty!',
+          approveSuccess: 'Approved successfully',
+          rejectSuccess: 'Rejected successfully',
+          copySuccess: 'Copied successfully',
+          transferSuccess: 'Transferred successfully',
+          delegateSuccess: 'Delegated successfully',
+          addSignSuccess: 'Added approver successfully',
+          deleteSignSuccess: 'Removed approver successfully',
+          returnSuccess: 'Returned successfully',
+          cancelSuccess: 'Cancelled successfully'
+        },
+        rules: {
+          opinionRequired: '{nodeTypeName} comment is required',
+          signatureRequired: 'Signature is required',
+          nextAssigneeRequired: 'Next approvers are required',
+          rejectOpinionRequired: 'Comment is required',
+          copyUserRequired: 'CC users are required',
+          copyReasonRequired: 'CC comment is required',
+          transferUserRequired: 'New approver is required',
+          transferOpinionRequired: 'Comment is required',
+          delegateUserRequired: 'Delegatee is required',
+          delegateOpinionRequired: 'Comment is required',
+          addSignUserRequired: 'Additional approvers are required',
+          addSignOpinionRequired: 'Comment is required',
+          deleteSignUserRequired: 'Approver to remove is required',
+          deleteSignOpinionRequired: 'Comment is required',
+          returnNodeRequired: 'Return node is required',
+          returnReasonRequired: 'Return reason is required',
+          cancelReasonRequired: 'Cancel reason is required'
+        },
+        sign: {
+          title: 'Signature',
+          clear: 'Clear',
+          uploading: 'Uploading signature...',
+          fileName: 'Signature'
+        }
+      }
+    },
     processListener: {
       index: {
         docAlertTitle: 'Execution & Task Listeners',

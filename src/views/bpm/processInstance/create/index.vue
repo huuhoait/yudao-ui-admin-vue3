@@ -4,7 +4,7 @@
     <el-input
       v-model="searchName"
       class="!w-50% mb-15px"
-      placeholder="请输入流程名称"
+      :placeholder="t('bpm.processInstance.create.searchPlaceholder')"
       clearable
       @input="handleQuery"
       @clear="handleQuery"
@@ -78,7 +78,12 @@
           </el-scrollbar>
         </el-col>
       </el-row>
-      <el-empty class="!py-200px" :image-size="200" description="没有找到搜索结果" v-else />
+      <el-empty
+        class="!py-200px"
+        :image-size="200"
+        :description="t('bpm.processInstance.create.empty')"
+        v-else
+      />
     </ContentWrap>
   </template>
 
@@ -104,6 +109,7 @@ defineOptions({ name: 'BpmProcessInstanceCreate' })
 const { proxy } = getCurrentInstance() as any
 const route = useRoute() // 路由
 const message = useMessage() // 消息
+const { t } = useI18n() // 国际化
 
 const searchName = ref('') // 当前搜索关键字
 const processInstanceId: any = route.query.processInstanceId // 流程实例编号。场景：重新发起时
@@ -125,14 +131,14 @@ const getList = async () => {
     if (processInstanceId?.length > 0) {
       const processInstance = await ProcessInstanceApi.getProcessInstance(processInstanceId)
       if (!processInstance) {
-        message.error('重新发起流程失败，原因：流程实例不存在')
+        message.error(t('bpm.processInstance.create.messages.restartInstanceMissing'))
         return
       }
       const processDefinition = processDefinitionList.value.find(
         (item: any) => item.key == processInstance.processDefinition?.key
       )
       if (!processDefinition) {
-        message.error('重新发起流程失败，原因：流程定义不存在')
+        message.error(t('bpm.processInstance.create.messages.restartDefinitionMissing'))
         return
       }
       await handleSelect(processDefinition, processInstance.formVariables)

@@ -2,13 +2,15 @@
   <ContentWrap :bodyStyle="{ padding: '10px 20px 0' }">
     <div class="processInstance-wrap-main">
       <el-scrollbar>
-        <div class="text-#878c93 h-15px">流程：{{ selectProcessDefinition.name }}</div>
+        <div class="text-#878c93 h-15px">
+          {{ t('bpm.processInstance.create.detail.processLabel', { name: selectProcessDefinition.name }) }}
+        </div>
         <el-divider class="!my-8px" />
 
         <!-- 中间主要内容 tab 栏 -->
         <el-tabs v-model="activeTab">
           <!-- 表单信息 -->
-          <el-tab-pane label="表单填写" name="form">
+          <el-tab-pane :label="$t('bpm.processInstance.create.detail.tabs.form')" name="form">
             <div class="form-scroll-area" v-loading="processInstanceStartLoading">
               <el-scrollbar>
                 <el-row>
@@ -36,7 +38,7 @@
             </div>
           </el-tab-pane>
           <!-- 流程图 -->
-          <el-tab-pane label="流程图" name="diagram">
+          <el-tab-pane :label="$t('bpm.processInstance.create.detail.tabs.diagram')" name="diagram">
             <div class="form-scroll-area">
               <!-- BPMN 流程图预览 -->
               <ProcessInstanceBpmnViewer
@@ -61,10 +63,10 @@
             class="h-50px bottom-10 text-14px flex items-center color-#32373c dark:color-#fff font-bold btn-container"
           >
             <el-button plain type="success" @click="submitForm">
-              <Icon icon="ep:select" />&nbsp; 发起
+              <Icon icon="ep:select" />&nbsp;{{ t('bpm.processInstance.create.detail.actions.submit') }}
             </el-button>
             <el-button plain type="danger" @click="handleCancel">
-              <Icon icon="ep:close" />&nbsp; 取消
+              <Icon icon="ep:close" />&nbsp;{{ t('common.cancel') }}
             </el-button>
           </div>
         </div>
@@ -98,6 +100,7 @@ const emit = defineEmits(['cancel'])
 const processInstanceStartLoading = ref(false) // 流程实例发起中
 const { push, currentRoute } = useRouter() // 路由
 const message = useMessage() // 消息弹窗
+const { t } = useI18n() // 国际化
 const { delView } = useTagsViewStore() // 视图操作
 
 const detailForm: any = ref({
@@ -192,7 +195,7 @@ const getApprovalDetail = async (row: any) => {
     })
 
     if (!data) {
-      message.error('查询不到审批详情信息！')
+      message.error(t('bpm.processInstance.create.detail.messages.approvalDetailMissing'))
       return
     }
     // 获取审批节点，显示 Timeline 的数据
@@ -283,8 +286,11 @@ const submitForm = async () => {
       if (
         Array.isArray(startUserSelectAssignees.value[userTask.id]) &&
         startUserSelectAssignees.value[userTask.id].length === 0
-      )
-        return message.warning(`请选择${userTask.name}的候选人`)
+      ) {
+        return message.warning(
+          t('bpm.processInstance.create.detail.messages.selectAssignee', { taskName: userTask.name })
+        )
+      }
     }
   }
 
@@ -297,7 +303,7 @@ const submitForm = async () => {
       startUserSelectAssignees: startUserSelectAssignees.value
     })
     // 提示
-    message.success('发起流程成功')
+    message.success(t('bpm.processInstance.create.detail.messages.submitSuccess'))
     // 跳转回去
     delView(unref(currentRoute))
     await push({

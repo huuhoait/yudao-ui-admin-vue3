@@ -1,7 +1,7 @@
 <template>
   <el-table :data="tasks" border header-cell-class-name="table-header-gray">
-    <el-table-column label="审批节点" prop="name" min-width="120" align="center" />
-    <el-table-column label="审批人" min-width="100" align="center">
+    <el-table-column :label="$t('bpm.processInstance.detail.taskList.node')" prop="name" min-width="120" align="center" />
+    <el-table-column :label="$t('bpm.processInstance.detail.taskList.assignee')" min-width="100" align="center">
       <template #default="scope">
         {{ scope.row.assigneeUser?.nickname || scope.row.ownerUser?.nickname }}
       </template>
@@ -9,23 +9,23 @@
     <el-table-column
       :formatter="dateFormatter"
       align="center"
-      label="开始时间"
+      :label="$t('bpm.processInstance.detail.taskList.startTime')"
       prop="createTime"
       min-width="140"
     />
     <el-table-column
       :formatter="dateFormatter"
       align="center"
-      label="结束时间"
+      :label="$t('bpm.processInstance.detail.taskList.endTime')"
       prop="endTime"
       min-width="140"
     />
-    <el-table-column align="center" label="审批状态" prop="status" min-width="90">
+    <el-table-column align="center" :label="$t('bpm.processInstance.detail.taskList.status')" prop="status" min-width="90">
       <template #default="scope">
         <dict-tag :type="DICT_TYPE.BPM_TASK_STATUS" :value="scope.row.status" />
       </template>
     </el-table-column>
-    <el-table-column align="center" label="审批建议" prop="reason" min-width="200">
+    <el-table-column align="center" :label="$t('bpm.processInstance.detail.taskList.reason')" prop="reason" min-width="200">
       <template #default="scope">
         {{ scope.row.reason }}
         <el-button
@@ -34,11 +34,11 @@
           v-if="scope.row.formId > 0"
           @click="handleFormDetail(scope.row)"
         >
-          <Icon icon="ep:document" /> 查看表单
+          <Icon icon="ep:document" /> {{ $t('bpm.processInstance.detail.taskList.viewForm') }}
         </el-button>
       </template>
     </el-table-column>
-    <el-table-column align="center" label="耗时" prop="durationInMillis" min-width="100">
+    <el-table-column align="center" :label="$t('bpm.processInstance.detail.taskList.duration')" prop="durationInMillis" min-width="100">
       <template #default="scope">
         {{ formatPast2(scope.row.durationInMillis) }}
       </template>
@@ -46,7 +46,7 @@
   </el-table>
 
   <!-- 弹窗：表单 -->
-  <Dialog title="表单详情" v-model="taskFormVisible" width="600">
+  <Dialog :title="$t('bpm.processInstance.detail.taskList.formTitle')" v-model="taskFormVisible" width="600">
     <form-create
       ref="fApi"
       v-model="taskForm.value"

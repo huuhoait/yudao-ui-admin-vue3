@@ -200,7 +200,13 @@ const signIn = async () => {
       if (!redirect.value) {
         redirect.value = '/'
       }
-      push({ path: redirect.value || permissionStore.addRouters[0].path })
+      try {
+        await push({ path: redirect.value || permissionStore.addRouters[0].path })
+      } catch (error) {
+        console.error('Navigation error:', error)
+        // Fallback to home page if navigation fails
+        await push({ path: '/' })
+      }
     })
     .catch(() => {})
     .finally(() => {

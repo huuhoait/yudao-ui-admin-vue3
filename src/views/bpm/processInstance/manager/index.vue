@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="工作流手册" url="https://doc.iocoder.cn/bpm/" />
+  <doc-alert :title="$t('bpm.processInstance.manager.docAlertTitle')" url="https://doc.iocoder.cn/bpm/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,8 +10,12 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item label="发起人" prop="startUserId">
-        <el-select v-model="queryParams.startUserId" placeholder="请选择发起人" class="!w-240px">
+      <el-form-item :label="$t('bpm.processInstance.manager.form.startUser')" prop="startUserId">
+        <el-select
+          v-model="queryParams.startUserId"
+          :placeholder="$t('bpm.processInstance.manager.form.startUserPlaceholder')"
+          class="!w-240px"
+        >
           <el-option
             v-for="user in userList"
             :key="user.id"
@@ -20,28 +24,28 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="流程名称" prop="name">
+      <el-form-item :label="$t('bpm.processInstance.manager.form.name')" prop="name">
         <el-input
           v-model="queryParams.name"
-          placeholder="请输入流程名称"
+          :placeholder="$t('bpm.processInstance.manager.form.namePlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="所属流程" prop="processDefinitionId">
+      <el-form-item :label="$t('bpm.processInstance.manager.form.processDefinitionId')" prop="processDefinitionId">
         <el-input
           v-model="queryParams.processDefinitionId"
-          placeholder="请输入流程定义的编号"
+          :placeholder="$t('bpm.processInstance.manager.form.processDefinitionIdPlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="流程分类" prop="category">
+      <el-form-item :label="$t('bpm.processInstance.manager.form.category')" prop="category">
         <el-select
           v-model="queryParams.category"
-          placeholder="请选择流程分类"
+          :placeholder="$t('bpm.processInstance.manager.form.categoryPlaceholder')"
           clearable
           class="!w-240px"
         >
@@ -53,10 +57,10 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="流程状态" prop="status">
+      <el-form-item :label="$t('bpm.processInstance.manager.form.status')" prop="status">
         <el-select
           v-model="queryParams.status"
-          placeholder="请选择流程状态"
+          :placeholder="$t('bpm.processInstance.manager.form.statusPlaceholder')"
           clearable
           class="!w-240px"
         >
@@ -68,20 +72,20 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="发起时间" prop="createTime">
+      <el-form-item :label="$t('bpm.processInstance.manager.form.createTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
+          :start-placeholder="$t('bpm.processInstance.manager.form.startDatePlaceholder')"
+          :end-placeholder="$t('bpm.processInstance.manager.form.endDatePlaceholder')"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button>
       </el-form-item>
     </el-form>
   </ContentWrap>
@@ -89,49 +93,49 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="流程名称" align="center" prop="name" min-width="200px" fixed="left" />
+      <el-table-column :label="$t('bpm.processInstance.manager.table.name')" align="center" prop="name" min-width="200px" fixed="left" />
       <el-table-column
-        label="流程分类"
+        :label="$t('bpm.processInstance.manager.table.category')"
         align="center"
         prop="categoryName"
         min-width="100"
         fixed="left"
       />
-      <el-table-column label="流程发起人" align="center" prop="startUser.nickname" width="120" />
-      <el-table-column label="发起部门" align="center" prop="startUser.deptName" width="120" />
-      <el-table-column label="流程状态" prop="status" width="120">
+      <el-table-column :label="$t('bpm.processInstance.manager.table.startUser')" align="center" prop="startUser.nickname" width="120" />
+      <el-table-column :label="$t('bpm.processInstance.manager.table.startDept')" align="center" prop="startUser.deptName" width="120" />
+      <el-table-column :label="$t('bpm.processInstance.manager.table.status')" prop="status" width="120">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.BPM_PROCESS_INSTANCE_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
       <el-table-column
-        label="发起时间"
+        :label="$t('bpm.processInstance.manager.table.startTime')"
         align="center"
         prop="startTime"
         width="180"
         :formatter="dateFormatter"
       />
       <el-table-column
-        label="结束时间"
+        :label="$t('bpm.processInstance.manager.table.endTime')"
         align="center"
         prop="endTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column align="center" label="耗时" prop="durationInMillis" width="169">
+      <el-table-column align="center" :label="$t('bpm.processInstance.manager.table.duration')" prop="durationInMillis" width="169">
         <template #default="scope">
           {{ scope.row.durationInMillis > 0 ? formatPast2(scope.row.durationInMillis) : '-' }}
         </template>
       </el-table-column>
-      <el-table-column label="当前审批任务" align="center" prop="tasks" min-width="120px">
+      <el-table-column :label="$t('bpm.processInstance.manager.table.currentTasks')" align="center" prop="tasks" min-width="120px">
         <template #default="scope">
           <el-button type="primary" v-for="task in scope.row.tasks" :key="task.id" link>
             <span>{{ task.name }}</span>
           </el-button>
         </template>
       </el-table-column>
-      <el-table-column label="流程编号" align="center" prop="id" min-width="320px" />
-      <el-table-column label="操作" align="center" fixed="right" width="180">
+      <el-table-column :label="$t('bpm.processInstance.manager.table.id')" align="center" prop="id" min-width="320px" />
+      <el-table-column :label="$t('common.operation')" align="center" fixed="right" width="180">
         <template #default="scope">
           <el-button
             link
@@ -139,7 +143,7 @@
             v-hasPermi="['bpm:process-instance:cancel']"
             @click="handleDetail(scope.row)"
           >
-            详情
+            {{ $t('common.detail') }}
           </el-button>
           <el-button
             link
@@ -148,7 +152,7 @@
             v-hasPermi="['bpm:process-instance:query']"
             @click="handleCancel(scope.row)"
           >
-            取消
+            {{ $t('common.cancel') }}
           </el-button>
         </template>
       </el-table-column>
@@ -232,15 +236,19 @@ const handleDetail = (row) => {
 /** 取消按钮操作 */
 const handleCancel = async (row) => {
   // 二次确认
-  const { value } = await ElMessageBox.prompt('请输入取消原因', '取消流程', {
-    confirmButtonText: t('common.ok'),
-    cancelButtonText: t('common.cancel'),
-    inputPattern: /^[\s\S]*.*\S[\s\S]*$/, // 判断非空，且非空格
-    inputErrorMessage: '取消原因不能为空'
-  })
+  const { value } = await ElMessageBox.prompt(
+    t('bpm.processInstance.manager.messages.cancelPromptMessage'),
+    t('bpm.processInstance.manager.messages.cancelPromptTitle'),
+    {
+      confirmButtonText: t('common.confirm'),
+      cancelButtonText: t('common.cancel'),
+      inputPattern: /^[\s\S]*.*\S[\s\S]*$/, // 判断非空，且非空格
+      inputErrorMessage: t('bpm.processInstance.manager.messages.cancelReasonRequired')
+    }
+  )
   // 发起取消
   await ProcessInstanceApi.cancelProcessInstanceByAdmin(row.id, value)
-  message.success('取消成功')
+  message.success(t('bpm.processInstance.manager.messages.cancelSuccess'))
   // 刷新列表
   await getList()
 }

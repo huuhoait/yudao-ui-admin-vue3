@@ -1415,6 +1415,264 @@ export default {
         }
       }
     },
+    processInstance: {
+      index: {
+        docAlertTitle: '流程发起、取消、重新发起',
+        form: {
+          namePlaceholder: '请输入流程名称',
+          categoryPlaceholder: '请选择流程分类',
+          statusPlaceholder: '请选择流程状态'
+        },
+        advancedFilter: {
+          open: '高级筛选',
+          processLabel: '所属流程',
+          processPlaceholder: '请选择流程定义',
+          createTime: '发起时间',
+          startDatePlaceholder: '开始日期',
+          endDatePlaceholder: '结束日期',
+          clear: '清空'
+        },
+        table: {
+          name: '流程名称',
+          summary: '摘要',
+          category: '流程分类',
+          status: '流程状态',
+          startTime: '发起时间',
+          endTime: '结束时间'
+        },
+        status: {
+          singleReviewing: '({taskName}) 审批中',
+          multiReviewing: '等 {count} 人 ({taskName}) 审批中'
+        },
+        actions: {
+          restart: '重新发起'
+        },
+        messages: {
+          businessFormRestartError: '重新发起流程失败，原因：该流程使用业务表单，不支持重新发起',
+          cancelPromptMessage: '请输入取消原因',
+          cancelPromptTitle: '取消流程',
+          cancelReasonRequired: '取消原因不能为空',
+          cancelSuccess: '取消成功'
+        }
+      },
+      manager: {
+        docAlertTitle: '工作流手册',
+        form: {
+          startUser: '发起人',
+          startUserPlaceholder: '请选择发起人',
+          name: '流程名称',
+          namePlaceholder: '请输入流程名称',
+          processDefinitionId: '所属流程',
+          processDefinitionIdPlaceholder: '请输入流程定义的编号',
+          category: '流程分类',
+          categoryPlaceholder: '请选择流程分类',
+          status: '流程状态',
+          statusPlaceholder: '请选择流程状态',
+          createTime: '发起时间',
+          startDatePlaceholder: '开始日期',
+          endDatePlaceholder: '结束日期'
+        },
+        table: {
+          name: '流程名称',
+          category: '流程分类',
+          startUser: '流程发起人',
+          startDept: '发起部门',
+          status: '流程状态',
+          startTime: '发起时间',
+          endTime: '结束时间',
+          duration: '耗时',
+          currentTasks: '当前审批任务',
+          id: '流程编号'
+        },
+        messages: {
+          cancelPromptMessage: '请输入取消原因',
+          cancelPromptTitle: '取消流程',
+          cancelReasonRequired: '取消原因不能为空',
+          cancelSuccess: '取消成功'
+        }
+      },
+      report: {
+        docAlertTitle: '工作流手册',
+        form: {
+          startUser: '发起人',
+          startUserPlaceholder: '请选择发起人',
+          name: '流程名称',
+          namePlaceholder: '请输入流程名称',
+          status: '流程状态',
+          statusPlaceholder: '请选择流程状态',
+          startTime: '发起时间',
+          startDatePlaceholder: '开始日期',
+          endDatePlaceholder: '结束日期',
+          endTime: '结束时间',
+          endStartPlaceholder: '开始日期',
+          endEndPlaceholder: '结束日期',
+          dynamicPlaceholder: '请输入{title}'
+        },
+        table: {
+          name: '流程名称',
+          startUser: '流程发起人',
+          status: '流程状态',
+          startTime: '发起时间',
+          endTime: '结束时间'
+        },
+        messages: {
+          cancelPromptMessage: '请输入取消原因',
+          cancelPromptTitle: '取消流程',
+          cancelReasonRequired: '取消原因不能为空',
+          cancelSuccess: '取消成功'
+        }
+      },
+      create: {
+        searchPlaceholder: '请输入流程名称',
+        empty: '没有找到搜索结果',
+        messages: {
+          restartInstanceMissing: '重新发起流程失败，原因：流程实例不存在',
+          restartDefinitionMissing: '重新发起流程失败，原因：流程定义不存在'
+        },
+        detail: {
+          processLabel: '流程：{name}',
+          tabs: {
+            form: '表单填写',
+            diagram: '流程图'
+          },
+          actions: {
+            submit: '发起'
+          },
+          messages: {
+            approvalDetailMissing: '查询不到审批详情信息！',
+            selectAssignee: '请选择{taskName}的候选人',
+            submitSuccess: '发起流程成功'
+          }
+        }
+      },
+      detail: {
+        header: {
+          id: '编号：{id}',
+          submittedAt: '{time} 提交'
+        },
+        tabs: {
+          form: '审批详情',
+          diagram: '流程图',
+          record: '流转记录',
+          comment: '流转评论',
+          commentContent: '流转评论'
+        },
+        common: {
+          nodeType: {
+            handle: '办理',
+            approve: '审批'
+          }
+        },
+        approve: {
+          fillForm: '填写表单【{name}】',
+          opinionLabel: '{nodeTypeName}意见',
+          opinionPlaceholder: '请输入{nodeTypeName}意见',
+          nextAssigneeLabel: '下一个节点的审批人',
+          signatureLabel: '签名',
+          signatureButton: '点击签名'
+        },
+        reject: {
+          opinionLabel: '审批意见',
+          opinionPlaceholder: '请输入审批意见'
+        },
+        copy: {
+          usersLabel: '抄送人',
+          usersPlaceholder: '请选择抄送人',
+          reasonLabel: '抄送意见',
+          reasonPlaceholder: '请输入抄送意见'
+        },
+        transfer: {
+          userLabel: '新审批人',
+          opinionLabel: '审批意见',
+          opinionPlaceholder: '请输入审批意见'
+        },
+        delegate: {
+          userLabel: '接收人',
+          opinionLabel: '审批意见',
+          opinionPlaceholder: '请输入审批意见'
+        },
+        addSign: {
+          userLabel: '加签处理人',
+          opinionLabel: '审批意见',
+          opinionPlaceholder: '请输入审批意见',
+          before: '向前{label}',
+          after: '向后{label}'
+        },
+        deleteSign: {
+          button: '减签',
+          userLabel: '减签人员',
+          opinionLabel: '审批意见',
+          opinionPlaceholder: '请输入审批意见',
+          submit: '减签',
+          userLabelWithDept: '{nickname} ( 所属部门：{deptName} )'
+        },
+        return: {
+          nodeLabel: '退回节点',
+          reasonLabel: '退回理由',
+          reasonPlaceholder: '请输入退回理由'
+        },
+        cancel: {
+          reasonLabel: '取消理由',
+          tip: '取消后，该审批流程将自动结束',
+          reasonPlaceholder: '请输入取消理由'
+        },
+        recreate: {
+          button: '再次提交'
+        },
+        taskList: {
+          node: '审批节点',
+          assignee: '审批人',
+          startTime: '开始时间',
+          endTime: '结束时间',
+          status: '审批状态',
+          reason: '审批建议',
+          viewForm: '查看表单',
+          duration: '耗时',
+          formTitle: '表单详情'
+        },
+        messages: {
+          approvalDetailMissing: '查询不到审批详情信息！',
+          definitionMissing: '查询不到流程信息！',
+          formInvalid: '表单校验不通过，请先完善表单',
+          noReturnNode: '当前没有可退回的节点',
+          nextAssigneeMissing: '下一个节点的审批人不能为空!',
+          approveSuccess: '审批通过成功',
+          rejectSuccess: '审批不通过成功',
+          copySuccess: '操作成功',
+          transferSuccess: '操作成功',
+          delegateSuccess: '操作成功',
+          addSignSuccess: '操作成功',
+          deleteSignSuccess: '减签成功',
+          returnSuccess: '操作成功',
+          cancelSuccess: '操作成功'
+        },
+        rules: {
+          opinionRequired: '{nodeTypeName}意见不能为空',
+          signatureRequired: '签名不能为空',
+          nextAssigneeRequired: '审批人不能为空',
+          rejectOpinionRequired: '审批意见不能为空',
+          copyUserRequired: '抄送人不能为空',
+          copyReasonRequired: '抄送意见不能为空',
+          transferUserRequired: '新审批人不能为空',
+          transferOpinionRequired: '审批意见不能为空',
+          delegateUserRequired: '接收人不能为空',
+          delegateOpinionRequired: '审批意见不能为空',
+          addSignUserRequired: '加签处理人不能为空',
+          addSignOpinionRequired: '审批意见不能为空',
+          deleteSignUserRequired: '减签人员不能为空',
+          deleteSignOpinionRequired: '审批意见不能为空',
+          returnNodeRequired: '退回节点不能为空',
+          returnReasonRequired: '退回理由不能为空',
+          cancelReasonRequired: '取消理由不能为空'
+        },
+        sign: {
+          title: '签名',
+          clear: '清除',
+          uploading: '签名上传中请稍等...',
+          fileName: '签名'
+        }
+      }
+    },
     processListener: {
       index: {
         docAlertTitle: '执行监听器、任务监听器',

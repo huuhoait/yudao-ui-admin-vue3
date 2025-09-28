@@ -203,7 +203,13 @@ const handleRegister = async (params: any) => {
     if (redirect.value.indexOf('sso') !== -1) {
       window.location.href = window.location.href.replace('/login?redirect=', '')
     } else {
-      push({ path: redirect.value || permissionStore.addRouters[0].path })
+      try {
+        await push({ path: redirect.value || permissionStore.addRouters[0].path })
+      } catch (error) {
+        console.error('Navigation error:', error)
+        // Fallback to home page if navigation fails
+        await push({ path: '/' })
+      }
     }
   } finally {
     loginLoading.value = false
