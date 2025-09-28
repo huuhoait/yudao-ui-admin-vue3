@@ -1,11 +1,11 @@
 <template>
-  <el-form ref="formRef" :model="modelData" label-width="120px" class="mt-20px">
+  <el-form ref="formRef" :model="modelData" label-width="180px" class="mt-20px">
     <el-form-item class="mb-20px">
       <template #label>
         <el-text size="large" tag="b">{{ t('bpm.model.form.submitterPermissions') }}</el-text>
       </template>
       <div class="flex flex-col">
-        <el-checkbox v-model="modelData.allowCancelRunningProcess" label="'bpm.model.form.allowCancelRunning'" />
+        <el-checkbox v-model="modelData.allowCancelRunningProcess" :label="t('bpm.model.form.allowCancelRunning')" />
         <div class="ml-22px">
           <el-text type="info">{{ t('bpm.model.form.cancelRunningTip') }}</el-text>
         </div>
@@ -13,12 +13,12 @@
     </el-form-item>
     <el-form-item class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">审批人权限</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form.approverPermissions') }}</el-text>
       </template>
       <div class="flex flex-col">
-        <el-checkbox v-model="modelData.allowWithdrawTask" label="允许审批人撤回任务" />
+        <el-checkbox v-model="modelData.allowWithdrawTask" :label="t('bpm.model.form.allowWithdrawTask')" />
         <div class="ml-22px">
-          <el-text type="info"> 审批人可撤回正在审批节点的前一节点 </el-text>
+          <el-text type="info">{{ t('bpm.model.form.withdrawTaskTip') }}</el-text>
         </div>
       </div>
     </el-form-item>
@@ -100,7 +100,7 @@
             <el-radio :value="true">
               {{ t('bpm.model.form.customTitle') }}
               <el-text>
-                <el-tooltip content="t('bpm.model.form.insertFieldTip')" effect="light" placement="top">
+                <el-tooltip :content="t('bpm.model.form.insertFieldTip')" effect="light" placement="top">
                   <Icon icon="ep:question-filled" class="ml-5px" />
                 </el-tooltip>
               </el-text>
@@ -252,23 +252,23 @@ const modelData = defineModel<any>()
 const timeOptions = ref([
   {
     value: '',
-    label: 'None'
+    label: t('bpm.model.form.timeNone')
   },
   {
     value: 'DAY',
-    label: 'Accurate to day'
+    label: t('bpm.model.form.accurateToDay')
   },
   {
     value: 'HOUR',
-    label: 'Accurate to hour'
+    label: t('bpm.model.form.accurateToHour')
   },
   {
     value: 'MINUTE',
-    label: 'Accurate to minute'
+    label: t('bpm.model.form.accurateToMinute')
   },
   {
     value: 'SECOND',
-    label: 'Accurate to second'
+    label: t('bpm.model.form.accurateToSecond')
   }
 ])
 
@@ -374,15 +374,15 @@ const formFieldOptions4Title = computed(() => {
   })
   // Add fixed process initiator ID field
   cloneFormField.unshift({
-    label: 'Process Name',
+    label: t('bpm.model.form.processNameField'),
     value: ProcessVariableEnum.PROCESS_DEFINITION_NAME
   })
   cloneFormField.unshift({
-    label: 'Start Time',
+    label: t('bpm.model.form.startTimeField'),
     value: ProcessVariableEnum.START_TIME
   })
   cloneFormField.unshift({
-    label: 'Initiator',
+    label: t('bpm.model.form.initiatorField'),
     value: ProcessVariableEnum.START_USER_ID
   })
   return cloneFormField
@@ -459,9 +459,9 @@ watch(
           parseFormFields(JSON.parse(fieldStr), result)
         })
       }
-      formFields.value = result
+      formField.value = result
     } else {
-      formFields.value = []
+      formField.value = []
       unParsedFormFields.value = []
     }
   },
