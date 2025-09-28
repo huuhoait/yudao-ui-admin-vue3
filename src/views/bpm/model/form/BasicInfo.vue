@@ -188,12 +188,28 @@ const deptSelectFormRef = ref()
 const currentSelectType = ref<'start' | 'manager'>('start')
 
 const rules = {
-  name: [{ required: true, message: t('bpm.model.form.processNameRequired'), trigger: 'blur' }],
-  key: [{ required: true, message: t('bpm.model.form.processIdentifierRequired'), trigger: 'blur' }],
-  category: [{ required: true, message: t('bpm.model.form.processCategoryRequired'), trigger: 'blur' }],
-  type: [{ required: true, message: t('bpm.model.form.processTypeRequired'), trigger: 'blur' }],
-  visible: [{ required: true, message: t('bpm.model.form.visibilityRequired'), trigger: 'blur' }],
-  managerUserIds: [{ required: true, message: t('bpm.model.form.processAdminRequired'), trigger: 'blur' }]
+  name: [{ required: true, message: '流程名称不能为空', trigger: 'blur' }],
+  key: [
+    { required: true, message: '流程标识不能为空', trigger: 'blur' },
+    {
+      validator: (_rule: any, value: string, callback: any) => {
+        if (!value) {
+          callback()
+          return
+        }
+        if (!/^[a-zA-Z_][\-_.0-9_a-zA-Z$]*$/.test(value)) {
+          callback(new Error('只能包含字母、数字、下划线、连字符和点号，且必须以字母或下划线开头'))
+          return
+        }
+        callback()
+      },
+      trigger: 'blur'
+    }
+  ],
+  category: [{ required: true, message: '流程分类不能为空', trigger: 'blur' }],
+  type: [{ required: true, message: '是否可见不能为空', trigger: 'blur' }],
+  visible: [{ required: true, message: '是否可见不能为空', trigger: 'blur' }],
+  managerUserIds: [{ required: true, message: '流程管理员不能为空', trigger: 'blur' }]
 }
 
 // 创建本地数据副本

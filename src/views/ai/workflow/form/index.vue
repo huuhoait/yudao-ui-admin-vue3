@@ -8,11 +8,8 @@
         <!-- 左侧标题 -->
         <div class="w-200px flex items-center overflow-hidden">
           <Icon icon="ep:arrow-left" class="cursor-pointer flex-shrink-0" @click="handleBack" />
-          <span
-            class="ml-10px text-16px truncate"
-            :title="formData.name || t('ai.workflow.form.createTitle')"
-          >
-            {{ formData.name || t('ai.workflow.form.createTitle') }}
+          <span class="ml-10px text-16px truncate" :title="formData.name || '创建流程'">
+            {{ formData.name || '创建流程' }}
           </span>
         </div>
 
@@ -47,7 +44,7 @@
 
         <!-- 右侧按钮 -->
         <div class="w-200px flex items-center justify-end gap-2">
-          <el-button type="primary" @click="handleSave">{{ t('common.save') }}</el-button>
+          <el-button type="primary" @click="handleSave"> 保 存 </el-button>
         </div>
       </div>
 
@@ -83,7 +80,6 @@ const router = useRouter()
 const { delView } = useTagsViewStore()
 const route = useRoute()
 const message = useMessage()
-const { t } = useI18n()
 
 const basicInfoRef = ref()
 const workflowDesignRef = ref()
@@ -96,10 +92,10 @@ const validateWorkflow = async () => {
 }
 
 const currentStep = ref(-1)
-const steps = computed(() => [
-  { title: t('ai.workflow.form.steps.basicInfo'), validator: validateBasic },
-  { title: t('ai.workflow.form.steps.workflowDesign'), validator: validateWorkflow }
-])
+const steps = [
+  { title: '基本信息', validator: validateBasic },
+  { title: '工作流设计', validator: validateWorkflow }
+]
 
 const formData: any = ref({
   id: undefined,
@@ -149,7 +145,7 @@ const validateAllSteps = async () => {
       await validateBasic()
     } catch (error) {
       currentStep.value = 0
-      throw new Error(t('ai.workflow.form.validation.basicInfo'))
+      throw new Error('请完善基本信息')
     }
 
     // 工作流设计校验
@@ -157,7 +153,7 @@ const validateAllSteps = async () => {
       await validateWorkflow()
     } catch (error) {
       currentStep.value = 1
-      throw new Error(t('ai.workflow.form.validation.workflow'))
+      throw new Error('请完善工作流信息')
     }
     return true
   } catch (error) {
@@ -183,12 +179,12 @@ const handleSave = async () => {
     }
 
     // 保存成功，提示并跳转到列表页
-    message.success(t('ai.workflow.form.saveSuccess'))
+    message.success('保存成功')
     delView(unref(router.currentRoute))
     await router.push({ name: 'AiWorkflow' })
   } catch (error: any) {
-    console.error('Save workflow failed:', error)
-    message.warning(error.message || t('ai.workflow.form.validation.allSteps'))
+    console.error('保存失败:', error)
+    message.warning(error.message || '请完善所有步骤的必填信息')
   }
 }
 
@@ -205,8 +201,8 @@ const handleStepClick = async (index: number) => {
     // 切换步骤
     currentStep.value = index
   } catch (error) {
-    console.error('Step switch failed:', error)
-    message.warning(t('ai.workflow.form.validation.currentStep'))
+    console.error('步骤切换失败:', error)
+    message.warning('请先完善当前步骤必填信息')
   }
 }
 

@@ -11,6 +11,17 @@
         </div>
       </div>
     </el-form-item>
+    <el-form-item class="mb-20px">
+      <template #label>
+        <el-text size="large" tag="b">审批人权限</el-text>
+      </template>
+      <div class="flex flex-col">
+        <el-checkbox v-model="modelData.allowWithdrawTask" label="允许审批人撤回任务" />
+        <div class="ml-22px">
+          <el-text type="info"> 审批人可撤回正在审批节点的前一节点 </el-text>
+        </div>
+      </div>
+    </el-form-item>
     <el-form-item v-if="modelData.processIdRule" class="mb-20px">
       <template #label>
         <el-text size="large" tag="b">{{ t('bpm.model.form.processCode') }}</el-text>
@@ -386,7 +397,12 @@ const formFieldOptions4Summary = computed(() => {
   })
 })
 
-/** Initialize data for compatibility with older processes without extra settings */
+/** 未解析的表单字段 */
+const unParsedFormFields = ref<string[]>([])
+/** 暴露给子组件 HttpRequestSetting 使用 */
+provide('formFields', unParsedFormFields)
+
+/** 兼容以前未配置更多设置的流程 */
 const initData = () => {
   if (!modelData.value.processIdRule) {
     modelData.value.processIdRule = {
@@ -424,6 +440,9 @@ const initData = () => {
   if (modelData.value.taskAfterTriggerSetting) {
     taskAfterTriggerEnable.value = true
   }
+  if (modelData.value.allowWithdrawTask) {
+    modelData.value.allowWithdrawTask = false
+  }
 }
 defineExpose({ initData })
 
@@ -435,13 +454,15 @@ watch(
       const data = await FormApi.getForm(newFormId)
       const result: Array<{ field: string; title: string }> = []
       if (data.fields) {
+        unParsedFormFields.value = data.fields
         data.fields.forEach((fieldStr: string) => {
           parseFormFields(JSON.parse(fieldStr), result)
         })
       }
-      formField.value = result
+      formFields.value = result
     } else {
-      formField.value = []
+      formFields.value = []
+      unParsedFormFields.value = []
     }
   },
   { immediate: true }

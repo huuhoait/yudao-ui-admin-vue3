@@ -15,7 +15,7 @@
         >
           <img class="w-full h-full" :src="getApprovalNodeImg(activity.nodeType)" alt="" />
           <div
-            v-if="showStatusIcon"
+            v-if="props.showStatusIcon"
             class="position-absolute top-17px left-17px rounded-full flex items-center p-1px border-2 border-white border-solid"
             :style="{ backgroundColor: getApprovalNodeColor(activity.status) }"
           >
@@ -28,7 +28,9 @@
       <div class="flex flex-col items-start gap2" :id="`activity-task-${activity.id}-${index}`">
         <!-- 第一行：节点名称、时间 -->
         <div class="flex w-full">
-          <div class="font-bold"> {{ activity.name }}</div>
+          <div class="font-bold">
+            {{ activity.name }} <span v-if="activity.status === TaskStatusEnum.SKIP">[Skip]</span>
+          </div>
           <!-- 信息：时间 -->
           <div
             v-if="activity.status !== TaskStatusEnum.NOT_START"
@@ -38,7 +40,13 @@
           </div>
         </div>
         <div v-if="activity.nodeType === NodeType.CHILD_PROCESS_NODE">
-          <el-button type="primary" plain size="small" @click="handleChildProcess(activity)">
+          <el-button
+            type="primary"
+            plain
+            size="small"
+            @click="handleChildProcess(activity)"
+            :disabled="!activity.processInstanceId"
+          >
             查看子流程
           </el-button>
         </div>
@@ -47,9 +55,10 @@
           class="flex flex-wrap gap2 items-center"
           v-if="
             isEmpty(activity.tasks) &&
-            isEmpty(activity.candidateUsers) &&
-            (CandidateStrategy.START_USER_SELECT === activity.candidateStrategy ||
-              CandidateStrategy.APPROVE_USER_SELECT === activity.candidateStrategy)
+            ((CandidateStrategy.START_USER_SELECT === activity.candidateStrategy &&
+              isEmpty(activity.candidateUsers)) ||
+              (props.enableApproveUserSelect &&
+                CandidateStrategy.APPROVE_USER_SELECT === activity.candidateStrategy))
           "
         >
           <!--  && activity.nodeType === NodeType.USER_TASK_NODE -->
@@ -111,7 +120,7 @@
                 </template>
                 <!-- 信息：任务 ICON -->
                 <div
-                  v-if="showStatusIcon && onlyStatusIconShow.includes(task.status)"
+                  v-if="props.showStatusIcon && onlyStatusIconShow.includes(task.status)"
                   class="position-absolute top-19px left-23px rounded-full flex items-center p-1px border-2 border-white border-solid"
                   :style="{ backgroundColor: statusIconMap2[task.status]?.color }"
                 >
@@ -157,7 +166,7 @@
 
             <!-- 信息：任务 ICON -->
             <div
-              v-if="showStatusIcon"
+              v-if="props.showStatusIcon"
               class="position-absolute top-20px left-24px rounded-full flex items-center p-1px border-2 border-white border-solid"
               :style="{ backgroundColor: statusIconMap2['-1']?.color }"
             >
@@ -179,7 +188,7 @@ import * as ProcessInstanceApi from '@/api/bpm/processInstance'
 import { TaskStatusEnum } from '@/api/bpm/task'
 import { NodeType, CandidateStrategy } from '@/components/SimpleProcessDesignerV2/src/consts'
 import { isEmpty } from '@/utils/is'
-import { Check, Close, Loading, Clock, Minus, Delete } from '@element-plus/icons-vue'
+import { Check, Close, Loading, Clock, Minus, Delete, ArrowDown } from '@element-plus/icons-vue'
 import starterSvg from '@/assets/svgs/bpm/starter.svg'
 import auditorSvg from '@/assets/svgs/bpm/auditor.svg'
 import copySvg from '@/assets/svgs/bpm/copy.svg'
@@ -190,19 +199,23 @@ import transactorSvg from '@/assets/svgs/bpm/transactor.svg'
 import childProcessSvg from '@/assets/svgs/bpm/child-process.svg'
 
 defineOptions({ name: 'BpmProcessInstanceTimeline' })
-withDefaults(
+const props = withDefaults(
   defineProps<{
     activityNodes: ProcessInstanceApi.ApprovalNodeInfo[] // 审批节点信息
     showStatusIcon?: boolean // 是否显示头像右下角状态图标
+    enableApproveUserSelect?: boolean // 是否开启审批人自选功能
   }>(),
   {
-    showStatusIcon: true // 默认值为 true
+    showStatusIcon: true, // 默认值为 true
+    enableApproveUserSelect: false // 默认值为 false
   }
 )
 const { push } = useRouter() // 路由
 
 // 审批节点
 const statusIconMap2 = {
+  // 跳过
+  '-2': { color: '#cccccc', icon: 'ep:arrow-down' },
   // 未开始
   '-1': { color: '#909398', icon: 'ep-clock' },
   // 待审批
@@ -224,6 +237,8 @@ const statusIconMap2 = {
 }
 
 const statusIconMap = {
+  // 跳过
+  '-2': { color: '#909398', icon: ArrowDown },
   // 审批未开始
   '-1': { color: '#909398', icon: Clock },
   '0': { color: '#00b32a', icon: Clock },
@@ -319,7 +334,9 @@ const handleUserSelectConfirm = (activityId: string, userList: any[]) => {
 
 /** 跳转子流程 */
 const handleChildProcess = (activity: any) => {
-  // TODO @lesan：貌似跳不过去？！
+  if (!activity.processInstanceId) {
+    return
+  }
   push({
     name: 'BpmProcessInstanceDetail',
     query: {
@@ -327,4 +344,19 @@ const handleChildProcess = (activity: any) => {
     }
   })
 }
+
+/** 设置自定义审批人 */
+const setCustomApproveUsers = (activityId: string, users: any[]) => {
+  customApproveUsers.value[activityId] = users || []
+}
+
+/** 批量设置多个节点的自定义审批人 */
+const batchSetCustomApproveUsers = (data: Record<string, any[]>) => {
+  Object.keys(data).forEach((activityId) => {
+    customApproveUsers.value[activityId] = data[activityId] || []
+  })
+}
+
+// 暴露方法给父组件
+defineExpose({ setCustomApproveUsers, batchSetCustomApproveUsers })
 </script>

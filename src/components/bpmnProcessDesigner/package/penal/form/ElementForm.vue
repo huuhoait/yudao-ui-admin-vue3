@@ -237,7 +237,7 @@ const props = defineProps({
 const prefix = inject('prefix')
 const width = inject('width')
 
-const formKey = ref('')
+const formKey = ref(undefined)
 const businessKey = ref('')
 const optionModelTitle = ref('')
 const fieldList = ref<any[]>([])

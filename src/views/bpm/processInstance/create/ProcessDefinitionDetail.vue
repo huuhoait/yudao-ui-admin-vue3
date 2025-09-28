@@ -88,6 +88,7 @@ import { useTagsViewStore } from '@/store/modules/tagsView'
 import * as ProcessInstanceApi from '@/api/bpm/processInstance'
 import * as DefinitionApi from '@/api/bpm/definition'
 import { ApprovalNodeInfo } from '@/api/bpm/processInstance'
+import formCreate from '@form-create/element-ui'
 
 defineOptions({ name: 'ProcessDefinitionDetail' })
 const props = defineProps<{
@@ -127,7 +128,8 @@ const initProcessInfo = async (row: any, formVariables?: any) => {
     // 注意：需要从 formVariables 中，移除不在 row.formFields 的值。
     // 原因是：后端返回的 formVariables 里面，会有一些非表单的信息。例如说，某个流程节点的审批人。
     //        这样，就可能导致一个流程被审批不通过后，重新发起时，会直接后端报错！！！
-    const allowedFields = decodeFields(row.formFields).map((fieldObj: any) => fieldObj.field)
+    const formApi = formCreate.create(decodeFields(row.formFields))
+    const allowedFields = formApi.fields()
     for (const key in formVariables) {
       if (!allowedFields.includes(key)) {
         delete formVariables[key]
@@ -231,8 +233,25 @@ const getApprovalDetail = async (row: any) => {
  */
 const setFieldPermission = (field: string, permission: string) => {
   if (permission === FieldPermissionType.READ) {
+    // 1. 设置字段为只读
     //@ts-ignore
     fApi.value?.disabled(true, field)
+    // 2. 只读字段， 去掉验证规则
+    //  fApi.value?.updateValidate(field, []); 这个方法貌似不起作用，
+    try {
+      //@ts-ignore
+      const rule = fApi.value?.getRule(field)
+      if (rule) {
+        // 必填验证设置为false
+        rule.$required = false
+        // 清空所有验证规则
+        if (rule.validate) {
+          rule.validate = []
+        }
+      }
+    } catch (error) {
+      console.warn('修改字段验证规则失败:', error)
+    }
   }
   if (permission === FieldPermissionType.WRITE) {
     //@ts-ignore
@@ -249,8 +268,15 @@ const submitForm = async () => {
   if (!fApi.value || !props.selectProcessDefinition) {
     return
   }
-  // 流程表单校验
-  await fApi.value.validate()
+  
+  try {
+    // 流程表单校验
+    await fApi.value.validate()
+  } catch (error) {
+    // 如果验证失败，检查是否是只读字段的验证错误
+    console.warn('表单验证失败:', error)
+    return
+  }
   // 如果有指定审批人，需要校验
   if (startUserSelectTasks.value?.length > 0) {
     for (const userTask of startUserSelectTasks.value) {
