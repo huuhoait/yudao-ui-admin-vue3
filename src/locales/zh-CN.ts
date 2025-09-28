@@ -2437,10 +2437,73 @@ export default {
             sexRequired: '性别不能为空',
             birthdayRequired: '出生年不能为空',
             descriptionRequired: '简介不能为空'
-          }
         }
       }
     },
+    processDesigner: {
+      boundaryEventTimer: {
+        timeoutHandler: {
+          title: '审批人超时未处理时'
+        },
+        enableSwitch: '启用开关',
+        executeAction: '执行动作',
+        timeoutSettings: '超时时间设置',
+        whenExceed: '当超过',
+        unprocessed: '未处理',
+        maxRemindCount: '最大提醒次数'
+      },
+      userTask: {
+        approveType: {
+          title: '审批类型'
+        },
+        rejectHandler: {
+          title: '审批人拒绝时',
+          returnNode: '驳回节点'
+        },
+        assignEmpty: {
+          title: '审批人为空时',
+          specifyUser: '指定用户'
+        },
+        assignStartUser: {
+          title: '审批人与提交人为同一人时'
+        },
+        operationButtons: {
+          title: '操作按钮',
+          operationButton: '操作按钮',
+          displayName: '显示名称',
+          enable: '启用'
+        },
+        fieldPermissions: {
+          title: '字段权限',
+          fieldName: '字段名称',
+          readOnly: '只读',
+          editable: '可编辑',
+          hidden: '隐藏'
+        },
+        signature: {
+          title: '是否需要签名'
+        },
+        approveOpinion: {
+          title: '审批意见',
+          required: '必填',
+          optional: '非必填'
+        }
+      },
+      endEvent: {
+        title: '结束',
+        approvalInfo: '审批信息',
+        table: {
+          serialNumber: '序号',
+          initiator: '发起人',
+          department: '部门',
+          startTime: '开始时间',
+          endTime: '结束时间',
+          approvalStatus: '审批状态',
+          duration: '耗时'
+        }
+      }
+    }
+  },
     build: {
       actions: {
         generateJson: '生成 JSON',

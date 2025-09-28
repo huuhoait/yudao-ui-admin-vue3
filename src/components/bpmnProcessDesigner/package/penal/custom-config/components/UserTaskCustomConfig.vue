@@ -9,7 +9,7 @@
 -->
 <template>
   <div>
-    <el-divider content-position="left">审批类型</el-divider>
+    <el-divider content-position="left">{{ t('bpm.processDesigner.userTask.approveType.title') }}</el-divider>
     <el-form-item prop="approveType">
       <el-radio-group v-model="approveType.value">
         <el-radio
@@ -23,7 +23,7 @@
       </el-radio-group>
     </el-form-item>
 
-    <el-divider content-position="left">审批人拒绝时</el-divider>
+    <el-divider content-position="left">{{ t('bpm.processDesigner.userTask.rejectHandler.title') }}</el-divider>
     <el-form-item prop="rejectHandlerType">
       <el-radio-group
         v-model="rejectHandlerType"
@@ -39,7 +39,7 @@
     </el-form-item>
     <el-form-item
       v-if="rejectHandlerType == RejectHandlerType.RETURN_USER_TASK"
-      label="驳回节点"
+      :label="t('bpm.processDesigner.userTask.rejectHandler.returnNode')"
       prop="returnNodeId"
     >
       <el-select v-model="returnNodeId" clearable style="width: 100%" @change="updateReturnNodeId">
@@ -52,7 +52,7 @@
       </el-select>
     </el-form-item>
 
-    <el-divider content-position="left">审批人为空时</el-divider>
+    <el-divider content-position="left">{{ t('bpm.processDesigner.userTask.assignEmpty.title') }}</el-divider>
     <el-form-item prop="assignEmptyHandlerType">
       <el-radio-group v-model="assignEmptyHandlerType" @change="updateAssignEmptyHandlerType">
         <div class="flex-col">
@@ -64,7 +64,7 @@
     </el-form-item>
     <el-form-item
       v-if="assignEmptyHandlerType == AssignEmptyHandlerType.ASSIGN_USER"
-      label="指定用户"
+      :label="t('bpm.processDesigner.userTask.assignEmpty.specifyUser')"
       prop="assignEmptyHandlerUserIds"
       span="24"
     >
@@ -84,7 +84,7 @@
       </el-select>
     </el-form-item>
 
-    <el-divider content-position="left">审批人与提交人为同一人时</el-divider>
+    <el-divider content-position="left">{{ t('bpm.processDesigner.userTask.assignStartUser.title') }}</el-divider>
     <el-radio-group v-model="assignStartUserHandlerType" @change="updateAssignStartUserHandlerType">
       <div class="flex-col">
         <div v-for="(item, index) in ASSIGN_START_USER_HANDLER_TYPES" :key="index">
@@ -93,12 +93,12 @@
       </div>
     </el-radio-group>
 
-    <el-divider content-position="left">操作按钮</el-divider>
+    <el-divider content-position="left">{{ t('bpm.processDesigner.userTask.operationButtons.title') }}</el-divider>
     <div class="button-setting-pane">
       <div class="button-setting-title">
-        <div class="button-title-label">操作按钮</div>
-        <div class="pl-4 button-title-label">显示名称</div>
-        <div class="button-title-label">启用</div>
+        <div class="button-title-label">{{ t('bpm.processDesigner.userTask.operationButtons.operationButton') }}</div>
+        <div class="pl-4 button-title-label">{{ t('bpm.processDesigner.userTask.operationButtons.displayName') }}</div>
+        <div class="button-title-label">{{ t('bpm.processDesigner.userTask.operationButtons.enable') }}</div>
       </div>
       <div class="button-setting-item" v-for="(item, index) in buttonsSettingEl" :key="index">
         <div class="button-setting-item-label"> {{ OPERATION_BUTTON_NAME.get(item.id) }} </div>
@@ -122,19 +122,19 @@
       </div>
     </div>
 
-    <el-divider content-position="left">字段权限</el-divider>
+    <el-divider content-position="left">{{ t('bpm.processDesigner.userTask.fieldPermissions.title') }}</el-divider>
     <div class="field-setting-pane" v-if="formType === BpmModelFormType.NORMAL">
       <div class="field-permit-title">
-        <div class="setting-title-label first-title"> 字段名称 </div>
+        <div class="setting-title-label first-title">{{ t('bpm.processDesigner.userTask.fieldPermissions.fieldName') }}</div>
         <div class="other-titles">
           <span class="setting-title-label cursor-pointer" @click="updatePermission('READ')"
-            >只读</span
+            >{{ t('bpm.processDesigner.userTask.fieldPermissions.readOnly') }}</span
           >
           <span class="setting-title-label cursor-pointer" @click="updatePermission('WRITE')"
-            >可编辑</span
+            >{{ t('bpm.processDesigner.userTask.fieldPermissions.editable') }}</span
           >
           <span class="setting-title-label cursor-pointer" @click="updatePermission('NONE')"
-            >隐藏</span
+            >{{ t('bpm.processDesigner.userTask.fieldPermissions.hidden') }}</span
           >
         </div>
       </div>
@@ -175,22 +175,22 @@
       </div>
     </div>
 
-    <el-divider content-position="left">是否需要签名</el-divider>
+    <el-divider content-position="left">{{ t('bpm.processDesigner.userTask.signature.title') }}</el-divider>
     <el-form-item prop="signEnable">
       <el-switch
         v-model="signEnable.value"
-        active-text="是"
-        inactive-text="否"
+        :active-text="t('common.yes')"
+        :inactive-text="t('common.no')"
         @change="updateElementExtensions"
       />
     </el-form-item>
 
-    <el-divider content-position="left">审批意见</el-divider>
+    <el-divider content-position="left">{{ t('bpm.processDesigner.userTask.approveOpinion.title') }}</el-divider>
     <el-form-item prop="reasonRequire">
       <el-switch
         v-model="reasonRequire.value"
-        active-text="必填"
-        inactive-text="非必填"
+        :active-text="t('bpm.processDesigner.userTask.approveOpinion.required')"
+        :inactive-text="t('bpm.processDesigner.userTask.approveOpinion.optional')"
         @change="updateElementExtensions"
       />
     </el-form-item>
@@ -216,6 +216,7 @@ import { useFormFieldsPermission } from '@/components/SimpleProcessDesignerV2/sr
 import { BpmModelFormType } from '@/utils/constants'
 
 defineOptions({ name: 'ElementCustomConfig4UserTask' })
+const { t } = useI18n()
 const props = defineProps({
   id: String,
   type: String

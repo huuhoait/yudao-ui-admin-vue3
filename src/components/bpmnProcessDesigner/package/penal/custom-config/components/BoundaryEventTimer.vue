@@ -1,15 +1,15 @@
 <template>
   <div>
-    <el-divider content-position="left">审批人超时未处理时</el-divider>
-    <el-form-item label="启用开关" prop="timeoutHandlerEnable">
+    <el-divider content-position="left">{{ t('bpm.processDesigner.boundaryEventTimer.timeoutHandler.title') }}</el-divider>
+    <el-form-item :label="t('bpm.processDesigner.boundaryEventTimer.enableSwitch')" prop="timeoutHandlerEnable">
       <el-switch
         v-model="timeoutHandlerEnable"
-        active-text="开启"
-        inactive-text="关闭"
+        :active-text="t('common.enable')"
+        :inactive-text="t('common.disable')"
         @change="timeoutHandlerChange"
       />
     </el-form-item>
-    <el-form-item label="执行动作" prop="timeoutHandlerType" v-if="timeoutHandlerEnable">
+    <el-form-item :label="t('bpm.processDesigner.boundaryEventTimer.executeAction')" prop="timeoutHandlerType" v-if="timeoutHandlerEnable">
       <el-radio-group v-model="timeoutHandlerType.value" @change="onTimeoutHandlerTypeChanged">
         <el-radio-button
           v-for="item in TIMEOUT_HANDLER_TYPES"
@@ -19,8 +19,8 @@
         />
       </el-radio-group>
     </el-form-item>
-    <el-form-item label="超时时间设置" v-if="timeoutHandlerEnable">
-      <span class="mr-2">当超过</span>
+    <el-form-item :label="t('bpm.processDesigner.boundaryEventTimer.timeoutSettings')" v-if="timeoutHandlerEnable">
+      <span class="mr-2">{{ t('bpm.processDesigner.boundaryEventTimer.whenExceed') }}</span>
       <el-form-item prop="timeDuration">
         <el-input-number
           class="mr-2"
@@ -49,10 +49,10 @@
           :value="item.value"
         />
       </el-select>
-      未处理
+      {{ t('bpm.processDesigner.boundaryEventTimer.unprocessed') }}
     </el-form-item>
     <el-form-item
-      label="最大提醒次数"
+      :label="t('bpm.processDesigner.boundaryEventTimer.maxRemindCount')"
       prop="maxRemindCount"
       v-if="timeoutHandlerEnable && timeoutHandlerType.value === 1"
     >
@@ -80,6 +80,7 @@ import {
 import { convertTimeUnit } from '@/components/SimpleProcessDesignerV2/src/utils'
 
 defineOptions({ name: 'ElementCustomConfig4BoundaryEventTimer' })
+const { t } = useI18n()
 const props = defineProps({
   id: String,
   type: String
