@@ -1,11 +1,11 @@
 <template>
-  <doc-alert title="审批通过、不通过、驳回" url="https://doc.iocoder.cn/bpm/task-todo-done/" />
-  <doc-alert title="审批加签、减签" url="https://doc.iocoder.cn/bpm/sign/" />
+  <doc-alert :title="$t('bpm.task.todo.docs.approve')" url="https://doc.iocoder.cn/bpm/task-todo-done/" />
+  <doc-alert :title="$t('bpm.task.todo.docs.sign')" url="https://doc.iocoder.cn/bpm/sign/" />
   <doc-alert
-    title="审批转办、委派、抄送"
+    :title="$t('bpm.task.todo.docs.delegate')"
     url="https://doc.iocoder.cn/bpm/task-delegation-and-cc/"
   />
-  <doc-alert title="审批加签、减签" url="https://doc.iocoder.cn/bpm/sign/" />
+  <doc-alert :title="$t('bpm.task.todo.docs.sign')" url="https://doc.iocoder.cn/bpm/sign/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -21,20 +21,20 @@
           v-model="queryParams.name"
           class="!w-240px"
           clearable
-          placeholder="请输入任务名称"
+          :placeholder="$t('bpm.task.todo.form.namePlaceholder')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
       <el-form-item>
         <el-button @click="handleQuery">
           <Icon class="mr-5px" icon="ep:search" />
-          搜索
+          {{ $t('common.query') }}
         </el-button>
       </el-form-item>
       <el-form-item label="" prop="category" class="absolute right-130px">
         <el-select
           v-model="queryParams.category"
-          placeholder="请选择流程分类"
+          :placeholder="$t('bpm.task.todo.form.categoryPlaceholder')"
           clearable
           class="!w-155px"
           @change="handleQuery"
@@ -58,18 +58,18 @@
         >
           <template #reference>
             <el-button @click="showPopover = !showPopover">
-              <Icon icon="ep:plus" class="mr-5px" />高级筛选
+              <Icon icon="ep:plus" class="mr-5px" />{{ $t('bpm.task.todo.advancedFilter.open') }}
             </el-button>
           </template>
           <el-form-item
-            label="所属流程"
+            :label="$t('bpm.task.todo.advancedFilter.processLabel')"
             class="font-bold"
             label-position="top"
             prop="processDefinitionKey"
           >
             <el-select
               v-model="queryParams.processDefinitionKey"
-              placeholder="请选择流程定义"
+              :placeholder="$t('bpm.task.todo.advancedFilter.processPlaceholder')"
               clearable
               @change="handleQuery"
               class="!w-390px"
@@ -82,22 +82,27 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item label="发起时间" class="font-bold" label-position="top" prop="createTime">
+          <el-form-item
+            :label="$t('bpm.task.todo.advancedFilter.createTime')"
+            class="font-bold"
+            label-position="top"
+            prop="createTime"
+          >
             <el-date-picker
               v-model="queryParams.createTime"
               value-format="YYYY-MM-DD HH:mm:ss"
               type="daterange"
-              start-placeholder="开始日期"
-              end-placeholder="结束日期"
+              :start-placeholder="$t('bpm.task.todo.advancedFilter.startDatePlaceholder')"
+              :end-placeholder="$t('bpm.task.todo.advancedFilter.endDatePlaceholder')"
               :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
               class="w-240px!"
             />
           </el-form-item>
           <el-form-item class="font-bold" label-position="top">
             <div class="flex justify-end w-full">
-              <el-button @click="resetQuery">清空</el-button>
-              <el-button @click="showPopover = false">取消</el-button>
-              <el-button type="primary" @click="handleQuery">确认</el-button>
+              <el-button @click="resetQuery">{{ $t('bpm.task.todo.advancedFilter.clear') }}</el-button>
+              <el-button @click="showPopover = false">{{ $t('common.cancel') }}</el-button>
+              <el-button type="primary" @click="handleQuery">{{ $t('common.confirm') }}</el-button>
             </div>
           </el-form-item>
         </el-popover>
@@ -108,8 +113,13 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column align="center" label="流程" prop="processInstance.name" width="180" />
-      <el-table-column label="摘要" prop="processInstance.summary" width="180">
+      <el-table-column
+        align="center"
+        :label="$t('bpm.task.todo.table.process')"
+        prop="processInstance.name"
+        width="180"
+      />
+      <el-table-column :label="$t('bpm.task.todo.table.summary')" prop="processInstance.summary" width="180">
         <template #default="scope">
           <div
             class="flex flex-col"
@@ -123,35 +133,42 @@
       </el-table-column>
       <el-table-column
         align="center"
-        label="发起人"
+        :label="$t('bpm.task.todo.table.startUser')"
         prop="processInstance.startUser.nickname"
         width="100"
       />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        label="发起时间"
+        :label="$t('bpm.task.todo.table.startTime')"
         prop="processInstance.createTime"
         width="180"
       />
-      <el-table-column align="center" label="当前任务" prop="name" width="180" />
+      <el-table-column align="center" :label="$t('bpm.task.todo.table.currentTask')" prop="name" width="180" />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        label="任务时间"
+        :label="$t('bpm.task.todo.table.taskTime')"
         prop="createTime"
         width="180"
       />
       <el-table-column
         align="center"
-        label="流程编号"
+        :label="$t('bpm.task.todo.table.processId')"
         prop="processInstanceId"
         :show-overflow-tooltip="true"
       />
-      <el-table-column align="center" label="任务编号" prop="id" :show-overflow-tooltip="true" />
-      <el-table-column align="center" label="操作" fixed="right" width="80">
+      <el-table-column
+        align="center"
+        :label="$t('bpm.task.todo.table.taskId')"
+        prop="id"
+        :show-overflow-tooltip="true"
+      />
+      <el-table-column align="center" :label="$t('common.operation')" fixed="right" width="80">
         <template #default="scope">
-          <el-button link type="primary" @click="handleAudit(scope.row)">办理</el-button>
+          <el-button link type="primary" @click="handleAudit(scope.row)">
+            {{ $t('bpm.task.todo.table.handle') }}
+          </el-button>
         </template>
       </el-table-column>
     </el-table>

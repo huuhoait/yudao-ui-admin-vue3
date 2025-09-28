@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="执行监听器、任务监听器" url="https://doc.iocoder.cn/bpm/listener/" />
+  <doc-alert :title="$t('bpm.processListener.index.docAlertTitle')" url="https://doc.iocoder.cn/bpm/listener/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,17 +10,22 @@
       :inline="true"
       label-width="85px"
     >
-      <el-form-item label="名字" prop="name">
+      <el-form-item :label="$t('bpm.processListener.index.form.name')" prop="name">
         <el-input
           v-model="queryParams.name"
-          placeholder="请输入名字"
+          :placeholder="$t('bpm.processListener.index.form.namePlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="类型" prop="type">
-        <el-select v-model="queryParams.type" placeholder="请选择类型" clearable class="!w-240px">
+      <el-form-item :label="$t('bpm.processListener.index.form.type')" prop="type">
+        <el-select
+          v-model="queryParams.type"
+          :placeholder="$t('bpm.processListener.index.form.typePlaceholder')"
+          clearable
+          class="!w-240px"
+        >
           <el-option
             v-for="dict in getStrDictOptions(DICT_TYPE.BPM_PROCESS_LISTENER_TYPE)"
             :key="dict.value"
@@ -30,15 +35,15 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button>
         <el-button
           type="primary"
           plain
           @click="openForm('create')"
           v-hasPermi="['bpm:process-listener:create']"
         >
-          <Icon icon="ep:plus" class="mr-5px" /> 新增
+          <Icon icon="ep:plus" class="mr-5px" /> {{ $t('common.add') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -47,20 +52,20 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list" :stripe="true" :show-overflow-tooltip="true">
-      <el-table-column label="编号" align="center" prop="id" />
-      <el-table-column label="名字" align="center" prop="name" />
-      <el-table-column label="类型" align="center" prop="type">
+      <el-table-column :label="$t('bpm.processListener.index.table.id')" align="center" prop="id" />
+      <el-table-column :label="$t('bpm.processListener.index.table.name')" align="center" prop="name" />
+      <el-table-column :label="$t('bpm.processListener.index.table.type')" align="center" prop="type">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.BPM_PROCESS_LISTENER_TYPE" :value="scope.row.type" />
         </template>
       </el-table-column>
-      <el-table-column label="状态" align="center" prop="status">
+      <el-table-column :label="$t('bpm.processListener.index.table.status')" align="center" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column label="事件" align="center" prop="event" />
-      <el-table-column label="值类型" align="center" prop="valueType">
+      <el-table-column :label="$t('bpm.processListener.index.table.event')" align="center" prop="event" />
+      <el-table-column :label="$t('bpm.processListener.index.table.valueType')" align="center" prop="valueType">
         <template #default="scope">
           <dict-tag
             :type="DICT_TYPE.BPM_PROCESS_LISTENER_VALUE_TYPE"
@@ -68,15 +73,15 @@
           />
         </template>
       </el-table-column>
-      <el-table-column label="值" align="center" prop="value" />
+      <el-table-column :label="$t('bpm.processListener.index.table.value')" align="center" prop="value" />
       <el-table-column
-        label="创建时间"
+        :label="$t('bpm.processListener.index.table.createTime')"
         align="center"
         prop="createTime"
         :formatter="dateFormatter"
         width="180px"
       />
-      <el-table-column label="操作" align="center">
+      <el-table-column :label="$t('common.operation')" align="center">
         <template #default="scope">
           <el-button
             link
@@ -84,7 +89,7 @@
             @click="openForm('update', scope.row.id)"
             v-hasPermi="['bpm:process-listener:update']"
           >
-            编辑
+            {{ $t('common.edit') }}
           </el-button>
           <el-button
             link
@@ -92,7 +97,7 @@
             @click="handleDelete(scope.row.id)"
             v-hasPermi="['bpm:process-listener:delete']"
           >
-            删除
+            {{ $t('common.delete') }}
           </el-button>
         </template>
       </el-table-column>

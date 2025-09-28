@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="工作流手册" url="https://doc.iocoder.cn/bpm/" />
+  <doc-alert :title="$t('bpm.category.index.docAlertTitle')" url="https://doc.iocoder.cn/bpm/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,28 +10,28 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item label="分类名" prop="name">
+      <el-form-item :label="$t('bpm.category.index.form.name')" prop="name">
         <el-input
           v-model="queryParams.name"
-          placeholder="请输入分类名"
+          :placeholder="$t('bpm.category.index.form.namePlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="分类标志" prop="code">
+      <el-form-item :label="$t('bpm.category.index.form.code')" prop="code">
         <el-input
           v-model="queryParams.code"
-          placeholder="请输入分类标志"
+          :placeholder="$t('bpm.category.index.form.codePlaceholder')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="分类状态" prop="status">
+      <el-form-item :label="$t('bpm.category.index.form.status')" prop="status">
         <el-select
           v-model="queryParams.status"
-          placeholder="请选择分类状态"
+          :placeholder="$t('bpm.category.index.form.statusPlaceholder')"
           clearable
           class="!w-240px"
         >
@@ -43,27 +43,27 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="创建时间" prop="createTime">
+      <el-form-item :label="$t('bpm.category.index.form.createTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
+          :start-placeholder="$t('bpm.category.index.form.startDatePlaceholder')"
+          :end-placeholder="$t('bpm.category.index.form.endDatePlaceholder')"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button>
         <el-button
           type="primary"
           plain
           @click="openForm('create')"
           v-hasPermi="['bpm:category:create']"
         >
-          <Icon icon="ep:plus" class="mr-5px" /> 新增
+          <Icon icon="ep:plus" class="mr-5px" /> {{ $t('common.add') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -72,24 +72,24 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list" :stripe="true" :show-overflow-tooltip="true">
-      <el-table-column label="分类编号" align="center" prop="id" />
-      <el-table-column label="分类名" align="center" prop="name" />
-      <el-table-column label="分类标志" align="center" prop="code" />
-      <el-table-column label="分类描述" align="center" prop="description" />
-      <el-table-column label="分类状态" align="center" prop="status">
+      <el-table-column :label="$t('bpm.category.index.table.id')" align="center" prop="id" />
+      <el-table-column :label="$t('bpm.category.index.table.name')" align="center" prop="name" />
+      <el-table-column :label="$t('bpm.category.index.table.code')" align="center" prop="code" />
+      <el-table-column :label="$t('bpm.category.index.table.description')" align="center" prop="description" />
+      <el-table-column :label="$t('bpm.category.index.table.status')" align="center" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column label="分类排序" align="center" prop="sort" />
+      <el-table-column :label="$t('bpm.category.index.table.sort')" align="center" prop="sort" />
       <el-table-column
-        label="创建时间"
+        :label="$t('bpm.category.index.table.createTime')"
         align="center"
         prop="createTime"
         :formatter="dateFormatter"
         width="180px"
       />
-      <el-table-column label="操作" align="center">
+      <el-table-column :label="$t('common.operation')" align="center">
         <template #default="scope">
           <el-button
             link
@@ -97,7 +97,7 @@
             @click="openForm('update', scope.row.id)"
             v-hasPermi="['bpm:category:update']"
           >
-            编辑
+            {{ $t('common.edit') }}
           </el-button>
           <el-button
             link
@@ -105,7 +105,7 @@
             @click="handleDelete(scope.row.id)"
             v-hasPermi="['bpm:category:delete']"
           >
-            删除
+            {{ $t('common.delete') }}
           </el-button>
         </template>
       </el-table-column>

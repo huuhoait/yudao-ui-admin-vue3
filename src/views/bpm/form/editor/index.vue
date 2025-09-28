@@ -8,7 +8,7 @@
         <template #handle>
           <el-button size="small" type="success" plain @click="handleSave">
             <Icon class="mr-5px" icon="ep:plus" />
-            保存
+            {{ $t('common.save') }}
           </el-button>
         </template>
       </fc-designer>
@@ -16,12 +16,12 @@
   </ContentWrap>
 
   <!-- 表单保存的弹窗 -->
-  <Dialog v-model="dialogVisible" title="保存表单" width="600">
+  <Dialog v-model="dialogVisible" :title="$t('bpm.form.editor.saveDialogTitle')" width="600">
     <el-form ref="formRef" :model="formData" :rules="formRules" label-width="80px">
-      <el-form-item label="表单名" prop="name">
-        <el-input v-model="formData.name" placeholder="请输入表单名" />
+      <el-form-item :label="$t('bpm.form.fields.name')" prop="name">
+        <el-input v-model="formData.name" :placeholder="$t('bpm.form.fields.namePlaceholder')" />
       </el-form-item>
-      <el-form-item label="状态" prop="status">
+      <el-form-item :label="$t('bpm.form.fields.status')" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -32,13 +32,19 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="备注" prop="remark">
-        <el-input v-model="formData.remark" placeholder="请输入备注" type="textarea" />
+      <el-form-item :label="$t('bpm.form.fields.remark')" prop="remark">
+        <el-input
+          v-model="formData.remark"
+          :placeholder="$t('bpm.form.fields.remarkPlaceholder')"
+          type="textarea"
+        />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">
+        {{ $t('common.confirm') }}
+      </el-button>
+      <el-button @click="dialogVisible = false">{{ $t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -100,8 +106,8 @@ const formData = ref({
   remark: ''
 })
 const formRules = reactive({
-  name: [{ required: true, message: '表单名不能为空', trigger: 'blur' }],
-  status: [{ required: true, message: '开启状态不能为空', trigger: 'blur' }]
+  name: [{ required: true, message: t('bpm.form.editor.rules.nameRequired'), trigger: 'blur' }],
+  status: [{ required: true, message: t('bpm.form.editor.rules.statusRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

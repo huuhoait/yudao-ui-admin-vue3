@@ -8,8 +8,8 @@
         <!-- 左侧标题 -->
         <div class="w-200px flex items-center overflow-hidden">
           <Icon icon="ep:arrow-left" class="cursor-pointer flex-shrink-0" @click="handleBack" />
-          <span class="ml-10px text-16px truncate" :title="formData.name || '创建流程'">
-            {{ formData.name || '创建流程' }}
+          <span class="ml-10px text-16px truncate" :title="'创建流程'">
+            {{ '创建流程' }}
           </span>
         </div>
 

@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="审批接入（流程表单）" url="https://doc.iocoder.cn/bpm/use-bpm-form/" />
+  <doc-alert :title="$t('bpm.form.index.docAlertTitle')" url="https://doc.iocoder.cn/bpm/use-bpm-form/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,27 +10,27 @@
       class="-mb-15px"
       label-width="68px"
     >
-      <el-form-item label="表单名" prop="name">
+      <el-form-item :label="$t('bpm.form.fields.name')" prop="name">
         <el-input
           v-model="queryParams.name"
           class="!w-240px"
           clearable
-          placeholder="请输入表单名"
+          :placeholder="$t('bpm.form.fields.namePlaceholder')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
       <el-form-item>
         <el-button @click="handleQuery">
           <Icon class="mr-5px" icon="ep:search" />
-          搜索
+          {{ $t('common.query') }}
         </el-button>
         <el-button @click="resetQuery">
           <Icon class="mr-5px" icon="ep:refresh" />
-          重置
+          {{ $t('common.reset') }}
         </el-button>
         <el-button v-hasPermi="['bpm:form:create']" plain type="primary" @click="openForm">
           <Icon class="mr-5px" icon="ep:plus" />
-          新增
+          {{ $t('common.add') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -39,21 +39,21 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column align="center" label="编号" prop="id" />
-      <el-table-column align="center" label="表单名" prop="name" />
-      <el-table-column align="center" label="状态" prop="status">
+      <el-table-column align="center" :label="$t('bpm.form.index.table.id')" prop="id" />
+      <el-table-column align="center" :label="$t('bpm.form.index.table.name')" prop="name" />
+      <el-table-column align="center" :label="$t('bpm.form.index.table.status')" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column align="center" label="备注" prop="remark" />
+      <el-table-column align="center" :label="$t('bpm.form.index.table.remark')" prop="remark" />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        label="创建时间"
+        :label="$t('bpm.form.index.table.createTime')"
         prop="createTime"
       />
-      <el-table-column align="center" label="操作">
+      <el-table-column align="center" :label="$t('common.operation')">
         <template #default="scope">
           <el-button
             v-hasPermi="['bpm:form:update']"
@@ -61,7 +61,7 @@
             type="primary"
             @click="openForm('copy', scope.row.id)"
           >
-            复制
+            {{ $t('common.copy') }}
           </el-button>
           <el-button
             v-hasPermi="['bpm:form:update']"
@@ -69,10 +69,10 @@
             type="primary"
             @click="openForm('update', scope.row.id)"
           >
-            编辑
+            {{ $t('common.edit') }}
           </el-button>
           <el-button v-hasPermi="['bpm:form:query']" link @click="openDetail(scope.row.id)">
-            详情
+            {{ $t('common.detail') }}
           </el-button>
           <el-button
             v-hasPermi="['bpm:form:delete']"
@@ -80,7 +80,7 @@
             type="danger"
             @click="handleDelete(scope.row.id)"
           >
-            删除
+            {{ $t('common.delete') }}
           </el-button>
         </template>
       </el-table-column>
@@ -95,7 +95,7 @@
   </ContentWrap>
 
   <!-- 表单详情的弹窗 -->
-  <Dialog v-model="detailVisible" title="表单详情" width="800">
+  <Dialog v-model="detailVisible" :title="$t('bpm.form.index.detailTitle')" width="800">
     <form-create :option="detailData.option" :rule="detailData.rule" />
   </Dialog>
 </template>

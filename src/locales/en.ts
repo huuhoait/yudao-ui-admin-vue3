@@ -37,6 +37,10 @@ export default {
     toolDes: 'Used to set up custom systems',
     query: 'Query',
     reset: 'Reset',
+    add: 'Add',
+    edit: 'Edit',
+    delete: 'Delete',
+    detail: 'Detail',
     shrink: 'Put away',
     expand: 'Expand',
     confirmTitle: 'System Hint',
@@ -998,9 +1002,33 @@ export default {
       statusRequired: 'Category status cannot be empty',
       sort: 'Category Sort',
       sortPlaceholder: 'Please enter category sort',
-      sortRequired: 'Category sort cannot be empty'
+      sortRequired: 'Category sort cannot be empty',
+      index: {
+        docAlertTitle: 'Workflow Manual',
+        form: {
+          name: 'Category Name',
+          namePlaceholder: 'Please enter category name',
+          code: 'Category Code',
+          codePlaceholder: 'Please enter category code',
+          status: 'Category Status',
+          statusPlaceholder: 'Please select category status',
+          createTime: 'Create Time',
+          startDatePlaceholder: 'Start Date',
+          endDatePlaceholder: 'End Date'
+        },
+        table: {
+          id: 'Category ID',
+          name: 'Category Name',
+          code: 'Category Code',
+          description: 'Category Description',
+          status: 'Category Status',
+          sort: 'Category Sort',
+          createTime: 'Create Time'
+        }
+      }
     },
     definition: {
+      docAlertTitle: 'Workflow Manual',
       id: 'Definition ID',
       name: 'Process Name',
       icon: 'Process Icon',
@@ -1011,13 +1039,88 @@ export default {
       deployTime: 'Deployment Time',
       allVisible: 'All Visible',
       etc: 'etc.',
+      joinSeparator: ', ',
       peopleVisible: 'people visible',
       noForm: 'No Form',
       restore: 'Restore',
       formDetail: 'Form Detail',
       manual: 'Workflow Manual'
     },
+    form: {
+      editor: {
+        saveDialogTitle: 'Save Form',
+        rules: {
+          nameRequired: 'Form name is required',
+          statusRequired: 'Form status is required'
+        }
+      },
+      fields: {
+        name: 'Form Name',
+        namePlaceholder: 'Please enter form name',
+        status: 'Status',
+        remark: 'Remark',
+        remarkPlaceholder: 'Please enter remark'
+      },
+      index: {
+        docAlertTitle: 'Approval Access (Process Form)',
+        detailTitle: 'Form Detail',
+        table: {
+          id: 'ID',
+          name: 'Form Name',
+          status: 'Status',
+          remark: 'Remark',
+          createTime: 'Create Time'
+        }
+      }
+    },
+    group: {
+      index: {
+        docAlertTitle: 'Workflow Manual',
+        form: {
+          name: 'User Group Name',
+          namePlaceholder: 'Please enter user group name',
+          status: 'Status',
+          statusPlaceholder: 'Please select status',
+          createTime: 'Create Time',
+          startDatePlaceholder: 'Start Date',
+          endDatePlaceholder: 'End Date'
+        },
+        table: {
+          id: 'ID',
+          name: 'User Group Name',
+          description: 'Description',
+          members: 'Members',
+          status: 'Status',
+          createTime: 'Create Time'
+        }
+      },
+      form: {
+        name: 'User Group Name',
+        namePlaceholder: 'Please enter user group name',
+        description: 'Description',
+        descriptionPlaceholder: 'Please enter description',
+        members: 'Members',
+        membersPlaceholder: 'Please select members',
+        status: 'Status',
+        rules: {
+          name: 'User group name is required',
+          description: 'Description is required',
+          members: 'Please select members',
+          status: 'Please select status'
+        }
+      }
+    },
     model: {
+      index: {
+        title: 'Process Model',
+        searchPlaceholder: 'Search process',
+        createModel: 'Create Model',
+        createCategory: 'Create Category',
+        sortCategory: 'Sort Categories',
+        saveSort: 'Save Sort',
+        formDetailTitle: 'Form Detail',
+        sortSuccess: 'Category sort successful'
+      },
       dragToSort: 'Drag to sort',
       sort: 'Sort',
       create: 'Create',
@@ -1244,6 +1347,196 @@ export default {
       completionCondition: 'Completion Condition',
       asyncState: 'Async State',
       loopCardinality: 'Loop Cardinality'
+    },
+    oa: {
+      leave: {
+        index: {
+          docAlertTitle: 'Approval Access (Business Form)',
+          form: {
+            type: 'Leave Type',
+            typePlaceholder: 'Please select leave type',
+            applyTime: 'Application Time',
+            startDatePlaceholder: 'Start Date',
+            endDatePlaceholder: 'End Date',
+            status: 'Approval Result',
+            statusPlaceholder: 'Please select approval result',
+            reason: 'Reason',
+            reasonPlaceholder: 'Please enter reason'
+          },
+          actions: {
+            create: 'Start Leave',
+            progress: 'Progress'
+          },
+          table: {
+            id: 'Application ID',
+            status: 'Status',
+            startTime: 'Start Time',
+            endTime: 'End Time',
+            type: 'Leave Type',
+            reason: 'Reason',
+            applyTime: 'Application Time'
+          }
+        },
+        create: {
+          applyInfoTitle: 'Application Information',
+          flowTitle: 'Approval Flow',
+          form: {
+            type: 'Leave Type',
+            typePlaceholder: 'Please select leave type',
+            startTime: 'Start Time',
+            startTimePlaceholder: 'Please select start time',
+            endTime: 'End Time',
+            endTimePlaceholder: 'Please select end time',
+            reason: 'Reason',
+            reasonPlaceholder: 'Please enter leave reason'
+          },
+          rules: {
+            type: 'Please select leave type',
+            reason: 'Please enter leave reason',
+            startTime: 'Please select start time',
+            endTime: 'Please select end time'
+          },
+          selectApprover: 'Please select approver for {name}',
+          submitSuccess: 'Submitted successfully',
+          approvalDetailError: 'Unable to fetch approval details!'
+        },
+        detail: {
+          type: 'Leave Type',
+          startTime: 'Start Time',
+          endTime: 'End Time',
+          reason: 'Reason'
+        },
+        definitionMissing: 'The OA leave process model is not configured. Please check!'
+      }
+    },
+    processExpression: {
+      index: {
+        docAlertTitle: 'Process Expression',
+        form: {
+          name: 'Name',
+          namePlaceholder: 'Please enter name',
+          status: 'Status',
+          statusPlaceholder: 'Please select status',
+          createTime: 'Create Time',
+          startDatePlaceholder: 'Start Date',
+          endDatePlaceholder: 'End Date'
+        },
+        table: {
+          id: 'ID',
+          name: 'Name',
+          status: 'Status',
+          expression: 'Expression',
+          createTime: 'Create Time'
+        }
+      },
+      form: {
+        name: 'Name',
+        namePlaceholder: 'Please enter name',
+        status: 'Status',
+        expression: 'Expression',
+        expressionPlaceholder: 'Please enter expression',
+        rules: {
+          name: 'Name is required',
+          status: 'Status is required',
+          expression: 'Expression is required'
+        }
+      }
+    },
+    processListener: {
+      index: {
+        docAlertTitle: 'Execution & Task Listeners',
+        form: {
+          name: 'Name',
+          namePlaceholder: 'Please enter name',
+          type: 'Type',
+          typePlaceholder: 'Please select type'
+        },
+        table: {
+          id: 'ID',
+          name: 'Name',
+          type: 'Type',
+          status: 'Status',
+          event: 'Event',
+          valueType: 'Value Type',
+          value: 'Value',
+          createTime: 'Create Time'
+        }
+      },
+      form: {
+        name: 'Name',
+        namePlaceholder: 'Please enter name',
+        status: 'Status',
+        type: 'Type',
+        typePlaceholder: 'Please select type',
+        event: 'Event',
+        eventPlaceholder: 'Please select event',
+        valueType: 'Value Type',
+        valueTypePlaceholder: 'Please select value type',
+        classPath: 'Class Path',
+        classPathPlaceholder: 'Please enter class path',
+        expression: 'Expression',
+        expressionPlaceholder: 'Please enter expression',
+        rules: {
+          name: 'Name is required',
+          type: 'Type is required',
+          status: 'Status is required',
+          event: 'Event is required',
+          valueType: 'Value type is required',
+          value: 'Value is required'
+        }
+      }
+    },
+    task: {
+      todo: {
+        docs: {
+          approve: 'Approve / Reject / Return',
+          sign: 'Add or Remove Signatures',
+          delegate: 'Delegate / Reassign / CC'
+        },
+        form: {
+          namePlaceholder: 'Please enter task name',
+          categoryPlaceholder: 'Please select process category'
+        },
+        advancedFilter: {
+          open: 'Advanced Filter',
+          processLabel: 'Process',
+          processPlaceholder: 'Please select process definition',
+          createTime: 'Initiation Time',
+          startDatePlaceholder: 'Start Date',
+          endDatePlaceholder: 'End Date',
+          clear: 'Clear'
+        },
+        table: {
+          process: 'Process',
+          summary: 'Summary',
+          startUser: 'Initiator',
+          startTime: 'Initiated At',
+          currentTask: 'Current Task',
+          taskTime: 'Task Time',
+          processId: 'Process ID',
+          taskId: 'Task ID',
+          handle: 'Handle'
+        }
+      }
+    }
+  },
+
+  ai: {
+    workflow: {
+      form: {
+        createTitle: 'Create Workflow',
+        steps: {
+          basicInfo: 'Basic Information',
+          workflowDesign: 'Workflow Design'
+        },
+        validation: {
+          basicInfo: 'Please complete the basic information',
+          workflow: 'Please complete the workflow information',
+          allSteps: 'Please complete the required fields for all steps',
+          currentStep: 'Please complete the required fields for the current step first'
+        },
+        saveSuccess: 'Saved successfully'
+      }
     }
   },
 

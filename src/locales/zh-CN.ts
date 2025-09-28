@@ -37,6 +37,10 @@ export default {
     toolDes: '用于设置定制系统',
     query: '查询',
     reset: '重置',
+    add: '新增',
+    edit: '编辑',
+    delete: '删除',
+    detail: '详情',
     shrink: '收起',
     expand: '展开',
     confirmTitle: '系统提示',
@@ -991,9 +995,33 @@ export default {
       statusRequired: '分类状态不能为空',
       sort: '分类排序',
       sortPlaceholder: '请输入分类排序',
-      sortRequired: '分类排序不能为空'
+      sortRequired: '分类排序不能为空',
+      index: {
+        docAlertTitle: '工作流手册',
+        form: {
+          name: '分类名',
+          namePlaceholder: '请输入分类名',
+          code: '分类标志',
+          codePlaceholder: '请输入分类标志',
+          status: '分类状态',
+          statusPlaceholder: '请选择分类状态',
+          createTime: '创建时间',
+          startDatePlaceholder: '开始日期',
+          endDatePlaceholder: '结束日期'
+        },
+        table: {
+          id: '分类编号',
+          name: '分类名',
+          code: '分类标志',
+          description: '分类描述',
+          status: '分类状态',
+          sort: '分类排序',
+          createTime: '创建时间'
+        }
+      }
     },
     definition: {
+      docAlertTitle: '工作流手册',
       id: '定义编号',
       name: '流程名称',
       icon: '流程图标',
@@ -1004,13 +1032,88 @@ export default {
       deployTime: '部署时间',
       allVisible: '全部可见',
       etc: '等',
+      joinSeparator: '、',
       peopleVisible: '人可见',
       noForm: '暂无表单',
       restore: '恢复',
       formDetail: '表单详情',
       manual: '工作流手册'
     },
+    form: {
+      editor: {
+        saveDialogTitle: '保存表单',
+        rules: {
+          nameRequired: '表单名不能为空',
+          statusRequired: '表单状态不能为空'
+        }
+      },
+      fields: {
+        name: '表单名',
+        namePlaceholder: '请输入表单名',
+        status: '状态',
+        remark: '备注',
+        remarkPlaceholder: '请输入备注'
+      },
+      index: {
+        docAlertTitle: '审批接入（流程表单）',
+        detailTitle: '表单详情',
+        table: {
+          id: '编号',
+          name: '表单名',
+          status: '状态',
+          remark: '备注',
+          createTime: '创建时间'
+        }
+      }
+    },
+    group: {
+      index: {
+        docAlertTitle: '工作流手册',
+        form: {
+          name: '用户组名称',
+          namePlaceholder: '请输入用户组名称',
+          status: '状态',
+          statusPlaceholder: '请选择状态',
+          createTime: '创建时间',
+          startDatePlaceholder: '开始日期',
+          endDatePlaceholder: '结束日期'
+        },
+        table: {
+          id: '编号',
+          name: '用户组名称',
+          description: '描述',
+          members: '成员',
+          status: '状态',
+          createTime: '创建时间'
+        }
+      },
+      form: {
+        name: '用户组名称',
+        namePlaceholder: '请输入用户组名称',
+        description: '描述',
+        descriptionPlaceholder: '请输入描述',
+        members: '成员',
+        membersPlaceholder: '请选择成员',
+        status: '状态',
+        rules: {
+          name: '用户组名称不能为空',
+          description: '描述不能为空',
+          members: '请选择成员',
+          status: '请选择状态'
+        }
+      }
+    },
     model: {
+      index: {
+        title: '流程模型',
+        searchPlaceholder: '搜索流程',
+        createModel: '新建模型',
+        createCategory: '新建分类',
+        sortCategory: '分类排序',
+        saveSort: '保存排序',
+        formDetailTitle: '表单详情',
+        sortSuccess: '分类排序成功'
+      },
       dragToSort: '拖动排序',
       sort: '排序',
       create: '新建',
@@ -1217,6 +1320,196 @@ export default {
       completionCondition: '完成条件',
       asyncState: '异步状态',
       loopCardinality: '循环基数'
+    },
+    oa: {
+      leave: {
+        index: {
+          docAlertTitle: '审批接入（业务表单）',
+          form: {
+            type: '请假类型',
+            typePlaceholder: '请选择请假类型',
+            applyTime: '申请时间',
+            startDatePlaceholder: '开始日期',
+            endDatePlaceholder: '结束日期',
+            status: '审批结果',
+            statusPlaceholder: '请选择审批结果',
+            reason: '原因',
+            reasonPlaceholder: '请输入原因'
+          },
+          actions: {
+            create: '发起请假',
+            progress: '进度'
+          },
+          table: {
+            id: '申请编号',
+            status: '状态',
+            startTime: '开始时间',
+            endTime: '结束时间',
+            type: '请假类型',
+            reason: '原因',
+            applyTime: '申请时间'
+          }
+        },
+        create: {
+          applyInfoTitle: '申请信息',
+          flowTitle: '审批流程',
+          form: {
+            type: '请假类型',
+            typePlaceholder: '请选择请假类型',
+            startTime: '开始时间',
+            startTimePlaceholder: '请选择开始时间',
+            endTime: '结束时间',
+            endTimePlaceholder: '请选择结束时间',
+            reason: '原因',
+            reasonPlaceholder: '请输入请假原因'
+          },
+          rules: {
+            type: '请选择请假类型',
+            reason: '请输入请假原因',
+            startTime: '请选择开始时间',
+            endTime: '请选择结束时间'
+          },
+          selectApprover: '请选择{name}的审批人',
+          submitSuccess: '发起成功',
+          approvalDetailError: '查询不到审批详情信息！'
+        },
+        detail: {
+          type: '请假类型',
+          startTime: '开始时间',
+          endTime: '结束时间',
+          reason: '原因'
+        },
+        definitionMissing: 'OA 请假的流程模型未配置，请检查！'
+      }
+    },
+    processExpression: {
+      index: {
+        docAlertTitle: '流程表达式',
+        form: {
+          name: '名字',
+          namePlaceholder: '请输入名字',
+          status: '状态',
+          statusPlaceholder: '请选择状态',
+          createTime: '创建时间',
+          startDatePlaceholder: '开始日期',
+          endDatePlaceholder: '结束日期'
+        },
+        table: {
+          id: '编号',
+          name: '名字',
+          status: '状态',
+          expression: '表达式',
+          createTime: '创建时间'
+        }
+      },
+      form: {
+        name: '名字',
+        namePlaceholder: '请输入名字',
+        status: '状态',
+        expression: '表达式',
+        expressionPlaceholder: '请输入表达式',
+        rules: {
+          name: '名字不能为空',
+          status: '状态不能为空',
+          expression: '表达式不能为空'
+        }
+      }
+    },
+    processListener: {
+      index: {
+        docAlertTitle: '执行监听器、任务监听器',
+        form: {
+          name: '名字',
+          namePlaceholder: '请输入名字',
+          type: '类型',
+          typePlaceholder: '请选择类型'
+        },
+        table: {
+          id: '编号',
+          name: '名字',
+          type: '类型',
+          status: '状态',
+          event: '事件',
+          valueType: '值类型',
+          value: '值',
+          createTime: '创建时间'
+        }
+      },
+      form: {
+        name: '名字',
+        namePlaceholder: '请输入名字',
+        status: '状态',
+        type: '类型',
+        typePlaceholder: '请选择类型',
+        event: '事件',
+        eventPlaceholder: '请选择事件',
+        valueType: '值类型',
+        valueTypePlaceholder: '请选择值类型',
+        classPath: '类路径',
+        classPathPlaceholder: '请输入类路径',
+        expression: '表达式',
+        expressionPlaceholder: '请输入表达式',
+        rules: {
+          name: '名字不能为空',
+          type: '类型不能为空',
+          status: '状态不能为空',
+          event: '监听事件不能为空',
+          valueType: '值类型不能为空',
+          value: '值不能为空'
+        }
+      }
+    },
+    task: {
+      todo: {
+        docs: {
+          approve: '审批通过、不通过、驳回',
+          sign: '审批加签、减签',
+          delegate: '审批转办、委派、抄送'
+        },
+        form: {
+          namePlaceholder: '请输入任务名称',
+          categoryPlaceholder: '请选择流程分类'
+        },
+        advancedFilter: {
+          open: '高级筛选',
+          processLabel: '所属流程',
+          processPlaceholder: '请选择流程定义',
+          createTime: '发起时间',
+          startDatePlaceholder: '开始日期',
+          endDatePlaceholder: '结束日期',
+          clear: '清空'
+        },
+        table: {
+          process: '流程',
+          summary: '摘要',
+          startUser: '发起人',
+          startTime: '发起时间',
+          currentTask: '当前任务',
+          taskTime: '任务时间',
+          processId: '流程编号',
+          taskId: '任务编号',
+          handle: '办理'
+        }
+      }
+    },
+  },
+
+  ai: {
+    workflow: {
+      form: {
+        createTitle: '创建流程',
+        steps: {
+          basicInfo: '基本信息',
+          workflowDesign: '工作流设计'
+        },
+        validation: {
+          basicInfo: '请完善基本信息',
+          workflow: '请完善工作流信息',
+          allSteps: '请完善所有步骤的必填信息',
+          currentStep: '请先完善当前步骤必填信息'
+        },
+        saveSuccess: '保存成功'
+      }
     }
   },
 

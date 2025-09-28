@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="工作流手册" url="https://doc.iocoder.cn/bpm/" />
+  <doc-alert :title="$t('bpm.definition.docAlertTitle')" url="https://doc.iocoder.cn/bpm/" />
 
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
@@ -21,7 +21,7 @@
               class="box-item"
               effect="dark"
               placement="top"
-              :content="row.startUsers.map((user: any) => user.nickname).join('、')"
+              :content="row.startUsers.map((user: any) => user.nickname).join(t('bpm.definition.joinSeparator'))"
             >
               {{ row.startUsers[0].nickname }}{{ t('bpm.definition.etc') }} {{ row.startUsers.length }} {{ t('bpm.definition.peopleVisible') }}
             </el-tooltip>

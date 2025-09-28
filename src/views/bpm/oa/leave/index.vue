@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="审批接入（业务表单）" url="https://doc.iocoder.cn/bpm/use-business-form/" />
+  <doc-alert :title="$t('bpm.oa.leave.index.docAlertTitle')" url="https://doc.iocoder.cn/bpm/use-business-form/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,12 +10,12 @@
       class="-mb-15px"
       label-width="68px"
     >
-      <el-form-item label="请假类型" prop="type">
+      <el-form-item :label="$t('bpm.oa.leave.index.form.type')" prop="type">
         <el-select
           v-model="queryParams.type"
           class="!w-240px"
           clearable
-          placeholder="请选择请假类型"
+          :placeholder="$t('bpm.oa.leave.index.form.typePlaceholder')"
         >
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.BPM_OA_LEAVE_TYPE)"
@@ -25,23 +25,23 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="申请时间" prop="createTime">
+      <el-form-item :label="$t('bpm.oa.leave.index.form.applyTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
-          end-placeholder="结束日期"
-          start-placeholder="开始日期"
+          :end-placeholder="$t('bpm.oa.leave.index.form.endDatePlaceholder')"
+          :start-placeholder="$t('bpm.oa.leave.index.form.startDatePlaceholder')"
           type="daterange"
           value-format="YYYY-MM-DD HH:mm:ss"
         />
       </el-form-item>
-      <el-form-item label="审批结果" prop="status">
+      <el-form-item :label="$t('bpm.oa.leave.index.form.status')" prop="status">
         <el-select
           v-model="queryParams.status"
           class="!w-240px"
           clearable
-          placeholder="请选择审批结果"
+          :placeholder="$t('bpm.oa.leave.index.form.statusPlaceholder')"
         >
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.BPM_PROCESS_INSTANCE_STATUS)"
@@ -51,27 +51,27 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="原因" prop="reason">
+      <el-form-item :label="$t('bpm.oa.leave.index.form.reason')" prop="reason">
         <el-input
           v-model="queryParams.reason"
           class="!w-240px"
           clearable
-          placeholder="请输入原因"
+          :placeholder="$t('bpm.oa.leave.index.form.reasonPlaceholder')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
       <el-form-item>
         <el-button @click="handleQuery">
           <Icon class="mr-5px" icon="ep:search" />
-          搜索
+          {{ $t('common.query') }}
         </el-button>
         <el-button @click="resetQuery">
           <Icon class="mr-5px" icon="ep:refresh" />
-          重置
+          {{ $t('common.reset') }}
         </el-button>
         <el-button plain type="primary" @click="handleCreate()">
           <Icon class="mr-5px" icon="ep:plus" />
-          发起请假
+          {{ $t('bpm.oa.leave.index.actions.create') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -80,8 +80,8 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column align="center" label="申请编号" prop="id" />
-      <el-table-column align="center" label="状态" prop="status">
+      <el-table-column align="center" :label="$t('bpm.oa.leave.index.table.id')" prop="id" />
+      <el-table-column align="center" :label="$t('bpm.oa.leave.index.table.status')" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.BPM_PROCESS_INSTANCE_STATUS" :value="scope.row.status" />
         </template>
@@ -89,31 +89,31 @@
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        label="开始时间"
+        :label="$t('bpm.oa.leave.index.table.startTime')"
         prop="startTime"
         width="180"
       />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        label="结束时间"
+        :label="$t('bpm.oa.leave.index.table.endTime')"
         prop="endTime"
         width="180"
       />
-      <el-table-column align="center" label="请假类型" prop="type">
+      <el-table-column align="center" :label="$t('bpm.oa.leave.index.table.type')" prop="type">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.BPM_OA_LEAVE_TYPE" :value="scope.row.type" />
         </template>
       </el-table-column>
-      <el-table-column align="center" label="原因" prop="reason" />
+      <el-table-column align="center" :label="$t('bpm.oa.leave.index.table.reason')" prop="reason" />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        label="申请时间"
+        :label="$t('bpm.oa.leave.index.table.applyTime')"
         prop="createTime"
         width="180"
       />
-      <el-table-column align="center" label="操作" width="200">
+      <el-table-column align="center" :label="$t('common.operation')" width="200">
         <template #default="scope">
           <el-button
             v-hasPermi="['bpm:oa-leave:query']"
@@ -121,7 +121,7 @@
             type="primary"
             @click="handleDetail(scope.row)"
           >
-            详情
+            {{ $t('common.detail') }}
           </el-button>
           <el-button
             v-hasPermi="['bpm:oa-leave:query']"
@@ -129,7 +129,7 @@
             type="primary"
             @click="handleProcessDetail(scope.row)"
           >
-            进度
+            {{ $t('bpm.oa.leave.index.actions.progress') }}
           </el-button>
           <el-button
             v-if="scope.row.result === 1"
@@ -138,7 +138,7 @@
             type="danger"
             @click="cancelLeave(scope.row)"
           >
-            取消
+            {{ $t('common.cancel') }}
           </el-button>
         </template>
       </el-table-column>
