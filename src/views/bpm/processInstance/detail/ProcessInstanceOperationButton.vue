@@ -145,7 +145,7 @@
       <template #reference>
         <div @click="openPopover('copy')" class="hover-bg-gray-100 rounded-xl p-6px">
           <Icon :size="14" icon="svg-icon:send" />&nbsp;
-          {{ getButtonDisplayName(OperationButtonType.COPY) }}
+          {{ getButtonDisplayName(OperationButtonType.COPY) }} AA
         </div>
       </template>
       <div class="flex flex-col flex-1 pt-20px px-20px" v-loading="formLoading">
@@ -1073,9 +1073,12 @@ const isShowButton = (btnType: OperationButtonType): boolean => {
 /** 获取按钮的显示名称 */
 const getButtonDisplayName = (btnType: OperationButtonType) => {
   let displayName = OPERATION_BUTTON_NAME.get(btnType)
+  console.log('displayNam0:', runningTask.value.buttonsSetting[btnType], btnType,   displayName)
   if (runningTask.value?.buttonsSetting && runningTask.value?.buttonsSetting[btnType]) {
+    console.log('displayNam1:', btnType,   displayName)
     displayName = runningTask.value.buttonsSetting[btnType].displayName
   }
+  console.log('displayNam2:', btnType,   displayName)
   return displayName
 }
 

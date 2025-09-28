@@ -27,7 +27,7 @@
     </template>
     <div>
       <div class="mb-3 font-size-16px" v-if="currentNode.conditionSetting?.defaultFlow"
-        >未满足其它条件时，将进入此分支（该分支不可编辑和删除）</div
+        >{{ t('simpleProcessDesignerV2.conditionNode.defaultBranchTip') }}</div
       >
       <div v-else>
         <Condition ref="conditionRef" v-model="condition" />
@@ -36,8 +36,10 @@
     <template #footer>
       <el-divider />
       <div>
-        <el-button type="primary" @click="saveConfig">确 定</el-button>
-        <el-button @click="closeDrawer">取 消</el-button>
+        <el-button type="primary" @click="saveConfig">
+          {{ t('common.confirm') }}
+        </el-button>
+        <el-button @click="closeDrawer">{{ t('common.cancel') }}</el-button>
       </div>
     </template>
   </el-drawer>
@@ -52,6 +54,7 @@ import { cloneDeep } from 'lodash-es'
 defineOptions({
   name: 'ConditionNodeConfig'
 })
+const { t } = useI18n()
 const props = defineProps({
   conditionNode: {
     type: Object as () => SimpleFlowNode,

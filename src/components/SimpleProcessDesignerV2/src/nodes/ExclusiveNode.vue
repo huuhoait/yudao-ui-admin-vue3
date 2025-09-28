@@ -9,7 +9,7 @@
         <span class="iconfont icon-exclusive icon-size condition"></span>
       </div>
       <el-button v-else class="branch-node-add" color="#67c23a" @click="addCondition" plain
-        >添加条件</el-button
+        >{{ t('simpleProcessDesignerV2.exclusiveNode.addCondition') }}</el-button
       >
 
       <div
@@ -45,14 +45,16 @@
                   />
                 </div>
                 <div v-else class="branch-title" @click="clickEvent(index)"> {{ item.name }} </div>
-                <div class="branch-priority"> 优先级{{ index + 1 }} </div>
+                <div class="branch-priority">
+                  {{ t('simpleProcessDesignerV2.exclusiveNode.priority', { index: index + 1 }) }}
+                </div>
               </div>
               <div class="branch-node-content" @click="conditionNodeConfig(item.id)">
                 <div class="branch-node-text" :title="item.showText" v-if="item.showText">
                   {{ item.showText }}
                 </div>
                 <div class="branch-node-text" v-else>
-                  {{ NODE_DEFAULT_TEXT.get(NodeType.CONDITION_NODE) }}
+                  {{ t(NODE_DEFAULT_TEXT.get(NodeType.CONDITION_NODE) as string) }}
                 </div>
               </div>
               <div
@@ -124,6 +126,7 @@ const { proxy } = getCurrentInstance() as any
 defineOptions({
   name: 'ExclusiveNode'
 })
+const { t } = useI18n()
 const props = defineProps({
   flowNode: {
     type: Object as () => SimpleFlowNode,
@@ -181,7 +184,7 @@ const addCondition = () => {
     let lastIndex = len - 1
     const conditionData: SimpleFlowNode = {
       id: 'Flow_' + generateUUID(),
-      name: '条件' + len,
+      name: t('simpleProcessDesignerV2.common.conditionWithIndex', { index: len }),
       showText: '',
       type: NodeType.CONDITION_NODE,
       childNode: undefined,

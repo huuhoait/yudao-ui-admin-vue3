@@ -28,7 +28,7 @@
             {{ currentNode.showText }}
           </div>
           <div class="node-text" v-else>
-            {{ NODE_DEFAULT_TEXT.get(NodeType.COPY_TASK_NODE) }}
+            {{ t(NODE_DEFAULT_TEXT.get(NodeType.COPY_TASK_NODE) as string) }}
           </div>
           <Icon v-if="!readonly" icon="ep:arrow-right-bold" />
         </div>
@@ -61,6 +61,7 @@ import CopyTaskNodeConfig from '../nodes-config/CopyTaskNodeConfig.vue'
 defineOptions({
   name: 'CopyTaskNode'
 })
+const { t } = useI18n()
 const props = defineProps({
   flowNode: {
     type: Object as () => SimpleFlowNode,

@@ -7,17 +7,24 @@
       :readonly="false"
       @save="saveSimpleFlowModel"
     />
-    <Dialog v-model="errorDialogVisible" title="保存失败" width="400" :fullscreen="false">
-      <div class="mb-2">以下节点内容不完善，请修改后保存</div>
+    <Dialog
+      v-model="errorDialogVisible"
+      :title="t('simpleProcessDesignerV2.common.saveFailed')"
+      width="400"
+      :fullscreen="false"
+    >
+      <div class="mb-2">{{ t('simpleProcessDesignerV2.common.incompleteNodeTip') }}</div>
       <div
         class="mb-3 b-rounded-1 bg-gray-100 p-2 line-height-normal"
         v-for="(item, index) in errorNodes"
         :key="index"
       >
-        {{ item.name }} : {{ NODE_DEFAULT_TEXT.get(item.type) }}
+        {{ item.name }} : {{ t(NODE_DEFAULT_TEXT.get(item.type) as string) }}
       </div>
       <template #footer>
-        <el-button type="primary" @click="errorDialogVisible = false">知道了</el-button>
+        <el-button type="primary" @click="errorDialogVisible = false">
+          {{ t('simpleProcessDesignerV2.common.gotIt') }}
+        </el-button>
       </template>
     </Dialog>
   </div>
@@ -70,7 +77,9 @@ const props = defineProps({
   }
 })
 
-const processData = inject('processData') as Ref
+const { t } = useI18n()
+
+const processData = inject('simpleProcessDesignerV2.processData') as Ref
 const loading = ref(false)
 const formFields = ref<string[]>([])
 const formType = ref(props.modelFormType);
@@ -129,12 +138,12 @@ let errorNodes: SimpleFlowNode[] = []
 const updateModel = () => {
   if (!processNodeTree.value) {
     processNodeTree.value = {
-      name: '发起人',
+      name: t('simpleProcessDesignerV2.nodes.startUser'),
       type: NodeType.START_USER_NODE,
       id: NodeId.START_USER_NODE_ID,
       childNode: {
         id: NodeId.END_EVENT_NODE_ID,
-        name: '结束',
+        name: t('simpleProcessDesignerV2.nodes.end'),
         type: NodeType.END_EVENT_NODE
       }
     }
@@ -152,7 +161,7 @@ const saveSimpleFlowModel = async (simpleModelNode: SimpleFlowNode) => {
     processData.value = simpleModelNode
     emits('success', simpleModelNode)
   } catch (error) {
-    console.error('保存失败:', error)
+    console.error(t('simpleProcessDesignerV2.common.saveFailedLog'), error)
   }
 }
 

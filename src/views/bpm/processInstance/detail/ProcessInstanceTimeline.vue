@@ -47,7 +47,7 @@
             @click="handleChildProcess(activity)"
             :disabled="!activity.processInstanceId"
           >
-            查看子流程
+            {{ t('bpm.processInstance.detail.timeline.viewSubProcess') }}
           </el-button>
         </div>
         <!-- 需要自定义选择审批人 -->
@@ -63,7 +63,7 @@
         >
           <!--  && activity.nodeType === NodeType.USER_TASK_NODE -->
 
-          <el-tooltip content="添加用户" placement="left">
+          <el-tooltip :content="t('bpm.processInstance.detail.timeline.addUser')" placement="left">
             <el-button
               class="!px-6px"
               @click="handleSelectUser(activity.id, customApproveUsers[activity.id])"
@@ -137,13 +137,13 @@
                 class="text-#a5a5a5 text-13px mt-1 w-full bg-#f8f8fa p2 rounded-md"
               >
                 <!-- TODO lesan：这里如果是办理，需要是办理意见 -->
-                审批意见：{{ task.reason }}
+                {{ t('bmp.processInstance.detail.timeline.approvalOpinion') }}：{{ task.reason }}
               </div>
               <div
                 v-if="task.signPicUrl && activity.nodeType === NodeType.USER_TASK_NODE"
                 class="text-#a5a5a5 text-13px mt-1 w-full bg-#f8f8fa p2 rounded-md"
               >
-                签名：
+                {{ t('bpm.processInstance.detail.timeline.signature') }}：
                 <el-image
                   class="w-90px h-40px ml-5px"
                   :src="task.signPicUrl"
@@ -185,6 +185,7 @@
 <script lang="ts" setup>
 import { formatDate } from '@/utils/formatTime'
 import * as ProcessInstanceApi from '@/api/bpm/processInstance'
+import { useI18n } from '@/hooks/web/useI18n'
 import { TaskStatusEnum } from '@/api/bpm/task'
 import { NodeType, CandidateStrategy } from '@/components/SimpleProcessDesignerV2/src/consts'
 import { isEmpty } from '@/utils/is'
@@ -211,6 +212,7 @@ const props = withDefaults(
   }
 )
 const { push } = useRouter() // 路由
+const { t } = useI18n()
 
 // 审批节点
 const statusIconMap2 = {

@@ -24,10 +24,13 @@
       </div>
     </template>
     <el-tabs type="border-card" v-model="activeTabName">
-      <el-tab-pane label="抄送人" name="user">
+      <el-tab-pane :label="t('simpleProcessDesignerV2.copyTaskConfig.tabs.user')" name="user">
         <div>
           <el-form ref="formRef" :model="configForm" label-position="top" :rules="formRules">
-            <el-form-item label="抄送人设置" prop="candidateStrategy">
+            <el-form-item
+              :label="t('simpleProcessDesignerV2.copyTaskConfig.form.settingLabel')"
+              prop="candidateStrategy"
+            >
               <el-radio-group
                 v-model="configForm.candidateStrategy"
                 @change="changeCandidateStrategy"
@@ -45,7 +48,7 @@
 
             <el-form-item
               v-if="configForm.candidateStrategy == CandidateStrategy.ROLE"
-              label="指定角色"
+              :label="t('simpleProcessDesignerV2.copyTaskConfig.form.specifyRole')"
               prop="roleIds"
             >
               <el-select v-model="configForm.roleIds" clearable multiple style="width: 100%">
@@ -63,7 +66,7 @@
                 configForm.candidateStrategy == CandidateStrategy.DEPT_LEADER ||
                 configForm.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER
               "
-              label="指定部门"
+              :label="t('simpleProcessDesignerV2.copyTaskConfig.form.specifyDept')"
               prop="deptIds"
               span="24"
             >
@@ -72,7 +75,7 @@
                 v-model="configForm.deptIds"
                 :data="deptTreeOptions"
                 :props="defaultProps"
-                empty-text="加载中，请稍后"
+                :empty-text="t('simpleProcessDesignerV2.common.loading')"
                 multiple
                 node-key="id"
                 style="width: 100%"
@@ -81,7 +84,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy == CandidateStrategy.POST"
-              label="指定岗位"
+              :label="t('simpleProcessDesignerV2.copyTaskConfig.form.specifyPost')"
               prop="postIds"
               span="24"
             >
@@ -96,7 +99,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy == CandidateStrategy.USER"
-              label="指定用户"
+              :label="t('simpleProcessDesignerV2.copyTaskConfig.form.specifyUser')"
               prop="userIds"
               span="24"
             >
@@ -111,7 +114,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy === CandidateStrategy.USER_GROUP"
-              label="指定用户组"
+              :label="t('simpleProcessDesignerV2.copyTaskConfig.form.specifyUserGroup')"
               prop="userGroups"
             >
               <el-select v-model="configForm.userGroups" clearable multiple style="width: 100%">
@@ -125,7 +128,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy === CandidateStrategy.FORM_USER"
-              label="表单内用户字段"
+              :label="t('simpleProcessDesignerV2.copyTaskConfig.form.formUserField')"
               prop="formUser"
             >
               <el-select v-model="configForm.formUser" clearable style="width: 100%">
@@ -140,7 +143,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy === CandidateStrategy.FORM_DEPT_LEADER"
-              label="表单内部门字段"
+              :label="t('simpleProcessDesignerV2.copyTaskConfig.form.formDeptField')"
               prop="formDept"
             >
               <el-select v-model="configForm.formDept" clearable style="width: 100%">
@@ -161,14 +164,14 @@
                   CandidateStrategy.START_USER_MULTI_LEVEL_DEPT_LEADER ||
                 configForm.candidateStrategy == CandidateStrategy.FORM_DEPT_LEADER
               "
-              :label="deptLevelLabel!"
+              :label="deptLevelLabel"
               prop="deptLevel"
               span="24"
             >
               <el-select v-model="configForm.deptLevel" clearable>
                 <el-option
-                  v-for="(item, index) in MULTI_LEVEL_DEPT"
-                  :key="index"
+                  v-for="item in deptLevelOptions"
+                  :key="item.value"
                   :label="item.label"
                   :value="item.value"
                 />
@@ -176,7 +179,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy === CandidateStrategy.EXPRESSION"
-              label="流程表达式"
+              :label="t('simpleProcessDesignerV2.copyTaskConfig.form.expression')"
               prop="expression"
             >
               <el-input
@@ -189,20 +192,28 @@
           </el-form>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="表单字段权限" name="fields" v-if="formType === 10">
+      <el-tab-pane
+        :label="t('simpleProcessDesignerV2.copyTaskConfig.tabs.fields')"
+        name="fields"
+        v-if="formType === 10"
+      >
         <div class="field-setting-pane">
-          <div class="field-setting-desc">字段权限</div>
+          <div class="field-setting-desc">
+            {{ t('simpleProcessDesignerV2.common.fieldPermissions') }}
+          </div>
           <div class="field-permit-title">
-            <div class="setting-title-label first-title"> 字段名称 </div>
+            <div class="setting-title-label first-title">
+              {{ t('simpleProcessDesignerV2.common.fieldName') }}
+            </div>
             <div class="other-titles">
               <span class="setting-title-label cursor-pointer" @click="updatePermission('READ')">
-                只读
+                {{ t('simpleProcessDesignerV2.common.readOnly') }}
               </span>
               <span class="setting-title-label cursor-pointer" @click="updatePermission('WRITE')">
-                可编辑
+                {{ t('simpleProcessDesignerV2.common.editable') }}
               </span>
               <span class="setting-title-label cursor-pointer" @click="updatePermission('NONE')">
-                隐藏
+                {{ t('simpleProcessDesignerV2.common.hidden') }}
               </span>
             </div>
           </div>
@@ -246,13 +257,15 @@
     <template #footer>
       <el-divider />
       <div>
-        <el-button type="primary" @click="saveConfig">确 定</el-button>
-        <el-button @click="closeDrawer">取 消</el-button>
+        <el-button type="primary" @click="saveConfig">{{ t('common.confirm') }}</el-button>
+        <el-button @click="closeDrawer">{{ t('common.cancel') }}</el-button>
       </div>
     </template>
   </el-drawer>
 </template>
 <script setup lang="ts">
+import { computed, reactive, ref } from 'vue'
+import type { Ref } from 'vue'
 import {
   SimpleFlowNode,
   CandidateStrategy,
@@ -270,23 +283,17 @@ import {
   CopyTaskFormType
 } from '../node'
 import { defaultProps } from '@/utils/tree'
+import { useI18n } from '@/hooks/web/useI18n'
 defineOptions({
   name: 'CopyTaskNodeConfig'
 })
+
+const { t } = useI18n()
 const props = defineProps({
   flowNode: {
     type: Object as () => SimpleFlowNode,
     required: true
   }
-})
-const deptLevelLabel = computed(() => {
-  let label = '部门负责人来源'
-  if (configForm.value.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER) {
-    label = label + '(指定部门向上)'
-  } else {
-    label = label + '(发起人部门向上)'
-  }
-  return label
 })
 // 抽屉配置
 const { settingVisible, closeDrawer, openDrawer } = useDrawer()
@@ -311,15 +318,51 @@ const deptFieldOnFormOptions = computed(() => {
 const formRef = ref() // 表单 Ref
 // 表单校验规则
 const formRules = reactive({
-  candidateStrategy: [{ required: true, message: '抄送人设置不能为空', trigger: 'change' }],
-  userIds: [{ required: true, message: '用户不能为空', trigger: 'change' }],
-  roleIds: [{ required: true, message: '角色不能为空', trigger: 'change' }],
-  deptIds: [{ required: true, message: '部门不能为空', trigger: 'change' }],
-  userGroups: [{ required: true, message: '用户组不能为空', trigger: 'change' }],
-  postIds: [{ required: true, message: '岗位不能为空', trigger: 'change' }],
-  formUser: [{ required: true, message: '表单内用户字段不能为空', trigger: 'change' }],
-  formDept: [{ required: true, message: '表单内部门字段不能为空', trigger: 'change' }],
-  expression: [{ required: true, message: '流程表达式不能为空', trigger: 'blur' }]
+  candidateStrategy: [{
+    required: true,
+    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.candidateRequired'),
+    trigger: 'change'
+  }],
+  userIds: [{
+    required: true,
+    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.userRequired'),
+    trigger: 'change'
+  }],
+  roleIds: [{
+    required: true,
+    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.roleRequired'),
+    trigger: 'change'
+  }],
+  deptIds: [{
+    required: true,
+    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.deptRequired'),
+    trigger: 'change'
+  }],
+  userGroups: [{
+    required: true,
+    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.userGroupRequired'),
+    trigger: 'change'
+  }],
+  postIds: [{
+    required: true,
+    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.postRequired'),
+    trigger: 'change'
+  }],
+  formUser: [{
+    required: true,
+    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.formUserRequired'),
+    trigger: 'change'
+  }],
+  formDept: [{
+    required: true,
+    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.formDeptRequired'),
+    trigger: 'change'
+  }],
+  expression: [{
+    required: true,
+    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.expressionRequired'),
+    trigger: 'blur'
+  }]
 })
 
 const {
@@ -334,10 +377,60 @@ const {
   parseCandidateParam
 } = useNodeForm(NodeType.COPY_TASK_NODE)
 const configForm = tempConfigForm as Ref<CopyTaskFormType>
+const candidateStrategyLabelMap: Record<number, string> = {
+  [CandidateStrategy.USER]: 'simpleProcessDesignerV2.options.candidateStrategy.user',
+  [CandidateStrategy.ROLE]: 'simpleProcessDesignerV2.options.candidateStrategy.role',
+  [CandidateStrategy.POST]: 'simpleProcessDesignerV2.options.candidateStrategy.post',
+  [CandidateStrategy.DEPT_MEMBER]: 'simpleProcessDesignerV2.options.candidateStrategy.deptMember',
+  [CandidateStrategy.DEPT_LEADER]: 'simpleProcessDesignerV2.options.candidateStrategy.deptLeader',
+  [CandidateStrategy.MULTI_LEVEL_DEPT_LEADER]:
+    'simpleProcessDesignerV2.options.candidateStrategy.multiDeptLeader',
+  [CandidateStrategy.START_USER_SELECT]:
+    'simpleProcessDesignerV2.options.candidateStrategy.starterSelect',
+  [CandidateStrategy.APPROVE_USER_SELECT]:
+    'simpleProcessDesignerV2.options.candidateStrategy.approverSelect',
+  [CandidateStrategy.START_USER]: 'simpleProcessDesignerV2.options.candidateStrategy.starter',
+  [CandidateStrategy.START_USER_DEPT_LEADER]:
+    'simpleProcessDesignerV2.options.candidateStrategy.starterDeptLeader',
+  [CandidateStrategy.START_USER_MULTI_LEVEL_DEPT_LEADER]:
+    'simpleProcessDesignerV2.options.candidateStrategy.starterMultiDeptLeader',
+  [CandidateStrategy.USER_GROUP]: 'simpleProcessDesignerV2.options.candidateStrategy.userGroup',
+  [CandidateStrategy.FORM_USER]: 'simpleProcessDesignerV2.options.candidateStrategy.formUser',
+  [CandidateStrategy.FORM_DEPT_LEADER]:
+    'simpleProcessDesignerV2.options.candidateStrategy.formDeptLeader',
+  [CandidateStrategy.EXPRESSION]: 'simpleProcessDesignerV2.options.candidateStrategy.expression'
+}
+
 // 抄送人策略， 去掉发起人自选 和 发起人自己
 const copyUserStrategies = computed(() => {
-  return CANDIDATE_STRATEGY.filter((item) => item.value !== CandidateStrategy.START_USER)
+  return CANDIDATE_STRATEGY.filter((item) => item.value !== CandidateStrategy.START_USER).map(
+    (item) => ({
+      ...item,
+      label: t(candidateStrategyLabelMap[item.value] || '')
+    })
+  )
 })
+
+const deptLevelLabel = computed(() => {
+  const strategy = configForm.value.candidateStrategy
+  if (strategy === CandidateStrategy.MULTI_LEVEL_DEPT_LEADER) {
+    return t('simpleProcessDesignerV2.copyTaskConfig.form.deptLeaderSourceSpecified')
+  }
+  if (strategy === CandidateStrategy.FORM_DEPT_LEADER) {
+    return t('simpleProcessDesignerV2.copyTaskConfig.form.deptLeaderSourceForm')
+  }
+  if (strategy === CandidateStrategy.START_USER_MULTI_LEVEL_DEPT_LEADER) {
+    return t('simpleProcessDesignerV2.copyTaskConfig.form.deptLeaderSourceStarterMulti')
+  }
+  return t('simpleProcessDesignerV2.copyTaskConfig.form.deptLeaderSourceStarter')
+})
+
+const deptLevelOptions = computed(() =>
+  MULTI_LEVEL_DEPT.map((item) => ({
+    value: item.value,
+    label: t('simpleProcessDesignerV2.options.multiLevelDept.level', { level: item.value })
+  }))
+)
 // 改变抄送人设置策略
 const changeCandidateStrategy = () => {
   configForm.value.userIds = []
@@ -351,7 +444,7 @@ const changeCandidateStrategy = () => {
 // 保存配置
 const saveConfig = async () => {
   activeTabName.value = 'user'
-  if (!formRef) return false
+  if (!formRef.value) return false
   const valid = await formRef.value.validate()
   if (!valid) return false
   const showText = getShowText()

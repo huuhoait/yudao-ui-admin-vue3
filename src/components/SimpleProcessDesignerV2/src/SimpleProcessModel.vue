@@ -4,10 +4,10 @@
       <el-row type="flex" justify="end">
         <el-button-group key="scale-control" size="default">
           <el-button v-if="!readonly" size="default" @click="exportJson">
-            <Icon icon="ep:download" /> 导出
+            <Icon icon="ep:download" /> {{ t('simpleProcessDesignerV2.common.export') }}
           </el-button>
           <el-button v-if="!readonly" size="default" @click="importJson">
-            <Icon icon="ep:upload" />导入
+            <Icon icon="ep:upload" />{{ t('simpleProcessDesignerV2.common.import') }}
           </el-button>
           <!-- 用于打开本地文件-->
           <input
@@ -23,7 +23,9 @@
           <el-button size="default" :plain="true" :icon="ZoomOut" @click="zoomOut()" />
           <el-button size="default" class="w-80px"> {{ scaleValue }}% </el-button>
           <el-button size="default" :plain="true" :icon="ZoomIn" @click="zoomIn()" />
-          <el-button size="default" @click="resetPosition">重置</el-button>
+          <el-button size="default" @click="resetPosition">
+            {{ t('simpleProcessDesignerV2.common.reset') }}
+          </el-button>
         </el-button-group>
       </el-row>
     </div>
@@ -39,17 +41,24 @@
       <ProcessNodeTree v-if="processNodeTree" v-model:flow-node="processNodeTree" />
     </div>
   </div>
-  <Dialog v-model="errorDialogVisible" title="保存失败" width="400" :fullscreen="false">
-    <div class="mb-2">以下节点内容不完善，请修改后保存</div>
+  <Dialog
+    v-model="errorDialogVisible"
+    :title="t('simpleProcessDesignerV2.common.saveFailed')"
+    width="400"
+    :fullscreen="false"
+  >
+    <div class="mb-2">{{ t('simpleProcessDesignerV2.common.incompleteNodeTip') }}</div>
     <div
       class="mb-3 b-rounded-1 bg-gray-100 p-2 line-height-normal"
       v-for="(item, index) in errorNodes"
       :key="index"
     >
-      {{ item.name }} : {{ NODE_DEFAULT_TEXT.get(item.type) }}
+      {{ item.name }} : {{ t(NODE_DEFAULT_TEXT.get(item.type) as string) }}
     </div>
     <template #footer>
-      <el-button type="primary" @click="errorDialogVisible = false">知道了</el-button>
+      <el-button type="primary" @click="errorDialogVisible = false">
+        {{ t('simpleProcessDesignerV2.common.gotIt') }}
+      </el-button>
     </template>
   </Dialog>
 </template>
@@ -65,6 +74,8 @@ import download from '@/utils/download'
 defineOptions({
   name: 'SimpleProcessModel'
 })
+
+const { t } = useI18n()
 
 const props = defineProps({
   flowNode: {
@@ -206,7 +217,7 @@ const getCurrentFlowData = async () => {
     }
     return processNodeTree.value
   } catch (error) {
-    console.error('获取流程数据失败:', error)
+    console.error(t('simpleProcessDesignerV2.common.loadFlowFailed'), error)
     return undefined
   }
 }

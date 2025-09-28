@@ -1665,6 +1665,12 @@ export default {
           returnReasonRequired: '退回理由不能为空',
           cancelReasonRequired: '取消理由不能为空'
         },
+        timeline: {
+          viewSubProcess: '查看子流程',
+          addUser: '添加用户',
+          approvalOpinion: '审批意见',
+          signature: '签名'
+        },
         sign: {
           title: '签名',
           clear: '清除',
@@ -1750,6 +1756,19 @@ export default {
         }
       }
     },
+    processViewer: {
+      initiator: '发起人',
+      approvalRecords: '审批记录',
+      serialNumber: '序号',
+      approver: '审批人',
+      department: '部门',
+      startTime: '开始时间',
+      endTime: '结束时间',
+      approvalStatus: '审批状态',
+      approvalSuggestion: '审批建议',
+      duration: '耗时',
+      approvalInfo: '审批信息'
+    }
   },
 
   ai: {
@@ -2610,6 +2629,292 @@ export default {
         process: '处理消息发生异常：{value}'
       }
     }
+  },
+  simpleProcessDesignerV2: {
+    common: {
+      saveFailed: '保存失败',
+      saveFailedLog: '保存失败:',
+      incompleteNodeTip: '以下节点内容不完善，请修改后保存',
+      gotIt: '知道了',
+      export: '导出',
+      import: '导入',
+      reset: '重置',
+      loadFlowFailed: '获取流程数据失败',
+      index: '序号',
+      conditionWithIndex: '条件{index}',
+      loading: '加载中，请稍后',
+      fieldPermissions: '字段权限',
+      fieldName: '字段名称',
+      readOnly: '只读',
+      editable: '可编辑',
+      hidden: '隐藏'
+    },
+    nodes: {
+      startUser: '发起人',
+      end: '结束'
+    },
+    nodeHandler: {
+      approver: '审批人',
+      processor: '办理人',
+      copy: '抄送',
+      conditionBranch: '条件分支',
+      parallelBranch: '并行分支',
+      inclusiveBranch: '包容分支',
+      delay: '延迟器',
+      routerBranch: '路由分支',
+      trigger: '触发器',
+      childProcess: '子流程',
+      conditionWithIndex: '条件{index}',
+      defaultBranchDesc: '未满足其它条件时，将进入此分支',
+      parallelWithIndex: '并行{index}',
+      parallelNoCondition: '无需配置条件同时执行',
+      inclusiveCondition: '包容条件{index}'
+    },
+    nodeText: {
+      selectedMembers: '指定成员：{names}',
+      selectedRoles: '指定角色：{names}',
+      selectedDeptMembers: '部门成员：{names}',
+      selectedDeptLeaders: '部门的负责人：{names}',
+      selectedMultiDeptLeaders: '多级部门的负责人：{names}',
+      selectedPosts: '指定岗位：{names}',
+      selectedUserGroups: '指定用户组：{names}',
+      formUserField: '表单用户：{title}',
+      formDeptLeader: '表单内部门负责人',
+      approverSelect: '审批人自选',
+      starterSelect: '发起人自选',
+      starterSelf: '发起人自己',
+      starterDeptLeader: '发起人的部门负责人',
+      starterMultiDeptLeader: '发起人连续部门负责人',
+      processExpression: '流程表达式：{expression}'
+    },
+    options: {
+      httpParamType: {
+        fixedValue: '固定值',
+        fromForm: '表单'
+      },
+      candidateStrategy: {
+        user: '指定成员',
+        role: '指定角色',
+        post: '指定岗位',
+        deptMember: '部门成员',
+        deptLeader: '部门负责人',
+        multiDeptLeader: '连续多级部门负责人',
+        starterSelect: '发起人自选',
+        approverSelect: '审批人自选',
+        starter: '发起人本人',
+        starterDeptLeader: '发起人部门负责人',
+        starterMultiDeptLeader: '发起人连续部门负责人',
+        userGroup: '用户组',
+        formUser: '表单内用户字段',
+        formDeptLeader: '表单内部门负责人',
+        expression: '流程表达式'
+      },
+      approveType: {
+        user: '人工审批',
+        autoApprove: '自动通过',
+        autoReject: '自动拒绝'
+      },
+      approveMethod: {
+        sequential: '按顺序依次审批',
+        byRatio: '会签（可同时审批，至少 % 人必须审批通过）',
+        any: '或签（可同时审批，有一人通过即可）',
+        random: '随机挑选一人审批'
+      },
+      conditionConfig: {
+        rule: '条件规则',
+        expression: '条件表达式'
+      },
+      timeUnit: {
+        minute: '分钟',
+        hour: '小时',
+        day: '天'
+      },
+      timeoutHandler: {
+        reminder: '自动提醒',
+        approve: '自动同意',
+        reject: '自动拒绝'
+      },
+      rejectHandler: {
+        finishProcess: '终止流程',
+        returnUserTask: '驳回到指定节点'
+      },
+      assignEmptyHandler: {
+        pass: '自动通过',
+        reject: '自动拒绝',
+        assign: '指定成员审批',
+        admin: '转交给流程管理员'
+      },
+      assignStartUserHandler: {
+        selfApprove: '由发起人对自己审批',
+        autoSkip: '自动跳过',
+        deptLeader: '转交给部门负责人审批'
+      },
+      comparisonOperator: {
+        equal: '等于',
+        notEqual: '不等于',
+        greaterThan: '大于',
+        greaterOrEqual: '大于等于',
+        lessThan: '小于',
+        lessOrEqual: '小于等于'
+      },
+      operationButton: {
+        approve: '通过',
+        reject: '拒绝',
+        transfer: '转办',
+        delegate: '委派',
+        addSign: '加签',
+        return: '退回',
+        copy: '抄送',
+        process: '办理',
+        submit: '提交'
+      },
+      multiLevelDept: {
+        level: '第 {level} 级部门'
+      },
+      delayType: {
+        fixedDuration: '固定时长',
+        fixedDate: '固定日期'
+      },
+      triggerType: {
+        httpRequest: '发送 HTTP 请求',
+        httpCallback: '接收 HTTP 回调',
+        formUpdate: '修改表单数据',
+        formDelete: '删除表单数据'
+      },
+      childProcessStartUserType: {
+        mainProcess: '同主流程发起人',
+        form: '表单'
+      },
+      childProcessStartUserEmptyType: {
+        mainProcess: '同主流程发起人',
+        childProcessAdmin: '子流程管理员',
+        mainProcessAdmin: '主流程管理员'
+      },
+      childProcessMultiInstanceSource: {
+        fixedQuantity: '固定数量',
+        numberForm: '数字表单',
+        multipleForm: '多选表单'
+      }
+    },
+    userTaskNode: {
+      approvalRecords: '审批记录',
+      approver: '审批人',
+      department: '部门',
+      startTime: '开始时间',
+      endTime: '结束时间',
+      status: '审批状态',
+      suggestion: '审批建议',
+      duration: '耗时'
+    },
+    exclusiveNode: {
+      addCondition: '添加条件',
+      priority: '优先级{index}'
+    },
+    parallelNode: {
+      addBranch: '添加分支',
+      noPriority: '无优先级',
+      branchWithIndex: '并行{index}',
+      parallelNoCondition: '无需配置条件同时执行'
+    },
+    inclusiveNode: {
+      addCondition: '添加条件',
+      conditionWithIndex: '包容条件{index}'
+    },
+    condition: {
+      expression: '表达式：{expression}',
+      warningIncomplete: '请完善条件规则',
+      and: ' 且 ',
+      or: ' 或 '
+    },
+    conditionNode: {
+      defaultBranchTip: '未满足其它条件时，将进入此分支（该分支不可编辑和删除）'
+    },
+    delayTimerConfig: {
+      delayTime: '延迟时间',
+      afterwards: '后进入下一节点',
+      selectDateTime: '请选择日期和时间',
+      delayTypeOptions: {
+        fixedDuration: '固定时长',
+        fixedDate: '固定日期'
+      },
+      timeUnit: {
+        minute: '分钟',
+        hour: '小时',
+        day: '天'
+      },
+      showText: {
+        fixedDuration: '延迟{duration}{unit}',
+        fixedDate: '延迟至{datetime}'
+      },
+      validate: {
+        delayTimeRequired: '延迟时间不能为空'
+      }
+    },
+    routerConfig: {
+      routeTitle: '路由{index}',
+      addBranch: '新增路由分支',
+      summary: '{count}条路由分支',
+      validate: {
+        missingRoutes: '请配置路由！',
+        incompleteRoute: '请完善路由配置项！'
+      }
+    },
+    copyTaskConfig: {
+      tabs: {
+        user: '抄送人',
+        fields: '表单字段权限'
+      },
+      form: {
+        settingLabel: '抄送人设置',
+        specifyRole: '指定角色',
+        specifyDept: '指定部门',
+        specifyPost: '指定岗位',
+        specifyUser: '指定用户',
+        specifyUserGroup: '指定用户组',
+        formUserField: '表单内用户字段',
+        formDeptField: '表单内部门字段',
+        deptLeaderSourceSpecified: '部门负责人来源（指定部门向上）',
+        deptLeaderSourceStarter: '部门负责人来源（发起人部门向上）',
+        deptLeaderSourceStarterMulti: '部门负责人来源（发起人部门向上）',
+        deptLeaderSourceForm: '部门负责人来源（表单内部门向上）',
+        expression: '流程表达式'
+      },
+      validation: {
+        candidateRequired: '抄送人设置不能为空',
+        userRequired: '用户不能为空',
+        roleRequired: '角色不能为空',
+        deptRequired: '部门不能为空',
+        userGroupRequired: '用户组不能为空',
+        postRequired: '岗位不能为空',
+        formUserRequired: '表单内用户字段不能为空',
+        formDeptRequired: '表单内部门字段不能为空',
+        expressionRequired: '流程表达式不能为空'
+      }
+    },
+    defaults: {
+      nodeText: {
+        userTask: '请配置审批人',
+        copyTask: '请配置抄送人',
+        condition: '请设置条件',
+        startUser: '请设置发起人',
+        delay: '请设置延迟器',
+        router: '请设置路由节点',
+        trigger: '请设置触发器',
+        processor: '请设置办理人',
+        childProcess: '请设置子流程'
+      },
+      nodeName: {
+        userTask: '审批人',
+        copyTask: '抄送人',
+        condition: '条件',
+        startUser: '发起人',
+        delay: '延迟器',
+        router: '路由分支',
+        trigger: '触发器',
+        processor: '办理人',
+        childProcess: '子流程'
+      }
+    }
   }
-
+ 
 }

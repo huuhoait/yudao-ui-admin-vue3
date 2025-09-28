@@ -1692,6 +1692,12 @@ export default {
           returnReasonRequired: 'Return reason is required',
           cancelReasonRequired: 'Cancel reason is required'
         },
+        timeline: {
+          viewSubProcess: 'View Sub-process',
+          addUser: 'Add User',
+          approvalOpinion: 'Approval Opinion',
+          signature: 'Signature'
+        },
         sign: {
           title: 'Signature',
           clear: 'Clear',
@@ -1776,6 +1782,19 @@ export default {
           handle: 'Handle'
         }
       }
+    },
+    processViewer: {
+      initiator: 'Initiator',
+      approvalRecords: 'Approval Records',
+      serialNumber: 'Serial Number',
+      approver: 'Approver',
+      department: 'Department',
+      startTime: 'Start Time',
+      endTime: 'End Time',
+      approvalStatus: 'Approval Status',
+      approvalSuggestion: 'Approval Suggestion',
+      duration: 'Duration',
+      approvalInfo: 'Approval Info'
     }
   },
 
@@ -2573,6 +2592,292 @@ export default {
         unknownType: 'Unknown message type: {value}',
         unhandled: 'Unhandled message: {value}',
         process: 'Processing message failed: {value}'
+      }
+    }
+  },
+  simpleProcessDesignerV2: {
+    common: {
+      saveFailed: 'Save Failed',
+      saveFailedLog: 'Save failed:',
+      incompleteNodeTip: 'Some nodes are incomplete. Please update them before saving.',
+      gotIt: 'Got it',
+      export: 'Export',
+      import: 'Import',
+      reset: 'Reset',
+      loadFlowFailed: 'Failed to load process data',
+      index: 'No.',
+      conditionWithIndex: 'Condition {index}',
+      loading: 'Loading, please wait',
+      fieldPermissions: 'Field permissions',
+      fieldName: 'Field name',
+      readOnly: 'Read only',
+      editable: 'Editable',
+      hidden: 'Hidden'
+    },
+    nodes: {
+      startUser: 'Initiator',
+      end: 'End'
+    },
+    nodeHandler: {
+      approver: 'Approver',
+      processor: 'Processor',
+      copy: 'CC',
+      conditionBranch: 'Conditional Branch',
+      parallelBranch: 'Parallel Branch',
+      inclusiveBranch: 'Inclusive Branch',
+      delay: 'Delay Timer',
+      routerBranch: 'Router Branch',
+      trigger: 'Trigger',
+      childProcess: 'Sub-process',
+      conditionWithIndex: 'Condition {index}',
+      defaultBranchDesc: 'The process will enter this branch when other conditions are not met',
+      parallelWithIndex: 'Parallel {index}',
+      parallelNoCondition: 'Runs in parallel without condition',
+      inclusiveCondition: 'Inclusive Condition {index}'
+    },
+    nodeText: {
+      selectedMembers: 'Selected members: {names}',
+      selectedRoles: 'Selected roles: {names}',
+      selectedDeptMembers: 'Department members: {names}',
+      selectedDeptLeaders: 'Department leaders: {names}',
+      selectedMultiDeptLeaders: 'Multi-level department leaders: {names}',
+      selectedPosts: 'Selected positions: {names}',
+      selectedUserGroups: 'Selected user groups: {names}',
+      formUserField: 'Form user: {title}',
+      formDeptLeader: 'Form department leader',
+      approverSelect: 'Approver selection',
+      starterSelect: 'Initiator selection',
+      starterSelf: 'Initiator themselves',
+      starterDeptLeader: 'Initiator\'s department leader',
+      starterMultiDeptLeader: 'Initiator\'s multi-level department leader',
+      processExpression: 'Expression: {expression}'
+    },
+    options: {
+      httpParamType: {
+        fixedValue: 'Fixed value',
+        fromForm: 'From form'
+      },
+      candidateStrategy: {
+        user: 'Specify users',
+        role: 'Specify roles',
+        post: 'Specify positions',
+        deptMember: 'Department members',
+        deptLeader: 'Department leaders',
+        multiDeptLeader: 'Multi-level department leaders',
+        starterSelect: 'Initiator selection',
+        approverSelect: 'Approver selection',
+        starter: 'Initiator themselves',
+        starterDeptLeader: 'Initiator\'s department leader',
+        starterMultiDeptLeader: 'Initiator\'s multi-level department leader',
+        userGroup: 'User groups',
+        formUser: 'User field on form',
+        formDeptLeader: 'Department leader field on form',
+        expression: 'Process expression'
+      },
+      approveType: {
+        user: 'Manual approval',
+        autoApprove: 'Auto approve',
+        autoReject: 'Auto reject'
+      },
+      approveMethod: {
+        sequential: 'Sequential approval',
+        byRatio: 'Joint approval (at least % must approve)',
+        any: 'Any-one approval',
+        random: 'Random approver'
+      },
+      conditionConfig: {
+        rule: 'Condition rules',
+        expression: 'Condition expression'
+      },
+      timeUnit: {
+        minute: 'Minutes',
+        hour: 'Hours',
+        day: 'Days'
+      },
+      timeoutHandler: {
+        reminder: 'Auto reminder',
+        approve: 'Auto approve',
+        reject: 'Auto reject'
+      },
+      rejectHandler: {
+        finishProcess: 'Terminate process',
+        returnUserTask: 'Return to specified task'
+      },
+      assignEmptyHandler: {
+        pass: 'Auto pass',
+        reject: 'Auto reject',
+        assign: 'Assign to specific members',
+        admin: 'Forward to process admin'
+      },
+      assignStartUserHandler: {
+        selfApprove: 'Initiator approves themselves',
+        autoSkip: 'Auto skip',
+        deptLeader: 'Forward to department leader'
+      },
+      comparisonOperator: {
+        equal: 'Equals',
+        notEqual: 'Not equal',
+        greaterThan: 'Greater than',
+        greaterOrEqual: 'Greater or equal',
+        lessThan: 'Less than',
+        lessOrEqual: 'Less or equal'
+      },
+      operationButton: {
+        approve: 'Approve',
+        reject: 'Reject',
+        transfer: 'Transfer',
+        delegate: 'Delegate',
+        addSign: 'Add signer',
+        return: 'Return',
+        copy: 'CC',
+        process: 'Process',
+        submit: 'Submit'
+      },
+      multiLevelDept: {
+        level: 'Level {level} department'
+      },
+      delayType: {
+        fixedDuration: 'Fixed duration',
+        fixedDate: 'Fixed date'
+      },
+      triggerType: {
+        httpRequest: 'Send HTTP request',
+        httpCallback: 'Receive HTTP callback',
+        formUpdate: 'Update form data',
+        formDelete: 'Delete form data'
+      },
+      childProcessStartUserType: {
+        mainProcess: 'Same as main process initiator',
+        form: 'From form'
+      },
+      childProcessStartUserEmptyType: {
+        mainProcess: 'Same as main process initiator',
+        childProcessAdmin: 'Child process admin',
+        mainProcessAdmin: 'Main process admin'
+      },
+      childProcessMultiInstanceSource: {
+        fixedQuantity: 'Fixed quantity',
+        numberForm: 'Numeric form field',
+        multipleForm: 'Multiple-selection form field'
+      }
+    },
+    userTaskNode: {
+      approvalRecords: 'Approval Records',
+      approver: 'Approver',
+      department: 'Department',
+      startTime: 'Start Time',
+      endTime: 'End Time',
+      status: 'Status',
+      suggestion: 'Comment',
+      duration: 'Duration'
+    },
+    exclusiveNode: {
+      addCondition: 'Add Condition',
+      priority: 'Priority {index}'
+    },
+    parallelNode: {
+      addBranch: 'Add Branch',
+      noPriority: 'No priority',
+      branchWithIndex: 'Parallel {index}',
+      parallelNoCondition: 'Runs in parallel without condition'
+    },
+    inclusiveNode: {
+      addCondition: 'Add Condition',
+      conditionWithIndex: 'Inclusive Condition {index}'
+    },
+    condition: {
+      expression: 'Expression: {expression}',
+      warningIncomplete: 'Please complete the condition rules',
+      and: ' and ',
+      or: ' or '
+    },
+    conditionNode: {
+      defaultBranchTip: 'When other conditions are not met, the process enters this branch (cannot edit or delete)'
+    },
+    delayTimerConfig: {
+      delayTime: 'Delay Time',
+      afterwards: 'then proceed to the next node',
+      selectDateTime: 'Select date and time',
+      delayTypeOptions: {
+        fixedDuration: 'Fixed duration',
+        fixedDate: 'Fixed date'
+      },
+      timeUnit: {
+        minute: 'minutes',
+        hour: 'hours',
+        day: 'days'
+      },
+      showText: {
+        fixedDuration: 'Delay {duration}{unit}',
+        fixedDate: 'Delay until {datetime}'
+      },
+      validate: {
+        delayTimeRequired: 'Delay time is required'
+      }
+    },
+    routerConfig: {
+      routeTitle: 'Route {index}',
+      addBranch: 'Add Route Branch',
+      summary: '{count} route branches',
+      validate: {
+        missingRoutes: 'Please configure at least one route',
+        incompleteRoute: 'Please complete the route configuration'
+      }
+    },
+    copyTaskConfig: {
+      tabs: {
+        user: 'CC Recipients',
+        fields: 'Field Permissions'
+      },
+      form: {
+        settingLabel: 'CC recipient settings',
+        specifyRole: 'Specify roles',
+        specifyDept: 'Specify departments',
+        specifyPost: 'Specify positions',
+        specifyUser: 'Specify users',
+        specifyUserGroup: 'Specify user groups',
+        formUserField: 'User field on form',
+        formDeptField: 'Department field on form',
+        deptLeaderSourceSpecified: 'Department leader source (specified departments upward)',
+        deptLeaderSourceStarter: 'Department leader source (initiator departments upward)',
+        deptLeaderSourceStarterMulti: 'Department leader source (initiator departments upward)',
+        deptLeaderSourceForm: 'Department leader source (form departments upward)',
+        expression: 'Process expression'
+      },
+      validation: {
+        candidateRequired: 'Please configure the CC recipients',
+        userRequired: 'User is required',
+        roleRequired: 'Role is required',
+        deptRequired: 'Department is required',
+        userGroupRequired: 'User group is required',
+        postRequired: 'Position is required',
+        formUserRequired: 'Form user field is required',
+        formDeptRequired: 'Form department field is required',
+        expressionRequired: 'Process expression is required'
+      }
+    },
+    defaults: {
+      nodeText: {
+        userTask: 'Please configure approvers',
+        copyTask: 'Please configure CC recipients',
+        condition: 'Please configure conditions',
+        startUser: 'Please configure initiators',
+        delay: 'Please configure the delay timer',
+        router: 'Please configure the router node',
+        trigger: 'Please configure the trigger',
+        processor: 'Please configure processors',
+        childProcess: 'Please configure the sub-process'
+      },
+      nodeName: {
+        userTask: 'Approver',
+        copyTask: 'CC',
+        condition: 'Condition',
+        startUser: 'Initiator',
+        delay: 'Delay Timer',
+        router: 'Router Branch',
+        trigger: 'Trigger',
+        processor: 'Processor',
+        childProcess: 'Sub-process'
       }
     }
   }

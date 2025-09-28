@@ -1,19 +1,22 @@
 import { TimeUnitType, ApproveType, APPROVE_TYPE } from './consts'
+import { useI18n } from '@/hooks/web/useI18n'
+
+const { t } = useI18n()
 
 // 获取条件节点默认的名称
 export const getDefaultConditionNodeName = (index: number, defaultFlow: boolean | undefined): string => {
   if (defaultFlow) {
-    return '其它情况'
+    return t('simpleProcessDesignerV2.common.otherwise')
   }
-  return '条件' + (index + 1)
+  return t('simpleProcessDesignerV2.common.conditionWithIndex', { index: index + 1 })
 }
 
 // 获取包容分支条件节点默认的名称
 export const getDefaultInclusiveConditionNodeName = (index: number, defaultFlow: boolean | undefined): string => {
   if (defaultFlow) {
-    return '其它情况'
+    return t('simpleProcessDesignerV2.common.otherwise')
   }
-  return '包容条件' + (index + 1)
+  return t('simpleProcessDesignerV2.inclusiveNode.conditionWithIndex', { index: index + 1 })
 }
 
 export const convertTimeUnit = (strTimeUnit: string) => {

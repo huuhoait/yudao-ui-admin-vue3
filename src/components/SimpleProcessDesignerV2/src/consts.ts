@@ -285,11 +285,11 @@ export enum BpmHttpRequestParamTypeEnum {
 export const BPM_HTTP_REQUEST_PARAM_TYPES = [
   {
     value: 1,
-    label: '固定值'
+    label: 'simpleProcessDesignerV2.options.httpParamType.fixedValue'
   },
   {
     value: 2,
-    label: '表单'
+    label: 'simpleProcessDesignerV2.options.httpParamType.fromForm'
   }
 ]
 
@@ -517,161 +517,215 @@ export type Condition = {
 }
 
 export const NODE_DEFAULT_TEXT = new Map<number, string>()
-NODE_DEFAULT_TEXT.set(NodeType.USER_TASK_NODE, '请配置审批人')
-NODE_DEFAULT_TEXT.set(NodeType.COPY_TASK_NODE, '请配置抄送人')
-NODE_DEFAULT_TEXT.set(NodeType.CONDITION_NODE, '请设置条件')
-NODE_DEFAULT_TEXT.set(NodeType.START_USER_NODE, '请设置发起人')
-NODE_DEFAULT_TEXT.set(NodeType.DELAY_TIMER_NODE, '请设置延迟器')
-NODE_DEFAULT_TEXT.set(NodeType.ROUTER_BRANCH_NODE, '请设置路由节点')
-NODE_DEFAULT_TEXT.set(NodeType.TRIGGER_NODE, '请设置触发器')
-NODE_DEFAULT_TEXT.set(NodeType.TRANSACTOR_NODE, '请设置办理人')
-NODE_DEFAULT_TEXT.set(NodeType.CHILD_PROCESS_NODE, '请设置子流程')
+NODE_DEFAULT_TEXT.set(
+  NodeType.USER_TASK_NODE,
+  'simpleProcessDesignerV2.defaults.nodeText.userTask'
+)
+NODE_DEFAULT_TEXT.set(
+  NodeType.COPY_TASK_NODE,
+  'simpleProcessDesignerV2.defaults.nodeText.copyTask'
+)
+NODE_DEFAULT_TEXT.set(
+  NodeType.CONDITION_NODE,
+  'simpleProcessDesignerV2.defaults.nodeText.condition'
+)
+NODE_DEFAULT_TEXT.set(
+  NodeType.START_USER_NODE,
+  'simpleProcessDesignerV2.defaults.nodeText.startUser'
+)
+NODE_DEFAULT_TEXT.set(
+  NodeType.DELAY_TIMER_NODE,
+  'simpleProcessDesignerV2.defaults.nodeText.delay'
+)
+NODE_DEFAULT_TEXT.set(
+  NodeType.ROUTER_BRANCH_NODE,
+  'simpleProcessDesignerV2.defaults.nodeText.router'
+)
+NODE_DEFAULT_TEXT.set(
+  NodeType.TRIGGER_NODE,
+  'simpleProcessDesignerV2.defaults.nodeText.trigger'
+)
+NODE_DEFAULT_TEXT.set(
+  NodeType.TRANSACTOR_NODE,
+  'simpleProcessDesignerV2.defaults.nodeText.processor'
+)
+NODE_DEFAULT_TEXT.set(
+  NodeType.CHILD_PROCESS_NODE,
+  'simpleProcessDesignerV2.defaults.nodeText.childProcess'
+)
 
 export const NODE_DEFAULT_NAME = new Map<number, string>()
-NODE_DEFAULT_NAME.set(NodeType.USER_TASK_NODE, '审批人')
-NODE_DEFAULT_NAME.set(NodeType.COPY_TASK_NODE, '抄送人')
-NODE_DEFAULT_NAME.set(NodeType.CONDITION_NODE, '条件')
-NODE_DEFAULT_NAME.set(NodeType.START_USER_NODE, '发起人')
-NODE_DEFAULT_NAME.set(NodeType.DELAY_TIMER_NODE, '延迟器')
-NODE_DEFAULT_NAME.set(NodeType.ROUTER_BRANCH_NODE, '路由分支')
-NODE_DEFAULT_NAME.set(NodeType.TRIGGER_NODE, '触发器')
-NODE_DEFAULT_NAME.set(NodeType.TRANSACTOR_NODE, '办理人')
-NODE_DEFAULT_NAME.set(NodeType.CHILD_PROCESS_NODE, '子流程')
+NODE_DEFAULT_NAME.set(
+  NodeType.USER_TASK_NODE,
+  'simpleProcessDesignerV2.defaults.nodeName.userTask'
+)
+NODE_DEFAULT_NAME.set(
+  NodeType.COPY_TASK_NODE,
+  'simpleProcessDesignerV2.defaults.nodeName.copyTask'
+)
+NODE_DEFAULT_NAME.set(
+  NodeType.CONDITION_NODE,
+  'simpleProcessDesignerV2.defaults.nodeName.condition'
+)
+NODE_DEFAULT_NAME.set(
+  NodeType.START_USER_NODE,
+  'simpleProcessDesignerV2.defaults.nodeName.startUser'
+)
+NODE_DEFAULT_NAME.set(
+  NodeType.DELAY_TIMER_NODE,
+  'simpleProcessDesignerV2.defaults.nodeName.delay'
+)
+NODE_DEFAULT_NAME.set(
+  NodeType.ROUTER_BRANCH_NODE,
+  'simpleProcessDesignerV2.defaults.nodeName.router'
+)
+NODE_DEFAULT_NAME.set(
+  NodeType.TRIGGER_NODE,
+  'simpleProcessDesignerV2.defaults.nodeName.trigger'
+)
+NODE_DEFAULT_NAME.set(
+  NodeType.TRANSACTOR_NODE,
+  'simpleProcessDesignerV2.defaults.nodeName.processor'
+)
+NODE_DEFAULT_NAME.set(
+  NodeType.CHILD_PROCESS_NODE,
+  'simpleProcessDesignerV2.defaults.nodeName.childProcess'
+)
 
 // 候选人策略。暂时不从字典中取。 后续可能调整。控制显示顺序
 export const CANDIDATE_STRATEGY: DictDataVO[] = [
-  { label: '指定成员', value: CandidateStrategy.USER },
-  { label: '指定角色', value: CandidateStrategy.ROLE },
-  { label: '指定岗位', value: CandidateStrategy.POST },
-  { label: '部门成员', value: CandidateStrategy.DEPT_MEMBER },
-  { label: '部门负责人', value: CandidateStrategy.DEPT_LEADER },
-  { label: '连续多级部门负责人', value: CandidateStrategy.MULTI_LEVEL_DEPT_LEADER },
-  { label: '发起人自选', value: CandidateStrategy.START_USER_SELECT },
-  { label: '审批人自选', value: CandidateStrategy.APPROVE_USER_SELECT },
-  { label: '发起人本人', value: CandidateStrategy.START_USER },
-  { label: '发起人部门负责人', value: CandidateStrategy.START_USER_DEPT_LEADER },
-  { label: '发起人连续部门负责人', value: CandidateStrategy.START_USER_MULTI_LEVEL_DEPT_LEADER },
-  { label: '用户组', value: CandidateStrategy.USER_GROUP },
-  { label: '表单内用户字段', value: CandidateStrategy.FORM_USER },
-  { label: '表单内部门负责人', value: CandidateStrategy.FORM_DEPT_LEADER },
-  { label: '流程表达式', value: CandidateStrategy.EXPRESSION }
+  { label: 'simpleProcessDesignerV2.options.candidateStrategy.user', value: CandidateStrategy.USER },
+  { label: 'simpleProcessDesignerV2.options.candidateStrategy.role', value: CandidateStrategy.ROLE },
+  { label: 'simpleProcessDesignerV2.options.candidateStrategy.post', value: CandidateStrategy.POST },
+  { label: 'simpleProcessDesignerV2.options.candidateStrategy.deptMember', value: CandidateStrategy.DEPT_MEMBER },
+  { label: 'simpleProcessDesignerV2.options.candidateStrategy.deptLeader', value: CandidateStrategy.DEPT_LEADER },
+  { label: 'simpleProcessDesignerV2.options.candidateStrategy.multiDeptLeader', value: CandidateStrategy.MULTI_LEVEL_DEPT_LEADER },
+  { label: 'simpleProcessDesignerV2.options.candidateStrategy.starterSelect', value: CandidateStrategy.START_USER_SELECT },
+  { label: 'simpleProcessDesignerV2.options.candidateStrategy.approverSelect', value: CandidateStrategy.APPROVE_USER_SELECT },
+  { label: 'simpleProcessDesignerV2.options.candidateStrategy.starter', value: CandidateStrategy.START_USER },
+  { label: 'simpleProcessDesignerV2.options.candidateStrategy.starterDeptLeader', value: CandidateStrategy.START_USER_DEPT_LEADER },
+  { label: 'simpleProcessDesignerV2.options.candidateStrategy.starterMultiDeptLeader', value: CandidateStrategy.START_USER_MULTI_LEVEL_DEPT_LEADER },
+  { label: 'simpleProcessDesignerV2.options.candidateStrategy.userGroup', value: CandidateStrategy.USER_GROUP },
+  { label: 'simpleProcessDesignerV2.options.candidateStrategy.formUser', value: CandidateStrategy.FORM_USER },
+  { label: 'simpleProcessDesignerV2.options.candidateStrategy.formDeptLeader', value: CandidateStrategy.FORM_DEPT_LEADER },
+  { label: 'simpleProcessDesignerV2.options.candidateStrategy.expression', value: CandidateStrategy.EXPRESSION }
 ]
 // 审批节点 的审批类型
 export const APPROVE_TYPE: DictDataVO[] = [
-  { label: '人工审批', value: ApproveType.USER },
-  { label: '自动通过', value: ApproveType.AUTO_APPROVE },
-  { label: '自动拒绝', value: ApproveType.AUTO_REJECT }
+  { label: 'simpleProcessDesignerV2.options.approveType.user', value: ApproveType.USER },
+  { label: 'simpleProcessDesignerV2.options.approveType.autoApprove', value: ApproveType.AUTO_APPROVE },
+  { label: 'simpleProcessDesignerV2.options.approveType.autoReject', value: ApproveType.AUTO_REJECT }
 ]
 
 export const APPROVE_METHODS: DictDataVO[] = [
-  { label: '按顺序依次审批', value: ApproveMethodType.SEQUENTIAL_APPROVE },
-  { label: '会签（可同时审批，至少 % 人必须审批通过）', value: ApproveMethodType.APPROVE_BY_RATIO },
-  { label: '或签(可同时审批，有一人通过即可)', value: ApproveMethodType.ANY_APPROVE },
-  { label: '随机挑选一人审批', value: ApproveMethodType.RANDOM_SELECT_ONE_APPROVE }
+  { label: 'simpleProcessDesignerV2.options.approveMethod.sequential', value: ApproveMethodType.SEQUENTIAL_APPROVE },
+  { label: 'simpleProcessDesignerV2.options.approveMethod.byRatio', value: ApproveMethodType.APPROVE_BY_RATIO },
+  { label: 'simpleProcessDesignerV2.options.approveMethod.any', value: ApproveMethodType.ANY_APPROVE },
+  { label: 'simpleProcessDesignerV2.options.approveMethod.random', value: ApproveMethodType.RANDOM_SELECT_ONE_APPROVE }
 ]
 
 export const CONDITION_CONFIG_TYPES: DictDataVO[] = [
-  { label: '条件规则', value: ConditionType.RULE },
-  { label: '条件表达式', value: ConditionType.EXPRESSION }
+  { label: 'simpleProcessDesignerV2.options.conditionConfig.rule', value: ConditionType.RULE },
+  { label: 'simpleProcessDesignerV2.options.conditionConfig.expression', value: ConditionType.EXPRESSION }
 ]
 
 // 时间单位类型
 export const TIME_UNIT_TYPES: DictDataVO[] = [
-  { label: '分钟', value: TimeUnitType.MINUTE },
-  { label: '小时', value: TimeUnitType.HOUR },
-  { label: '天', value: TimeUnitType.DAY }
+  { label: 'simpleProcessDesignerV2.options.timeUnit.minute', value: TimeUnitType.MINUTE },
+  { label: 'simpleProcessDesignerV2.options.timeUnit.hour', value: TimeUnitType.HOUR },
+  { label: 'simpleProcessDesignerV2.options.timeUnit.day', value: TimeUnitType.DAY }
 ]
 // 超时处理执行动作类型
 export const TIMEOUT_HANDLER_TYPES: DictDataVO[] = [
-  { label: '自动提醒', value: 1 },
-  { label: '自动同意', value: 2 },
-  { label: '自动拒绝', value: 3 }
+  { label: 'simpleProcessDesignerV2.options.timeoutHandler.reminder', value: 1 },
+  { label: 'simpleProcessDesignerV2.options.timeoutHandler.approve', value: 2 },
+  { label: 'simpleProcessDesignerV2.options.timeoutHandler.reject', value: 3 }
 ]
 export const REJECT_HANDLER_TYPES: DictDataVO[] = [
-  { label: '终止流程', value: RejectHandlerType.FINISH_PROCESS },
-  { label: '驳回到指定节点', value: RejectHandlerType.RETURN_USER_TASK }
+  { label: 'simpleProcessDesignerV2.options.rejectHandler.finishProcess', value: RejectHandlerType.FINISH_PROCESS },
+  { label: 'simpleProcessDesignerV2.options.rejectHandler.returnUserTask', value: RejectHandlerType.RETURN_USER_TASK }
   // { label: '结束任务', value: RejectHandlerType.FINISH_TASK }
 ]
 export const ASSIGN_EMPTY_HANDLER_TYPES: DictDataVO[] = [
-  { label: '自动通过', value: 1 },
-  { label: '自动拒绝', value: 2 },
-  { label: '指定成员审批', value: 3 },
-  { label: '转交给流程管理员', value: 4 }
+  { label: 'simpleProcessDesignerV2.options.assignEmptyHandler.pass', value: 1 },
+  { label: 'simpleProcessDesignerV2.options.assignEmptyHandler.reject', value: 2 },
+  { label: 'simpleProcessDesignerV2.options.assignEmptyHandler.assign', value: 3 },
+  { label: 'simpleProcessDesignerV2.options.assignEmptyHandler.admin', value: 4 }
 ]
 export const ASSIGN_START_USER_HANDLER_TYPES: DictDataVO[] = [
-  { label: '由发起人对自己审批', value: 1 },
-  { label: '自动跳过', value: 2 },
-  { label: '转交给部门负责人审批', value: 3 }
+  { label: 'simpleProcessDesignerV2.options.assignStartUserHandler.selfApprove', value: 1 },
+  { label: 'simpleProcessDesignerV2.options.assignStartUserHandler.autoSkip', value: 2 },
+  { label: 'simpleProcessDesignerV2.options.assignStartUserHandler.deptLeader', value: 3 }
 ]
 
 // 比较运算符
-export const COMPARISON_OPERATORS: DictDataVO = [
+export const COMPARISON_OPERATORS: DictDataVO[] = [
   {
     value: '==',
-    label: '等于'
+    label: 'simpleProcessDesignerV2.options.comparisonOperator.equal'
   },
   {
     value: '!=',
-    label: '不等于'
+    label: 'simpleProcessDesignerV2.options.comparisonOperator.notEqual'
   },
   {
     value: '>',
-    label: '大于'
+    label: 'simpleProcessDesignerV2.options.comparisonOperator.greaterThan'
   },
   {
     value: '>=',
-    label: '大于等于'
+    label: 'simpleProcessDesignerV2.options.comparisonOperator.greaterOrEqual'
   },
   {
     value: '<',
-    label: '小于'
+    label: 'simpleProcessDesignerV2.options.comparisonOperator.lessThan'
   },
   {
     value: '<=',
-    label: '小于等于'
+    label: 'simpleProcessDesignerV2.options.comparisonOperator.lessOrEqual'
   }
 ]
 // 审批操作按钮名称
 export const OPERATION_BUTTON_NAME = new Map<number, string>()
-OPERATION_BUTTON_NAME.set(OperationButtonType.APPROVE, '通过')
-OPERATION_BUTTON_NAME.set(OperationButtonType.REJECT, '拒绝')
-OPERATION_BUTTON_NAME.set(OperationButtonType.TRANSFER, '转办')
-OPERATION_BUTTON_NAME.set(OperationButtonType.DELEGATE, '委派')
-OPERATION_BUTTON_NAME.set(OperationButtonType.ADD_SIGN, '加签')
-OPERATION_BUTTON_NAME.set(OperationButtonType.RETURN, '退回')
-OPERATION_BUTTON_NAME.set(OperationButtonType.COPY, '抄送')
+OPERATION_BUTTON_NAME.set(OperationButtonType.APPROVE, 'simpleProcessDesignerV2.options.operationButton.approve')
+OPERATION_BUTTON_NAME.set(OperationButtonType.REJECT, 'simpleProcessDesignerV2.options.operationButton.reject')
+OPERATION_BUTTON_NAME.set(OperationButtonType.TRANSFER, 'simpleProcessDesignerV2.options.operationButton.transfer')
+OPERATION_BUTTON_NAME.set(OperationButtonType.DELEGATE, 'simpleProcessDesignerV2.options.operationButton.delegate')
+OPERATION_BUTTON_NAME.set(OperationButtonType.ADD_SIGN, 'simpleProcessDesignerV2.options.operationButton.addSign')
+OPERATION_BUTTON_NAME.set(OperationButtonType.RETURN, 'simpleProcessDesignerV2.options.operationButton.return')
+OPERATION_BUTTON_NAME.set(OperationButtonType.COPY, 'simpleProcessDesignerV2.options.operationButton.copy')
 
 // 默认的按钮权限设置
 export const DEFAULT_BUTTON_SETTING: ButtonSetting[] = [
-  { id: OperationButtonType.APPROVE, displayName: '通过', enable: true },
-  { id: OperationButtonType.REJECT, displayName: '拒绝', enable: true },
-  { id: OperationButtonType.TRANSFER, displayName: '转办', enable: true },
-  { id: OperationButtonType.DELEGATE, displayName: '委派', enable: true },
-  { id: OperationButtonType.ADD_SIGN, displayName: '加签', enable: true },
-  { id: OperationButtonType.RETURN, displayName: '退回', enable: true }
+  { id: OperationButtonType.APPROVE, displayName: 'simpleProcessDesignerV2.options.operationButton.approve', enable: true },
+  { id: OperationButtonType.REJECT, displayName: 'simpleProcessDesignerV2.options.operationButton.reject', enable: true },
+  { id: OperationButtonType.TRANSFER, displayName: 'simpleProcessDesignerV2.options.operationButton.transfer', enable: true },
+  { id: OperationButtonType.DELEGATE, displayName: 'simpleProcessDesignerV2.options.operationButton.delegate', enable: true },
+  { id: OperationButtonType.ADD_SIGN, displayName: 'simpleProcessDesignerV2.options.operationButton.addSign', enable: true },
+  { id: OperationButtonType.RETURN, displayName: 'simpleProcessDesignerV2.options.operationButton.return', enable: true }
 ]
 
 // 办理人默认的按钮权限设置
 export const TRANSACTOR_DEFAULT_BUTTON_SETTING: ButtonSetting[] = [
-  { id: OperationButtonType.APPROVE, displayName: '办理', enable: true },
-  { id: OperationButtonType.REJECT, displayName: '拒绝', enable: false },
-  { id: OperationButtonType.TRANSFER, displayName: '转办', enable: false },
-  { id: OperationButtonType.DELEGATE, displayName: '委派', enable: false },
-  { id: OperationButtonType.ADD_SIGN, displayName: '加签', enable: false },
-  { id: OperationButtonType.RETURN, displayName: '退回', enable: false }
+  { id: OperationButtonType.APPROVE, displayName: 'simpleProcessDesignerV2.options.operationButton.process', enable: true },
+  { id: OperationButtonType.REJECT, displayName: 'simpleProcessDesignerV2.options.operationButton.reject', enable: false },
+  { id: OperationButtonType.TRANSFER, displayName: 'simpleProcessDesignerV2.options.operationButton.transfer', enable: false },
+  { id: OperationButtonType.DELEGATE, displayName: 'simpleProcessDesignerV2.options.operationButton.delegate', enable: false },
+  { id: OperationButtonType.ADD_SIGN, displayName: 'simpleProcessDesignerV2.options.operationButton.addSign', enable: false },
+  { id: OperationButtonType.RETURN, displayName: 'simpleProcessDesignerV2.options.operationButton.return', enable: false }
 ]
 
 // 发起人的按钮权限。暂时定死，不可以编辑
 export const START_USER_BUTTON_SETTING: ButtonSetting[] = [
-  { id: OperationButtonType.APPROVE, displayName: '提交', enable: true },
-  { id: OperationButtonType.REJECT, displayName: '拒绝', enable: false },
-  { id: OperationButtonType.TRANSFER, displayName: '转办', enable: false },
-  { id: OperationButtonType.DELEGATE, displayName: '委派', enable: false },
-  { id: OperationButtonType.ADD_SIGN, displayName: '加签', enable: false },
-  { id: OperationButtonType.RETURN, displayName: '退回', enable: false }
+  { id: OperationButtonType.APPROVE, displayName: 'simpleProcessDesignerV2.options.operationButton.submit', enable: true },
+  { id: OperationButtonType.REJECT, displayName: 'simpleProcessDesignerV2.options.operationButton.reject', enable: false },
+  { id: OperationButtonType.TRANSFER, displayName: 'simpleProcessDesignerV2.options.operationButton.transfer', enable: false },
+  { id: OperationButtonType.DELEGATE, displayName: 'simpleProcessDesignerV2.options.operationButton.delegate', enable: false },
+  { id: OperationButtonType.ADD_SIGN, displayName: 'simpleProcessDesignerV2.options.operationButton.addSign', enable: false },
+  { id: OperationButtonType.RETURN, displayName: 'simpleProcessDesignerV2.options.operationButton.return', enable: false }
 ]
 
-export const MULTI_LEVEL_DEPT: DictDataVO = [
+export const MULTI_LEVEL_DEPT: DictDataVO[] = [
   { label: '第 1 级部门', value: 1 },
   { label: '第 2 级部门', value: 2 },
   { label: '第 3 级部门', value: 3 },
@@ -730,8 +784,8 @@ export enum DelayTypeEnum {
   FIXED_DATE_TIME = 2
 }
 export const DELAY_TYPE = [
-  { label: '固定时长', value: DelayTypeEnum.FIXED_TIME_DURATION },
-  { label: '固定日期', value: DelayTypeEnum.FIXED_DATE_TIME }
+  { label: 'simpleProcessDesignerV2.options.delayType.fixedDuration', value: DelayTypeEnum.FIXED_TIME_DURATION },
+  { label: 'simpleProcessDesignerV2.options.delayType.fixedDate', value: DelayTypeEnum.FIXED_DATE_TIME }
 ]
 
 /**
@@ -807,10 +861,10 @@ export type FormTriggerSetting = {
 }
 
 export const TRIGGER_TYPES: DictDataVO[] = [
-  { label: '发送 HTTP 请求', value: TriggerTypeEnum.HTTP_REQUEST },
-  { label: '接收 HTTP 回调', value: TriggerTypeEnum.HTTP_CALLBACK },
-  { label: '修改表单数据', value: TriggerTypeEnum.FORM_UPDATE },
-  { label: '删除表单数据', value: TriggerTypeEnum.FORM_DELETE }
+  { label: 'simpleProcessDesignerV2.options.triggerType.httpRequest', value: TriggerTypeEnum.HTTP_REQUEST },
+  { label: 'simpleProcessDesignerV2.options.triggerType.httpCallback', value: TriggerTypeEnum.HTTP_CALLBACK },
+  { label: 'simpleProcessDesignerV2.options.triggerType.formUpdate', value: TriggerTypeEnum.FORM_UPDATE },
+  { label: 'simpleProcessDesignerV2.options.triggerType.formDelete', value: TriggerTypeEnum.FORM_DELETE }
 ]
 
 /**
@@ -859,8 +913,8 @@ export enum ChildProcessStartUserTypeEnum {
   FROM_FORM = 2
 }
 export const CHILD_PROCESS_START_USER_TYPE = [
-  { label: '同主流程发起人', value: ChildProcessStartUserTypeEnum.MAIN_PROCESS_START_USER },
-  { label: '表单', value: ChildProcessStartUserTypeEnum.FROM_FORM }
+  { label: 'simpleProcessDesignerV2.options.childProcessStartUserType.mainProcess', value: ChildProcessStartUserTypeEnum.MAIN_PROCESS_START_USER },
+  { label: 'simpleProcessDesignerV2.options.childProcessStartUserType.form', value: ChildProcessStartUserTypeEnum.FROM_FORM }
 ]
 export enum ChildProcessStartUserEmptyTypeEnum {
   /**
@@ -877,9 +931,9 @@ export enum ChildProcessStartUserEmptyTypeEnum {
   MAIN_PROCESS_ADMIN = 3
 }
 export const CHILD_PROCESS_START_USER_EMPTY_TYPE = [
-  { label: '同主流程发起人', value: ChildProcessStartUserEmptyTypeEnum.MAIN_PROCESS_START_USER },
-  { label: '子流程管理员', value: ChildProcessStartUserEmptyTypeEnum.CHILD_PROCESS_ADMIN },
-  { label: '主流程管理员', value: ChildProcessStartUserEmptyTypeEnum.MAIN_PROCESS_ADMIN }
+  { label: 'simpleProcessDesignerV2.options.childProcessStartUserEmptyType.mainProcess', value: ChildProcessStartUserEmptyTypeEnum.MAIN_PROCESS_START_USER },
+  { label: 'simpleProcessDesignerV2.options.childProcessStartUserEmptyType.childProcessAdmin', value: ChildProcessStartUserEmptyTypeEnum.CHILD_PROCESS_ADMIN },
+  { label: 'simpleProcessDesignerV2.options.childProcessStartUserEmptyType.mainProcessAdmin', value: ChildProcessStartUserEmptyTypeEnum.MAIN_PROCESS_ADMIN }
 ]
 export enum ChildProcessMultiInstanceSourceTypeEnum {
   /**
@@ -896,7 +950,7 @@ export enum ChildProcessMultiInstanceSourceTypeEnum {
   MULTIPLE_FORM = 3
 }
 export const CHILD_PROCESS_MULTI_INSTANCE_SOURCE_TYPE = [
-  { label: '固定数量', value: ChildProcessMultiInstanceSourceTypeEnum.FIXED_QUANTITY },
-  { label: '数字表单', value: ChildProcessMultiInstanceSourceTypeEnum.NUMBER_FORM },
-  { label: '多选表单', value: ChildProcessMultiInstanceSourceTypeEnum.MULTIPLE_FORM }
+  { label: 'simpleProcessDesignerV2.options.childProcessMultiInstanceSource.fixedQuantity', value: ChildProcessMultiInstanceSourceTypeEnum.FIXED_QUANTITY },
+  { label: 'simpleProcessDesignerV2.options.childProcessMultiInstanceSource.numberForm', value: ChildProcessMultiInstanceSourceTypeEnum.NUMBER_FORM },
+  { label: 'simpleProcessDesignerV2.options.childProcessMultiInstanceSource.multipleForm', value: ChildProcessMultiInstanceSourceTypeEnum.MULTIPLE_FORM }
 ]

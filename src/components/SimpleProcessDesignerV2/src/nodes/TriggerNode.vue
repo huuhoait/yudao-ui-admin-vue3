@@ -30,7 +30,7 @@
             {{ currentNode.showText }}
           </div>
           <div class="node-text" v-else>
-            {{ NODE_DEFAULT_TEXT.get(NodeType.TRIGGER_NODE) }}
+            {{ t(NODE_DEFAULT_TEXT.get(NodeType.TRIGGER_NODE) as string) }}
           </div>
           <Icon v-if="!readonly" icon="ep:arrow-right-bold" />
         </div>
@@ -60,6 +60,7 @@ import TriggerNodeConfig from '../nodes-config/TriggerNodeConfig.vue'
 defineOptions({
   name: 'TriggerNode'
 })
+const { t } = useI18n()
 
 const props = defineProps({
   flowNode: {
