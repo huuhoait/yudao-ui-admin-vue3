@@ -8,8 +8,8 @@
         <!-- 左侧标题 -->
         <div class="w-200px flex items-center overflow-hidden">
           <Icon icon="ep:arrow-left" class="cursor-pointer flex-shrink-0" @click="handleBack" />
-          <span class="ml-10px text-16px truncate" :title="'创建流程'">
-            {{ '创建流程' }}
+          <span class="ml-10px text-16px truncate" :title="$t('bpm.model.form.createTitle')">
+            {{ $t('bpm.model.form.createTitle') }}
           </span>
         </div>
 
@@ -218,9 +218,9 @@ const initData = async () => {
     // 特殊：复制场景
     if (route.params.type === 'copy') {
       delete formData.value.id
-      formData.value.name += '副本'
+      formData.value.name += t('bpm.model.copy')
       formData.value.key += '_copy'
-      tagsView.setTitle('复制流程')
+      tagsView.setTitle(t('bpm.model.form.createTitle'))
     }
   } else {
     // 情况三：新增场景
@@ -268,7 +268,7 @@ const validateAllSteps = async () => {
       await validateBasic()
     } catch (error) {
       currentStep.value = 0
-      throw new Error('请完善基本信息')
+      throw new Error(t('bpm.model.form.validation.basicInfo'))
     }
 
     // 表单设计校验
@@ -276,7 +276,7 @@ const validateAllSteps = async () => {
       await validateForm()
     } catch (error) {
       currentStep.value = 1
-      throw new Error('请完善自定义表单信息')
+      throw new Error(t('bpm.model.form.validation.workflow'))
     }
 
     // 流程设计校验
@@ -286,7 +286,7 @@ const validateAllSteps = async () => {
       await validateProcess()
     } catch (error) {
       currentStep.value = 2
-      throw new Error('请设计流程')
+      throw new Error(t('bpm.model.form.validation.allSteps'))
     }
 
     return true
@@ -310,22 +310,22 @@ const handleSave = async () => {
       // 情况一：流程定义场景（恢复）
       await ModelApi.updateModel(modelData)
       // 提示成功
-      message.success('恢复成功，可点击【发布】按钮，进行发布模型')
+      message.success(t('bpm.model.form.saveSuccess'))
     } else if (actionType === 'update') {
       // 修改场景
       await ModelApi.updateModel(modelData)
       // 提示成功
-      message.success('修改成功，可点击【发布】按钮，进行发布模型')
+      message.success(t('bpm.model.form.saveSuccess'))
     } else if (actionType === 'copy') {
       // 情况三：复制场景
       formData.value.id = await ModelApi.createModel(modelData)
       // 提示成功
-      message.success('复制成功，可点击【发布】按钮，进行发布模型')
+      message.success(t('bpm.model.form.saveSuccess'))
     } else {
       // 情况四：新增场景
       formData.value.id = await ModelApi.createModel(modelData)
       // 提示成功
-      message.success('新建成功，可点击【发布】按钮，进行发布模型')
+      message.success(t('bpm.model.form.saveSuccess'))
     }
 
     // 返回列表页（排除更新的情况）
@@ -334,7 +334,7 @@ const handleSave = async () => {
     }
   } catch (error: any) {
     console.error('保存失败:', error)
-    message.warning(error.message || '请完善所有步骤的必填信息')
+    message.warning(error.message || t('bpm.model.form.validation.currentStep'))
   }
 }
 
@@ -343,7 +343,7 @@ const handleDeploy = async () => {
   try {
     // 修改场景下直接发布，新增场景下需要先确认
     if (!formData.value.id) {
-      await message.confirm('是否确认发布该流程？')
+      await message.confirm(t('bpm.model.confirmDeploy'))
     }
     // 校验所有步骤
     await validateAllSteps()
@@ -363,12 +363,12 @@ const handleDeploy = async () => {
 
     // 发布
     await ModelApi.deployModel(formData.value.id)
-    message.success('发布成功')
+    message.success(t('bpm.model.deploySuccess'))
     // 返回列表页
     await router.push({ name: 'BpmModel' })
   } catch (error: any) {
     console.error('发布失败:', error)
-    message.warning(error.message || '发布失败')
+    message.warning(error.message || t('bpm.model.form.validation.currentStep'))
   }
 }
 
@@ -399,7 +399,7 @@ const handleStepClick = async (index: number) => {
     }
   } catch (error) {
     console.error('步骤切换失败:', error)
-    message.warning('请先完善当前步骤必填信息')
+    message.warning(t('bpm.model.form.validation.currentStep'))
   }
 }
 

@@ -64,7 +64,11 @@ export default {
     dropTip: 'Drop file here, or ',
     clickUpload: 'click to upload',
     downloadTemplate: 'Download template',
-    xlsFormatTip: 'Only allows importing xls, xlsx format files.'
+    xlsFormatTip: 'Only allows importing xls, xlsx format files.',
+    yes: 'Yes',
+    no: 'No',
+    confirmation: 'Confirmation',
+    operationCancel: 'Operation canceled'
   },
   lock: {
     lockScreen: 'Lock screen',
@@ -1208,9 +1212,10 @@ export default {
         systemDefault: 'System Default',
         showProcessName: 'Show Process Name',
         customTitle: 'Custom Title',
-        insertFieldTip: 'Enter "{" to insert form field',
+        // NOTE: escaped \{ to avoid vue-i18n treating it as an interpolation start
+        insertFieldTip: 'Enter to insert form field',
         insertFieldPlaceholder:
-          'Please insert form fields (enter "{" to select form field) or enter text',
+          'Please insert form fields (enter  to select form field) or enter text',
         summarySettings: 'Summary Settings',
         showFirstThreeFields: 'Show first 3 form fields',
         customSummary: 'Custom Summary',
@@ -1252,7 +1257,15 @@ export default {
         formTypeRequired: 'Form type cannot be empty',
         processFormRequired: 'Process form cannot be empty',
         formSubmitPathRequired: 'Form submit path cannot be empty',
-        formViewPathRequired: 'Form view path cannot be empty'
+        formViewPathRequired: 'Form view path cannot be empty',
+        createTitle: 'Create Process',
+        validation: {
+          basicInfo: 'Please complete the basic information',
+          workflow: 'Please complete the workflow information',
+          allSteps: 'Please complete the required fields for all steps',
+          currentStep: 'Please complete the required fields for the current step first'
+        },
+        saveSuccess: 'Saved successfully'
       }
     },
     design: {
@@ -1806,6 +1819,107 @@ export default {
       approvalSuggestion: 'Approval Suggestion',
       duration: 'Duration',
       approvalInfo: 'Approval Info'
+    },
+    processDesigner: {
+      boundaryEventTimer: {
+        timeoutHandler: {
+          title: 'When approver times out without processing'
+        },
+        enableSwitch: 'Enable Switch',
+        executeAction: 'Execute Action',
+        timeoutSettings: 'Timeout Settings',
+        whenExceed: 'When exceeding',
+        unprocessed: 'unprocessed',
+        maxRemindCount: 'Max Reminder Count'
+      },
+      userTask: {
+        approveType: {
+          title: 'Approval Type'
+        },
+        rejectHandler: {
+          title: 'When approver rejects',
+          returnNode: 'Return Node'
+        },
+        assignEmpty: {
+          title: 'When approver is empty',
+          specifyUser: 'Specify User'
+        },
+        assignStartUser: {
+          title: 'When approver is the same as submitter'
+        },
+        operationButtons: {
+          title: 'Operation Buttons',
+          operationButton: 'Operation Button',
+          displayName: 'Display Name',
+          enable: 'Enable'
+        },
+        fieldPermissions: {
+          title: 'Field Permissions',
+          fieldName: 'Field Name',
+          readOnly: 'Read Only',
+          editable: 'Editable',
+          hidden: 'Hidden'
+        },
+        signature: {
+          title: 'Signature Required'
+        },
+        approveOpinion: {
+          title: 'Approval Opinion',
+          required: 'Required',
+          optional: 'Optional'
+        }
+      },
+      endEvent: {
+        title: 'End',
+        approvalInfo: 'Approval Info',
+        table: {
+          serialNumber: 'Serial Number',
+          initiator: 'Initiator',
+          department: 'Department',
+          startTime: 'Start Time',
+          endTime: 'End Time',
+          approvalStatus: 'Approval Status',
+          duration: 'Duration'
+        }
+      },
+      listeners: {
+        serialNumber: 'Serial Number',
+        eventType: 'Event Type',
+        eventId: 'Event ID',
+        listenerType: 'Listener Type',
+        operation: 'Operation',
+        addListener: 'Add Listener',
+        selectListener: 'Select Listener',
+        taskListener: 'Task Listener',
+        listenerId: 'Listener ID',
+        javaClass: 'Java Class',
+        expression: 'Expression',
+        delegateExpression: 'Delegate Expression',
+        scriptFormat: 'Script Format',
+        scriptFormatRequired: 'Please enter script format',
+        scriptType: 'Script Type',
+        scriptTypeRequired: 'Please select script type',
+        inlineScript: 'Inline Script',
+        externalScript: 'External Script',
+        scriptContent: 'Script Content',
+        scriptContentRequired: 'Please enter script content',
+        resourceAddress: 'Resource Address',
+        resourceAddressRequired: 'Please enter resource address',
+        timerType: 'Timer Type',
+        date: 'Date',
+        duration: 'Duration',
+        cycle: 'Cycle',
+        none: 'None',
+        timer: 'Timer',
+        timerConfigRequired: 'Please enter timer configuration',
+        fieldName: 'Field Name',
+        fieldType: 'Field Type',
+        fieldValueExpression: 'Field Value/Expression',
+        fieldConfiguration: 'Field Configuration',
+        fieldValue: 'Field Value',
+        confirmRemoveListener: 'Are you sure to remove this listener?',
+        confirmRemoveField: 'Are you sure to remove this field?'
+      }
     }
   },
 
@@ -2740,7 +2854,7 @@ export default {
         delegate: 'Delegate',
         addSign: 'Add signer',
         return: 'Return',
-        copy: 'CC',
+        copy: 'Copy',
         process: 'Process',
         submit: 'Submit'
       },

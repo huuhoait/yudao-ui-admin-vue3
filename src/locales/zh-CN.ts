@@ -64,7 +64,11 @@ export default {
     dropTip: '将文件拖到此处，或',
     clickUpload: '点击上传',
     downloadTemplate: '下载模板',
-    xlsFormatTip: '仅允许导入 xls、xlsx 格式文件。'
+    xlsFormatTip: '仅允许导入 xls、xlsx 格式文件。',
+    yes: '是',
+    no: '否',
+    confirmation: '提示',
+    operationCancel: '操作取消'
   },
   lock: {
     lockScreen: '锁定屏幕',
@@ -1200,8 +1204,9 @@ export default {
         systemDefault: '系统默认',
         showProcessName: '展示流程名称',
         customTitle: '自定义标题',
-        insertFieldTip: '输入字符 "{" 即可插入表单字段',
-        insertFieldPlaceholder: '请插入表单字段（输入 "{" 可以选择表单字段）或输入文本',
+  // NOTE: Use escaped \{ to prevent vue-i18n interpolation parsing error
+  insertFieldTip: '输入字符 "\\{" 即可插入表单字段',
+  insertFieldPlaceholder: '请插入表单字段（输入 "\\{" 可以选择表单字段）或输入文本',
         summarySettings: '摘要设置',
         showFirstThreeFields: '展示表单前 3 个字段',
         customSummary: '自定义摘要',
@@ -1228,7 +1233,15 @@ export default {
         basicInfo: '基本信息',
         formDesign: '表单设计',
         processDesign: '流程设计',
-        extraSettings: '更多设置'
+        extraSettings: '更多设置',
+        createTitle: '创建流程',
+        validation: {
+          basicInfo: '请完善基本信息',
+          workflow: '请完善工作流信息',
+          allSteps: '请完善所有步骤的必填信息',
+          currentStep: '请先完善当前步骤必填信息'
+        },
+        saveSuccess: '保存成功'
       }
     },
     design: {
@@ -2531,6 +2544,44 @@ export default {
           approvalStatus: '审批状态',
           duration: '耗时'
         }
+      },
+      listeners: {
+        serialNumber: '序号',
+        eventType: '事件类型',
+        eventId: '事件ID',
+        listenerType: '监听器类型',
+        operation: '操作',
+        addListener: '添加监听器',
+        selectListener: '选择监听器',
+        taskListener: '任务监听器',
+        listenerId: '监听器ID',
+        javaClass: 'Java类',
+        expression: '表达式',
+        delegateExpression: '代理表达式',
+        scriptFormat: '脚本格式',
+        scriptFormatRequired: '请填写脚本格式',
+        scriptType: '脚本类型',
+        scriptTypeRequired: '请选择脚本类型',
+        inlineScript: '内联脚本',
+        externalScript: '外部脚本',
+        scriptContent: '脚本内容',
+        scriptContentRequired: '请填写脚本内容',
+        resourceAddress: '资源地址',
+        resourceAddressRequired: '请填写资源地址',
+        timerType: '定时器类型',
+        date: '日期',
+        duration: '持续时长',
+        cycle: '循环',
+        none: '无',
+        timer: '定时器',
+        timerConfigRequired: '请填写定时器配置',
+        fieldName: '字段名称',
+        fieldType: '字段类型',
+        fieldValueExpression: '字段值/表达式',
+        fieldConfiguration: '字段配置',
+        fieldValue: '字段值',
+        confirmRemoveListener: '确认移除该监听器吗？',
+        confirmRemoveField: '确认移除该字段吗？'
       }
     }
   },

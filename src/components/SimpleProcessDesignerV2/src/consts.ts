@@ -702,7 +702,9 @@ export const DEFAULT_BUTTON_SETTING: ButtonSetting[] = [
   { id: OperationButtonType.TRANSFER, displayName: 'simpleProcessDesignerV2.options.operationButton.transfer', enable: true },
   { id: OperationButtonType.DELEGATE, displayName: 'simpleProcessDesignerV2.options.operationButton.delegate', enable: true },
   { id: OperationButtonType.ADD_SIGN, displayName: 'simpleProcessDesignerV2.options.operationButton.addSign', enable: true },
-  { id: OperationButtonType.RETURN, displayName: 'simpleProcessDesignerV2.options.operationButton.return', enable: true }
+  { id: OperationButtonType.RETURN, displayName: 'simpleProcessDesignerV2.options.operationButton.return', enable: true },
+  { id: OperationButtonType.COPY, displayName: 'simpleProcessDesignerV2.options.operationButton.copy', enable: true }
+
 ]
 
 // 办理人默认的按钮权限设置
@@ -712,7 +714,9 @@ export const TRANSACTOR_DEFAULT_BUTTON_SETTING: ButtonSetting[] = [
   { id: OperationButtonType.TRANSFER, displayName: 'simpleProcessDesignerV2.options.operationButton.transfer', enable: false },
   { id: OperationButtonType.DELEGATE, displayName: 'simpleProcessDesignerV2.options.operationButton.delegate', enable: false },
   { id: OperationButtonType.ADD_SIGN, displayName: 'simpleProcessDesignerV2.options.operationButton.addSign', enable: false },
-  { id: OperationButtonType.RETURN, displayName: 'simpleProcessDesignerV2.options.operationButton.return', enable: false }
+  { id: OperationButtonType.RETURN, displayName: 'simpleProcessDesignerV2.options.operationButton.return', enable: false },
+  { id: OperationButtonType.COPY, displayName: 'simpleProcessDesignerV2.options.operationButton.copy', enable: false }
+
 ]
 
 // 发起人的按钮权限。暂时定死，不可以编辑
@@ -722,25 +726,27 @@ export const START_USER_BUTTON_SETTING: ButtonSetting[] = [
   { id: OperationButtonType.TRANSFER, displayName: 'simpleProcessDesignerV2.options.operationButton.transfer', enable: false },
   { id: OperationButtonType.DELEGATE, displayName: 'simpleProcessDesignerV2.options.operationButton.delegate', enable: false },
   { id: OperationButtonType.ADD_SIGN, displayName: 'simpleProcessDesignerV2.options.operationButton.addSign', enable: false },
-  { id: OperationButtonType.RETURN, displayName: 'simpleProcessDesignerV2.options.operationButton.return', enable: false }
+  { id: OperationButtonType.RETURN, displayName: 'simpleProcessDesignerV2.options.operationButton.return', enable: false },
+  { id: OperationButtonType.COPY, displayName: 'simpleProcessDesignerV2.options.operationButton.copy', enable: false }
+
 ]
 
-export const MULTI_LEVEL_DEPT: DictDataVO[] = [
-  { label: '第 1 级部门', value: 1 },
-  { label: '第 2 级部门', value: 2 },
-  { label: '第 3 级部门', value: 3 },
-  { label: '第 4 级部门', value: 4 },
-  { label: '第 5 级部门', value: 5 },
-  { label: '第 6 级部门', value: 6 },
-  { label: '第 7 级部门', value: 7 },
-  { label: '第 8 级部门', value: 8 },
-  { label: '第 9 级部门', value: 9 },
-  { label: '第 10 级部门', value: 10 },
-  { label: '第 11 级部门', value: 11 },
-  { label: '第 12 级部门', value: 12 },
-  { label: '第 13 级部门', value: 13 },
-  { label: '第 14 级部门', value: 14 },
-  { label: '第 15 级部门', value: 15 }
+export const MULTI_LEVEL_DEPT: (DictDataVO & { level: number })[] = [
+  { label: 'simpleProcessDesignerV2.options.multiLevelDept.level', value: 1, level: 1 },
+  { label: 'simpleProcessDesignerV2.options.multiLevelDept.level', value: 2, level: 2 },
+  { label: 'simpleProcessDesignerV2.options.multiLevelDept.level', value: 3, level: 3 },
+  { label: 'simpleProcessDesignerV2.options.multiLevelDept.level', value: 4, level: 4 },
+  { label: 'simpleProcessDesignerV2.options.multiLevelDept.level', value: 5, level: 5 },
+  { label: 'simpleProcessDesignerV2.options.multiLevelDept.level', value: 6, level: 6 },
+  { label: 'simpleProcessDesignerV2.options.multiLevelDept.level', value: 7, level: 7 },
+  { label: 'simpleProcessDesignerV2.options.multiLevelDept.level', value: 8, level: 8 },
+  { label: 'simpleProcessDesignerV2.options.multiLevelDept.level', value: 9, level: 9 },
+  { label: 'simpleProcessDesignerV2.options.multiLevelDept.level', value: 10, level: 10 },
+  { label: 'simpleProcessDesignerV2.options.multiLevelDept.level', value: 11, level: 11 },
+  { label: 'simpleProcessDesignerV2.options.multiLevelDept.level', value: 12, level: 12 },
+  { label: 'simpleProcessDesignerV2.options.multiLevelDept.level', value: 13, level: 13 },
+  { label: 'simpleProcessDesignerV2.options.multiLevelDept.level', value: 14, level: 14 },
+  { label: 'simpleProcessDesignerV2.options.multiLevelDept.level', value: 15, level: 15 }
 ]
 
 /**

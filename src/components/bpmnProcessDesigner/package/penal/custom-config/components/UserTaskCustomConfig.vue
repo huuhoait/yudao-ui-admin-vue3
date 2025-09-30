@@ -9,7 +9,7 @@
 -->
 <template>
   <div>
-    <el-divider content-position="left">{{ t('bpm.processDesigner.userTask.approveType.title') }}</el-divider>
+    <el-divider content-position="left">{{ $t('bpm.processDesigner.userTask.approveType.title') }}</el-divider>
     <el-form-item prop="approveType">
       <el-radio-group v-model="approveType.value">
         <el-radio
@@ -18,12 +18,12 @@
           :value="item.value"
           :label="item.value"
         >
-          {{ item.label }}
+          {{ $t(item.label) }}
         </el-radio>
       </el-radio-group>
     </el-form-item>
 
-    <el-divider content-position="left">{{ t('bpm.processDesigner.userTask.rejectHandler.title') }}</el-divider>
+    <el-divider content-position="left">{{ $t('bpm.processDesigner.userTask.rejectHandler.title') }}</el-divider>
     <el-form-item prop="rejectHandlerType">
       <el-radio-group
         v-model="rejectHandlerType"
@@ -32,14 +32,14 @@
       >
         <div class="flex-col">
           <div v-for="(item, index) in REJECT_HANDLER_TYPES" :key="index">
-            <el-radio :key="item.value" :value="item.value" :label="item.label" />
+            <el-radio :key="item.value" :value="item.value" :label="$t(item.label)" />
           </div>
         </div>
       </el-radio-group>
     </el-form-item>
     <el-form-item
       v-if="rejectHandlerType == RejectHandlerType.RETURN_USER_TASK"
-      :label="t('bpm.processDesigner.userTask.rejectHandler.returnNode')"
+      :label="$t('bpm.processDesigner.userTask.rejectHandler.returnNode')"
       prop="returnNodeId"
     >
       <el-select v-model="returnNodeId" clearable style="width: 100%" @change="updateReturnNodeId">
@@ -52,19 +52,19 @@
       </el-select>
     </el-form-item>
 
-    <el-divider content-position="left">{{ t('bpm.processDesigner.userTask.assignEmpty.title') }}</el-divider>
+    <el-divider content-position="left">{{ $t('bpm.processDesigner.userTask.assignEmpty.title') }}</el-divider>
     <el-form-item prop="assignEmptyHandlerType">
       <el-radio-group v-model="assignEmptyHandlerType" @change="updateAssignEmptyHandlerType">
         <div class="flex-col">
           <div v-for="(item, index) in ASSIGN_EMPTY_HANDLER_TYPES" :key="index">
-            <el-radio :key="item.value" :value="item.value" :label="item.label" />
+            <el-radio :key="item.value" :value="item.value" :label="$t(item.label)" />
           </div>
         </div>
       </el-radio-group>
     </el-form-item>
     <el-form-item
       v-if="assignEmptyHandlerType == AssignEmptyHandlerType.ASSIGN_USER"
-      :label="t('bpm.processDesigner.userTask.assignEmpty.specifyUser')"
+      :label="$t('bpm.processDesigner.userTask.assignEmpty.specifyUser')"
       prop="assignEmptyHandlerUserIds"
       span="24"
     >
@@ -84,24 +84,24 @@
       </el-select>
     </el-form-item>
 
-    <el-divider content-position="left">{{ t('bpm.processDesigner.userTask.assignStartUser.title') }}</el-divider>
+    <el-divider content-position="left">{{ $t('bpm.processDesigner.userTask.assignStartUser.title') }}</el-divider>
     <el-radio-group v-model="assignStartUserHandlerType" @change="updateAssignStartUserHandlerType">
       <div class="flex-col">
         <div v-for="(item, index) in ASSIGN_START_USER_HANDLER_TYPES" :key="index">
-          <el-radio :key="item.value" :value="item.value" :label="item.label" />
+          <el-radio :key="item.value" :value="item.value" :label="$t(item.label)" />
         </div>
       </div>
     </el-radio-group>
 
-    <el-divider content-position="left">{{ t('bpm.processDesigner.userTask.operationButtons.title') }}</el-divider>
+    <el-divider content-position="left">{{ $t('bpm.processDesigner.userTask.operationButtons.title') }}</el-divider>
     <div class="button-setting-pane">
       <div class="button-setting-title">
-        <div class="button-title-label">{{ t('bpm.processDesigner.userTask.operationButtons.operationButton') }}</div>
-        <div class="pl-4 button-title-label">{{ t('bpm.processDesigner.userTask.operationButtons.displayName') }}</div>
-        <div class="button-title-label">{{ t('bpm.processDesigner.userTask.operationButtons.enable') }}</div>
+        <div class="button-title-label">{{ $t('bpm.processDesigner.userTask.operationButtons.operationButton') }}</div>
+        <div class="pl-4 button-title-label">{{ $t('bpm.processDesigner.userTask.operationButtons.displayName') }}</div>
+        <div class="button-title-label">{{ $t('bpm.processDesigner.userTask.operationButtons.enable') }}</div>
       </div>
       <div class="button-setting-item" v-for="(item, index) in buttonsSettingEl" :key="index">
-        <div class="button-setting-item-label"> {{ OPERATION_BUTTON_NAME.get(item.id) }} </div>
+        <div class="button-setting-item-label">{{ $t(OPERATION_BUTTON_NAME.get(item.id)) }}</div>
         <div class="button-setting-item-label">
           <input
             type="text"
@@ -109,11 +109,11 @@
             @blur="btnDisplayNameBlurEvent(index)"
             v-mountedFocus
             v-model="item.displayName"
-            :placeholder="item.displayName"
+            :placeholder="$t(item.displayName)"
             v-if="btnDisplayNameEdit[index]"
           />
           <el-button v-else text @click="changeBtnDisplayName(index)"
-            >{{ item.displayName }} &nbsp;<Icon icon="ep:edit"
+            >{{ $t(item.displayName) }} &nbsp;<Icon icon="ep:edit"
           /></el-button>
         </div>
         <div class="button-setting-item-label">
@@ -122,19 +122,19 @@
       </div>
     </div>
 
-    <el-divider content-position="left">{{ t('bpm.processDesigner.userTask.fieldPermissions.title') }}</el-divider>
+    <el-divider content-position="left">{{ $t('bpm.processDesigner.userTask.fieldPermissions.title') }}</el-divider>
     <div class="field-setting-pane" v-if="formType === BpmModelFormType.NORMAL">
       <div class="field-permit-title">
-        <div class="setting-title-label first-title">{{ t('bpm.processDesigner.userTask.fieldPermissions.fieldName') }}</div>
+        <div class="setting-title-label first-title">{{ $t('bpm.processDesigner.userTask.fieldPermissions.fieldName') }}</div>
         <div class="other-titles">
           <span class="setting-title-label cursor-pointer" @click="updatePermission('READ')"
-            >{{ t('bpm.processDesigner.userTask.fieldPermissions.readOnly') }}</span
+            >{{ $t('bpm.processDesigner.userTask.fieldPermissions.readOnly') }}</span
           >
           <span class="setting-title-label cursor-pointer" @click="updatePermission('WRITE')"
-            >{{ t('bpm.processDesigner.userTask.fieldPermissions.editable') }}</span
+            >{{ $t('bpm.processDesigner.userTask.fieldPermissions.editable') }}</span
           >
           <span class="setting-title-label cursor-pointer" @click="updatePermission('NONE')"
-            >{{ t('bpm.processDesigner.userTask.fieldPermissions.hidden') }}</span
+            >{{ $t('bpm.processDesigner.userTask.fieldPermissions.hidden') }}</span
           >
         </div>
       </div>
@@ -175,22 +175,22 @@
       </div>
     </div>
 
-    <el-divider content-position="left">{{ t('bpm.processDesigner.userTask.signature.title') }}</el-divider>
+    <el-divider content-position="left">{{ $t('bpm.processDesigner.userTask.signature.title') }}</el-divider>
     <el-form-item prop="signEnable">
       <el-switch
         v-model="signEnable.value"
-        :active-text="t('common.yes')"
-        :inactive-text="t('common.no')"
+        :active-text="$t('common.yes')"
+        :inactive-text="$t('common.no')"
         @change="updateElementExtensions"
       />
     </el-form-item>
 
-    <el-divider content-position="left">{{ t('bpm.processDesigner.userTask.approveOpinion.title') }}</el-divider>
+    <el-divider content-position="left">{{ $t('bpm.processDesigner.userTask.approveOpinion.title') }}</el-divider>
     <el-form-item prop="reasonRequire">
       <el-switch
         v-model="reasonRequire.value"
-        :active-text="t('bpm.processDesigner.userTask.approveOpinion.required')"
-        :inactive-text="t('bpm.processDesigner.userTask.approveOpinion.optional')"
+        :active-text="$t('bpm.processDesigner.userTask.approveOpinion.required')"
+        :inactive-text="$t('bpm.processDesigner.userTask.approveOpinion.optional')"
         @change="updateElementExtensions"
       />
     </el-form-item>
@@ -321,6 +321,7 @@ const resetCustomConfigList = () => {
   buttonsSettingEl.value = elExtensionElements.value.values?.filter(
     (ex) => ex.$type === `${prefix}:ButtonsSetting`
   )
+  console.log('buttonsSettingEl.value', buttonsSettingEl.value)
   if (buttonsSettingEl.value.length === 0) {
     DEFAULT_BUTTON_SETTING.forEach((item) => {
       buttonsSettingEl.value.push(

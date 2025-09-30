@@ -10,7 +10,7 @@
         <el-option
           v-for="(dict, index) in CANDIDATE_STRATEGY"
           :key="index"
-          :label="dict.label"
+          :label="$t(dict.label)"
           :value="dict.value"
         />
       </el-select>
@@ -65,7 +65,7 @@
         style="width: 100%"
         @change="updateElementTask"
       >
-        <el-option v-for="item in postOptions" :key="item.id" :label="item.name" :value="item.id" />
+        <el-option v-for="item in postOptions" :key="item.id" :label="item.name" :value="item.id!" />
       </el-select>
     </el-form-item>
     <el-form-item
@@ -164,7 +164,7 @@
         <el-option
           v-for="(item, index) in MULTI_LEVEL_DEPT"
           :key="index"
-          :label="item.label"
+          :label="$t(item.label, { level: item.level })"
           :value="item.value"
         />
       </el-select>
@@ -229,8 +229,8 @@ const props = defineProps({
 })
 const prefix = inject('prefix')
 const userTaskForm = ref({
-  candidateStrategy: undefined, // 分配规则
-  candidateParam: [], // 分配选项
+  candidateStrategy: undefined as number | undefined, // 分配规则
+  candidateParam: [] as any, // 分配选项
   skipExpression: '' // 跳过表达式
 })
 const bpmnElement = ref()
@@ -253,17 +253,7 @@ const deptFieldOnFormOptions = computed(() => {
 })
 
 const deptLevel = ref(1)
-const deptLevelLabel = computed(() => {
-  let label = '部门负责人来源'
-  if (userTaskForm.value.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER) {
-    label = label + '(指定部门向上)'
-  } else if (userTaskForm.value.candidateStrategy == CandidateStrategy.FORM_DEPT_LEADER) {
-    label = label + '(表单内部门向上)'
-  } else {
-    label = label + '(发起人部门向上)'
-  }
-  return label
-})
+// Removed unused deptLevelLabel - using direct i18n keys instead
 
 const otherExtensions = ref()
 
@@ -430,7 +420,7 @@ const selectProcessExpression = (expression: ProcessExpressionVO) => {
   updateElementTask()
 }
 
-const handleFormUserChange = (e) => {
+const handleFormUserChange = (e: any) => {
   if (e === 'PROCESS_START_USER_ID') {
     userTaskForm.value.candidateParam = []
     userTaskForm.value.candidateStrategy = CandidateStrategy.START_USER
