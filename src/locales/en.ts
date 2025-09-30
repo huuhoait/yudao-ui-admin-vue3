@@ -1918,7 +1918,9 @@ export default {
         fieldConfiguration: 'Field Configuration',
         fieldValue: 'Field Value',
         confirmRemoveListener: 'Are you sure to remove this listener?',
-        confirmRemoveField: 'Are you sure to remove this field?'
+        confirmRemoveField: 'Are you sure to remove this field?',
+        addField: 'Add Field',
+        injectionFields: 'Injection Fields'
       }
     }
   },

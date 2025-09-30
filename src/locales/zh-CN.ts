@@ -2581,7 +2581,9 @@ export default {
         fieldConfiguration: '字段配置',
         fieldValue: '字段值',
         confirmRemoveListener: '确认移除该监听器吗？',
-        confirmRemoveField: '确认移除该字段吗？'
+        confirmRemoveField: '确认移除该字段吗？',
+        addField: '添加字段',
+        injectionFields: '注入字段'
       }
     }
   },
