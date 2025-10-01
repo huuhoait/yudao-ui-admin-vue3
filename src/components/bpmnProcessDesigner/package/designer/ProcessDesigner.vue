@@ -315,7 +315,7 @@ const initBpmnModeler = () => {
     // propertiesPanel: {
     // parent: '#js-properties-panel'
     // },
-    keyboard: props.keyboard ? { bindTo: document } : null,
+    keyboard: props.keyboard ? {} : null,
     // additionalModules: additionalModules.value,
     additionalModules: additionalModules.value,
     moddleExtensions: moddleExtensions.value
@@ -342,7 +342,7 @@ const initModelListeners = () => {
   // 注册需要的监听事件, 将. 替换为 - , 避免解析异常
   props.events.forEach((event: any) => {
     EventBus.on(event, function (eventObj) {
-      let eventName = event.replace(/\./g, '-')
+      // let eventName = event.replace(/\./g, '-')
       // eventName.name = eventName
       let element = eventObj ? eventObj.element : null
       // console.log(eventName, 'eventName')
