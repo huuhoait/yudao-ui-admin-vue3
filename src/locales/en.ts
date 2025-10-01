@@ -330,7 +330,7 @@ export default {
       selfDataPermission: 'Self Data Permission',
       dingtalk: 'DingTalk',
       wechatEnterprise: 'WeChat Enterprise',
-      
+
       // Payment module
       wechatJsapiPay: 'WeChat JSAPI Pay',
       wechatMiniProgramPay: 'WeChat Mini Program Pay',
@@ -347,12 +347,12 @@ export default {
       mockPay: 'Mock Pay',
       unpaid: 'Unpaid',
       paid: 'Paid',
-      
+
       // Product module
       recyclebin: 'Recycle Bin',
       offline: 'Offline',
       online: 'Online',
-      
+
       // Marketing module
       fixedDateAvailable: 'Fixed Date Available',
       availableAfterReceiving: 'Available After Receiving',
@@ -366,7 +366,7 @@ export default {
       fullQuantityDiscount: 'Full N Quantity',
       fullReduction: 'Full Reduction',
       discount: 'Discount',
-      
+
       // Distribution module
       firstBinding: 'First Binding',
       registerBinding: 'Register Binding',
@@ -384,11 +384,11 @@ export default {
       bankCard: 'Bank Card',
       wechat: 'WeChat',
       alipay: 'Alipay',
-      
+
       // Delivery module
       expressDelivery: 'Express Delivery',
       storePickup: 'Store Pickup',
-      
+
       // Order status
       waitingPayment: 'Waiting Payment',
       waitingDelivery: 'Waiting Delivery',
@@ -664,7 +664,8 @@ export default {
       userAssignRole: 'Assign Role',
       userImportSuccess: 'Import Success',
       userImportFail: 'Import Failed',
-      userImportTip: 'Tip: When importing users, if the user already exists, it will be updated, otherwise added',
+      userImportTip:
+        'Tip: When importing users, if the user already exists, it will be updated, otherwise added',
       avatar: 'Avatar',
       avatarUpload: 'Upload Avatar',
       dept: 'Department',
@@ -1064,14 +1065,19 @@ export default {
       alwaysShow: 'Always Show',
       keepAlive: 'Cache Status',
       componentPath: 'Component Path',
-      componentPathTip: 'Permission character on the Controller method, like @PreAuthorize(`@ss.hasPermission(system:user:list)`)',
+      componentPathTip:
+        'Permission character on the Controller method, like @PreAuthorize(`@ss.hasPermission(system:user:list)`)',
       componentPlaceholder: 'e.g.: system/user/index',
       componentNamePlaceholder: 'e.g.: SystemUser',
-      permissionTip: 'Permission character on the Controller method, like @PreAuthorize(`@ss.hasPermission(system:user:list)`)',
+      permissionTip:
+        'Permission character on the Controller method, like @PreAuthorize(`@ss.hasPermission(system:user:list)`)',
       permissionPlaceholder: 'Please enter permission',
-      visibleTip: 'When hidden is selected, the route will not appear in the sidebar, but can still be accessed',
-      alwaysShowTip: 'When not selected, if this menu only has one submenu, it will not display itself but directly show the submenu',
-      keepAliveTip: 'When caching is selected, it will be cached by `keep-alive`, and the "Component Name" field must be filled in',
+      visibleTip:
+        'When hidden is selected, the route will not appear in the sidebar, but can still be accessed',
+      alwaysShowTip:
+        'When not selected, if this menu only has one submenu, it will not display itself but directly show the submenu',
+      keepAliveTip:
+        'When caching is selected, it will be cached by `keep-alive`, and the "Component Name" field must be filled in',
 
       namePlaceholder: 'Please enter menu name',
       nameRequired: 'Menu name is required',
@@ -1101,7 +1107,8 @@ export default {
       assignDataScope: 'Assign Data Scope',
       permissionScope: 'Permission Scope',
       deptScope: 'Department Scope',
-      linkParentChild: 'Link parent-child (selecting parent node will automatically select child nodes)',
+      linkParentChild:
+        'Link parent-child (selecting parent node will automatically select child nodes)',
       expandCollapseAll: 'Expand/Collapse All',
       selectAllNone: 'Select All/None',
       namePlaceholder: 'Please enter role name',
@@ -2984,8 +2991,8 @@ export default {
       approverSelect: 'Approver selection',
       starterSelect: 'Initiator selection',
       starterSelf: 'Initiator themselves',
-      starterDeptLeader: 'Initiator\'s department leader',
-      starterMultiDeptLeader: 'Initiator\'s multi-level department leader',
+      starterDeptLeader: "Initiator's department leader",
+      starterMultiDeptLeader: "Initiator's multi-level department leader",
       processExpression: 'Expression: {expression}'
     },
     options: {
@@ -3003,8 +3010,8 @@ export default {
         starterSelect: 'Initiator selection',
         approverSelect: 'Approver selection',
         starter: 'Initiator themselves',
-        starterDeptLeader: 'Initiator\'s department leader',
-        starterMultiDeptLeader: 'Initiator\'s multi-level department leader',
+        starterDeptLeader: "Initiator's department leader",
+        starterMultiDeptLeader: "Initiator's multi-level department leader",
         userGroup: 'User groups',
         formUser: 'User field on form',
         formDeptLeader: 'Department leader field on form',
@@ -3128,7 +3135,8 @@ export default {
       or: ' or '
     },
     conditionNode: {
-      defaultBranchTip: 'When other conditions are not met, the process enters this branch (cannot edit or delete)'
+      defaultBranchTip:
+        'When other conditions are not met, the process enters this branch (cannot edit or delete)'
     },
     delayTimerConfig: {
       delayTime: 'Delay Time',
@@ -3217,5 +3225,4 @@ export default {
       }
     }
   }
-
 }

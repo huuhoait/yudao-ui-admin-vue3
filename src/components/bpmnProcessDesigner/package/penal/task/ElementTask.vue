@@ -4,14 +4,24 @@
       <!-- add by 芋艿：由于「异步延续」暂时用不到，所以这里 display 为 none -->
       <el-form-item :label="t('bpm.design.asyncContinuation')" style="display: none">
         <el-checkbox
-v-model="taskConfigForm.asyncBefore" :label="t('bpm.design.asyncBefore')"
-          :value="t('bpm.design.asyncBefore')" @change="changeTaskAsync" />
+          v-model="taskConfigForm.asyncBefore"
+          :label="t('bpm.design.asyncBefore')"
+          :value="t('bpm.design.asyncBefore')"
+          @change="changeTaskAsync"
+        />
         <el-checkbox
-v-model="taskConfigForm.asyncAfter" :label="t('bpm.design.asyncAfter')"
-          :value="t('bpm.design.asyncAfter')" @change="changeTaskAsync" />
+          v-model="taskConfigForm.asyncAfter"
+          :label="t('bpm.design.asyncAfter')"
+          :value="t('bpm.design.asyncAfter')"
+          @change="changeTaskAsync"
+        />
         <el-checkbox
-v-model="taskConfigForm.exclusive" v-if="taskConfigForm.asyncAfter || taskConfigForm.asyncBefore"
-          :label="t('bpm.design.exclusive')" :value="t('bpm.design.exclusive')" @change="changeTaskAsync" />
+          v-model="taskConfigForm.exclusive"
+          v-if="taskConfigForm.asyncAfter || taskConfigForm.asyncBefore"
+          :label="t('bpm.design.exclusive')"
+          :value="t('bpm.design.exclusive')"
+          @change="changeTaskAsync"
+        />
       </el-form-item>
       <component :is="witchTaskComponent" v-bind="$props" />
     </el-form>

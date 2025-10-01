@@ -76,7 +76,12 @@ const spuList = ref<ProductSpuApi.Spu[]>([])
 watch(
   () => props.property.spuIds,
   async () => {
-    spuList.value = await ProductSpuApi.getSpuDetailList(props.property.spuIds)
+    if (props.property.spuIds && props.property.spuIds.length > 0) {
+      const validIds = props.property.spuIds.filter((id): id is number => id !== undefined)
+      spuList.value = await ProductSpuApi.getSpuDetailList(validIds)
+    } else {
+      spuList.value = []
+    }
   },
   {
     immediate: true,

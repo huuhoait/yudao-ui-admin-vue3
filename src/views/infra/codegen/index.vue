@@ -1,9 +1,6 @@
 <template>
   <doc-alert :title="t('infra.codegen.doc.single')" url="https://doc.iocoder.cn/new-feature/" />
-  <doc-alert
-    :title="t('infra.codegen.doc.tree')"
-    url="https://doc.iocoder.cn/new-feature/tree/"
-  />
+  <doc-alert :title="t('infra.codegen.doc.tree')" url="https://doc.iocoder.cn/new-feature/tree/" />
   <doc-alert
     :title="t('infra.codegen.doc.masterSub')"
     url="https://doc.iocoder.cn/new-feature/master-sub/"
@@ -281,7 +278,10 @@ const handleSyncDB = async (row: CodegenApi.CodegenTableVO) => {
   // 基于 DB 同步
   const tableName = row.tableName
   try {
-    await message.confirm(t('infra.codegen.msg.syncConfirm', { table: tableName }), t('common.reminder'))
+    await message.confirm(
+      t('infra.codegen.msg.syncConfirm', { table: tableName }),
+      t('common.reminder')
+    )
     await CodegenApi.syncCodegenFromDB(row.id)
     message.success(t('infra.codegen.msg.syncSuccess'))
   } catch {}

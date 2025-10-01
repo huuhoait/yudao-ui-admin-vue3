@@ -44,8 +44,12 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button
+        >
         <el-button
           type="primary"
           plain
@@ -101,7 +105,11 @@
         :formatter="dateFormatter"
         width="180px"
       />
-      <el-table-column :label="t('infra.demo.demo01.table.description')" align="center" prop="description" />
+      <el-table-column
+        :label="t('infra.demo.demo01.table.description')"
+        align="center"
+        prop="description"
+      />
       <el-table-column :label="t('infra.demo.demo01.table.avatar')" align="center" prop="avatar" />
       <el-table-column
         :label="t('infra.demo.demo01.table.createTime')"
@@ -166,7 +174,7 @@ const queryParams = reactive({
   pageSize: 10,
   name: undefined,
   sex: undefined,
-  createTime: [],
+  createTime: []
 })
 const queryFormRef = ref() // 搜索的表单
 const exportLoading = ref(false) // 导出的加载中
@@ -219,15 +227,15 @@ const handleDeleteBatch = async () => {
   try {
     // 删除的二次确认
     await message.delConfirm()
-    await Demo01ContactApi.deleteDemo01ContactList(checkedIds.value);
+    await Demo01ContactApi.deleteDemo01ContactList(checkedIds.value)
     message.success(t('common.delSuccess'))
-    await getList();
+    await getList()
   } catch {}
 }
 
 const checkedIds = ref<number[]>([])
 const handleRowCheckboxChange = (records: Demo01Contact[]) => {
-  checkedIds.value = records.map((item) => item.id);
+  checkedIds.value = records.map((item) => item.id)
 }
 
 /** 导出按钮操作 */

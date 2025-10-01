@@ -8,7 +8,7 @@ import { useI18n } from '@/hooks/web/useI18n'
  */
 export const getDefaultShortcuts = () => {
   const { t } = useI18n()
-  
+
   return [
     {
       text: t('formatTime.today'),
@@ -176,13 +176,19 @@ export function formatPastI18n(param: string | Date, format = 'YYYY-MM-DD HH:mm:
 /**
  * 将时间转换为 `几秒前`、`几分钟前`、`几小时前`、`几天前` (内部函数，接受翻译函数)
  */
-function formatPastWithT(param: string | Date, t: (key: string) => string, format = 'YYYY-MM-DD HH:mm:ss'): string {
+function formatPastWithT(
+  param: string | Date,
+  t: (key: string) => string,
+  format = 'YYYY-MM-DD HH:mm:ss'
+): string {
   // 传入格式处理、存储转换值
   let timestamp: any, s: number
   // 获取js 时间戳
   let time: number = new Date().getTime()
   // 是否是对象
-  typeof param === 'string' || 'object' ? (timestamp = new Date(param).getTime()) : (timestamp = param)
+  typeof param === 'string' || 'object'
+    ? (timestamp = new Date(param).getTime())
+    : (timestamp = param)
   // 当前时间戳 - 传入时间戳
   time = Number.parseInt(`${time - timestamp}`)
   if (time < 10000) {
@@ -317,7 +323,18 @@ function formatPast2WithT(ms: number, t: (key: string) => string): string {
   const minute = Math.floor(ms / (60 * 1000) - day * 24 * 60 - hour * 60)
   const second = Math.floor(ms / 1000 - day * 24 * 60 * 60 - hour * 60 * 60 - minute * 60)
   if (day > 0) {
-    return day + ' ' + t('formatTime.days') + hour + ' ' + t('formatTime.hours') + ' ' + minute + ' ' + t('formatTime.minutes')
+    return (
+      day +
+      ' ' +
+      t('formatTime.days') +
+      hour +
+      ' ' +
+      t('formatTime.hours') +
+      ' ' +
+      minute +
+      ' ' +
+      t('formatTime.minutes')
+    )
   }
   if (hour > 0) {
     return hour + ' ' + t('formatTime.hours') + ' ' + minute + ' ' + t('formatTime.minutes')

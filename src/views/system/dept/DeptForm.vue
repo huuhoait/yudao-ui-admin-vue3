@@ -25,7 +25,11 @@
         <el-input-number v-model="formData.sort" :min="0" controls-position="right" />
       </el-form-item>
       <el-form-item :label="t('sys.dept.leader')" prop="leaderUserId">
-        <el-select v-model="formData.leaderUserId" clearable :placeholder="t('sys.dept.leaderPlaceholder')">
+        <el-select
+          v-model="formData.leaderUserId"
+          clearable
+          :placeholder="t('sys.dept.leaderPlaceholder')"
+        >
           <el-option
             v-for="item in userList"
             :key="item.id"
@@ -35,10 +39,18 @@
         </el-select>
       </el-form-item>
       <el-form-item :label="t('sys.dept.phone')" prop="phone">
-        <el-input v-model="formData.phone" maxlength="11" :placeholder="t('sys.dept.phonePlaceholder')" />
+        <el-input
+          v-model="formData.phone"
+          maxlength="11"
+          :placeholder="t('sys.dept.phonePlaceholder')"
+        />
       </el-form-item>
       <el-form-item :label="t('sys.dept.email')" prop="email">
-        <el-input v-model="formData.email" maxlength="50" :placeholder="t('sys.dept.emailPlaceholder')" />
+        <el-input
+          v-model="formData.email"
+          maxlength="50"
+          :placeholder="t('sys.dept.emailPlaceholder')"
+        />
       </el-form-item>
       <el-form-item :label="t('sys.dept.status')" prop="status">
         <el-select v-model="formData.status" clearable :placeholder="t('sys.dept.selectStatus')">
@@ -91,7 +103,11 @@ const formRules = reactive<FormRules>({
   sort: [{ required: true, message: t('sys.dept.sortRequired'), trigger: 'blur' }],
   email: [{ type: 'email', message: t('sys.dept.emailInvalid'), trigger: ['blur', 'change'] }],
   phone: [
-    { pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/, message: t('sys.dept.phoneInvalid'), trigger: 'blur' }
+    {
+      pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/,
+      message: t('sys.dept.phoneInvalid'),
+      trigger: 'blur'
+    }
   ],
   status: [{ required: true, message: t('sys.dept.selectStatus'), trigger: 'blur' }]
 })

@@ -48,11 +48,17 @@
         <el-input v-model="formData.cssClass" :placeholder="t('sys.dict.dataRemark')" />
       </el-form-item>
       <el-form-item :label="t('sys.dict.dataRemark')" prop="remark">
-        <el-input v-model="formData.remark" :placeholder="t('common.remarkPlaceholder')" type="textarea" />
+        <el-input
+          v-model="formData.remark"
+          :placeholder="t('common.remarkPlaceholder')"
+          type="textarea"
+        />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{
+        t('common.ok')
+      }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>

@@ -5,8 +5,8 @@
         <!-- class="panel-tab__title" -->
         <template #title>
           <Icon icon="ep:info-filled" />
-          Information</template
-        >
+          Information
+        </template>
         <ElementBaseInfo
           :id-edit-disabled="idEditDisabled"
           :business-object="elementBusinessObject"
@@ -15,21 +15,21 @@
         />
       </el-collapse-item>
       <el-collapse-item name="condition" v-if="elementType === 'Process'" key="message">
-        <template #title><Icon icon="ep:comment" />Messages & Signals</template>
+        <template #title> <Icon icon="ep:comment" />Messages & Signals </template>
         <signal-and-massage />
       </el-collapse-item>
       <el-collapse-item name="condition" v-if="conditionFormVisible" key="condition">
-        <template #title><Icon icon="ep:promotion" />Flow Conditions</template>
+        <template #title> <Icon icon="ep:promotion" />Flow Conditions </template>
         <flow-condition :business-object="elementBusinessObject" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="condition" v-if="formVisible" key="form">
-        <template #title><Icon icon="ep:list" />Forms</template>
+        <template #title> <Icon icon="ep:list" />Forms </template>
         <element-form :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="task" v-if="isTaskCollapseItemShow(elementType)" key="task">
-        <template #title
-          ><Icon icon="ep:checked" />{{ getTaskCollapseItemName(elementType) }}</template
-        >
+        <template #title>
+          <Icon icon="ep:checked" />{{ getTaskCollapseItemName(elementType) }}
+        </template>
         <element-task :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item
@@ -37,7 +37,7 @@
         v-if="elementType.indexOf('Task') !== -1"
         key="multiInstance"
       >
-        <template #title><Icon icon="ep:help-filled" />Multi-Instance</template>
+        <template #title> <Icon icon="ep:help-filled" />Multi-Instance </template>
         <element-multi-instance
           :id="elementId"
           :business-object="elementBusinessObject"
@@ -45,23 +45,23 @@
         />
       </el-collapse-item>
       <el-collapse-item name="listeners" key="listeners">
-        <template #title><Icon icon="ep:bell-filled" />Listener</template>
+        <template #title> <Icon icon="ep:bell-filled" />Listener </template>
         <element-listeners :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="taskListeners" v-if="elementType === 'UserTask'" key="taskListeners">
-        <template #title><Icon icon="ep:bell-filled" />Task Listener</template>
+        <template #title> <Icon icon="ep:bell-filled" />Task Listener </template>
         <user-task-listeners :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="extensions" key="extensions">
-        <template #title><Icon icon="ep:circle-plus-filled" />Extended properties</template>
+        <template #title> <Icon icon="ep:circle-plus-filled" />Extended properties </template>
         <element-properties :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="other" key="other">
-        <template #title><Icon icon="ep:promotion" />Other</template>
+        <template #title> <Icon icon="ep:promotion" />Other </template>
         <element-other-config :id="elementId" />
       </el-collapse-item>
       <el-collapse-item name="customConfig" key="customConfig">
-        <template #title><Icon icon="ep:tools" />Custom Configuration</template>
+        <template #title> <Icon icon="ep:tools" />Custom Configuration </template>
         <element-custom-config
           :id="elementId"
           :type="elementType"
@@ -70,7 +70,7 @@
       </el-collapse-item>
       <!-- 新增的时间事件配置项 -->
       <el-collapse-item v-if="elementType === 'IntermediateCatchEvent'" name="timeEvent">
-        <template #title><Icon icon="ep:timer" />Time Event</template>
+        <template #title> <Icon icon="ep:timer" />Time Event </template>
         <TimeEventConfig :businessObject="bpmnElement.value?.businessObject" :key="elementId" />
       </el-collapse-item>
     </el-collapse>
@@ -166,7 +166,7 @@ const initBpmnInstances = () => {
 const bpmnInstances = () => (window as any)?.bpmnInstances
 
 // 监听 props.bpmnModeler 然后 initModels
-const unwatchBpmn = watch(
+watch(
   () => props.bpmnModeler,
   async () => {
     // 避免加载时 流程图 并未加载完成
@@ -265,33 +265,10 @@ watch(
   }
 )
 
-function updateNode() {
-  const moddle = window.bpmnInstances?.moddle
-  const modeling = window.bpmnInstances?.modeling
-  const elementRegistry = window.bpmnInstances?.elementRegistry
-  if (!moddle || !modeling || !elementRegistry) return
-
-  const element = elementRegistry.get(props.businessObject.id)
-  if (!element) return
-
-  let timerDef = moddle.create('bpmn:TimerEventDefinition', {})
-  if (type.value === 'time') {
-    timerDef.timeDate = moddle.create('bpmn:FormalExpression', { body: condition.value })
-  } else if (type.value === 'duration') {
-    timerDef.timeDuration = moddle.create('bpmn:FormalExpression', { body: condition.value })
-  } else if (type.value === 'cycle') {
-    timerDef.timeCycle = moddle.create('bpmn:FormalExpression', { body: condition.value })
-  }
-
-  modeling.updateModdleProperties(element, element.businessObject, {
-    eventDefinitions: [timerDef]
-  })
-}
-
 // 初始化和监听
 function syncFromBusinessObject() {
-  if (props.businessObject) {
-    const timerDef = (props.businessObject.eventDefinitions || [])[0]
+  if (elementBusinessObject.value) {
+    const timerDef = (elementBusinessObject.value.eventDefinitions || [])[0]
     if (timerDef) {
       if (timerDef.timeDate) {
         type.value = 'time'
@@ -307,5 +284,5 @@ function syncFromBusinessObject() {
   }
 }
 onMounted(syncFromBusinessObject)
-watch(() => props.businessObject, syncFromBusinessObject, { deep: true })
+watch(() => elementBusinessObject.value, syncFromBusinessObject, { deep: true })
 </script>

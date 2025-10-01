@@ -4,7 +4,10 @@ import { useI18n } from '@/hooks/web/useI18n'
 const { t } = useI18n()
 
 // 获取条件节点默认的名称
-export const getDefaultConditionNodeName = (index: number, defaultFlow: boolean | undefined): string => {
+export const getDefaultConditionNodeName = (
+  index: number,
+  defaultFlow: boolean | undefined
+): string => {
   if (defaultFlow) {
     return t('simpleProcessDesignerV2.common.otherwise')
   }
@@ -12,7 +15,10 @@ export const getDefaultConditionNodeName = (index: number, defaultFlow: boolean 
 }
 
 // 获取包容分支条件节点默认的名称
-export const getDefaultInclusiveConditionNodeName = (index: number, defaultFlow: boolean | undefined): string => {
+export const getDefaultInclusiveConditionNodeName = (
+  index: number,
+  defaultFlow: boolean | undefined
+): string => {
   if (defaultFlow) {
     return t('simpleProcessDesignerV2.common.otherwise')
   }

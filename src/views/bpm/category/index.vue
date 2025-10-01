@@ -55,8 +55,12 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button
+        >
         <el-button
           type="primary"
           plain
@@ -75,7 +79,11 @@
       <el-table-column :label="$t('bpm.category.index.table.id')" align="center" prop="id" />
       <el-table-column :label="$t('bpm.category.index.table.name')" align="center" prop="name" />
       <el-table-column :label="$t('bpm.category.index.table.code')" align="center" prop="code" />
-      <el-table-column :label="$t('bpm.category.index.table.description')" align="center" prop="description" />
+      <el-table-column
+        :label="$t('bpm.category.index.table.description')"
+        align="center"
+        prop="description"
+      />
       <el-table-column :label="$t('bpm.category.index.table.status')" align="center" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />

@@ -14,7 +14,9 @@
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('sys.user.confirm') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{
+        t('sys.user.confirm')
+      }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('sys.user.cancel') }}</el-button>
     </template>
   </Dialog>

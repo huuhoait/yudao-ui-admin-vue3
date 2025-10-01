@@ -10,7 +10,11 @@
         />
         <el-tooltip
           class="item"
-          :content="modelData.id ? t('bpm.model.form.identifierNotModifiable') : t('bpm.model.form.identifierNotModifiableAfterCreation')"
+          :content="
+            modelData.id
+              ? t('bpm.model.form.identifierNotModifiable')
+              : t('bpm.model.form.identifierNotModifiableAfterCreation')
+          "
           effect="light"
           placement="top"
         >
@@ -44,7 +48,11 @@
     <el-form-item :label="t('bpm.model.form.processIcon')" class="mb-20px">
       <UploadImg v-model="modelData.icon" :limit="1" height="64px" width="64px" />
     </el-form-item>
-    <el-form-item :label="t('bpm.model.form.processDescription')" prop="description" class="mb-20px">
+    <el-form-item
+      :label="t('bpm.model.form.processDescription')"
+      prop="description"
+      class="mb-20px"
+    >
       <el-input v-model="modelData.description" clearable type="textarea" />
     </el-form-item>
     <el-form-item :label="t('bpm.model.form.processType')" prop="type" class="mb-20px">
@@ -102,7 +110,7 @@
       </div>
       <div v-if="modelData.startUserType === 2" class="mt-2 flex flex-wrap gap-2">
         <div
-          v-for="dept in selectedStartDepts" 
+          v-for="dept in selectedStartDepts"
           :key="dept.id"
           class="bg-gray-100 h-35px rounded-3xl flex items-center pr-8px dark:color-gray-600 position-relative"
         >

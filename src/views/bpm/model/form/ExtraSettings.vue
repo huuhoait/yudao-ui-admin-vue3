@@ -5,7 +5,10 @@
         <el-text size="large" tag="b">{{ t('bpm.model.form.submitterPermissions') }}</el-text>
       </template>
       <div class="flex flex-col">
-        <el-checkbox v-model="modelData.allowCancelRunningProcess" :label="t('bpm.model.form.allowCancelRunning')" />
+        <el-checkbox
+          v-model="modelData.allowCancelRunningProcess"
+          :label="t('bpm.model.form.allowCancelRunning')"
+        />
         <div class="ml-22px">
           <el-text type="info">{{ t('bpm.model.form.cancelRunningTip') }}</el-text>
         </div>
@@ -16,7 +19,10 @@
         <el-text size="large" tag="b">{{ t('bpm.model.form.approverPermissions') }}</el-text>
       </template>
       <div class="flex flex-col">
-        <el-checkbox v-model="modelData.allowWithdrawTask" :label="t('bpm.model.form.allowWithdrawTask')" />
+        <el-checkbox
+          v-model="modelData.allowWithdrawTask"
+          :label="t('bpm.model.form.allowWithdrawTask')"
+        />
         <div class="ml-22px">
           <el-text type="info">{{ t('bpm.model.form.withdrawTaskTip') }}</el-text>
         </div>
@@ -65,7 +71,9 @@
           />
         </div>
         <div class="ml-22px" v-if="modelData.processIdRule.enable">
-          <el-text type="info">{{ t('bpm.model.form.codeExample', { example: numberExample }) }}</el-text>
+          <el-text type="info">{{
+            t('bpm.model.form.codeExample', { example: numberExample })
+          }}</el-text>
         </div>
       </div>
     </el-form-item>
@@ -100,7 +108,11 @@
             <el-radio :value="true">
               {{ t('bpm.model.form.customTitle') }}
               <el-text>
-                <el-tooltip :content="t('bpm.model.form.insertFieldTip')" effect="light" placement="top">
+                <el-tooltip
+                  :content="t('bpm.model.form.insertFieldTip')"
+                  effect="light"
+                  placement="top"
+                >
                   <Icon icon="ep:question-filled" class="ml-5px" />
                 </el-tooltip>
               </el-text>

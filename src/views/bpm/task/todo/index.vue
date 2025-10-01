@@ -1,5 +1,8 @@
 <template>
-  <doc-alert :title="$t('bpm.task.todo.docs.approve')" url="https://doc.iocoder.cn/bpm/task-todo-done/" />
+  <doc-alert
+    :title="$t('bpm.task.todo.docs.approve')"
+    url="https://doc.iocoder.cn/bpm/task-todo-done/"
+  />
   <doc-alert :title="$t('bpm.task.todo.docs.sign')" url="https://doc.iocoder.cn/bpm/sign/" />
   <doc-alert
     :title="$t('bpm.task.todo.docs.delegate')"
@@ -100,7 +103,9 @@
           </el-form-item>
           <el-form-item class="font-bold" label-position="top">
             <div class="flex justify-end w-full">
-              <el-button @click="resetQuery">{{ $t('bpm.task.todo.advancedFilter.clear') }}</el-button>
+              <el-button @click="resetQuery">{{
+                $t('bpm.task.todo.advancedFilter.clear')
+              }}</el-button>
               <el-button @click="showPopover = false">{{ $t('common.cancel') }}</el-button>
               <el-button type="primary" @click="handleQuery">{{ $t('common.confirm') }}</el-button>
             </div>
@@ -119,7 +124,11 @@
         prop="processInstance.name"
         width="180"
       />
-      <el-table-column :label="$t('bpm.task.todo.table.summary')" prop="processInstance.summary" width="180">
+      <el-table-column
+        :label="$t('bpm.task.todo.table.summary')"
+        prop="processInstance.summary"
+        width="180"
+      >
         <template #default="scope">
           <div
             class="flex flex-col"
@@ -144,7 +153,12 @@
         prop="processInstance.createTime"
         width="180"
       />
-      <el-table-column align="center" :label="$t('bpm.task.todo.table.currentTask')" prop="name" width="180" />
+      <el-table-column
+        align="center"
+        :label="$t('bpm.task.todo.table.currentTask')"
+        prop="name"
+        width="180"
+      />
       <el-table-column
         :formatter="dateFormatter"
         align="center"

@@ -332,7 +332,7 @@ export default {
       selfDataPermission: '仅本人数据权限',
       dingtalk: '钉钉',
       wechatEnterprise: '企业微信',
-      
+
       // 支付模块
       wechatJsapiPay: '微信 JSAPI 支付',
       wechatMiniProgramPay: '微信小程序支付',
@@ -349,12 +349,12 @@ export default {
       mockPay: '模拟支付',
       unpaid: '未支付',
       paid: '已支付',
-      
+
       // 商品模块
       recyclebin: '回收站',
       offline: '下架',
       online: '上架',
-      
+
       // 营销模块
       fixedDateAvailable: '固定日期可用',
       availableAfterReceiving: '领取之后可用',
@@ -368,7 +368,7 @@ export default {
       fullQuantityDiscount: '满 N 件',
       fullReduction: '满减',
       discount: '折扣',
-      
+
       // 分销模块
       firstBinding: '首次绑定',
       registerBinding: '注册绑定',
@@ -386,11 +386,11 @@ export default {
       bankCard: '银行卡',
       wechat: '微信',
       alipay: '支付宝',
-      
+
       // 配送模块
       expressDelivery: '快递发货',
       storePickup: '到店自提',
-      
+
       // 订单状态
       waitingPayment: '待支付',
       waitingDelivery: '待发货',
@@ -1057,10 +1057,12 @@ export default {
       alwaysShow: '总是显示',
       keepAlive: '缓存状态',
       componentPath: '组件地址',
-      componentPathTip: 'Controller 方法上的权限字符，如：@PreAuthorize(`@ss.hasPermission(system:user:list)`)',
+      componentPathTip:
+        'Controller 方法上的权限字符，如：@PreAuthorize(`@ss.hasPermission(system:user:list)`)',
       componentPlaceholder: '例如说：system/user/index',
       componentNamePlaceholder: '例如说：SystemUser',
-      permissionTip: 'Controller 方法上的权限字符，如：@PreAuthorize(`@ss.hasPermission(system:user:list)`)',
+      permissionTip:
+        'Controller 方法上的权限字符，如：@PreAuthorize(`@ss.hasPermission(system:user:list)`)',
       permissionPlaceholder: '请输入权限标识',
       visibleTip: '选择隐藏时，路由将不会出现在侧边栏，但仍然可以访问',
       alwaysShowTip: '选择不是时，当该菜单只有一个子菜单时，不展示自己，直接展示子菜单',
@@ -1383,9 +1385,9 @@ export default {
         systemDefault: '系统默认',
         showProcessName: '展示流程名称',
         customTitle: '自定义标题',
-  // NOTE: Use escaped \{ to prevent vue-i18n interpolation parsing error
-  insertFieldTip: '输入字符 "\\{" 即可插入表单字段',
-  insertFieldPlaceholder: '请插入表单字段（输入 "\\{" 可以选择表单字段）或输入文本',
+        // NOTE: Use escaped \{ to prevent vue-i18n interpolation parsing error
+        insertFieldTip: '输入字符 "\\{" 即可插入表单字段',
+        insertFieldPlaceholder: '请插入表单字段（输入 "\\{" 可以选择表单字段）或输入文本',
         summarySettings: '摘要设置',
         showFirstThreeFields: '展示表单前 3 个字段',
         customSummary: '自定义摘要',
@@ -2689,113 +2691,113 @@ export default {
             sexRequired: '性别不能为空',
             birthdayRequired: '出生年不能为空',
             descriptionRequired: '简介不能为空'
+          }
+        }
+      },
+      processDesigner: {
+        boundaryEventTimer: {
+          timeoutHandler: {
+            title: '审批人超时未处理时'
+          },
+          enableSwitch: '启用开关',
+          executeAction: '执行动作',
+          timeoutSettings: '超时时间设置',
+          whenExceed: '当超过',
+          unprocessed: '未处理',
+          maxRemindCount: '最大提醒次数'
+        },
+        userTask: {
+          approveType: {
+            title: '审批类型'
+          },
+          rejectHandler: {
+            title: '审批人拒绝时',
+            returnNode: '驳回节点'
+          },
+          assignEmpty: {
+            title: '审批人为空时',
+            specifyUser: '指定用户'
+          },
+          assignStartUser: {
+            title: '审批人与提交人为同一人时'
+          },
+          operationButtons: {
+            title: '操作按钮',
+            operationButton: '操作按钮',
+            displayName: '显示名称',
+            enable: '启用'
+          },
+          fieldPermissions: {
+            title: '字段权限',
+            fieldName: '字段名称',
+            readOnly: '只读',
+            editable: '可编辑',
+            hidden: '隐藏'
+          },
+          signature: {
+            title: '是否需要签名'
+          },
+          approveOpinion: {
+            title: '审批意见',
+            required: '必填',
+            optional: '非必填'
+          }
+        },
+        endEvent: {
+          title: '结束',
+          approvalInfo: '审批信息',
+          table: {
+            serialNumber: '序号',
+            initiator: '发起人',
+            department: '部门',
+            startTime: '开始时间',
+            endTime: '结束时间',
+            approvalStatus: '审批状态',
+            duration: '耗时'
+          }
+        },
+        listeners: {
+          serialNumber: '序号',
+          eventType: '事件类型',
+          eventId: '事件ID',
+          listenerType: '监听器类型',
+          operation: '操作',
+          addListener: '添加监听器',
+          selectListener: '选择监听器',
+          taskListener: '任务监听器',
+          listenerId: '监听器ID',
+          javaClass: 'Java类',
+          expression: '表达式',
+          delegateExpression: '代理表达式',
+          scriptFormat: '脚本格式',
+          scriptFormatRequired: '请填写脚本格式',
+          scriptType: '脚本类型',
+          scriptTypeRequired: '请选择脚本类型',
+          inlineScript: '内联脚本',
+          externalScript: '外部脚本',
+          scriptContent: '脚本内容',
+          scriptContentRequired: '请填写脚本内容',
+          resourceAddress: '资源地址',
+          resourceAddressRequired: '请填写资源地址',
+          timerType: '定时器类型',
+          date: '日期',
+          duration: '持续时长',
+          cycle: '循环',
+          none: '无',
+          timer: '定时器',
+          timerConfigRequired: '请填写定时器配置',
+          fieldName: '字段名称',
+          fieldType: '字段类型',
+          fieldValueExpression: '字段值/表达式',
+          fieldConfiguration: '字段配置',
+          fieldValue: '字段值',
+          confirmRemoveListener: '确认移除该监听器吗？',
+          confirmRemoveField: '确认移除该字段吗？',
+          addField: '添加字段',
+          injectionFields: '注入字段'
         }
       }
     },
-    processDesigner: {
-      boundaryEventTimer: {
-        timeoutHandler: {
-          title: '审批人超时未处理时'
-        },
-        enableSwitch: '启用开关',
-        executeAction: '执行动作',
-        timeoutSettings: '超时时间设置',
-        whenExceed: '当超过',
-        unprocessed: '未处理',
-        maxRemindCount: '最大提醒次数'
-      },
-      userTask: {
-        approveType: {
-          title: '审批类型'
-        },
-        rejectHandler: {
-          title: '审批人拒绝时',
-          returnNode: '驳回节点'
-        },
-        assignEmpty: {
-          title: '审批人为空时',
-          specifyUser: '指定用户'
-        },
-        assignStartUser: {
-          title: '审批人与提交人为同一人时'
-        },
-        operationButtons: {
-          title: '操作按钮',
-          operationButton: '操作按钮',
-          displayName: '显示名称',
-          enable: '启用'
-        },
-        fieldPermissions: {
-          title: '字段权限',
-          fieldName: '字段名称',
-          readOnly: '只读',
-          editable: '可编辑',
-          hidden: '隐藏'
-        },
-        signature: {
-          title: '是否需要签名'
-        },
-        approveOpinion: {
-          title: '审批意见',
-          required: '必填',
-          optional: '非必填'
-        }
-      },
-      endEvent: {
-        title: '结束',
-        approvalInfo: '审批信息',
-        table: {
-          serialNumber: '序号',
-          initiator: '发起人',
-          department: '部门',
-          startTime: '开始时间',
-          endTime: '结束时间',
-          approvalStatus: '审批状态',
-          duration: '耗时'
-        }
-      },
-      listeners: {
-        serialNumber: '序号',
-        eventType: '事件类型',
-        eventId: '事件ID',
-        listenerType: '监听器类型',
-        operation: '操作',
-        addListener: '添加监听器',
-        selectListener: '选择监听器',
-        taskListener: '任务监听器',
-        listenerId: '监听器ID',
-        javaClass: 'Java类',
-        expression: '表达式',
-        delegateExpression: '代理表达式',
-        scriptFormat: '脚本格式',
-        scriptFormatRequired: '请填写脚本格式',
-        scriptType: '脚本类型',
-        scriptTypeRequired: '请选择脚本类型',
-        inlineScript: '内联脚本',
-        externalScript: '外部脚本',
-        scriptContent: '脚本内容',
-        scriptContentRequired: '请填写脚本内容',
-        resourceAddress: '资源地址',
-        resourceAddressRequired: '请填写资源地址',
-        timerType: '定时器类型',
-        date: '日期',
-        duration: '持续时长',
-        cycle: '循环',
-        none: '无',
-        timer: '定时器',
-        timerConfigRequired: '请填写定时器配置',
-        fieldName: '字段名称',
-        fieldType: '字段类型',
-        fieldValueExpression: '字段值/表达式',
-        fieldConfiguration: '字段配置',
-        fieldValue: '字段值',
-        confirmRemoveListener: '确认移除该监听器吗？',
-        confirmRemoveField: '确认移除该字段吗？',
-        addField: '添加字段',
-        injectionFields: '注入字段'
-      }
-    }
-  },
     build: {
       actions: {
         generateJson: '生成 JSON',
@@ -3189,5 +3191,4 @@ export default {
       }
     }
   }
- 
 }

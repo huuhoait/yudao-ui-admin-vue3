@@ -1,5 +1,11 @@
 <template>
-  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" :title="t('sys.operatelog.detail')" width="800">
+  <Dialog
+    v-model="dialogVisible"
+    :max-height="500"
+    :scroll="true"
+    :title="t('sys.operatelog.detail')"
+    width="800"
+  >
     <el-descriptions :column="1" border>
       <el-descriptions-item :label="t('sys.operatelog.logId')" min-width="120">
         {{ detailData.id }}

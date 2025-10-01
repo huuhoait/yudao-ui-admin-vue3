@@ -8,7 +8,11 @@
           <el-option label="Condition" value="condition" />
         </el-select>
       </el-form-item>
-      <el-form-item label="Condition Format" v-if="flowConditionForm.type === 'condition'" key="condition">
+      <el-form-item
+        label="Condition Format"
+        v-if="flowConditionForm.type === 'condition'"
+        key="condition"
+      >
         <el-select v-model="flowConditionForm.conditionType">
           <el-option label="Expression" value="expression" />
           <el-option label="Script" value="script" />

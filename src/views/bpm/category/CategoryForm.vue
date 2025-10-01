@@ -14,7 +14,11 @@
         <el-input v-model="formData.code" :placeholder="t('bpm.category.codePlaceholder')" />
       </el-form-item>
       <el-form-item :label="t('bpm.category.description')" prop="description">
-        <el-input v-model="formData.description" type="textarea" :placeholder="t('bpm.category.descriptionPlaceholder')" />
+        <el-input
+          v-model="formData.description"
+          type="textarea"
+          :placeholder="t('bpm.category.descriptionPlaceholder')"
+        />
       </el-form-item>
       <el-form-item :label="t('bpm.category.status')" prop="status">
         <el-radio-group v-model="formData.status">
@@ -37,7 +41,9 @@
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="submitForm" type="primary" :disabled="formLoading">{{ t('common.confirm') }}</el-button>
+      <el-button @click="submitForm" type="primary" :disabled="formLoading">{{
+        t('common.confirm')
+      }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>

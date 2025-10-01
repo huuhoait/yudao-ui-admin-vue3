@@ -51,15 +51,21 @@
             </el-button>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item command="handleRename"> {{ t('bpm.model.rename') }} </el-dropdown-item>
-                <el-dropdown-item command="handleDeleteCategory"> {{ t('bpm.model.deleteCategory') }} </el-dropdown-item>
+                <el-dropdown-item command="handleRename">
+                  {{ t('bpm.model.rename') }}
+                </el-dropdown-item>
+                <el-dropdown-item command="handleDeleteCategory">
+                  {{ t('bpm.model.deleteCategory') }}
+                </el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
         </template>
         <template v-else>
           <el-button @click.stop="handleModelSortCancel"> {{ t('common.cancel') }} </el-button>
-          <el-button type="primary" @click.stop="handleModelSortSubmit"> {{ t('bpm.model.saveSort') }} </el-button>
+          <el-button type="primary" @click.stop="handleModelSortSubmit">
+            {{ t('bpm.model.saveSort') }}
+          </el-button>
         </template>
       </div>
     </div>
@@ -97,7 +103,9 @@
         </el-table-column>
         <el-table-column :label="t('bpm.model.visibleRange')" prop="startUserIds" min-width="150">
           <template #default="{ row }">
-            <el-text v-if="!row.startUsers?.length && !row.startDepts?.length"> {{ t('bpm.model.allVisible') }} </el-text>
+            <el-text v-if="!row.startUsers?.length && !row.startDepts?.length">
+              {{ t('bpm.model.allVisible') }}
+            </el-text>
             <el-text v-else-if="row.startUsers.length === 1">
               {{ row.startUsers[0].nickname }}
             </el-text>
@@ -111,7 +119,8 @@
                 placement="top"
                 :content="row.startDepts.map((dept: any) => dept.name).join('、')"
               >
-                {{ row.startDepts[0].name }}{{ t('bpm.model.etc') }} {{ row.startDepts.length }} {{ t('bpm.model.deptVisible') }}
+                {{ row.startDepts[0].name }}{{ t('bpm.model.etc') }} {{ row.startDepts.length }}
+                {{ t('bpm.model.deptVisible') }}
               </el-tooltip>
             </el-text>
             <el-text v-else>
@@ -121,7 +130,8 @@
                 placement="top"
                 :content="row.startUsers.map((user: any) => user.nickname).join('、')"
               >
-                {{ row.startUsers[0].nickname }}{{ t('bpm.model.etc') }} {{ row.startUsers.length }} {{ t('bpm.model.peopleVisible') }}
+                {{ row.startUsers[0].nickname }}{{ t('bpm.model.etc') }}
+                {{ row.startUsers.length }} {{ t('bpm.model.peopleVisible') }}
               </el-tooltip>
             </el-text>
           </template>
@@ -228,7 +238,11 @@
                     v-if="hasPermiUpdate && scope.row.processDefinition"
                     :disabled="!isManagerUser(scope.row)"
                   >
-                    {{ scope.row.processDefinition.suspensionState === 1 ? t('bpm.model.disable') : t('bpm.model.enable') }}
+                    {{
+                      scope.row.processDefinition.suspensionState === 1
+                        ? t('bpm.model.disable')
+                        : t('bpm.model.enable')
+                    }}
                   </el-dropdown-item>
                   <el-dropdown-item
                     type="danger"

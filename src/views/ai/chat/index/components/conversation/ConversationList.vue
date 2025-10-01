@@ -60,12 +60,12 @@
                   class="py-0.5 px-2.5"
                   style="
                     max-width: 220px;
+                    overflow: hidden;
                     font-size: 14px;
                     font-weight: 400;
                     color: var(--el-text-color-regular);
-                    overflow: hidden;
-                    white-space: nowrap;
                     text-overflow: ellipsis;
+                    white-space: nowrap;
                   "
                 >
                   {{ conversation.title }}
@@ -103,9 +103,9 @@
     <div
       class="absolute bottom-0 left-0 right-0 px-5 leading-8.75 flex justify-between items-center"
       style="
+        color: var(--el-text-color);
         background-color: var(--el-fill-color-extra-light);
         box-shadow: 0 0 1px 1px var(--el-border-color-lighter);
-        color: var(--el-text-color);
       "
     >
       <div
@@ -143,8 +143,8 @@ const message = useMessage() // 消息弹窗
 
 // 定义属性
 const searchName = ref<string>('') // 对话搜索
-const activeConversationId = ref<number | null>(null) // 选中的对话，默认为 null
-const hoverConversationId = ref<number | null>(null) // 悬浮上去的对话
+const activeConversationId = ref<string | number | null>(null) // 选中的对话，默认为 null
+const hoverConversationId = ref<string | number | null>(null) // 悬浮上去的对话
 const conversationList = ref([] as ChatConversationVO[]) // 对话列表
 const conversationMap = ref<any>({}) // 对话分组 (置顶、今天、三天前、一星期前、一个月前)
 const loading = ref<boolean>(false) // 加载中
@@ -153,7 +153,7 @@ const loadingTime = ref<any>() // 加载中定时器
 // 定义组件 props
 const props = defineProps({
   activeId: {
-    type: String || null,
+    type: [String, Number],
     required: true
   }
 })
@@ -167,7 +167,7 @@ const emits = defineEmits([
 ])
 
 /** 搜索对话 */
-const searchConversation = async (e) => {
+const searchConversation = async (_e: any) => {
   // 恢复数据
   if (!searchName.value.trim().length) {
     conversationMap.value = await getConversationGroupByCreateTime(conversationList.value)
@@ -188,11 +188,9 @@ const handleConversationClick = async (id: number) => {
   })
   // 回调 onConversationClick
   // noinspection JSVoidFunctionReturnValueUsed
-  const success = emits('onConversationClick', filterConversation[0])
+  emits('onConversationClick', filterConversation[0])
   // 切换对话
-  if (success) {
-    activeConversationId.value = id
-  }
+  activeConversationId.value = id
 }
 
 /** 获取对话列表 */
@@ -207,7 +205,7 @@ const getChatConversationList = async () => {
     conversationList.value = await ChatConversationApi.getChatConversationMyList()
     // 1.2 排序
     conversationList.value.sort((a, b) => {
-      return b.createTime - a.createTime
+      return (b.createTime || 0) - (a.createTime || 0)
     })
     // 1.3 没有任何对话情况
     if (conversationList.value.length === 0) {
@@ -254,7 +252,7 @@ const getConversationGroupByCreateTime = async (list: ChatConversationVO[]) => {
       continue
     }
     // 计算时间差（单位：毫秒）
-    const diff = now - conversation.createTime
+    const diff = now - (conversation.createTime || 0)
     // 根据时间间隔判断
     if (diff < oneDay) {
       groupMap['今天'].push(conversation)
@@ -366,7 +364,9 @@ const handleRoleRepository = async () => {
 /** 监听选中的对话 */
 const { activeId } = toRefs(props)
 watch(activeId, async (newValue, oldValue) => {
-  activeConversationId.value = newValue as string
+  if (newValue !== undefined && newValue !== null) {
+    activeConversationId.value = Number(newValue)
+  }
 })
 
 // 定义 public 方法
@@ -377,8 +377,8 @@ onMounted(async () => {
   // 获取 对话列表
   await getChatConversationList()
   // 默认选中
-  if (props.activeId) {
-    activeConversationId.value = props.activeId
+  if (props.activeId !== undefined && props.activeId !== null) {
+    activeConversationId.value = Number(props.activeId)
   } else {
     // 首次默认选中第一个
     if (conversationList.value.length) {

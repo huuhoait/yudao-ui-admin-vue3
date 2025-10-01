@@ -5,13 +5,19 @@
         <!-- 如果是 Process 信息的时候，使用自定义表单 -->
         <el-form-item :label="$t('bpm.design.processId')" prop="id">
           <el-input
-v-model="needProps.id" :placeholder="$t('bpm.design.enterProcessId')"
-            :disabled="needProps.id !== undefined && needProps.id.length > 0" @change="handleKeyUpdate" />
+            v-model="needProps.id"
+            :placeholder="$t('bpm.design.enterProcessId')"
+            :disabled="needProps.id !== undefined && needProps.id.length > 0"
+            @change="handleKeyUpdate"
+          />
         </el-form-item>
         <el-form-item :label="$t('bpm.design.processName')" prop="name">
           <el-input
-v-model="needProps.name" :placeholder="$t('bpm.design.enterProcessName')" clearable
-            @change="handleNameUpdate" />
+            v-model="needProps.name"
+            :placeholder="$t('bpm.design.enterProcessName')"
+            clearable
+            @change="handleNameUpdate"
+          />
         </el-form-item>
       </div>
       <div v-else>
@@ -31,11 +37,11 @@ defineOptions({ name: 'ElementBaseInfo' })
 const props = defineProps({
   businessObject: {
     type: Object,
-    default: () => { }
+    default: () => {}
   },
   model: {
     type: Object,
-    default: () => { }
+    default: () => {}
   }
 })
 const needProps = ref<any>({})
@@ -47,7 +53,9 @@ const { t } = useI18n()
 // 流程模型的校验
 const rules = reactive({
   id: [{ required: true, message: t('bpm.design.processIdRequired'), trigger: 'blur' }],
-  name: [{ required: true, message: useI18n().t('bpm.design.processNameRequired'), trigger: 'blur' }]
+  name: [
+    { required: true, message: useI18n().t('bpm.design.processNameRequired'), trigger: 'blur' }
+  ]
 })
 
 const bpmnInstances = () => (window as any)?.bpmnInstances

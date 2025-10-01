@@ -2,7 +2,9 @@
   <Dialog v-model="dialogVisible" :title="dialogTitle">
     <Form ref="formRef" v-loading="formLoading" :rules="rules" :schema="allSchemas.formSchema" />
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{
+        t('common.ok')
+      }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>

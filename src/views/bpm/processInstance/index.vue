@@ -1,5 +1,8 @@
 <template>
-  <doc-alert :title="$t('bpm.processInstance.index.docAlertTitle')" url="https://doc.iocoder.cn/bpm/process-instance/" />
+  <doc-alert
+    :title="$t('bpm.processInstance.index.docAlertTitle')"
+    url="https://doc.iocoder.cn/bpm/process-instance/"
+  />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -21,7 +24,9 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button
+        >
       </el-form-item>
 
       <el-form-item label="" prop="category" class="absolute right-[300px]">
@@ -68,7 +73,9 @@
         >
           <template #reference>
             <el-button @click="showPopover = !showPopover">
-              <Icon icon="ep:plus" class="mr-5px" />{{ $t('bpm.processInstance.index.advancedFilter.open') }}
+              <Icon icon="ep:plus" class="mr-5px" />{{
+                $t('bpm.processInstance.index.advancedFilter.open')
+              }}
             </el-button>
           </template>
           <el-form-item
@@ -102,7 +109,9 @@
               v-model="queryParams.createTime"
               value-format="YYYY-MM-DD HH:mm:ss"
               type="daterange"
-              :start-placeholder="$t('bpm.processInstance.index.advancedFilter.startDatePlaceholder')"
+              :start-placeholder="
+                $t('bpm.processInstance.index.advancedFilter.startDatePlaceholder')
+              "
               :end-placeholder="$t('bpm.processInstance.index.advancedFilter.endDatePlaceholder')"
               :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
               class="!w-240px"
@@ -110,7 +119,9 @@
           </el-form-item>
           <el-form-item class="font-bold" label-position="top">
             <div class="flex justify-end w-full">
-              <el-button @click="resetQuery">{{ $t('bpm.processInstance.index.advancedFilter.clear') }}</el-button>
+              <el-button @click="resetQuery">{{
+                $t('bpm.processInstance.index.advancedFilter.clear')
+              }}</el-button>
               <el-button @click="showPopover = false">{{ $t('common.cancel') }}</el-button>
               <el-button type="primary" @click="handleQuery">{{ $t('common.confirm') }}</el-button>
             </div>
@@ -123,8 +134,19 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column :label="$t('bpm.processInstance.index.table.name')" align="center" prop="name" min-width="200px" fixed="left" />
-      <el-table-column :label="$t('bpm.processInstance.index.table.summary')" prop="summary" width="180" fixed="left">
+      <el-table-column
+        :label="$t('bpm.processInstance.index.table.name')"
+        align="center"
+        prop="name"
+        min-width="200px"
+        fixed="left"
+      />
+      <el-table-column
+        :label="$t('bpm.processInstance.index.table.summary')"
+        prop="summary"
+        width="180"
+        fixed="left"
+      >
         <template #default="scope">
           <div class="flex flex-col" v-if="scope.row.summary && scope.row.summary.length > 0">
             <div v-for="(item, index) in scope.row.summary" :key="index">
@@ -140,7 +162,11 @@
         min-width="100"
         fixed="left"
       />
-      <el-table-column :label="$t('bpm.processInstance.index.table.status')" prop="status" min-width="200">
+      <el-table-column
+        :label="$t('bpm.processInstance.index.table.status')"
+        prop="status"
+        min-width="200"
+      >
         <template #default="scope">
           <!-- 审批中状态 -->
           <template

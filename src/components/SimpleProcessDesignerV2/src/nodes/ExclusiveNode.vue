@@ -8,9 +8,9 @@
       >
         <span class="iconfont icon-exclusive icon-size condition"></span>
       </div>
-      <el-button v-else class="branch-node-add" color="#67c23a" @click="addCondition" plain
-        >{{ t('simpleProcessDesignerV2.exclusiveNode.addCondition') }}</el-button
-      >
+      <el-button v-else class="branch-node-add" color="#67c23a" @click="addCondition" plain>{{
+        t('simpleProcessDesignerV2.exclusiveNode.addCondition')
+      }}</el-button>
 
       <div
         class="branch-node-item"

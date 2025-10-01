@@ -60,10 +60,30 @@ const formData = ref<DataSourceConfigApi.DataSourceConfigVO>({
   password: ''
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('infra.dataSourceConfig.form.rules.nameRequired'), trigger: 'blur' }],
-  url: [{ required: true, message: t('infra.dataSourceConfig.form.rules.urlRequired'), trigger: 'blur' }],
-  username: [{ required: true, message: t('infra.dataSourceConfig.form.rules.usernameRequired'), trigger: 'blur' }],
-  password: [{ required: true, message: t('infra.dataSourceConfig.form.rules.passwordRequired'), trigger: 'blur' }]
+  name: [
+    {
+      required: true,
+      message: t('infra.dataSourceConfig.form.rules.nameRequired'),
+      trigger: 'blur'
+    }
+  ],
+  url: [
+    { required: true, message: t('infra.dataSourceConfig.form.rules.urlRequired'), trigger: 'blur' }
+  ],
+  username: [
+    {
+      required: true,
+      message: t('infra.dataSourceConfig.form.rules.usernameRequired'),
+      trigger: 'blur'
+    }
+  ],
+  password: [
+    {
+      required: true,
+      message: t('infra.dataSourceConfig.form.rules.passwordRequired'),
+      trigger: 'blur'
+    }
+  ]
 })
 const formRef = ref() // 表单 Ref
 

@@ -4,15 +4,28 @@
       <slot name="control-header"></slot>
       <template v-if="!$slots['control-header']">
         <ElButtonGroup key="file-control">
-          <XButton preIcon="ep:folder-opened" :title="$t('bpm.design.openFile')" @click="refFile.click()" />
+          <XButton
+            preIcon="ep:folder-opened"
+            :title="$t('bpm.design.openFile')"
+            @click="refFile.click()"
+          />
           <el-tooltip effect="light" placement="bottom">
             <template #content>
               <div style="color: #409eff">
-                <XTextButton :title="$t('bpm.design.downloadXml')" @click="downloadProcessAsXml()" />
+                <XTextButton
+                  :title="$t('bpm.design.downloadXml')"
+                  @click="downloadProcessAsXml()"
+                />
                 <br />
-                <XTextButton :title="$t('bpm.design.downloadSvg')" @click="downloadProcessAsSvg()" />
+                <XTextButton
+                  :title="$t('bpm.design.downloadSvg')"
+                  @click="downloadProcessAsSvg()"
+                />
                 <br />
-                <XTextButton :title="$t('bpm.design.downloadBpmn')" @click="downloadProcessAsBpmn()" />
+                <XTextButton
+                  :title="$t('bpm.design.downloadBpmn')"
+                  @click="downloadProcessAsBpmn()"
+                />
               </div>
             </template>
             <XButton :title="$t('bpm.design.downloadFile')" preIcon="ep:download" />
@@ -26,34 +39,70 @@
             </template>
           </el-tooltip>
           <el-tooltip
-v-if="props.simulation" effect="light"
-            :content="simulationStatus ? $t('bpm.design.exitSimulation') : $t('bpm.design.startSimulation')">
-            <XButton preIcon="ep:cpu" :title="$t('bpm.design.simulation')" @click="processSimulation" />
+            v-if="props.simulation"
+            effect="light"
+            :content="
+              simulationStatus ? $t('bpm.design.exitSimulation') : $t('bpm.design.startSimulation')
+            "
+          >
+            <XButton
+              preIcon="ep:cpu"
+              :title="$t('bpm.design.simulation')"
+              @click="processSimulation"
+            />
           </el-tooltip>
         </ElButtonGroup>
         <ElButtonGroup key="align-control">
           <el-tooltip effect="light" content="Align Left">
-            <XButton preIcon="fa:align-left" class="align align-bottom" @click="elementsAlign('left')" />
+            <XButton
+              preIcon="fa:align-left"
+              class="align align-bottom"
+              @click="elementsAlign('left')"
+            />
           </el-tooltip>
           <el-tooltip effect="light" content="Align Right">
-            <XButton preIcon="fa:align-left" class="align align-top" @click="elementsAlign('right')" />
+            <XButton
+              preIcon="fa:align-left"
+              class="align align-top"
+              @click="elementsAlign('right')"
+            />
           </el-tooltip>
           <el-tooltip effect="light" content="Align Top">
-            <XButton preIcon="fa:align-left" class="align align-left" @click="elementsAlign('top')" />
+            <XButton
+              preIcon="fa:align-left"
+              class="align align-left"
+              @click="elementsAlign('top')"
+            />
           </el-tooltip>
           <el-tooltip effect="light" content="Align Bottom">
-            <XButton preIcon="fa:align-left" class="align align-right" @click="elementsAlign('bottom')" />
+            <XButton
+              preIcon="fa:align-left"
+              class="align align-right"
+              @click="elementsAlign('bottom')"
+            />
           </el-tooltip>
           <el-tooltip effect="light" content="Center Horizontally">
-            <XButton preIcon="fa:align-left" class="align align-center" @click="elementsAlign('center')" />
+            <XButton
+              preIcon="fa:align-left"
+              class="align align-center"
+              @click="elementsAlign('center')"
+            />
           </el-tooltip>
           <el-tooltip effect="light" content="Center Vertically">
-            <XButton preIcon="fa:align-left" class="align align-middle" @click="elementsAlign('middle')" />
+            <XButton
+              preIcon="fa:align-left"
+              class="align align-middle"
+              @click="elementsAlign('middle')"
+            />
           </el-tooltip>
         </ElButtonGroup>
         <ElButtonGroup key="scale-control">
           <el-tooltip effect="light" content="Zoom Out">
-            <XButton preIcon="ep:zoom-out" @click="processZoomOut()" :disabled="defaultZoom < 0.2" />
+            <XButton
+              preIcon="ep:zoom-out"
+              @click="processZoomOut()"
+              :disabled="defaultZoom < 0.2"
+            />
           </el-tooltip>
           <el-button>{{ Math.floor(defaultZoom * 10 * 10) + '%' }}</el-button>
           <el-tooltip effect="light" content="Zoom In">
@@ -77,16 +126,32 @@ v-if="props.simulation" effect="light"
       </template>
       <!-- 用于打开本地文件-->
       <input
-type="file" id="files" ref="refFile" style="display: none" accept=".xml, .bpmn"
-        @change="importLocalFile" />
+        type="file"
+        id="files"
+        ref="refFile"
+        style="display: none"
+        accept=".xml, .bpmn"
+        @change="importLocalFile"
+      />
     </div>
     <div class="my-process-designer__container">
-      <div class="my-process-designer__canvas" ref="bpmnCanvas" id="bpmnCanvas" style="width: 1680px; height: 800px">
+      <div
+        class="my-process-designer__canvas"
+        ref="bpmnCanvas"
+        id="bpmnCanvas"
+        style="width: 1680px; height: 800px"
+      >
       </div>
       <!-- <div id="js-properties-panel" class="panel"></div> -->
       <!-- <div class="my-process-designer__canvas" ref="bpmn-canvas"></div> -->
     </div>
-    <Dialog title="预览" v-model="previewModelVisible" width="80%" :scroll="true" max-height="600px">
+    <Dialog
+      title="预览"
+      v-model="previewModelVisible"
+      width="80%"
+      :scroll="true"
+      max-height="600px"
+    >
       <div>
         <pre><code v-dompurify-html="highlightedCode(previewResult)" class="hljs"></code></pre>
       </div>
@@ -160,13 +225,13 @@ const props = defineProps({
   translations: {
     // 自定义的翻译文件
     type: Object,
-    default: () => { }
+    default: () => {}
   },
   additionalModel: [Object, Array], // 自定义model
   moddleExtension: {
     // 自定义moddle
     type: Object,
-    default: () => { }
+    default: () => {}
   },
   onlyCustomizeAddi: {
     type: Boolean,
@@ -273,7 +338,6 @@ const additionalModules = computed(() => {
   return Modules
 })
 const moddleExtensions = computed(() => {
-
   const Extensions: any = {}
   // 仅使用用户自定义模块
   if (props.onlyCustomizeModdle) {
@@ -302,7 +366,8 @@ const moddleExtensions = computed(() => {
 
 const initBpmnModeler = () => {
   if (bpmnModeler) return
-  let data = document.getElementById('bpmnCanvas')
+  const data = document.getElementById('bpmnCanvas')
+  if (!data) return
 
   bpmnModeler = new BpmnModeler({
     // container: this.$refs['bpmn-canvas'],
@@ -317,7 +382,7 @@ const initBpmnModeler = () => {
     // },
     keyboard: props.keyboard ? {} : null,
     // additionalModules: additionalModules.value,
-    additionalModules: additionalModules.value,
+    additionalModules: additionalModules.value as any,
     moddleExtensions: moddleExtensions.value
 
     // additionalModules: [
@@ -434,8 +499,9 @@ const setEncoded = (type, data) => {
   const encodedData = encodeURIComponent(data)
   return {
     filename: `${filename}.${type}`,
-    href: `data:application/${type === 'svg' ? 'text/xml' : 'bpmn20-xml'
-      };charset=UTF-8,${encodedData}`,
+    href: `data:application/${
+      type === 'svg' ? 'text/xml' : 'bpmn20-xml'
+    };charset=UTF-8,${encodedData}`,
     data: data
   }
 }

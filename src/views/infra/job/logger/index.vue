@@ -58,8 +58,12 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button
+        >
         <el-button
           type="success"
           plain
@@ -78,9 +82,21 @@
     <el-table v-loading="loading" :data="list">
       <el-table-column :label="t('infra.job.log.table.id')" align="center" prop="id" />
       <el-table-column :label="t('infra.job.log.table.jobId')" align="center" prop="jobId" />
-      <el-table-column :label="t('infra.job.table.handlerName')" align="center" prop="handlerName" />
-      <el-table-column :label="t('infra.job.table.handlerParam')" align="center" prop="handlerParam" />
-      <el-table-column :label="t('infra.job.log.table.executeIndex')" align="center" prop="executeIndex" />
+      <el-table-column
+        :label="t('infra.job.table.handlerName')"
+        align="center"
+        prop="handlerName"
+      />
+      <el-table-column
+        :label="t('infra.job.table.handlerParam')"
+        align="center"
+        prop="handlerParam"
+      />
+      <el-table-column
+        :label="t('infra.job.log.table.executeIndex')"
+        align="center"
+        prop="executeIndex"
+      />
       <el-table-column :label="t('infra.job.log.table.executeTime')" align="center" width="170">
         <template #default="scope">
           <span>{{ formatDate(scope.row.beginTime) + ' ~ ' + formatDate(scope.row.endTime) }}</span>

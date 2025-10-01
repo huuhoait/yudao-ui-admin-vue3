@@ -127,28 +127,33 @@ import { ApproveMethodType, APPROVE_METHODS } from '@/components/SimpleProcessDe
 
 defineOptions({ name: 'ElementMultiInstance' })
 
+interface BusinessObject {
+  loopCharacteristics?: any
+  extensionElements?: any
+  [key: string]: any
+}
+
 const props = defineProps({
-  businessObject: Object,
+  businessObject: Object as () => BusinessObject,
   type: String,
   id: String
 })
 const prefix = inject('prefix')
 const loopCharacteristics = ref('')
 //默认配置，用来覆盖原始不存在的选项，避免报错
-const defaultLoopInstanceForm = ref({
-  completionCondition: '',
-  loopCardinality: '',
-  extensionElements: [],
-  asyncAfter: false,
-  asyncBefore: false,
-  exclusive: false
-})
+
 const loopInstanceForm = ref<any>({})
-const bpmnElement = ref(null)
-const multiLoopInstance = ref(null)
+interface BpmnElement {
+  businessObject?: any
+  [key: string]: any
+}
+
+const bpmnElement = ref<BpmnElement | null>(null)
+const multiLoopInstance = ref<any>(null)
 const bpmnInstances = () => (window as any)?.bpmnInstances
 
-const getElementLoop = (businessObject) => {
+// Unused function - commented out
+/* const getElementLoop = (businessObject) => {
   if (!businessObject.loopCharacteristics) {
     loopCharacteristics.value = 'Null'
     loopInstanceForm.value = {}
@@ -182,7 +187,7 @@ const getElementLoop = (businessObject) => {
     loopInstanceForm.value['timeCycle'] =
       businessObject.loopCharacteristics.extensionElements.values[0].body
   }
-}
+} */
 
 const changeLoopCharacteristicsType = (type) => {
   // this.loopInstanceForm = { ...this.defaultLoopInstanceForm }; // 切换类型取消原表单配置
@@ -324,7 +329,7 @@ const approveMethod = ref()
 const approveRatio = ref(100)
 const otherExtensions = ref()
 const getElementLoopNew = () => {
-  if (props.type === 'UserTask') {
+  if (props.type === 'UserTask' && bpmnElement.value) {
     const extensionElements =
       bpmnElement.value.businessObject?.extensionElements ??
       bpmnInstances().moddle.create('bpmn:ExtensionElements', { values: [] })
@@ -360,42 +365,48 @@ const updateLoopCharacteristics = () => {
         'bpmn:MultiInstanceLoopCharacteristics',
         { isSequential: false, collection: '${coll_userList}' }
       )
-      multiLoopInstance.value.completionCondition = bpmnInstances().moddle.create(
-        'bpmn:FormalExpression',
-        {
-          body: '${ nrOfCompletedInstances/nrOfInstances >= ' + approveRatio.value / 100 + '}'
-        }
-      )
+      if (multiLoopInstance.value) {
+        multiLoopInstance.value.completionCondition = bpmnInstances().moddle.create(
+          'bpmn:FormalExpression',
+          {
+            body: '${ nrOfCompletedInstances/nrOfInstances >= ' + approveRatio.value / 100 + '}'
+          }
+        )
+      }
     }
     if (approveMethod.value === ApproveMethodType.ANY_APPROVE) {
       multiLoopInstance.value = bpmnInstances().moddle.create(
         'bpmn:MultiInstanceLoopCharacteristics',
         { isSequential: false, collection: '${coll_userList}' }
       )
-      multiLoopInstance.value.completionCondition = bpmnInstances().moddle.create(
-        'bpmn:FormalExpression',
-        {
-          body: '${ nrOfCompletedInstances > 0 }'
-        }
-      )
+      if (multiLoopInstance.value) {
+        multiLoopInstance.value.completionCondition = bpmnInstances().moddle.create(
+          'bpmn:FormalExpression',
+          {
+            body: '${ nrOfCompletedInstances > 0 }'
+          }
+        )
+      }
     }
     if (approveMethod.value === ApproveMethodType.SEQUENTIAL_APPROVE) {
       multiLoopInstance.value = bpmnInstances().moddle.create(
         'bpmn:MultiInstanceLoopCharacteristics',
         { isSequential: true, collection: '${coll_userList}' }
       )
-      multiLoopInstance.value.loopCardinality = bpmnInstances().moddle.create(
-        'bpmn:FormalExpression',
-        {
-          body: '1'
-        }
-      )
-      multiLoopInstance.value.completionCondition = bpmnInstances().moddle.create(
-        'bpmn:FormalExpression',
-        {
-          body: '${ nrOfCompletedInstances >= nrOfInstances }'
-        }
-      )
+      if (multiLoopInstance.value) {
+        multiLoopInstance.value.loopCardinality = bpmnInstances().moddle.create(
+          'bpmn:FormalExpression',
+          {
+            body: '1'
+          }
+        )
+        multiLoopInstance.value.completionCondition = bpmnInstances().moddle.create(
+          'bpmn:FormalExpression',
+          {
+            body: '${ nrOfCompletedInstances >= nrOfInstances }'
+          }
+        )
+      }
     }
     bpmnInstances().modeling.updateProperties(toRaw(bpmnElement.value), {
       loopCharacteristics: toRaw(multiLoopInstance.value)
@@ -405,7 +416,7 @@ const updateLoopCharacteristics = () => {
   // 添加ApproveMethod到ExtensionElements
   const extensions = bpmnInstances().moddle.create('bpmn:ExtensionElements', {
     values: [
-      ...otherExtensions.value,
+      ...(otherExtensions.value || []),
       bpmnInstances().moddle.create(`${prefix}:ApproveMethod`, {
         value: approveMethod.value
       })

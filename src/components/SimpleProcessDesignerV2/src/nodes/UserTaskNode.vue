@@ -75,13 +75,21 @@
           type="index"
           width="50"
         />
-        <el-table-column :label="t('simpleProcessDesignerV2.userTaskNode.approver')" min-width="100" align="center">
+        <el-table-column
+          :label="t('simpleProcessDesignerV2.userTaskNode.approver')"
+          min-width="100"
+          align="center"
+        >
           <template #default="scope">
             {{ scope.row.assigneeUser?.nickname || scope.row.ownerUser?.nickname }}
           </template>
         </el-table-column>
 
-        <el-table-column :label="t('simpleProcessDesignerV2.userTaskNode.department')" min-width="100" align="center">
+        <el-table-column
+          :label="t('simpleProcessDesignerV2.userTaskNode.department')"
+          min-width="100"
+          align="center"
+        >
           <template #default="scope">
             {{ scope.row.assigneeUser?.deptName || scope.row.ownerUser?.deptName }}
           </template>

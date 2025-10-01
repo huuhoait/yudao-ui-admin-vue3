@@ -99,7 +99,12 @@
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
       <el-table-column align="center" :label="t('common.index')" prop="id" />
-      <el-table-column align="center" :label="t('sys.dict.typeName')" prop="name" show-overflow-tooltip />
+      <el-table-column
+        align="center"
+        :label="t('sys.dict.typeName')"
+        prop="name"
+        show-overflow-tooltip
+      />
       <el-table-column align="center" :label="t('sys.dict.typeCode')" prop="type" width="300" />
       <el-table-column align="center" :label="t('sys.dict.typeStatus')" prop="status">
         <template #default="scope">

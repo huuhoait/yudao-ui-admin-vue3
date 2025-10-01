@@ -22,7 +22,6 @@
 </template>
 
 <script lang="ts" setup>
-
 import { ElTree } from 'element-plus'
 import * as DeptApi from '@/api/system/dept'
 import { defaultProps, handleTree } from '@/utils/tree'

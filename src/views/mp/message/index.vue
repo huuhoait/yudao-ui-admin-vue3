@@ -101,7 +101,7 @@ const queryParams = reactive({
   openid: '',
   accountId: -1,
   type: MsgType.Text,
-  createTime: []
+  createTime: [] as [Date, Date] | []
 })
 const queryFormRef = ref<FormInstance | null>(null) // 搜索的表单
 

@@ -18,7 +18,8 @@
           @click="handleDeleteBatch"
           v-hasPermi="['infra:data-source-config:delete']"
         >
-          <Icon icon="ep:delete" class="mr-5px" /> {{ t('infra.dataSourceConfig.actions.batchDelete') }}
+          <Icon icon="ep:delete" class="mr-5px" />
+          {{ t('infra.dataSourceConfig.actions.batchDelete') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -36,7 +37,11 @@
         prop="url"
         :show-overflow-tooltip="true"
       />
-      <el-table-column :label="t('infra.dataSourceConfig.table.username')" align="center" prop="username" />
+      <el-table-column
+        :label="t('infra.dataSourceConfig.table.username')"
+        align="center"
+        prop="username"
+      />
       <el-table-column
         :label="t('infra.dataSourceConfig.table.createTime')"
         align="center"

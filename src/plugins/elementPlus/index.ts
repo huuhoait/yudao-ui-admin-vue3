@@ -6,12 +6,14 @@ const plugins = [ElLoading]
 
 const components = [ElScrollbar, ElButton]
 
-export const setupElementPlus = (app: App<Element>) => {
+export const setupElementPlus = (app: App) => {
   plugins.forEach((plugin) => {
     app.use(plugin)
   })
 
   components.forEach((component) => {
-    app.component(component.name, component)
+    if (component.name) {
+      app.component(component.name, component)
+    }
   })
 }

@@ -78,7 +78,10 @@
           <template #label>
             <span>
               {{ t('infra.codegen.generate.businessName') }}
-              <el-tooltip :content="t('infra.codegen.generate.businessNameTooltip')" placement="top">
+              <el-tooltip
+                :content="t('infra.codegen.generate.businessNameTooltip')"
+                placement="top"
+              >
                 <Icon icon="ep:question-filled" />
               </el-tooltip>
             </span>
@@ -106,7 +109,10 @@
           <template #label>
             <span>
               {{ t('infra.codegen.generate.classComment') }}
-              <el-tooltip :content="t('infra.codegen.generate.classCommentTooltip')" placement="top">
+              <el-tooltip
+                :content="t('infra.codegen.generate.classCommentTooltip')"
+                placement="top"
+              >
                 <Icon icon="ep:question-filled" />
               </el-tooltip>
             </span>
@@ -155,7 +161,10 @@
           <template #label>
             <span>
               {{ t('infra.codegen.generate.treeParentColumn') }}
-              <el-tooltip :content="t('infra.codegen.generate.treeParentColumnTooltip')" placement="top">
+              <el-tooltip
+                :content="t('infra.codegen.generate.treeParentColumnTooltip')"
+                placement="top"
+              >
                 <Icon icon="ep:question-filled" />
               </el-tooltip>
             </span>
@@ -178,7 +187,10 @@
           <template #label>
             <span>
               {{ t('infra.codegen.generate.treeNameColumn') }}
-              <el-tooltip :content="t('infra.codegen.generate.treeNameColumnTooltip')" placement="top">
+              <el-tooltip
+                :content="t('infra.codegen.generate.treeNameColumnTooltip')"
+                placement="top"
+              >
                 <Icon icon="ep:question-filled" />
               </el-tooltip>
             </span>
@@ -230,7 +242,10 @@
           <template #label>
             <span>
               {{ t('infra.codegen.generate.subJoinColumn') }}
-              <el-tooltip :content="t('infra.codegen.generate.subJoinColumnTooltip')" placement="top">
+              <el-tooltip
+                :content="t('infra.codegen.generate.subJoinColumnTooltip')"
+                placement="top"
+              >
                 <Icon icon="ep:question-filled" />
               </el-tooltip>
             </span>
@@ -312,43 +327,91 @@ const formData = ref({
 
 const rules = reactive({
   templateType: [
-    { required: true, message: t('infra.codegen.generate.rules.templateTypeRequired'), trigger: 'change' }
+    {
+      required: true,
+      message: t('infra.codegen.generate.rules.templateTypeRequired'),
+      trigger: 'change'
+    }
   ],
   frontType: [
-    { required: true, message: t('infra.codegen.generate.rules.frontTypeRequired'), trigger: 'change' }
+    {
+      required: true,
+      message: t('infra.codegen.generate.rules.frontTypeRequired'),
+      trigger: 'change'
+    }
   ],
   scene: [
     { required: true, message: t('infra.codegen.generate.rules.sceneRequired'), trigger: 'change' }
   ],
   moduleName: [
-    { required: true, message: t('infra.codegen.generate.rules.moduleNameRequired'), trigger: 'blur' }
+    {
+      required: true,
+      message: t('infra.codegen.generate.rules.moduleNameRequired'),
+      trigger: 'blur'
+    }
   ],
   businessName: [
-    { required: true, message: t('infra.codegen.generate.rules.businessNameRequired'), trigger: 'blur' }
+    {
+      required: true,
+      message: t('infra.codegen.generate.rules.businessNameRequired'),
+      trigger: 'blur'
+    }
   ],
   businessPackage: [
-    { required: true, message: t('infra.codegen.generate.rules.businessPackageRequired'), trigger: 'blur' }
+    {
+      required: true,
+      message: t('infra.codegen.generate.rules.businessPackageRequired'),
+      trigger: 'blur'
+    }
   ],
   className: [
-    { required: true, message: t('infra.codegen.generate.rules.classNameRequired'), trigger: 'blur' }
+    {
+      required: true,
+      message: t('infra.codegen.generate.rules.classNameRequired'),
+      trigger: 'blur'
+    }
   ],
   classComment: [
-    { required: true, message: t('infra.codegen.generate.rules.classCommentRequired'), trigger: 'blur' }
+    {
+      required: true,
+      message: t('infra.codegen.generate.rules.classCommentRequired'),
+      trigger: 'blur'
+    }
   ],
   masterTableId: [
-    { required: true, message: t('infra.codegen.generate.rules.masterTableRequired'), trigger: 'change' }
+    {
+      required: true,
+      message: t('infra.codegen.generate.rules.masterTableRequired'),
+      trigger: 'change'
+    }
   ],
   subJoinColumnId: [
-    { required: true, message: t('infra.codegen.generate.rules.subJoinColumnRequired'), trigger: 'change' }
+    {
+      required: true,
+      message: t('infra.codegen.generate.rules.subJoinColumnRequired'),
+      trigger: 'change'
+    }
   ],
   subJoinMany: [
-    { required: true, message: t('infra.codegen.generate.rules.subJoinManyRequired'), trigger: 'change' }
+    {
+      required: true,
+      message: t('infra.codegen.generate.rules.subJoinManyRequired'),
+      trigger: 'change'
+    }
   ],
   treeParentColumnId: [
-    { required: true, message: t('infra.codegen.generate.rules.treeParentColumnRequired'), trigger: 'change' }
+    {
+      required: true,
+      message: t('infra.codegen.generate.rules.treeParentColumnRequired'),
+      trigger: 'change'
+    }
   ],
   treeNameColumnId: [
-    { required: true, message: t('infra.codegen.generate.rules.treeNameColumnRequired'), trigger: 'change' }
+    {
+      required: true,
+      message: t('infra.codegen.generate.rules.treeNameColumnRequired'),
+      trigger: 'change'
+    }
   ]
 })
 

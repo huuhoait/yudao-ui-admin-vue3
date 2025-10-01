@@ -1,7 +1,12 @@
 <template>
   <div>
-    <el-divider content-position="left">{{ t('bpm.processDesigner.boundaryEventTimer.timeoutHandler.title') }}</el-divider>
-    <el-form-item :label="t('bpm.processDesigner.boundaryEventTimer.enableSwitch')" prop="timeoutHandlerEnable">
+    <el-divider content-position="left">{{
+      t('bpm.processDesigner.boundaryEventTimer.timeoutHandler.title')
+    }}</el-divider>
+    <el-form-item
+      :label="t('bpm.processDesigner.boundaryEventTimer.enableSwitch')"
+      prop="timeoutHandlerEnable"
+    >
       <el-switch
         v-model="timeoutHandlerEnable"
         :active-text="t('common.enable')"
@@ -9,7 +14,11 @@
         @change="timeoutHandlerChange"
       />
     </el-form-item>
-    <el-form-item :label="t('bpm.processDesigner.boundaryEventTimer.executeAction')" prop="timeoutHandlerType" v-if="timeoutHandlerEnable">
+    <el-form-item
+      :label="t('bpm.processDesigner.boundaryEventTimer.executeAction')"
+      prop="timeoutHandlerType"
+      v-if="timeoutHandlerEnable"
+    >
       <el-radio-group v-model="timeoutHandlerType.value" @change="onTimeoutHandlerTypeChanged">
         <el-radio-button
           v-for="item in TIMEOUT_HANDLER_TYPES"
@@ -19,7 +28,10 @@
         />
       </el-radio-group>
     </el-form-item>
-    <el-form-item :label="t('bpm.processDesigner.boundaryEventTimer.timeoutSettings')" v-if="timeoutHandlerEnable">
+    <el-form-item
+      :label="t('bpm.processDesigner.boundaryEventTimer.timeoutSettings')"
+      v-if="timeoutHandlerEnable"
+    >
       <span class="mr-2">{{ t('bpm.processDesigner.boundaryEventTimer.whenExceed') }}</span>
       <el-form-item prop="timeDuration">
         <el-input-number
@@ -102,7 +114,7 @@ const maxRemindCount = ref(1)
 
 const elExtensionElements = ref()
 const otherExtensions = ref()
-const configExtensions = ref([])
+const configExtensions = ref<any[]>([])
 const eventDefinition = ref()
 
 const resetElement = () => {

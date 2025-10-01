@@ -253,7 +253,6 @@ watch(
     } else if (formData.value.type === BpmModelType.SIMPLE) {
       processData.value = formData.value.simpleModel
     }
-
   },
   {
     immediate: true

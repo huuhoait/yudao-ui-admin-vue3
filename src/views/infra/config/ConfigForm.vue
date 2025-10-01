@@ -14,19 +14,13 @@
         />
       </el-form-item>
       <el-form-item :label="t('infra.config.form.name')" prop="name">
-        <el-input
-          v-model="formData.name"
-          :placeholder="t('infra.config.form.namePlaceholder')"
-        />
+        <el-input v-model="formData.name" :placeholder="t('infra.config.form.namePlaceholder')" />
       </el-form-item>
       <el-form-item :label="t('infra.config.form.key')" prop="key">
         <el-input v-model="formData.key" :placeholder="t('infra.config.form.keyPlaceholder')" />
       </el-form-item>
       <el-form-item :label="t('infra.config.form.value')" prop="value">
-        <el-input
-          v-model="formData.value"
-          :placeholder="t('infra.config.form.valuePlaceholder')"
-        />
+        <el-input v-model="formData.value" :placeholder="t('infra.config.form.valuePlaceholder')" />
       </el-form-item>
       <el-form-item :label="t('infra.config.form.visible')" prop="visible">
         <el-radio-group v-model="formData.visible">
@@ -78,11 +72,15 @@ const formData = ref({
   remark: ''
 })
 const formRules = reactive({
-  category: [{ required: true, message: t('infra.config.form.rules.categoryRequired'), trigger: 'blur' }],
+  category: [
+    { required: true, message: t('infra.config.form.rules.categoryRequired'), trigger: 'blur' }
+  ],
   name: [{ required: true, message: t('infra.config.form.rules.nameRequired'), trigger: 'blur' }],
   key: [{ required: true, message: t('infra.config.form.rules.keyRequired'), trigger: 'blur' }],
   value: [{ required: true, message: t('infra.config.form.rules.valueRequired'), trigger: 'blur' }],
-  visible: [{ required: true, message: t('infra.config.form.rules.visibleRequired'), trigger: 'blur' }]
+  visible: [
+    { required: true, message: t('infra.config.form.rules.visibleRequired'), trigger: 'blur' }
+  ]
 })
 const formRef = ref() // 表单 Ref
 

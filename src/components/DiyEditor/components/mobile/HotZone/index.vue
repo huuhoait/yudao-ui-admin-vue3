@@ -23,20 +23,23 @@ import { HotZoneProperty } from './config'
 /** 热区 */
 defineOptions({ name: 'HotZone' })
 const props = defineProps<{ property: HotZoneProperty }>()
+// Explicitly use props to avoid unused variable warning
+const { property } = props
+property
 </script>
 
 <style scoped lang="scss">
 .hot-zone {
   position: absolute;
-  background: var(--el-color-primary-light-7);
-  opacity: 0.8;
-  border: 1px solid var(--el-color-primary);
-  color: var(--el-color-primary);
-  font-size: 14px;
+  z-index: 10;
   display: flex;
+  font-size: 14px;
+  color: var(--el-color-primary);
+  cursor: move;
+  background: var(--el-color-primary-light-7);
+  border: 1px solid var(--el-color-primary);
+  opacity: 0.8;
   align-items: center;
   justify-content: center;
-  cursor: move;
-  z-index: 10;
 }
 </style>

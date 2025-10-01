@@ -12,6 +12,7 @@ import { ThemeSwitch } from '@/layout/components/ThemeSwitch'
 import ColorRadioPicker from './components/ColorRadioPicker.vue'
 import InterfaceDisplay from './components/InterfaceDisplay.vue'
 import LayoutRadioPicker from './components/LayoutRadioPicker.vue'
+import { computed, unref, watch } from 'vue'
 
 defineOptions({ name: 'Setting' })
 
@@ -30,7 +31,10 @@ const setSystemTheme = (color: string) => {
   setCssVar('--el-color-primary', color)
   appStore.setTheme({ elColorPrimary: color })
   const leftMenuBgColor = useCssVar('--left-menu-bg-color', document.documentElement)
-  setMenuTheme(trim(unref(leftMenuBgColor)))
+  const bgColor = unref(leftMenuBgColor)
+  if (bgColor) {
+    setMenuTheme(trim(bgColor))
+  }
 }
 
 // 头部主题相关
@@ -39,7 +43,7 @@ const headerTheme = ref(appStore.getTheme.topHeaderBgColor || '')
 const setHeaderTheme = (color: string) => {
   const isDarkColor = colorIsDark(color)
   const textColor = isDarkColor ? '#fff' : 'inherit'
-  const textHoverColor = isDarkColor ? lighten(color!, 6) : '#f6f6f6'
+  const textHoverColor = isDarkColor ? lighten(color, 6) : '#f6f6f6'
   const topToolBorderColor = isDarkColor ? color : '#eee'
   setCssVar('--top-header-bg-color', color)
   setCssVar('--top-header-text-color', textColor)
@@ -61,21 +65,22 @@ const menuTheme = ref(appStore.getTheme.leftMenuBgColor || '')
 const setMenuTheme = (color: string) => {
   const primaryColor = useCssVar('--el-color-primary', document.documentElement)
   const isDarkColor = colorIsDark(color)
+  const primaryColorValue = unref(primaryColor) || '#409eff' // fallback to default primary color
   const theme: Recordable = {
     // 左侧菜单边框颜色
     leftMenuBorderColor: isDarkColor ? 'inherit' : '#eee',
     // 左侧菜单背景颜色
     leftMenuBgColor: color,
     // 左侧菜单浅色背景颜色
-    leftMenuBgLightColor: isDarkColor ? lighten(color!, 6) : color,
+    leftMenuBgLightColor: isDarkColor ? lighten(color, 6) : color,
     // 左侧菜单选中背景颜色
     leftMenuBgActiveColor: isDarkColor
       ? 'var(--el-color-primary)'
-      : hexToRGB(unref(primaryColor), 0.1),
+      : hexToRGB(primaryColorValue, 0.1),
     // 左侧菜单收起选中背景颜色
     leftMenuCollapseBgActiveColor: isDarkColor
       ? 'var(--el-color-primary)'
-      : hexToRGB(unref(primaryColor), 0.1),
+      : hexToRGB(primaryColorValue, 0.1),
     // 左侧菜单字体颜色
     leftMenuTextColor: isDarkColor ? '#bfcbd9' : '#333',
     // 左侧菜单选中字体颜色
@@ -296,7 +301,7 @@ const clear = () => {
 $prefix-cls: #{$namespace}-setting;
 
 .#{$prefix-cls} {
+  z-index: 1200; /* 修正没有z-index会被表格层覆盖,值不要超过4000 */
   border-radius: 6px 0 0 6px;
-  z-index: 1200;/*修正没有z-index会被表格层覆盖,值不要超过4000*/
 }
 </style>

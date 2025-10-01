@@ -1,5 +1,8 @@
 <template>
-  <doc-alert :title="$t('bpm.oa.leave.index.docAlertTitle')" url="https://doc.iocoder.cn/bpm/use-business-form/" />
+  <doc-alert
+    :title="$t('bpm.oa.leave.index.docAlertTitle')"
+    url="https://doc.iocoder.cn/bpm/use-business-form/"
+  />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -105,7 +108,11 @@
           <dict-tag :type="DICT_TYPE.BPM_OA_LEAVE_TYPE" :value="scope.row.type" />
         </template>
       </el-table-column>
-      <el-table-column align="center" :label="$t('bpm.oa.leave.index.table.reason')" prop="reason" />
+      <el-table-column
+        align="center"
+        :label="$t('bpm.oa.leave.index.table.reason')"
+        prop="reason"
+      />
       <el-table-column
         :formatter="dateFormatter"
         align="center"

@@ -235,30 +235,30 @@ const props = defineProps({
   type: String
 })
 const prefix = inject('prefix')
-const width = inject('width')
+// const width = inject('width')
 
 const formKey = ref(undefined)
 const businessKey = ref('')
-const optionModelTitle = ref('')
+// const optionModelTitle = ref('')
 const fieldList = ref<any[]>([])
-const formFieldForm = ref<any>({})
-const fieldType = ref({
-  long: '长整型',
-  string: '字符串',
-  boolean: '布尔类',
-  date: '日期类',
-  enum: '枚举类',
-  custom: '自定义类型'
-})
-const formFieldIndex = ref(-1) // 编辑中的字段， -1 为新增
-const formFieldOptionIndex = ref(-1) // 编辑中的字段配置项， -1 为新增
-const fieldModelVisible = ref(false)
-const fieldOptionModelVisible = ref(false)
-const fieldOptionForm = ref<any>({}) // 当前激活的字段配置项数据
-const fieldOptionType = ref('') // 当前激活的字段配置项弹窗 类型
-const fieldEnumList = ref<any[]>([]) // 枚举值列表
-const fieldConstraintsList = ref<any[]>([]) // 约束条件列表
-const fieldPropertiesList = ref<any[]>([]) // 绑定属性列表
+// const formFieldForm = ref<any>({})
+// const fieldType = ref({
+//   long: '长整型',
+//   string: '字符串',
+//   boolean: '布尔类',
+//   date: '日期类',
+//   enum: '枚举类',
+//   custom: '自定义类型'
+// })
+// const formFieldIndex = ref(-1) // 编辑中的字段， -1 为新增
+// const formFieldOptionIndex = ref(-1) // 编辑中的字段配置项， -1 为新增
+// const fieldModelVisible = ref(false)
+// const fieldOptionModelVisible = ref(false)
+// const fieldOptionForm = ref<any>({}) // 当前激活的字段配置项数据
+// const fieldOptionType = ref('') // 当前激活的字段配置项弹窗 类型
+// const fieldEnumList = ref<any[]>([]) // 枚举值列表
+// const fieldConstraintsList = ref<any[]>([]) // 约束条件列表
+// const fieldPropertiesList = ref<any[]>([]) // 绑定属性列表
 const bpmnELement = ref()
 const elExtensionElements = ref()
 const formData = ref()
@@ -299,47 +299,39 @@ const updateElementFormKey = () => {
     formKey: formKey.value
   })
 }
-const updateElementBusinessKey = () => {
-  bpmnInstances().modeling.updateModdleProperties(toRaw(bpmnELement.value), formData.value, {
-    businessKey: businessKey.value
-  })
-}
+// Commented out - not used in template
+// const updateElementBusinessKey = () => {
+//   bpmnInstances().modeling.updateModdleProperties(toRaw(bpmnELement.value), formData.value, {
+//     businessKey: businessKey.value
+//   })
+// }
 // 根据类型调整字段type
-const changeFieldTypeType = (type) => {
-  // this.$set(this.formFieldForm, "type", type === "custom" ? "" : type);
-  formFieldForm.value['type'] = type === 'custom' ? '' : type
-}
+// const changeFieldTypeType = (type) => {
+//   // this.$set(this.formFieldForm, "type", type === "custom" ? "" : type);
+//   formFieldForm.value['type'] = type === 'custom' ? '' : type
+// }
 
-// 打开字段详情侧边栏
-const openFieldForm = (field, index) => {
+// Commented out - not used in template
+/* const openFieldForm = (field, index) => {
   formFieldIndex.value = index
   if (index !== -1) {
     const FieldObject = formData.value.fields[index]
     formFieldForm.value = JSON.parse(JSON.stringify(field))
-    // 设置自定义类型
-    // this.$set(this.formFieldForm, "typeType", !this.fieldType[field.type] ? "custom" : field.type);
     formFieldForm.value['typeType'] = !fieldType.value[field.type] ? 'custom' : field.type
-    // 初始化枚举值列表
     field.type === 'enum' &&
       (fieldEnumList.value = JSON.parse(JSON.stringify(FieldObject?.values || [])))
-    // 初始化约束条件列表
     fieldConstraintsList.value = JSON.parse(
       JSON.stringify(FieldObject?.validation?.constraints || [])
     )
-    // 初始化自定义属性列表
     fieldPropertiesList.value = JSON.parse(JSON.stringify(FieldObject?.properties?.values || []))
   } else {
     formFieldForm.value = {}
-    // 初始化枚举值列表
     fieldEnumList.value = []
-    // 初始化约束条件列表
     fieldConstraintsList.value = []
-    // 初始化自定义属性列表
     fieldPropertiesList.value = []
   }
   fieldModelVisible.value = true
 }
-// 打开字段 某个 配置项 弹窗
 const openFieldOptionForm = (option, index, type) => {
   fieldOptionModelVisible.value = true
   fieldOptionType.value = type
@@ -355,8 +347,6 @@ const openFieldOptionForm = (option, index, type) => {
   fieldOptionForm.value = option ? JSON.parse(JSON.stringify(option)) : {}
   return (optionModelTitle.value = '约束条件配置')
 }
-
-// 保存字段 某个 配置项
 const saveFieldOption = () => {
   if (formFieldOptionIndex.value === -1) {
     if (fieldOptionType.value === 'property') {
@@ -379,13 +369,11 @@ const saveFieldOption = () => {
   fieldOptionModelVisible.value = false
   fieldOptionForm.value = {}
 }
-// 保存字段配置
 const saveField = () => {
   const { id, type, label, defaultValue, datePattern } = formFieldForm.value
   const Field = bpmnInstances().moddle.create(`${prefix}:FormField`, { id, type, label })
   defaultValue && (Field.defaultValue = defaultValue)
   datePattern && (Field.datePattern = datePattern)
-  // 构建属性
   if (fieldPropertiesList.value && fieldPropertiesList.value.length) {
     const fieldPropertyList = fieldPropertiesList.value.map((fp) => {
       return bpmnInstances().moddle.create(`${prefix}:Property`, {
@@ -397,7 +385,6 @@ const saveField = () => {
       values: fieldPropertyList
     })
   }
-  // 构建校验规则
   if (fieldConstraintsList.value && fieldConstraintsList.value.length) {
     const fieldConstraintList = fieldConstraintsList.value.map((fc) => {
       return bpmnInstances().moddle.create(`${prefix}:Constraint`, {
@@ -409,13 +396,11 @@ const saveField = () => {
       constraints: fieldConstraintList
     })
   }
-  // 构建枚举值
   if (fieldEnumList.value && fieldEnumList.value.length) {
     Field.values = fieldEnumList.value.map((fe) => {
       return bpmnInstances().moddle.create(`${prefix}:Value`, { name: fe.name, id: fe.id })
     })
   }
-  // 更新数组 与 表单配置实例
   if (formFieldIndex.value === -1) {
     fieldList.value.push(formFieldForm.value)
     formData.value.fields.push(Field)
@@ -426,10 +411,7 @@ const saveField = () => {
   updateElementExtensions()
   fieldModelVisible.value = false
 }
-
-// 移除某个 字段的 配置项
-const removeFieldOptionItem = (option, index, type) => {
-  // console.log(option, 'option')
+const removeFieldOptionItem = (_option, index, type) => {
   if (type === 'property') {
     fieldPropertiesList.value.splice(index, 1)
     return
@@ -440,13 +422,12 @@ const removeFieldOptionItem = (option, index, type) => {
   }
   fieldConstraintsList.value.splice(index, 1)
 }
-// 移除 字段
-const removeField = (field, index) => {
-  console.log(field, 'field')
+const removeField = (_field, index) => {
   fieldList.value.splice(index, 1)
   formData.value.fields.splice(index, 1)
   updateElementExtensions()
 }
+*/
 
 const updateElementExtensions = () => {
   // 更新回扩展元素
@@ -459,20 +440,27 @@ const updateElementExtensions = () => {
   })
 }
 
-const formList = ref([]) // 流程表单的下拉框的数据
+import type { FormVO } from '@/api/bpm/form'
+
+const formList = ref<FormVO[]>([]) // 流程表单的下拉框的数据
 onMounted(async () => {
   formList.value = await FormApi.getFormSimpleList()
-  formKey.value = parseInt(formKey.value)
+  if (formKey.value && typeof formKey.value === 'string') {
+    const parsedValue = parseInt(formKey.value, 10)
+    if (!isNaN(parsedValue)) {
+      formKey.value = parsedValue
+    }
+  }
 })
 
 watch(
   () => props.id,
   (val) => {
-    val &&
-      val.length &&
+    if (val && val.length) {
       nextTick(() => {
         resetFormList()
       })
+    }
   },
   { immediate: true }
 )

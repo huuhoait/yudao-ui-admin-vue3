@@ -49,18 +49,23 @@ const expanded = ref(false)
 const handleToggleFab = () => {
   expanded.value = !expanded.value
 }
+// 处理激活
+const handleActive = (index: number) => {
+  // TODO: 实现激活逻辑
+  console.log('激活按钮:', index)
+}
 </script>
 
 <style scoped lang="scss">
 /* 模态背景 */
 .modal-bg {
   position: absolute;
-  left: calc(50% - 375px / 2);
   top: 0;
+  left: calc(50% - 375px / 2);
   z-index: 11;
   width: 375px;
   height: 100%;
-  background-color: rgba(#000000, 0.4);
+  background-color: rgba(#000, 0.4);
 }
 
 .fab-icon {

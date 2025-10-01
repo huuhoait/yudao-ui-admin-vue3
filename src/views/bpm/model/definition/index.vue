@@ -4,13 +4,22 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
       <el-table-column :label="t('bpm.definition.id')" align="center" prop="id" min-width="250" />
-      <el-table-column :label="t('bpm.definition.name')" align="center" prop="name" min-width="150" />
+      <el-table-column
+        :label="t('bpm.definition.name')"
+        align="center"
+        prop="name"
+        min-width="150"
+      />
       <el-table-column :label="t('bpm.definition.icon')" align="center" min-width="50">
         <template #default="{ row }">
           <el-image v-if="row.icon" :src="row.icon" class="h-24px w-24pxrounded" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('bpm.definition.visibleRange')" prop="startUserIds" min-width="100">
+      <el-table-column
+        :label="t('bpm.definition.visibleRange')"
+        prop="startUserIds"
+        min-width="100"
+      >
         <template #default="{ row }">
           <el-text v-if="!row.startUsers?.length"> {{ t('bpm.definition.allVisible') }} </el-text>
           <el-text v-else-if="row.startUsers.length === 1">
@@ -21,9 +30,14 @@
               class="box-item"
               effect="dark"
               placement="top"
-              :content="row.startUsers.map((user: any) => user.nickname).join(t('bpm.definition.joinSeparator'))"
+              :content="
+                row.startUsers
+                  .map((user: any) => user.nickname)
+                  .join(t('bpm.definition.joinSeparator'))
+              "
             >
-              {{ row.startUsers[0].nickname }}{{ t('bpm.definition.etc') }} {{ row.startUsers.length }} {{ t('bpm.definition.peopleVisible') }}
+              {{ row.startUsers[0].nickname }}{{ t('bpm.definition.etc') }}
+              {{ row.startUsers.length }} {{ t('bpm.definition.peopleVisible') }}
             </el-tooltip>
           </el-text>
         </template>

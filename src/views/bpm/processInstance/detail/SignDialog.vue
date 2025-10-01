@@ -1,5 +1,9 @@
 <template>
-  <el-dialog v-model="signDialogVisible" :title="t('bpm.processInstance.detail.sign.title')" width="935">
+  <el-dialog
+    v-model="signDialogVisible"
+    :title="t('bpm.processInstance.detail.sign.title')"
+    width="935"
+  >
     <div class="position-relative">
       <Vue3Signature class="b b-solid b-gray" ref="signature" w="900px" h="400px" />
       <el-button
@@ -41,7 +45,10 @@ const emits = defineEmits(['success'])
 const submit = async () => {
   message.success(t('bpm.processInstance.detail.sign.uploading'))
   const res = await FileApi.updateFile({
-    file: download.base64ToFile(signature.value.save('image/png'), t('bpm.processInstance.detail.sign.fileName'))
+    file: download.base64ToFile(
+      signature.value.save('image/png'),
+      t('bpm.processInstance.detail.sign.fileName')
+    )
   })
   emits('success', res.data)
   signDialogVisible.value = false

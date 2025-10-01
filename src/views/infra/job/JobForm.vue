@@ -46,7 +46,9 @@
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button type="primary" @click="submitForm" :loading="formLoading">{{ t('common.confirm') }}</el-button>
+      <el-button type="primary" @click="submitForm" :loading="formLoading">{{
+        t('common.confirm')
+      }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
@@ -75,10 +77,18 @@ const formData = ref({
 })
 const formRules = reactive({
   name: [{ required: true, message: t('infra.job.form.rules.nameRequired'), trigger: 'blur' }],
-  handlerName: [{ required: true, message: t('infra.job.form.rules.handlerNameRequired'), trigger: 'blur' }],
-  cronExpression: [{ required: true, message: t('infra.job.form.rules.cronExpressionRequired'), trigger: 'blur' }],
-  retryCount: [{ required: true, message: t('infra.job.form.rules.retryCountRequired'), trigger: 'blur' }],
-  retryInterval: [{ required: true, message: t('infra.job.form.rules.retryIntervalRequired'), trigger: 'blur' }]
+  handlerName: [
+    { required: true, message: t('infra.job.form.rules.handlerNameRequired'), trigger: 'blur' }
+  ],
+  cronExpression: [
+    { required: true, message: t('infra.job.form.rules.cronExpressionRequired'), trigger: 'blur' }
+  ],
+  retryCount: [
+    { required: true, message: t('infra.job.form.rules.retryCountRequired'), trigger: 'blur' }
+  ],
+  retryInterval: [
+    { required: true, message: t('infra.job.form.rules.retryIntervalRequired'), trigger: 'blur' }
+  ]
 })
 const formRef = ref() // 表单 Ref
 

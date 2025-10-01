@@ -46,8 +46,12 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button
+        >
         <el-button
           type="primary"
           plain
@@ -92,9 +96,21 @@
           <dict-tag :type="DICT_TYPE.INFRA_JOB_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('infra.job.table.handlerName')" align="center" prop="handlerName" />
-      <el-table-column :label="t('infra.job.table.handlerParam')" align="center" prop="handlerParam" />
-      <el-table-column :label="t('infra.job.table.cronExpression')" align="center" prop="cronExpression" />
+      <el-table-column
+        :label="t('infra.job.table.handlerName')"
+        align="center"
+        prop="handlerName"
+      />
+      <el-table-column
+        :label="t('infra.job.table.handlerParam')"
+        align="center"
+        prop="handlerParam"
+      />
+      <el-table-column
+        :label="t('infra.job.table.cronExpression')"
+        align="center"
+        prop="cronExpression"
+      />
       <el-table-column :label="t('common.operation')" align="center" width="200">
         <template #default="scope">
           <el-button
@@ -129,7 +145,9 @@
             @command="(command) => handleCommand(command, scope.row)"
             v-hasPermi="['infra:job:trigger', 'infra:job:query']"
           >
-            <el-button type="primary" link><Icon icon="ep:d-arrow-right" /> {{ t('action.more') }}</el-button>
+            <el-button type="primary" link
+              ><Icon icon="ep:d-arrow-right" /> {{ t('action.more') }}</el-button
+            >
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item command="handleRun" v-if="checkPermi(['infra:job:trigger'])">
@@ -307,7 +325,10 @@ const handleCommand = (command, row) => {
 const handleRun = async (row: JobApi.JobVO) => {
   try {
     // 二次确认
-    await message.confirm(t('infra.job.msg.runConfirm', { jobName: row.name }), t('common.reminder'))
+    await message.confirm(
+      t('infra.job.msg.runConfirm', { jobName: row.name }),
+      t('common.reminder')
+    )
     // 提交执行
     await JobApi.runJob(row.id)
     message.success(t('infra.job.msg.runSuccess'))

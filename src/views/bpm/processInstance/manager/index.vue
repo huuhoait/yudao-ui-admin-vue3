@@ -1,5 +1,8 @@
 <template>
-  <doc-alert :title="$t('bpm.processInstance.manager.docAlertTitle')" url="https://doc.iocoder.cn/bpm/" />
+  <doc-alert
+    :title="$t('bpm.processInstance.manager.docAlertTitle')"
+    url="https://doc.iocoder.cn/bpm/"
+  />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -33,7 +36,10 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="$t('bpm.processInstance.manager.form.processDefinitionId')" prop="processDefinitionId">
+      <el-form-item
+        :label="$t('bpm.processInstance.manager.form.processDefinitionId')"
+        prop="processDefinitionId"
+      >
         <el-input
           v-model="queryParams.processDefinitionId"
           :placeholder="$t('bpm.processInstance.manager.form.processDefinitionIdPlaceholder')"
@@ -84,8 +90,12 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button
+        >
       </el-form-item>
     </el-form>
   </ContentWrap>
@@ -93,7 +103,13 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column :label="$t('bpm.processInstance.manager.table.name')" align="center" prop="name" min-width="200px" fixed="left" />
+      <el-table-column
+        :label="$t('bpm.processInstance.manager.table.name')"
+        align="center"
+        prop="name"
+        min-width="200px"
+        fixed="left"
+      />
       <el-table-column
         :label="$t('bpm.processInstance.manager.table.category')"
         align="center"
@@ -101,9 +117,23 @@
         min-width="100"
         fixed="left"
       />
-      <el-table-column :label="$t('bpm.processInstance.manager.table.startUser')" align="center" prop="startUser.nickname" width="120" />
-      <el-table-column :label="$t('bpm.processInstance.manager.table.startDept')" align="center" prop="startUser.deptName" width="120" />
-      <el-table-column :label="$t('bpm.processInstance.manager.table.status')" prop="status" width="120">
+      <el-table-column
+        :label="$t('bpm.processInstance.manager.table.startUser')"
+        align="center"
+        prop="startUser.nickname"
+        width="120"
+      />
+      <el-table-column
+        :label="$t('bpm.processInstance.manager.table.startDept')"
+        align="center"
+        prop="startUser.deptName"
+        width="120"
+      />
+      <el-table-column
+        :label="$t('bpm.processInstance.manager.table.status')"
+        prop="status"
+        width="120"
+      >
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.BPM_PROCESS_INSTANCE_STATUS" :value="scope.row.status" />
         </template>
@@ -122,19 +152,34 @@
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column align="center" :label="$t('bpm.processInstance.manager.table.duration')" prop="durationInMillis" width="169">
+      <el-table-column
+        align="center"
+        :label="$t('bpm.processInstance.manager.table.duration')"
+        prop="durationInMillis"
+        width="169"
+      >
         <template #default="scope">
           {{ scope.row.durationInMillis > 0 ? formatPast2(scope.row.durationInMillis) : '-' }}
         </template>
       </el-table-column>
-      <el-table-column :label="$t('bpm.processInstance.manager.table.currentTasks')" align="center" prop="tasks" min-width="120px">
+      <el-table-column
+        :label="$t('bpm.processInstance.manager.table.currentTasks')"
+        align="center"
+        prop="tasks"
+        min-width="120px"
+      >
         <template #default="scope">
           <el-button type="primary" v-for="task in scope.row.tasks" :key="task.id" link>
             <span>{{ task.name }}</span>
           </el-button>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('bpm.processInstance.manager.table.id')" align="center" prop="id" min-width="320px" />
+      <el-table-column
+        :label="$t('bpm.processInstance.manager.table.id')"
+        align="center"
+        prop="id"
+        min-width="320px"
+      />
       <el-table-column :label="$t('common.operation')" align="center" fixed="right" width="180">
         <template #default="scope">
           <el-button

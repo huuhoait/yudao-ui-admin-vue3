@@ -36,7 +36,11 @@
             {{ processInstance?.startUser?.nickname }}
           </div>
           <div class="text-#878c93">
-            {{ t('bpm.processInstance.detail.header.submittedAt', { time: formatDate(processInstance.startTime) }) }}
+            {{
+              t('bpm.processInstance.detail.header.submittedAt', {
+                time: formatDate(processInstance.startTime)
+              })
+            }}
           </div>
         </div>
 
@@ -106,7 +110,11 @@
           </el-tab-pane>
 
           <!-- 流转评论 TODO 待开发 -->
-          <el-tab-pane :label="t('bpm.processInstance.detail.tabs.comment')" name="comment" v-if="false">
+          <el-tab-pane
+            :label="t('bpm.processInstance.detail.tabs.comment')"
+            name="comment"
+            v-if="false"
+          >
             <div class="form-scroll-area">
               <el-scrollbar>{{ t('bpm.processInstance.detail.tabs.commentContent') }}</el-scrollbar>
             </div>

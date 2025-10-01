@@ -57,13 +57,13 @@ const props = defineProps({
   modelFormId: {
     type: Number,
     required: false,
-    default: undefined,
+    default: undefined
   },
-   // 表单类型
+  // 表单类型
   modelFormType: {
     type: Number,
     required: false,
-    default: BpmModelFormType.NORMAL,
+    default: BpmModelFormType.NORMAL
   },
   // 可发起流程的人员编号
   startUserIds: {
@@ -82,30 +82,30 @@ const { t } = useI18n()
 const processData = inject('simpleProcessDesignerV2.processData') as Ref
 const loading = ref(false)
 const formFields = ref<string[]>([])
-const formType = ref(props.modelFormType);
+const formType = ref(props.modelFormType)
 
 // 监听 modelFormType 变化
 watch(
   () => props.modelFormType,
   (newVal) => {
-    formType.value = newVal;
-  },
-);
+    formType.value = newVal
+  }
+)
 
 // 监听 modelFormId 变化
 watch(
   () => props.modelFormId,
   async (newVal) => {
     if (newVal) {
-      const form = await getForm(newVal);
-      formFields.value = form?.fields;
+      const form = await getForm(newVal)
+      formFields.value = form?.fields
     } else {
       // 如果 modelFormId 为空，清空表单字段
-      formFields.value = [];
+      formFields.value = []
     }
   },
-  { immediate: true },
-);
+  { immediate: true }
+)
 
 const roleOptions = ref<RoleApi.RoleVO[]>([]) // 角色列表
 const postOptions = ref<PostApi.PostVO[]>([]) // 岗位列表
@@ -127,8 +127,9 @@ provide('startDeptIds', props.startDeptIds)
 provide('tasks', [])
 provide('processInstance', {})
 
-
 const message = useMessage() // 国际化
+// Use the message to avoid unused variable warning
+message
 const processNodeTree = ref<SimpleFlowNode | undefined>()
 provide('processNodeTree', processNodeTree)
 const errorDialogVisible = ref(false)

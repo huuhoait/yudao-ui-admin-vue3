@@ -1,5 +1,8 @@
 <template>
-  <doc-alert :title="$t('bpm.processExpression.index.docAlertTitle')" url="https://doc.iocoder.cn/bpm/expression/" />
+  <doc-alert
+    :title="$t('bpm.processExpression.index.docAlertTitle')"
+    url="https://doc.iocoder.cn/bpm/expression/"
+  />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -46,8 +49,12 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button
+        >
         <el-button
           type="primary"
           plain
@@ -63,14 +70,30 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list" :stripe="true" :show-overflow-tooltip="true">
-      <el-table-column :label="$t('bpm.processExpression.index.table.id')" align="center" prop="id" />
-      <el-table-column :label="$t('bpm.processExpression.index.table.name')" align="center" prop="name" />
-      <el-table-column :label="$t('bpm.processExpression.index.table.status')" align="center" prop="status">
+      <el-table-column
+        :label="$t('bpm.processExpression.index.table.id')"
+        align="center"
+        prop="id"
+      />
+      <el-table-column
+        :label="$t('bpm.processExpression.index.table.name')"
+        align="center"
+        prop="name"
+      />
+      <el-table-column
+        :label="$t('bpm.processExpression.index.table.status')"
+        align="center"
+        prop="status"
+      >
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column :label="$t('bpm.processExpression.index.table.expression')" align="center" prop="expression" />
+      <el-table-column
+        :label="$t('bpm.processExpression.index.table.expression')"
+        align="center"
+        prop="expression"
+      />
       <el-table-column
         :label="$t('bpm.processExpression.index.table.createTime')"
         align="center"

@@ -26,7 +26,9 @@
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{
+        t('common.ok')
+      }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
@@ -50,7 +52,9 @@ const formData = ref({
 })
 const formRules = reactive({
   mail: [{ required: true, message: t('sys.mail.template.mailRequired'), trigger: 'blur' }],
-  templateCode: [{ required: true, message: t('sys.mail.template.templateCodeRequired'), trigger: 'blur' }],
+  templateCode: [
+    { required: true, message: t('sys.mail.template.templateCodeRequired'), trigger: 'blur' }
+  ],
   templateParams: {}
 })
 const formRef = ref() // 表单 Ref
@@ -72,7 +76,11 @@ const open = async (id: number) => {
       return obj
     }, {})
     formRules.templateParams = data.params.reduce((obj, item) => {
-      obj[item] = { required: true, message: t('sys.mail.template.paramRequired', { param: item }), trigger: 'blur' }
+      obj[item] = {
+        required: true,
+        message: t('sys.mail.template.paramRequired', { param: item }),
+        trigger: 'blur'
+      }
       return obj
     }, {})
   } finally {

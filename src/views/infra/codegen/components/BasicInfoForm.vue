@@ -35,7 +35,10 @@
       </el-col>
       <el-col :span="12">
         <el-form-item :label="t('infra.codegen.basicForm.author')" prop="author">
-          <el-input v-model="formData.author" :placeholder="t('infra.codegen.basicForm.authorPlaceholder')" />
+          <el-input
+            v-model="formData.author"
+            :placeholder="t('infra.codegen.basicForm.authorPlaceholder')"
+          />
         </el-form-item>
       </el-col>
       <el-col :span="24">

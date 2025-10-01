@@ -42,7 +42,12 @@
             @change="handleCheckedTreeExpand"
           />
           {{ t('sys.role.linkParentChild') }}
-          <el-switch v-model="checkStrictly" :active-text="t('common.yes')" :inactive-text="t('common.no')" inline-prompt />
+          <el-switch
+            v-model="checkStrictly"
+            :active-text="t('common.yes')"
+            :inactive-text="t('common.no')"
+            inline-prompt
+          />
         </template>
         <el-tree
           ref="treeRef"
@@ -57,7 +62,9 @@
       </el-card>
     </el-form-item>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{
+        t('common.ok')
+      }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>

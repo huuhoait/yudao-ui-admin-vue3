@@ -104,7 +104,6 @@
         </el-form>
       </ContentWrap>
       <ContentWrap>
-
         <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
           <el-table-column type="selection" width="55" />
           <el-table-column :label="$t('sys.user.id')" align="center" key="id" prop="id" />

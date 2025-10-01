@@ -24,7 +24,11 @@
         </el-select>
       </el-form-item>
       <el-form-item :label="t('sys.notice.noticeStatus')" prop="status">
-        <el-select v-model="formData.status" clearable :placeholder="t('sys.notice.statusPlaceholder')">
+        <el-select
+          v-model="formData.status"
+          clearable
+          :placeholder="t('sys.notice.statusPlaceholder')"
+        >
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
             :key="parseInt(dict.value as any)"
@@ -34,11 +38,17 @@
         </el-select>
       </el-form-item>
       <el-form-item :label="t('sys.notice.remark')" prop="remark">
-        <el-input v-model="formData.remark" :placeholder="t('sys.notice.remarkPlaceholder')" type="textarea" />
+        <el-input
+          v-model="formData.remark"
+          :placeholder="t('sys.notice.remarkPlaceholder')"
+          type="textarea"
+        />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{
+        t('common.ok')
+      }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>

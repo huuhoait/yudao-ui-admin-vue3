@@ -1,5 +1,8 @@
 <template>
-  <doc-alert :title="t('sys.notify.message.notifyMessageManagement')" url="https://doc.iocoder.cn/notify/" />
+  <doc-alert
+    :title="t('sys.notify.message.notifyMessageManagement')"
+    url="https://doc.iocoder.cn/notify/"
+  />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -70,8 +73,12 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.notify.message.search') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.notify.message.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.notify.message.search') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.notify.message.reset') }}</el-button
+        >
       </el-form-item>
     </el-form>
   </ContentWrap>
@@ -85,9 +92,24 @@
           <dict-tag :type="DICT_TYPE.USER_TYPE" :value="scope.row.userType" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('sys.notify.message.userId')" align="center" prop="userId" width="80" />
-      <el-table-column :label="t('sys.notify.message.templateCode')" align="center" prop="templateCode" width="80" />
-      <el-table-column :label="t('sys.notify.message.templateNickname')" align="center" prop="templateNickname" width="180" />
+      <el-table-column
+        :label="t('sys.notify.message.userId')"
+        align="center"
+        prop="userId"
+        width="80"
+      />
+      <el-table-column
+        :label="t('sys.notify.message.templateCode')"
+        align="center"
+        prop="templateCode"
+        width="80"
+      />
+      <el-table-column
+        :label="t('sys.notify.message.templateNickname')"
+        align="center"
+        prop="templateNickname"
+        width="180"
+      />
       <el-table-column
         :label="t('sys.notify.message.templateContent')"
         align="center"
@@ -104,12 +126,22 @@
       >
         <template #default="scope"> {{ scope.row.templateParams }}</template>
       </el-table-column>
-      <el-table-column :label="t('sys.notify.message.templateType')" align="center" prop="templateType" width="120">
+      <el-table-column
+        :label="t('sys.notify.message.templateType')"
+        align="center"
+        prop="templateType"
+        width="120"
+      >
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_NOTIFY_TEMPLATE_TYPE" :value="scope.row.templateType" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('sys.notify.message.readStatus')" align="center" prop="readStatus" width="100">
+      <el-table-column
+        :label="t('sys.notify.message.readStatus')"
+        align="center"
+        prop="readStatus"
+        width="100"
+      >
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_BOOLEAN_STRING" :value="scope.row.readStatus" />
         </template>

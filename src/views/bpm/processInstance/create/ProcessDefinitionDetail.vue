@@ -3,7 +3,11 @@
     <div class="processInstance-wrap-main">
       <el-scrollbar>
         <div class="text-#878c93 h-15px">
-          {{ t('bpm.processInstance.create.detail.processLabel', { name: selectProcessDefinition.name }) }}
+          {{
+            t('bpm.processInstance.create.detail.processLabel', {
+              name: selectProcessDefinition.name
+            })
+          }}
         </div>
         <el-divider class="!my-8px" />
 
@@ -63,7 +67,9 @@
             class="h-50px bottom-10 text-14px flex items-center color-#32373c dark:color-#fff font-bold btn-container"
           >
             <el-button plain type="success" @click="submitForm">
-              <Icon icon="ep:select" />&nbsp;{{ t('bpm.processInstance.create.detail.actions.submit') }}
+              <Icon icon="ep:select" />&nbsp;{{
+                t('bpm.processInstance.create.detail.actions.submit')
+              }}
             </el-button>
             <el-button plain type="danger" @click="handleCancel">
               <Icon icon="ep:close" />&nbsp;{{ t('common.cancel') }}
@@ -271,7 +277,7 @@ const submitForm = async () => {
   if (!fApi.value || !props.selectProcessDefinition) {
     return
   }
-  
+
   try {
     // 流程表单校验
     await fApi.value.validate()
@@ -288,7 +294,9 @@ const submitForm = async () => {
         startUserSelectAssignees.value[userTask.id].length === 0
       ) {
         return message.warning(
-          t('bpm.processInstance.create.detail.messages.selectAssignee', { taskName: userTask.name })
+          t('bpm.processInstance.create.detail.messages.selectAssignee', {
+            taskName: userTask.name
+          })
         )
       }
     }

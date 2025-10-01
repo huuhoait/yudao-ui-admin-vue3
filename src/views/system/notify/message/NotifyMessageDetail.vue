@@ -1,5 +1,10 @@
 <template>
-  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" :title="t('sys.notify.message.detail')">
+  <Dialog
+    v-model="dialogVisible"
+    :max-height="500"
+    :scroll="true"
+    :title="t('sys.notify.message.detail')"
+  >
     <el-descriptions :column="1" border>
       <el-descriptions-item :label="t('sys.notify.message.id')" min-width="120">
         {{ detailData.id }}

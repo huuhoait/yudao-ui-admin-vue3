@@ -2,8 +2,18 @@
   <div class="panel-tab__content">
     <el-table :data="elementPropertyList" max-height="240" fit border>
       <el-table-column :label="$t('bpm.design.index')" width="50px" type="index" />
-      <el-table-column :label="$t('bpm.design.propertyName')" prop="name" min-width="100px" show-overflow-tooltip />
-      <el-table-column :label="$t('bpm.design.propertyValue')" prop="value" min-width="100px" show-overflow-tooltip />
+      <el-table-column
+        :label="$t('bpm.design.propertyName')"
+        prop="name"
+        min-width="100px"
+        show-overflow-tooltip
+      />
+      <el-table-column
+        :label="$t('bpm.design.propertyValue')"
+        prop="value"
+        min-width="100px"
+        show-overflow-tooltip
+      />
       <el-table-column :label="$t('bpm.design.action')" width="110px">
         <template #default="scope">
           <el-button link @click="openAttributesForm(scope.row, scope.$index)" size="small">
@@ -46,7 +56,9 @@
         </el-form-item>
       </el-form>
       <template #footer>
-        <el-button @click="propertyFormModelVisible = false">{{ $t('bpm.design.cancel') }}</el-button>
+        <el-button @click="propertyFormModelVisible = false">{{
+          $t('bpm.design.cancel')
+        }}</el-button>
         <el-button type="primary" @click="saveAttribute">{{ $t('bpm.design.confirm') }}</el-button>
       </template>
     </el-dialog>
@@ -84,7 +96,7 @@ const resetAttributesList = () => {
         otherExtensionList.value.push(ex)
       }
       return ex.$type === `${prefix}:Properties`
-    }) ?? [];
+    }) ?? []
 
   // 保存所有的 扩展属性字段
   bpmnElementPropertyList.value = bpmnElementProperties.value.reduce(

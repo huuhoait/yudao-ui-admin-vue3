@@ -86,23 +86,46 @@
           :placeholder="t('infra.fileConfig.form.passwordPlaceholder')"
         />
       </el-form-item>
-      <el-form-item v-if="formData.storage === 11" :label="t('infra.fileConfig.form.mode')" prop="config.mode">
+      <el-form-item
+        v-if="formData.storage === 11"
+        :label="t('infra.fileConfig.form.mode')"
+        prop="config.mode"
+      >
         <el-radio-group v-model="formData.config.mode">
-          <el-radio key="Active" value="Active">{{ t('infra.fileConfig.form.modeActive') }}</el-radio>
-          <el-radio key="Passive" value="Passive">{{ t('infra.fileConfig.form.modePassive') }}</el-radio>
+          <el-radio key="Active" value="Active">{{
+            t('infra.fileConfig.form.modeActive')
+          }}</el-radio>
+          <el-radio key="Passive" value="Passive">{{
+            t('infra.fileConfig.form.modePassive')
+          }}</el-radio>
         </el-radio-group>
       </el-form-item>
       <!-- S3 -->
-      <el-form-item v-if="formData.storage === 20" :label="t('infra.fileConfig.form.endpoint')" prop="config.endpoint">
+      <el-form-item
+        v-if="formData.storage === 20"
+        :label="t('infra.fileConfig.form.endpoint')"
+        prop="config.endpoint"
+      >
         <el-input
           v-model="formData.config.endpoint"
           :placeholder="t('infra.fileConfig.form.endpointPlaceholder')"
         />
       </el-form-item>
-      <el-form-item v-if="formData.storage === 20" :label="t('infra.fileConfig.form.bucket')" prop="config.bucket">
-        <el-input v-model="formData.config.bucket" :placeholder="t('infra.fileConfig.form.bucketPlaceholder')" />
+      <el-form-item
+        v-if="formData.storage === 20"
+        :label="t('infra.fileConfig.form.bucket')"
+        prop="config.bucket"
+      >
+        <el-input
+          v-model="formData.config.bucket"
+          :placeholder="t('infra.fileConfig.form.bucketPlaceholder')"
+        />
       </el-form-item>
-      <el-form-item v-if="formData.storage === 20" :label="t('infra.fileConfig.form.accessKey')" prop="config.accessKey">
+      <el-form-item
+        v-if="formData.storage === 20"
+        :label="t('infra.fileConfig.form.accessKey')"
+        prop="config.accessKey"
+      >
         <el-input
           v-model="formData.config.accessKey"
           :placeholder="t('infra.fileConfig.form.accessKeyPlaceholder')"
@@ -124,8 +147,12 @@
         prop="config.enablePathStyleAccess"
       >
         <el-radio-group v-model="formData.config.enablePathStyleAccess">
-          <el-radio key="true" :value="true">{{ t('infra.fileConfig.form.enableOption') }}</el-radio>
-          <el-radio key="false" :value="false">{{ t('infra.fileConfig.form.disableOption') }}</el-radio>
+          <el-radio key="true" :value="true">{{
+            t('infra.fileConfig.form.enableOption')
+          }}</el-radio>
+          <el-radio key="false" :value="false">{{
+            t('infra.fileConfig.form.disableOption')
+          }}</el-radio>
         </el-radio-group>
       </el-form-item>
       <!-- 通用 -->
@@ -136,7 +163,11 @@
           :placeholder="t('infra.fileConfig.form.domainPlaceholder')"
         />
       </el-form-item>
-      <el-form-item v-else-if="formData.storage" :label="t('infra.fileConfig.form.domain')" prop="config.domain">
+      <el-form-item
+        v-else-if="formData.storage"
+        :label="t('infra.fileConfig.form.domain')"
+        prop="config.domain"
+      >
         <el-input
           v-model="formData.config.domain"
           :placeholder="t('infra.fileConfig.form.domainPlaceholder')"
@@ -173,19 +204,67 @@ const formData = ref({
   config: {} as FileConfigApi.FileClientConfig
 })
 const formRules = reactive<FormRules>({
-  name: [{ required: true, message: t('infra.fileConfig.form.rules.nameRequired'), trigger: 'blur' }],
-  storage: [{ required: true, message: t('infra.fileConfig.form.rules.storageRequired'), trigger: 'change' }],
+  name: [
+    { required: true, message: t('infra.fileConfig.form.rules.nameRequired'), trigger: 'blur' }
+  ],
+  storage: [
+    { required: true, message: t('infra.fileConfig.form.rules.storageRequired'), trigger: 'change' }
+  ],
   config: {
-    basePath: [{ required: true, message: t('infra.fileConfig.form.rules.basePathRequired'), trigger: 'blur' }],
-    host: [{ required: true, message: t('infra.fileConfig.form.rules.hostRequired'), trigger: 'blur' }],
-    port: [{ required: true, message: t('infra.fileConfig.form.rules.portRequired'), trigger: 'blur' }],
-    username: [{ required: true, message: t('infra.fileConfig.form.rules.usernameRequired'), trigger: 'blur' }],
-    password: [{ required: true, message: t('infra.fileConfig.form.rules.passwordRequired'), trigger: 'blur' }],
-    mode: [{ required: true, message: t('infra.fileConfig.form.rules.modeRequired'), trigger: 'change' }],
-    endpoint: [{ required: true, message: t('infra.fileConfig.form.rules.endpointRequired'), trigger: 'blur' }],
-    bucket: [{ required: true, message: t('infra.fileConfig.form.rules.bucketRequired'), trigger: 'blur' }],
-    accessKey: [{ required: true, message: t('infra.fileConfig.form.rules.accessKeyRequired'), trigger: 'blur' }],
-    accessSecret: [{ required: true, message: t('infra.fileConfig.form.rules.accessSecretRequired'), trigger: 'blur' }],
+    basePath: [
+      {
+        required: true,
+        message: t('infra.fileConfig.form.rules.basePathRequired'),
+        trigger: 'blur'
+      }
+    ],
+    host: [
+      { required: true, message: t('infra.fileConfig.form.rules.hostRequired'), trigger: 'blur' }
+    ],
+    port: [
+      { required: true, message: t('infra.fileConfig.form.rules.portRequired'), trigger: 'blur' }
+    ],
+    username: [
+      {
+        required: true,
+        message: t('infra.fileConfig.form.rules.usernameRequired'),
+        trigger: 'blur'
+      }
+    ],
+    password: [
+      {
+        required: true,
+        message: t('infra.fileConfig.form.rules.passwordRequired'),
+        trigger: 'blur'
+      }
+    ],
+    mode: [
+      { required: true, message: t('infra.fileConfig.form.rules.modeRequired'), trigger: 'change' }
+    ],
+    endpoint: [
+      {
+        required: true,
+        message: t('infra.fileConfig.form.rules.endpointRequired'),
+        trigger: 'blur'
+      }
+    ],
+    bucket: [
+      { required: true, message: t('infra.fileConfig.form.rules.bucketRequired'), trigger: 'blur' }
+    ],
+    accessKey: [
+      {
+        required: true,
+        message: t('infra.fileConfig.form.rules.accessKeyRequired'),
+        trigger: 'blur'
+      }
+    ],
+    accessSecret: [
+      {
+        required: true,
+        message: t('infra.fileConfig.form.rules.accessSecretRequired'),
+        trigger: 'blur'
+      }
+    ],
     enablePathStyleAccess: [
       {
         required: true,
@@ -193,7 +272,9 @@ const formRules = reactive<FormRules>({
         trigger: 'change'
       }
     ],
-    domain: [{ required: true, message: t('infra.fileConfig.form.rules.domainRequired'), trigger: 'blur' }]
+    domain: [
+      { required: true, message: t('infra.fileConfig.form.rules.domainRequired'), trigger: 'blur' }
+    ]
   } as FormRules
 })
 const formRef = ref() // 表单 Ref

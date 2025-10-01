@@ -429,17 +429,25 @@ export function useNodeForm(nodeType: NodeType) {
     }
     switch (candidateStrategy) {
       case CandidateStrategy.USER: {
-        configForm.value.userIds = candidateParam.split('simpleProcessDesignerV2.,').map((item) => +item)
+        configForm.value.userIds = candidateParam
+          .split('simpleProcessDesignerV2.,')
+          .map((item) => +item)
         break
       }
       case CandidateStrategy.ROLE:
-        configForm.value.roleIds = candidateParam.split('simpleProcessDesignerV2.,').map((item) => +item)
+        configForm.value.roleIds = candidateParam
+          .split('simpleProcessDesignerV2.,')
+          .map((item) => +item)
         break
       case CandidateStrategy.POST:
-        configForm.value.postIds = candidateParam.split('simpleProcessDesignerV2.,').map((item) => +item)
+        configForm.value.postIds = candidateParam
+          .split('simpleProcessDesignerV2.,')
+          .map((item) => +item)
         break
       case CandidateStrategy.USER_GROUP:
-        configForm.value.userGroups = candidateParam.split('simpleProcessDesignerV2.,').map((item) => +item)
+        configForm.value.userGroups = candidateParam
+          .split('simpleProcessDesignerV2.,')
+          .map((item) => +item)
         break
       case CandidateStrategy.FORM_USER:
         configForm.value.formUser = candidateParam
@@ -449,7 +457,9 @@ export function useNodeForm(nodeType: NodeType) {
         break
       case CandidateStrategy.DEPT_MEMBER:
       case CandidateStrategy.DEPT_LEADER:
-        configForm.value.deptIds = candidateParam.split('simpleProcessDesignerV2.,').map((item) => +item)
+        configForm.value.deptIds = candidateParam
+          .split('simpleProcessDesignerV2.,')
+          .map((item) => +item)
         break
       // 发起人部门负责人
       case CandidateStrategy.START_USER_DEPT_LEADER:
@@ -460,7 +470,9 @@ export function useNodeForm(nodeType: NodeType) {
       case CandidateStrategy.MULTI_LEVEL_DEPT_LEADER: {
         // 候选人参数格式: | 分隔 。左边为部门（多个部门用 , 分隔）。 右边为部门层级
         const paramArray = candidateParam.split('simpleProcessDesignerV2.|')
-        configForm.value.deptIds = paramArray[0].split('simpleProcessDesignerV2.,').map((item) => +item)
+        configForm.value.deptIds = paramArray[0]
+          .split('simpleProcessDesignerV2.,')
+          .map((item) => +item)
         configForm.value.deptLevel = +paramArray[1]
         break
       }

@@ -27,11 +27,17 @@
         </el-select>
       </el-form-item>
       <el-form-item :label="t('sys.role.remark')" prop="remark">
-        <el-input v-model="formData.remark" :placeholder="t('sys.role.remarkPlaceholder')" type="textarea" />
+        <el-input
+          v-model="formData.remark"
+          :placeholder="t('sys.role.remarkPlaceholder')"
+          type="textarea"
+        />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{
+        t('common.ok')
+      }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>

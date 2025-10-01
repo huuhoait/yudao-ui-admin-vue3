@@ -59,7 +59,10 @@
 
     <!-- 审批相关：流程信息 -->
     <el-col :span="8">
-      <ContentWrap :title="$t('bpm.oa.leave.create.flowTitle')" :bodyStyle="{ padding: '0 20px 0' }">
+      <ContentWrap
+        :title="$t('bpm.oa.leave.create.flowTitle')"
+        :bodyStyle="{ padding: '0 20px 0' }"
+      >
         <ProcessInstanceTimeline
           ref="timelineRef"
           :activity-nodes="activityNodes"
@@ -99,7 +102,9 @@ const formData = ref({
 const formRules = reactive({
   type: [{ required: true, message: t('bpm.oa.leave.create.rules.type'), trigger: 'blur' }],
   reason: [{ required: true, message: t('bpm.oa.leave.create.rules.reason'), trigger: 'change' }],
-  startTime: [{ required: true, message: t('bpm.oa.leave.create.rules.startTime'), trigger: 'change' }],
+  startTime: [
+    { required: true, message: t('bpm.oa.leave.create.rules.startTime'), trigger: 'change' }
+  ],
   endTime: [{ required: true, message: t('bpm.oa.leave.create.rules.endTime'), trigger: 'change' }]
 })
 const formRef = ref() // 表单 Ref

@@ -1,14 +1,23 @@
 <template>
   <div class="panel-tab__content">
     <el-table :data="elementListenersList" size="small" border>
-      <el-table-column :label="t('bpm.processDesigner.listeners.serialNumber')" width="50px" type="index" />
+      <el-table-column
+        :label="t('bpm.processDesigner.listeners.serialNumber')"
+        width="50px"
+        type="index"
+      />
       <el-table-column
         :label="t('bpm.processDesigner.listeners.eventType')"
         min-width="80px"
         show-overflow-tooltip
         :formatter="(row) => listenerEventTypeObject[row.event]"
       />
-      <el-table-column :label="t('bpm.processDesigner.listeners.eventId')" min-width="80px" prop="id" show-overflow-tooltip />
+      <el-table-column
+        :label="t('bpm.processDesigner.listeners.eventId')"
+        min-width="80px"
+        prop="id"
+        show-overflow-tooltip
+      />
       <el-table-column
         :label="t('bpm.processDesigner.listeners.listenerType')"
         min-width="80px"
@@ -17,9 +26,9 @@
       />
       <el-table-column :label="t('bpm.processDesigner.listeners.operation')" width="90px">
         <template #default="scope">
-          <el-button size="small" link @click="openListenerForm(scope.row, scope.$index)"
-            >{{ t('common.edit') }}</el-button
-          >
+          <el-button size="small" link @click="openListenerForm(scope.row, scope.$index)">{{
+            t('common.edit')
+          }}</el-button>
           <el-divider direction="vertical" />
           <el-button
             size="small"
@@ -124,7 +133,11 @@
             :label="t('bpm.processDesigner.listeners.scriptFormat')"
             prop="scriptFormat"
             key="listener-script-format"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: t('bpm.processDesigner.listeners.scriptFormatRequired') }"
+            :rules="{
+              required: true,
+              trigger: ['blur', 'change'],
+              message: t('bpm.processDesigner.listeners.scriptFormatRequired')
+            }"
           >
             <el-input v-model="listenerForm.scriptFormat" clearable />
           </el-form-item>
@@ -132,11 +145,21 @@
             :label="t('bpm.processDesigner.listeners.scriptType')"
             prop="scriptType"
             key="listener-script-type"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: t('bpm.processDesigner.listeners.scriptTypeRequired') }"
+            :rules="{
+              required: true,
+              trigger: ['blur', 'change'],
+              message: t('bpm.processDesigner.listeners.scriptTypeRequired')
+            }"
           >
             <el-select v-model="listenerForm.scriptType">
-              <el-option :label="t('bpm.processDesigner.listeners.inlineScript')" value="inlineScript" />
-              <el-option :label="t('bpm.processDesigner.listeners.externalScript')" value="externalScript" />
+              <el-option
+                :label="t('bpm.processDesigner.listeners.inlineScript')"
+                value="inlineScript"
+              />
+              <el-option
+                :label="t('bpm.processDesigner.listeners.externalScript')"
+                value="externalScript"
+              />
             </el-select>
           </el-form-item>
           <el-form-item
@@ -144,7 +167,11 @@
             :label="t('bpm.processDesigner.listeners.scriptContent')"
             prop="value"
             key="listener-script"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: t('bpm.processDesigner.listeners.scriptContentRequired') }"
+            :rules="{
+              required: true,
+              trigger: ['blur', 'change'],
+              message: t('bpm.processDesigner.listeners.scriptContentRequired')
+            }"
           >
             <el-input v-model="listenerForm.value" clearable />
           </el-form-item>
@@ -153,14 +180,22 @@
             :label="t('bpm.processDesigner.listeners.resourceAddress')"
             prop="resource"
             key="listener-resource"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: t('bpm.processDesigner.listeners.resourceAddressRequired') }"
+            :rules="{
+              required: true,
+              trigger: ['blur', 'change'],
+              message: t('bpm.processDesigner.listeners.resourceAddressRequired')
+            }"
           >
             <el-input v-model="listenerForm.resource" clearable />
           </el-form-item>
         </template>
 
         <template v-if="listenerForm.event === 'timeout'">
-          <el-form-item :label="t('bpm.processDesigner.listeners.timerType')" prop="eventDefinitionType" key="eventDefinitionType">
+          <el-form-item
+            :label="t('bpm.processDesigner.listeners.timerType')"
+            prop="eventDefinitionType"
+            key="eventDefinitionType"
+          >
             <el-select v-model="listenerForm.eventDefinitionType">
               <el-option :label="t('bpm.processDesigner.listeners.date')" value="date" />
               <el-option :label="t('bpm.processDesigner.listeners.duration')" value="duration" />
@@ -173,7 +208,11 @@
             :label="t('bpm.processDesigner.listeners.timer')"
             prop="eventTimeDefinitions"
             key="eventTimeDefinitions"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: t('bpm.processDesigner.listeners.timerConfigRequired') }"
+            :rules="{
+              required: true,
+              trigger: ['blur', 'change'],
+              message: t('bpm.processDesigner.listeners.timerConfigRequired')
+            }"
           >
             <el-input v-model="listenerForm.eventTimeDefinitions" clearable />
           </el-form-item>
@@ -195,8 +234,16 @@
         border
         style="flex: none"
       >
-        <el-table-column :label="t('bpm.processDesigner.listeners.serialNumber')" width="50px" type="index" />
-        <el-table-column :label="t('bpm.processDesigner.listeners.fieldName')" min-width="100px" prop="name" />
+        <el-table-column
+          :label="t('bpm.processDesigner.listeners.serialNumber')"
+          width="50px"
+          type="index"
+        />
+        <el-table-column
+          :label="t('bpm.processDesigner.listeners.fieldName')"
+          min-width="100px"
+          prop="name"
+        />
         <el-table-column
           :label="t('bpm.processDesigner.listeners.fieldType')"
           min-width="80px"
@@ -211,9 +258,9 @@
         />
         <el-table-column :label="t('bpm.processDesigner.listeners.operation')" width="100px">
           <template #default="scope">
-            <el-button size="small" link @click="openListenerFieldForm(scope.row, scope.$index)"
-              >{{ t('common.edit') }}</el-button
-            >
+            <el-button size="small" link @click="openListenerFieldForm(scope.row, scope.$index)">{{
+              t('common.edit')
+            }}</el-button>
             <el-divider direction="vertical" />
             <el-button
               size="small"
@@ -380,10 +427,14 @@ const openListenerForm = (listener, index?) => {
 // 移除监听器
 const removeListener = (listener, index?) => {
   console.log(listener, 'listener')
-  ElMessageBox.confirm(t('bpm.processDesigner.listeners.confirmRemoveListener'), t('common.confirmation'), {
-    confirmButtonText: t('common.confirm'),
-    cancelButtonText: t('common.cancel')
-  })
+  ElMessageBox.confirm(
+    t('bpm.processDesigner.listeners.confirmRemoveListener'),
+    t('common.confirmation'),
+    {
+      confirmButtonText: t('common.confirm'),
+      cancelButtonText: t('common.cancel')
+    }
+  )
     .then(() => {
       bpmnElementListeners.value.splice(index, 1)
       elementListenersList.value.splice(index, 1)
@@ -447,10 +498,14 @@ const saveListenerFiled = async () => {
 // 移除监听器字段
 const removeListenerField = (field, index) => {
   console.log(field, 'field')
-  ElMessageBox.confirm(t('bpm.processDesigner.listeners.confirmRemoveField'), t('common.confirmation'), {
-    confirmButtonText: t('common.confirm'),
-    cancelButtonText: t('common.cancel')
-  })
+  ElMessageBox.confirm(
+    t('bpm.processDesigner.listeners.confirmRemoveField'),
+    t('common.confirmation'),
+    {
+      confirmButtonText: t('common.confirm'),
+      cancelButtonText: t('common.cancel')
+    }
+  )
     .then(() => {
       fieldsListOfListener.value.splice(index, 1)
       listenerForm.value.fields.splice(index, 1)

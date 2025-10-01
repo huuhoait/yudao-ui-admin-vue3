@@ -46,8 +46,12 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button
+        >
         <el-button
           type="primary"
           plain
@@ -65,7 +69,11 @@
     <el-table v-loading="loading" :data="list">
       <el-table-column :label="$t('bpm.group.index.table.id')" align="center" prop="id" />
       <el-table-column :label="$t('bpm.group.index.table.name')" align="center" prop="name" />
-      <el-table-column :label="$t('bpm.group.index.table.description')" align="center" prop="description" />
+      <el-table-column
+        :label="$t('bpm.group.index.table.description')"
+        align="center"
+        prop="description"
+      />
       <el-table-column :label="$t('bpm.group.index.table.members')" align="center">
         <template #default="scope">
           <span v-for="userId in scope.row.userIds" :key="userId" class="pr-5px">

@@ -1,5 +1,8 @@
 <template>
-  <doc-alert :title="t('sys.mail.template.mailTemplateManagement')" url="https://doc.iocoder.cn/mail" />
+  <doc-alert
+    :title="t('sys.mail.template.mailTemplateManagement')"
+    url="https://doc.iocoder.cn/mail"
+  />
 
   <!-- 搜索工作栏 -->
   <ContentWrap>
@@ -114,7 +117,7 @@ const isSelected = computed(() => {
 
 /** 批量删除按钮操作 */
 const handleDeleteBatch = async () => {
-  const ids = tableObject.selections.map(item => item.id)
+  const ids = tableObject.selections.map((item) => item.id)
   if (ids.length === 0) return
   await MailTemplateApi.deleteMailTemplateList(ids)
   tableMethods.getList()

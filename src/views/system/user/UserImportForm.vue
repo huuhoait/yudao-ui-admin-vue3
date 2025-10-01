@@ -15,7 +15,9 @@
       drag
     >
       <Icon icon="ep:upload" />
-      <div class="el-upload__text">{{ t('common.dropTip') }}<em>{{ t('common.clickUpload') }}</em></div>
+      <div class="el-upload__text"
+        >{{ t('common.dropTip') }}<em>{{ t('common.clickUpload') }}</em></div
+      >
       <template #tip>
         <div class="el-upload__tip text-center">
           <div class="el-upload__tip">
@@ -35,7 +37,9 @@
       </template>
     </el-upload>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{
+        t('common.ok')
+      }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>

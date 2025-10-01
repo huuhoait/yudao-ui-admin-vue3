@@ -1,5 +1,8 @@
 <template>
-  <doc-alert :title="t('sys.notify.template.notifyTemplateManagement')" url="https://doc.iocoder.cn/notify/" />
+  <doc-alert
+    :title="t('sys.notify.template.notifyTemplateManagement')"
+    url="https://doc.iocoder.cn/notify/"
+  />
 
   <!-- 搜索工作栏 -->
   <ContentWrap>
@@ -55,8 +58,12 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.notify.template.search') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.notify.template.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.notify.template.search') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.notify.template.reset') }}</el-button
+        >
         <el-button
           type="primary"
           plain
@@ -109,7 +116,12 @@
         width="200"
         :show-overflow-tooltip="true"
       />
-      <el-table-column :label="t('sys.notify.template.status')" align="center" prop="status" width="80">
+      <el-table-column
+        :label="t('sys.notify.template.status')"
+        align="center"
+        prop="status"
+        width="80"
+      >
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
@@ -122,7 +134,12 @@
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('sys.notify.template.operation')" align="center" width="210" fixed="right">
+      <el-table-column
+        :label="t('sys.notify.template.operation')"
+        align="center"
+        width="210"
+        fixed="right"
+      >
         <template #default="scope">
           <el-button
             link

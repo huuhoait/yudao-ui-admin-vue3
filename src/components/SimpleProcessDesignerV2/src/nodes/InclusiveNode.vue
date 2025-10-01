@@ -8,9 +8,9 @@
       >
         <span class="iconfont icon-inclusive icon-size inclusive"></span>
       </div>
-      <el-button v-else class="branch-node-add" color="#345da2" @click="addCondition" plain
-        >{{ t('simpleProcessDesignerV2.inclusiveNode.addCondition') }}</el-button
-      >
+      <el-button v-else class="branch-node-add" color="#345da2" @click="addCondition" plain>{{
+        t('simpleProcessDesignerV2.inclusiveNode.addCondition')
+      }}</el-button>
       <div
         class="branch-node-item"
         v-for="(item, index) in currentNode.conditionNodes"

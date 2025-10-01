@@ -1,5 +1,8 @@
 <template>
-  <doc-alert :title="$t('bpm.processListener.index.docAlertTitle')" url="https://doc.iocoder.cn/bpm/listener/" />
+  <doc-alert
+    :title="$t('bpm.processListener.index.docAlertTitle')"
+    url="https://doc.iocoder.cn/bpm/listener/"
+  />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -35,8 +38,12 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button
+        >
         <el-button
           type="primary"
           plain
@@ -53,19 +60,39 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" :stripe="true" :show-overflow-tooltip="true">
       <el-table-column :label="$t('bpm.processListener.index.table.id')" align="center" prop="id" />
-      <el-table-column :label="$t('bpm.processListener.index.table.name')" align="center" prop="name" />
-      <el-table-column :label="$t('bpm.processListener.index.table.type')" align="center" prop="type">
+      <el-table-column
+        :label="$t('bpm.processListener.index.table.name')"
+        align="center"
+        prop="name"
+      />
+      <el-table-column
+        :label="$t('bpm.processListener.index.table.type')"
+        align="center"
+        prop="type"
+      >
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.BPM_PROCESS_LISTENER_TYPE" :value="scope.row.type" />
         </template>
       </el-table-column>
-      <el-table-column :label="$t('bpm.processListener.index.table.status')" align="center" prop="status">
+      <el-table-column
+        :label="$t('bpm.processListener.index.table.status')"
+        align="center"
+        prop="status"
+      >
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column :label="$t('bpm.processListener.index.table.event')" align="center" prop="event" />
-      <el-table-column :label="$t('bpm.processListener.index.table.valueType')" align="center" prop="valueType">
+      <el-table-column
+        :label="$t('bpm.processListener.index.table.event')"
+        align="center"
+        prop="event"
+      />
+      <el-table-column
+        :label="$t('bpm.processListener.index.table.valueType')"
+        align="center"
+        prop="valueType"
+      >
         <template #default="scope">
           <dict-tag
             :type="DICT_TYPE.BPM_PROCESS_LISTENER_VALUE_TYPE"
@@ -73,7 +100,11 @@
           />
         </template>
       </el-table-column>
-      <el-table-column :label="$t('bpm.processListener.index.table.value')" align="center" prop="value" />
+      <el-table-column
+        :label="$t('bpm.processListener.index.table.value')"
+        align="center"
+        prop="value"
+      />
       <el-table-column
         :label="$t('bpm.processListener.index.table.createTime')"
         align="center"

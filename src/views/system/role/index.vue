@@ -1,5 +1,4 @@
 <template>
-  
   <ContentWrap>
     <!-- 搜索工作栏 -->
     <el-form
@@ -28,7 +27,12 @@
         />
       </el-form-item>
       <el-form-item :label="t('sys.role.status')" prop="status">
-        <el-select v-model="queryParams.status" class="!w-240px" clearable :placeholder="t('common.selectText')">
+        <el-select
+          v-model="queryParams.status"
+          class="!w-240px"
+          clearable
+          :placeholder="t('common.selectText')"
+        >
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
             :key="dict.value"

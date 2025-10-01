@@ -8,7 +8,10 @@
       v-loading="formLoading"
     >
       <el-form-item :label="t('bpm.processListener.form.name')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('bpm.processListener.form.namePlaceholder')" />
+        <el-input
+          v-model="formData.name"
+          :placeholder="t('bpm.processListener.form.namePlaceholder')"
+        />
       </el-form-item>
       <el-form-item :label="t('bpm.processListener.form.status')" prop="status">
         <el-radio-group v-model="formData.status">
@@ -36,7 +39,10 @@
         </el-select>
       </el-form-item>
       <el-form-item :label="t('bpm.processListener.form.event')" prop="event">
-        <el-select v-model="formData.event" :placeholder="t('bpm.processListener.form.eventPlaceholder')">
+        <el-select
+          v-model="formData.event"
+          :placeholder="t('bpm.processListener.form.eventPlaceholder')"
+        >
           <el-option
             v-for="event in formData.type == 'execution'
               ? ['start', 'end']
@@ -60,11 +66,21 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('bpm.processListener.form.classPath')" prop="value" v-if="formData.type == 'class'">
-        <el-input v-model="formData.value" :placeholder="t('bpm.processListener.form.classPathPlaceholder')" />
+      <el-form-item
+        :label="t('bpm.processListener.form.classPath')"
+        prop="value"
+        v-if="formData.type == 'class'"
+      >
+        <el-input
+          v-model="formData.value"
+          :placeholder="t('bpm.processListener.form.classPathPlaceholder')"
+        />
       </el-form-item>
       <el-form-item :label="t('bpm.processListener.form.expression')" prop="value" v-else>
-        <el-input v-model="formData.value" :placeholder="t('bpm.processListener.form.expressionPlaceholder')" />
+        <el-input
+          v-model="formData.value"
+          :placeholder="t('bpm.processListener.form.expressionPlaceholder')"
+        />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -102,9 +118,13 @@ const formData = ref({
 const formRules = reactive({
   name: [{ required: true, message: t('bpm.processListener.form.rules.name'), trigger: 'blur' }],
   type: [{ required: true, message: t('bpm.processListener.form.rules.type'), trigger: 'change' }],
-  status: [{ required: true, message: t('bpm.processListener.form.rules.status'), trigger: 'blur' }],
+  status: [
+    { required: true, message: t('bpm.processListener.form.rules.status'), trigger: 'blur' }
+  ],
   event: [{ required: true, message: t('bpm.processListener.form.rules.event'), trigger: 'blur' }],
-  valueType: [{ required: true, message: t('bpm.processListener.form.rules.valueType'), trigger: 'change' }],
+  valueType: [
+    { required: true, message: t('bpm.processListener.form.rules.valueType'), trigger: 'change' }
+  ],
   value: [{ required: true, message: t('bpm.processListener.form.rules.value'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref

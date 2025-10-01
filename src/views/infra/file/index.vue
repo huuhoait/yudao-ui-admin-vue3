@@ -39,8 +39,12 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button
+        >
         <el-button type="primary" plain @click="openForm">
           <Icon icon="ep:upload" class="mr-5px" /> {{ t('infra.file.actions.upload') }}
         </el-button>
@@ -86,8 +90,18 @@
         width="120"
         :formatter="fileSizeFormatter"
       />
-      <el-table-column :label="t('infra.file.table.type')" align="center" prop="type" width="180px" />
-      <el-table-column :label="t('infra.file.table.content')" align="center" prop="url" width="110px">
+      <el-table-column
+        :label="t('infra.file.table.type')"
+        align="center"
+        prop="type"
+        width="180px"
+      />
+      <el-table-column
+        :label="t('infra.file.table.content')"
+        align="center"
+        prop="url"
+        width="110px"
+      >
         <template #default="{ row }">
           <el-image
             v-if="row.type.includes('image')"
@@ -106,7 +120,13 @@
             target="_blank"
             >{{ t('infra.file.table.preview') }}</el-link
           >
-          <el-link v-else type="primary" download :href="row.url" :underline="false" target="_blank"
+          <el-link
+            v-else
+            type="primary"
+            download
+            :href="row.url"
+            :underline="false"
+            target="_blank"
             >{{ t('infra.file.table.download') }}</el-link
           >
         </template>

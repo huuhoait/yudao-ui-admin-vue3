@@ -25,7 +25,10 @@
     </template>
     <div>
       <el-form ref="formRef" :model="configForm" label-position="top" :rules="formRules">
-        <el-form-item :label="t('simpleProcessDesignerV2.delayTimerConfig.delayTime')" prop="delayType">
+        <el-form-item
+          :label="t('simpleProcessDesignerV2.delayTimerConfig.delayTime')"
+          prop="delayType"
+        >
           <el-radio-group v-model="configForm.delayType">
             <el-radio-button
               v-for="item in delayTypeOptions"
@@ -78,13 +81,7 @@
 </template>
 <script setup lang="ts">
 import { computed, reactive, ref } from 'vue'
-import {
-  SimpleFlowNode,
-  NodeType,
-  TimeUnitType,
-  DelayTypeEnum,
-  DELAY_TYPE
-} from '../consts'
+import { SimpleFlowNode, NodeType, TimeUnitType, DelayTypeEnum, DELAY_TYPE } from '../consts'
 import { useWatchNode, useDrawer, useNodeName } from '../node'
 import { convertTimeUnit } from '../utils'
 import { useI18n } from '@/hooks/web/useI18n'
@@ -108,21 +105,27 @@ const { t } = useI18n()
 const formRef = ref() // 表单 Ref
 // 表单校验规则
 const formRules = reactive({
-  delayType: [{
-    required: true,
-    message: t('simpleProcessDesignerV2.delayTimerConfig.validate.delayTimeRequired'),
-    trigger: 'change'
-  }],
-  timeDuration: [{
-    required: true,
-    message: t('simpleProcessDesignerV2.delayTimerConfig.validate.delayTimeRequired'),
-    trigger: 'change'
-  }],
-  dateTime: [{
-    required: true,
-    message: t('simpleProcessDesignerV2.delayTimerConfig.validate.delayTimeRequired'),
-    trigger: 'change'
-  }]
+  delayType: [
+    {
+      required: true,
+      message: t('simpleProcessDesignerV2.delayTimerConfig.validate.delayTimeRequired'),
+      trigger: 'change'
+    }
+  ],
+  timeDuration: [
+    {
+      required: true,
+      message: t('simpleProcessDesignerV2.delayTimerConfig.validate.delayTimeRequired'),
+      trigger: 'change'
+    }
+  ],
+  dateTime: [
+    {
+      required: true,
+      message: t('simpleProcessDesignerV2.delayTimerConfig.validate.delayTimeRequired'),
+      trigger: 'change'
+    }
+  ]
 })
 // 配置表单数据
 const configForm = ref({

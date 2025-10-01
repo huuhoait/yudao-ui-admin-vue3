@@ -128,13 +128,18 @@ const beforeUpload: UploadProps['beforeUpload'] = (file: UploadRawFile) => {
 }
 // 处理上传的文件发生变化
 // const handleFileChange = (uploadFile: UploadFile): void => {
-//   uploadRef.value.data.path = uploadFile.name
+//   if (uploadRef.value) {
+//     uploadRef.value.data = uploadRef.value.data || {}
+//     uploadRef.value.data.path = uploadFile.name
+//   }
 // }
 // 文件上传成功
 const handleFileSuccess: UploadProps['onSuccess'] = (res: any): void => {
   message.success('上传成功')
   // 删除自身
-  const index = fileList.value.findIndex((item) => item.response?.data === res.data)
+  const index = fileList.value.findIndex(
+    (item) => (item.response as any)?.data === (res as any).data
+  )
   fileList.value.splice(index, 1)
   uploadList.value.push({ name: res.data, url: res.data })
   if (uploadList.value.length == uploadNumber.value) {

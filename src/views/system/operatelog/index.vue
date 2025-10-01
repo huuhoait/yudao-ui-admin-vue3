@@ -1,5 +1,8 @@
 <template>
-  <doc-alert :title="t('sys.operatelog.operateLogManagement')" url="https://doc.iocoder.cn/system-log/" />
+  <doc-alert
+    :title="t('sys.operatelog.operateLogManagement')"
+    url="https://doc.iocoder.cn/system-log/"
+  />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -74,8 +77,12 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.operatelog.search') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.operatelog.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.operatelog.search') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.operatelog.reset') }}</el-button
+        >
         <el-button
           type="success"
           plain
@@ -93,9 +100,19 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
       <el-table-column :label="t('sys.operatelog.logId')" align="center" prop="id" width="100" />
-      <el-table-column :label="t('sys.operatelog.userName')" align="center" prop="userName" width="120" />
+      <el-table-column
+        :label="t('sys.operatelog.userName')"
+        align="center"
+        prop="userName"
+        width="120"
+      />
       <el-table-column :label="t('sys.operatelog.type')" align="center" prop="type" width="120" />
-      <el-table-column :label="t('sys.operatelog.subType')" align="center" prop="subType" width="160" />
+      <el-table-column
+        :label="t('sys.operatelog.subType')"
+        align="center"
+        prop="subType"
+        width="160"
+      />
       <el-table-column :label="t('sys.operatelog.action')" align="center" prop="action" />
       <el-table-column
         :label="t('sys.operatelog.createTime')"
@@ -105,8 +122,18 @@
         :formatter="dateFormatter"
       />
       <el-table-column :label="t('sys.operatelog.bizId')" align="center" prop="bizId" width="120" />
-      <el-table-column :label="t('sys.operatelog.userIp')" align="center" prop="userIp" width="120" />
-      <el-table-column :label="t('sys.operatelog.operation')" align="center" fixed="right" width="60">
+      <el-table-column
+        :label="t('sys.operatelog.userIp')"
+        align="center"
+        prop="userIp"
+        width="120"
+      />
+      <el-table-column
+        :label="t('sys.operatelog.operation')"
+        align="center"
+        fixed="right"
+        width="60"
+      >
         <template #default="scope">
           <el-button
             link

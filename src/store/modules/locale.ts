@@ -38,7 +38,6 @@ export const useLocaleStore = defineStore('locales', {
   },
   getters: {
     getCurrentLocale(): LocaleDropdownType {
-      
       return this.currentLocale
     },
     getLocaleMap(): LocaleDropdownType[] {

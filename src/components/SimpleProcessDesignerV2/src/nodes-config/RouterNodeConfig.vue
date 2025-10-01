@@ -45,7 +45,7 @@
             </div>
           </template>
           <Condition
-            :ref="($event) => (conditionRef[index] = $event)"
+            :ref="(el: InstanceType<typeof Condition> | null) => (conditionRef[index] = el)"
             v-model="routerGroups[index]"
           />
         </el-card>
@@ -90,7 +90,7 @@ const currentNode = useWatchNode(props)
 const { nodeName, showInput, clickIcon, blurEvent } = useNodeName(NodeType.ROUTER_BRANCH_NODE)
 const routerGroups = ref<RouterSetting[]>([])
 const nodeOptions = ref<any>([])
-const conditionRef = ref([])
+const conditionRef = ref<(InstanceType<typeof Condition> | null)[]>([])
 const { t } = useI18n()
 
 /** 保存配置 */
@@ -98,7 +98,7 @@ const saveConfig = async () => {
   // 校验表单
   let valid = true
   for (const item of conditionRef.value) {
-    if (item && !(await item.validate())) {
+    if (item && item.validate && typeof item.validate === 'function' && !(await item.validate())) {
       valid = false
     }
   }

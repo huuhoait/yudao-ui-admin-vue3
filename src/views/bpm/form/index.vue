@@ -1,5 +1,8 @@
 <template>
-  <doc-alert :title="$t('bpm.form.index.docAlertTitle')" url="https://doc.iocoder.cn/bpm/use-bpm-form/" />
+  <doc-alert
+    :title="$t('bpm.form.index.docAlertTitle')"
+    url="https://doc.iocoder.cn/bpm/use-bpm-form/"
+  />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->

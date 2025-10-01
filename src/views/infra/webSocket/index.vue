@@ -21,11 +21,7 @@
           <template #prepend>{{ t('infra.webSocket.connection.serverLabel') }}</template>
         </el-input>
         <el-button :type="getIsOpen ? 'danger' : 'primary'" @click="toggleConnectStatus">
-          {{
-            getIsOpen
-              ? t('infra.webSocket.actions.close')
-              : t('infra.webSocket.actions.open')
-          }}
+          {{ getIsOpen ? t('infra.webSocket.actions.close') : t('infra.webSocket.actions.open') }}
         </el-button>
       </div>
       <p class="mt-4 text-lg font-medium">{{ t('infra.webSocket.labels.messageInput') }}</p>
@@ -51,13 +47,7 @@
           :value="user.id"
         />
       </el-select>
-      <el-button
-        :disabled="!getIsOpen"
-        block
-        class="ml-2 mt-4"
-        type="primary"
-        @click="handlerSend"
-      >
+      <el-button :disabled="!getIsOpen" block class="ml-2 mt-4" type="primary" @click="handlerSend">
         {{ t('infra.webSocket.actions.send') }}
       </el-button>
     </el-card>

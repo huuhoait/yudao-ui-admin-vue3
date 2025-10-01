@@ -42,7 +42,9 @@
         {{ t('infra.apiAccessLog.detail.durationValue', { value: detailData.duration }) }}
       </el-descriptions-item>
       <el-descriptions-item :label="t('infra.apiAccessLog.detail.result')">
-        <div v-if="detailData.resultCode === 0">{{ t('infra.apiAccessLog.detail.resultSuccess') }}</div>
+        <div v-if="detailData.resultCode === 0">{{
+          t('infra.apiAccessLog.detail.resultSuccess')
+        }}</div>
         <div v-else-if="detailData.resultCode > 0">
           {{
             t('infra.apiAccessLog.detail.resultFail', {

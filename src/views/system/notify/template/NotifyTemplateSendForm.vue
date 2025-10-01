@@ -26,11 +26,22 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-show="formData.userType === 1" :label="t('sys.notify.template.userId')" prop="userId">
+      <el-form-item
+        v-show="formData.userType === 1"
+        :label="t('sys.notify.template.userId')"
+        prop="userId"
+      >
         <el-input v-model="formData.userId" style="width: 160px" />
       </el-form-item>
-      <el-form-item v-show="formData.userType === 2" :label="t('sys.notify.template.userId')" prop="userId">
-        <el-select v-model="formData.userId" :placeholder="t('sys.notify.template.userPlaceholder')">
+      <el-form-item
+        v-show="formData.userType === 2"
+        :label="t('sys.notify.template.userId')"
+        prop="userId"
+      >
+        <el-select
+          v-model="formData.userId"
+          :placeholder="t('sys.notify.template.userPlaceholder')"
+        >
           <el-option
             v-for="item in userOption"
             :key="item.id"
@@ -52,7 +63,9 @@
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{
+        t('common.ok')
+      }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
@@ -79,7 +92,9 @@ const formData = ref({
 })
 const formRules = reactive({
   userId: [{ required: true, message: t('sys.notify.template.userIdRequired'), trigger: 'change' }],
-  templateCode: [{ required: true, message: t('sys.notify.template.templateCodeRequired'), trigger: 'blur' }],
+  templateCode: [
+    { required: true, message: t('sys.notify.template.templateCodeRequired'), trigger: 'blur' }
+  ],
   templateParams: {}
 })
 const formRef = ref() // 表单 Ref
@@ -101,7 +116,11 @@ const open = async (id: number) => {
       return obj
     }, {})
     formRules.templateParams = data.params.reduce((obj, item) => {
-      obj[item] = { required: true, message: t('sys.notify.template.paramRequired', { param: item }), trigger: 'blur' }
+      obj[item] = {
+        required: true,
+        message: t('sys.notify.template.paramRequired', { param: item }),
+        trigger: 'blur'
+      }
       return obj
     }, {})
   } finally {

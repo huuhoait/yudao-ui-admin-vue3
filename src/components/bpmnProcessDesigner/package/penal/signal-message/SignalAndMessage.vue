@@ -1,25 +1,63 @@
 <template>
   <div class="panel-tab__content">
     <div class="panel-tab__content--title">
-      <span><Icon icon="ep:menu" style="margin-right: 8px; color: #555" />{{ $t('bpm.design.messageList') }}</span>
-      <XButton type="primary" :title="$t('bpm.design.createNewMessage')" preIcon="ep:plus" @click="openModel('message')" />
+      <span
+        ><Icon icon="ep:menu" style="margin-right: 8px; color: #555" />{{
+          $t('bpm.design.messageList')
+        }}</span
+      >
+      <XButton
+        type="primary"
+        :title="$t('bpm.design.createNewMessage')"
+        preIcon="ep:plus"
+        @click="openModel('message')"
+      />
     </div>
     <el-table :data="messageList" border>
       <el-table-column type="index" :label="$t('bpm.design.serialNumber')" width="60px" />
-      <el-table-column :label="$t('bpm.design.messageId')" prop="id" max-width="300px" show-overflow-tooltip />
-      <el-table-column :label="$t('bpm.design.messageName')" prop="name" max-width="300px" show-overflow-tooltip />
+      <el-table-column
+        :label="$t('bpm.design.messageId')"
+        prop="id"
+        max-width="300px"
+        show-overflow-tooltip
+      />
+      <el-table-column
+        :label="$t('bpm.design.messageName')"
+        prop="name"
+        max-width="300px"
+        show-overflow-tooltip
+      />
     </el-table>
     <div
       class="panel-tab__content--title"
       style="padding-top: 8px; margin-top: 8px; border-top: 1px solid #eee"
     >
-      <span><Icon icon="ep:menu" style="margin-right: 8px; color: #555" />{{ $t('bpm.design.signalList') }}</span>
-      <XButton type="primary" :title="$t('bpm.design.createNewSignal')" preIcon="ep:plus" @click="openModel('signal')" />
+      <span
+        ><Icon icon="ep:menu" style="margin-right: 8px; color: #555" />{{
+          $t('bpm.design.signalList')
+        }}</span
+      >
+      <XButton
+        type="primary"
+        :title="$t('bpm.design.createNewSignal')"
+        preIcon="ep:plus"
+        @click="openModel('signal')"
+      />
     </div>
     <el-table :data="signalList" border>
       <el-table-column type="index" :label="$t('bpm.design.serialNumber')" width="60px" />
-      <el-table-column :label="$t('bpm.design.signalId')" prop="id" max-width="300px" show-overflow-tooltip />
-      <el-table-column :label="$t('bpm.design.signalName')" prop="name" max-width="300px" show-overflow-tooltip />
+      <el-table-column
+        :label="$t('bpm.design.signalId')"
+        prop="id"
+        max-width="300px"
+        show-overflow-tooltip
+      />
+      <el-table-column
+        :label="$t('bpm.design.signalName')"
+        prop="name"
+        max-width="300px"
+        show-overflow-tooltip
+      />
     </el-table>
 
     <el-dialog
@@ -59,9 +97,17 @@ const messageIdMap = ref()
 const signalIdMap = ref()
 const modelConfig = computed(() => {
   if (modelType.value === 'message') {
-    return { title: t('bpm.design.createMessage'), idLabel: t('bpm.design.messageId'), nameLabel: t('bpm.design.messageName') }
+    return {
+      title: t('bpm.design.createMessage'),
+      idLabel: t('bpm.design.messageId'),
+      nameLabel: t('bpm.design.messageName')
+    }
   } else {
-    return { title: t('bpm.design.createSignal'), idLabel: t('bpm.design.signalId'), nameLabel: t('bpm.design.signalName') }
+    return {
+      title: t('bpm.design.createSignal'),
+      idLabel: t('bpm.design.signalId'),
+      nameLabel: t('bpm.design.signalName')
+    }
   }
 })
 const bpmnInstances = () => (window as any)?.bpmnInstances

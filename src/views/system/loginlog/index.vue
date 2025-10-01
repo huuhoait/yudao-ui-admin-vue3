@@ -1,5 +1,8 @@
 <template>
-  <doc-alert :title="t('sys.loginlog.loginLogManagement')" url="https://doc.iocoder.cn/system-log/" />
+  <doc-alert
+    :title="t('sys.loginlog.loginLogManagement')"
+    url="https://doc.iocoder.cn/system-log/"
+  />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -40,8 +43,12 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.loginlog.search') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.loginlog.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.loginlog.search') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.loginlog.reset') }}</el-button
+        >
         <el-button
           type="success"
           plain
@@ -64,7 +71,12 @@
           <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_TYPE" :value="scope.row.logType" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('sys.loginlog.username')" align="center" prop="username" width="180" />
+      <el-table-column
+        :label="t('sys.loginlog.username')"
+        align="center"
+        prop="username"
+        width="180"
+      />
       <el-table-column :label="t('sys.loginlog.userIp')" align="center" prop="userIp" width="180" />
       <el-table-column :label="t('sys.loginlog.userAgent')" align="center" prop="userAgent" />
       <el-table-column :label="t('sys.loginlog.result')" align="center" prop="result">

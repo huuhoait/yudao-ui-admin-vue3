@@ -3,22 +3,24 @@
     <div style="margin-top: 10px">
       <span>类型：</span>
       <el-button-group>
-        <el-button size="mini" :type="type === 'time' ? 'primary' : ''" @click="setType('time')"
+        <el-button size="small" :type="type === 'time' ? 'primary' : ''" @click="setType('time')"
           >时间</el-button
         >
         <el-button
-          size="mini"
+          size="small"
           :type="type === 'duration' ? 'primary' : ''"
           @click="setType('duration')"
           >持续</el-button
         >
-        <el-button size="mini" :type="type === 'cycle' ? 'primary' : ''" @click="setType('cycle')"
+        <el-button size="small" :type="type === 'cycle' ? 'primary' : ''" @click="setType('cycle')"
           >循环</el-button
         >
       </el-button-group>
-      <el-icon v-if="valid" color="green" style="margin-left: 8px"><CircleCheckFilled /></el-icon>
+      <el-icon v-if="valid" color="green" style="margin-left: 8px">
+        <CircleCheckFilled />
+      </el-icon>
     </div>
-    <div style="margin-top: 10px; display: flex; align-items: center">
+    <div style=" display: flex;margin-top: 10px; align-items: center">
       <span>条件：</span>
       <el-input
         v-model="condition"
@@ -30,12 +32,14 @@
       >
         <template #suffix>
           <el-tooltip v-if="!valid" content="格式错误" placement="top">
-            <el-icon color="orange"><WarningFilled /></el-icon>
+            <el-icon color="orange">
+              <WarningFilled />
+            </el-icon>
           </el-tooltip>
           <el-tooltip :content="helpText" placement="top">
-            <el-icon color="#409EFF" style="cursor: pointer" @click="showHelp = true"
-              ><QuestionFilled
-            /></el-icon>
+            <el-icon color="#409EFF" style="cursor: pointer" @click="showHelp = true">
+              <QuestionFilled />
+            </el-icon>
           </el-tooltip>
           <el-button
             v-if="type === 'time'"
@@ -123,11 +127,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch, onMounted, toRaw, nextTick } from 'vue'
 import { CircleCheckFilled, WarningFilled, QuestionFilled } from '@element-plus/icons-vue'
 import DurationConfig from './DurationConfig.vue'
 import CycleConfig from './CycleConfig.vue'
-import { createListenerObject, updateElementExtensions } from '../../utils'
 const bpmnInstances = () => (window as any).bpmnInstances
 const props = defineProps({ businessObject: Object })
 const type = ref('time')
@@ -138,7 +141,6 @@ const showDurationDialog = ref(false)
 const showCycleDialog = ref(false)
 const showHelp = ref(false)
 const dateValue = ref(null)
-const bpmnElement = ref(null)
 
 const placeholder = computed(() => {
   if (type.value === 'time') return '请输入时间'
@@ -185,7 +187,7 @@ function syncFromBusinessObject() {
 onMounted(syncFromBusinessObject)
 
 // 切换类型
-function setType(t) {
+function setType(t: string) {
   type.value = t
   condition.value = ''
   updateNode()
@@ -249,10 +251,12 @@ function handleInputFocus() {
 
 // 同步到节点
 function updateNode() {
-  const moddle = window.bpmnInstances?.moddle
-  const modeling = window.bpmnInstances?.modeling
-  const elementRegistry = window.bpmnInstances?.elementRegistry
-  if (!moddle || !modeling || !elementRegistry) return
+  const instances = bpmnInstances()
+  if (!instances || !instances.moddle || !instances.modeling || !instances.elementRegistry) return
+
+  // const moddle = instances.moddle
+  const modeling = instances.modeling
+  const elementRegistry = instances.elementRegistry
 
   // 获取元素
   if (!props.businessObject || !props.businessObject.id) return
@@ -263,7 +267,7 @@ function updateNode() {
   let timerDef =
     element.businessObject.eventDefinitions && element.businessObject.eventDefinitions[0]
   if (!timerDef) {
-    timerDef = bpmnInstances().bpmnFactory.create('bpmn:TimerEventDefinition', {})
+    timerDef = instances.bpmnFactory.create('bpmn:TimerEventDefinition', {})
     modeling.updateProperties(element, {
       eventDefinitions: [timerDef]
     })
@@ -276,20 +280,20 @@ function updateNode() {
 
   // 3. 设置新的
   if (type.value === 'time' && condition.value) {
-    timerDef.timeDate = bpmnInstances().bpmnFactory.create('bpmn:FormalExpression', {
+    timerDef.timeDate = instances.bpmnFactory.create('bpmn:FormalExpression', {
       body: condition.value
     })
   } else if (type.value === 'duration' && condition.value) {
-    timerDef.timeDuration = bpmnInstances().bpmnFactory.create('bpmn:FormalExpression', {
+    timerDef.timeDuration = instances.bpmnFactory.create('bpmn:FormalExpression', {
       body: condition.value
     })
   } else if (type.value === 'cycle' && condition.value) {
-    timerDef.timeCycle = bpmnInstances().bpmnFactory.create('bpmn:FormalExpression', {
+    timerDef.timeCycle = instances.bpmnFactory.create('bpmn:FormalExpression', {
       body: condition.value
     })
   }
 
-  bpmnInstances().modeling.updateProperties(toRaw(element), {
+  instances.modeling.updateProperties(toRaw(element), {
     eventDefinitions: [timerDef]
   })
 }

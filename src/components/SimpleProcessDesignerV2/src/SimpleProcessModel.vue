@@ -257,9 +257,9 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .simple-process-model-container {
+  position: relative;
   width: 100%;
   height: 100%;
-  position: relative;
   overflow: hidden;
   user-select: none; // 禁用文本选择
 }

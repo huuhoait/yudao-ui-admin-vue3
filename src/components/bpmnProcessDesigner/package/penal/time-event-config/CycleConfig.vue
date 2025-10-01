@@ -2,11 +2,26 @@
   <el-tabs v-model="tab">
     <el-tab-pane label="CRON表达式" name="cron">
       <div style="margin-bottom: 10px">
-        <el-input v-model="cronStr" readonly style="width: 400px; font-weight: bold" :key="'cronStr'" />
+        <el-input
+          v-model="cronStr"
+          readonly
+          style="width: 400px; font-weight: bold"
+          :key="'cronStr'"
+        />
       </div>
       <div style="display: flex; gap: 8px; margin-bottom: 8px">
-        <el-input v-model="fields.second" placeholder="second" style="width: 80px" :key="'second'" />
-        <el-input v-model="fields.minute" placeholder="minute" style="width: 80px" :key="'minute'" />
+        <el-input
+          v-model="fields.second"
+          placeholder="second"
+          style="width: 80px"
+          :key="'second'"
+        />
+        <el-input
+          v-model="fields.minute"
+          placeholder="minute"
+          style="width: 80px"
+          :key="'minute'"
+        />
         <el-input v-model="fields.hour" placeholder="hour" style="width: 80px" :key="'hour'" />
         <el-input v-model="fields.day" placeholder="day" style="width: 80px" :key="'day'" />
         <el-input v-model="fields.month" placeholder="month" style="width: 80px" :key="'month'" />
@@ -18,31 +33,59 @@
           <div style="margin-bottom: 8px">
             <el-radio-group v-model="cronMode[f.key]" :key="'radio-' + f.key">
               <el-radio label="every" :key="'every-' + f.key">Every {{ f.label }}</el-radio>
-              <el-radio label="range" :key="'range-' + f.key">From
+              <el-radio label="range" :key="'range-' + f.key"
+                >From
                 <el-input-number
-v-model="cronRange[f.key][0]" :min="f.min" :max="f.max" size="small"
-                  style="width: 60px" :key="'range0-' + f.key" />
+                  v-model="cronRange[f.key][0]"
+                  :min="f.min"
+                  :max="f.max"
+                  size="small"
+                  style="width: 60px"
+                  :key="'range0-' + f.key"
+                />
                 to
                 <el-input-number
-v-model="cronRange[f.key][1]" :min="f.min" :max="f.max" size="small"
-                  style="width: 60px" :key="'range1-' + f.key" />
-                between each {{ f.label }}</el-radio>
-              <el-radio label="step" :key="'step-' + f.key">From the first
+                  v-model="cronRange[f.key][1]"
+                  :min="f.min"
+                  :max="f.max"
+                  size="small"
+                  style="width: 60px"
+                  :key="'range1-' + f.key"
+                />
+                between each {{ f.label }}</el-radio
+              >
+              <el-radio label="step" :key="'step-' + f.key"
+                >From the first
                 <el-input-number
-v-model="cronStep[f.key][0]" :min="f.min" :max="f.max" size="small" style="width: 60px"
-                  :key="'step0-' + f.key" />
+                  v-model="cronStep[f.key][0]"
+                  :min="f.min"
+                  :max="f.max"
+                  size="small"
+                  style="width: 60px"
+                  :key="'step0-' + f.key"
+                />
                 Start each
                 <el-input-number
-v-model="cronStep[f.key][1]" :min="1" :max="f.max" size="small" style="width: 60px"
-                  :key="'step1-' + f.key" />
-                {{ f.label }}</el-radio>
+                  v-model="cronStep[f.key][1]"
+                  :min="1"
+                  :max="f.max"
+                  size="small"
+                  style="width: 60px"
+                  :key="'step1-' + f.key"
+                />
+                {{ f.label }}</el-radio
+              >
               <el-radio label="appoint" :key="'appoint-' + f.key">Appoint</el-radio>
             </el-radio-group>
           </div>
           <div v-if="cronMode[f.key] === 'appoint'">
             <el-checkbox-group v-model="cronAppoint[f.key]" :key="'group-' + f.key">
-              <el-checkbox v-for="n in f.max + 1" :label="pad(n - 1)" :key="'cb-' + f.key + '-' + (n - 1)">{{ pad(n - 1)
-                }}</el-checkbox>
+              <el-checkbox
+                v-for="n in f.max + 1"
+                :label="pad(n - 1)"
+                :key="'cb-' + f.key + '-' + (n - 1)"
+                >{{ pad(n - 1) }}</el-checkbox
+              >
             </el-checkbox-group>
           </div>
         </el-tab-pane>
@@ -51,31 +94,83 @@ v-model="cronStep[f.key][1]" :min="1" :max="f.max" size="small" style="width: 60
     <el-tab-pane label="Standard format" name="iso" :key="'iso-tab'">
       <div style="margin-bottom: 10px">
         <el-input
-v-model="isoStr" placeholder="如R1/2025-05-21T21:59:54/P3DT30M30S"
-          style="width: 400px; font-weight: bold" :key="'isoStr'" />
+          v-model="isoStr"
+          placeholder="如R1/2025-05-21T21:59:54/P3DT30M30S"
+          style="width: 400px; font-weight: bold"
+          :key="'isoStr'"
+        />
       </div>
-      <div style="margin-bottom: 10px">Number of cycles:<el-input-number
-v-model="repeat" :min="1" style="width: 100px"
-          :key="'repeat'" /></div>
-      <div style="margin-bottom: 10px">date time：<el-date-picker
-v-model="isoDate" type="datetime"
-          Placeholder="Select Date Time" style="width: 200px" :key="'isoDate'" /></div>
-      <div style="margin-bottom: 10px">current duration：<el-input
-v-model="isoDuration"
-          Placeholder="such as p3 d t30 m30 s" style="width: 200px" :key="'isoDuration'" /></div>
+      <div style="margin-bottom: 10px"
+        >Number of cycles:<el-input-number
+          v-model="repeat"
+          :min="1"
+          style="width: 100px"
+          :key="'repeat'"
+      /></div>
+      <div style="margin-bottom: 10px"
+        >date time：<el-date-picker
+          v-model="isoDate"
+          type="datetime"
+          Placeholder="Select Date Time"
+          style="width: 200px"
+          :key="'isoDate'"
+      /></div>
+      <div style="margin-bottom: 10px"
+        >current duration：<el-input
+          v-model="isoDuration"
+          Placeholder="such as p3 d t30 m30 s"
+          style="width: 200px"
+          :key="'isoDuration'"
+      /></div>
       <div>
-        <div>second：<el-button v-for="s in [5, 10, 30, 50]" @click="setDuration('S', s)" :key="'sec-' + s">{{ s
-            }}</el-button>Change</div>
-        <div>minute：<el-button v-for="m in [5, 10, 30, 50]" @click="setDuration('M', m)" :key="'min-' + m">{{ m
-            }}</el-button>Change</div>
-        <div>hour：<el-button v-for="h in [4, 8, 12, 24]" @click="setDuration('H', h)" :key="'hour-' + h">{{ h
-            }}</el-button>Change</div>
-        <div>day：<el-button v-for="d in [1, 2, 3, 4]" @click="setDuration('D', d)" :key="'day-' + d">{{ d
-            }}</el-button>Change</div>
-        <div>month：<el-button v-for="mo in [1, 2, 3, 4]" @click="setDuration('M', mo)" :key="'mon-' + mo">{{ mo
-            }}</el-button>Change</div>
-        <div>year：<el-button v-for="y in [1, 2, 3, 4]" @click="setDuration('Y', y)" :key="'year-' + y">{{ y
-            }}</el-button>Change</div>
+        <div
+          >second：<el-button
+            v-for="s in [5, 10, 30, 50]"
+            @click="setDuration('S', s)"
+            :key="'sec-' + s"
+            >{{ s }}</el-button
+          >Change</div
+        >
+        <div
+          >minute：<el-button
+            v-for="m in [5, 10, 30, 50]"
+            @click="setDuration('M', m)"
+            :key="'min-' + m"
+            >{{ m }}</el-button
+          >Change</div
+        >
+        <div
+          >hour：<el-button
+            v-for="h in [4, 8, 12, 24]"
+            @click="setDuration('H', h)"
+            :key="'hour-' + h"
+            >{{ h }}</el-button
+          >Change</div
+        >
+        <div
+          >day：<el-button
+            v-for="d in [1, 2, 3, 4]"
+            @click="setDuration('D', d)"
+            :key="'day-' + d"
+            >{{ d }}</el-button
+          >Change</div
+        >
+        <div
+          >month：<el-button
+            v-for="mo in [1, 2, 3, 4]"
+            @click="setDuration('M', mo)"
+            :key="'mon-' + mo"
+            >{{ mo }}</el-button
+          >Change</div
+        >
+        <div
+          >year：<el-button
+            v-for="y in [1, 2, 3, 4]"
+            @click="setDuration('Y', y)"
+            :key="'year-' + y"
+            >{{ y }}</el-button
+          >Change</div
+        >
       </div>
     </el-tab-pane>
   </el-tabs>

@@ -33,8 +33,12 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button
+        >
         <el-button
           type="primary"
           plain
@@ -44,7 +48,9 @@
           <Icon icon="ep:plus" class="mr-5px" /> {{ t('action.create') }}
         </el-button>
         <el-button type="danger" plain @click="toggleExpandAll">
-          <Icon icon="ep:sort" class="mr-5px" /> {{ t('sys.dept.deptManagement') }}/{{ t('sys.dept.deptAdd') }}
+          <Icon icon="ep:sort" class="mr-5px" /> {{ t('sys.dept.deptManagement') }}/{{
+            t('sys.dept.deptAdd')
+          }}
         </el-button>
         <el-button
           type="danger"

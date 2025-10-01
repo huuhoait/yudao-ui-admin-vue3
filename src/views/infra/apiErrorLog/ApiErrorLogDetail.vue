@@ -38,7 +38,10 @@
       <el-descriptions-item :label="t('infra.apiErrorLog.detail.exceptionName')">
         {{ detailData.exceptionName }}
       </el-descriptions-item>
-      <el-descriptions-item v-if="detailData.exceptionStackTrace" :label="t('infra.apiErrorLog.detail.exceptionStackTrace')">
+      <el-descriptions-item
+        v-if="detailData.exceptionStackTrace"
+        :label="t('infra.apiErrorLog.detail.exceptionStackTrace')"
+      >
         <el-input
           v-model="detailData.exceptionStackTrace"
           :autosize="{ maxRows: 20 }"
@@ -52,10 +55,16 @@
           :value="detailData.processStatus"
         />
       </el-descriptions-item>
-      <el-descriptions-item v-if="detailData.processUserId" :label="t('infra.apiErrorLog.detail.processUserId')">
+      <el-descriptions-item
+        v-if="detailData.processUserId"
+        :label="t('infra.apiErrorLog.detail.processUserId')"
+      >
         {{ detailData.processUserId }}
       </el-descriptions-item>
-      <el-descriptions-item v-if="detailData.processTime" :label="t('infra.apiErrorLog.detail.processTime')">
+      <el-descriptions-item
+        v-if="detailData.processTime"
+        :label="t('infra.apiErrorLog.detail.processTime')"
+      >
         {{ formatDate(detailData.processTime) }}
       </el-descriptions-item>
     </el-descriptions>

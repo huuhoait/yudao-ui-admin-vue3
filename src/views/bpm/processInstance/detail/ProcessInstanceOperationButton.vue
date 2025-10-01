@@ -28,7 +28,9 @@
           <el-card v-if="runningTask?.formId > 0" class="mb-15px !-mt-10px">
             <template #header>
               <span class="el-icon-picture-outline">
-                {{ t('bpm.processInstance.detail.approve.fillForm', { name: runningTask?.formName }) }}
+                {{
+                  t('bpm.processInstance.detail.approve.fillForm', { name: runningTask?.formName })
+                }}
               </span>
             </template>
             <form-create
@@ -38,10 +40,15 @@
               :rule="approveForm.rule"
             />
           </el-card>
-          <el-form-item :label="t('bpm.processInstance.detail.approve.opinionLabel', { nodeTypeName })" prop="reason">
+          <el-form-item
+            :label="t('bpm.processInstance.detail.approve.opinionLabel', { nodeTypeName })"
+            prop="reason"
+          >
             <el-input
               v-model="approveReasonForm.reason"
-              :placeholder="t('bpm.processInstance.detail.approve.opinionPlaceholder', { nodeTypeName })"
+              :placeholder="
+                t('bpm.processInstance.detail.approve.opinionPlaceholder', { nodeTypeName })
+              "
               type="textarea"
               :rows="4"
             />
@@ -67,7 +74,9 @@
             prop="signPicUrl"
             ref="approveSignFormRef"
           >
-            <el-button @click="signRef.open()">{{ t('bpm.processInstance.detail.approve.signatureButton') }}</el-button>
+            <el-button @click="signRef.open()">{{
+              t('bpm.processInstance.detail.approve.signatureButton')
+            }}</el-button>
             <el-image
               class="w-90px h-40px ml-5px"
               v-if="approveReasonForm.signPicUrl"
@@ -83,7 +92,9 @@
             >
               {{ getButtonDisplayName(OperationButtonType.APPROVE) }}
             </el-button>
-            <el-button @click="closePopover('approve', approveFormRef)">{{ t('common.cancel') }}</el-button>
+            <el-button @click="closePopover('approve', approveFormRef)">{{
+              t('common.cancel')
+            }}</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -128,7 +139,9 @@
             >
               {{ getButtonDisplayName(OperationButtonType.REJECT) }}
             </el-button>
-            <el-button @click="closePopover('reject', rejectFormRef)">{{ t('common.cancel') }}</el-button>
+            <el-button @click="closePopover('reject', rejectFormRef)">{{
+              t('common.cancel')
+            }}</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -145,7 +158,7 @@
       <template #reference>
         <div @click="openPopover('copy')" class="hover-bg-gray-100 rounded-xl p-6px">
           <Icon :size="14" icon="svg-icon:send" />&nbsp;
-          {{ getButtonDisplayName(OperationButtonType.COPY) }} 
+          {{ getButtonDisplayName(OperationButtonType.COPY) }}
         </div>
       </template>
       <div class="flex flex-col flex-1 pt-20px px-20px" v-loading="formLoading">
@@ -186,7 +199,9 @@
             <el-button :disabled="formLoading" type="primary" @click="handleCopy">
               {{ getButtonDisplayName(OperationButtonType.COPY) }}
             </el-button>
-            <el-button @click="closePopover('copy', copyFormRef)">{{ t('common.cancel') }}</el-button>
+            <el-button @click="closePopover('copy', copyFormRef)">{{
+              t('common.cancel')
+            }}</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -215,7 +230,10 @@
           :rules="transferFormRule"
           label-width="100px"
         >
-          <el-form-item :label="t('bpm.processInstance.detail.transfer.userLabel')" prop="assigneeUserId">
+          <el-form-item
+            :label="t('bpm.processInstance.detail.transfer.userLabel')"
+            prop="assigneeUserId"
+          >
             <el-select v-model="transferForm.assigneeUserId" clearable style="width: 100%">
               <el-option
                 v-for="item in userOptions"
@@ -225,7 +243,10 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item :label="t('bpm.processInstance.detail.transfer.opinionLabel')" prop="reason">
+          <el-form-item
+            :label="t('bpm.processInstance.detail.transfer.opinionLabel')"
+            prop="reason"
+          >
             <el-input
               v-model="transferForm.reason"
               clearable
@@ -238,7 +259,9 @@
             <el-button :disabled="formLoading" type="primary" @click="handleTransfer()">
               {{ getButtonDisplayName(OperationButtonType.TRANSFER) }}
             </el-button>
-            <el-button @click="closePopover('transfer', transferFormRef)">{{ t('common.cancel') }}</el-button>
+            <el-button @click="closePopover('transfer', transferFormRef)">{{
+              t('common.cancel')
+            }}</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -267,7 +290,10 @@
           :rules="delegateFormRule"
           label-width="100px"
         >
-          <el-form-item :label="t('bpm.processInstance.detail.delegate.userLabel')" prop="delegateUserId">
+          <el-form-item
+            :label="t('bpm.processInstance.detail.delegate.userLabel')"
+            prop="delegateUserId"
+          >
             <el-select v-model="delegateForm.delegateUserId" clearable style="width: 100%">
               <el-option
                 v-for="item in userOptions"
@@ -277,7 +303,10 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item :label="t('bpm.processInstance.detail.delegate.opinionLabel')" prop="reason">
+          <el-form-item
+            :label="t('bpm.processInstance.detail.delegate.opinionLabel')"
+            prop="reason"
+          >
             <el-input
               v-model="delegateForm.reason"
               clearable
@@ -290,7 +319,9 @@
             <el-button :disabled="formLoading" type="primary" @click="handleDelegate()">
               {{ getButtonDisplayName(OperationButtonType.DELEGATE) }}
             </el-button>
-            <el-button @click="closePopover('delegate', delegateFormRef)">{{ t('common.cancel') }}</el-button>
+            <el-button @click="closePopover('delegate', delegateFormRef)">{{
+              t('common.cancel')
+            }}</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -319,7 +350,10 @@
           :rules="addSignFormRule"
           label-width="100px"
         >
-          <el-form-item :label="t('bpm.processInstance.detail.addSign.userLabel')" prop="addSignUserIds">
+          <el-form-item
+            :label="t('bpm.processInstance.detail.addSign.userLabel')"
+            prop="addSignUserIds"
+          >
             <el-select v-model="addSignForm.addSignUserIds" multiple clearable style="width: 100%">
               <el-option
                 v-for="item in userOptions"
@@ -340,12 +374,22 @@
           </el-form-item>
           <el-form-item>
             <el-button :disabled="formLoading" type="primary" @click="handlerAddSign('before')">
-              {{ t('bpm.processInstance.detail.addSign.before', { label: getButtonDisplayName(OperationButtonType.ADD_SIGN) }) }}
+              {{
+                t('bpm.processInstance.detail.addSign.before', {
+                  label: getButtonDisplayName(OperationButtonType.ADD_SIGN)
+                })
+              }}
             </el-button>
             <el-button :disabled="formLoading" type="primary" @click="handlerAddSign('after')">
-              {{ t('bpm.processInstance.detail.addSign.after', { label: getButtonDisplayName(OperationButtonType.ADD_SIGN) }) }}
+              {{
+                t('bpm.processInstance.detail.addSign.after', {
+                  label: getButtonDisplayName(OperationButtonType.ADD_SIGN)
+                })
+              }}
             </el-button>
-            <el-button @click="closePopover('addSign', addSignFormRef)">{{ t('common.cancel') }}</el-button>
+            <el-button @click="closePopover('addSign', addSignFormRef)">{{
+              t('common.cancel')
+            }}</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -361,7 +405,8 @@
     >
       <template #reference>
         <div @click="openPopover('deleteSign')" class="hover-bg-gray-100 rounded-xl p-6px">
-          <Icon :size="14" icon="ep:semi-select" />&nbsp; {{ t('bpm.processInstance.detail.deleteSign.button') }}
+          <Icon :size="14" icon="ep:semi-select" />&nbsp;
+          {{ t('bpm.processInstance.detail.deleteSign.button') }}
         </div>
       </template>
       <div class="flex flex-col flex-1 pt-20px px-20px" v-loading="formLoading">
@@ -373,7 +418,10 @@
           :rules="deleteSignFormRule"
           label-width="100px"
         >
-          <el-form-item :label="t('bpm.processInstance.detail.deleteSign.userLabel')" prop="deleteSignTaskId">
+          <el-form-item
+            :label="t('bpm.processInstance.detail.deleteSign.userLabel')"
+            prop="deleteSignTaskId"
+          >
             <el-select v-model="deleteSignForm.deleteSignTaskId" clearable style="width: 100%">
               <el-option
                 v-for="item in runningTask.children"
@@ -383,7 +431,10 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item :label="t('bpm.processInstance.detail.deleteSign.opinionLabel')" prop="reason">
+          <el-form-item
+            :label="t('bpm.processInstance.detail.deleteSign.opinionLabel')"
+            prop="reason"
+          >
             <el-input
               v-model="deleteSignForm.reason"
               clearable
@@ -396,7 +447,9 @@
             <el-button :disabled="formLoading" type="primary" @click="handlerDeleteSign()">
               {{ t('bpm.processInstance.detail.deleteSign.submit') }}
             </el-button>
-            <el-button @click="closePopover('deleteSign', deleteSignFormRef)">{{ t('common.cancel') }}</el-button>
+            <el-button @click="closePopover('deleteSign', deleteSignFormRef)">{{
+              t('common.cancel')
+            }}</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -425,7 +478,10 @@
           :rules="returnFormRule"
           label-width="100px"
         >
-          <el-form-item :label="t('bpm.processInstance.detail.return.nodeLabel')" prop="targetTaskDefinitionKey">
+          <el-form-item
+            :label="t('bpm.processInstance.detail.return.nodeLabel')"
+            prop="targetTaskDefinitionKey"
+          >
             <el-select v-model="returnForm.targetTaskDefinitionKey" clearable style="width: 100%">
               <el-option
                 v-for="item in returnList"
@@ -435,7 +491,10 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item :label="t('bpm.processInstance.detail.return.reasonLabel')" prop="returnReason">
+          <el-form-item
+            :label="t('bpm.processInstance.detail.return.reasonLabel')"
+            prop="returnReason"
+          >
             <el-input
               v-model="returnForm.returnReason"
               clearable
@@ -448,7 +507,9 @@
             <el-button :disabled="formLoading" type="primary" @click="handleReturn()">
               {{ getButtonDisplayName(OperationButtonType.RETURN) }}
             </el-button>
-            <el-button @click="closePopover('return', returnFormRef)">{{ t('common.cancel') }}</el-button>
+            <el-button @click="closePopover('return', returnFormRef)">{{
+              t('common.cancel')
+            }}</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -478,8 +539,13 @@
           :rules="cancelFormRule"
           label-width="100px"
         >
-          <el-form-item :label="t('bpm.processInstance.detail.cancel.reasonLabel')" prop="cancelReason">
-            <span class="text-#878c93 text-12px">&nbsp; {{ t('bpm.processInstance.detail.cancel.tip') }}</span>
+          <el-form-item
+            :label="t('bpm.processInstance.detail.cancel.reasonLabel')"
+            prop="cancelReason"
+          >
+            <span class="text-#878c93 text-12px"
+              >&nbsp; {{ t('bpm.processInstance.detail.cancel.tip') }}</span
+            >
             <el-input
               v-model="cancelForm.cancelReason"
               clearable
@@ -492,7 +558,9 @@
             <el-button :disabled="formLoading" type="primary" @click="handleCancel()">
               {{ t('common.confirm') }}
             </el-button>
-            <el-button @click="closePopover('cancel', cancelFormRef)">{{ t('common.cancel') }}</el-button>
+            <el-button @click="closePopover('cancel', cancelFormRef)">{{
+              t('common.cancel')
+            }}</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -507,7 +575,8 @@
         processDefinition?.formType === 10
       "
     >
-      <Icon :size="14" icon="ep:refresh" />&nbsp; {{ t('bpm.processInstance.detail.recreate.button') }}
+      <Icon :size="14" icon="ep:refresh" />&nbsp;
+      {{ t('bpm.processInstance.detail.recreate.button') }}
     </div>
   </div>
 
@@ -587,12 +656,26 @@ const approveReasonRule = computed(() => {
     reason: [
       {
         required: reasonRequire.value,
-        message: t('bpm.processInstance.detail.rules.opinionRequired', { nodeTypeName: nodeTypeName.value }),
+        message: t('bpm.processInstance.detail.rules.opinionRequired', {
+          nodeTypeName: nodeTypeName.value
+        }),
         trigger: 'blur'
       }
     ],
-    signPicUrl: [{ required: true, message: t('bpm.processInstance.detail.rules.signatureRequired'), trigger: 'change' }],
-    nextAssignees: [{ required: true, message: t('bpm.processInstance.detail.rules.nextAssigneeRequired'), trigger: 'blur' }]
+    signPicUrl: [
+      {
+        required: true,
+        message: t('bpm.processInstance.detail.rules.signatureRequired'),
+        trigger: 'change'
+      }
+    ],
+    nextAssignees: [
+      {
+        required: true,
+        message: t('bpm.processInstance.detail.rules.nextAssigneeRequired'),
+        trigger: 'blur'
+      }
+    ]
   }
 })
 
@@ -603,7 +686,13 @@ const rejectReasonForm = reactive({
 })
 const rejectReasonRule = computed(() => {
   return {
-    reason: [{ required: reasonRequire.value, message: t('bpm.processInstance.detail.rules.rejectOpinionRequired'), trigger: 'blur' }]
+    reason: [
+      {
+        required: reasonRequire.value,
+        message: t('bpm.processInstance.detail.rules.rejectOpinionRequired'),
+        trigger: 'blur'
+      }
+    ]
   }
 })
 
@@ -614,8 +703,20 @@ const copyForm = reactive({
   copyReason: ''
 })
 const copyFormRule = reactive<FormRules<typeof copyForm>>({
-  copyUserIds: [{ required: true, message: t('bpm.processInstance.detail.rules.copyUserRequired'), trigger: 'change' }],
-  copyReason: [{ required: true, message: t('bpm.processInstance.detail.rules.copyReasonRequired'), trigger: 'blur' }]
+  copyUserIds: [
+    {
+      required: true,
+      message: t('bpm.processInstance.detail.rules.copyUserRequired'),
+      trigger: 'change'
+    }
+  ],
+  copyReason: [
+    {
+      required: true,
+      message: t('bpm.processInstance.detail.rules.copyReasonRequired'),
+      trigger: 'blur'
+    }
+  ]
 })
 
 // 转办表单
@@ -625,8 +726,20 @@ const transferForm = reactive({
   reason: ''
 })
 const transferFormRule = reactive<FormRules<typeof transferForm>>({
-  assigneeUserId: [{ required: true, message: t('bpm.processInstance.detail.rules.transferUserRequired'), trigger: 'change' }],
-  reason: [{ required: true, message: t('bpm.processInstance.detail.rules.transferOpinionRequired'), trigger: 'blur' }]
+  assigneeUserId: [
+    {
+      required: true,
+      message: t('bpm.processInstance.detail.rules.transferUserRequired'),
+      trigger: 'change'
+    }
+  ],
+  reason: [
+    {
+      required: true,
+      message: t('bpm.processInstance.detail.rules.transferOpinionRequired'),
+      trigger: 'blur'
+    }
+  ]
 })
 
 // 委派表单
@@ -636,8 +749,20 @@ const delegateForm = reactive({
   reason: ''
 })
 const delegateFormRule = reactive<FormRules<typeof delegateForm>>({
-  delegateUserId: [{ required: true, message: t('bpm.processInstance.detail.rules.delegateUserRequired'), trigger: 'change' }],
-  reason: [{ required: true, message: t('bpm.processInstance.detail.rules.delegateOpinionRequired'), trigger: 'blur' }]
+  delegateUserId: [
+    {
+      required: true,
+      message: t('bpm.processInstance.detail.rules.delegateUserRequired'),
+      trigger: 'change'
+    }
+  ],
+  reason: [
+    {
+      required: true,
+      message: t('bpm.processInstance.detail.rules.delegateOpinionRequired'),
+      trigger: 'blur'
+    }
+  ]
 })
 
 // 加签表单
@@ -647,8 +772,20 @@ const addSignForm = reactive({
   reason: ''
 })
 const addSignFormRule = reactive<FormRules<typeof addSignForm>>({
-  addSignUserIds: [{ required: true, message: t('bpm.processInstance.detail.rules.addSignUserRequired'), trigger: 'change' }],
-  reason: [{ required: true, message: t('bpm.processInstance.detail.rules.addSignOpinionRequired'), trigger: 'blur' }]
+  addSignUserIds: [
+    {
+      required: true,
+      message: t('bpm.processInstance.detail.rules.addSignUserRequired'),
+      trigger: 'change'
+    }
+  ],
+  reason: [
+    {
+      required: true,
+      message: t('bpm.processInstance.detail.rules.addSignOpinionRequired'),
+      trigger: 'blur'
+    }
+  ]
 })
 
 // 减签表单
@@ -658,8 +795,20 @@ const deleteSignForm = reactive({
   reason: ''
 })
 const deleteSignFormRule = reactive<FormRules<typeof deleteSignForm>>({
-  deleteSignTaskId: [{ required: true, message: t('bpm.processInstance.detail.rules.deleteSignUserRequired'), trigger: 'change' }],
-  reason: [{ required: true, message: t('bpm.processInstance.detail.rules.deleteSignOpinionRequired'), trigger: 'blur' }]
+  deleteSignTaskId: [
+    {
+      required: true,
+      message: t('bpm.processInstance.detail.rules.deleteSignUserRequired'),
+      trigger: 'change'
+    }
+  ],
+  reason: [
+    {
+      required: true,
+      message: t('bpm.processInstance.detail.rules.deleteSignOpinionRequired'),
+      trigger: 'blur'
+    }
+  ]
 })
 
 // 退回表单
@@ -669,8 +818,20 @@ const returnForm = reactive({
   returnReason: ''
 })
 const returnFormRule = reactive<FormRules<typeof returnForm>>({
-  targetTaskDefinitionKey: [{ required: true, message: t('bpm.processInstance.detail.rules.returnNodeRequired'), trigger: 'change' }],
-  returnReason: [{ required: true, message: t('bpm.processInstance.detail.rules.returnReasonRequired'), trigger: 'blur' }]
+  targetTaskDefinitionKey: [
+    {
+      required: true,
+      message: t('bpm.processInstance.detail.rules.returnNodeRequired'),
+      trigger: 'change'
+    }
+  ],
+  returnReason: [
+    {
+      required: true,
+      message: t('bpm.processInstance.detail.rules.returnReasonRequired'),
+      trigger: 'blur'
+    }
+  ]
 })
 
 // 取消表单
@@ -679,7 +840,13 @@ const cancelForm = reactive({
   cancelReason: ''
 })
 const cancelFormRule = reactive<FormRules<typeof cancelForm>>({
-  cancelReason: [{ required: true, message: t('bpm.processInstance.detail.rules.cancelReasonRequired'), trigger: 'blur' }]
+  cancelReason: [
+    {
+      required: true,
+      message: t('bpm.processInstance.detail.rules.cancelReasonRequired'),
+      trigger: 'blur'
+    }
+  ]
 })
 
 /** 监听 approveFormFApis，实现它对应的 form-create 初始化后，隐藏掉对应的表单提交按钮 */
@@ -1073,9 +1240,8 @@ const isShowButton = (btnType: OperationButtonType): boolean => {
 /** 获取按钮的显示名称 */
 const getButtonDisplayName = (btnType: OperationButtonType) => {
   let displayName = OPERATION_BUTTON_NAME.get(btnType)
- 
+
   if (runningTask.value?.buttonsSetting && runningTask.value?.buttonsSetting[btnType]) {
-  
     displayName = t(runningTask.value.buttonsSetting[btnType].displayName)
   }
   return displayName

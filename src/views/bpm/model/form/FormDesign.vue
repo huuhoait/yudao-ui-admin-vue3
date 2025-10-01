@@ -11,18 +11,23 @@
         </el-radio>
       </el-radio-group>
     </el-form-item>
-    <el-form-item 
-      v-if="modelData.formType === BpmModelFormType.NORMAL" 
-      :label="t('bpm.model.form.processForm')" 
+    <el-form-item
+      v-if="modelData.formType === BpmModelFormType.NORMAL"
+      :label="t('bpm.model.form.processForm')"
       prop="formId"
     >
       <el-select v-model="modelData.formId" clearable style="width: 100%">
-        <el-option v-for="formItem in formList" :key="formItem.id" :label="formItem.name" :value="formItem.id" />
+        <el-option
+          v-for="formItem in formList"
+          :key="formItem.id"
+          :label="formItem.name"
+          :value="formItem.id"
+        />
       </el-select>
     </el-form-item>
-    <el-form-item 
-      v-if="modelData.formType === BpmModelFormType.CUSTOM" 
-      :label="t('bpm.model.form.formSubmitPath')" 
+    <el-form-item
+      v-if="modelData.formType === BpmModelFormType.CUSTOM"
+      :label="t('bpm.model.form.formSubmitPath')"
       prop="formCustomCreatePath"
     >
       <el-input
@@ -39,9 +44,9 @@
         <Icon icon="ep:question" class="ml-5px" />
       </el-tooltip>
     </el-form-item>
-    <el-form-item 
-      v-if="modelData.formType === BpmModelFormType.CUSTOM" 
-      :label="t('bpm.model.form.formViewPath')" 
+    <el-form-item
+      v-if="modelData.formType === BpmModelFormType.CUSTOM"
+      :label="t('bpm.model.form.formViewPath')"
       prop="formCustomViewPath"
     >
       <el-input
@@ -60,7 +65,11 @@
     </el-form-item>
     <!-- Form Preview -->
     <div
-      v-if="modelData.formType === BpmModelFormType.NORMAL && modelData.formId && formPreview.rule.length > 0"
+      v-if="
+        modelData.formType === BpmModelFormType.NORMAL &&
+        modelData.formId &&
+        formPreview.rule.length > 0
+      "
       class="mt-20px"
     >
       <div class="flex items-center mb-15px">
@@ -129,8 +138,12 @@ watch(
 const rules = {
   formType: [{ required: true, message: t('bpm.model.form.formTypeRequired'), trigger: 'blur' }],
   formId: [{ required: true, message: t('bpm.model.form.processFormRequired'), trigger: 'blur' }],
-  formCustomCreatePath: [{ required: true, message: t('bpm.model.form.formSubmitPathRequired'), trigger: 'blur' }],
-  formCustomViewPath: [{ required: true, message: t('bpm.model.form.formViewPathRequired'), trigger: 'blur' }]
+  formCustomCreatePath: [
+    { required: true, message: t('bpm.model.form.formSubmitPathRequired'), trigger: 'blur' }
+  ],
+  formCustomViewPath: [
+    { required: true, message: t('bpm.model.form.formViewPathRequired'), trigger: 'blur' }
+  ]
 }
 
 /** Form validation */

@@ -67,7 +67,7 @@ const formData = ref({
   sex: undefined,
   birthday: undefined,
   description: undefined,
-  avatar: undefined,
+  avatar: undefined
 })
 const formRules = reactive({
   name: [
@@ -80,7 +80,11 @@ const formRules = reactive({
     { required: true, message: t('infra.demo.demo01.form.rules.birthdayRequired'), trigger: 'blur' }
   ],
   description: [
-    { required: true, message: t('infra.demo.demo01.form.rules.descriptionRequired'), trigger: 'blur' }
+    {
+      required: true,
+      message: t('infra.demo.demo01.form.rules.descriptionRequired'),
+      trigger: 'blur'
+    }
   ]
 })
 const formRef = ref() // 表单 Ref
@@ -135,7 +139,7 @@ const resetForm = () => {
     sex: undefined,
     birthday: undefined,
     description: undefined,
-    avatar: undefined,
+    avatar: undefined
   }
   formRef.value?.resetFields()
 }

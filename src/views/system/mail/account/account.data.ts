@@ -8,20 +8,26 @@ import { useI18n } from 'vue-i18n'
 export const getRules = () => {
   const { t } = useI18n()
   return reactive({
-  mail: [
-    { required: true, message: t('sys.mail.account.mailRequired'), trigger: 'blur' },
-    {
-      type: 'email',
-      message: t('sys.mail.account.mailInvalid'),
-      trigger: ['blur', 'change']
-    }
-  ],
-  username: [{ required: true, message: t('sys.mail.account.usernameRequired'), trigger: 'blur' }],
-  password: [{ required: true, message: t('sys.mail.account.passwordRequired'), trigger: 'blur' }],
-  host: [{ required: true, message: t('sys.mail.account.hostRequired'), trigger: 'blur' }],
-  port: [{ required: true, message: t('sys.mail.account.portRequired'), trigger: 'blur' }],
-  sslEnable: [{ required: true, message: t('sys.mail.account.sslEnable'), trigger: 'blur' }],
-  starttlsEnable: [{ required: true, message: t('sys.mail.account.starttlsEnable'), trigger: 'blur' }]
+    mail: [
+      { required: true, message: t('sys.mail.account.mailRequired'), trigger: 'blur' },
+      {
+        type: 'email',
+        message: t('sys.mail.account.mailInvalid'),
+        trigger: ['blur', 'change']
+      }
+    ],
+    username: [
+      { required: true, message: t('sys.mail.account.usernameRequired'), trigger: 'blur' }
+    ],
+    password: [
+      { required: true, message: t('sys.mail.account.passwordRequired'), trigger: 'blur' }
+    ],
+    host: [{ required: true, message: t('sys.mail.account.hostRequired'), trigger: 'blur' }],
+    port: [{ required: true, message: t('sys.mail.account.portRequired'), trigger: 'blur' }],
+    sslEnable: [{ required: true, message: t('sys.mail.account.sslEnable'), trigger: 'blur' }],
+    starttlsEnable: [
+      { required: true, message: t('sys.mail.account.starttlsEnable'), trigger: 'blur' }
+    ]
   })
 }
 
@@ -29,80 +35,80 @@ export const getRules = () => {
 export const getCrudSchemas = () => {
   const { t } = useI18n()
   return reactive<CrudSchema[]>([
-  {
-    label: t('sys.mail.account.mail'),
-    field: 'mail',
-    isSearch: true,
-    search: {
-      componentProps: {
-        style: {
-          width: '240px'
+    {
+      label: t('sys.mail.account.mail'),
+      field: 'mail',
+      isSearch: true,
+      search: {
+        componentProps: {
+          style: {
+            width: '240px'
+          }
         }
       }
-    }
-  },
-  {
-    label: t('sys.mail.account.username'),
-    field: 'username',
-    isSearch: true,
-    search: {
-      componentProps: {
-        style: {
-          width: '240px'
+    },
+    {
+      label: t('sys.mail.account.username'),
+      field: 'username',
+      isSearch: true,
+      search: {
+        componentProps: {
+          style: {
+            width: '240px'
+          }
         }
       }
+    },
+    {
+      label: t('sys.mail.account.password'),
+      field: 'password',
+      isTable: false
+    },
+    {
+      label: t('sys.mail.account.host'),
+      field: 'host'
+    },
+    {
+      label: t('sys.mail.account.port'),
+      field: 'port',
+      form: {
+        component: 'InputNumber',
+        value: 465
+      }
+    },
+    {
+      label: t('sys.mail.account.sslEnable'),
+      field: 'sslEnable',
+      dictType: DICT_TYPE.INFRA_BOOLEAN_STRING,
+      dictClass: 'boolean',
+      form: {
+        component: 'Radio'
+      }
+    },
+    {
+      label: t('sys.mail.account.starttlsEnable'),
+      field: 'starttlsEnable',
+      dictType: DICT_TYPE.INFRA_BOOLEAN_STRING,
+      dictClass: 'boolean',
+      form: {
+        component: 'Radio'
+      }
+    },
+    {
+      label: t('sys.mail.account.createTime'),
+      field: 'createTime',
+      isForm: false,
+      formatter: dateFormatter,
+      detail: {
+        dateFormat: 'YYYY-MM-DD HH:mm:ss'
+      }
+    },
+    {
+      label: t('sys.mail.account.operation'),
+      field: 'action',
+      isForm: false,
+      isDetail: false
     }
-  },
-  {
-    label: t('sys.mail.account.password'),
-    field: 'password',
-    isTable: false
-  },
-  {
-    label: t('sys.mail.account.host'),
-    field: 'host'
-  },
-  {
-    label: t('sys.mail.account.port'),
-    field: 'port',
-    form: {
-      component: 'InputNumber',
-      value: 465
-    }
-  },
-  {
-    label: t('sys.mail.account.sslEnable'),
-    field: 'sslEnable',
-    dictType: DICT_TYPE.INFRA_BOOLEAN_STRING,
-    dictClass: 'boolean',
-    form: {
-      component: 'Radio'
-    }
-  },
-  {
-    label: t('sys.mail.account.starttlsEnable'),
-    field: 'starttlsEnable',
-    dictType: DICT_TYPE.INFRA_BOOLEAN_STRING,
-    dictClass: 'boolean',
-    form: {
-      component: 'Radio'
-    }
-  },
-  {
-    label: t('sys.mail.account.createTime'),
-    field: 'createTime',
-    isForm: false,
-    formatter: dateFormatter,
-    detail: {
-      dateFormat: 'YYYY-MM-DD HH:mm:ss'
-    }
-  },
-  {
-    label: t('sys.mail.account.operation'),
-    field: 'action',
-    isForm: false,
-    isDetail: false
-  }
   ])
 }
 

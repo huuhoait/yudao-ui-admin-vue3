@@ -36,33 +36,44 @@
       </el-form-item>
       <el-form-item v-if="formData.type !== 3" :label="t('sys.menu.path')" prop="path">
         <template #label>
-          <Tooltip
-            :message="t('sys.menu.pathTip')"
-            :title="t('sys.menu.path')"
-          />
+          <Tooltip :message="t('sys.menu.pathTip')" :title="t('sys.menu.path')" />
         </template>
         <el-input v-model="formData.path" clearable :placeholder="t('sys.menu.pathPlaceholder')" />
       </el-form-item>
-      <el-form-item v-if="formData.type === 2" :label="t('sys.menu.componentPath')" prop="component">
+      <el-form-item
+        v-if="formData.type === 2"
+        :label="t('sys.menu.componentPath')"
+        prop="component"
+      >
         <template #label>
-          <Tooltip
-            :message="t('sys.menu.componentPathTip')"
-            :title="t('sys.menu.componentPath')"
-          />
+          <Tooltip :message="t('sys.menu.componentPathTip')" :title="t('sys.menu.componentPath')" />
         </template>
-        <el-input v-model="formData.component" clearable :placeholder="t('sys.menu.componentPlaceholder')" />
+        <el-input
+          v-model="formData.component"
+          clearable
+          :placeholder="t('sys.menu.componentPlaceholder')"
+        />
       </el-form-item>
-      <el-form-item v-if="formData.type === 2" :label="t('sys.menu.componentName')" prop="componentName">
-        <el-input v-model="formData.componentName" clearable :placeholder="t('sys.menu.componentNamePlaceholder')" />
+      <el-form-item
+        v-if="formData.type === 2"
+        :label="t('sys.menu.componentName')"
+        prop="componentName"
+      >
+        <el-input
+          v-model="formData.componentName"
+          clearable
+          :placeholder="t('sys.menu.componentNamePlaceholder')"
+        />
       </el-form-item>
       <el-form-item v-if="formData.type !== 1" :label="t('sys.menu.permission')" prop="permission">
         <template #label>
-          <Tooltip
-            :message="t('sys.menu.permissionTip')"
-            :title="t('sys.menu.permission')"
-          />
+          <Tooltip :message="t('sys.menu.permissionTip')" :title="t('sys.menu.permission')" />
         </template>
-        <el-input v-model="formData.permission" clearable :placeholder="t('sys.menu.permissionPlaceholder')" />
+        <el-input
+          v-model="formData.permission"
+          clearable
+          :placeholder="t('sys.menu.permissionPlaceholder')"
+        />
       </el-form-item>
       <el-form-item :label="t('sys.menu.sort')" prop="sort">
         <el-input-number v-model="formData.sort" :min="0" clearable controls-position="right" />
@@ -89,10 +100,7 @@
       </el-form-item>
       <el-form-item v-if="formData.type !== 3" :label="t('sys.menu.alwaysShow')" prop="alwaysShow">
         <template #label>
-          <Tooltip
-            :message="t('sys.menu.alwaysShowTip')"
-            :title="t('sys.menu.alwaysShow')"
-          />
+          <Tooltip :message="t('sys.menu.alwaysShowTip')" :title="t('sys.menu.alwaysShow')" />
         </template>
         <el-radio-group v-model="formData.alwaysShow">
           <el-radio key="true" :value="true" border>{{ t('common.yes') }}</el-radio>
@@ -101,10 +109,7 @@
       </el-form-item>
       <el-form-item v-if="formData.type === 2" :label="t('sys.menu.keepAlive')" prop="keepAlive">
         <template #label>
-          <Tooltip
-            :message="t('sys.menu.keepAliveTip')"
-            :title="t('sys.menu.keepAlive')"
-          />
+          <Tooltip :message="t('sys.menu.keepAliveTip')" :title="t('sys.menu.keepAlive')" />
         </template>
         <el-radio-group v-model="formData.keepAlive">
           <el-radio key="true" :value="true" border>{{ t('common.yes') }}</el-radio>
@@ -113,7 +118,9 @@
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{
+        t('common.ok')
+      }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>

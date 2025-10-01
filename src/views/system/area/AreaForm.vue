@@ -11,11 +11,17 @@
         <el-input v-model="formData.ip" :placeholder="t('sys.area.ipPlaceholder')" />
       </el-form-item>
       <el-form-item :label="t('sys.area.result')" prop="result">
-        <el-input v-model="formData.result" :placeholder="t('sys.area.resultPlaceholder')" readonly />
+        <el-input
+          v-model="formData.result"
+          :placeholder="t('sys.area.resultPlaceholder')"
+          readonly
+        />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{
+        t('common.ok')
+      }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>

@@ -10,7 +10,10 @@
       <el-row>
         <el-col :span="12">
           <el-form-item :label="t('sys.user.nickname')" prop="nickname">
-            <el-input v-model="formData.nickname" :placeholder="t('sys.user.nicknamePlaceholder')" />
+            <el-input
+              v-model="formData.nickname"
+              :placeholder="t('sys.user.nicknamePlaceholder')"
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -29,23 +32,42 @@
       <el-row>
         <el-col :span="12">
           <el-form-item :label="t('sys.user.mobile')" prop="mobile">
-            <el-input v-model="formData.mobile" maxlength="11" :placeholder="t('sys.user.mobilePlaceholder')" />
+            <el-input
+              v-model="formData.mobile"
+              maxlength="11"
+              :placeholder="t('sys.user.mobilePlaceholder')"
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item :label="t('sys.user.email')" prop="email">
-            <el-input v-model="formData.email" maxlength="50" :placeholder="t('sys.user.emailPlaceholder')" />
+            <el-input
+              v-model="formData.email"
+              maxlength="50"
+              :placeholder="t('sys.user.emailPlaceholder')"
+            />
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="12">
-          <el-form-item v-if="formData.id === undefined" :label="t('sys.user.username')" prop="username">
-            <el-input v-model="formData.username" :placeholder="t('sys.user.usernamePlaceholder')" />
+          <el-form-item
+            v-if="formData.id === undefined"
+            :label="t('sys.user.username')"
+            prop="username"
+          >
+            <el-input
+              v-model="formData.username"
+              :placeholder="t('sys.user.usernamePlaceholder')"
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item v-if="formData.id === undefined" :label="t('sys.user.password')" prop="password">
+          <el-form-item
+            v-if="formData.id === undefined"
+            :label="t('sys.user.password')"
+            prop="password"
+          >
             <el-input
               v-model="formData.password"
               :placeholder="t('sys.user.passwordPlaceholder')"
@@ -70,7 +92,11 @@
         </el-col>
         <el-col :span="12">
           <el-form-item :label="t('sys.user.postIds')">
-            <el-select v-model="formData.postIds" multiple :placeholder="t('sys.user.postIdsPlaceholder')">
+            <el-select
+              v-model="formData.postIds"
+              multiple
+              :placeholder="t('sys.user.postIdsPlaceholder')"
+            >
               <el-option
                 v-for="item in postList"
                 :key="item.id"
@@ -84,13 +110,19 @@
       <el-row>
         <el-col :span="24">
           <el-form-item :label="t('sys.user.remark')">
-            <el-input v-model="formData.remark" :placeholder="t('sys.user.remarkPlaceholder')" type="textarea" />
+            <el-input
+              v-model="formData.remark"
+              :placeholder="t('sys.user.remarkPlaceholder')"
+              type="textarea"
+            />
           </el-form-item>
         </el-col>
       </el-row>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('sys.user.confirm') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{
+        t('sys.user.confirm')
+      }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('sys.user.cancel') }}</el-button>
     </template>
   </Dialog>

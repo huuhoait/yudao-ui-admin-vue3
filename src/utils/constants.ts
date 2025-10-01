@@ -26,7 +26,7 @@ const getConstantsI18n = () => {
     selfDataPermission: () => t('utils.constants.selfDataPermission'),
     dingtalk: () => t('utils.constants.dingtalk'),
     wechatEnterprise: () => t('utils.constants.wechatEnterprise'),
-    
+
     // Payment module
     wechatJsapiPay: () => t('utils.constants.wechatJsapiPay'),
     wechatMiniProgramPay: () => t('utils.constants.wechatMiniProgramPay'),
@@ -43,12 +43,12 @@ const getConstantsI18n = () => {
     mockPay: () => t('utils.constants.mockPay'),
     unpaid: () => t('utils.constants.unpaid'),
     paid: () => t('utils.constants.paid'),
-    
+
     // Product module
     recyclebin: () => t('utils.constants.recyclebin'),
     offline: () => t('utils.constants.offline'),
     online: () => t('utils.constants.online'),
-    
+
     // Marketing module
     fixedDateAvailable: () => t('utils.constants.fixedDateAvailable'),
     availableAfterReceiving: () => t('utils.constants.availableAfterReceiving'),
@@ -62,7 +62,7 @@ const getConstantsI18n = () => {
     fullQuantityDiscount: () => t('utils.constants.fullQuantityDiscount'),
     fullReduction: () => t('utils.constants.fullReduction'),
     discount: () => t('utils.constants.discount'),
-    
+
     // Distribution module
     firstBinding: () => t('utils.constants.firstBinding'),
     registerBinding: () => t('utils.constants.registerBinding'),
@@ -80,11 +80,11 @@ const getConstantsI18n = () => {
     bankCard: () => t('utils.constants.bankCard'),
     wechat: () => t('utils.constants.wechat'),
     alipay: () => t('utils.constants.alipay'),
-    
+
     // Delivery module
     expressDelivery: () => t('utils.constants.expressDelivery'),
     storePickup: () => t('utils.constants.storePickup'),
-    
+
     // Order status
     waitingPayment: () => t('utils.constants.waitingPayment'),
     waitingDelivery: () => t('utils.constants.waitingDelivery'),

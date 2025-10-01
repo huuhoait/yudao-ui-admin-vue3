@@ -13,13 +13,17 @@
             <div class="approve handler-item-icon">
               <span class="iconfont icon-approve icon-size"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.approver') }}</div>
+            <div class="handler-item-text">{{
+              t('simpleProcessDesignerV2.nodeHandler.approver')
+            }}</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.TRANSACTOR_NODE)">
             <div class="transactor handler-item-icon">
               <span class="iconfont icon-transactor icon-size"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.processor') }}</div>
+            <div class="handler-item-text">{{
+              t('simpleProcessDesignerV2.nodeHandler.processor')
+            }}</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.COPY_TASK_NODE)">
             <div class="handler-item-icon copy">
@@ -31,43 +35,57 @@
             <div class="handler-item-icon condition">
               <span class="iconfont icon-size icon-exclusive"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.conditionBranch') }}</div>
+            <div class="handler-item-text">{{
+              t('simpleProcessDesignerV2.nodeHandler.conditionBranch')
+            }}</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.PARALLEL_BRANCH_NODE)">
             <div class="handler-item-icon parallel">
               <span class="iconfont icon-size icon-parallel"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.parallelBranch') }}</div>
+            <div class="handler-item-text">{{
+              t('simpleProcessDesignerV2.nodeHandler.parallelBranch')
+            }}</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.INCLUSIVE_BRANCH_NODE)">
             <div class="handler-item-icon inclusive">
               <span class="iconfont icon-size icon-inclusive"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.inclusiveBranch') }}</div>
+            <div class="handler-item-text">{{
+              t('simpleProcessDesignerV2.nodeHandler.inclusiveBranch')
+            }}</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.DELAY_TIMER_NODE)">
             <div class="handler-item-icon delay">
               <span class="iconfont icon-size icon-delay"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.delay') }}</div>
+            <div class="handler-item-text">{{
+              t('simpleProcessDesignerV2.nodeHandler.delay')
+            }}</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.ROUTER_BRANCH_NODE)">
             <div class="handler-item-icon router">
               <span class="iconfont icon-size icon-router"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.routerBranch') }}</div>
+            <div class="handler-item-text">{{
+              t('simpleProcessDesignerV2.nodeHandler.routerBranch')
+            }}</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.TRIGGER_NODE)">
             <div class="handler-item-icon trigger">
               <span class="iconfont icon-size icon-trigger"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.trigger') }}</div>
+            <div class="handler-item-text">{{
+              t('simpleProcessDesignerV2.nodeHandler.trigger')
+            }}</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.CHILD_PROCESS_NODE)">
             <div class="handler-item-icon child-process">
               <span class="iconfont icon-size icon-child-process"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.childProcess') }}</div>
+            <div class="handler-item-text">{{
+              t('simpleProcessDesignerV2.nodeHandler.childProcess')
+            }}</div>
           </div>
         </div>
         <template #reference>

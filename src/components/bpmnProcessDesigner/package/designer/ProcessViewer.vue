@@ -36,7 +36,11 @@
     </defs>
 
     <!-- 审批记录 -->
-    <el-dialog :title="dialogTitle || t('bpm.processViewer.approvalRecords')" v-model="dialogVisible" width="1000px">
+    <el-dialog
+      :title="dialogTitle || t('bpm.processViewer.approvalRecords')"
+      v-model="dialogVisible"
+      width="1000px"
+    >
       <el-row>
         <el-table
           :data="selectTasks"
@@ -68,7 +72,11 @@
             align="center"
             v-else
           />
-          <el-table-column :label="t('bpm.processViewer.department')" min-width="100" align="center">
+          <el-table-column
+            :label="t('bpm.processViewer.department')"
+            min-width="100"
+            align="center"
+          >
             <template #default="scope">
               {{ scope.row.assigneeUser?.deptName || scope.row.ownerUser?.deptName }}
             </template>
@@ -87,7 +95,12 @@
             prop="endTime"
             min-width="140"
           />
-          <el-table-column align="center" :label="t('bpm.processViewer.approvalStatus')" prop="status" min-width="90">
+          <el-table-column
+            align="center"
+            :label="t('bpm.processViewer.approvalStatus')"
+            prop="status"
+            min-width="90"
+          >
             <template #default="scope">
               <dict-tag :type="DICT_TYPE.BPM_TASK_STATUS" :value="scope.row.status" />
             </template>
@@ -99,7 +112,12 @@
             min-width="120"
             v-if="selectActivityType === 'bpmn:UserTask'"
           />
-          <el-table-column align="center" :label="t('bpm.processViewer.duration')" prop="durationInMillis" width="100">
+          <el-table-column
+            align="center"
+            :label="t('bpm.processViewer.duration')"
+            prop="durationInMillis"
+            width="100"
+          >
             <template #default="scope">
               {{ formatPast2(scope.row.durationInMillis) }}
             </template>
@@ -176,7 +194,7 @@ const selectTasks = ref<any[]>([]) // 选中的任务数组
 /** Zoom：恢复 */
 const processReZoom = () => {
   defaultZoom.value = 1
-  bpmnViewer.value?.get('canvas').zoom('fit-viewport', 'auto')
+  ;(bpmnViewer.value?.get('canvas') as any)?.zoom('fit-viewport', 'auto')
 }
 
 /** Zoom：放大 */
@@ -186,7 +204,7 @@ const processZoomIn = (zoomStep = 0.1) => {
     throw new Error('[Process Designer Warn ]: The zoom ratio cannot be greater than 4')
   }
   defaultZoom.value = newZoom
-  bpmnViewer.value?.get('canvas').zoom(defaultZoom.value)
+  ;(bpmnViewer.value?.get('canvas') as any)?.zoom(defaultZoom.value)
 }
 
 /** Zoom：缩小 */
@@ -196,7 +214,7 @@ const processZoomOut = (zoomStep = 0.1) => {
     throw new Error('[Process Designer Warn ]: The zoom ratio cannot be less than 0.2')
   }
   defaultZoom.value = newZoom
-  bpmnViewer.value?.get('canvas').zoom(defaultZoom.value)
+  ;(bpmnViewer.value?.get('canvas') as any)?.zoom(defaultZoom.value)
 }
 
 /** 流程图预览清空 */
@@ -216,7 +234,7 @@ const addCustomDefs = () => {
   if (!bpmnViewer.value) {
     return
   }
-  const canvas = bpmnViewer.value?.get('canvas')
+  const canvas: any = bpmnViewer.value?.get('canvas')
   const svg = canvas?._svg
   svg.appendChild(customDefs.value)
 }
@@ -301,8 +319,8 @@ const setProcessStatus = (view: any) => {
     finishedSequenceFlowActivityIds,
     rejectedTaskActivityIds
   } = view
-  const canvas = bpmnViewer.value.get('canvas')
-  const elementRegistry = bpmnViewer.value.get('elementRegistry')
+  const canvas: any = bpmnViewer.value.get('canvas')
+  const elementRegistry: any = bpmnViewer.value.get('elementRegistry')
 
   // 已完成节点
   if (Array.isArray(finishedSequenceFlowActivityIds)) {

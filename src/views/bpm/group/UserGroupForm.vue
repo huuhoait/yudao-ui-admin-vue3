@@ -18,7 +18,11 @@
         />
       </el-form-item>
       <el-form-item :label="t('bpm.group.form.members')" prop="userIds">
-        <el-select v-model="formData.userIds" multiple :placeholder="t('bpm.group.form.membersPlaceholder')">
+        <el-select
+          v-model="formData.userIds"
+          multiple
+          :placeholder="t('bpm.group.form.membersPlaceholder')"
+        >
           <el-option
             v-for="user in userList"
             :key="user.id"
@@ -71,7 +75,9 @@ const formData = ref({
 })
 const formRules = reactive({
   name: [{ required: true, message: t('bpm.group.form.rules.name'), trigger: 'blur' }],
-  description: [{ required: true, message: t('bpm.group.form.rules.description'), trigger: 'blur' }],
+  description: [
+    { required: true, message: t('bpm.group.form.rules.description'), trigger: 'blur' }
+  ],
   userIds: [{ required: true, message: t('bpm.group.form.rules.members'), trigger: 'blur' }],
   status: [{ required: true, message: t('bpm.group.form.rules.status'), trigger: 'blur' }]
 })

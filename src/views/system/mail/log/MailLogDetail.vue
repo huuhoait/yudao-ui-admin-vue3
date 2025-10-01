@@ -1,5 +1,10 @@
 <template>
-  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" :title="t('sys.mail.log.detail')">
+  <Dialog
+    v-model="dialogVisible"
+    :max-height="500"
+    :scroll="true"
+    :title="t('sys.mail.log.detail')"
+  >
     <Descriptions :data="detailData" :schema="allSchemas.detailSchema">
       <!-- 展示 HTML 内容 -->
       <template #templateContent="{ row }">

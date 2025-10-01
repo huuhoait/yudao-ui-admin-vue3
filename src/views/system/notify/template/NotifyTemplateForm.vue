@@ -14,10 +14,17 @@
         <el-input v-model="formData.name" :placeholder="t('sys.notify.template.namePlaceholder')" />
       </el-form-item>
       <el-form-item :label="t('sys.notify.template.nickname')" prop="nickname">
-        <el-input v-model="formData.nickname" :placeholder="t('sys.notify.template.nicknamePlaceholder')" />
+        <el-input
+          v-model="formData.nickname"
+          :placeholder="t('sys.notify.template.nicknamePlaceholder')"
+        />
       </el-form-item>
       <el-form-item :label="t('sys.notify.template.content')" prop="content">
-        <el-input type="textarea" v-model="formData.content" :placeholder="t('sys.notify.template.contentPlaceholder')" />
+        <el-input
+          type="textarea"
+          v-model="formData.content"
+          :placeholder="t('sys.notify.template.contentPlaceholder')"
+        />
       </el-form-item>
       <el-form-item :label="t('sys.notify.template.type')" prop="type">
         <el-select v-model="formData.type" :placeholder="t('sys.notify.template.typePlaceholder')">
@@ -41,11 +48,16 @@
         </el-radio-group>
       </el-form-item>
       <el-form-item :label="t('sys.notify.template.remark')" prop="remark">
-        <el-input v-model="formData.remark" :placeholder="t('sys.notify.template.remarkPlaceholder')" />
+        <el-input
+          v-model="formData.remark"
+          :placeholder="t('sys.notify.template.remarkPlaceholder')"
+        />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="submitForm" type="primary" :disabled="formLoading">{{ t('common.ok') }}</el-button>
+      <el-button @click="submitForm" type="primary" :disabled="formLoading">{{
+        t('common.ok')
+      }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
@@ -77,7 +89,9 @@ const formRules = reactive({
   status: [{ required: true, message: t('sys.notify.template.statusRequired'), trigger: 'blur' }],
   code: [{ required: true, message: t('sys.notify.template.codeRequired'), trigger: 'blur' }],
   name: [{ required: true, message: t('sys.notify.template.nameRequired'), trigger: 'blur' }],
-  nickname: [{ required: true, message: t('sys.notify.template.nicknameRequired'), trigger: 'blur' }],
+  nickname: [
+    { required: true, message: t('sys.notify.template.nicknameRequired'), trigger: 'blur' }
+  ],
   content: [{ required: true, message: t('sys.notify.template.contentRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref

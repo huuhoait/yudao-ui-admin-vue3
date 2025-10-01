@@ -1,5 +1,8 @@
 <template>
-  <doc-alert :title="$t('bpm.processInstance.report.docAlertTitle')" url="https://doc.iocoder.cn/bpm/" />
+  <doc-alert
+    :title="$t('bpm.processInstance.report.docAlertTitle')"
+    url="https://doc.iocoder.cn/bpm/"
+  />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -80,15 +83,21 @@
         <el-input
           :disabled="item.type !== 'input'"
           v-model="queryParams.formFieldsParams[item.field]"
-          :placeholder="t('bpm.processInstance.report.form.dynamicPlaceholder', { title: item.title })"
+          :placeholder="
+            t('bpm.processInstance.report.form.dynamicPlaceholder', { title: item.title })
+          "
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button
+        >
       </el-form-item>
     </el-form>
   </ContentWrap>
@@ -96,9 +105,24 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" border :data="list">
-      <el-table-column :label="$t('bpm.processInstance.report.table.name')" align="center" prop="name" fixed="left" width="200" />
-      <el-table-column :label="$t('bpm.processInstance.report.table.startUser')" align="center" prop="startUser.nickname" width="120" />
-      <el-table-column :label="$t('bpm.processInstance.report.table.status')" prop="status" width="120">
+      <el-table-column
+        :label="$t('bpm.processInstance.report.table.name')"
+        align="center"
+        prop="name"
+        fixed="left"
+        width="200"
+      />
+      <el-table-column
+        :label="$t('bpm.processInstance.report.table.startUser')"
+        align="center"
+        prop="startUser.nickname"
+        width="120"
+      />
+      <el-table-column
+        :label="$t('bpm.processInstance.report.table.status')"
+        prop="status"
+        width="120"
+      >
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.BPM_PROCESS_INSTANCE_STATUS" :value="scope.row.status" />
         </template>

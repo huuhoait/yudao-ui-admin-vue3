@@ -8,7 +8,10 @@
       v-loading="formLoading"
     >
       <el-form-item :label="t('bpm.processExpression.form.name')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('bpm.processExpression.form.namePlaceholder')" />
+        <el-input
+          v-model="formData.name"
+          :placeholder="t('bpm.processExpression.form.namePlaceholder')"
+        />
       </el-form-item>
       <el-form-item :label="t('bpm.processExpression.form.status')" prop="status">
         <el-radio-group v-model="formData.status">
@@ -60,8 +63,12 @@ const formData = ref({
 })
 const formRules = reactive({
   name: [{ required: true, message: t('bpm.processExpression.form.rules.name'), trigger: 'blur' }],
-  status: [{ required: true, message: t('bpm.processExpression.form.rules.status'), trigger: 'blur' }],
-  expression: [{ required: true, message: t('bpm.processExpression.form.rules.expression'), trigger: 'blur' }]
+  status: [
+    { required: true, message: t('bpm.processExpression.form.rules.status'), trigger: 'blur' }
+  ],
+  expression: [
+    { required: true, message: t('bpm.processExpression.form.rules.expression'), trigger: 'blur' }
+  ]
 })
 const formRef = ref() // 表单 Ref
 

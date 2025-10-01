@@ -26,9 +26,9 @@
       </div>
     </template>
     <div>
-      <div class="mb-3 font-size-16px" v-if="currentNode.conditionSetting?.defaultFlow"
-        >{{ t('simpleProcessDesignerV2.conditionNode.defaultBranchTip') }}</div
-      >
+      <div class="mb-3 font-size-16px" v-if="currentNode.conditionSetting?.defaultFlow">{{
+        t('simpleProcessDesignerV2.conditionNode.defaultBranchTip')
+      }}</div>
       <div v-else>
         <Condition ref="conditionRef" v-model="condition" />
       </div>

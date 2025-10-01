@@ -34,7 +34,10 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('infra.apiErrorLog.searchForm.applicationName')" prop="applicationName">
+      <el-form-item
+        :label="t('infra.apiErrorLog.searchForm.applicationName')"
+        prop="applicationName"
+      >
         <el-input
           v-model="queryParams.applicationName"
           :placeholder="t('infra.apiErrorLog.searchForm.applicationNamePlaceholder')"
@@ -70,8 +73,12 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button
+        >
         <el-button
           type="success"
           plain
@@ -90,14 +97,33 @@
     <el-table v-loading="loading" :data="list">
       <el-table-column :label="t('infra.apiErrorLog.table.id')" align="center" prop="id" />
       <el-table-column :label="t('infra.apiErrorLog.table.userId')" align="center" prop="userId" />
-      <el-table-column :label="t('infra.apiErrorLog.table.userType')" align="center" prop="userType">
+      <el-table-column
+        :label="t('infra.apiErrorLog.table.userType')"
+        align="center"
+        prop="userType"
+      >
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.USER_TYPE" :value="scope.row.userType" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('infra.apiErrorLog.table.applicationName')" align="center" prop="applicationName" width="200" />
-      <el-table-column :label="t('infra.apiErrorLog.table.requestMethod')" align="center" prop="requestMethod" width="80" />
-      <el-table-column :label="t('infra.apiErrorLog.table.requestUrl')" align="center" prop="requestUrl" width="180" />
+      <el-table-column
+        :label="t('infra.apiErrorLog.table.applicationName')"
+        align="center"
+        prop="applicationName"
+        width="200"
+      />
+      <el-table-column
+        :label="t('infra.apiErrorLog.table.requestMethod')"
+        align="center"
+        prop="requestMethod"
+        width="80"
+      />
+      <el-table-column
+        :label="t('infra.apiErrorLog.table.requestUrl')"
+        align="center"
+        prop="requestUrl"
+        width="180"
+      />
       <el-table-column
         :label="t('infra.apiErrorLog.table.exceptionTime')"
         align="center"
@@ -105,8 +131,17 @@
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('infra.apiErrorLog.table.exceptionName')" align="center" prop="exceptionName" width="180" />
-      <el-table-column :label="t('infra.apiErrorLog.table.processStatus')" align="center" prop="processStatus">
+      <el-table-column
+        :label="t('infra.apiErrorLog.table.exceptionName')"
+        align="center"
+        prop="exceptionName"
+        width="180"
+      />
+      <el-table-column
+        :label="t('infra.apiErrorLog.table.processStatus')"
+        align="center"
+        prop="processStatus"
+      >
         <template #default="scope">
           <dict-tag
             :type="DICT_TYPE.INFRA_API_ERROR_LOG_PROCESS_STATUS"

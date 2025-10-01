@@ -318,51 +318,69 @@ const deptFieldOnFormOptions = computed(() => {
 const formRef = ref() // 表单 Ref
 // 表单校验规则
 const formRules = reactive({
-  candidateStrategy: [{
-    required: true,
-    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.candidateRequired'),
-    trigger: 'change'
-  }],
-  userIds: [{
-    required: true,
-    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.userRequired'),
-    trigger: 'change'
-  }],
-  roleIds: [{
-    required: true,
-    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.roleRequired'),
-    trigger: 'change'
-  }],
-  deptIds: [{
-    required: true,
-    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.deptRequired'),
-    trigger: 'change'
-  }],
-  userGroups: [{
-    required: true,
-    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.userGroupRequired'),
-    trigger: 'change'
-  }],
-  postIds: [{
-    required: true,
-    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.postRequired'),
-    trigger: 'change'
-  }],
-  formUser: [{
-    required: true,
-    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.formUserRequired'),
-    trigger: 'change'
-  }],
-  formDept: [{
-    required: true,
-    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.formDeptRequired'),
-    trigger: 'change'
-  }],
-  expression: [{
-    required: true,
-    message: t('simpleProcessDesignerV2.copyTaskConfig.validation.expressionRequired'),
-    trigger: 'blur'
-  }]
+  candidateStrategy: [
+    {
+      required: true,
+      message: t('simpleProcessDesignerV2.copyTaskConfig.validation.candidateRequired'),
+      trigger: 'change'
+    }
+  ],
+  userIds: [
+    {
+      required: true,
+      message: t('simpleProcessDesignerV2.copyTaskConfig.validation.userRequired'),
+      trigger: 'change'
+    }
+  ],
+  roleIds: [
+    {
+      required: true,
+      message: t('simpleProcessDesignerV2.copyTaskConfig.validation.roleRequired'),
+      trigger: 'change'
+    }
+  ],
+  deptIds: [
+    {
+      required: true,
+      message: t('simpleProcessDesignerV2.copyTaskConfig.validation.deptRequired'),
+      trigger: 'change'
+    }
+  ],
+  userGroups: [
+    {
+      required: true,
+      message: t('simpleProcessDesignerV2.copyTaskConfig.validation.userGroupRequired'),
+      trigger: 'change'
+    }
+  ],
+  postIds: [
+    {
+      required: true,
+      message: t('simpleProcessDesignerV2.copyTaskConfig.validation.postRequired'),
+      trigger: 'change'
+    }
+  ],
+  formUser: [
+    {
+      required: true,
+      message: t('simpleProcessDesignerV2.copyTaskConfig.validation.formUserRequired'),
+      trigger: 'change'
+    }
+  ],
+  formDept: [
+    {
+      required: true,
+      message: t('simpleProcessDesignerV2.copyTaskConfig.validation.formDeptRequired'),
+      trigger: 'change'
+    }
+  ],
+  expression: [
+    {
+      required: true,
+      message: t('simpleProcessDesignerV2.copyTaskConfig.validation.expressionRequired'),
+      trigger: 'blur'
+    }
+  ]
 })
 
 const {

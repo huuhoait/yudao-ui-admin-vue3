@@ -1,5 +1,8 @@
 <template>
-  <doc-alert :title="t('sys.notify.my.myNotifyMessageManagement')" url="https://doc.iocoder.cn/notify/" />
+  <doc-alert
+    :title="t('sys.notify.my.myNotifyMessageManagement')"
+    url="https://doc.iocoder.cn/notify/"
+  />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -37,8 +40,12 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.notify.my.search') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.notify.my.reset') }}</el-button>
+        <el-button @click="handleQuery"
+          ><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.notify.my.search') }}</el-button
+        >
+        <el-button @click="resetQuery"
+          ><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.notify.my.reset') }}</el-button
+        >
         <el-button @click="handleUpdateList">
           <Icon icon="ep:reading" class="mr-5px" /> {{ t('sys.notify.my.markSelectedAsRead') }}
         </el-button>
@@ -59,7 +66,12 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" :selectable="selectable" :reserve-selection="true" />
-      <el-table-column :label="t('sys.notify.my.sender')" align="center" prop="templateNickname" width="180" />
+      <el-table-column
+        :label="t('sys.notify.my.sender')"
+        align="center"
+        prop="templateNickname"
+        width="180"
+      />
       <el-table-column
         :label="t('sys.notify.my.sendTime')"
         align="center"
@@ -67,7 +79,12 @@
         width="200"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('sys.notify.my.type')" align="center" prop="templateType" width="180">
+      <el-table-column
+        :label="t('sys.notify.my.type')"
+        align="center"
+        prop="templateType"
+        width="180"
+      >
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_NOTIFY_TEMPLATE_TYPE" :value="scope.row.templateType" />
         </template>
@@ -78,7 +95,12 @@
         prop="templateContent"
         show-overflow-tooltip
       />
-      <el-table-column :label="t('sys.notify.my.isRead')" align="center" prop="readStatus" width="160">
+      <el-table-column
+        :label="t('sys.notify.my.isRead')"
+        align="center"
+        prop="readStatus"
+        width="160"
+      >
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_BOOLEAN_STRING" :value="scope.row.readStatus" />
         </template>

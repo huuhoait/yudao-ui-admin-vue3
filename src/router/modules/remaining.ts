@@ -35,6 +35,7 @@ const { t } = useI18n()
 const remainingRouter: AppRouteRecordRaw[] = [
   {
     path: '/redirect',
+    name: 'RedirectContainer',
     component: Layout,
     children: [
       {
@@ -424,7 +425,11 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'after-sale/detail/:id(\\d+)',
         component: () => import('@/views/mall/trade/afterSale/detail/index.vue'),
         name: 'TradeAfterSaleDetail',
-        meta: { title: t('router.refundDetail'), icon: 'ep:view', activeMenu: '/mall/trade/after-sale' }
+        meta: {
+          title: t('router.refundDetail'),
+          icon: 'ep:view',
+          activeMenu: '/mall/trade/after-sale'
+        }
       }
     ]
   },

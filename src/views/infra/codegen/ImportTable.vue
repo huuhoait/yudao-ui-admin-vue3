@@ -2,7 +2,10 @@
   <Dialog v-model="dialogVisible" :title="t('infra.codegen.import.title')" width="800px">
     <!-- 搜索栏 -->
     <el-form ref="queryFormRef" :inline="true" :model="queryParams" label-width="68px">
-      <el-form-item :label="t('infra.codegen.import.searchForm.dataSource')" prop="dataSourceConfigId">
+      <el-form-item
+        :label="t('infra.codegen.import.searchForm.dataSource')"
+        prop="dataSourceConfigId"
+      >
         <el-select
           v-model="queryParams.dataSourceConfigId"
           class="!w-240px"
