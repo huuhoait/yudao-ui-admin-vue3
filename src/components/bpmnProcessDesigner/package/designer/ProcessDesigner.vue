@@ -25,7 +25,8 @@
               <XTextButton :title="$t('bpm.design.previewJson')" @click="previewProcessJson" />
             </template>
           </el-tooltip>
-          <el-tooltip v-if="props.simulation" effect="light"
+          <el-tooltip
+v-if="props.simulation" effect="light"
             :content="simulationStatus ? $t('bpm.design.exitSimulation') : $t('bpm.design.startSimulation')">
             <XButton preIcon="ep:cpu" :title="$t('bpm.design.simulation')" @click="processSimulation" />
           </el-tooltip>
@@ -75,7 +76,8 @@
         </ElButtonGroup>
       </template>
       <!-- 用于打开本地文件-->
-      <input type="file" id="files" ref="refFile" style="display: none" accept=".xml, .bpmn"
+      <input
+type="file" id="files" ref="refFile" style="display: none" accept=".xml, .bpmn"
         @change="importLocalFile" />
     </div>
     <div class="my-process-designer__container">

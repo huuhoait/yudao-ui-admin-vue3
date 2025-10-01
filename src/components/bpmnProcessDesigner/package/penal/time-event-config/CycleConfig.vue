@@ -19,17 +19,21 @@
             <el-radio-group v-model="cronMode[f.key]" :key="'radio-' + f.key">
               <el-radio label="every" :key="'every-' + f.key">Every {{ f.label }}</el-radio>
               <el-radio label="range" :key="'range-' + f.key">From
-                <el-input-number v-model="cronRange[f.key][0]" :min="f.min" :max="f.max" size="small"
+                <el-input-number
+v-model="cronRange[f.key][0]" :min="f.min" :max="f.max" size="small"
                   style="width: 60px" :key="'range0-' + f.key" />
                 to
-                <el-input-number v-model="cronRange[f.key][1]" :min="f.min" :max="f.max" size="small"
+                <el-input-number
+v-model="cronRange[f.key][1]" :min="f.min" :max="f.max" size="small"
                   style="width: 60px" :key="'range1-' + f.key" />
                 between each {{ f.label }}</el-radio>
               <el-radio label="step" :key="'step-' + f.key">From the first
-                <el-input-number v-model="cronStep[f.key][0]" :min="f.min" :max="f.max" size="small" style="width: 60px"
+                <el-input-number
+v-model="cronStep[f.key][0]" :min="f.min" :max="f.max" size="small" style="width: 60px"
                   :key="'step0-' + f.key" />
                 Start each
-                <el-input-number v-model="cronStep[f.key][1]" :min="1" :max="f.max" size="small" style="width: 60px"
+                <el-input-number
+v-model="cronStep[f.key][1]" :min="1" :max="f.max" size="small" style="width: 60px"
                   :key="'step1-' + f.key" />
                 {{ f.label }}</el-radio>
               <el-radio label="appoint" :key="'appoint-' + f.key">Appoint</el-radio>
@@ -46,14 +50,18 @@
     </el-tab-pane>
     <el-tab-pane label="Standard format" name="iso" :key="'iso-tab'">
       <div style="margin-bottom: 10px">
-        <el-input v-model="isoStr" placeholder="如R1/2025-05-21T21:59:54/P3DT30M30S"
+        <el-input
+v-model="isoStr" placeholder="如R1/2025-05-21T21:59:54/P3DT30M30S"
           style="width: 400px; font-weight: bold" :key="'isoStr'" />
       </div>
-      <div style="margin-bottom: 10px">Number of cycles:<el-input-number v-model="repeat" :min="1" style="width: 100px"
+      <div style="margin-bottom: 10px">Number of cycles:<el-input-number
+v-model="repeat" :min="1" style="width: 100px"
           :key="'repeat'" /></div>
-      <div style="margin-bottom: 10px">date time：<el-date-picker v-model="isoDate" type="datetime"
+      <div style="margin-bottom: 10px">date time：<el-date-picker
+v-model="isoDate" type="datetime"
           Placeholder="Select Date Time" style="width: 200px" :key="'isoDate'" /></div>
-      <div style="margin-bottom: 10px">current duration：<el-input v-model="isoDuration"
+      <div style="margin-bottom: 10px">current duration：<el-input
+v-model="isoDuration"
           Placeholder="such as p3 d t30 m30 s" style="width: 200px" :key="'isoDuration'" /></div>
       <div>
         <div>second：<el-button v-for="s in [5, 10, 30, 50]" @click="setDuration('S', s)" :key="'sec-' + s">{{ s

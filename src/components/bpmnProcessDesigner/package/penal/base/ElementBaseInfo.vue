@@ -4,11 +4,13 @@
       <div v-if="needProps.type == 'bpmn:Process'">
         <!-- 如果是 Process 信息的时候，使用自定义表单 -->
         <el-form-item :label="$t('bpm.design.processId')" prop="id">
-          <el-input v-model="needProps.id" :placeholder="$t('bpm.design.enterProcessId')"
+          <el-input
+v-model="needProps.id" :placeholder="$t('bpm.design.enterProcessId')"
             :disabled="needProps.id !== undefined && needProps.id.length > 0" @change="handleKeyUpdate" />
         </el-form-item>
         <el-form-item :label="$t('bpm.design.processName')" prop="name">
-          <el-input v-model="needProps.name" :placeholder="$t('bpm.design.enterProcessName')" clearable
+          <el-input
+v-model="needProps.name" :placeholder="$t('bpm.design.enterProcessName')" clearable
             @change="handleNameUpdate" />
         </el-form-item>
       </div>

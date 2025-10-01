@@ -14,12 +14,12 @@ const props = defineProps({
   type: String,
   businessObject: {
     type: Object,
-    default: () => {}
+    default: () => { }
   }
 })
 
 const bpmnInstances = () => (window as any)?.bpmnInstances
-const customConfigComponent = ref<any>(null)
+const customConfigComponent = shallowRef<any>(null)
 
 watch(
   () => props.businessObject,
