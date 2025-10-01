@@ -99,7 +99,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           hidden: true,
           noTagsView: false,
           icon: 'ep:message',
-          title: '我的站内信'
+          title: t('router.myNotifyMessage')
         }
       }
     ]
@@ -117,7 +117,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         component: () => import('@/views/system/dict/data/index.vue'),
         name: 'SystemDictData',
         meta: {
-          title: '字典数据',
+          title: t('router.dictData'),
           noCache: true,
           hidden: true,
           canTo: true,
@@ -145,7 +145,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           hidden: true,
           canTo: true,
           icon: 'ep:edit',
-          title: '修改生成配置',
+          title: t('router.modifyGenerateConfig'),
           activeMenu: 'infra/codegen/index'
         }
       }
@@ -168,7 +168,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           hidden: true,
           canTo: true,
           icon: 'ep:edit',
-          title: '调度日志',
+          title: t('router.schedulingLog'),
           activeMenu: 'infra/job/index'
         }
       }
@@ -250,7 +250,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           noCache: true,
           hidden: true,
           canTo: true,
-          title: '设计流程表单',
+          title: t('router.designProcessForm'),
           activeMenu: '/bpm/manager/form'
         }
       },
@@ -262,7 +262,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           noCache: true,
           hidden: true,
           canTo: true,
-          title: '流程定义',
+          title: t('router.processDefinition'),
           activeMenu: '/bpm/manager/model'
         }
       },
@@ -274,7 +274,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           noCache: true,
           hidden: true,
           canTo: true,
-          title: '流程详情',
+          title: t('router.processDetail'),
           activeMenu: '/bpm/task/my'
         },
         props: (route) => ({
@@ -291,7 +291,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           noCache: true,
           hidden: true,
           canTo: true,
-          title: '数据报表',
+          title: t('router.dataReport'),
           activeMenu: '/bpm/manager/model'
         }
       },
@@ -303,7 +303,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           noCache: true,
           hidden: true,
           canTo: true,
-          title: '发起 OA 请假',
+          title: t('router.initiateOALeave'),
           activeMenu: '/bpm/oa/leave'
         }
       },
@@ -315,7 +315,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           noCache: true,
           hidden: true,
           canTo: true,
-          title: '查看 OA 请假',
+          title: t('router.viewOALeave'),
           activeMenu: '/bpm/oa/leave'
         }
       },
@@ -327,7 +327,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           noCache: true,
           hidden: true,
           canTo: true,
-          title: '创建流程',
+          title: t('router.createProcess'),
           activeMenu: '/bpm/manager/model'
         }
       },
@@ -339,7 +339,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           noCache: true,
           hidden: true,
           canTo: true,
-          title: '修改流程',
+          title: t('router.modifyProcess'),
           activeMenu: '/bpm/manager/model'
         }
       }
@@ -362,7 +362,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           hidden: true,
           canTo: true,
           icon: 'ep:edit',
-          title: '商品添加',
+          title: t('router.productAdd'),
           activeMenu: '/mall/product/spu'
         }
       },
@@ -375,7 +375,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           hidden: true,
           canTo: true,
           icon: 'ep:edit',
-          title: '商品编辑',
+          title: t('router.productEdit'),
           activeMenu: '/mall/product/spu'
         }
       },
@@ -388,7 +388,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           hidden: true,
           canTo: true,
           icon: 'ep:view',
-          title: '商品详情',
+          title: t('router.productDetail'),
           activeMenu: '/mall/product/spu'
         }
       },
@@ -401,7 +401,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           hidden: true,
           canTo: true,
           icon: 'ep:view',
-          title: '商品属性值',
+          title: t('router.productPropertyValue'),
           activeMenu: '/product/property'
         }
       }
@@ -419,13 +419,13 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'order/detail/:id(\\d+)',
         component: () => import('@/views/mall/trade/order/detail/index.vue'),
         name: 'TradeOrderDetail',
-        meta: { title: '订单详情', icon: 'ep:view', activeMenu: '/mall/trade/order' }
+        meta: { title: t('router.orderDetail'), icon: 'ep:view', activeMenu: '/mall/trade/order' }
       },
       {
         path: 'after-sale/detail/:id(\\d+)',
         component: () => import('@/views/mall/trade/afterSale/detail/index.vue'),
         name: 'TradeAfterSaleDetail',
-        meta: { title: '退款详情', icon: 'ep:view', activeMenu: '/mall/trade/after-sale' }
+        meta: { title: t('router.refundDetail'), icon: 'ep:view', activeMenu: '/mall/trade/after-sale' }
       }
     ]
   },
@@ -439,7 +439,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'user/detail/:id',
         name: 'MemberUserDetail',
         meta: {
-          title: '会员详情',
+          title: t('router.memberDetail'),
           noCache: true,
           hidden: true
         },
@@ -457,7 +457,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'cashier',
         name: 'PayCashier',
         meta: {
-          title: '收银台',
+          title: t('router.cashier'),
           noCache: true,
           hidden: true
         },
@@ -475,7 +475,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'template/decorate/:id',
         name: 'DiyTemplateDecorate',
         meta: {
-          title: '模板装修',
+          title: t('router.templateDecoration'),
           noCache: false,
           hidden: true,
           activeMenu: '/mall/promotion/diy-template/diy-template'
@@ -486,7 +486,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'page/decorate/:id',
         name: 'DiyPageDecorate',
         meta: {
-          title: '页面装修',
+          title: t('router.pageDecoration'),
           noCache: false,
           hidden: true,
           activeMenu: '/mall/promotion/diy-template/diy-page'
@@ -505,7 +505,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'clue/detail/:id',
         name: 'CrmClueDetail',
         meta: {
-          title: '线索详情',
+          title: t('router.clueDetail'),
           noCache: true,
           hidden: true,
           activeMenu: '/crm/clue'
@@ -516,7 +516,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'customer/detail/:id',
         name: 'CrmCustomerDetail',
         meta: {
-          title: '客户详情',
+          title: t('router.customerDetail'),
           noCache: true,
           hidden: true,
           activeMenu: '/crm/customer'
@@ -527,7 +527,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'business/detail/:id',
         name: 'CrmBusinessDetail',
         meta: {
-          title: '商机详情',
+          title: t('router.businessDetail'),
           noCache: true,
           hidden: true,
           activeMenu: '/crm/business'
@@ -538,7 +538,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'contract/detail/:id',
         name: 'CrmContractDetail',
         meta: {
-          title: '合同详情',
+          title: t('router.contractDetail'),
           noCache: true,
           hidden: true,
           activeMenu: '/crm/contract'
@@ -549,7 +549,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'receivable-plan/detail/:id',
         name: 'CrmReceivablePlanDetail',
         meta: {
-          title: '回款计划详情',
+          title: t('router.receivablePlanDetail'),
           noCache: true,
           hidden: true,
           activeMenu: '/crm/receivable-plan'
@@ -560,7 +560,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'receivable/detail/:id',
         name: 'CrmReceivableDetail',
         meta: {
-          title: '回款详情',
+          title: t('router.receivableDetail'),
           noCache: true,
           hidden: true,
           activeMenu: '/crm/receivable'
@@ -571,7 +571,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'contact/detail/:id',
         name: 'CrmContactDetail',
         meta: {
-          title: '联系人详情',
+          title: t('router.contactDetail'),
           noCache: true,
           hidden: true,
           activeMenu: '/crm/contact'
@@ -582,7 +582,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'product/detail/:id',
         name: 'CrmProductDetail',
         meta: {
-          title: '产品详情',
+          title: t('router.crmProductDetail'),
           noCache: true,
           hidden: true,
           activeMenu: '/crm/product'
@@ -604,7 +604,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         component: () => import('@/views/ai/image/square/index.vue'),
         name: 'AiImageSquare',
         meta: {
-          title: '绘图作品',
+          title: t('router.drawingWorks'),
           icon: 'ep:home-filled',
           noCache: false
         }
@@ -614,7 +614,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         component: () => import('@/views/ai/knowledge/document/index.vue'),
         name: 'AiKnowledgeDocument',
         meta: {
-          title: '知识库文档',
+          title: t('router.knowledgeDocument'),
           icon: 'ep:document',
           noCache: false,
           activeMenu: '/ai/knowledge'
@@ -625,7 +625,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         component: () => import('@/views/ai/knowledge/document/form/index.vue'),
         name: 'AiKnowledgeDocumentCreate',
         meta: {
-          title: '创建文档',
+          title: t('router.createDocument'),
           icon: 'ep:plus',
           noCache: true,
           hidden: true,
@@ -637,7 +637,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         component: () => import('@/views/ai/knowledge/document/form/index.vue'),
         name: 'AiKnowledgeDocumentUpdate',
         meta: {
-          title: '修改文档',
+          title: t('router.modifyDocument'),
           icon: 'ep:edit',
           noCache: true,
           hidden: true,
@@ -649,7 +649,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         component: () => import('@/views/ai/knowledge/knowledge/retrieval/index.vue'),
         name: 'AiKnowledgeRetrieval',
         meta: {
-          title: '文档召回测试',
+          title: t('router.documentRetrievalTest'),
           icon: 'ep:search',
           noCache: true,
           hidden: true,
@@ -661,7 +661,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         component: () => import('@/views/ai/knowledge/segment/index.vue'),
         name: 'AiKnowledgeSegment',
         meta: {
-          title: '知识库分段',
+          title: t('router.knowledgeSegment'),
           icon: 'ep:tickets',
           noCache: true,
           hidden: true,
@@ -676,7 +676,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           noCache: true,
           hidden: true,
           canTo: true,
-          title: '设计 AI 工作流',
+          title: t('router.designAIWorkflow'),
           activeMenu: '/ai/console/workflow'
         }
       },
@@ -688,7 +688,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
           noCache: true,
           hidden: true,
           canTo: true,
-          title: '设计 AI 工作流',
+          title: t('router.designAIWorkflow'),
           activeMenu: '/ai/console/workflow'
         }
       }
@@ -716,7 +716,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'product/product/detail/:id',
         name: 'IoTProductDetail',
         meta: {
-          title: '产品详情',
+          title: t('router.iotProductDetail'),
           noCache: true,
           hidden: true,
           activeMenu: '/iot/device/product'
@@ -727,7 +727,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'device/detail/:id',
         name: 'IoTDeviceDetail',
         meta: {
-          title: '设备详情',
+          title: t('router.deviceDetail'),
           noCache: true,
           hidden: true,
           activeMenu: '/iot/device/device'
@@ -738,7 +738,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         path: 'ota/operation/firmware/detail/:id',
         name: 'IoTOtaFirmwareDetail',
         meta: {
-          title: '固件详情',
+          title: t('router.firmwareDetail'),
           noCache: true,
           hidden: true,
           activeMenu: '/iot/operation/ota/firmware'

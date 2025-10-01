@@ -1,8 +1,66 @@
 import dayjs from 'dayjs'
 import type { TableColumnCtx } from 'element-plus'
+import { useI18n } from '@/hooks/web/useI18n'
 
 /**
- * 日期快捷选项适用于 el-date-picker
+ * 获取日期快捷选项适用于 el-date-picker
+ * 需要在 Vue 组件内调用以获取正确的 i18n 上下文
+ */
+export const getDefaultShortcuts = () => {
+  const { t } = useI18n()
+  
+  return [
+    {
+      text: t('formatTime.today'),
+      value: () => {
+        return new Date()
+      }
+    },
+    {
+      text: t('formatTime.yesterday'),
+      value: () => {
+        const date = new Date()
+        date.setTime(date.getTime() - 3600 * 1000 * 24)
+        return [date, date]
+      }
+    },
+    {
+      text: t('formatTime.last7Days'),
+      value: () => {
+        const date = new Date()
+        date.setTime(date.getTime() - 3600 * 1000 * 24 * 7)
+        return [date, new Date()]
+      }
+    },
+    {
+      text: t('formatTime.last30Days'),
+      value: () => {
+        const date = new Date()
+        date.setTime(date.getTime() - 3600 * 1000 * 24 * 30)
+        return [date, new Date()]
+      }
+    },
+    {
+      text: t('formatTime.thisMonth'),
+      value: () => {
+        const date = new Date()
+        date.setDate(1) // 设置为当前月的第一天
+        return [date, new Date()]
+      }
+    },
+    {
+      text: t('formatTime.thisYear'),
+      value: () => {
+        const date = new Date()
+        return [new Date(`${date.getFullYear()}-01-01`), date]
+      }
+    }
+  ]
+}
+
+/**
+ * 日期快捷选项适用于 el-date-picker (保持向后兼容)
+ * @deprecated 请使用 getDefaultShortcuts() 以获得 i18n 支持
  */
 export const defaultShortcuts = [
   {
@@ -100,7 +158,7 @@ export function getWeek(dateTime: Date): number {
 }
 
 /**
- * 将时间转换为 `几秒前`、`几分钟前`、`几小时前`、`几天前`
+ * 将时间转换为 `几秒前`、`几分钟前`、`几小时前`、`几天前` (支持 i18n)
  * @param param 当前时间，new Date() 格式或者字符串时间格式
  * @param format 需要转换的时间格式字符串
  * @description param 10秒：  10 * 1000
@@ -108,6 +166,56 @@ export function getWeek(dateTime: Date): number {
  * @description param 1小时： 60 * 60 * 1000
  * @description param 24小时：60 * 60 * 24 * 1000
  * @description param 3天：   60 * 60* 24 * 1000 * 3
+ * @returns 返回拼接后的时间字符串
+ */
+export function formatPastI18n(param: string | Date, format = 'YYYY-MM-DD HH:mm:ss'): string {
+  const { t } = useI18n()
+  return formatPastWithT(param, t, format)
+}
+
+/**
+ * 将时间转换为 `几秒前`、`几分钟前`、`几小时前`、`几天前` (内部函数，接受翻译函数)
+ */
+function formatPastWithT(param: string | Date, t: (key: string) => string, format = 'YYYY-MM-DD HH:mm:ss'): string {
+  // 传入格式处理、存储转换值
+  let timestamp: any, s: number
+  // 获取js 时间戳
+  let time: number = new Date().getTime()
+  // 是否是对象
+  typeof param === 'string' || 'object' ? (timestamp = new Date(param).getTime()) : (timestamp = param)
+  // 当前时间戳 - 传入时间戳
+  time = Number.parseInt(`${time - timestamp}`)
+  if (time < 10000) {
+    // 10秒内
+    return t('formatTime.justNow')
+  } else if (time < 60000 && time >= 10000) {
+    // 超过10秒少于1分钟内
+    s = Math.floor(time / 1000)
+    return `${s}${t('formatTime.secondsAgo')}`
+  } else if (time < 3600000 && time >= 60000) {
+    // 超过1分钟少于1小时
+    s = Math.floor(time / 60000)
+    return `${s}${t('formatTime.minutesAgo')}`
+  } else if (time < 86400000 && time >= 3600000) {
+    // 超过1小时少于24小时
+    s = Math.floor(time / 3600000)
+    return `${s}${t('formatTime.hoursAgo')}`
+  } else if (time < 259200000 && time >= 86400000) {
+    // 超过1天少于3天内
+    s = Math.floor(time / 86400000)
+    return `${s}${t('formatTime.daysAgo')}`
+  } else {
+    // 超过3天
+    const date = typeof param === 'string' || 'object' ? new Date(param) : param
+    return formatDate(date, format)
+  }
+}
+
+/**
+ * 将时间转换为 `几秒前`、`几分钟前`、`几小时前`、`几天前` (保持向后兼容)
+ * @param param 当前时间，new Date() 格式或者字符串时间格式
+ * @param format 需要转换的时间格式字符串
+ * @deprecated 请使用 formatPastI18n() 以获得 i18n 支持
  * @returns 返回拼接后的时间字符串
  */
 export function formatPast(param: string | Date, format = 'YYYY-MM-DD HH:mm:ss'): string {
@@ -146,9 +254,35 @@ export function formatPast(param: string | Date, format = 'YYYY-MM-DD HH:mm:ss')
 }
 
 /**
- * 时间问候语
+ * 时间问候语 (支持 i18n)
  * @param param 当前时间，new Date() 格式
- * @description param 调用 `formatAxis(new Date())` 输出 `上午好`
+ * @description param 调用 `formatAxisI18n(new Date())` 输出 `上午好`
+ * @returns 返回拼接后的时间字符串
+ */
+export function formatAxisI18n(param: Date): string {
+  const { t } = useI18n()
+  return formatAxisWithT(param, t)
+}
+
+/**
+ * 时间问候语 (内部函数，接受翻译函数)
+ */
+function formatAxisWithT(param: Date, t: (key: string) => string): string {
+  const hour: number = new Date(param).getHours()
+  if (hour < 6) return t('formatTime.earlyMorning')
+  else if (hour < 9) return t('formatTime.morning')
+  else if (hour < 12) return t('formatTime.forenoon')
+  else if (hour < 14) return t('formatTime.noon')
+  else if (hour < 17) return t('formatTime.afternoon')
+  else if (hour < 19) return t('formatTime.evening')
+  else if (hour < 22) return t('formatTime.night')
+  else return t('formatTime.lateNight')
+}
+
+/**
+ * 时间问候语 (保持向后兼容)
+ * @param param 当前时间，new Date() 格式
+ * @deprecated 请使用 formatAxisI18n() 以获得 i18n 支持
  * @returns 返回拼接后的时间字符串
  */
 export function formatAxis(param: Date): string {
@@ -164,9 +298,45 @@ export function formatAxis(param: Date): string {
 }
 
 /**
- * 将毫秒，转换成时间字符串。例如说，xx 分钟
+ * 将毫秒，转换成时间字符串。例如说，xx 分钟 (支持 i18n)
  *
  * @param ms 毫秒
+ * @returns {string} 字符串
+ */
+export function formatPast2I18n(ms: number): string {
+  const { t } = useI18n()
+  return formatPast2WithT(ms, t)
+}
+
+/**
+ * 将毫秒，转换成时间字符串 (内部函数，接受翻译函数)
+ */
+function formatPast2WithT(ms: number, t: (key: string) => string): string {
+  const day = Math.floor(ms / (24 * 60 * 60 * 1000))
+  const hour = Math.floor(ms / (60 * 60 * 1000) - day * 24)
+  const minute = Math.floor(ms / (60 * 1000) - day * 24 * 60 - hour * 60)
+  const second = Math.floor(ms / 1000 - day * 24 * 60 * 60 - hour * 60 * 60 - minute * 60)
+  if (day > 0) {
+    return day + ' ' + t('formatTime.days') + hour + ' ' + t('formatTime.hours') + ' ' + minute + ' ' + t('formatTime.minutes')
+  }
+  if (hour > 0) {
+    return hour + ' ' + t('formatTime.hours') + ' ' + minute + ' ' + t('formatTime.minutes')
+  }
+  if (minute > 0) {
+    return minute + ' ' + t('formatTime.minutes')
+  }
+  if (second > 0) {
+    return second + ' ' + t('formatTime.seconds')
+  } else {
+    return 0 + ' ' + t('formatTime.seconds')
+  }
+}
+
+/**
+ * 将毫秒，转换成时间字符串。例如说，xx 分钟 (保持向后兼容)
+ *
+ * @param ms 毫秒
+ * @deprecated 请使用 formatPast2I18n() 以获得 i18n 支持
  * @returns {string} 字符串
  */
 export function formatPast2(ms: number): string {

@@ -3,6 +3,96 @@
  *
  * 枚举类
  */
+import { useI18n } from '@/hooks/web/useI18n'
+
+// Helper function to get i18n translations for constants
+const getConstantsI18n = () => {
+  const { t } = useI18n()
+  return {
+    // System module
+    enable: () => t('utils.constants.enable'),
+    disable: () => t('utils.constants.disable'),
+    member: () => t('utils.constants.member'),
+    admin: () => t('utils.constants.admin'),
+    directory: () => t('utils.constants.directory'),
+    menu: () => t('utils.constants.menu'),
+    button: () => t('utils.constants.button'),
+    systemRole: () => t('utils.constants.systemRole'),
+    customRole: () => t('utils.constants.customRole'),
+    allDataPermission: () => t('utils.constants.allDataPermission'),
+    specifiedDeptDataPermission: () => t('utils.constants.specifiedDeptDataPermission'),
+    deptDataPermission: () => t('utils.constants.deptDataPermission'),
+    deptAndChildDataPermission: () => t('utils.constants.deptAndChildDataPermission'),
+    selfDataPermission: () => t('utils.constants.selfDataPermission'),
+    dingtalk: () => t('utils.constants.dingtalk'),
+    wechatEnterprise: () => t('utils.constants.wechatEnterprise'),
+    
+    // Payment module
+    wechatJsapiPay: () => t('utils.constants.wechatJsapiPay'),
+    wechatMiniProgramPay: () => t('utils.constants.wechatMiniProgramPay'),
+    wechatAppPay: () => t('utils.constants.wechatAppPay'),
+    wechatNativePay: () => t('utils.constants.wechatNativePay'),
+    wechatWapPay: () => t('utils.constants.wechatWapPay'),
+    wechatBarcodePay: () => t('utils.constants.wechatBarcodePay'),
+    alipayPcPay: () => t('utils.constants.alipayPcPay'),
+    alipayWapPay: () => t('utils.constants.alipayWapPay'),
+    alipayAppPay: () => t('utils.constants.alipayAppPay'),
+    alipayQrPay: () => t('utils.constants.alipayQrPay'),
+    alipayBarcodePay: () => t('utils.constants.alipayBarcodePay'),
+    walletPay: () => t('utils.constants.walletPay'),
+    mockPay: () => t('utils.constants.mockPay'),
+    unpaid: () => t('utils.constants.unpaid'),
+    paid: () => t('utils.constants.paid'),
+    
+    // Product module
+    recyclebin: () => t('utils.constants.recyclebin'),
+    offline: () => t('utils.constants.offline'),
+    online: () => t('utils.constants.online'),
+    
+    // Marketing module
+    fixedDateAvailable: () => t('utils.constants.fixedDateAvailable'),
+    availableAfterReceiving: () => t('utils.constants.availableAfterReceiving'),
+    directReceive: () => t('utils.constants.directReceive'),
+    specifiedDistribution: () => t('utils.constants.specifiedDistribution'),
+    newUserCoupon: () => t('utils.constants.newUserCoupon'),
+    universalCoupon: () => t('utils.constants.universalCoupon'),
+    productCoupon: () => t('utils.constants.productCoupon'),
+    categoryCoupon: () => t('utils.constants.categoryCoupon'),
+    fullAmountDiscount: () => t('utils.constants.fullAmountDiscount'),
+    fullQuantityDiscount: () => t('utils.constants.fullQuantityDiscount'),
+    fullReduction: () => t('utils.constants.fullReduction'),
+    discount: () => t('utils.constants.discount'),
+    
+    // Distribution module
+    firstBinding: () => t('utils.constants.firstBinding'),
+    registerBinding: () => t('utils.constants.registerBinding'),
+    overrideBinding: () => t('utils.constants.overrideBinding'),
+    everyoneDistribution: () => t('utils.constants.everyoneDistribution'),
+    specifiedDistribution2: () => t('utils.constants.specifiedDistribution2'),
+    promotionCommission: () => t('utils.constants.promotionCommission'),
+    withdrawalApplication: () => t('utils.constants.withdrawalApplication'),
+    underReview: () => t('utils.constants.underReview'),
+    reviewPassed: () => t('utils.constants.reviewPassed'),
+    reviewFailed: () => t('utils.constants.reviewFailed'),
+    withdrawalSuccess: () => t('utils.constants.withdrawalSuccess'),
+    withdrawalFailed: () => t('utils.constants.withdrawalFailed'),
+    wallet: () => t('utils.constants.wallet'),
+    bankCard: () => t('utils.constants.bankCard'),
+    wechat: () => t('utils.constants.wechat'),
+    alipay: () => t('utils.constants.alipay'),
+    
+    // Delivery module
+    expressDelivery: () => t('utils.constants.expressDelivery'),
+    storePickup: () => t('utils.constants.storePickup'),
+    
+    // Order status
+    waitingPayment: () => t('utils.constants.waitingPayment'),
+    waitingDelivery: () => t('utils.constants.waitingDelivery'),
+    delivered: () => t('utils.constants.delivered'),
+    completed: () => t('utils.constants.completed'),
+    cancelled: () => t('utils.constants.cancelled')
+  }
+}
 
 // ========== COMMON 模块 ==========
 // 全局通用状态枚举
@@ -47,7 +137,29 @@ export const SystemDataScopeEnum = {
 }
 
 /**
- * 用户的社交平台的类型枚举
+ * 用户的社交平台的类型枚举 (支持 i18n)
+ */
+export const getSystemUserSocialTypeEnumI18n = () => {
+  const i18n = getConstantsI18n()
+  return {
+    DINGTALK: {
+      title: i18n.dingtalk(),
+      type: 20,
+      source: 'dingtalk',
+      img: 'https://s1.ax1x.com/2022/05/22/OzMDRs.png'
+    },
+    WECHAT_ENTERPRISE: {
+      title: i18n.wechatEnterprise(),
+      type: 30,
+      source: 'wechat_enterprise',
+      img: 'https://s1.ax1x.com/2022/05/22/OzMrzn.png'
+    }
+  }
+}
+
+/**
+ * 用户的社交平台的类型枚举 (保持向后兼容)
+ * @deprecated 请使用 getSystemUserSocialTypeEnumI18n() 以获得 i18n 支持
  */
 export const SystemUserSocialTypeEnum = {
   DINGTALK: {
@@ -94,7 +206,69 @@ export const InfraApiErrorLogProcessStatusEnum = {
 
 // ========== PAY 模块 ==========
 /**
- * 支付渠道枚举
+ * 支付渠道枚举 (支持 i18n)
+ */
+export const getPayChannelEnumI18n = () => {
+  const i18n = getConstantsI18n()
+  return {
+    WX_PUB: {
+      code: 'wx_pub',
+      name: i18n.wechatJsapiPay()
+    },
+    WX_LITE: {
+      code: 'wx_lite',
+      name: i18n.wechatMiniProgramPay()
+    },
+    WX_APP: {
+      code: 'wx_app',
+      name: i18n.wechatAppPay()
+    },
+    WX_NATIVE: {
+      code: 'wx_native',
+      name: i18n.wechatNativePay()
+    },
+    WX_WAP: {
+      code: 'wx_wap',
+      name: i18n.wechatWapPay()
+    },
+    WX_BAR: {
+      code: 'wx_bar',
+      name: i18n.wechatBarcodePay()
+    },
+    ALIPAY_PC: {
+      code: 'alipay_pc',
+      name: i18n.alipayPcPay()
+    },
+    ALIPAY_WAP: {
+      code: 'alipay_wap',
+      name: i18n.alipayWapPay()
+    },
+    ALIPAY_APP: {
+      code: 'alipay_app',
+      name: i18n.alipayAppPay()
+    },
+    ALIPAY_QR: {
+      code: 'alipay_qr',
+      name: i18n.alipayQrPay()
+    },
+    ALIPAY_BAR: {
+      code: 'alipay_bar',
+      name: i18n.alipayBarcodePay()
+    },
+    WALLET: {
+      code: 'wallet',
+      name: i18n.walletPay()
+    },
+    MOCK: {
+      code: 'mock',
+      name: i18n.mockPay()
+    }
+  }
+}
+
+/**
+ * 支付渠道枚举 (保持向后兼容)
+ * @deprecated 请使用 getPayChannelEnumI18n() 以获得 i18n 支持
  */
 export const PayChannelEnum = {
   WX_PUB: {

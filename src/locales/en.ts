@@ -170,7 +170,60 @@ export default {
     login: 'Login',
     home: 'Home',
     analysis: 'Analysis',
-    workplace: 'Workplace'
+    workplace: 'Workplace',
+    // System messages and notifications
+    myNotifyMessage: 'My Messages',
+    // Dictionary management
+    dictData: 'Dictionary Data',
+    // Code generation
+    modifyGenerateConfig: 'Modify Generation Config',
+    // Job scheduling
+    schedulingLog: 'Scheduling Log',
+    // BPM (Business Process Management)
+    designProcessForm: 'Design Process Form',
+    processDefinition: 'Process Definition',
+    processDetail: 'Process Detail',
+    dataReport: 'Data Report',
+    initiateOALeave: 'Initiate OA Leave',
+    viewOALeave: 'View OA Leave',
+    createProcess: 'Create Process',
+    modifyProcess: 'Modify Process',
+    // Mall - Product Center
+    productAdd: 'Add Product',
+    productEdit: 'Edit Product',
+    productDetail: 'Product Detail',
+    productPropertyValue: 'Product Property Value',
+    // Mall - Trade Center
+    orderDetail: 'Order Detail',
+    refundDetail: 'Refund Detail',
+    // Member Center
+    memberDetail: 'Member Detail',
+    // Payment
+    cashier: 'Cashier',
+    // DIY Templates
+    templateDecoration: 'Template Decoration',
+    pageDecoration: 'Page Decoration',
+    // CRM
+    clueDetail: 'Clue Detail',
+    customerDetail: 'Customer Detail',
+    businessDetail: 'Business Detail',
+    contractDetail: 'Contract Detail',
+    receivablePlanDetail: 'Receivable Plan Detail',
+    receivableDetail: 'Receivable Detail',
+    contactDetail: 'Contact Detail',
+    crmProductDetail: 'Product Detail',
+    // AI
+    drawingWorks: 'Drawing Works',
+    knowledgeDocument: 'Knowledge Document',
+    createDocument: 'Create Document',
+    modifyDocument: 'Modify Document',
+    documentRetrievalTest: 'Document Retrieval Test',
+    knowledgeSegment: 'Knowledge Segment',
+    designAIWorkflow: 'Design AI Workflow',
+    // IoT
+    iotProductDetail: 'Product Detail',
+    deviceDetail: 'Device Detail',
+    firmwareDetail: 'Firmware Detail'
   },
   analysis: {
     newUser: 'New user',
@@ -229,6 +282,132 @@ export default {
     dynamic: 'Dynamic',
     push: 'push',
     follow: 'Follow'
+  },
+  formatTime: {
+    today: 'Today',
+    yesterday: 'Yesterday',
+    last7Days: 'Last 7 days',
+    last30Days: 'Last 30 days',
+    thisMonth: 'This month',
+    thisYear: 'This year',
+    justNow: 'Just now',
+    secondsAgo: 'seconds ago',
+    minutesAgo: 'minutes ago',
+    hoursAgo: 'hours ago',
+    daysAgo: 'days ago',
+    days: 'days',
+    hours: 'hours',
+    minutes: 'minutes',
+    seconds: 'seconds',
+    earlyMorning: 'Good early morning',
+    morning: 'Good morning',
+    forenoon: 'Good forenoon',
+    noon: 'Good noon',
+    afternoon: 'Good afternoon',
+    evening: 'Good evening',
+    night: 'Good night',
+    lateNight: 'Good late night',
+    example: {
+      title: 'FormatTime i18n Example'
+    }
+  },
+  utils: {
+    constants: {
+      // System module
+      enable: 'Enable',
+      disable: 'Disable',
+      member: 'Member',
+      admin: 'Admin',
+      directory: 'Directory',
+      menu: 'Menu',
+      button: 'Button',
+      systemRole: 'System Role',
+      customRole: 'Custom Role',
+      allDataPermission: 'All Data Permission',
+      specifiedDeptDataPermission: 'Specified Dept Data Permission',
+      deptDataPermission: 'Dept Data Permission',
+      deptAndChildDataPermission: 'Dept and Child Data Permission',
+      selfDataPermission: 'Self Data Permission',
+      dingtalk: 'DingTalk',
+      wechatEnterprise: 'WeChat Enterprise',
+      
+      // Payment module
+      wechatJsapiPay: 'WeChat JSAPI Pay',
+      wechatMiniProgramPay: 'WeChat Mini Program Pay',
+      wechatAppPay: 'WeChat APP Pay',
+      wechatNativePay: 'WeChat Native Pay',
+      wechatWapPay: 'WeChat WAP Pay',
+      wechatBarcodePay: 'WeChat Barcode Pay',
+      alipayPcPay: 'Alipay PC Pay',
+      alipayWapPay: 'Alipay WAP Pay',
+      alipayAppPay: 'Alipay APP Pay',
+      alipayQrPay: 'Alipay QR Pay',
+      alipayBarcodePay: 'Alipay Barcode Pay',
+      walletPay: 'Wallet Pay',
+      mockPay: 'Mock Pay',
+      unpaid: 'Unpaid',
+      paid: 'Paid',
+      
+      // Product module
+      recyclebin: 'Recycle Bin',
+      offline: 'Offline',
+      online: 'Online',
+      
+      // Marketing module
+      fixedDateAvailable: 'Fixed Date Available',
+      availableAfterReceiving: 'Available After Receiving',
+      directReceive: 'Direct Receive',
+      specifiedDistribution: 'Specified Distribution',
+      newUserCoupon: 'New User Coupon',
+      universalCoupon: 'Universal Coupon',
+      productCoupon: 'Product Coupon',
+      categoryCoupon: 'Category Coupon',
+      fullAmountDiscount: 'Full N Amount',
+      fullQuantityDiscount: 'Full N Quantity',
+      fullReduction: 'Full Reduction',
+      discount: 'Discount',
+      
+      // Distribution module
+      firstBinding: 'First Binding',
+      registerBinding: 'Register Binding',
+      overrideBinding: 'Override Binding',
+      everyoneDistribution: 'Everyone Distribution',
+      specifiedDistribution2: 'Specified Distribution',
+      promotionCommission: 'Promotion Commission',
+      withdrawalApplication: 'Withdrawal Application',
+      underReview: 'Under Review',
+      reviewPassed: 'Review Passed',
+      reviewFailed: 'Review Failed',
+      withdrawalSuccess: 'Withdrawal Success',
+      withdrawalFailed: 'Withdrawal Failed',
+      wallet: 'Wallet',
+      bankCard: 'Bank Card',
+      wechat: 'WeChat',
+      alipay: 'Alipay',
+      
+      // Delivery module
+      expressDelivery: 'Express Delivery',
+      storePickup: 'Store Pickup',
+      
+      // Order status
+      waitingPayment: 'Waiting Payment',
+      waitingDelivery: 'Waiting Delivery',
+      delivered: 'Delivered',
+      completed: 'Completed',
+      cancelled: 'Cancelled'
+    },
+    validation: {
+      jsonParseError: 'str[{str}] is not a valid JSON string',
+      deprecatedJsonParse: 'str[{str}] is not a valid JSON string'
+    },
+    download: {
+      excel: 'Download Excel method',
+      word: 'Download Word method',
+      zip: 'Download Zip method',
+      html: 'Download Html method',
+      markdown: 'Download Markdown method',
+      json: 'Download Json method'
+    }
   },
   form: {
     input: 'Input',
@@ -1324,6 +1503,8 @@ export default {
       name: 'Name',
       processIdRequired: 'Process ID is required',
       processNameRequired: 'Process name is required',
+      xmlNCNameNotSatisfied: 'key does not satisfy XML NCName rule, no assignment is performed',
+      xmlNCNameSatisfied: 'key satisfies XML NCName rules, assignment is performed',
       elementDocumentation: 'Element Documentation:',
       executeType: 'Execute Type',
 
@@ -1804,6 +1985,34 @@ export default {
           processId: 'Process ID',
           taskId: 'Task ID',
           handle: 'Handle'
+        }
+      },
+      manager: {
+        docAlertTitle: 'Workflow Manual',
+        form: {
+          taskName: 'Task Name',
+          taskNamePlaceholder: 'Please enter task name',
+          createTime: 'Create Time',
+          startDatePlaceholder: 'Start Date',
+          endDatePlaceholder: 'End Date',
+          search: 'Search',
+          reset: 'Reset'
+        },
+        table: {
+          process: 'Process',
+          startUser: 'Initiator',
+          startTime: 'Initiated At',
+          currentTask: 'Current Task',
+          taskStartTime: 'Task Start Time',
+          taskEndTime: 'Task End Time',
+          approver: 'Approver',
+          approvalStatus: 'Approval Status',
+          approvalSuggestion: 'Approval Suggestion',
+          duration: 'Duration',
+          processId: 'Process ID',
+          taskId: 'Task ID',
+          action: 'Action',
+          history: 'History'
         }
       }
     },

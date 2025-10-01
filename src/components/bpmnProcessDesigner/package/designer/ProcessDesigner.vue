@@ -25,65 +25,34 @@
               <XTextButton :title="$t('bpm.design.previewJson')" @click="previewProcessJson" />
             </template>
           </el-tooltip>
-          <el-tooltip
-            v-if="props.simulation"
-            effect="light"
-            :content="simulationStatus ? $t('bpm.design.exitSimulation') : $t('bpm.design.startSimulation')"
-          >
+          <el-tooltip v-if="props.simulation" effect="light"
+            :content="simulationStatus ? $t('bpm.design.exitSimulation') : $t('bpm.design.startSimulation')">
             <XButton preIcon="ep:cpu" :title="$t('bpm.design.simulation')" @click="processSimulation" />
           </el-tooltip>
         </ElButtonGroup>
         <ElButtonGroup key="align-control">
           <el-tooltip effect="light" content="Align Left">
-            <XButton
-              preIcon="fa:align-left"
-              class="align align-bottom"
-              @click="elementsAlign('left')"
-            />
+            <XButton preIcon="fa:align-left" class="align align-bottom" @click="elementsAlign('left')" />
           </el-tooltip>
           <el-tooltip effect="light" content="Align Right">
-            <XButton
-              preIcon="fa:align-left"
-              class="align align-top"
-              @click="elementsAlign('right')"
-            />
+            <XButton preIcon="fa:align-left" class="align align-top" @click="elementsAlign('right')" />
           </el-tooltip>
           <el-tooltip effect="light" content="Align Top">
-            <XButton
-              preIcon="fa:align-left"
-              class="align align-left"
-              @click="elementsAlign('top')"
-            />
+            <XButton preIcon="fa:align-left" class="align align-left" @click="elementsAlign('top')" />
           </el-tooltip>
           <el-tooltip effect="light" content="Align Bottom">
-            <XButton
-              preIcon="fa:align-left"
-              class="align align-right"
-              @click="elementsAlign('bottom')"
-            />
+            <XButton preIcon="fa:align-left" class="align align-right" @click="elementsAlign('bottom')" />
           </el-tooltip>
           <el-tooltip effect="light" content="Center Horizontally">
-            <XButton
-              preIcon="fa:align-left"
-              class="align align-center"
-              @click="elementsAlign('center')"
-            />
+            <XButton preIcon="fa:align-left" class="align align-center" @click="elementsAlign('center')" />
           </el-tooltip>
           <el-tooltip effect="light" content="Center Vertically">
-            <XButton
-              preIcon="fa:align-left"
-              class="align align-middle"
-              @click="elementsAlign('middle')"
-            />
+            <XButton preIcon="fa:align-left" class="align align-middle" @click="elementsAlign('middle')" />
           </el-tooltip>
         </ElButtonGroup>
         <ElButtonGroup key="scale-control">
           <el-tooltip effect="light" content="Zoom Out">
-            <XButton
-              preIcon="ep:zoom-out"
-              @click="processZoomOut()"
-              :disabled="defaultZoom < 0.2"
-            />
+            <XButton preIcon="ep:zoom-out" @click="processZoomOut()" :disabled="defaultZoom < 0.2" />
           </el-tooltip>
           <el-button>{{ Math.floor(defaultZoom * 10 * 10) + '%' }}</el-button>
           <el-tooltip effect="light" content="Zoom In">
@@ -106,32 +75,16 @@
         </ElButtonGroup>
       </template>
       <!-- 用于打开本地文件-->
-      <input
-        type="file"
-        id="files"
-        ref="refFile"
-        style="display: none"
-        accept=".xml, .bpmn"
-        @change="importLocalFile"
-      />
+      <input type="file" id="files" ref="refFile" style="display: none" accept=".xml, .bpmn"
+        @change="importLocalFile" />
     </div>
     <div class="my-process-designer__container">
-      <div
-        class="my-process-designer__canvas"
-        ref="bpmnCanvas"
-        id="bpmnCanvas"
-        style="width: 1680px; height: 800px"
-      ></div>
+      <div class="my-process-designer__canvas" ref="bpmnCanvas" id="bpmnCanvas" style="width: 1680px; height: 800px">
+      </div>
       <!-- <div id="js-properties-panel" class="panel"></div> -->
       <!-- <div class="my-process-designer__canvas" ref="bpmn-canvas"></div> -->
     </div>
-    <Dialog
-      title="预览"
-      v-model="previewModelVisible"
-      width="80%"
-      :scroll="true"
-      max-height="600px"
-    >
+    <Dialog title="预览" v-model="previewModelVisible" width="80%" :scroll="true" max-height="600px">
       <div>
         <pre><code v-dompurify-html="highlightedCode(previewResult)" class="hljs"></code></pre>
       </div>
@@ -205,13 +158,13 @@ const props = defineProps({
   translations: {
     // 自定义的翻译文件
     type: Object,
-    default: () => {}
+    default: () => { }
   },
   additionalModel: [Object, Array], // 自定义model
   moddleExtension: {
     // 自定义moddle
     type: Object,
-    default: () => {}
+    default: () => { }
   },
   onlyCustomizeAddi: {
     type: Boolean,
@@ -272,7 +225,7 @@ const previewType = ref('xml')
 const recoverable = ref(false)
 const revocable = ref(false)
 const additionalModules = computed(() => {
-  console.log(props.additionalModel, 'additionalModel')
+  //console.log(props.additionalModel, 'additionalModel')
   const Modules: any[] = []
   // 仅保留用户自定义扩展模块
   if (props.onlyCustomizeAddi) {
@@ -304,7 +257,7 @@ const additionalModules = computed(() => {
   // if (this.prefix === "bpmn") {
   //   Modules.push(bpmnModdleExtension);
   // }
-  console.log(props.prefix, 'props.prefix ')
+  // console.log(props.prefix, 'props.prefix ')
   if (props.prefix === 'camunda') {
     Modules.push(camundaModdleExtension)
   }
@@ -318,9 +271,7 @@ const additionalModules = computed(() => {
   return Modules
 })
 const moddleExtensions = computed(() => {
-  console.log(props.onlyCustomizeModdle, 'props.onlyCustomizeModdle')
-  console.log(props.moddleExtension, 'props.moddleExtension')
-  console.log(props.prefix, 'props.prefix')
+
   const Extensions: any = {}
   // 仅使用用户自定义模块
   if (props.onlyCustomizeModdle) {
@@ -346,15 +297,10 @@ const moddleExtensions = computed(() => {
   }
   return Extensions
 })
-console.log(additionalModules, 'additionalModules()')
-console.log(moddleExtensions, 'moddleExtensions()')
+
 const initBpmnModeler = () => {
   if (bpmnModeler) return
   let data = document.getElementById('bpmnCanvas')
-  console.log(data, 'data')
-  console.log(props.keyboard, 'props.keyboard')
-  console.log(additionalModules, 'additionalModules()')
-  console.log(moddleExtensions, 'moddleExtensions()')
 
   bpmnModeler = new BpmnModeler({
     // container: this.$refs['bpmn-canvas'],
@@ -390,15 +336,15 @@ const initBpmnModeler = () => {
 
 const initModelListeners = () => {
   const EventBus = bpmnModeler.get('eventBus')
-  console.log(EventBus, 'EventBus')
+  //console.log(EventBus, 'EventBus')
   // 注册需要的监听事件, 将. 替换为 - , 避免解析异常
   props.events.forEach((event: any) => {
     EventBus.on(event, function (eventObj) {
       let eventName = event.replace(/\./g, '-')
       // eventName.name = eventName
       let element = eventObj ? eventObj.element : null
-      console.log(eventName, 'eventName')
-      console.log(element, 'element')
+      // console.log(eventName, 'eventName')
+      // console.log(element, 'element')
       emit('element-click', element, eventObj)
       // emit(eventName, element, eventObj)
     })
@@ -426,7 +372,7 @@ const initModelListeners = () => {
 }
 /* 创建新的流程图 */
 const createNewDiagram = async (xml) => {
-  console.log(xml, 'xml')
+  //  console.log(xml, 'xml')
   // 将字符串转换成图显示出来
   let newId = props.processId || `Process_${new Date().getTime()}`
   let newName = props.processName || `业务流程_${new Date().getTime()}`
@@ -435,7 +381,7 @@ const createNewDiagram = async (xml) => {
     // console.log(xmlString, 'xmlString')
     // console.log(this.bpmnModeler.importXML);
     let { warnings } = await bpmnModeler.importXML(xmlString)
-    console.log(warnings, 'warnings')
+    // console.log(warnings, 'warnings')
     if (warnings && warnings.length) {
       warnings.forEach((warn) => console.warn(warn))
     }
@@ -486,9 +432,8 @@ const setEncoded = (type, data) => {
   const encodedData = encodeURIComponent(data)
   return {
     filename: `${filename}.${type}`,
-    href: `data:application/${
-      type === 'svg' ? 'text/xml' : 'bpmn20-xml'
-    };charset=UTF-8,${encodedData}`,
+    href: `data:application/${type === 'svg' ? 'text/xml' : 'bpmn20-xml'
+      };charset=UTF-8,${encodedData}`,
     data: data
   }
 }
@@ -516,7 +461,7 @@ const downloadProcessAsSvg = () => {
 }
 const processSimulation = () => {
   simulationStatus.value = !simulationStatus.value
-  console.log(bpmnModeler.get('toggleMode', 'strict'), "bpmnModeler.get('toggleMode')")
+  // console.log(bpmnModeler.get('toggleMode', 'strict'), "bpmnModeler.get('toggleMode')")
   props.simulation && bpmnModeler.get('toggleMode', 'strict').toggleMode()
 }
 const processRedo = () => {
@@ -568,7 +513,7 @@ const elementsAlign = (align) => {
 }
 /*-----------------------------    方法结束     ---------------------------------*/
 const previewProcessXML = () => {
-  console.log(bpmnModeler.saveXML, 'bpmnModeler')
+  // console.log(bpmnModeler.saveXML, 'bpmnModeler')
   bpmnModeler.saveXML({ format: true }).then(({ xml }) => {
     // console.log(xml, 'xml111111')
     previewResult.value = xml

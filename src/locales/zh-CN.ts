@@ -172,7 +172,60 @@ export default {
     socialLogin: '社交登录',
     home: '首页',
     analysis: '分析页',
-    workplace: '工作台'
+    workplace: '工作台',
+    // System messages and notifications
+    myNotifyMessage: '我的站内信',
+    // Dictionary management
+    dictData: '字典数据',
+    // Code generation
+    modifyGenerateConfig: '修改生成配置',
+    // Job scheduling
+    schedulingLog: '调度日志',
+    // BPM (Business Process Management)
+    designProcessForm: '设计流程表单',
+    processDefinition: '流程定义',
+    processDetail: '流程详情',
+    dataReport: '数据报表',
+    initiateOALeave: '发起 OA 请假',
+    viewOALeave: '查看 OA 请假',
+    createProcess: '创建流程',
+    modifyProcess: '修改流程',
+    // Mall - Product Center
+    productAdd: '商品添加',
+    productEdit: '商品编辑',
+    productDetail: '商品详情',
+    productPropertyValue: '商品属性值',
+    // Mall - Trade Center
+    orderDetail: '订单详情',
+    refundDetail: '退款详情',
+    // Member Center
+    memberDetail: '会员详情',
+    // Payment
+    cashier: '收银台',
+    // DIY Templates
+    templateDecoration: '模板装修',
+    pageDecoration: '页面装修',
+    // CRM
+    clueDetail: '线索详情',
+    customerDetail: '客户详情',
+    businessDetail: '商机详情',
+    contractDetail: '合同详情',
+    receivablePlanDetail: '回款计划详情',
+    receivableDetail: '回款详情',
+    contactDetail: '联系人详情',
+    crmProductDetail: '产品详情',
+    // AI
+    drawingWorks: '绘图作品',
+    knowledgeDocument: '知识库文档',
+    createDocument: '创建文档',
+    modifyDocument: '修改文档',
+    documentRetrievalTest: '文档召回测试',
+    knowledgeSegment: '知识库分段',
+    designAIWorkflow: '设计 AI 工作流',
+    // IoT
+    iotProductDetail: '产品详情',
+    deviceDetail: '设备详情',
+    firmwareDetail: '固件详情'
   },
   analysis: {
     newUser: '新增用户',
@@ -231,6 +284,132 @@ export default {
     dynamic: '动态',
     push: '推送',
     follow: '关注'
+  },
+  formatTime: {
+    today: '今天',
+    yesterday: '昨天',
+    last7Days: '最近七天',
+    last30Days: '最近 30 天',
+    thisMonth: '本月',
+    thisYear: '今年',
+    justNow: '刚刚',
+    secondsAgo: '秒前',
+    minutesAgo: '分钟前',
+    hoursAgo: '小时前',
+    daysAgo: '天前',
+    days: '天',
+    hours: '小时',
+    minutes: '分钟',
+    seconds: '秒',
+    earlyMorning: '凌晨好',
+    morning: '早上好',
+    forenoon: '上午好',
+    noon: '中午好',
+    afternoon: '下午好',
+    evening: '傍晚好',
+    night: '晚上好',
+    lateNight: '夜里好',
+    example: {
+      title: '时间格式化 i18n 示例'
+    }
+  },
+  utils: {
+    constants: {
+      // 系统模块
+      enable: '开启',
+      disable: '禁用',
+      member: '会员',
+      admin: '管理员',
+      directory: '目录',
+      menu: '菜单',
+      button: '按钮',
+      systemRole: '内置角色',
+      customRole: '自定义角色',
+      allDataPermission: '全部数据权限',
+      specifiedDeptDataPermission: '指定部门数据权限',
+      deptDataPermission: '部门数据权限',
+      deptAndChildDataPermission: '部门及以下数据权限',
+      selfDataPermission: '仅本人数据权限',
+      dingtalk: '钉钉',
+      wechatEnterprise: '企业微信',
+      
+      // 支付模块
+      wechatJsapiPay: '微信 JSAPI 支付',
+      wechatMiniProgramPay: '微信小程序支付',
+      wechatAppPay: '微信 APP 支付',
+      wechatNativePay: '微信 Native 支付',
+      wechatWapPay: '微信 WAP 网站支付',
+      wechatBarcodePay: '微信条码支付',
+      alipayPcPay: '支付宝 PC 网站支付',
+      alipayWapPay: '支付宝 WAP 网站支付',
+      alipayAppPay: '支付宝 APP 支付',
+      alipayQrPay: '支付宝扫码支付',
+      alipayBarcodePay: '支付宝条码支付',
+      walletPay: '钱包支付',
+      mockPay: '模拟支付',
+      unpaid: '未支付',
+      paid: '已支付',
+      
+      // 商品模块
+      recyclebin: '回收站',
+      offline: '下架',
+      online: '上架',
+      
+      // 营销模块
+      fixedDateAvailable: '固定日期可用',
+      availableAfterReceiving: '领取之后可用',
+      directReceive: '直接领取',
+      specifiedDistribution: '指定发放',
+      newUserCoupon: '新人券',
+      universalCoupon: '通用劵',
+      productCoupon: '商品劵',
+      categoryCoupon: '品类劵',
+      fullAmountDiscount: '满 N 元',
+      fullQuantityDiscount: '满 N 件',
+      fullReduction: '满减',
+      discount: '折扣',
+      
+      // 分销模块
+      firstBinding: '首次绑定',
+      registerBinding: '注册绑定',
+      overrideBinding: '覆盖绑定',
+      everyoneDistribution: '人人分销',
+      specifiedDistribution2: '指定分销',
+      promotionCommission: '获得推广佣金',
+      withdrawalApplication: '提现申请',
+      underReview: '审核中',
+      reviewPassed: '审核通过',
+      reviewFailed: '审核不通过',
+      withdrawalSuccess: '提现成功',
+      withdrawalFailed: '提现失败',
+      wallet: '钱包',
+      bankCard: '银行卡',
+      wechat: '微信',
+      alipay: '支付宝',
+      
+      // 配送模块
+      expressDelivery: '快递发货',
+      storePickup: '到店自提',
+      
+      // 订单状态
+      waitingPayment: '待支付',
+      waitingDelivery: '待发货',
+      delivered: '已发货',
+      completed: '已完成',
+      cancelled: '已取消'
+    },
+    validation: {
+      jsonParseError: 'str[{str}] 不是一个 JSON 字符串',
+      deprecatedJsonParse: 'str[{str}] 不是一个 JSON 字符串'
+    },
+    download: {
+      excel: '下载 Excel 方法',
+      word: '下载 Word 方法',
+      zip: '下载 Zip 方法',
+      html: '下载 Html 方法',
+      markdown: '下载 Markdown 方法',
+      json: '下载 Json 方法'
+    }
   },
   form: {
     input: '输入框',
@@ -1300,6 +1479,8 @@ export default {
       name: '名称',
       processIdRequired: '流程标识不能为空',
       processNameRequired: '流程名称不能为空',
+      xmlNCNameNotSatisfied: 'key 不满足 XML NCName 规则,不进行赋值',
+      xmlNCNameSatisfied: 'key 满足 XML NCName 规则,进行赋值',
       elementDocumentation: '元素文档：',
       executeType: '执行类型',
       delegateExpression: '代理表达式',
@@ -1777,6 +1958,34 @@ export default {
           processId: '流程编号',
           taskId: '任务编号',
           handle: '办理'
+        }
+      },
+      manager: {
+        docAlertTitle: '工作流手册',
+        form: {
+          taskName: '任务名称',
+          taskNamePlaceholder: '请输入任务名称',
+          createTime: '创建时间',
+          startDatePlaceholder: '开始日期',
+          endDatePlaceholder: '结束日期',
+          search: '搜索',
+          reset: '重置'
+        },
+        table: {
+          process: '流程',
+          startUser: '发起人',
+          startTime: '发起时间',
+          currentTask: '当前任务',
+          taskStartTime: '任务开始时间',
+          taskEndTime: '任务结束时间',
+          approver: '审批人',
+          approvalStatus: '审批状态',
+          approvalSuggestion: '审批建议',
+          duration: '耗时',
+          processId: '流程编号',
+          taskId: '任务编号',
+          action: '操作',
+          history: '历史'
         }
       }
     },

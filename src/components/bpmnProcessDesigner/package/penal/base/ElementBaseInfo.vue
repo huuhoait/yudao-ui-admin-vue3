@@ -4,20 +4,12 @@
       <div v-if="needProps.type == 'bpmn:Process'">
         <!-- 如果是 Process 信息的时候，使用自定义表单 -->
         <el-form-item :label="$t('bpm.design.processId')" prop="id">
-          <el-input
-            v-model="needProps.id"
-            :placeholder="$t('bpm.design.enterProcessId')"
-            :disabled="needProps.id !== undefined && needProps.id.length > 0"
-            @change="handleKeyUpdate"
-          />
+          <el-input v-model="needProps.id" :placeholder="$t('bpm.design.enterProcessId')"
+            :disabled="needProps.id !== undefined && needProps.id.length > 0" @change="handleKeyUpdate" />
         </el-form-item>
         <el-form-item :label="$t('bpm.design.processName')" prop="name">
-          <el-input
-            v-model="needProps.name"
-            :placeholder="$t('bpm.design.enterProcessName')"
-            clearable
-            @change="handleNameUpdate"
-          />
+          <el-input v-model="needProps.name" :placeholder="$t('bpm.design.enterProcessName')" clearable
+            @change="handleNameUpdate" />
         </el-form-item>
       </div>
       <div v-else>
@@ -37,11 +29,11 @@ defineOptions({ name: 'ElementBaseInfo' })
 const props = defineProps({
   businessObject: {
     type: Object,
-    default: () => {}
+    default: () => { }
   },
   model: {
     type: Object,
-    default: () => {}
+    default: () => { }
   }
 })
 const needProps = ref<any>({})
@@ -58,10 +50,13 @@ const rules = reactive({
 
 const bpmnInstances = () => (window as any)?.bpmnInstances
 const resetBaseInfo = () => {
-  console.log(window, 'window')
-  console.log(bpmnElement.value, 'bpmnElement')
+  const instances = bpmnInstances()
+  if (!instances?.bpmnElement) {
+    console.warn('bpmnElement is not available')
+    return
+  }
 
-  bpmnElement.value = bpmnInstances()?.bpmnElement
+  bpmnElement.value = instances.bpmnElement
   // console.log(bpmnElement.value, 'resetBaseInfo11111111111')
   elementBaseInfo.value = bpmnElement.value.businessObject
   needProps.value['type'] = bpmnElement.value.businessObject.$type
@@ -76,11 +71,10 @@ const handleKeyUpdate = (value) => {
     return
   }
   if (!value.match(/[a-zA-Z_][\-_.0-9a-zA-Z$]*/)) {
-    console.log('key 不满足 XML NCName 规则，所以不进行赋值')
+    console.log(t('bpm.design.xmlNCNameNotSatisfied'))
     return
   }
-  console.log('key 满足 XML NCName 规则，所以进行赋值')
-
+  console.log(t('bpm.design.xmlNCNameSatisfied'))
   // 在 BPMN 的 XML 中，流程标识 key，其实对应的是 id 节点
   elementBaseInfo.value['id'] = value
 
@@ -106,6 +100,19 @@ const handleNameUpdate = (value) => {
 // }
 const updateBaseInfo = (key) => {
   console.log(key, 'key')
+
+  // Check if bpmnElement is available
+  if (!bpmnElement.value) {
+    console.error('bpmnElement is not available for updating properties')
+    return
+  }
+
+  const instances = bpmnInstances()
+  if (!instances?.modeling) {
+    console.error('bpmn modeling instance is not available')
+    return
+  }
+
   // 触发 elementBaseInfo 对应的字段
   const attrObj = Object.create(null)
   // console.log(attrObj, 'attrObj')
@@ -123,13 +130,13 @@ const updateBaseInfo = (key) => {
     console.log(window, 'window')
     console.log(bpmnElement.value, 'bpmnElement')
     console.log(toRaw(bpmnElement.value), 'bpmnElement')
-    bpmnInstances().modeling.updateProperties(toRaw(bpmnElement.value), {
+    instances.modeling.updateProperties(toRaw(bpmnElement.value), {
       id: elementBaseInfo.value[key],
       di: { id: `${elementBaseInfo.value[key]}_di` }
     })
   } else {
     console.log(attrObj, 'attrObj')
-    bpmnInstances().modeling.updateProperties(toRaw(bpmnElement.value), attrObj)
+    instances.modeling.updateProperties(toRaw(bpmnElement.value), attrObj)
   }
 }
 
@@ -138,11 +145,12 @@ watch(
   (val) => {
     // console.log(val, 'val11111111111111111111')
     if (val) {
-      // nextTick(() => {
-      resetBaseInfo()
-      // })
+      nextTick(() => {
+        resetBaseInfo()
+      })
     }
-  }
+  },
+  { immediate: true }
 )
 
 watch(

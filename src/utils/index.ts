@@ -1,4 +1,5 @@
 import { toNumber } from 'lodash-es'
+import { useI18n } from '@/hooks/web/useI18n'
 
 /**
  *
@@ -509,15 +510,32 @@ export const areaReplace = (areaName: string) => {
 }
 
 /**
- * 解析 JSON 字符串
+ * 解析 JSON 字符串 (支持 i18n)
  *
  * @param str
  */
-export function jsonParse(str: string) {
+export function jsonParseI18n(str: string) {
+  const { t } = useI18n()
   try {
     return JSON.parse(str)
   } catch (e) {
-    console.warn(`str[${str}] 不是一个 JSON 字符串`)
+    console.warn(t('utils.validation.jsonParseError', { str }))
+    return str
+  }
+}
+
+/**
+ * 解析 JSON 字符串 (保持向后兼容)
+ *
+ * @param str
+ * @deprecated 请使用 jsonParseI18n() 以获得 i18n 支持
+ */
+export function jsonParse(str: string) {
+  const { t } = useI18n()
+  try {
+    return JSON.parse(str)
+  } catch (e) {
+    console.warn(t('utils.validation.deprecatedJsonParse', { str }))
     return str
   }
 }
