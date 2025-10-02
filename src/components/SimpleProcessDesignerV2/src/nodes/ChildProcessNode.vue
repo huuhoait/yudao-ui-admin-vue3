@@ -35,7 +35,7 @@
             {{ currentNode.showText }}
           </div>
           <div class="node-text" v-else>
-            {{ t(NODE_DEFAULT_TEXT.get(NodeType.CHILD_PROCESS_NODE) as string) }}
+            {{ NODE_DEFAULT_TEXT.get(NodeType.CHILD_PROCESS_NODE) }}
           </div>
           <Icon v-if="!readonly" icon="ep:arrow-right-bold" />
         </div>
@@ -70,7 +70,6 @@ import ChildProcessNodeConfig from '../nodes-config/ChildProcessNodeConfig.vue'
 defineOptions({
   name: 'ChildProcessNode'
 })
-const { t } = useI18n()
 const props = defineProps({
   flowNode: {
     type: Object as () => SimpleFlowNode,

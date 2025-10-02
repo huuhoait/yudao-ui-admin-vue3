@@ -229,8 +229,8 @@ const props = defineProps({
 })
 const prefix = inject('prefix')
 const userTaskForm = ref({
-  candidateStrategy: undefined as number | undefined, // 分配规则
-  candidateParam: [] as any, // 分配选项
+  candidateStrategy: undefined, // 分配规则
+  candidateParam: [], // 分配选项
   skipExpression: '' // 跳过表达式
 })
 const bpmnElement = ref()
@@ -253,7 +253,17 @@ const deptFieldOnFormOptions = computed(() => {
 })
 
 const deptLevel = ref(1)
-// Removed unused deptLevelLabel - using direct i18n keys instead
+const deptLevelLabel = computed(() => {
+  let label = 'Source of department head'
+  if (userTaskForm.value.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER) {
+    label = label + '(Multi Dept Leader)'
+  } else if (userTaskForm.value.candidateStrategy == CandidateStrategy.FORM_DEPT_LEADER) {
+    label = label + '(Dept Leader)'
+  } else {
+    label = label + '(Initiator Department )'
+  }
+  return label
+})
 
 const otherExtensions = ref()
 
@@ -420,7 +430,7 @@ const selectProcessExpression = (expression: ProcessExpressionVO) => {
   updateElementTask()
 }
 
-const handleFormUserChange = (e: any) => {
+const handleFormUserChange = (e) => {
   if (e === 'PROCESS_START_USER_ID') {
     userTaskForm.value.candidateParam = []
     userTaskForm.value.candidateStrategy = CandidateStrategy.START_USER

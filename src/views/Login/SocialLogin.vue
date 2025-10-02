@@ -185,7 +185,7 @@ const { push } = useRouter()
 const permissionStore = usePermissionStore()
 const loginLoading = ref(false)
 const verify = ref()
-const captchaType = ref('blockPuzzle') // blockPuzzle 滑块 clickWord 点击文字
+const captchaType = ref('blockPuzzle') // blockPuzzle 滑块 clickWord 点击文字 pictureWord 文字验证码
 
 const getShow = computed(() => unref(getLoginState) === LoginStateEnum.LOGIN)
 
@@ -257,16 +257,8 @@ const tryLogin = async () => {
     const res = await LoginApi.socialLogin(type, code, state)
     authUtil.setToken(res)
 
-    try {
-      await router.push({ path: redirect || '/' })
-    } catch (error) {
-      console.error('Navigation error:', error)
-      // Fallback to home page if navigation fails
-      await router.push({ path: '/' })
-    }
-  } catch (err) {
-    console.error('Social login error:', err)
-  }
+    router.push({ path: redirect || '/' })
+  } catch (err) {}
 }
 
 // 登录
@@ -317,13 +309,7 @@ const handleLogin = async (params) => {
     if (redirect.indexOf('sso') !== -1) {
       window.location.href = window.location.href.replace('/login?redirect=', '')
     } else {
-      try {
-        await push({ path: redirect || permissionStore.addRouters[0].path })
-      } catch (error) {
-        console.error('Navigation error:', error)
-        // Fallback to home page if navigation fails
-        await push({ path: '/' })
-      }
+      push({ path: redirect || permissionStore.addRouters[0].path })
     }
   } finally {
     loginLoading.value = false
