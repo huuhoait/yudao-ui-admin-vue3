@@ -35,6 +35,9 @@ importers:
       '@wangeditor/editor-for-vue':
         specifier: ^5.1.12
         version: 5.1.12(@wangeditor/editor@5.1.23)(vue@3.5.22(typescript@5.5.4))
+      '@wangeditor/plugin-mention':
+        specifier: ^1.0.0
+        version: 1.0.0(@wangeditor/editor@5.1.23)(snabbdom@3.6.2)
       '@zxcvbn-ts/core':
         specifier: ^3.0.4
         version: 3.0.4
@@ -77,6 +80,9 @@ importers:
       element-plus:
         specifier: 2.11.4
         version: 2.11.4(vue@3.5.22(typescript@5.5.4))
+      fast-xml-parser:
+        specifier: ^4.3.2
+        version: 4.5.3
       highlight.js:
         specifier: ^11.11.1
         version: 11.11.1
@@ -125,6 +131,9 @@ importers:
       qs:
         specifier: ^6.14.0
         version: 6.14.0
+      snabbdom:
+        specifier: ^3.6.2
+        version: 3.6.2
       sortablejs:
         specifier: ^1.15.6
         version: 1.15.6
@@ -152,6 +161,9 @@ importers:
       vue-types:
         specifier: ^6.0.0
         version: 6.0.0(vue@3.5.22(typescript@5.5.4))
+      vue3-print-nb:
+        specifier: ^0.1.4
+        version: 0.1.4(typescript@5.5.4)
       vue3-signature:
         specifier: ^0.2.4
         version: 0.2.4(vue@3.5.22(typescript@5.5.4))
@@ -161,6 +173,9 @@ importers:
       web-storage-cache:
         specifier: ^1.1.1
         version: 1.1.1
+      xml-js:
+        specifier: ^1.6.11
+        version: 1.6.11
     devDependencies:
       '@intlify/unplugin-vue-i18n':
         specifier: ^11.0.1
@@ -2116,6 +2131,12 @@ packages:
       slate: ^0.72.0
       snabbdom: ^3.1.0
 
+  '@wangeditor/plugin-mention@1.0.0':
+    resolution: {integrity: sha512-txQEoHxzil78WoTGXn0ENONZ2sdEL8GI5qBxETn6TMEXQkqiUXA4Kc8bV8D8nZDniC00oFb80kDmOIpT/KUBGw==}
+    peerDependencies:
+      '@wangeditor/editor': '>=5.0.0'
+      snabbdom: ^3.3.1
+
   '@wangeditor/table-module@1.1.4':
     resolution: {integrity: sha512-5saanU9xuEocxaemGdNi9t8MCDSucnykEC6jtuiT72kt+/Hhh4nERYx1J20OPsTCCdVr7hIyQenFD1iSRkIQ6w==, tarball: https://registry.npmmirror.com/@wangeditor/table-module/-/table-module-1.1.4.tgz}
     peerDependencies:
@@ -2985,6 +3006,10 @@ packages:
 
   fast-uri@3.0.3:
     resolution: {integrity: sha512-aLrHthzCjH5He4Z2H9YZ+v6Ujb9ocRuW6ZzkJQOrTxleEijANq4v1TsaPaVG1PZcuurEzrLcWRyYBYXD5cEiaw==}
+
+  fast-xml-parser@4.5.3:
+    resolution: {integrity: sha512-RKihhV+SHsIUGXObeVy9AXiBbFwkVk7Syp8XgwN5U3JV416+Gwp/GO9i0JYKmikykgz/UHRrrV4ROuZEo/T0ig==}
+    hasBin: true
 
   fastest-levenshtein@1.0.16:
     resolution: {integrity: sha512-eRnCtTTtGZFpQCwhJiUOuxPQWRXVKYDn0b2PeHfXL6/Zi53SLAzAHfVhVWK2AryC/WH05kGfxhFIPvTF0SXQzg==, tarball: https://registry.npmmirror.com/fastest-levenshtein/-/fastest-levenshtein-1.0.16.tgz}
@@ -4093,6 +4118,9 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
+  sax@1.4.1:
+    resolution: {integrity: sha512-+aWOz7yVScEGoKNd4PA10LZ8sk0A/z5+nXQG5giUO5rprX9jgYsTdov9qCchZiPIZezbZH+jRut8nPodFAX4Jg==}
+
   saxen@10.0.0:
     resolution: {integrity: sha512-RXsmWok/SAWqOG/f5ADEz51DN9WtZEzqih3e08ranldcaXekxjx8NBKjGh/y5hlowjo0JH/LekBu6gtPFD1G6g==}
     engines: {node: '>= 18'}
@@ -4171,7 +4199,7 @@ packages:
     engines: {node: '>=18'}
 
   snabbdom@3.6.2:
-    resolution: {integrity: sha512-ig5qOnCDbugFntKi6c7Xlib8bA6xiJVk8O+WdFrV3wxbMqeHO0hXFQC4nAhPVWfZfi8255lcZkNhtIBINCc4+Q==, tarball: https://registry.npmmirror.com/snabbdom/-/snabbdom-3.6.2.tgz}
+    resolution: {integrity: sha512-ig5qOnCDbugFntKi6c7Xlib8bA6xiJVk8O+WdFrV3wxbMqeHO0hXFQC4nAhPVWfZfi8255lcZkNhtIBINCc4+Q==}
     engines: {node: '>=12.17.0'}
 
   sortablejs@1.14.0:
@@ -4236,6 +4264,9 @@ packages:
 
   strip-literal@3.1.0:
     resolution: {integrity: sha512-8r3mkIM/2+PpjHoOtiAW8Rg3jJLHaV7xPwG+YRGrv6FP0wwk/toTpATxWYOW0BKdWwl82VT2tFYi5DlROa0Mxg==}
+
+  strnum@1.1.2:
+    resolution: {integrity: sha512-vrN+B7DBIoTTZjnPNewwhx6cBA/H+IS7rfW68n7XxC1y7uoiGQBxaKzqucGUgavX15dJgiGztLJ8vxuEzwqBdA==}
 
   stylelint-config-html@1.1.0:
     resolution: {integrity: sha512-IZv4IVESjKLumUGi+HWeb7skgO6/g4VMuAYrJdlqQFndgbj6WJAXPhaysvBiXefX79upBdQVumgYcdd17gCpjQ==, tarball: https://registry.npmmirror.com/stylelint-config-html/-/stylelint-config-html-1.1.0.tgz}
@@ -4649,6 +4680,9 @@ packages:
       vue:
         optional: true
 
+  vue3-print-nb@0.1.4:
+    resolution: {integrity: sha512-LExI7viEzplR6ZKQ2b+V4U0cwGYbVD4fut/XHvk3UPGlT5CcvIGs6VlwGp107aKgk6P8Pgx4rco3Rehv2lti3A==}
+
   vue3-signature@0.2.4:
     resolution: {integrity: sha512-XFwwFVK9OG3F085pKIq2SlNVqx32WdFH+TXbGEWc5FfEKpx8oMmZuAwZZ50K/pH2FgmJSE8IRwU9DDhrLpd6iA==}
     peerDependencies:
@@ -4731,6 +4765,10 @@ packages:
   write-file-atomic@5.0.1:
     resolution: {integrity: sha512-+QU2zd6OTD8XWIJCbffaiQeH9U73qIqafo1x6V1snCWYGJf6cVE0cDR4D8xRzcEnfI21IFrUPzPGtcPf8AC+Rw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
+
+  xml-js@1.6.11:
+    resolution: {integrity: sha512-7rVi2KMfwfWFl+GpPg6m80IVMWXLRjO+PxTq7V2CDhoGak0wzYzFgUY2m4XJ47OGdXd8eLE8EmwfAmdjw7lC1g==}
+    hasBin: true
 
   xml-name-validator@4.0.0:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
@@ -6850,6 +6888,11 @@ snapshots:
       slate: 0.72.8
       snabbdom: 3.6.2
 
+  '@wangeditor/plugin-mention@1.0.0(@wangeditor/editor@5.1.23)(snabbdom@3.6.2)':
+    dependencies:
+      '@wangeditor/editor': 5.1.23
+      snabbdom: 3.6.2
+
   '@wangeditor/table-module@1.1.4(@wangeditor/core@1.1.19(@uppy/core@2.3.4)(@uppy/xhr-upload@2.1.3(@uppy/core@2.3.4))(dom7@3.0.0)(is-hotkey@0.2.0)(lodash.camelcase@4.3.0)(lodash.clonedeep@4.5.0)(lodash.debounce@4.0.8)(lodash.foreach@4.5.0)(lodash.isequal@4.5.0)(lodash.throttle@4.1.1)(lodash.toarray@4.4.0)(nanoid@3.3.8)(slate@0.72.8)(snabbdom@3.6.2))(dom7@3.0.0)(lodash.isequal@4.5.0)(lodash.throttle@4.1.1)(nanoid@3.3.8)(slate@0.72.8)(snabbdom@3.6.2)':
     dependencies:
       '@wangeditor/core': 1.1.19(@uppy/core@2.3.4)(@uppy/xhr-upload@2.1.3(@uppy/core@2.3.4))(dom7@3.0.0)(is-hotkey@0.2.0)(lodash.camelcase@4.3.0)(lodash.clonedeep@4.5.0)(lodash.debounce@4.0.8)(lodash.foreach@4.5.0)(lodash.isequal@4.5.0)(lodash.throttle@4.1.1)(lodash.toarray@4.4.0)(nanoid@3.3.8)(slate@0.72.8)(snabbdom@3.6.2)
@@ -7819,6 +7862,10 @@ snapshots:
   fast-levenshtein@2.0.6: {}
 
   fast-uri@3.0.3: {}
+
+  fast-xml-parser@4.5.3:
+    dependencies:
+      strnum: 1.1.2
 
   fastest-levenshtein@1.0.16: {}
 
@@ -8877,6 +8924,8 @@ snapshots:
     optionalDependencies:
       '@parcel/watcher': 2.5.0
 
+  sax@1.4.1: {}
+
   saxen@10.0.0: {}
 
   scroll-into-view-if-needed@2.2.31:
@@ -9018,6 +9067,8 @@ snapshots:
   strip-literal@3.1.0:
     dependencies:
       js-tokens: 9.0.1
+
+  strnum@1.1.2: {}
 
   stylelint-config-html@1.1.0(postcss-html@1.8.0)(stylelint@16.24.0(typescript@5.5.4)):
     dependencies:
@@ -9489,6 +9540,12 @@ snapshots:
     optionalDependencies:
       vue: 3.5.22(typescript@5.5.4)
 
+  vue3-print-nb@0.1.4(typescript@5.5.4):
+    dependencies:
+      vue: 3.5.22(typescript@5.5.4)
+    transitivePeerDependencies:
+      - typescript
+
   vue3-signature@0.2.4(vue@3.5.22(typescript@5.5.4)):
     dependencies:
       default-passive-events: 2.0.0
@@ -9577,6 +9634,10 @@ snapshots:
     dependencies:
       imurmurhash: 0.1.4
       signal-exit: 4.1.0
+
+  xml-js@1.6.11:
+    dependencies:
+      sax: 1.4.1
 
   xml-name-validator@4.0.0: {}
 

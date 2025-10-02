@@ -31,6 +31,7 @@ export const useFormCreateDesigner = async (designer: Ref) => {
    * 构建表单组件
    */
   const buildFormComponents = () => {
+    designer.lang('en')
     // 移除自带的上传组件规则，使用 uploadFileRule、uploadImgRule、uploadImgsRule 替代
     designer.value?.removeMenuItem('upload')
     // 移除自带的富文本组件规则，使用 editorRule 替代
