@@ -1526,7 +1526,20 @@ export default {
       elementVariable: '元素变量',
       completionCondition: '完成条件',
       asyncState: '异步状态',
-      loopCardinality: '循环基数'
+      loopCardinality: '循环基数',
+      httpRequest: {
+        postOnlyWarning: '仅支持 POST 请求，以请求体方式接收参数',
+        requestUrl: '请求地址',
+        requestUrlRequired: '请求地址不能为空',
+        returnValue: '返回值',
+        returnValueTip: '通过请求返回值, 可以修改流程表单的值',
+        formField: '表单字段',
+        formFieldRequired: '表单字段不能为空',
+        selectFormField: '请选择表单字段',
+        requestReturnField: '请求返回字段',
+        requestReturnFieldRequired: '请求返回字段不能为空',
+        addRow: '添加一行'
+      }
     },
     oa: {
       leave: {
@@ -3202,6 +3215,24 @@ export default {
         processor: '办理人',
         childProcess: '子流程'
       }
+    },
+    httpRequestParamSetting: {
+      header: '请求头',
+      body: '请求体',
+      paramKey: '参数名',
+      paramKeyPlaceholder: '请输入参数名',
+      paramType: '参数类型',
+      paramValue: '参数值',
+      paramValuePlaceholder: '请输入参数值',
+      deleteRow: '删除行',
+      addRow: '添加一行',
+      requiredParamKey: '参数名不能为空',
+      requiredParamValue: '参数值不能为空'
+    },
+    userTaskListener: {
+      createTask: '创建任务',
+      assignTask: '指派任务执行人员',
+      completeTask: '完成任务'
     }
   }
  

@@ -1553,7 +1553,20 @@ export default {
       elementVariable: 'Element Variable',
       completionCondition: 'Completion Condition',
       asyncState: 'Async State',
-      loopCardinality: 'Loop Cardinality'
+      loopCardinality: 'Loop Cardinality',
+      httpRequest: {
+        postOnlyWarning: 'Only POST requests are supported, with parameters received in the request body',
+        requestUrl: 'Request URL',
+        requestUrlRequired: 'Request URL cannot be empty',
+        returnValue: 'Return Value',
+        returnValueTip: 'Through request return values, you can modify process form values',
+        formField: 'Form Field',
+        formFieldRequired: 'Form field cannot be empty',
+        selectFormField: 'Please select form field',
+        requestReturnField: 'Request Return Field',
+        requestReturnFieldRequired: 'Request return field cannot be empty',
+        addRow: 'Add Row'
+      }
     },
     oa: {
       leave: {
@@ -3230,6 +3243,24 @@ export default {
         processor: 'Processor',
         childProcess: 'Sub-process'
       }
+    },
+    httpRequestParamSetting: {
+      header: 'Request Header',
+      body: 'Request Body',
+      paramKey: 'Parameter Key',
+      paramKeyPlaceholder: 'Please enter parameter key',
+      paramType: 'Parameter Type',
+      paramValue: 'Parameter Value',
+      paramValuePlaceholder: 'Please enter parameter value',
+      deleteRow: 'Delete Row',
+      addRow: 'Add Row',
+      requiredParamKey: 'Parameter key is required',
+      requiredParamValue: 'Parameter value is required'
+    },
+    userTaskListener: {
+      createTask: 'Create Task',
+      assignTask: 'Assign Task Executor',
+      completeTask: 'Complete Task'
     }
   }
 

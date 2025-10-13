@@ -1,6 +1,6 @@
 <template>
   <el-form ref="formRef" :model="condition" :rules="formRules" label-position="top">
-    <el-form-item label="配置方式" prop="conditionType">
+    <el-form-item :label="t('simpleProcessDesignerV2.options.conditionConfig.configType')" prop="conditionType">
       <el-radio-group v-model="condition.conditionType" @change="changeConditionType">
         <el-radio
           v-for="(dict, indexConditionType) in conditionConfigTypes"
@@ -8,26 +8,26 @@
           :value="dict.value"
           :label="dict.value"
         >
-          {{ dict.label }}
+          {{ t(dict.label) }}
         </el-radio>
       </el-radio-group>
     </el-form-item>
     <el-form-item
       v-if="condition.conditionType === ConditionType.RULE && condition.conditionGroups"
-      label="条件规则"
+      :label="t('simpleProcessDesignerV2.condition.conditionRules')"
     >
       <div class="condition-group-tool">
         <div class="flex items-center">
-          <div class="mr-4">条件组关系</div>
+          <div class="mr-4">{{ t('simpleProcessDesignerV2.condition.groupRelationship') }}</div>
           <el-switch
             v-model="condition.conditionGroups.and"
             inline-prompt
-            active-text="且"
-            inactive-text="或"
+            :active-text="t('simpleProcessDesignerV2.condition.and')"
+            :inactive-text="t('simpleProcessDesignerV2.condition.or')"
           />
         </div>
       </div>
-      <el-space direction="vertical" :spacer="condition.conditionGroups.and ? '且' : '或'">
+      <el-space direction="vertical" :spacer="condition.conditionGroups.and ? t('simpleProcessDesignerV2.condition.and') : t('simpleProcessDesignerV2.condition.or')">
         <el-card
           class="condition-group"
           style="width: 530px"
@@ -47,14 +47,14 @@
           </div>
           <template #header>
             <div class="flex items-center justify-between">
-              <div>条件组</div>
+              <div>{{ t('simpleProcessDesignerV2.condition.conditionGroup') }}</div>
               <div class="flex">
-                <div class="mr-4">规则关系</div>
+                <div class="mr-4">{{ t('simpleProcessDesignerV2.condition.ruleRelationship') }}</div>
                 <el-switch
                   v-model="equation.and"
                   inline-prompt
-                  active-text="且"
-                  inactive-text="或"
+                  :active-text="t('simpleProcessDesignerV2.condition.and')"
+                  :inactive-text="t('simpleProcessDesignerV2.condition.or')"
                 />
               </div>
             </div>
@@ -66,7 +66,7 @@
                 :prop="`conditionGroups.conditions.${cIdx}.rules.${rIdx}.leftSide`"
                 :rules="{
                   required: true,
-                  message: '左值不能为空',
+                  message: t('simpleProcessDesignerV2.condition.leftValueRequired'),
                   trigger: 'change'
                 }"
               >
@@ -79,7 +79,7 @@
                     :disabled="!field.required"
                   >
                     <el-tooltip
-                      content="表单字段非必填时不能作为流程分支条件"
+                      :content="t('simpleProcessDesignerV2.condition.formFieldRequiredTip')"
                       effect="dark"
                       placement="right-start"
                       v-if="!field.required"
@@ -95,7 +95,7 @@
                 <el-option
                   v-for="operator in COMPARISON_OPERATORS"
                   :key="operator.value"
-                  :label="operator.label"
+                  :label="t(operator.label)"
                   :value="operator.value"
                 />
               </el-select>
@@ -105,7 +105,7 @@
                 :prop="`conditionGroups.conditions.${cIdx}.rules.${rIdx}.rightSide`"
                 :rules="{
                   required: true,
-                  message: '右值不能为空',
+                  message: t('simpleProcessDesignerV2.condition.rightValueRequired'),
                   trigger: 'blur'
                 }"
               >
@@ -121,7 +121,7 @@
           </div>
         </el-card>
       </el-space>
-      <div title="添加条件组" class="mt-4 cursor-pointer">
+      <div :title="t('simpleProcessDesignerV2.condition.addConditionGroup')" class="mt-4 cursor-pointer">
         <Icon
           color="#0089ff"
           icon="ep:plus"
@@ -132,7 +132,7 @@
     </el-form-item>
     <el-form-item
       v-if="condition.conditionType === ConditionType.EXPRESSION"
-      label="条件表达式"
+      :label="t('simpleProcessDesignerV2.condition.conditionExpression')"
       prop="conditionExpression"
     >
       <el-input
@@ -146,6 +146,7 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import {
   COMPARISON_OPERATORS,
   CONDITION_CONFIG_TYPES,
@@ -155,6 +156,8 @@ import {
 import { BpmModelFormType } from '@/utils/constants'
 import { useFormFieldsAndStartUser } from '../../node'
 import { cloneDeep } from 'lodash-es'
+
+const { t } = useI18n()
 
 const props = defineProps({
   modelValue: {
@@ -188,8 +191,8 @@ const fieldOptions = useFormFieldsAndStartUser()
 
 // 表单校验规则
 const formRules = reactive({
-  conditionType: [{ required: true, message: '配置方式不能为空', trigger: 'blur' }],
-  conditionExpression: [{ required: true, message: '条件表达式不能为空', trigger: 'blur' }]
+  conditionType: [{ required: true, message: t('simpleProcessDesignerV2.condition.configTypeRequired'), trigger: 'blur' }],
+  conditionExpression: [{ required: true, message: t('simpleProcessDesignerV2.condition.expressionRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 
