@@ -286,11 +286,8 @@ const submitForm = async () => {
       if (
         Array.isArray(startUserSelectAssignees.value[userTask.id]) &&
         startUserSelectAssignees.value[userTask.id].length === 0
-      ) {
-        return message.warning(
-          t('bpm.processInstance.create.detail.messages.selectAssignee', { taskName: userTask.name })
-        )
-      }
+      )
+        return message.warning(`请选择${userTask.name}的候选人`)
     }
   }
 

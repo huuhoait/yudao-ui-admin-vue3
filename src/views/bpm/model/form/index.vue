@@ -175,6 +175,10 @@ const formData: any = ref({
   summarySetting: {
     enable: false,
     summary: []
+  },
+  allowWithdrawTask: false,
+  printTemplateSetting: {
+    enable: false
   }
 })
 
@@ -218,7 +222,17 @@ const initData = async () => {
     // 特殊：复制场景
     if (route.params.type === 'copy') {
       delete formData.value.id
-      formData.value.name += t('bpm.model.copy')
+      if (formData.value.bpmnXml) {
+        formData.value.bpmnXml = formData.value.bpmnXml.replaceAll(
+          formData.value.name,
+          formData.value.name + '副本'
+        )
+        formData.value.bpmnXml = formData.value.bpmnXml.replaceAll(
+          formData.value.key,
+          formData.value.key + '_copy'
+        )
+      }
+      formData.value.name += '副本'
       formData.value.key += '_copy'
       tagsView.setTitle(t('bpm.model.form.createTitle'))
     }

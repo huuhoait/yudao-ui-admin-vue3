@@ -129,6 +129,9 @@
       </el-scrollbar>
     </div>
   </ContentWrap>
+
+  <!-- 打印预览弹窗 -->
+  <PrintDialog ref="printRef" />
 </template>
 <script lang="ts" setup>
 import { formatDate } from '@/utils/formatTime'
@@ -150,6 +153,7 @@ import runningSvg from '@/assets/svgs/bpm/running.svg'
 import approveSvg from '@/assets/svgs/bpm/approve.svg'
 import rejectSvg from '@/assets/svgs/bpm/reject.svg'
 import cancelSvg from '@/assets/svgs/bpm/cancel.svg'
+import PrintDialog from './PrintDialog.vue'
 
 defineOptions({ name: 'BpmProcessInstanceDetail' })
 const props = defineProps<{
@@ -192,6 +196,7 @@ const getDetail = () => {
 /** 加载流程实例 */
 const BusinessFormComponent = ref<any>(null) // 异步组件
 /** 获取审批详情 */
+const activityNodes = ref<ProcessInstanceApi.ApprovalNodeInfo[]>([]) // 审批节点信息
 const getApprovalDetail = async () => {
   processInstanceLoading.value = true
   try {
@@ -270,11 +275,7 @@ const getProcessModelView = async () => {
   }
 }
 
-// 审批节点信息
-const activityNodes = ref<ProcessInstanceApi.ApprovalNodeInfo[]>([])
-/**
- * 设置表单权限
- */
+/** 设置表单权限 */
 const setFieldPermission = (field: string, permission: string) => {
   if (permission === FieldPermissionType.READ) {
     //@ts-ignore
@@ -292,12 +293,16 @@ const setFieldPermission = (field: string, permission: string) => {
   }
 }
 
-/**
- * 操作成功后刷新
- */
+/** 操作成功后刷新 */
 const refresh = () => {
   // 重新获取详情
   getDetail()
+}
+
+/** 处理打印 */
+const printRef = ref()
+const handlePrint = async () => {
+  printRef.value.open(props.id)
 }
 
 /** 当前的Tab */
