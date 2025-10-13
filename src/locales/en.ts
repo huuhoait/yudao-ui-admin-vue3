@@ -1407,6 +1407,23 @@ export default {
         notifyAfterEnd: 'Notify after process ends',
         notifyDuringTask: 'Notify during task execution',
         notifyAfterTask: 'Notify after task ends',
+        printTemplate: {
+          dialogTitle: 'Custom Template',
+          placeholder: 'Please enter content...',
+          mentionTip: 'Type @ to insert process form options or default options',
+          formFieldPrefix: '[Form]',
+          option: {
+            startUser: 'Initiator',
+            startUserDept: 'Initiator Department',
+            processName: 'Process Name',
+            processNum: 'Process Number',
+            startTime: 'Start Time',
+            endTime: 'End Time',
+            processStatus: 'Process Status',
+            printUser: 'Printer',
+            printTime: 'Print Time'
+          }
+        },
         customPrintTemplate: 'Custom Print Template',
         editTemplate: 'Edit Template',
         approverPermissions: 'Approver Permissions',
@@ -1930,6 +1947,22 @@ export default {
           addUser: 'Add User',
           approvalOpinion: 'Approval Opinion',
           signature: 'Signature'
+        },
+        printDialog: {
+          printUser: 'Printed by: {user}',
+          processNumber: 'Process ID: {number}',
+          printTime: 'Print Time: {time}',
+          buttons: {
+            print: 'Print'
+          },
+          table: {
+            startUser: 'Initiator',
+            startTime: 'Initiated At',
+            startDept: 'Department',
+            status: 'Status',
+            formContent: 'Form Content',
+            processNode: 'Process Nodes'
+          }
         },
         sign: {
           title: 'Signature',

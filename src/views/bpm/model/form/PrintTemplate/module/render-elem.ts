@@ -20,7 +20,7 @@ function renderProcessRecord(
       }
     },
     [
-      h('thead', [h('tr', [h('th', { attrs: { colSpan: 3 } }, '流程记录')])]),
+      h('thead', [h('tr', [h('th', { attrs: { colSpan: 3 } }, 'Process Record')])]),
       h('tbody', [
         h('tr', [
           h('td', [
@@ -38,7 +38,7 @@ function renderProcessRecord(
                   padding: '0 3px'
                 }
               },
-              `节点`
+              `node`
             )
           ]),
           h('td', [
@@ -56,7 +56,7 @@ function renderProcessRecord(
                   padding: '0 3px'
                 }
               },
-              `操作`
+              `Operation`
             )
           ])
         ])

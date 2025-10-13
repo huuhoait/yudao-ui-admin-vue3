@@ -1398,6 +1398,23 @@ export default {
         notifyAfterEnd: '流程结束后通知',
         notifyDuringTask: '任务执行时通知',
         notifyAfterTask: '任务结束后通知',
+        printTemplate: {
+          dialogTitle: '自定义模板',
+          placeholder: '请输入内容...',
+          mentionTip: '输入 @ 可选择插入流程表单选项和默认选项',
+          formFieldPrefix: '[表单]',
+          option: {
+            startUser: '发起人',
+            startUserDept: '发起人部门',
+            processName: '流程名称',
+            processNum: '流程编号',
+            startTime: '发起时间',
+            endTime: '结束时间',
+            processStatus: '流程状态',
+            printUser: '打印人',
+            printTime: '打印时间'
+          }
+        },
         customPrintTemplate: '自定义打印模板',
         editTemplate: '编辑模板',
         approverPermissions: '审批人权限',
@@ -1903,6 +1920,22 @@ export default {
           addUser: '添加用户',
           approvalOpinion: '审批意见',
           signature: '签名'
+        },
+        printDialog: {
+          printUser: '打印人员: {user}',
+          processNumber: '流程编号: {number}',
+          printTime: '打印时间: {time}',
+          buttons: {
+            print: '打印'
+          },
+          table: {
+            startUser: '发起人',
+            startTime: '发起时间',
+            startDept: '所属部门',
+            status: '流程状态',
+            formContent: '表单内容',
+            processNode: '流程节点'
+          }
         },
         sign: {
           title: '签名',

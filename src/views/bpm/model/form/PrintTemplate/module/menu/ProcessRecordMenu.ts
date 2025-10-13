@@ -5,7 +5,7 @@ class ProcessRecordMenu implements IButtonMenu {
   readonly title: string
 
   constructor() {
-    this.title = '流程记录'
+    this.title = 'Process record'
     this.tag = 'button'
   }
 

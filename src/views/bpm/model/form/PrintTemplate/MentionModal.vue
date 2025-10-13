@@ -1,24 +1,36 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
 const emit = defineEmits(['hideMentionModal', 'insertMention'])
+const { t } = useI18n() // 国际化
 
 const inputRef = ref()
 const top = ref('')
 const left = ref('')
 const searchVal = ref('')
-const list = ref([
-  { id: 'startUser', name: '发起人' },
-  { id: 'startUserDept', name: '发起人部门' },
-  { id: 'processName', name: '流程名称' },
-  { id: 'processNum', name: '流程编号' },
-  { id: 'startTime', name: '发起时间' },
-  { id: 'endTime', name: '结束时间' },
-  { id: 'processStatus', name: '流程状态' },
-  { id: 'printUser', name: '打印人' },
-  { id: 'printTime', name: '打印时间' }
+const formFields = inject<any>('formFieldsObj')
+const baseMentionList = computed(() => [
+  { id: 'startUser', name: t('bpm.model.form.printTemplate.option.startUser') },
+  { id: 'startUserDept', name: t('bpm.model.form.printTemplate.option.startUserDept') },
+  { id: 'processName', name: t('bpm.model.form.printTemplate.option.processName') },
+  { id: 'processNum', name: t('bpm.model.form.printTemplate.option.processNum') },
+  { id: 'startTime', name: t('bpm.model.form.printTemplate.option.startTime') },
+  { id: 'endTime', name: t('bpm.model.form.printTemplate.option.endTime') },
+  { id: 'processStatus', name: t('bpm.model.form.printTemplate.option.processStatus') },
+  { id: 'printUser', name: t('bpm.model.form.printTemplate.option.printUser') },
+  { id: 'printTime', name: t('bpm.model.form.printTemplate.option.printTime') }
 ])
+const dynamicMentionList = computed(() => {
+  const fields = formFields?.value || []
+  return fields.map((item) => ({
+    name: `${t('bpm.model.form.printTemplate.formFieldPrefix')}${item.title}`,
+    id: item.field
+  }))
+})
+const mentionList = computed(() => [...baseMentionList.value, ...dynamicMentionList.value])
 const searchedList = computed(() => {
   const searchValStr = searchVal.value.trim().toLowerCase()
-  return list.value.filter((item) => {
+  return mentionList.value.filter((item) => {
     const name = item.name.toLowerCase()
     return name.indexOf(searchValStr) >= 0
   })
@@ -40,17 +52,7 @@ const insertMentionHandler = (id: any, name: any) => {
   emit('hideMentionModal')
 }
 
-const formFields = inject<any>('formFieldsObj')
 onMounted(() => {
-  if (formFields.value && formFields.value.length > 0) {
-    const cloneFormField = formFields.value.map((item) => {
-      return {
-        name: '[表单]' + item.title,
-        id: item.field
-      }
-    })
-    list.value.push(...cloneFormField)
-  }
   const domSelection = document.getSelection()
   const domRange = domSelection?.getRangeAt(0)
   if (domRange == null) return

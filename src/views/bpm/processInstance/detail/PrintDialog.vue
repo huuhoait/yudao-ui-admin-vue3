@@ -4,8 +4,10 @@ import { useUserStore } from '@/store/modules/user'
 import { formatDate } from '@/utils/formatTime'
 import { DICT_TYPE, getDictLabel } from '@/utils/dict'
 import { decodeFields } from '@/utils/formCreate'
+import { useI18n } from 'vue-i18n'
 
 const userStore = useUserStore()
+const { t } = useI18n() // 国际化
 
 const visible = ref(false)
 const loading = ref(false)
@@ -110,7 +112,7 @@ const getPrintTemplateHTML = () => {
     headTd.setAttribute('colspan', '2')
     headTd.setAttribute('width', 'auto')
     headTd.setAttribute('style', 'text-align: center;')
-    headTd.innerHTML = '流程节点'
+    headTd.innerHTML = t('bpm.processInstance.detail.printDialog.table.processNode')
     headTr.appendChild(headTd)
     processRecordTable.appendChild(headTr)
     printData.value.tasks.forEach((item) => {
@@ -146,23 +148,33 @@ const printObj = ref({
       <div v-if="printData.printTemplateEnable" v-html="getPrintTemplateHTML()"></div>
       <div v-else>
         <h2 class="text-center">{{ printData.processInstance.name }}</h2>
-        <div class="text-right text-15px">{{ '打印人员: ' + userName }}</div>
+        <div class="text-right text-15px">
+          {{ t('bpm.processInstance.detail.printDialog.printUser', { user: userName }) }}
+        </div>
         <div class="flex justify-between">
-          <div class="text-15px">{{ '流程编号: ' + printData.processInstance.id }}</div>
-          <div class="text-15px">{{ '打印时间: ' + printTime }}</div>
+          <div class="text-15px">
+            {{
+              t('bpm.processInstance.detail.printDialog.processNumber', {
+                number: printData.processInstance.id
+              })
+            }}
+          </div>
+          <div class="text-15px">
+            {{ t('bpm.processInstance.detail.printDialog.printTime', { time: printTime }) }}
+          </div>
         </div>
         <table class="mt-20px w-100%" border="1" style="border-collapse: collapse">
           <tbody>
             <tr>
-              <td class="p-5px w-25%">发起人</td>
+              <td class="p-5px w-25%">{{ t('bpm.processInstance.detail.printDialog.table.startUser') }}</td>
               <td class="p-5px w-25%">{{ printData.processInstance.startUser.nickname }}</td>
-              <td class="p-5px w-25%">发起时间</td>
+              <td class="p-5px w-25%">{{ t('bpm.processInstance.detail.printDialog.table.startTime') }}</td>
               <td class="p-5px w-25%">{{ formatDate(printData.processInstance.startTime) }}</td>
             </tr>
             <tr>
-              <td class="p-5px w-25%">所属部门</td>
+              <td class="p-5px w-25%">{{ t('bpm.processInstance.detail.printDialog.table.startDept') }}</td>
               <td class="p-5px w-25%">{{ printData.processInstance.startUser.deptName }}</td>
-              <td class="p-5px w-25%">流程状态</td>
+              <td class="p-5px w-25%">{{ t('bpm.processInstance.detail.printDialog.table.status') }}</td>
               <td class="p-5px w-25%">
                 {{
                   getDictLabel(
@@ -174,7 +186,7 @@ const printObj = ref({
             </tr>
             <tr>
               <td class="p-5px w-100% text-center" colspan="4">
-                <h4>表单内容</h4>
+                <h4>{{ t('bpm.processInstance.detail.printDialog.table.formContent') }}</h4>
               </td>
             </tr>
             <tr v-for="item in formFields" :key="item.id">
@@ -187,7 +199,7 @@ const printObj = ref({
             </tr>
             <tr>
               <td class="p-5px w-100% text-center" colspan="4">
-                <h4>流程节点</h4>
+                <h4>{{ t('bpm.processInstance.detail.printDialog.table.processNode') }}</h4>
               </td>
             </tr>
             <tr v-for="item in printData.tasks" :key="item.id">
@@ -207,8 +219,10 @@ const printObj = ref({
     </div>
     <template #footer>
       <div class="dialog-footer">
-        <el-button @click="visible = false">取 消</el-button>
-        <el-button type="primary" v-print="printObj"> 打 印</el-button>
+        <el-button @click="visible = false">{{ t('common.cancel') }}</el-button>
+        <el-button type="primary" v-print="printObj">
+          {{ t('bpm.processInstance.detail.printDialog.buttons.print') }}
+        </el-button>
       </div>
     </template>
   </el-dialog>
