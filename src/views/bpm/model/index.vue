@@ -212,7 +212,7 @@ onActivated(() => {
 
 <style lang="scss" scoped>
 :deep() {
-  .el-table--fit .el-table__inner-wrapper:before {
+  .el-table--fit .el-table__inner-wrapper::before {
     height: 0;
   }
   .el-card {

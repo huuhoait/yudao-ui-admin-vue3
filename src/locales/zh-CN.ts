@@ -1398,6 +1398,8 @@ export default {
         notifyAfterEnd: '流程结束后通知',
         notifyDuringTask: '任务执行时通知',
         notifyAfterTask: '任务结束后通知',
+        customPrintTemplate: '自定义打印模板',
+        editTemplate: '编辑模板',
         approverPermissions: '审批人权限',
         allowWithdrawTask: '允许审批人撤回任务',
         withdrawTaskTip: '审批人可撤回正在审批节点的前一节点',

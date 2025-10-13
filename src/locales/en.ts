@@ -1407,6 +1407,8 @@ export default {
         notifyAfterEnd: 'Notify after process ends',
         notifyDuringTask: 'Notify during task execution',
         notifyAfterTask: 'Notify after task ends',
+        customPrintTemplate: 'Custom Print Template',
+        editTemplate: 'Edit Template',
         approverPermissions: 'Approver Permissions',
         allowWithdrawTask: 'Allow approver to withdraw task',
         withdrawTaskTip: 'Approver can withdraw the previous node that is currently being approved',
