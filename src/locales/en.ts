@@ -1647,6 +1647,19 @@ export default {
           status: 'Status is required',
           expression: 'Expression is required'
         }
+      },
+      httpRequest: {
+        postOnlyWarning: 'Only POST requests are supported, with parameters received in the request body',
+        requestUrl: 'Request URL',
+        requestUrlRequired: 'Request URL cannot be empty',
+        returnValue: 'Return Value',
+        returnValueTip: 'Through request return values, you can modify process form values',
+        formField: 'Form Field',
+        formFieldRequired: 'Form field cannot be empty',
+        selectFormField: 'Please select form field',
+        requestReturnField: 'Request Return Field',
+        requestReturnFieldRequired: 'Request return field cannot be empty',
+        addRow: 'Add Row'
       }
     },
     processInstance: {

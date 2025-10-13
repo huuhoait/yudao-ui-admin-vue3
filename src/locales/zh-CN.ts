@@ -1620,6 +1620,19 @@ export default {
           status: '状态不能为空',
           expression: '表达式不能为空'
         }
+      },
+      httpRequest: {
+        postOnlyWarning: '仅支持 POST 请求，以请求体方式接收参数',
+        requestUrl: '请求地址',
+        requestUrlRequired: '请求地址不能为空',
+        returnValue: '返回值',
+        returnValueTip: '通过请求返回值, 可以修改流程表单的值',
+        formField: '表单字段',
+        formFieldRequired: '表单字段不能为空',
+        selectFormField: '请选择表单字段',
+        requestReturnField: '请求返回字段',
+        requestReturnFieldRequired: '请求返回字段不能为空',
+        addRow: '添加一行'
       }
     },
     processInstance: {
