@@ -2,7 +2,6 @@ const include = [
   'qs',
   'url',
   'vue',
-  'sass',
   'mitt',
   'axios',
   'pinia',
@@ -118,6 +117,8 @@ const include = [
   'element-plus/es/components/mention/style/css'
 ]
 
-const exclude = ['@iconify/json']
+// Some Node-only packages (e.g. 'sass') should not be pre-bundled for the browser
+// as they can break Vite's dep optimizer. Exclude them here.
+const exclude = ['@iconify/json', 'sass']
 
 export { include, exclude }
