@@ -2,6 +2,7 @@ const include = [
   'qs',
   'url',
   'vue',
+  'sass',
   'mitt',
   'axios',
   'pinia',
@@ -24,8 +25,8 @@ const include = [
   'echarts/components',
   'echarts/renderers',
   'echarts-wordcloud',
-  '@wangeditor/editor',
-  '@wangeditor/editor-for-vue',
+  '@wangeditor-next/editor',
+  '@wangeditor-next/editor-for-vue',
   '@microsoft/fetch-event-source',
   'markdown-it',
   'markmap-view',
@@ -114,11 +115,10 @@ const include = [
   '@element-plus/icons-vue',
   'element-plus/es/components/footer/style/css',
   'element-plus/es/components/empty/style/css',
-  'element-plus/es/components/mention/style/css'
+  'element-plus/es/components/mention/style/css',
+  'element-plus/es/components/progress/style/css'
 ]
 
-// Some Node-only packages (e.g. 'sass') should not be pre-bundled for the browser
-// as they can break Vite's dep optimizer. Exclude them here.
-const exclude = ['@iconify/json', 'sass']
+const exclude = ['@iconify/json']
 
 export { include, exclude }

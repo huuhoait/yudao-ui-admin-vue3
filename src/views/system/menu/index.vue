@@ -48,7 +48,15 @@
           @click="openForm('create')"
         >
           <Icon class="mr-5px" icon="ep:plus" />
-          {{ $t('sys.menu.create') }}
+            {{ $t('sys.menu.create') }}
+        </el-button>
+        <el-button plain type="danger" @click="toggleExpandAll">
+          <Icon class="mr-5px" icon="ep:sort" />
+          展开/折叠
+        </el-button>
+        <el-button plain @click="refreshMenu">
+          <Icon class="mr-5px" icon="ep:refresh" />
+          刷新菜单缓存
         </el-button>
       </el-form-item>
     </el-form>

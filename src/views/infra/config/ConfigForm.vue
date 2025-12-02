@@ -7,28 +7,19 @@
       :rules="formRules"
       label-width="80px"
     >
-      <el-form-item :label="t('infra.config.form.category')" prop="category">
-        <el-input
-          v-model="formData.category"
-          :placeholder="t('infra.config.form.categoryPlaceholder')"
-        />
+      <el-form-item label="参数分类" prop="category">
+        <el-input v-model="formData.category" placeholder="请输入参数分类" />
       </el-form-item>
-      <el-form-item :label="t('infra.config.form.name')" prop="name">
-        <el-input
-          v-model="formData.name"
-          :placeholder="t('infra.config.form.namePlaceholder')"
-        />
+      <el-form-item label="参数名称" prop="name">
+        <el-input v-model="formData.name" placeholder="请输入参数名称" />
       </el-form-item>
-      <el-form-item :label="t('infra.config.form.key')" prop="key">
-        <el-input v-model="formData.key" :placeholder="t('infra.config.form.keyPlaceholder')" />
+      <el-form-item label="参数键名" prop="key">
+        <el-input v-model="formData.key" placeholder="请输入参数键名" />
       </el-form-item>
-      <el-form-item :label="t('infra.config.form.value')" prop="value">
-        <el-input
-          v-model="formData.value"
-          :placeholder="t('infra.config.form.valuePlaceholder')"
-        />
+      <el-form-item label="参数键值" prop="value">
+        <el-input v-model="formData.value" placeholder="请输入参数键值" />
       </el-form-item>
-      <el-form-item :label="t('infra.config.form.visible')" prop="visible">
+      <el-form-item label="是否可见" prop="visible">
         <el-radio-group v-model="formData.visible">
           <el-radio
             v-for="dict in getBoolDictOptions(DICT_TYPE.INFRA_BOOLEAN_STRING)"
@@ -39,19 +30,13 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :label="t('infra.config.form.remark')" prop="remark">
-        <el-input
-          v-model="formData.remark"
-          :placeholder="t('infra.config.form.remarkPlaceholder')"
-          type="textarea"
-        />
+      <el-form-item label="备注" prop="remark">
+        <el-input v-model="formData.remark" placeholder="请输入内容" type="textarea" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">
-        {{ t('common.confirm') }}
-      </el-button>
-      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
+      <el-button @click="dialogVisible = false">取 消</el-button>
     </template>
   </Dialog>
 </template>
@@ -78,11 +63,11 @@ const formData = ref({
   remark: ''
 })
 const formRules = reactive({
-  category: [{ required: true, message: t('infra.config.form.rules.categoryRequired'), trigger: 'blur' }],
-  name: [{ required: true, message: t('infra.config.form.rules.nameRequired'), trigger: 'blur' }],
-  key: [{ required: true, message: t('infra.config.form.rules.keyRequired'), trigger: 'blur' }],
-  value: [{ required: true, message: t('infra.config.form.rules.valueRequired'), trigger: 'blur' }],
-  visible: [{ required: true, message: t('infra.config.form.rules.visibleRequired'), trigger: 'blur' }]
+  category: [{ required: true, message: '参数分类不能为空', trigger: 'blur' }],
+  name: [{ required: true, message: '参数名称不能为空', trigger: 'blur' }],
+  key: [{ required: true, message: '参数键名不能为空', trigger: 'blur' }],
+  value: [{ required: true, message: '参数键值不能为空', trigger: 'blur' }],
+  visible: [{ required: true, message: '是否可见不能为空', trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

@@ -19,7 +19,7 @@ const props = defineProps({
 })
 
 const bpmnInstances = () => (window as any)?.bpmnInstances
-const customConfigComponent = shallowRef<any>(null)
+const customConfigComponent = ref<any>(null)
 
 watch(
   () => props.businessObject,

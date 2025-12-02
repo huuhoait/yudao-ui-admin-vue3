@@ -1,60 +1,48 @@
 <template>
-  <doc-alert :title="t('infra.redis.doc.redis')" url="https://doc.iocoder.cn/redis-cache/" />
-  <doc-alert :title="t('infra.redis.doc.local')" url="https://doc.iocoder.cn/local-cache/" />
+  <doc-alert title="Redis 缓存" url="https://doc.iocoder.cn/redis-cache/" />
+  <doc-alert title="本地缓存" url="https://doc.iocoder.cn/local-cache/" />
   <el-scrollbar height="calc(100vh - 88px - 40px - 50px)">
     <el-row>
       <!-- 基本信息 -->
       <el-col :span="24" class="card-box" shadow="hover">
         <el-card>
-          <el-descriptions :title="t('infra.redis.basicInfo.title')" :column="6" border>
-            <el-descriptions-item :label="t('infra.redis.basicInfo.redisVersion')">
+          <el-descriptions title="基本信息" :column="6" border>
+            <el-descriptions-item label="Redis版本 :">
               {{ cache?.info?.redis_version }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis.basicInfo.runMode')">
-              {{
-                cache?.info?.redis_mode === 'standalone'
-                  ? t('infra.redis.basicInfo.runModeStandalone')
-                  : t('infra.redis.basicInfo.runModeCluster')
-              }}
+            <el-descriptions-item label="运行模式 :">
+              {{ cache?.info?.redis_mode == 'standalone' ? '单机' : '集群' }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis.basicInfo.port')">
+            <el-descriptions-item label="端口 :">
               {{ cache?.info?.tcp_port }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis.basicInfo.clients')">
+            <el-descriptions-item label="客户端数 :">
               {{ cache?.info?.connected_clients }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis.basicInfo.uptimeDays')">
+            <el-descriptions-item label="运行时间(天) :">
               {{ cache?.info?.uptime_in_days }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis.basicInfo.usedMemory')">
+            <el-descriptions-item label="使用内存 :">
               {{ cache?.info?.used_memory_human }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis.basicInfo.usedCpu')">
+            <el-descriptions-item label="使用CPU :">
               {{ cache?.info ? parseFloat(cache?.info?.used_cpu_user_children).toFixed(2) : '' }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis.basicInfo.maxMemory')">
+            <el-descriptions-item label="内存配置 :">
               {{ cache?.info?.maxmemory_human }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis.basicInfo.aofEnabled')">
-              {{
-                cache?.info?.aof_enabled === '0'
-                  ? t('infra.redis.basicInfo.aofNo')
-                  : t('infra.redis.basicInfo.aofYes')
-              }}
+            <el-descriptions-item label="AOF是否开启 :">
+              {{ cache?.info?.aof_enabled == '0' ? '否' : '是' }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis.basicInfo.rdbStatus')">
+            <el-descriptions-item label="RDB是否成功 :">
               {{ cache?.info?.rdb_last_bgsave_status }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis.basicInfo.keyCount')">
+            <el-descriptions-item label="Key数量 :">
               {{ cache?.dbSize }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis.basicInfo.netIO')">
-              {{
-                t('infra.redis.basicInfo.netIOUnit', {
-                  in: cache?.info?.instantaneous_input_kbps,
-                  out: cache?.info?.instantaneous_output_kbps
-                })
-              }}
+            <el-descriptions-item label="网络入口/出口 :">
+              {{ cache?.info?.instantaneous_input_kbps }}kps/
+              {{ cache?.info?.instantaneous_output_kbps }}kps
             </el-descriptions-item>
           </el-descriptions>
         </el-card>
@@ -79,8 +67,6 @@ import * as RedisApi from '@/api/infra/redis'
 import { RedisMonitorInfoVO } from '@/api/infra/redis/types'
 const cache = ref<RedisMonitorInfoVO>()
 
-const { t } = useI18n()
-
 // 基本信息
 const readRedisInfo = async () => {
   const data = await RedisApi.getCache()
@@ -91,7 +77,7 @@ const readRedisInfo = async () => {
 const usedmemoryEchartChika = reactive<any>({
   title: {
     // 仪表盘标题。
-    text: t('infra.redis.charts.usedMemoryTitle'),
+    text: '内存使用情况',
     left: 'center',
     show: true, // 是否显示标题,默认 true。
     offsetCenter: [0, '20%'], //相对于仪表盘中心的偏移位置，数组第一项是水平方向的偏移，第二项是垂直方向的偏移。可以是绝对的数值，也可以是相对于仪表盘半径的百分比。
@@ -107,7 +93,7 @@ const usedmemoryEchartChika = reactive<any>({
   },
   series: [
     {
-      name: t('infra.redis.charts.peakName'),
+      name: '峰值',
       type: 'gauge',
       min: 0,
       max: 50,
@@ -177,7 +163,7 @@ const usedmemoryEchartChika = reactive<any>({
 // 指令使用情况
 const commandStatsRefChika = reactive({
   title: {
-    text: t('infra.redis.charts.commandStatsTitle'),
+    text: '命令统计',
     left: 'center'
   },
   tooltip: {
@@ -197,7 +183,7 @@ const commandStatsRefChika = reactive({
   },
   series: [
     {
-      name: t('infra.redis.charts.commandSeriesName'),
+      name: '命令',
       type: 'pie',
       radius: [20, 120],
       center: ['40%', '60%'],
@@ -263,7 +249,7 @@ const usedMemoryInstance = async () => {
 
     usedmemoryEchartChika.series[0].data[0] = {
       value: cache.value!.info.used_memory_human,
-      name: t('infra.redis.charts.usedMemoryTitle')
+      name: '内存消耗'
     }
     console.log(cache.value!.info)
     usedmemoryEchartChika.tooltip = {

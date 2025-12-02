@@ -242,7 +242,13 @@ const assignEmptyUserIds = ref()
 
 // 操作按钮
 const buttonsSettingEl = ref()
-const { btnDisplayNameEdit, changeBtnDisplayName, btnDisplayNameBlurEvent } = useButtonsSetting()
+const { btnDisplayNameEdit, changeBtnDisplayName } = useButtonsSetting()
+const btnDisplayNameBlurEvent = (index: number) => {
+  btnDisplayNameEdit.value[index] = false
+  const buttonItem = buttonsSettingEl.value[index]
+  buttonItem.displayName = buttonItem.displayName || OPERATION_BUTTON_NAME.get(buttonItem.id)!
+  updateElementExtensions()
+}
 
 // 字段权限
 const fieldsPermissionEl = ref([])
@@ -497,16 +503,10 @@ function useButtonsSetting() {
   const changeBtnDisplayName = (index: number) => {
     btnDisplayNameEdit.value[index] = true
   }
-  const btnDisplayNameBlurEvent = (index: number) => {
-    btnDisplayNameEdit.value[index] = false
-    const buttonItem = buttonsSetting.value![index]
-    buttonItem.displayName = buttonItem.displayName || OPERATION_BUTTON_NAME.get(buttonItem.id)!
-  }
   return {
     buttonsSetting,
     btnDisplayNameEdit,
-    changeBtnDisplayName,
-    btnDisplayNameBlurEvent
+    changeBtnDisplayName
   }
 }
 

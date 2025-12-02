@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('infra.fileConfig.doc.title')" url="https://doc.iocoder.cn/file/" />
+  <doc-alert title="上传下载" url="https://doc.iocoder.cn/file/" />
 
   <!-- 搜索 -->
   <ContentWrap>
@@ -10,19 +10,19 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="t('infra.fileConfig.searchForm.name')" prop="name">
+      <el-form-item label="配置名" prop="name">
         <el-input
           v-model="queryParams.name"
-          :placeholder="t('infra.fileConfig.searchForm.namePlaceholder')"
+          placeholder="请输入配置名"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.fileConfig.searchForm.storage')" prop="storage">
+      <el-form-item label="存储器" prop="storage">
         <el-select
           v-model="queryParams.storage"
-          :placeholder="t('infra.fileConfig.searchForm.storagePlaceholder')"
+          placeholder="请选择存储器"
           clearable
           class="!w-240px"
         >
@@ -34,27 +34,27 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('infra.fileConfig.searchForm.createTime')" prop="createTime">
+      <el-form-item label="创建时间" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          :start-placeholder="t('infra.fileConfig.searchForm.createTimeStartPlaceholder')"
-          :end-placeholder="t('infra.fileConfig.searchForm.createTimeEndPlaceholder')"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
         <el-button
           type="primary"
           plain
           @click="openForm('create')"
           v-hasPermi="['infra:file-config:create']"
         >
-          <Icon icon="ep:plus" class="mr-5px" /> {{ t('action.create') }}
+          <Icon icon="ep:plus" class="mr-5px" /> 新增
         </el-button>
         <el-button
           type="danger"
@@ -63,7 +63,7 @@
           @click="handleDeleteBatch"
           v-hasPermi="['infra:file-config:delete']"
         >
-          <Icon icon="ep:delete" class="mr-5px" /> {{ t('infra.fileConfig.actions.batchDelete') }}
+          <Icon icon="ep:delete" class="mr-5px" /> 批量删除
         </el-button>
       </el-form-item>
     </el-form>
@@ -73,27 +73,27 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column :label="t('infra.fileConfig.table.id')" align="center" prop="id" />
-      <el-table-column :label="t('infra.fileConfig.table.name')" align="center" prop="name" />
-      <el-table-column :label="t('infra.fileConfig.table.storage')" align="center" prop="storage">
+      <el-table-column label="编号" align="center" prop="id" />
+      <el-table-column label="配置名" align="center" prop="name" />
+      <el-table-column label="存储器" align="center" prop="storage">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_FILE_STORAGE" :value="scope.row.storage" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('infra.fileConfig.table.remark')" align="center" prop="remark" />
-      <el-table-column :label="t('infra.fileConfig.table.master')" align="center" prop="primary">
+      <el-table-column label="备注" align="center" prop="remark" />
+      <el-table-column label="主配置" align="center" prop="primary">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_BOOLEAN_STRING" :value="scope.row.master" />
         </template>
       </el-table-column>
       <el-table-column
-        :label="t('infra.fileConfig.table.createTime')"
+        label="创建时间"
         align="center"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('common.operation')" align="center" width="240px">
+      <el-table-column label="操作" align="center" width="240px">
         <template #default="scope">
           <el-button
             link
@@ -101,7 +101,7 @@
             @click="openForm('update', scope.row.id)"
             v-hasPermi="['infra:file-config:update']"
           >
-            {{ t('action.edit') }}
+            编辑
           </el-button>
           <el-button
             link
@@ -110,18 +110,16 @@
             @click="handleMaster(scope.row.id)"
             v-hasPermi="['infra:file-config:update']"
           >
-            {{ t('infra.fileConfig.actions.setMaster') }}
+            主配置
           </el-button>
-          <el-button link type="primary" @click="handleTest(scope.row.id)">
-            {{ t('infra.fileConfig.actions.test') }}
-          </el-button>
+          <el-button link type="primary" @click="handleTest(scope.row.id)"> 测试 </el-button>
           <el-button
             link
             type="danger"
             @click="handleDelete(scope.row.id)"
             v-hasPermi="['infra:file-config:delete']"
           >
-            {{ t('action.delete') }}
+            删除
           </el-button>
         </template>
       </el-table-column>
@@ -216,6 +214,7 @@ const handleDeleteBatch = async () => {
     await message.delConfirm()
     // 发起批量删除
     await FileConfigApi.deleteFileConfigList(checkedIds.value)
+    checkedIds.value = []
     message.success(t('common.delSuccess'))
     // 刷新列表
     await getList()
@@ -223,9 +222,9 @@ const handleDeleteBatch = async () => {
 }
 
 /** 主配置按钮操作 */
-const handleMaster = async (id: number) => {
+const handleMaster = async (id) => {
   try {
-    await message.confirm(t('infra.fileConfig.msg.masterConfirm', { id }))
+    await message.confirm('是否确认修改配置编号为"' + id + '"的数据项为主配置?')
     await FileConfigApi.updateFileConfigMaster(id)
     message.success(t('common.updateSuccess'))
     await getList()
@@ -233,13 +232,10 @@ const handleMaster = async (id: number) => {
 }
 
 /** 测试按钮操作 */
-const handleTest = async (id: number) => {
+const handleTest = async (id) => {
   try {
     const response = await FileConfigApi.testFileConfig(id)
-    await message.confirm(
-      t('infra.fileConfig.msg.testConfirmMessage'),
-      t('infra.fileConfig.msg.testConfirmTitle')
-    )
+    await message.confirm('是否要访问该文件？', '测试上传成功')
     window.open(response, '_blank')
   } catch {}
 }

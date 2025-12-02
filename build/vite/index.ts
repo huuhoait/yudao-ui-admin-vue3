@@ -3,7 +3,8 @@ import Vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
 import progress from 'vite-plugin-progress'
 import EslintPlugin from 'vite-plugin-eslint'
-import PurgeIcons from 'vite-plugin-purge-icons'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 import { ViteEjsPlugin } from 'vite-plugin-ejs'
 // @ts-ignore
 import ElementPlus from 'unplugin-element-plus/vite'
@@ -29,7 +30,10 @@ export function createVitePlugins() {
     VueJsx(),
     UnoCSS(),
     progress(),
-    PurgeIcons(),
+    Icons({
+      autoInstall: true,
+      compiler: 'vue3',
+    }),
     ElementPlus({}),
     AutoImport({
       include: [
@@ -63,7 +67,12 @@ export function createVitePlugins() {
       // 生成自定义 `auto-components.d.ts` 全局声明
       dts: 'src/types/auto-components.d.ts',
       // 自定义组件的解析器
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        ElementPlusResolver(),
+        IconsResolver({
+          enabledCollections: ['ep']
+        })
+      ],
       globs: ["src/components/**/**.{vue, md}", '!src/components/DiyEditor/components/mobile/**']
     }),
     EslintPlugin({

@@ -2,7 +2,12 @@
   <el-tabs v-model="tab">
     <el-tab-pane label="CRON表达式" name="cron">
       <div style="margin-bottom: 10px">
-        <el-input v-model="cronStr" readonly style="width: 400px; font-weight: bold" :key="'cronStr'" />
+        <el-input
+          v-model="cronStr"
+          readonly
+          style="width: 400px; font-weight: bold"
+          :key="'cronStr'"
+        />
       </div>
       <div style="display: flex; gap: 8px; margin-bottom: 8px">
         <el-input v-model="fields.second" placeholder="second" style="width: 80px" :key="'second'" />

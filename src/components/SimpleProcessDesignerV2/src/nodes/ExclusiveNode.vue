@@ -54,7 +54,7 @@
                   {{ item.showText }}
                 </div>
                 <div class="branch-node-text" v-else>
-                  {{ t(NODE_DEFAULT_TEXT.get(NodeType.CONDITION_NODE) as string) }}
+                  {{ NODE_DEFAULT_TEXT.get(NodeType.CONDITION_NODE) }}
                 </div>
               </div>
               <div

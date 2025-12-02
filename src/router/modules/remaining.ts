@@ -36,6 +36,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
   {
     path: '/redirect',
     component: Layout,
+    name: 'Redirect',
     children: [
       {
         path: '/redirect/:path(.*)',

@@ -315,7 +315,7 @@ const initBpmnModeler = () => {
     // propertiesPanel: {
     // parent: '#js-properties-panel'
     // },
-    keyboard: props.keyboard ? {} : null,
+    keyboard: props.keyboard ? { bindTo: document } : null,
     // additionalModules: additionalModules.value,
     additionalModules: additionalModules.value,
     moddleExtensions: moddleExtensions.value
@@ -434,8 +434,9 @@ const setEncoded = (type, data) => {
   const encodedData = encodeURIComponent(data)
   return {
     filename: `${filename}.${type}`,
-    href: `data:application/${type === 'svg' ? 'text/xml' : 'bpmn20-xml'
-      };charset=UTF-8,${encodedData}`,
+    href: `data:application/${
+      type === 'svg' ? 'text/xml' : 'bpmn20-xml'
+    };charset=UTF-8,${encodedData}`,
     data: data
   }
 }

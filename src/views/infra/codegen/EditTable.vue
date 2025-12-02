@@ -1,13 +1,13 @@
 <template>
   <ContentWrap v-loading="formLoading">
     <el-tabs v-model="activeName">
-      <el-tab-pane :label="t('infra.codegen.edit.tabs.basic')" name="basicInfo">
+      <el-tab-pane label="基本信息" name="basicInfo">
         <basic-info-form ref="basicInfoRef" :table="formData.table" />
       </el-tab-pane>
-      <el-tab-pane :label="t('infra.codegen.edit.tabs.column')" name="colum">
+      <el-tab-pane label="字段信息" name="colum">
         <colum-info-form ref="columInfoRef" :columns="formData.columns" />
       </el-tab-pane>
-      <el-tab-pane :label="t('infra.codegen.edit.tabs.generate')" name="generateInfo">
+      <el-tab-pane label="生成信息" name="generateInfo">
         <generate-info-form
           ref="generateInfoRef"
           :table="formData.table"
@@ -17,10 +17,8 @@
     </el-tabs>
     <el-form>
       <el-form-item style="float: right">
-        <el-button :loading="formLoading" type="primary" @click="submitForm">
-          {{ t('infra.codegen.edit.actions.save') }}
-        </el-button>
-        <el-button @click="close">{{ t('infra.codegen.edit.actions.back') }}</el-button>
+        <el-button :loading="formLoading" type="primary" @click="submitForm">保存</el-button>
+        <el-button @click="close">返回</el-button>
       </el-form-item>
     </el-form>
   </ContentWrap>

@@ -5,72 +5,76 @@
         <!-- class="panel-tab__title" -->
         <template #title>
           <Icon icon="ep:info-filled" />
-          Information</template
-        >
-        <ElementBaseInfo
-          :id-edit-disabled="idEditDisabled"
-          :business-object="elementBusinessObject"
-          :type="elementType"
-          :model="model"
-        />
+          Information
+        </template>
+        <ElementBaseInfo :id-edit-disabled="idEditDisabled" :business-object="elementBusinessObject" :type="elementType"
+          :model="model" />
       </el-collapse-item>
       <el-collapse-item name="condition" v-if="elementType === 'Process'" key="message">
-        <template #title><Icon icon="ep:comment" />Messages & Signals</template>
+        <template #title>
+          <Icon icon="ep:comment" />Messages & Signals
+        </template>
         <signal-and-massage />
       </el-collapse-item>
       <el-collapse-item name="condition" v-if="conditionFormVisible" key="condition">
-        <template #title><Icon icon="ep:promotion" />Flow Conditions</template>
+        <template #title>
+          <Icon icon="ep:promotion" />Flow Conditions
+        </template>
         <flow-condition :business-object="elementBusinessObject" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="condition" v-if="formVisible" key="form">
-        <template #title><Icon icon="ep:list" />Forms</template>
+        <template #title>
+          <Icon icon="ep:list" />Forms
+        </template>
         <element-form :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="task" v-if="isTaskCollapseItemShow(elementType)" key="task">
-        <template #title
-          ><Icon icon="ep:checked" />{{ getTaskCollapseItemName(elementType) }}</template
-        >
+        <template #title>
+          <Icon icon="ep:checked" />{{ getTaskCollapseItemName(elementType) }}
+        </template>
         <element-task :id="elementId" :type="elementType" />
       </el-collapse-item>
-      <el-collapse-item
-        name="multiInstance"
-        v-if="elementType.indexOf('Task') !== -1"
-        key="multiInstance"
-      >
-        <template #title><Icon icon="ep:help-filled" />Multi-Instance</template>
-        <element-multi-instance
-          :id="elementId"
-          :business-object="elementBusinessObject"
-          :type="elementType"
-        />
+      <el-collapse-item name="multiInstance" v-if="elementType.indexOf('Task') !== -1" key="multiInstance">
+        <template #title>
+          <Icon icon="ep:help-filled" />Multi-Instance
+        </template>
+        <element-multi-instance :id="elementId" :business-object="elementBusinessObject" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="listeners" key="listeners">
-        <template #title><Icon icon="ep:bell-filled" />Listener</template>
+        <template #title>
+          <Icon icon="ep:bell-filled" />Listener
+        </template>
         <element-listeners :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="taskListeners" v-if="elementType === 'UserTask'" key="taskListeners">
-        <template #title><Icon icon="ep:bell-filled" />Task Listener</template>
+        <template #title>
+          <Icon icon="ep:bell-filled" />Task Listener
+        </template>
         <user-task-listeners :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="extensions" key="extensions">
-        <template #title><Icon icon="ep:circle-plus-filled" />Extended properties</template>
+        <template #title>
+          <Icon icon="ep:circle-plus-filled" />Extended properties
+        </template>
         <element-properties :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="other" key="other">
-        <template #title><Icon icon="ep:promotion" />Other</template>
+        <template #title>
+          <Icon icon="ep:promotion" />Other
+        </template>
         <element-other-config :id="elementId" />
       </el-collapse-item>
       <el-collapse-item name="customConfig" key="customConfig">
-        <template #title><Icon icon="ep:tools" />Custom Configuration</template>
-        <element-custom-config
-          :id="elementId"
-          :type="elementType"
-          :business-object="elementBusinessObject"
-        />
+        <template #title>
+          <Icon icon="ep:tools" />Custom Configuration
+        </template>
+        <element-custom-config :id="elementId" :type="elementType" :business-object="elementBusinessObject" />
       </el-collapse-item>
       <!-- 新增的时间事件配置项 -->
       <el-collapse-item v-if="elementType === 'IntermediateCatchEvent'" name="timeEvent">
-        <template #title><Icon icon="ep:timer" />Time Event</template>
+        <template #title>
+          <Icon icon="ep:timer" />Time Event
+        </template>
         <TimeEventConfig :businessObject="bpmnElement.value?.businessObject" :key="elementId" />
       </el-collapse-item>
     </el-collapse>
@@ -102,7 +106,7 @@ defineOptions({ name: 'MyPropertiesPanel' })
 const props = defineProps({
   bpmnModeler: {
     type: Object,
-    default: () => {}
+    default: () => { }
   },
   prefix: {
     type: String,
@@ -110,7 +114,7 @@ const props = defineProps({
   },
   width: {
     type: Number,
-    default: 480
+    default: 400
   },
   idEditDisabled: {
     type: Boolean,

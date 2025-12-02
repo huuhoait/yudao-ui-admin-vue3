@@ -35,7 +35,7 @@ const taskConfigForm = ref({
   asyncBefore: false,
   exclusive: false
 })
-const witchTaskComponent = shallowRef()
+const witchTaskComponent = ref()
 
 const bpmnElement = ref()
 

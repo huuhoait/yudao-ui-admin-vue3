@@ -7,23 +7,17 @@
       :rules="formRules"
       label-width="130px"
     >
-      <el-form-item :label="t('infra.fileConfig.form.name')" prop="name">
-        <el-input
-          v-model="formData.name"
-          :placeholder="t('infra.fileConfig.form.namePlaceholder')"
-        />
+      <el-form-item label="配置名" prop="name">
+        <el-input v-model="formData.name" placeholder="请输入配置名" />
       </el-form-item>
-      <el-form-item :label="t('infra.fileConfig.form.remark')" prop="remark">
-        <el-input
-          v-model="formData.remark"
-          :placeholder="t('infra.fileConfig.form.remarkPlaceholder')"
-        />
+      <el-form-item label="备注" prop="remark">
+        <el-input v-model="formData.remark" placeholder="请输入备注" />
       </el-form-item>
-      <el-form-item :label="t('infra.fileConfig.form.storage')" prop="storage">
+      <el-form-item label="存储器" prop="storage">
         <el-select
           v-model="formData.storage"
           :disabled="formData.id !== undefined"
-          :placeholder="t('infra.fileConfig.form.storagePlaceholder')"
+          placeholder="请选择存储器"
         >
           <el-option
             v-for="dict in getDictOptions(DICT_TYPE.INFRA_FILE_STORAGE)"
@@ -37,117 +31,90 @@
       <!-- Local / FTP / SFTP -->
       <el-form-item
         v-if="formData.storage >= 10 && formData.storage <= 12"
-        :label="t('infra.fileConfig.form.basePath')"
+        label="基础路径"
         prop="config.basePath"
       >
-        <el-input
-          v-model="formData.config.basePath"
-          :placeholder="t('infra.fileConfig.form.basePathPlaceholder')"
-        />
+        <el-input v-model="formData.config.basePath" placeholder="请输入基础路径" />
       </el-form-item>
       <el-form-item
         v-if="formData.storage >= 11 && formData.storage <= 12"
-        :label="t('infra.fileConfig.form.host')"
+        label="主机地址"
         prop="config.host"
       >
-        <el-input
-          v-model="formData.config.host"
-          :placeholder="t('infra.fileConfig.form.hostPlaceholder')"
-        />
+        <el-input v-model="formData.config.host" placeholder="请输入主机地址" />
       </el-form-item>
       <el-form-item
         v-if="formData.storage >= 11 && formData.storage <= 12"
-        :label="t('infra.fileConfig.form.port')"
+        label="主机端口"
         prop="config.port"
       >
-        <el-input-number
-          v-model="formData.config.port"
-          :min="0"
-          :placeholder="t('infra.fileConfig.form.portPlaceholder')"
-        />
+        <el-input-number v-model="formData.config.port" :min="0" placeholder="请输入主机端口" />
       </el-form-item>
       <el-form-item
         v-if="formData.storage >= 11 && formData.storage <= 12"
-        :label="t('infra.fileConfig.form.username')"
+        label="用户名"
         prop="config.username"
       >
-        <el-input
-          v-model="formData.config.username"
-          :placeholder="t('infra.fileConfig.form.usernamePlaceholder')"
-        />
+        <el-input v-model="formData.config.username" placeholder="请输入密码" />
       </el-form-item>
       <el-form-item
         v-if="formData.storage >= 11 && formData.storage <= 12"
-        :label="t('infra.fileConfig.form.password')"
+        label="密码"
         prop="config.password"
       >
-        <el-input
-          v-model="formData.config.password"
-          :placeholder="t('infra.fileConfig.form.passwordPlaceholder')"
-        />
+        <el-input v-model="formData.config.password" placeholder="请输入密码" />
       </el-form-item>
-      <el-form-item v-if="formData.storage === 11" :label="t('infra.fileConfig.form.mode')" prop="config.mode">
+      <el-form-item v-if="formData.storage === 11" label="连接模式" prop="config.mode">
         <el-radio-group v-model="formData.config.mode">
-          <el-radio key="Active" value="Active">{{ t('infra.fileConfig.form.modeActive') }}</el-radio>
-          <el-radio key="Passive" value="Passive">{{ t('infra.fileConfig.form.modePassive') }}</el-radio>
+          <el-radio key="Active" value="Active">主动模式</el-radio>
+          <el-radio key="Passive" value="Passive">被动模式</el-radio>
         </el-radio-group>
       </el-form-item>
       <!-- S3 -->
-      <el-form-item v-if="formData.storage === 20" :label="t('infra.fileConfig.form.endpoint')" prop="config.endpoint">
-        <el-input
-          v-model="formData.config.endpoint"
-          :placeholder="t('infra.fileConfig.form.endpointPlaceholder')"
-        />
+      <el-form-item v-if="formData.storage === 20" label="节点地址" prop="config.endpoint">
+        <el-input v-model="formData.config.endpoint" placeholder="请输入节点地址" />
       </el-form-item>
-      <el-form-item v-if="formData.storage === 20" :label="t('infra.fileConfig.form.bucket')" prop="config.bucket">
-        <el-input v-model="formData.config.bucket" :placeholder="t('infra.fileConfig.form.bucketPlaceholder')" />
+      <el-form-item v-if="formData.storage === 20" label="存储 bucket" prop="config.bucket">
+        <el-input v-model="formData.config.bucket" placeholder="请输入 bucket" />
       </el-form-item>
-      <el-form-item v-if="formData.storage === 20" :label="t('infra.fileConfig.form.accessKey')" prop="config.accessKey">
-        <el-input
-          v-model="formData.config.accessKey"
-          :placeholder="t('infra.fileConfig.form.accessKeyPlaceholder')"
-        />
+      <el-form-item v-if="formData.storage === 20" label="accessKey" prop="config.accessKey">
+        <el-input v-model="formData.config.accessKey" placeholder="请输入 accessKey" />
+      </el-form-item>
+      <el-form-item v-if="formData.storage === 20" label="accessSecret" prop="config.accessSecret">
+        <el-input v-model="formData.config.accessSecret" placeholder="请输入 accessSecret" />
       </el-form-item>
       <el-form-item
         v-if="formData.storage === 20"
-        :label="t('infra.fileConfig.form.accessSecret')"
-        prop="config.accessSecret"
-      >
-        <el-input
-          v-model="formData.config.accessSecret"
-          :placeholder="t('infra.fileConfig.form.accessSecretPlaceholder')"
-        />
-      </el-form-item>
-      <el-form-item
-        v-if="formData.storage === 20"
-        :label="t('infra.fileConfig.form.enablePathStyleAccess')"
+        label="是否 Path Style"
         prop="config.enablePathStyleAccess"
       >
         <el-radio-group v-model="formData.config.enablePathStyleAccess">
-          <el-radio key="true" :value="true">{{ t('infra.fileConfig.form.enableOption') }}</el-radio>
-          <el-radio key="false" :value="false">{{ t('infra.fileConfig.form.disableOption') }}</el-radio>
+          <el-radio key="true" :value="true">启用</el-radio>
+          <el-radio key="false" :value="false">禁用</el-radio>
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item
+        v-if="formData.storage === 20"
+        label="公开访问"
+        prop="config.enablePublicAccess"
+      >
+        <el-radio-group v-model="formData.config.enablePublicAccess">
+          <el-radio key="true" :value="true">公开</el-radio>
+          <el-radio key="false" :value="false">私有</el-radio>
         </el-radio-group>
       </el-form-item>
       <!-- 通用 -->
-      <el-form-item v-if="formData.storage === 20" :label="t('infra.fileConfig.form.domain')">
+      <el-form-item v-if="formData.storage === 20" label="自定义域名">
         <!-- 无需参数校验，所以去掉 prop -->
-        <el-input
-          v-model="formData.config.domain"
-          :placeholder="t('infra.fileConfig.form.domainPlaceholder')"
-        />
+        <el-input v-model="formData.config.domain" placeholder="请输入自定义域名" />
       </el-form-item>
-      <el-form-item v-else-if="formData.storage" :label="t('infra.fileConfig.form.domain')" prop="config.domain">
-        <el-input
-          v-model="formData.config.domain"
-          :placeholder="t('infra.fileConfig.form.domainPlaceholder')"
-        />
+      <el-form-item v-else-if="formData.storage" label="自定义域名" prop="config.domain">
+        <el-input v-model="formData.config.domain" placeholder="请输入自定义域名" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">
-        {{ t('common.confirm') }}
-      </el-button>
-      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
+      <el-button @click="dialogVisible = false">取 消</el-button>
     </template>
   </Dialog>
 </template>
@@ -173,27 +140,24 @@ const formData = ref({
   config: {} as FileConfigApi.FileClientConfig
 })
 const formRules = reactive<FormRules>({
-  name: [{ required: true, message: t('infra.fileConfig.form.rules.nameRequired'), trigger: 'blur' }],
-  storage: [{ required: true, message: t('infra.fileConfig.form.rules.storageRequired'), trigger: 'change' }],
+  name: [{ required: true, message: '配置名不能为空', trigger: 'blur' }],
+  storage: [{ required: true, message: '存储器不能为空', trigger: 'change' }],
   config: {
-    basePath: [{ required: true, message: t('infra.fileConfig.form.rules.basePathRequired'), trigger: 'blur' }],
-    host: [{ required: true, message: t('infra.fileConfig.form.rules.hostRequired'), trigger: 'blur' }],
-    port: [{ required: true, message: t('infra.fileConfig.form.rules.portRequired'), trigger: 'blur' }],
-    username: [{ required: true, message: t('infra.fileConfig.form.rules.usernameRequired'), trigger: 'blur' }],
-    password: [{ required: true, message: t('infra.fileConfig.form.rules.passwordRequired'), trigger: 'blur' }],
-    mode: [{ required: true, message: t('infra.fileConfig.form.rules.modeRequired'), trigger: 'change' }],
-    endpoint: [{ required: true, message: t('infra.fileConfig.form.rules.endpointRequired'), trigger: 'blur' }],
-    bucket: [{ required: true, message: t('infra.fileConfig.form.rules.bucketRequired'), trigger: 'blur' }],
-    accessKey: [{ required: true, message: t('infra.fileConfig.form.rules.accessKeyRequired'), trigger: 'blur' }],
-    accessSecret: [{ required: true, message: t('infra.fileConfig.form.rules.accessSecretRequired'), trigger: 'blur' }],
+    basePath: [{ required: true, message: '基础路径不能为空', trigger: 'blur' }],
+    host: [{ required: true, message: '主机地址不能为空', trigger: 'blur' }],
+    port: [{ required: true, message: '主机端口不能为空', trigger: 'blur' }],
+    username: [{ required: true, message: '用户名不能为空', trigger: 'blur' }],
+    password: [{ required: true, message: '密码不能为空', trigger: 'blur' }],
+    mode: [{ required: true, message: '连接模式不能为空', trigger: 'change' }],
+    endpoint: [{ required: true, message: '节点地址不能为空', trigger: 'blur' }],
+    bucket: [{ required: true, message: '存储 bucket 不能为空', trigger: 'blur' }],
+    accessKey: [{ required: true, message: 'accessKey 不能为空', trigger: 'blur' }],
+    accessSecret: [{ required: true, message: 'accessSecret 不能为空', trigger: 'blur' }],
     enablePathStyleAccess: [
-      {
-        required: true,
-        message: t('infra.fileConfig.form.rules.enablePathStyleRequired'),
-        trigger: 'change'
-      }
+      { required: true, message: '是否 PathStyle 访问不能为空', trigger: 'change' }
     ],
-    domain: [{ required: true, message: t('infra.fileConfig.form.rules.domainRequired'), trigger: 'blur' }]
+    enablePublicAccess: [{ required: true, message: '公开访问设置不能为空', trigger: 'change' }],
+    domain: [{ required: true, message: '自定义域名不能为空', trigger: 'blur' }]
   } as FormRules
 })
 const formRef = ref() // 表单 Ref

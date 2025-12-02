@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('infra.file.form.title')">
+  <Dialog v-model="dialogVisible" title="上传文件">
     <el-upload
       ref="uploadRef"
       v-model:file-list="fileList"
@@ -11,32 +11,29 @@
       :on-change="handleFileChange"
       :on-error="submitFormError"
       :on-exceed="handleExceed"
+      :on-progress="handleProgress"
       :on-success="submitFormSuccess"
       :http-request="httpRequest"
       accept=".jpg, .png, .gif"
       drag
     >
       <i class="el-icon-upload"></i>
-      <div class="el-upload__text">
-        {{ t('infra.file.form.dragText') }}
-        <em>{{ t('infra.file.form.clickText') }}</em>
-      </div>
+      <div class="el-upload__text"> 将文件拖到此处，或 <em>点击上传</em></div>
       <template #tip>
         <div class="el-upload__tip" style="color: red">
-          {{ t('infra.file.form.tip') }}
+          提示：仅允许导入 jpg、png、gif 格式文件！
         </div>
       </template>
     </el-upload>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitFileForm">
-        {{ t('common.confirm') }}
-      </el-button>
-      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitFileForm">确 定</el-button>
+      <el-button @click="dialogVisible = false">取 消</el-button>
     </template>
   </Dialog>
 </template>
 <script lang="ts" setup>
 import { useUpload } from '@/components/UploadFile/src/useUpload'
+import { UploadFile, UploadProgressEvent } from 'element-plus/es/components/upload/src/upload'
 
 defineOptions({ name: 'InfraFileForm' })
 
@@ -59,16 +56,22 @@ const open = async () => {
 defineExpose({ open }) // 提供 open 方法，用于打开弹窗
 
 /** 处理上传的文件发生变化 */
-const handleFileChange = (file) => {
+const handleFileChange = (file: UploadFile) => {
   data.value.path = file.name
+}
+
+/** 处理文件上传进度显示 */
+const handleProgress = (upEvt: UploadProgressEvent, file: UploadFile) => {
+  file.percentage = upEvt.percent
 }
 
 /** 提交表单 */
 const submitFileForm = () => {
   if (fileList.value.length == 0) {
-    message.error(t('infra.file.msg.uploadRequired'))
+    message.error('请上传文件')
     return
   }
+  formLoading.value = true
   unref(uploadRef)?.submit()
 }
 
@@ -80,13 +83,13 @@ const submitFormSuccess = () => {
   formLoading.value = false
   unref(uploadRef)?.clearFiles()
   // 提示成功，并刷新
-  message.success(t('infra.file.msg.uploadSuccess'))
+  message.success(t('common.createSuccess'))
   emit('success')
 }
 
 /** 上传错误提示 */
 const submitFormError = (): void => {
-  message.error(t('infra.file.msg.uploadError'))
+  message.error('上传失败，请您重新上传！')
   formLoading.value = false
 }
 
@@ -99,6 +102,6 @@ const resetForm = () => {
 
 /** 文件数超出提示 */
 const handleExceed = (): void => {
-  message.error(t('infra.file.msg.exceedLimit'))
+  message.error('最多只能上传一个文件！')
 }
 </script>

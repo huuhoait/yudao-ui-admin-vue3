@@ -28,7 +28,7 @@
             {{ currentNode.showText }}
           </div>
           <div class="node-text" v-else>
-            {{ t(NODE_DEFAULT_TEXT.get(NodeType.DELAY_TIMER_NODE) as string) }}
+            {{ NODE_DEFAULT_TEXT.get(NodeType.DELAY_TIMER_NODE) }}
           </div>
           <Icon v-if="!readonly" icon="ep:arrow-right-bold" />
         </div>

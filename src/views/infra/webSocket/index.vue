@@ -1,49 +1,39 @@
 <template>
-  <doc-alert :title="t('infra.webSocket.doc.title')" url="https://doc.iocoder.cn/websocket/" />
+  <doc-alert title="WebSocket 实时通信" url="https://doc.iocoder.cn/websocket/" />
 
   <div class="flex">
     <!-- 左侧：建立连接、发送消息 -->
     <el-card :gutter="12" class="w-1/2" shadow="always">
       <template #header>
         <div class="card-header">
-          <span>{{ t('infra.webSocket.connection.title') }}</span>
+          <span>连接</span>
         </div>
       </template>
       <div class="flex items-center">
-        <span class="mr-4 text-lg font-medium">
-          {{ t('infra.webSocket.connection.statusLabel') }}
-        </span>
+        <span class="mr-4 text-lg font-medium"> 连接状态: </span>
         <el-tag :color="getTagColor">{{ status }}</el-tag>
       </div>
       <hr class="my-4" />
       <div class="flex">
         <el-input v-model="server" disabled>
-          <template #prepend>{{ t('infra.webSocket.connection.serverLabel') }}</template>
+          <template #prepend>服务地址</template>
         </el-input>
         <el-button :type="getIsOpen ? 'danger' : 'primary'" @click="toggleConnectStatus">
-          {{
-            getIsOpen
-              ? t('infra.webSocket.actions.close')
-              : t('infra.webSocket.actions.open')
-          }}
+          {{ getIsOpen ? '关闭连接' : '开启连接' }}
         </el-button>
       </div>
-      <p class="mt-4 text-lg font-medium">{{ t('infra.webSocket.labels.messageInput') }}</p>
+      <p class="mt-4 text-lg font-medium">消息输入框</p>
       <hr class="my-4" />
       <el-input
         v-model="sendText"
         :autosize="{ minRows: 2, maxRows: 4 }"
         :disabled="!getIsOpen"
         clearable
-        :placeholder="t('infra.webSocket.placeholders.message')"
+        placeholder="请输入你要发送的消息"
         type="textarea"
       />
-      <el-select
-        v-model="sendUserId"
-        class="mt-4"
-        :placeholder="t('infra.webSocket.placeholders.user')"
-      >
-        <el-option key="" :label="t('infra.webSocket.options.all')" value="" />
+      <el-select v-model="sendUserId" class="mt-4" placeholder="请选择发送人">
+        <el-option key="" label="所有人" value="" />
         <el-option
           v-for="user in userList"
           :key="user.id"
@@ -51,30 +41,22 @@
           :value="user.id"
         />
       </el-select>
-      <el-button
-        :disabled="!getIsOpen"
-        block
-        class="ml-2 mt-4"
-        type="primary"
-        @click="handlerSend"
-      >
-        {{ t('infra.webSocket.actions.send') }}
+      <el-button :disabled="!getIsOpen" block class="ml-2 mt-4" type="primary" @click="handlerSend">
+        发送
       </el-button>
     </el-card>
     <!-- 右侧：消息记录 -->
     <el-card :gutter="12" class="w-1/2" shadow="always">
       <template #header>
         <div class="card-header">
-          <span>{{ t('infra.webSocket.labels.messageLog') }}</span>
+          <span>消息记录</span>
         </div>
       </template>
       <div class="max-h-80 overflow-auto">
         <ul>
           <li v-for="msg in messageReverseList" :key="msg.time" class="mt-2">
             <div class="flex items-center">
-              <span class="text-primary mr-2 font-medium">
-                {{ t('infra.webSocket.labels.received') }}
-              </span>
+              <span class="text-primary mr-2 font-medium">收到消息:</span>
               <span>{{ formatDate(msg.time) }}</span>
             </div>
             <div>
@@ -94,7 +76,6 @@ import * as UserApi from '@/api/system/user'
 
 defineOptions({ name: 'InfraWebSocket' })
 
-const { t } = useI18n()
 const message = useMessage() // 消息弹窗
 
 const server = ref(
@@ -133,7 +114,7 @@ watchEffect(() => {
     const type = jsonMessage.type
     const content = JSON.parse(jsonMessage.content)
     if (!type) {
-      message.error(t('infra.webSocket.errors.unknownType', { value: data.value }))
+      message.error('未知的消息类型：' + data.value)
       return
     }
     // 2.2 消息类型：demo-message-receive
@@ -141,18 +122,12 @@ watchEffect(() => {
       const single = content.single
       if (single) {
         messageList.value.push({
-          text: t('infra.webSocket.log.receiveSingle', {
-            userId: content.fromUserId,
-            text: content.text
-          }),
+          text: `【单发】用户编号(${content.fromUserId})：${content.text}`,
           time: new Date().getTime()
         })
       } else {
         messageList.value.push({
-          text: t('infra.webSocket.log.receiveGroup', {
-            userId: content.fromUserId,
-            text: content.text
-          }),
+          text: `【群发】用户编号(${content.fromUserId})：${content.text}`,
           time: new Date().getTime()
         })
       }
@@ -161,14 +136,14 @@ watchEffect(() => {
     // 2.3 消息类型：notice-push
     if (type === 'notice-push') {
       messageList.value.push({
-        text: t('infra.webSocket.log.receiveSystem', { title: content.title }),
+        text: `【系统通知】：${content.title}`,
         time: new Date().getTime()
       })
       return
     }
-    message.error(t('infra.webSocket.errors.unhandled', { value: data.value }))
+    message.error('未处理消息：' + data.value)
   } catch (error) {
-    message.error(t('infra.webSocket.errors.process', { value: data.value }))
+    message.error('处理消息发生异常：' + data.value)
     console.error(error)
   }
 })

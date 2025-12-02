@@ -6,15 +6,9 @@
     >
       <fc-designer class="my-designer" ref="designer" :config="designerConfig">
         <template #handle>
-          <el-button size="small" type="primary" plain @click="showJson">
-            {{ t('infra.build.actions.generateJson') }}
-          </el-button>
-          <el-button size="small" type="success" plain @click="showOption">
-            {{ t('infra.build.actions.generateOptions') }}
-          </el-button>
-          <el-button size="small" type="danger" plain @click="showTemplate">
-            {{ t('infra.build.actions.generateComponent') }}
-          </el-button>
+          <el-button size="small" type="primary" plain @click="showJson">生成JSON</el-button>
+          <el-button size="small" type="success" plain @click="showOption">生成Options</el-button>
+          <el-button size="small" type="danger" plain @click="showTemplate">生成组件</el-button>
         </template>
       </fc-designer>
     </div>
@@ -94,21 +88,21 @@ const openModel = (title: string) => {
 
 /** 生成 JSON */
 const showJson = () => {
-  openModel(t('infra.build.dialog.generateJson'))
+  openModel('生成 JSON')
   formType.value = 0
   formData.value = designer.value.getRule()
 }
 
 /** 生成 Options */
 const showOption = () => {
-  openModel(t('infra.build.dialog.generateOptions'))
+  openModel('生成 Options')
   formType.value = 1
   formData.value = designer.value.getOption()
 }
 
 /** 生成组件 */
 const showTemplate = () => {
-  openModel(t('infra.build.dialog.generateComponent'))
+  openModel('生成组件')
   formType.value = 2
   formData.value = makeTemplate()
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
-import { IDomEditor } from '@wangeditor/editor'
+import { Editor, Toolbar } from '@wangeditor-next/editor-for-vue'
+import { IDomEditor } from '@wangeditor-next/editor'
 import { useI18n } from 'vue-i18n'
 import MentionModal from './MentionModal.vue'
 
@@ -78,39 +78,17 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <el-dialog
-    v-model="dialogVisible"
-    :title="t('bpm.model.form.printTemplate.dialogTitle')"
-    fullscreen
-  >
+  <el-dialog v-model="dialogVisible" :title="t('bpm.model.form.printTemplate.dialogTitle')" fullscreen>
     <div style="margin: 0 10px">
-      <el-alert
-        :title="t('bpm.model.form.printTemplate.mentionTip')"
-        type="info"
-        show-icon
-        :closable="false"
-      />
+      <el-alert :title="t('bpm.model.form.printTemplate.mentionTip')" type="info" show-icon :closable="false" />
     </div>
     <!-- TODO @unocss 简化 style -->
     <div style="border: 1px solid #ccc; margin: 10px">
-      <Toolbar
-        style="border-bottom: 1px solid #ccc"
-        :editor="editorRef"
-        :editorId="editorId"
-        :defaultConfig="toolbarConfig"
-      />
-      <Editor
-        style="height: 500px; overflow-y: hidden"
-        v-model="valueHtml"
-        :defaultConfig="editorConfig"
-        :editorId="editorId"
-        @on-created="handleCreated"
-      />
-      <MentionModal
-        v-if="isShowModal"
-        @hide-mention-modal="hideModal"
-        @insert-mention="insertMention"
-      />
+      <Toolbar style="border-bottom: 1px solid #ccc" :editor="editorRef" :editorId="editorId"
+        :defaultConfig="toolbarConfig" />
+      <Editor style="height: 500px; overflow-y: hidden" v-model="valueHtml" :defaultConfig="editorConfig"
+        :editorId="editorId" @on-created="handleCreated" />
+      <MentionModal v-if="isShowModal" @hide-mention-modal="hideModal" @insert-mention="insertMention" />
     </div>
     <div style="margin-right: 10px; float: right">
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
@@ -119,4 +97,4 @@ onBeforeUnmount(() => {
   </el-dialog>
 </template>
 
-<style src="@wangeditor/editor/dist/css/style.css"></style>
+<style src="@wangeditor-next/editor/dist/css/style.css"></style>
