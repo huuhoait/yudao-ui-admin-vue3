@@ -1,0 +1,14 @@
+{
+  "system.user.components.username": "用户名称",
+  "system.user.components.inputUsername": "请输入用户名称",
+  "system.user.components.nickname": "用户昵称",
+  "system.user.components.inputNickname": "请输入用户昵称",
+  "system.user.components.mobile": "手机号码",
+  "system.user.components.inputMobile": "请输入手机号码",
+  "system.user.components.selectStatus": "请选择状态",
+  "system.user.components.userId": "用户编号",
+  "system.user.components.dept": "部门",
+  "system.user.components.userSelect": "人员选择",
+  "system.user.components._todo1": "请至少选择一条数据",
+  "system.user.components._todo2": "请选择一条数据"
+}

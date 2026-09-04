@@ -1,11 +1,11 @@
 <template>
-  <doc-alert :title="$t('bpm.task.todo.docs.approve')" url="https://doc.iocoder.cn/bpm/task-todo-done/" />
-  <doc-alert :title="$t('bpm.task.todo.docs.sign')" url="https://doc.iocoder.cn/bpm/sign/" />
+  <doc-alert :title="t('bpm.task.todo._todo275')" url="https://doc.iocoder.cn/bpm/task-todo-done/" />
+  <doc-alert :title="t('bpm.task.todo._todo276')" url="https://doc.iocoder.cn/bpm/sign/" />
   <doc-alert
-    :title="$t('bpm.task.todo.docs.delegate')"
+    :title="t('bpm.task.todo._todo277')"
     url="https://doc.iocoder.cn/bpm/task-delegation-and-cc/"
   />
-  <doc-alert :title="$t('bpm.task.todo.docs.sign')" url="https://doc.iocoder.cn/bpm/sign/" />
+  <doc-alert :title="t('bpm.task.todo._todo276')" url="https://doc.iocoder.cn/bpm/sign/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -21,20 +21,20 @@
           v-model="queryParams.name"
           class="!w-240px"
           clearable
-          :placeholder="$t('bpm.task.todo.form.namePlaceholder')"
+          :placeholder="t('bpm.task.todo.inputTaskName')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
       <el-form-item>
         <el-button @click="handleQuery">
           <Icon class="mr-5px" icon="ep:search" />
-          {{ $t('common.query') }}
+          {{ t('common.query') }}
         </el-button>
       </el-form-item>
       <el-form-item label="" prop="category" class="absolute right-130px">
         <el-select
           v-model="queryParams.category"
-          :placeholder="$t('bpm.task.todo.form.categoryPlaceholder')"
+          :placeholder="t('bpm.task.todo.selectProcessCategory')"
           clearable
           class="!w-155px"
           @change="handleQuery"
@@ -58,18 +58,18 @@
         >
           <template #reference>
             <el-button @click="showPopover = !showPopover">
-              <Icon icon="ep:plus" class="mr-5px" />{{ $t('bpm.task.todo.advancedFilter.open') }}
+              <Icon icon="ep:plus" class="mr-5px" />{{ t('bpm.task.todo.advancedFilter') }}
             </el-button>
           </template>
           <el-form-item
-            :label="$t('bpm.task.todo.advancedFilter.processLabel')"
+            :label="t('bpm.task.todo.belongProcess')"
             class="font-bold"
             label-position="top"
             prop="processDefinitionKey"
           >
             <el-select
               v-model="queryParams.processDefinitionKey"
-              :placeholder="$t('bpm.task.todo.advancedFilter.processPlaceholder')"
+              :placeholder="t('bpm.task.todo.selectProcessDefinition')"
               clearable
               @change="handleQuery"
               class="!w-390px"
@@ -82,27 +82,22 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item
-            :label="$t('bpm.task.todo.advancedFilter.createTime')"
-            class="font-bold"
-            label-position="top"
-            prop="createTime"
-          >
+          <el-form-item :label="t('bpm.task.todo.startTime')" class="font-bold" label-position="top" prop="createTime">
             <el-date-picker
               v-model="queryParams.createTime"
               value-format="YYYY-MM-DD HH:mm:ss"
               type="daterange"
-              :start-placeholder="$t('bpm.task.todo.advancedFilter.startDatePlaceholder')"
-              :end-placeholder="$t('bpm.task.todo.advancedFilter.endDatePlaceholder')"
+              :start-placeholder="t('bpm.task.todo.startDate')"
+              :end-placeholder="t('bpm.task.todo.endDate')"
               :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
               class="w-240px!"
             />
           </el-form-item>
           <el-form-item class="font-bold" label-position="top">
             <div class="flex justify-end w-full">
-              <el-button @click="resetQuery">{{ $t('bpm.task.todo.advancedFilter.clear') }}</el-button>
-              <el-button @click="showPopover = false">{{ $t('common.cancel') }}</el-button>
-              <el-button type="primary" @click="handleQuery">{{ $t('common.confirm') }}</el-button>
+              <el-button @click="resetQuery">{{ t('bpm.task.todo.clear') }}</el-button>
+              <el-button @click="showPopover = false">{{ t('common.cancel') }}</el-button>
+              <el-button type="primary" @click="handleQuery">{{ t('bpm.task.todo.confirm') }}</el-button>
             </div>
           </el-form-item>
         </el-popover>
@@ -113,13 +108,8 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column
-        align="center"
-        :label="$t('bpm.task.todo.table.process')"
-        prop="processInstance.name"
-        width="180"
-      />
-      <el-table-column :label="$t('bpm.task.todo.table.summary')" prop="processInstance.summary" width="180">
+      <el-table-column align="center" :label="t('bpm.task.todo.process')" prop="processInstance.name" width="180" />
+      <el-table-column :label="t('bpm.task.todo.summary')" prop="processInstance.summary" width="180">
         <template #default="scope">
           <div
             class="flex flex-col"
@@ -133,42 +123,35 @@
       </el-table-column>
       <el-table-column
         align="center"
-        :label="$t('bpm.task.todo.table.startUser')"
+        :label="t('bpm.task.todo.starter')"
         prop="processInstance.startUser.nickname"
         width="100"
       />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="$t('bpm.task.todo.table.startTime')"
+        :label="t('bpm.task.todo.startTime')"
         prop="processInstance.createTime"
         width="180"
       />
-      <el-table-column align="center" :label="$t('bpm.task.todo.table.currentTask')" prop="name" width="180" />
+      <el-table-column align="center" :label="t('bpm.task.todo.currentTask')" prop="name" width="180" />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="$t('bpm.task.todo.table.taskTime')"
+        :label="t('bpm.task.todo._todo278')"
         prop="createTime"
         width="180"
       />
       <el-table-column
         align="center"
-        :label="$t('bpm.task.todo.table.processId')"
+        :label="t('bpm.task.todo.processId')"
         prop="processInstanceId"
         :show-overflow-tooltip="true"
       />
-      <el-table-column
-        align="center"
-        :label="$t('bpm.task.todo.table.taskId')"
-        prop="id"
-        :show-overflow-tooltip="true"
-      />
-      <el-table-column align="center" :label="$t('common.operation')" fixed="right" width="80">
+      <el-table-column align="center" :label="t('bpm.task.todo.taskId')" prop="id" :show-overflow-tooltip="true" />
+      <el-table-column align="center" :label="t('bpm.task.todo.action')" fixed="right" width="80">
         <template #default="scope">
-          <el-button link type="primary" @click="handleAudit(scope.row)">
-            {{ $t('bpm.task.todo.table.handle') }}
-          </el-button>
+          <el-button link type="primary" @click="handleAudit(scope.row)">{{ t('bpm.task.todo._todo279') }}</el-button>
         </template>
       </el-table-column>
     </el-table>

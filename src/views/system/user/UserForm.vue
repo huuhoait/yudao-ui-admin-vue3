@@ -9,46 +9,46 @@
     >
       <el-row>
         <el-col :span="12">
-          <el-form-item :label="t('sys.user.nickname')" prop="nickname">
-            <el-input v-model="formData.nickname" :placeholder="t('sys.user.nicknamePlaceholder')" />
+          <el-form-item :label="t('system.user.nickname')" prop="nickname">
+            <el-input v-model="formData.nickname" :placeholder="t('system.user.inputNickname')" />
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item :label="t('sys.user.deptId')" prop="deptId">
+          <el-form-item :label="t('system.user.belongDept')" prop="deptId">
             <el-tree-select
               v-model="formData.deptId"
               :data="deptList"
               :props="defaultProps"
               check-strictly
               node-key="id"
-              :placeholder="t('sys.user.deptIdPlaceholder')"
+              :placeholder="t('system.user.selectBelongDept')"
             />
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="12">
-          <el-form-item :label="t('sys.user.mobile')" prop="mobile">
-            <el-input v-model="formData.mobile" maxlength="11" :placeholder="t('sys.user.mobilePlaceholder')" />
+          <el-form-item :label="t('system.user.mobile')" prop="mobile">
+            <el-input v-model="formData.mobile" maxlength="11" :placeholder="t('system.user.inputMobile')" />
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item :label="t('sys.user.email')" prop="email">
-            <el-input v-model="formData.email" maxlength="50" :placeholder="t('sys.user.emailPlaceholder')" />
+          <el-form-item :label="t('system.user.email')" prop="email">
+            <el-input v-model="formData.email" maxlength="50" :placeholder="t('system.user.inputEmail')" />
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="12">
-          <el-form-item v-if="formData.id === undefined" :label="t('sys.user.username')" prop="username">
-            <el-input v-model="formData.username" :placeholder="t('sys.user.usernamePlaceholder')" />
+          <el-form-item v-if="formData.id === undefined" :label="t('system.user.username')" prop="username">
+            <el-input v-model="formData.username" :placeholder="t('system.user.inputUsername')" />
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item v-if="formData.id === undefined" :label="t('sys.user.password')" prop="password">
+          <el-form-item v-if="formData.id === undefined" :label="t('system.user.password')" prop="password">
             <el-input
               v-model="formData.password"
-              :placeholder="t('sys.user.passwordPlaceholder')"
+              :placeholder="t('system.user.inputPassword')"
               show-password
               type="password"
             />
@@ -57,8 +57,8 @@
       </el-row>
       <el-row>
         <el-col :span="12">
-          <el-form-item :label="t('sys.user.sex')">
-            <el-select v-model="formData.sex" :placeholder="t('sys.user.sexPlaceholder')">
+          <el-form-item :label="t('system.user.sex')">
+            <el-select v-model="formData.sex" :placeholder="t('common.selectText')">
               <el-option
                 v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_USER_SEX)"
                 :key="dict.value"
@@ -69,8 +69,8 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item :label="t('sys.user.postIds')">
-            <el-select v-model="formData.postIds" multiple :placeholder="t('sys.user.postIdsPlaceholder')">
+          <el-form-item :label="t('system.user.post')">
+            <el-select v-model="formData.postIds" multiple :placeholder="t('common.selectText')">
               <el-option
                 v-for="item in postList"
                 :key="item.id"
@@ -83,15 +83,15 @@
       </el-row>
       <el-row>
         <el-col :span="24">
-          <el-form-item :label="t('sys.user.remark')">
-            <el-input v-model="formData.remark" :placeholder="t('sys.user.remarkPlaceholder')" type="textarea" />
+          <el-form-item :label="t('system.user.remark')">
+            <el-input v-model="formData.remark" :placeholder="t('system.user.inputContent')" type="textarea" />
           </el-form-item>
         </el-col>
       </el-row>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('sys.user.confirm') }}</el-button>
-      <el-button @click="dialogVisible = false">{{ t('sys.user.cancel') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -128,20 +128,20 @@ const formData = ref({
   roleIds: []
 })
 const formRules = reactive<FormRules>({
-  username: [{ required: true, message: t('sys.user.usernameRequired'), trigger: 'blur' }],
-  nickname: [{ required: true, message: t('sys.user.nicknameRequired'), trigger: 'blur' }],
-  password: [{ required: true, message: t('sys.user.passwordRequired'), trigger: 'blur' }],
+  username: [{ required: true, message: t('system.user.usernameRequired'), trigger: 'blur' }],
+  nickname: [{ required: true, message: t('system.user.nicknameRequired'), trigger: 'blur' }],
+  password: [{ required: true, message: t('system.user.passwordRequired'), trigger: 'blur' }],
   email: [
     {
       type: 'email',
-      message: t('sys.user.emailInvalid'),
+      message: t('system.user._todo1'),
       trigger: ['blur', 'change']
     }
   ],
   mobile: [
     {
-      pattern: /^(?:(?:\+|00)86)?1(?:3[\d]|4[5-79]|5[0-35-9]|6[5-7]|7[0-8]|8[\d]|9[189])\d{8}$/,
-      message: t('sys.user.mobileInvalid'),
+      pattern: /^1[3-9]\d{9}$/,
+      message: t('system.user._todo2'),
       trigger: 'blur'
     }
   ]

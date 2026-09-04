@@ -18,46 +18,34 @@ export interface ThingModelData {
   service?: ThingModelService // 服务
 }
 
-/**
- * ThingModelProperty 类型
- */
-export interface ThingModelProperty {
-  [key: string]: any
-}
-
-/**
- * ThingModelEvent 类型
- */
-export interface ThingModelEvent {
-  [key: string]: any
-}
-
-/**
- * ThingModelService 类型
- */
-export interface ThingModelService {
-  [key: string]: any
-}
-
 /** dataSpecs 数值型数据结构 */
 export interface DataSpecsNumberData {
-  dataType: 'int' | 'float' | 'double' // 数据类型，取值为 INT、FLOAT 或 DOUBLE
-  max: string // 最大值，必须与 dataType 设置一致，且为 STRING 类型
-  min: string // 最小值，必须与 dataType 设置一致，且为 STRING 类型
-  step: string // 步长，必须与 dataType 设置一致，且为 STRING 类型
+  dataType: string // 数据类型，取值为 INT、FLOAT 或 DOUBLE
+  max?: string // 最大值，必须与 dataType 设置一致，且为 STRING 类型
+  min?: string // 最小值，必须与 dataType 设置一致，且为 STRING 类型
+  step?: string // 步长，必须与 dataType 设置一致，且为 STRING 类型
   precise?: string // 精度，当 dataType 为 FLOAT 或 DOUBLE 时可选
   defaultValue?: string // 默认值，可选
-  unit: string // 单位的符号
-  unitName: string // 单位的名称
+  unit?: string // 单位的符号
+  unitName?: string // 单位的名称
 }
 
 /** dataSpecs 枚举型数据结构 */
 export interface DataSpecsEnumOrBoolData {
-  dataType: 'enum' | 'bool'
+  dataType: string
   defaultValue?: string // 默认值，可选
   name: string // 枚举项的名称
   value: number | undefined // 枚举值
 }
+
+/** dataSpecs 通用数据结构 */
+export type ThingModelDataSpecs =
+  | DataSpecsNumberData
+  | DataSpecsEnumOrBoolData
+  | ThingModelDateOrTextDataSpecs
+  | ThingModelArrayDataSpecs
+  | ThingModelStructDataSpecs
+  | Record<string, any>
 
 /** 物模型TSL响应数据结构 */
 export interface IotThingModelTSLResp {
@@ -76,8 +64,9 @@ export interface ThingModelProperty {
   required?: boolean
   dataType: string
   description?: string
-  dataSpecs?: ThingModelProperty
-  dataSpecsList?: ThingModelProperty[]
+  dataSpecs?: ThingModelDataSpecs
+  dataSpecsList?: ThingModelPropertyDataSpecs[]
+  value?: number
 }
 
 /** 物模型事件 */
@@ -110,8 +99,8 @@ export interface ThingModelParam {
   direction: string
   paraOrder?: number
   dataType: string
-  dataSpecs?: ThingModelProperty
-  dataSpecsList?: ThingModelProperty[]
+  dataSpecs?: ThingModelDataSpecs
+  dataSpecsList?: ThingModelPropertyDataSpecs[]
 }
 
 /** 数值型数据规范 */
@@ -142,23 +131,25 @@ export interface ThingModelDateOrTextDataSpecs {
 
 /** 数组型数据规范 */
 export interface ThingModelArrayDataSpecs {
-  dataType: 'array'
-  size: number
-  childDataType: string
-  dataSpecsList?: ThingModelProperty[]
+  dataType: string
+  size?: number
+  childDataType?: string
+  dataSpecsList?: ThingModelPropertyDataSpecs[]
 }
 
 /** 结构体型数据规范 */
 export interface ThingModelStructDataSpecs {
-  dataType: 'struct'
-  identifier: string
-  name: string
-  accessMode: string
+  dataType: string
+  identifier?: string
+  name?: string
+  accessMode?: string
   required?: boolean
-  childDataType: string
-  dataSpecs?: ThingModelProperty
-  dataSpecsList?: ThingModelProperty[]
+  childDataType?: string
+  dataSpecs?: ThingModelDataSpecs
+  dataSpecsList?: ThingModelPropertyDataSpecs[]
 }
+
+export type ThingModelPropertyDataSpecs = ThingModelProperty | DataSpecsEnumOrBoolData
 
 // IoT 产品物模型 API
 export const ThingModelApi = {
@@ -215,24 +206,24 @@ export const ThingModelFormRules = {
   identifier: [
     { required: true, message: '标识符不能为空', trigger: 'blur' },
     {
-      pattern: /^[a-zA-Z0-9_]{1,50}$/,
-      message: '支持大小写字母、数字和下划线，不超过 50 个字符',
+      pattern: /^[a-zA-Z][a-zA-Z0-9_]{0,31}$/,
+      message: '支持大小写字母、数字和下划线，必须以字母开头，不超过 32 个字符',
       trigger: 'blur'
     },
     {
-      validator: (_: any, value: string, callback: any) => {
+      validator: (_: any, value: string) => {
         const reservedKeywords = ['set', 'get', 'post', 'property', 'event', 'time', 'value']
         if (reservedKeywords.includes(value)) {
-          callback(
+          return Promise.reject(
             new Error(
               'set, get, post, property, event, time, value 是系统保留字段，不能用于标识符定义'
             )
           )
-        } else if (/^\d+$/.test(value)) {
-          callback(new Error('标识符不能是纯数字'))
-        } else {
-          callback()
         }
+        if (/^\d+$/.test(value)) {
+          return Promise.reject(new Error('标识符不能是纯数字'))
+        }
+        return Promise.resolve()
       },
       trigger: 'blur'
     }
@@ -241,16 +232,14 @@ export const ThingModelFormRules = {
   'property.dataSpecs.size': [
     { required: true, message: '元素个数不能为空' },
     {
-      validator: (_: any, value: any, callback: any) => {
+      validator: (_: any, value: any) => {
         if (isEmpty(value)) {
-          callback(new Error('元素个数不能为空'))
-          return
+          return Promise.reject(new Error('元素个数不能为空'))
         }
         if (isNaN(Number(value))) {
-          callback(new Error('元素个数必须是数字'))
-          return
+          return Promise.reject(new Error('元素个数必须是数字'))
         }
-        callback()
+        return Promise.resolve()
       },
       trigger: 'blur'
     }
@@ -258,16 +247,14 @@ export const ThingModelFormRules = {
   'property.dataSpecs.length': [
     { required: true, message: '请输入文本字节长度', trigger: 'blur' },
     {
-      validator: (_: any, value: any, callback: any) => {
+      validator: (_: any, value: any) => {
         if (isEmpty(value)) {
-          callback(new Error('文本长度不能为空'))
-          return
+          return Promise.reject(new Error('文本长度不能为空'))
         }
         if (isNaN(Number(value))) {
-          callback(new Error('文本长度必须是数字'))
-          return
+          return Promise.reject(new Error('文本长度必须是数字'))
         }
-        callback()
+        return Promise.resolve()
       },
       trigger: 'blur'
     }
@@ -276,26 +263,24 @@ export const ThingModelFormRules = {
 }
 
 /** 校验布尔值名称 */
-export const validateBoolName = (_: any, value: string, callback: any) => {
+export const validateBoolName: any = (_: any, value: string) => {
   if (isEmpty(value)) {
-    callback(new Error('布尔值名称不能为空'))
-    return
+    return Promise.reject(new Error('布尔值名称不能为空'))
   }
   // 检查开头字符
   if (!/^[\u4e00-\u9fa5a-zA-Z0-9]/.test(value)) {
-    callback(new Error('布尔值名称必须以中文、英文字母或数字开头'))
-    return
+    return Promise.reject(new Error('布尔值名称必须以中文、英文字母或数字开头'))
   }
   // 检查整体格式
   if (!/^[\u4e00-\u9fa5a-zA-Z0-9][a-zA-Z0-9\u4e00-\u9fa5_-]*$/.test(value)) {
-    callback(new Error('布尔值名称只能包含中文、英文字母、数字、下划线和短划线'))
-    return
+    return Promise.reject(
+      new Error('布尔值名称只能包含中文、英文字母、数字、下划线和短划线')
+    )
   }
   // 检查长度（一个中文算一个字符）
   if (value.length > 20) {
-    callback(new Error('布尔值名称长度不能超过 20 个字符'))
-    return
+    return Promise.reject(new Error('布尔值名称长度不能超过 20 个字符'))
   }
 
-  callback()
+  return Promise.resolve()
 }

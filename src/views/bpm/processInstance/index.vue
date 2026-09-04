@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="$t('bpm.processInstance.index.docAlertTitle')" url="https://doc.iocoder.cn/bpm/process-instance/" />
+  <doc-alert :title="t('bpm.processInstance._todo241')" url="https://doc.iocoder.cn/bpm/process-instance/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -13,7 +13,7 @@
       <el-form-item label="" prop="name">
         <el-input
           v-model="queryParams.name"
-          :placeholder="$t('bpm.processInstance.index.form.namePlaceholder')"
+          :placeholder="t('bpm.processInstance.inputProcessName')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
@@ -21,13 +21,13 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
       </el-form-item>
 
       <el-form-item label="" prop="category" class="absolute right-[300px]">
         <el-select
           v-model="queryParams.category"
-          :placeholder="$t('bpm.processInstance.index.form.categoryPlaceholder')"
+          :placeholder="t('bpm.processInstance.selectProcessCategory')"
           clearable
           class="!w-155px"
           @change="handleQuery"
@@ -43,7 +43,7 @@
       <el-form-item label="" prop="status" class="absolute right-[130px]">
         <el-select
           v-model="queryParams.status"
-          :placeholder="$t('bpm.processInstance.index.form.statusPlaceholder')"
+          :placeholder="t('bpm.processInstance.selectProcessStatus')"
           clearable
           class="!w-155px"
           @change="handleQuery"
@@ -68,18 +68,18 @@
         >
           <template #reference>
             <el-button @click="showPopover = !showPopover">
-              <Icon icon="ep:plus" class="mr-5px" />{{ $t('bpm.processInstance.index.advancedFilter.open') }}
+              <Icon icon="ep:plus" class="mr-5px" />{{ t('bpm.processInstance.advancedFilter') }}
             </el-button>
           </template>
           <el-form-item
-            :label="$t('bpm.processInstance.index.advancedFilter.processLabel')"
+            :label="t('bpm.processInstance.belongProcess')"
             class="font-bold"
             label-position="top"
             prop="processDefinitionKey"
           >
             <el-select
               v-model="queryParams.processDefinitionKey"
-              :placeholder="$t('bpm.processInstance.index.advancedFilter.processPlaceholder')"
+              :placeholder="t('bpm.processInstance.selectProcessDefinition')"
               clearable
               class="!w-390px"
               @change="handleQuery"
@@ -92,27 +92,22 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item
-            :label="$t('bpm.processInstance.index.advancedFilter.createTime')"
-            class="font-bold"
-            label-position="top"
-            prop="createTime"
-          >
+          <el-form-item :label="t('bpm.processInstance.startTime')" class="font-bold" label-position="top" prop="createTime">
             <el-date-picker
               v-model="queryParams.createTime"
               value-format="YYYY-MM-DD HH:mm:ss"
               type="daterange"
-              :start-placeholder="$t('bpm.processInstance.index.advancedFilter.startDatePlaceholder')"
-              :end-placeholder="$t('bpm.processInstance.index.advancedFilter.endDatePlaceholder')"
+              :start-placeholder="t('bpm.processInstance.startDate')"
+              :end-placeholder="t('bpm.processInstance.endDate')"
               :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
               class="!w-240px"
             />
           </el-form-item>
           <el-form-item class="font-bold" label-position="top">
             <div class="flex justify-end w-full">
-              <el-button @click="resetQuery">{{ $t('bpm.processInstance.index.advancedFilter.clear') }}</el-button>
-              <el-button @click="showPopover = false">{{ $t('common.cancel') }}</el-button>
-              <el-button type="primary" @click="handleQuery">{{ $t('common.confirm') }}</el-button>
+              <el-button @click="resetQuery">{{ t('bpm.processInstance.clear') }}</el-button>
+              <el-button @click="showPopover = false">{{ t('common.cancel') }}</el-button>
+              <el-button type="primary" @click="handleQuery">{{ t('bpm.processInstance.confirm') }}</el-button>
             </div>
           </el-form-item>
         </el-popover>
@@ -123,8 +118,8 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column :label="$t('bpm.processInstance.index.table.name')" align="center" prop="name" min-width="200px" fixed="left" />
-      <el-table-column :label="$t('bpm.processInstance.index.table.summary')" prop="summary" width="180" fixed="left">
+      <el-table-column :label="t('bpm.processInstance.processName')" align="center" prop="name" min-width="200px" fixed="left" />
+      <el-table-column :label="t('bpm.processInstance.summary')" prop="summary" width="180" fixed="left">
         <template #default="scope">
           <div class="flex flex-col" v-if="scope.row.summary && scope.row.summary.length > 0">
             <div v-for="(item, index) in scope.row.summary" :key="index">
@@ -134,13 +129,13 @@
         </template>
       </el-table-column>
       <el-table-column
-        :label="$t('bpm.processInstance.index.table.category')"
+        :label="t('bpm.processInstance.processCategory')"
         align="center"
         prop="categoryName"
         min-width="100"
         fixed="left"
       />
-      <el-table-column :label="$t('bpm.processInstance.index.table.status')" prop="status" min-width="200">
+      <el-table-column :label="t('bpm.processInstance.processStatus')" prop="status" min-width="200">
         <template #default="scope">
           <!-- 审批中状态 -->
           <template
@@ -154,11 +149,7 @@
                 <el-button link type="primary" @click="handleDetail(scope.row)">
                   {{ scope.row.tasks[0].assigneeUser?.nickname }}
                 </el-button>
-                {{
-                  t('bpm.processInstance.index.status.singleReviewing', {
-                    taskName: scope.row.tasks[0].name
-                  })
-                }}
+                ({{ scope.row.tasks[0].name }}) 审批中
               </span>
             </template>
             <!-- 多人审批 -->
@@ -167,12 +158,7 @@
                 <el-button link type="primary" @click="handleDetail(scope.row)">
                   {{ scope.row.tasks[0].assigneeUser?.nickname }}
                 </el-button>
-                {{
-                  t('bpm.processInstance.index.status.multiReviewing', {
-                    count: scope.row.tasks.length,
-                    taskName: scope.row.tasks[0].name
-                  })
-                }}
+                等 {{ scope.row.tasks.length }} 人 ({{ scope.row.tasks[0].name }})审批中
               </span>
             </template>
           </template>
@@ -183,20 +169,20 @@
         </template>
       </el-table-column>
       <el-table-column
-        :label="$t('bpm.processInstance.index.table.startTime')"
+        :label="t('bpm.processInstance.startTime')"
         align="center"
         prop="startTime"
         width="180"
         :formatter="dateFormatter"
       />
       <el-table-column
-        :label="$t('bpm.processInstance.index.table.endTime')"
+        :label="t('bpm.processInstance.endTime')"
         align="center"
         prop="endTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="$t('common.operation')" align="center" fixed="right" width="180">
+      <el-table-column :label="t('bpm.processInstance.action')" align="center" fixed="right" width="180">
         <template #default="scope">
           <el-button
             link
@@ -204,7 +190,7 @@
             v-hasPermi="['bpm:process-instance:cancel']"
             @click="handleDetail(scope.row)"
           >
-            {{ $t('common.detail') }}
+            {{ t('bpm.processInstance.detail') }}
           </el-button>
           <el-button
             link
@@ -213,10 +199,10 @@
             v-hasPermi="['bpm:process-instance:query']"
             @click="handleCancel(scope.row)"
           >
-            {{ $t('common.cancel') }}
+            {{ t('common.cancel') }}
           </el-button>
           <el-button link type="primary" v-else @click="handleCreate(scope.row)">
-            {{ $t('bpm.processInstance.index.actions.restart') }}
+            {{ t('bpm.processInstance.restart') }}
           </el-button>
         </template>
       </el-table-column>
@@ -289,21 +275,26 @@ const resetQuery = () => {
 
 /** 发起流程操作 **/
 const handleCreate = async (row?: ProcessInstanceVO) => {
-  // 如果是【业务表单】，不支持重新发起
   if (row?.id) {
     const processDefinitionDetail = await DefinitionApi.getProcessDefinition(
       row.processDefinitionId
     )
+    // 如果是【业务表单】，跳转到对应的发起界面
     if (processDefinitionDetail.formType === 20) {
-      message.error(t('bpm.processInstance.index.messages.businessFormRestartError'))
-      return
+      await router.push({
+        path: processDefinitionDetail.formCustomCreatePath,
+        query: {
+          id: row.businessKey
+        }
+      })
+    } else if (processDefinitionDetail.formType === 10) {
+      //如果是【流程表单】，跳转到流程发起界面
+      await router.push({
+        name: 'BpmProcessInstanceCreate',
+        query: { processInstanceId: row.id }
+      })
     }
   }
-  // 跳转发起流程界面
-  await router.push({
-    name: 'BpmProcessInstanceCreate',
-    query: { processInstanceId: row?.id }
-  })
 }
 
 /** 查看详情 */
@@ -319,19 +310,15 @@ const handleDetail = (row: ProcessInstanceVO) => {
 /** 取消按钮操作 */
 const handleCancel = async (row: ProcessInstanceVO) => {
   // 二次确认
-  const { value } = await ElMessageBox.prompt(
-    t('bpm.processInstance.index.messages.cancelPromptMessage'),
-    t('bpm.processInstance.index.messages.cancelPromptTitle'),
-    {
-      confirmButtonText: t('common.confirm'),
-      cancelButtonText: t('common.cancel'),
-      inputPattern: /^[\s\S]*.*\S[\s\S]*$/, // 判断非空，且非空格
-      inputErrorMessage: t('bpm.processInstance.index.messages.cancelReasonRequired')
-    }
-  )
+  const { value } = await ElMessageBox.prompt(t('bpm.processInstance.inputCancelReason'), t('bpm.processInstance.cancelProcess'), {
+    confirmButtonText: t('common.ok'),
+    cancelButtonText: t('common.cancel'),
+    inputPattern: /^[\s\S]*.*\S[\s\S]*$/, // 判断非空，且非空格
+    inputErrorMessage: t('bpm.processInstance.cancelReasonRequired')
+  })
   // 发起取消
   await ProcessInstanceApi.cancelProcessInstanceByStartUser(row.id, value)
-  message.success(t('bpm.processInstance.index.messages.cancelSuccess'))
+  message.success(t('bpm.processInstance.cancelSuccess'))
   // 刷新列表
   await getList()
 }

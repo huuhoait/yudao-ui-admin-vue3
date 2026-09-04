@@ -1,4 +1,7 @@
 <template>
+  <doc-alert :title="t('system.menu._todo106')" url="https://doc.iocoder.cn/resource-permission" />
+  <doc-alert :title="t('system.menu._todo107')" url="https://doc.iocoder.cn/vue3/route/" />
+
   <!-- 搜索工作栏 -->
   <ContentWrap>
     <el-form
@@ -8,21 +11,21 @@
       class="-mb-15px"
       label-width="68px"
     >
-      <el-form-item :label="$t('sys.menu.name')" prop="name">
+      <el-form-item :label="t('system.menu.menuName')" prop="name">
         <el-input
           v-model="queryParams.name"
           class="!w-240px"
           clearable
-          :placeholder="$t('sys.menu.inputName')"
+          :placeholder="t('system.menu.inputMenuName')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item :label="$t('sys.menu.status')" prop="status">
+      <el-form-item :label="t('common.status')" prop="status">
         <el-select
           v-model="queryParams.status"
           class="!w-240px"
           clearable
-          :placeholder="$t('sys.menu.selectStatus')"
+          :placeholder="t('system.menu.selectMenuStatus')"
         >
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -35,11 +38,11 @@
       <el-form-item>
         <el-button @click="handleQuery">
           <Icon class="mr-5px" icon="ep:search" />
-          {{ $t('sys.menu.search') }}
+          {{ t('common.query') }}
         </el-button>
         <el-button @click="resetQuery">
           <Icon class="mr-5px" icon="ep:refresh" />
-          {{ $t('sys.menu.reset') }}
+          {{ t('common.reset') }}
         </el-button>
         <el-button
           v-hasPermi="['system:menu:create']"
@@ -48,15 +51,15 @@
           @click="openForm('create')"
         >
           <Icon class="mr-5px" icon="ep:plus" />
-            {{ $t('sys.menu.create') }}
+          {{ t('system.menu.create') }}
         </el-button>
         <el-button plain type="danger" @click="toggleExpandAll">
           <Icon class="mr-5px" icon="ep:sort" />
-          展开/折叠
+          {{ t('system.menu._todo108') }}
         </el-button>
         <el-button plain @click="refreshMenu">
           <Icon class="mr-5px" icon="ep:refresh" />
-          刷新菜单缓存
+          {{ t('system.menu._todo109') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -70,7 +73,7 @@
           v-model:expanded-row-keys="expandedRowKeys"
           :columns="columns"
           :data="list"
-          :expand-column-key="columns[0].key"
+          :expand-column-key="String(columns[0].key)"
           :height="1000"
           :width="width"
           fixed
@@ -91,27 +94,25 @@ import { MenuVO } from '@/api/system/menu'
 import MenuForm from './MenuForm.vue'
 import DictTag from '@/components/DictTag/src/DictTag.vue'
 import { Icon } from '@/components/Icon'
-import { ElButton, TableV2FixedDir } from 'element-plus'
+import { ElButton, TableV2FixedDir, ElSwitch, type Column } from 'element-plus'
 import { checkPermi } from '@/utils/permission'
 import { CommonStatusEnum } from '@/utils/constants'
 import { CACHE_KEY, useCache } from '@/hooks/web/useCache'
 
 defineOptions({ name: 'SystemMenu' })
 
-const { t } = useI18n() // 国际化
-
 // 虚拟列表表格
-const columns = [
+const columns: Column<MenuVO>[] = [
   {
     key: 'name',
-    title: t('sys.menu.name'),
+    title: t('system.menu.menuName'),
     dataKey: 'name',
     width: 250,
     fixed: TableV2FixedDir.LEFT
   },
   {
     key: 'icon',
-    title: t('sys.menu.icon'),
+    title: t('system.menu._todo110'),
     dataKey: 'icon',
     width: 100,
     align: 'center',
@@ -119,31 +120,31 @@ const columns = [
   },
   {
     key: 'sort',
-    title: t('sys.menu.sort'),
+    title: t('system.menu.sort'),
     dataKey: 'sort',
     width: 60
   },
   {
     key: 'permission',
-    title: t('sys.menu.permission'),
+    title: t('system.menu._todo90'),
     dataKey: 'permission',
     width: 300
   },
   {
     key: 'component',
-    title: t('sys.menu.component'),
+    title: t('system.menu._todo111'),
     dataKey: 'component',
     width: 500
   },
   {
     key: 'componentName',
-    title: t('sys.menu.componentName'),
+    title: t('system.menu._todo112'),
     dataKey: 'componentName',
     width: 200
   },
   {
     key: 'status',
-    title: t('sys.menu.status'),
+    title: t('common.status'),
     dataKey: 'status',
     width: 60,
     fixed: TableV2FixedDir.RIGHT,
@@ -168,19 +169,19 @@ const columns = [
   },
   {
     key: 'operations',
-    title: t('sys.menu.operation'),
+    title: t('system.menu.action'),
     align: 'center',
     width: 160,
     fixed: TableV2FixedDir.RIGHT,
     cellRenderer: ({ rowData }) => {
       // 定义按钮列表
-      const buttons = []
+      const buttons: InstanceType<typeof ElButton>[] = []
 
       // 检查权限并添加按钮
       if (checkPermi(['system:menu:update'])) {
         buttons.push(
           <ElButton key="edit" link type="primary" onClick={() => openForm('update', rowData.id)}>
-            {t('action.edit')}
+            修改
           </ElButton>
         )
       }
@@ -192,14 +193,14 @@ const columns = [
             type="primary"
             onClick={() => openForm('create', undefined, rowData.id)}
           >
-            {t('action.create')}
+            新增
           </ElButton>
         )
       }
       if (checkPermi(['system:menu:delete'])) {
         buttons.push(
           <ElButton key="delete" link type="danger" onClick={() => handleDelete(rowData.id)}>
-            {t('action.delete')}
+            删除
           </ElButton>
         )
       }
@@ -214,6 +215,7 @@ const columns = [
 ]
 
 const { wsCache } = useCache()
+const { t } = useI18n() // 国际化
 const message = useMessage() // 消息弹窗
 
 const loading = ref(true) // 列表的加载中
@@ -224,7 +226,6 @@ const queryParams = reactive({
 })
 const queryFormRef = ref() // 搜索的表单
 const isExpandAll = ref(false) // 是否展开，默认全部折叠
-const refreshTable = ref(true) // 重新渲染表格状态
 
 // 添加展开行控制
 const expandedRowKeys = ref<number[]>([])
@@ -272,7 +273,7 @@ const toggleExpandAll = () => {
 /** 刷新菜单缓存按钮操作 */
 const refreshMenu = async () => {
   try {
-    await message.confirm('即将更新缓存刷新浏览器！', '刷新菜单缓存')
+    await message.confirm(t('system.menu._todo113'), t('system.menu._todo109'))
     // 清空，从而触发刷新
     wsCache.delete(CACHE_KEY.USER)
     wsCache.delete(CACHE_KEY.ROLE_ROUTERS)

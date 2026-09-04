@@ -1,25 +1,25 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('sys.loginlog.detail')" width="800">
+  <Dialog v-model="dialogVisible" :title="t('system.loginlog.detail')" width="800">
     <el-descriptions :column="1" border>
-      <el-descriptions-item :label="t('sys.loginlog.logId')" min-width="120">
+      <el-descriptions-item :label="t('system.loginlog._todo39')" min-width="120">
         {{ detailData.id }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.loginlog.logType')">
+      <el-descriptions-item :label="t('system.loginlog._todo40')">
         <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_TYPE" :value="detailData.logType" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.loginlog.username')">
+      <el-descriptions-item :label="t('system.loginlog.username')">
         {{ detailData.username }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.loginlog.userIp')">
+      <el-descriptions-item :label="t('system.loginlog.loginAddress')">
         {{ detailData.userIp }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.loginlog.userAgent')">
+      <el-descriptions-item :label="t('system.loginlog._todo41')">
         {{ detailData.userAgent }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.loginlog.result')">
+      <el-descriptions-item :label="t('system.loginlog._todo42')">
         <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_RESULT" :value="detailData.result" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.loginlog.createTime')">
+      <el-descriptions-item :label="t('system.loginlog._todo43')">
         {{ formatDate(detailData.createTime) }}
       </el-descriptions-item>
     </el-descriptions>
@@ -31,8 +31,6 @@ import { formatDate } from '@/utils/formatTime'
 import * as LoginLogApi from '@/api/system/loginLog'
 
 defineOptions({ name: 'SystemLoginLogDetail' })
-
-const { t } = useI18n() // 国际化
 
 const dialogVisible = ref(false) // 弹窗的是否展示
 const detailLoading = ref(false) // 表单的加载中

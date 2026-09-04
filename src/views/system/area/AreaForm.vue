@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('sys.area.ipQuery')">
+  <Dialog v-model="dialogVisible" :title="t('system.area._todo1')">
     <el-form
       ref="formRef"
       v-loading="formLoading"
@@ -7,11 +7,11 @@
       :rules="formRules"
       label-width="80px"
     >
-      <el-form-item :label="t('sys.area.ip')" prop="ip">
-        <el-input v-model="formData.ip" :placeholder="t('sys.area.ipPlaceholder')" />
+      <el-form-item label="IP" prop="ip">
+        <el-input v-model="formData.ip" :placeholder="t('system.area._todo2')" />
       </el-form-item>
-      <el-form-item :label="t('sys.area.result')" prop="result">
-        <el-input v-model="formData.result" :placeholder="t('sys.area.resultPlaceholder')" readonly />
+      <el-form-item :label="t('system.area._todo3')" prop="result">
+        <el-input v-model="formData.result" :placeholder="t('system.area._todo4')" readonly />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -24,9 +24,9 @@
 import * as AreaApi from '@/api/system/area'
 
 defineOptions({ name: 'SystemAreaForm' })
+const { t } = useI18n() // 国际化
 
 const message = useMessage() // 消息弹窗
-const { t } = useI18n() // 国际化
 
 const dialogVisible = ref(false) // 弹窗的是否展示
 const formLoading = ref(false) // 表单的加载中：提交的按钮禁用
@@ -35,7 +35,7 @@ const formData = ref({
   result: undefined
 })
 const formRules = reactive({
-  ip: [{ required: true, message: t('sys.area.ipRequired'), trigger: 'blur' }]
+  ip: [{ required: true, message: t('system.area._todo5'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 
@@ -56,7 +56,7 @@ const submitForm = async () => {
   formLoading.value = true
   try {
     formData.value.result = await AreaApi.getAreaByIp(formData.value.ip!.trim())
-    message.success(t('sys.area.querySuccess'))
+    message.success(t('system.area._todo6'))
   } finally {
     formLoading.value = false
   }

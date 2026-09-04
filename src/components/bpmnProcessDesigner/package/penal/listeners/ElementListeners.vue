@@ -1,54 +1,46 @@
 <template>
   <div class="panel-tab__content">
     <el-table :data="elementListenersList" size="small" border>
-      <el-table-column :label="t('bpm.processDesigner.listeners.serialNumber')" width="50px" type="index" />
-      <el-table-column :label="t('bpm.processDesigner.listeners.eventType')" min-width="100px" prop="event" />
+      <el-table-column label="序号" width="50px" type="index" />
+      <el-table-column label="事件类型" min-width="100px" prop="event" />
       <el-table-column
-        :label="t('bpm.processDesigner.listeners.listenerType')"
+        label="监听器类型"
         min-width="100px"
         show-overflow-tooltip
         :formatter="(row) => listenerTypeObject[row.listenerType]"
       />
-      <el-table-column :label="t('bpm.processDesigner.listeners.operation')" width="100px">
+      <el-table-column label="操作" width="100px">
         <template #default="scope">
           <el-button size="small" link @click="openListenerForm(scope.row, scope.$index)">
-            {{ t('common.edit') }}
+            编辑
           </el-button>
           <el-divider direction="vertical" />
           <el-button size="small" link style="color: #ff4d4f" @click="removeListener(scope.$index)">
-            {{ t('common.delete') }}
+            移除
           </el-button>
         </template>
       </el-table-column>
     </el-table>
     <div class="element-drawer__button">
-      <XButton
-        type="primary"
-        preIcon="ep:plus"
-        :title="t('bpm.processDesigner.listeners.addListener')"
-        size="small"
-        @click="openListenerForm(null)"
-      />
-      <XButton
-        type="success"
-        preIcon="ep:select"
-        :title="t('bpm.processDesigner.listeners.selectListener')"
-        size="small"
-        @click="openProcessListenerDialog"
-      />
+      <el-button type="primary" size="small" @click="openListenerForm(null)">
+        <Icon icon="ep:plus" class="mr-1px" /> 添加监听器
+      </el-button>
+      <el-button type="success" size="small" @click="openProcessListenerDialog">
+        <Icon icon="ep:select" class="mr-1px" /> 选择监听器
+      </el-button>
     </div>
 
     <!-- 监听器 编辑/创建 部分 -->
     <el-drawer
       v-model="listenerFormModelVisible"
-      :title="t('bpm.processDesigner.listeners.taskListener')"
+      title="执行监听器"
       :size="`${width}px`"
       append-to-body
       destroy-on-close
     >
       <el-form :model="listenerForm" label-width="96px" ref="listenerFormRef">
         <el-form-item
-          :label="t('bpm.processDesigner.listeners.eventType')"
+          label="事件类型"
           prop="event"
           :rules="{ required: true, trigger: ['blur', 'change'] }"
         >
@@ -58,7 +50,7 @@
           </el-select>
         </el-form-item>
         <el-form-item
-          :label="t('bpm.processDesigner.listeners.listenerType')"
+          label="监听器类型"
           prop="listenerType"
           :rules="{ required: true, trigger: ['blur', 'change'] }"
         >
@@ -73,7 +65,7 @@
         </el-form-item>
         <el-form-item
           v-if="listenerForm.listenerType === 'classListener'"
-          :label="t('bpm.processDesigner.listeners.javaClass')"
+          label="Java类"
           prop="class"
           key="listener-class"
           :rules="{ required: true, trigger: ['blur', 'change'] }"
@@ -82,7 +74,7 @@
         </el-form-item>
         <el-form-item
           v-if="listenerForm.listenerType === 'expressionListener'"
-          :label="t('bpm.processDesigner.listeners.expression')"
+          label="表达式"
           prop="expression"
           key="listener-expression"
           :rules="{ required: true, trigger: ['blur', 'change'] }"
@@ -91,7 +83,7 @@
         </el-form-item>
         <el-form-item
           v-if="listenerForm.listenerType === 'delegateExpressionListener'"
-          :label="t('bpm.processDesigner.listeners.delegateExpression')"
+          label="代理表达式"
           prop="delegateExpression"
           key="listener-delegate"
           :rules="{ required: true, trigger: ['blur', 'change'] }"
@@ -100,39 +92,39 @@
         </el-form-item>
         <template v-if="listenerForm.listenerType === 'scriptListener'">
           <el-form-item
-            :label="t('bpm.processDesigner.listeners.scriptFormat')"
+            label="脚本格式"
             prop="scriptFormat"
             key="listener-script-format"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: t('bpm.processDesigner.listeners.scriptFormatRequired') }"
+            :rules="{ required: true, trigger: ['blur', 'change'], message: '请填写脚本格式' }"
           >
             <el-input v-model="listenerForm.scriptFormat" clearable />
           </el-form-item>
           <el-form-item
-            :label="t('bpm.processDesigner.listeners.scriptType')"
+            label="脚本类型"
             prop="scriptType"
             key="listener-script-type"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: t('bpm.processDesigner.listeners.scriptTypeRequired') }"
+            :rules="{ required: true, trigger: ['blur', 'change'], message: '请选择脚本类型' }"
           >
             <el-select v-model="listenerForm.scriptType">
-              <el-option :label="t('bpm.processDesigner.listeners.inlineScript')" value="inlineScript" />
-              <el-option :label="t('bpm.processDesigner.listeners.externalScript')" value="externalScript" />
+              <el-option label="内联脚本" value="inlineScript" />
+              <el-option label="外部脚本" value="externalScript" />
             </el-select>
           </el-form-item>
           <el-form-item
             v-if="listenerForm.scriptType === 'inlineScript'"
-            :label="t('bpm.processDesigner.listeners.scriptContent')"
+            label="脚本内容"
             prop="value"
             key="listener-script"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: t('bpm.processDesigner.listeners.scriptContentRequired') }"
+            :rules="{ required: true, trigger: ['blur', 'change'], message: '请填写脚本内容' }"
           >
             <el-input v-model="listenerForm.value" clearable />
           </el-form-item>
           <el-form-item
             v-if="listenerForm.scriptType === 'externalScript'"
-            :label="t('bpm.processDesigner.listeners.resourceAddress')"
+            label="资源地址"
             prop="resource"
             key="listener-resource"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: t('bpm.processDesigner.listeners.resourceAddressRequired') }"
+            :rules="{ required: true, trigger: ['blur', 'change'], message: '请填写资源地址' }"
           >
             <el-input v-model="listenerForm.resource" clearable />
           </el-form-item>
@@ -140,8 +132,8 @@
       </el-form>
       <el-divider />
       <p class="listener-filed__title">
-        <span><Icon icon="ep:menu" />{{ t('bpm.processDesigner.listeners.injectionFields') }}：</span>
-        <XButton type="primary" @click="openListenerFieldForm(null)" :title="t('bpm.processDesigner.listeners.addField')" />
+        <span><Icon icon="ep:menu" />注入字段：</span>
+        <el-button type="primary" @click="openListenerFieldForm(null)">添加字段</el-button>
       </p>
       <el-table
         :data="fieldsListOfListener"
@@ -151,46 +143,47 @@
         border
         style="flex: none"
       >
-        <el-table-column :label="t('bpm.processDesigner.listeners.serialNumber')" width="50px" type="index" />
-        <el-table-column :label="t('bpm.processDesigner.listeners.fieldName')" min-width="100px" prop="name" />
+        <el-table-column label="序号" width="50px" type="index" />
+        <el-table-column label="字段名称" min-width="100px" prop="name" />
         <el-table-column
-          :label="t('bpm.processDesigner.listeners.fieldType')"
+          label="字段类型"
           min-width="80px"
           show-overflow-tooltip
           :formatter="(row) => fieldTypeObject[row.fieldType]"
         />
         <el-table-column
-          :label="t('bpm.processDesigner.listeners.fieldValueExpression')"
+          label="字段值/表达式"
           min-width="100px"
           show-overflow-tooltip
           :formatter="(row) => row.string || row.expression"
         />
-        <el-table-column :label="t('bpm.processDesigner.listeners.operation')" width="130px">
+        <el-table-column label="操作" width="130px">
           <template #default="scope">
-            <el-button size="small" link @click="openListenerFieldForm(scope.row, scope.$index)"
-              >{{ t('common.edit') }}</el-button
-            >
+            <el-button size="small" link @click="openListenerFieldForm(scope.row, scope.$index)">
+              编辑
+            </el-button>
             <el-divider direction="vertical" />
             <el-button
               size="small"
               link
               style="color: #ff4d4f"
               @click="removeListenerField(scope.$index)"
-              >{{ t('common.delete') }}</el-button
             >
+              移除
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
 
       <div class="element-drawer__button">
-        <el-button @click="listenerFormModelVisible = false">{{ t('common.cancel') }}</el-button>
-        <el-button type="primary" @click="saveListenerConfig">{{ t('common.save') }}</el-button>
+        <el-button @click="listenerFormModelVisible = false">取 消</el-button>
+        <el-button type="primary" @click="saveListenerConfig">保 存</el-button>
       </div>
     </el-drawer>
 
     <!-- 注入西段 编辑/创建 部分 -->
     <el-dialog
-      :title="t('bpm.processDesigner.listeners.fieldConfiguration')"
+      title="字段配置"
       v-model="listenerFieldFormModelVisible"
       width="600px"
       append-to-body
@@ -203,14 +196,14 @@
         style="height: 136px"
       >
         <el-form-item
-          :label="t('bpm.processDesigner.listeners.fieldName') + '：'"
+          label="字段名称："
           prop="name"
           :rules="{ required: true, trigger: ['blur', 'change'] }"
         >
           <el-input v-model="listenerFieldForm.name" clearable />
         </el-form-item>
         <el-form-item
-          :label="t('bpm.processDesigner.listeners.fieldType') + '：'"
+          label="字段类型："
           prop="fieldType"
           :rules="{ required: true, trigger: ['blur', 'change'] }"
         >
@@ -225,7 +218,7 @@
         </el-form-item>
         <el-form-item
           v-if="listenerFieldForm.fieldType === 'string'"
-          :label="t('bpm.processDesigner.listeners.fieldValue') + '：'"
+          label="字段值："
           prop="string"
           key="field-string"
           :rules="{ required: true, trigger: ['blur', 'change'] }"
@@ -234,7 +227,7 @@
         </el-form-item>
         <el-form-item
           v-if="listenerFieldForm.fieldType === 'expression'"
-          :label="t('bpm.processDesigner.listeners.expression') + '：'"
+          label="表达式："
           prop="expression"
           key="field-expression"
           :rules="{ required: true, trigger: ['blur', 'change'] }"
@@ -243,8 +236,8 @@
         </el-form-item>
       </el-form>
       <template #footer>
-        <el-button size="small" @click="listenerFieldFormModelVisible = false">{{ t('common.cancel') }}</el-button>
-        <el-button size="small" type="primary" @click="saveListenerFiled">{{ t('common.confirm') }}</el-button>
+        <el-button size="small" @click="listenerFieldFormModelVisible = false">取 消</el-button>
+        <el-button size="small" type="primary" @click="saveListenerFiled">确 定</el-button>
       </template>
     </el-dialog>
   </div>
@@ -254,7 +247,6 @@
 </template>
 <script lang="ts" setup>
 import { ElMessageBox } from 'element-plus'
-import { useI18n } from '@/hooks/web/useI18n'
 import { createListenerObject, updateElementExtensions } from '../../utils'
 import {
   initListenerType,
@@ -266,8 +258,6 @@ import {
 import ProcessListenerDialog from './ProcessListenerDialog.vue'
 
 defineOptions({ name: 'ElementListeners' })
-
-const { t } = useI18n()
 
 const props = defineProps({
   id: String,
@@ -285,7 +275,6 @@ const editingListenerIndex = ref(-1) // 监听器所在下标，-1 为新增
 const editingListenerFieldIndex = ref(-1) // 字段所在下标，-1 为新增
 const listenerTypeObject = ref(listenerType)
 const fieldTypeObject = ref(fieldType)
-const bpmnElement = ref()
 const otherExtensionList = ref()
 const bpmnElementListeners = ref()
 const listenerFormRef = ref()
@@ -293,13 +282,19 @@ const listenerFieldFormRef = ref()
 const bpmnInstances = () => (window as any)?.bpmnInstances
 
 const resetListenersList = () => {
-  bpmnElement.value = bpmnInstances().bpmnElement
+  const instances = bpmnInstances()
+  if (!instances || !instances.bpmnElement) return
+
+  // 直接使用原始BPMN元素，避免Vue响应式代理问题
+  const bpmnElement = instances.bpmnElement
+  const businessObject = bpmnElement.businessObject
+
   otherExtensionList.value =
-    bpmnElement.value.businessObject?.extensionElements?.values?.filter(
+    businessObject?.extensionElements?.values?.filter(
       (ex) => ex.$type !== `${prefix}:ExecutionListener`
     ) ?? [] // 保留非监听器类型的扩展属性，避免移除监听器时清空其他配置（如审批人等）。相关案例：https://gitee.com/yudaocode/yudao-ui-admin-vue3/issues/ICMSYC
   bpmnElementListeners.value =
-    bpmnElement.value.businessObject?.extensionElements?.values?.filter(
+    businessObject?.extensionElements?.values?.filter(
       (ex) => ex.$type === `${prefix}:ExecutionListener`
     ) ?? []
   elementListenersList.value = bpmnElementListeners.value.map((listener) =>
@@ -364,38 +359,47 @@ const saveListenerFiled = async () => {
 // 移除监听器字段
 const removeListenerField = (index) => {
   // debugger
-  ElMessageBox.confirm(t('bpm.processDesigner.listeners.confirmRemoveField'), t('common.confirmation'), {
-    confirmButtonText: t('common.confirm'),
-    cancelButtonText: t('common.cancel')
+  ElMessageBox.confirm('确认移除该字段吗？', '提示', {
+    confirmButtonText: '确 认',
+    cancelButtonText: '取 消'
   })
     .then(() => {
       fieldsListOfListener.value.splice(index, 1)
       listenerForm.value.fields.splice(index, 1)
     })
-    .catch(() => console.info(t('common.operationCancel')))
+    .catch(() => console.info('操作取消'))
 }
 // 移除监听器
 const removeListener = (index) => {
-  ElMessageBox.confirm(t('bpm.processDesigner.listeners.confirmRemoveListener'), t('common.confirmation'), {
-    confirmButtonText: t('common.confirm'),
-    cancelButtonText: t('common.cancel')
+  ElMessageBox.confirm('确认移除该监听器吗？', '提示', {
+    confirmButtonText: '确 认',
+    cancelButtonText: '取 消'
   })
     .then(() => {
+      const instances = bpmnInstances()
+      if (!instances || !instances.bpmnElement) return
+
       bpmnElementListeners.value.splice(index, 1)
       elementListenersList.value.splice(index, 1)
       updateElementExtensions(
-        bpmnElement.value,
+        instances.bpmnElement,
         otherExtensionList.value.concat(bpmnElementListeners.value)
       )
     })
-    .catch(() => console.info(t('common.operationCancel')))
+    .catch(() => console.info('操作取消'))
 }
 // 保存监听器配置
 const saveListenerConfig = async () => {
   // debugger
   let validateStatus = await listenerFormRef.value.validate()
   if (!validateStatus) return // 验证不通过直接返回
+
+  const instances = bpmnInstances()
+  if (!instances || !instances.bpmnElement) return
+
+  const bpmnElement = instances.bpmnElement
   const listenerObject = createListenerObject(listenerForm.value, false, prefix)
+
   if (editingListenerIndex.value === -1) {
     bpmnElementListeners.value.push(listenerObject)
     elementListenersList.value.push(listenerForm.value)
@@ -405,13 +409,10 @@ const saveListenerConfig = async () => {
   }
   // 保存其他配置
   otherExtensionList.value =
-    bpmnElement.value.businessObject?.extensionElements?.values?.filter(
+    bpmnElement.businessObject?.extensionElements?.values?.filter(
       (ex) => ex.$type !== `${prefix}:ExecutionListener`
     ) ?? []
-  updateElementExtensions(
-    bpmnElement.value,
-    otherExtensionList.value.concat(bpmnElementListeners.value)
-  )
+  updateElementExtensions(bpmnElement, otherExtensionList.value.concat(bpmnElementListeners.value))
   // 4. 隐藏侧边栏
   listenerFormModelVisible.value = false
   listenerForm.value = {}
@@ -423,6 +424,10 @@ const openProcessListenerDialog = async () => {
   processListenerDialogRef.value.open('execution')
 }
 const selectProcessListener = (listener) => {
+  const instances = bpmnInstances()
+  if (!instances || !instances.bpmnElement) return
+
+  const bpmnElement = instances.bpmnElement
   const listenerForm = initListenerForm2(listener)
   const listenerObject = createListenerObject(listenerForm, false, prefix)
   bpmnElementListeners.value.push(listenerObject)
@@ -430,13 +435,10 @@ const selectProcessListener = (listener) => {
 
   // 保存其他配置
   otherExtensionList.value =
-    bpmnElement.value.businessObject?.extensionElements?.values?.filter(
+    bpmnElement.businessObject?.extensionElements?.values?.filter(
       (ex) => ex.$type !== `${prefix}:ExecutionListener`
     ) ?? []
-  updateElementExtensions(
-    bpmnElement.value,
-    otherExtensionList.value.concat(bpmnElementListeners.value)
-  )
+  updateElementExtensions(bpmnElement, otherExtensionList.value.concat(bpmnElementListeners.value))
 }
 
 watch(

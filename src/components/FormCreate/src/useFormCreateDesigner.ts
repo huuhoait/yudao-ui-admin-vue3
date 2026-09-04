@@ -4,7 +4,9 @@ import {
   useSelectRule,
   useUploadFileRule,
   useUploadImgRule,
-  useUploadImgsRule
+  useUploadImgsRule,
+  useIframeRule,
+  useAreaSelectRule
 } from './config'
 import { Ref } from 'vue'
 import { Menu } from '@/components/FormCreate/src/type'
@@ -32,12 +34,20 @@ export const useFormCreateDesigner = async (designer: Ref) => {
    * 构建表单组件
    */
   const buildFormComponents = () => {
-    designer.lang('en')
     // 移除自带的上传组件规则，使用 uploadFileRule、uploadImgRule、uploadImgsRule 替代
     designer.value?.removeMenuItem('upload')
     // 移除自带的富文本组件规则，使用 editorRule 替代
     designer.value?.removeMenuItem('fcEditor')
-    const components = [editorRule, uploadFileRule, uploadImgRule, uploadImgsRule]
+    const iframeRule = useIframeRule()
+    const areaSelectRule = useAreaSelectRule()
+    const components = [
+      editorRule,
+      uploadFileRule,
+      uploadImgRule,
+      uploadImgsRule,
+      iframeRule,
+      areaSelectRule
+    ]
     components.forEach((component) => {
       // 插入组件规则
       designer.value?.addComponent(component)
@@ -53,7 +63,15 @@ export const useFormCreateDesigner = async (designer: Ref) => {
   const userSelectRule = useSelectRule({
     name: 'UserSelect',
     label: '用户选择器',
-    icon: 'icon-user-o'
+    icon: 'icon-user-o',
+    props: [
+      {
+        type: 'switch',
+        field: 'defaultCurrentUser',
+        title: '默认选中当前用户',
+        value: false
+      }
+    ]
   })
   const deptSelectRule = useSelectRule({
     name: 'DeptSelect',
@@ -69,6 +87,12 @@ export const useFormCreateDesigner = async (designer: Ref) => {
           { label: '部门编号', value: 'id' },
           { label: '部门名称', value: 'name' }
         ]
+      },
+      {
+        type: 'switch',
+        field: 'defaultCurrentDept',
+        title: '默认选中当前部门',
+        value: false
       }
     ]
   })

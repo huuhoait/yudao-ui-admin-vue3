@@ -7,16 +7,16 @@
       label-width="100px"
       v-loading="formLoading"
     >
-      <el-form-item :label="t('bpm.category.name')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('bpm.category.namePlaceholder')" />
+      <el-form-item :label="t('bpm.category.categoryName')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('bpm.category.inputCategoryName')" />
       </el-form-item>
-      <el-form-item :label="t('bpm.category.code')" prop="code">
-        <el-input v-model="formData.code" :placeholder="t('bpm.category.codePlaceholder')" />
+      <el-form-item :label="t('bpm.category.categoryFlag')" prop="code">
+        <el-input v-model="formData.code" :placeholder="t('bpm.category.inputCategoryFlag')" />
       </el-form-item>
-      <el-form-item :label="t('bpm.category.description')" prop="description">
-        <el-input v-model="formData.description" type="textarea" :placeholder="t('bpm.category.descriptionPlaceholder')" />
+      <el-form-item :label="t('bpm.category.categoryDesc')" prop="description">
+        <el-input v-model="formData.description" type="textarea" :placeholder="t('bpm.category.inputCategoryDesc')" />
       </el-form-item>
-      <el-form-item :label="t('bpm.category.status')" prop="status">
+      <el-form-item :label="t('bpm.category.categoryStatus')" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -27,17 +27,17 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :label="t('bpm.category.sort')" prop="sort">
+      <el-form-item :label="t('bpm.category.categorySort')" prop="sort">
         <el-input-number
           v-model="formData.sort"
-          :placeholder="t('bpm.category.sortPlaceholder')"
+          :placeholder="t('bpm.category.inputCategorySort')"
           class="!w-1/1"
           :precision="0"
         />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="submitForm" type="primary" :disabled="formLoading">{{ t('common.confirm') }}</el-button>
+      <el-button @click="submitForm" type="primary" :disabled="formLoading">{{ t('common.ok') }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
@@ -66,10 +66,10 @@ const formData = ref({
   sort: undefined
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('bpm.category.nameRequired'), trigger: 'blur' }],
-  code: [{ required: true, message: t('bpm.category.codeRequired'), trigger: 'blur' }],
-  status: [{ required: true, message: t('bpm.category.statusRequired'), trigger: 'blur' }],
-  sort: [{ required: true, message: t('bpm.category.sortRequired'), trigger: 'blur' }]
+  name: [{ required: true, message: t('bpm.category.categoryNameRequired'), trigger: 'blur' }],
+  code: [{ required: true, message: t('bpm.category.categoryFlagRequired'), trigger: 'blur' }],
+  status: [{ required: true, message: t('bpm.category.categoryStatusRequired'), trigger: 'blur' }],
+  sort: [{ required: true, message: t('bpm.category.categorySortRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

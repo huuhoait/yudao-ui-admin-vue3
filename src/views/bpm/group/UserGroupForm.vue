@@ -7,18 +7,14 @@
       :rules="formRules"
       label-width="100px"
     >
-      <el-form-item :label="t('bpm.group.form.name')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('bpm.group.form.namePlaceholder')" />
+      <el-form-item :label="t('bpm.group._todo6')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('bpm.group._todo7')" />
       </el-form-item>
-      <el-form-item :label="t('bpm.group.form.description')" prop="description">
-        <el-input
-          v-model="formData.description"
-          :placeholder="t('bpm.group.form.descriptionPlaceholder')"
-          type="textarea"
-        />
+      <el-form-item :label="t('bpm.group.description')">
+        <el-input v-model="formData.description" :placeholder="t('bpm.group.inputDescription')" type="textarea" />
       </el-form-item>
-      <el-form-item :label="t('bpm.group.form.members')" prop="userIds">
-        <el-select v-model="formData.userIds" multiple :placeholder="t('bpm.group.form.membersPlaceholder')">
+      <el-form-item :label="t('bpm.group._todo8')" prop="userIds">
+        <el-select v-model="formData.userIds" multiple :placeholder="t('bpm.group._todo9')">
           <el-option
             v-for="user in userList"
             :key="user.id"
@@ -27,7 +23,7 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('bpm.group.form.status')" prop="status">
+      <el-form-item :label="t('common.status')" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -40,9 +36,7 @@
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">
-        {{ t('common.confirm') }}
-      </el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
@@ -70,10 +64,10 @@ const formData = ref({
   status: CommonStatusEnum.ENABLE
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('bpm.group.form.rules.name'), trigger: 'blur' }],
-  description: [{ required: true, message: t('bpm.group.form.rules.description'), trigger: 'blur' }],
-  userIds: [{ required: true, message: t('bpm.group.form.rules.members'), trigger: 'blur' }],
-  status: [{ required: true, message: t('bpm.group.form.rules.status'), trigger: 'blur' }]
+  name: [{ required: true, message: t('bpm.group._todo10'), trigger: 'blur' }],
+  description: [{ required: true, message: t('bpm.group.descriptionRequired'), trigger: 'blur' }],
+  userIds: [{ required: true, message: t('bpm.group._todo11'), trigger: 'blur' }],
+  status: [{ required: true, message: t('bpm.group.statusRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 const userList = ref<any[]>([]) // 用户列表

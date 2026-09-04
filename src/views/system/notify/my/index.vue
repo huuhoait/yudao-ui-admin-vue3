@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('sys.notify.my.myNotifyMessageManagement')" url="https://doc.iocoder.cn/notify/" />
+  <doc-alert :title="t('system.notify.my.notifyConfig')" url="https://doc.iocoder.cn/notify/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,40 +10,40 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="t('sys.notify.my.isRead')" prop="readStatus">
+      <el-form-item :label="t('system.notify.my._todo137')" prop="readStatus">
         <el-select
           v-model="queryParams.readStatus"
-          :placeholder="t('sys.notify.my.isReadPlaceholder')"
+          :placeholder="t('system.notify.my.selectStatus')"
           clearable
           class="!w-240px"
         >
           <el-option
             v-for="dict in getBoolDictOptions(DICT_TYPE.INFRA_BOOLEAN_STRING)"
-            :key="dict.value"
+            :key="String(dict.value)"
             :label="dict.label"
             :value="dict.value"
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('sys.notify.my.sendTime')" prop="createTime">
+      <el-form-item :label="t('system.notify.my.sendTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          :start-placeholder="t('common.startTimeText')"
-          :end-placeholder="t('common.endTimeText')"
+          :start-placeholder="t('system.notify.my.startDate')"
+          :end-placeholder="t('system.notify.my.endDate')"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.notify.my.search') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.notify.my.reset') }}</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
         <el-button @click="handleUpdateList">
-          <Icon icon="ep:reading" class="mr-5px" /> {{ t('sys.notify.my.markSelectedAsRead') }}
+          <Icon icon="ep:reading" class="mr-5px" /> {{ t('system.notify.my._todo140') }}
         </el-button>
         <el-button @click="handleUpdateAll">
-          <Icon icon="ep:reading" class="mr-5px" /> {{ t('sys.notify.my.markAllAsRead') }}
+          <Icon icon="ep:reading" class="mr-5px" /> {{ t('system.notify.my._todo141') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -59,45 +59,45 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" :selectable="selectable" :reserve-selection="true" />
-      <el-table-column :label="t('sys.notify.my.sender')" align="center" prop="templateNickname" width="180" />
+      <el-table-column :label="t('system.notify.my._todo135')" align="center" prop="templateNickname" width="180" />
       <el-table-column
-        :label="t('sys.notify.my.sendTime')"
+        :label="t('system.notify.my.sendTime')"
         align="center"
         prop="createTime"
         width="200"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('sys.notify.my.type')" align="center" prop="templateType" width="180">
+      <el-table-column :label="t('system.notify.my.type')" align="center" prop="templateType" width="180">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_NOTIFY_TEMPLATE_TYPE" :value="scope.row.templateType" />
         </template>
       </el-table-column>
       <el-table-column
-        :label="t('sys.notify.my.content')"
+        :label="t('system.notify.my._todo139')"
         align="center"
         prop="templateContent"
         show-overflow-tooltip
       />
-      <el-table-column :label="t('sys.notify.my.isRead')" align="center" prop="readStatus" width="160">
+      <el-table-column :label="t('system.notify.my._todo137')" align="center" prop="readStatus" width="160">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_BOOLEAN_STRING" :value="scope.row.readStatus" />
         </template>
       </el-table-column>
       <el-table-column
-        :label="t('sys.notify.my.readTime')"
+        :label="t('system.notify.my.readTime')"
         align="center"
         prop="readTime"
         width="200"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('sys.notify.my.operation')" align="center" width="160">
+      <el-table-column :label="t('system.notify.my.action')" align="center" width="160">
         <template #default="scope">
           <el-button
             link
             :type="scope.row.readStatus ? 'primary' : 'warning'"
             @click="openDetail(scope.row)"
           >
-            {{ scope.row.readStatus ? t('sys.notify.my.detail') : t('sys.notify.my.markAsRead') }}
+            {{ scope.row.readStatus ? '详情' : '已读' }}
           </el-button>
         </template>
       </el-table-column>
@@ -122,9 +122,9 @@ import * as NotifyMessageApi from '@/api/system/notify/message'
 import MyNotifyMessageDetail from './MyNotifyMessageDetail.vue'
 
 defineOptions({ name: 'SystemMyNotify' })
-
-const message = useMessage() // 消息弹窗
 const { t } = useI18n() // 国际化
+
+const message = useMessage() // 消息
 
 const loading = ref(true) // 列表的加载中
 const total = ref(0) // 列表的总页数
@@ -182,7 +182,7 @@ const handleReadOne = async (id) => {
 /** 标记全部站内信已读 **/
 const handleUpdateAll = async () => {
   await NotifyMessageApi.updateAllNotifyMessageRead()
-  message.success(t('sys.notify.my.readSuccess'))
+  message.success(t('system.notify.my._todo142'))
   tableRef.value.clearSelection()
   await getList()
 }
@@ -193,7 +193,7 @@ const handleUpdateList = async () => {
     return
   }
   await NotifyMessageApi.updateNotifyMessageRead(selectedIds.value)
-  message.success(t('sys.notify.my.batchReadSuccess'))
+  message.success(t('system.notify.my._todo143'))
   tableRef.value.clearSelection()
   await getList()
 }

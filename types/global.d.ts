@@ -12,15 +12,24 @@ declare global {
 
   type ComponentRef<T> = InstanceType<T>
 
-  type LocaleType = 'zh-CN' | 'en'
+  type LocaleType = 'zh-CN' | 'en' | 'vi'
 
   declare type TimeoutHandle = ReturnType<typeof setTimeout>
   declare type IntervalHandle = ReturnType<typeof setInterval>
 
+  const _hmt: any[]
+
+  interface Window {
+    _hmt?: any[]
+    bpmnInstances?: any
+  }
+
+  type SummaryMethodProps<T extends Recordable = Recordable> = Parameters<
+    import('element-plus').SummaryMethod<T>
+  >[0]
+
   type AxiosHeaders =
-    | 'application/json'
-    | 'application/x-www-form-urlencoded'
-    | 'multipart/form-data'
+    'application/json' | 'application/x-www-form-urlencoded' | 'multipart/form-data'
 
   type AxiosMethod = 'get' | 'post' | 'delete' | 'put' | 'GET' | 'POST' | 'DELETE' | 'PUT'
 

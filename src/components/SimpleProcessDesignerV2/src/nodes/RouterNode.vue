@@ -30,14 +30,14 @@
             {{ currentNode.showText }}
           </div>
           <div class="node-text" v-else>
-            {{ t(NODE_DEFAULT_TEXT.get(NodeType.ROUTER_BRANCH_NODE) as string) }}
+            {{ NODE_DEFAULT_TEXT.get(NodeType.ROUTER_BRANCH_NODE) }}
           </div>
           <Icon v-if="!readonly" icon="ep:arrow-right-bold" />
         </div>
         <div v-if="!readonly" class="node-toolbar">
-          <div class="toolbar-icon"
-            ><Icon color="#0089ff" icon="ep:circle-close-filled" :size="18" @click="deleteNode"
-          /></div>
+          <div class="toolbar-icon">
+            <Icon color="#0089ff" icon="ep:circle-close-filled" :size="18" @click="deleteNode" />
+          </div>
         </div>
       </div>
 
@@ -60,7 +60,6 @@ import RouterNodeConfig from '../nodes-config/RouterNodeConfig.vue'
 defineOptions({
   name: 'RouterNode'
 })
-const { t } = useI18n()
 
 const props = defineProps({
   flowNode: {

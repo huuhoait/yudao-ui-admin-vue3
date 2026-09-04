@@ -6,8 +6,8 @@ import { propTypes } from '@/utils/propTypes'
 import { isNumber } from '@/utils/is'
 import { ElMessage } from 'element-plus'
 import { useLocaleStore } from '@/store/modules/locale'
-import { getRefreshToken, getTenantId } from '@/utils/auth'
-import { getUploadUrl } from '@/components/UploadFile/src/useUpload'
+import { useUpload } from '@/components/UploadFile/src/useUpload'
+import merge from 'lodash-es/merge'
 
 defineOptions({ name: 'Editor' })
 
@@ -27,10 +27,15 @@ const props = defineProps({
     default: () => undefined
   },
   readonly: propTypes.bool.def(false),
-  modelValue: propTypes.string.def('')
+  modelValue: propTypes.string.def(''),
+  directory: propTypes.string.def('editor-default')
 })
 
 const emit = defineEmits(['change', 'update:modelValue'])
+
+// 使用项目的上传方法，实现逐个文件上传
+const { httpRequest: imageHttpRequest } = useUpload(`${props.directory}-image`)
+const { httpRequest: videoHttpRequest } = useUpload(`${props.directory}-video`)
 
 // 编辑器实例，必须用 shallowRef
 const editorRef = shallowRef<IDomEditor>()
@@ -60,7 +65,11 @@ watch(
 )
 watch(
   () => props.readonly,
-  (val) => {
+  async (val) => {
+    // 特殊：等待 editorRef 渲染完成
+    if (!editorRef.value) {
+      await nextTick()
+    }
     if (val) {
       editorRef.value?.disable()
     } else {
@@ -75,7 +84,7 @@ const handleCreated = (editor: IDomEditor) => {
 
 // 编辑器配置
 const editorConfig = computed((): IEditorConfig => {
-  return Object.assign(
+  return merge(
     {
       placeholder: '请输入内容...',
       readOnly: props.readonly,
@@ -102,105 +111,61 @@ const editorConfig = computed((): IEditorConfig => {
       scroll: true,
       EXTEND_CONF: {
         mentionConfig: {
-          showModal: () => { },
-          hideModal: () => { }
+          showModal: () => {},
+          hideModal: () => {}
         }
       },
       MENU_CONF: {
         ['uploadImage']: {
-          server: getUploadUrl(),
           // 单个文件的最大体积限制，默认为 2M
-          maxFileSize: 5 * 1024 * 1024,
+          maxFileSize: 10 * 1024 * 1024,
           // 最多可上传几个文件，默认为 100
-          maxNumberOfFiles: 10,
+          maxNumberOfFiles: 100,
           // 选择文件时的类型限制，默认为 ['image/*'] 。如不想限制，则设置为 []
           allowedFileTypes: ['image/*'],
 
-          // 自定义增加 http  header
-          headers: {
-            Accept: '*',
-            Authorization: 'Bearer ' + getRefreshToken(), // 使用 getRefreshToken() 方法，而不使用 getAccessToken() 方法的原因：Editor 无法方便的刷新访问令牌
-            'tenant-id': getTenantId()
-          },
-
-          // 超时时间，默认为 10 秒
-          timeout: 15 * 1000, // 15 秒
-
-          // form-data fieldName，后端接口参数名称，默认值wangeditor-uploaded-image
-          fieldName: 'file',
-
-          // 上传之前触发
-          onBeforeUpload(file: File) {
-            // console.log(file)
-            return file
-          },
-          // 上传进度的回调函数
-          onProgress(progress: number) {
-            // progress 是 0-100 的数字
-            console.log('progress', progress)
-          },
-          onSuccess(file: File, res: any) {
-            console.log('onSuccess', file, res)
-          },
-          onFailed(file: File, res: any) {
-            alert(res.message)
-            console.log('onFailed', file, res)
-          },
-          onError(file: File, err: any, res: any) {
-            alert(err.message)
-            console.error('onError', file, err, res)
-          },
-          // 自定义插入图片
-          customInsert(res: any, insertFn: InsertFnType) {
-            insertFn(res.data, 'image', res.data)
+          // 使用 customUpload 实现逐个文件上传，复用项目的 httpRequest
+          async customUpload(file: File, insertFn: InsertFnType) {
+            try {
+              const res = await imageHttpRequest({
+                file: file as any,
+                onProgress: () => {},
+                onSuccess: () => {},
+                onError: () => {}
+              } as any)
+              // 兼容前端直连上传和后端上传两种模式的返回格式
+              const url = (res as any).data?.data || (res as any).data
+              insertFn(url, 'image', url)
+            } catch (error: any) {
+              ElMessage.error(error.msg || '图片上传失败')
+              console.error('Upload error:', error)
+            }
           }
         },
         ['uploadVideo']: {
-          server: getUploadUrl(),
           // 单个文件的最大体积限制，默认为 10M
-          maxFileSize: 10 * 1024 * 1024,
+          maxFileSize: 1024 * 1024 * 1024,
           // 最多可上传几个文件，默认为 100
           maxNumberOfFiles: 10,
           // 选择文件时的类型限制，默认为 ['video/*'] 。如不想限制，则设置为 []
           allowedFileTypes: ['video/*'],
 
-          // 自定义增加 http  header
-          headers: {
-            Accept: '*',
-            Authorization: 'Bearer ' + getRefreshToken(), // 使用 getRefreshToken() 方法，而不使用 getAccessToken() 方法的原因：Editor 无法方便的刷新访问令牌
-            'tenant-id': getTenantId()
-          },
-
-          // 超时时间，默认为 30 秒
-          timeout: 15 * 1000, // 15 秒
-
-          // form-data fieldName，后端接口参数名称，默认值wangeditor-uploaded-image
-          fieldName: 'file',
-
-          // 上传之前触发
-          onBeforeUpload(file: File) {
-            // console.log(file)
-            return file
-          },
-          // 上传进度的回调函数
-          onProgress(progress: number) {
-            // progress 是 0-100 的数字
-            console.log('progress', progress)
-          },
-          onSuccess(file: File, res: any) {
-            console.log('onSuccess', file, res)
-          },
-          onFailed(file: File, res: any) {
-            alert(res.message)
-            console.log('onFailed', file, res)
-          },
-          onError(file: File, err: any, res: any) {
-            alert(err.message)
-            console.error('onError', file, err, res)
-          },
-          // 自定义插入图片
-          customInsert(res: any, insertFn: InsertFnType) {
-            insertFn(res.data, 'mp4', res.data)
+          // 使用 customUpload 实现逐个文件上传，复用项目的 httpRequest
+          async customUpload(file: File, insertFn: InsertFnType) {
+            try {
+              const res = await videoHttpRequest({
+                file: file as any,
+                onProgress: () => {},
+                onSuccess: () => {},
+                onError: () => {}
+              } as any)
+              // 兼容前端直连上传和后端上传两种模式的返回格式
+              const url = (res as any).data?.data || (res as any).data
+              insertFn(url, 'mp4', url)
+            } catch (error: any) {
+              ElMessage.error(error.msg || '视频上传失败')
+              console.error('Upload error:', error)
+            }
           }
         }
       },
@@ -242,11 +207,20 @@ defineExpose({
 <template>
   <div class="border-1 border-solid border-[var(--tags-view-border-color)] z-10">
     <!-- 工具栏 -->
-    <Toolbar :editor="editorRef" :editorId="editorId"
-      class="border-0 b-b-1 border-solid border-[var(--tags-view-border-color)]" />
+    <Toolbar
+      :editor="editorRef"
+      :editorId="editorId"
+      class="border-0 b-b-1 border-solid border-[var(--tags-view-border-color)]"
+    />
     <!-- 编辑器 -->
-    <Editor v-model="valueHtml" :defaultConfig="editorConfig" :editorId="editorId" :style="editorStyle"
-      @on-change="handleChange" @on-created="handleCreated" />
+    <Editor
+      v-model="valueHtml"
+      :defaultConfig="editorConfig"
+      :editorId="editorId"
+      :style="editorStyle"
+      @on-change="handleChange"
+      @on-created="handleCreated"
+    />
   </div>
 </template>
 

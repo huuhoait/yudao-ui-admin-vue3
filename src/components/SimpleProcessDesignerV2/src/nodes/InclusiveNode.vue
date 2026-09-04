@@ -8,9 +8,9 @@
       >
         <span class="iconfont icon-inclusive icon-size inclusive"></span>
       </div>
-      <el-button v-else class="branch-node-add" color="#345da2" @click="addCondition" plain
-        >{{ t('simpleProcessDesignerV2.inclusiveNode.addCondition') }}</el-button
-      >
+      <el-button v-else class="branch-node-add" color="#345da2" @click="addCondition" plain>
+        添加条件
+      </el-button>
       <div
         class="branch-node-item"
         v-for="(item, index) in currentNode.conditionNodes"
@@ -50,7 +50,7 @@
                   {{ item.showText }}
                 </div>
                 <div class="branch-node-text" v-else>
-                  {{ t(NODE_DEFAULT_TEXT.get(NodeType.CONDITION_NODE) as string) }}
+                  {{ NODE_DEFAULT_TEXT.get(NodeType.CONDITION_NODE) }}
                 </div>
               </div>
               <div
@@ -126,7 +126,6 @@ const { proxy } = getCurrentInstance() as any
 defineOptions({
   name: 'InclusiveNode'
 })
-const { t } = useI18n()
 const props = defineProps({
   flowNode: {
     type: Object as () => SimpleFlowNode,
@@ -186,7 +185,7 @@ const addCondition = () => {
     let lastIndex = len - 1
     const conditionData: SimpleFlowNode = {
       id: 'Flow_' + generateUUID(),
-      name: t('simpleProcessDesignerV2.inclusiveNode.conditionWithIndex', { index: len }),
+      name: '包容条件' + len,
       showText: '',
       type: NodeType.CONDITION_NODE,
       childNode: undefined,

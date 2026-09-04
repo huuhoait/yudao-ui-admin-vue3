@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="$t('bpm.group.index.docAlertTitle')" url="https://doc.iocoder.cn/bpm/" />
+  <doc-alert :title="t('bpm.group._todo12')" url="https://doc.iocoder.cn/bpm/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,22 +10,17 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="$t('bpm.group.index.form.name')" prop="name">
+      <el-form-item :label="t('bpm.group._todo6')" prop="name">
         <el-input
           v-model="queryParams.name"
-          :placeholder="$t('bpm.group.index.form.namePlaceholder')"
+          :placeholder="t('bpm.group._todo7')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="$t('bpm.group.index.form.status')" prop="status">
-        <el-select
-          v-model="queryParams.status"
-          :placeholder="$t('bpm.group.index.form.statusPlaceholder')"
-          clearable
-          class="!w-240px"
-        >
+      <el-form-item :label="t('common.status')" prop="status">
+        <el-select v-model="queryParams.status" :placeholder="t('bpm.group.selectStatus')" clearable class="!w-240px">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
             :key="dict.value"
@@ -34,27 +29,27 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="$t('bpm.group.index.form.createTime')" prop="createTime">
+      <el-form-item :label="t('common.createTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          :start-placeholder="$t('bpm.group.index.form.startDatePlaceholder')"
-          :end-placeholder="$t('bpm.group.index.form.endDatePlaceholder')"
+          :start-placeholder="t('bpm.group.startDate')"
+          :end-placeholder="t('bpm.group.endDate')"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
         <el-button
           type="primary"
           plain
           @click="openForm('create')"
           v-hasPermi="['bpm:user-group:create']"
         >
-          <Icon icon="ep:plus" class="mr-5px" /> {{ $t('common.add') }}
+          <Icon icon="ep:plus" class="mr-5px" /> {{ t('bpm.group.create') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -63,28 +58,28 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column :label="$t('bpm.group.index.table.id')" align="center" prop="id" />
-      <el-table-column :label="$t('bpm.group.index.table.name')" align="center" prop="name" />
-      <el-table-column :label="$t('bpm.group.index.table.description')" align="center" prop="description" />
-      <el-table-column :label="$t('bpm.group.index.table.members')" align="center">
+      <el-table-column :label="t('bpm.group.id')" align="center" prop="id" />
+      <el-table-column :label="t('bpm.group._todo6')" align="center" prop="name" />
+      <el-table-column :label="t('bpm.group.description')" align="center" prop="description" />
+      <el-table-column :label="t('bpm.group._todo8')" align="center">
         <template #default="scope">
           <span v-for="userId in scope.row.userIds" :key="userId" class="pr-5px">
             {{ userList.find((user) => user.id === userId)?.nickname }}
           </span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('bpm.group.index.table.status')" align="center" prop="status">
+      <el-table-column :label="t('common.status')" align="center" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
       <el-table-column
-        :label="$t('bpm.group.index.table.createTime')"
+        :label="t('common.createTime')"
         align="center"
         prop="createTime"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="$t('common.operation')" align="center">
+      <el-table-column :label="t('bpm.group.action')" align="center">
         <template #default="scope">
           <el-button
             link
@@ -92,7 +87,7 @@
             @click="openForm('update', scope.row.id)"
             v-hasPermi="['bpm:user-group:update']"
           >
-            {{ $t('common.edit') }}
+            {{ t('bpm.group.edit') }}
           </el-button>
           <el-button
             link
@@ -100,7 +95,7 @@
             @click="handleDelete(scope.row.id)"
             v-hasPermi="['bpm:user-group:delete']"
           >
-            {{ $t('common.delete') }}
+            {{ t('bpm.group.delete') }}
           </el-button>
         </template>
       </el-table-column>

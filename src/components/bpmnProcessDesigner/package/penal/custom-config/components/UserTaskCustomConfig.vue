@@ -9,7 +9,7 @@
 -->
 <template>
   <div>
-    <el-divider content-position="left">{{ $t('bpm.processDesigner.userTask.approveType.title') }}</el-divider>
+    <el-divider content-position="left">审批类型</el-divider>
     <el-form-item prop="approveType">
       <el-radio-group v-model="approveType.value">
         <el-radio
@@ -18,12 +18,12 @@
           :value="item.value"
           :label="item.value"
         >
-          {{ $t(item.label) }}
+          {{ item.label }}
         </el-radio>
       </el-radio-group>
     </el-form-item>
 
-    <el-divider content-position="left">{{ $t('bpm.processDesigner.userTask.rejectHandler.title') }}</el-divider>
+    <el-divider content-position="left">审批人拒绝时</el-divider>
     <el-form-item prop="rejectHandlerType">
       <el-radio-group
         v-model="rejectHandlerType"
@@ -32,14 +32,14 @@
       >
         <div class="flex-col">
           <div v-for="(item, index) in REJECT_HANDLER_TYPES" :key="index">
-            <el-radio :key="item.value" :value="item.value" :label="$t(item.label)" />
+            <el-radio :key="item.value" :value="item.value" :label="item.label" />
           </div>
         </div>
       </el-radio-group>
     </el-form-item>
     <el-form-item
       v-if="rejectHandlerType == RejectHandlerType.RETURN_USER_TASK"
-      :label="$t('bpm.processDesigner.userTask.rejectHandler.returnNode')"
+      label="驳回节点"
       prop="returnNodeId"
     >
       <el-select v-model="returnNodeId" clearable style="width: 100%" @change="updateReturnNodeId">
@@ -52,19 +52,19 @@
       </el-select>
     </el-form-item>
 
-    <el-divider content-position="left">{{ $t('bpm.processDesigner.userTask.assignEmpty.title') }}</el-divider>
+    <el-divider content-position="left">审批人为空时</el-divider>
     <el-form-item prop="assignEmptyHandlerType">
       <el-radio-group v-model="assignEmptyHandlerType" @change="updateAssignEmptyHandlerType">
         <div class="flex-col">
           <div v-for="(item, index) in ASSIGN_EMPTY_HANDLER_TYPES" :key="index">
-            <el-radio :key="item.value" :value="item.value" :label="$t(item.label)" />
+            <el-radio :key="item.value" :value="item.value" :label="item.label" />
           </div>
         </div>
       </el-radio-group>
     </el-form-item>
     <el-form-item
       v-if="assignEmptyHandlerType == AssignEmptyHandlerType.ASSIGN_USER"
-      :label="$t('bpm.processDesigner.userTask.assignEmpty.specifyUser')"
+      label="指定用户"
       prop="assignEmptyHandlerUserIds"
       span="24"
     >
@@ -84,24 +84,24 @@
       </el-select>
     </el-form-item>
 
-    <el-divider content-position="left">{{ $t('bpm.processDesigner.userTask.assignStartUser.title') }}</el-divider>
+    <el-divider content-position="left">审批人与提交人为同一人时</el-divider>
     <el-radio-group v-model="assignStartUserHandlerType" @change="updateAssignStartUserHandlerType">
       <div class="flex-col">
         <div v-for="(item, index) in ASSIGN_START_USER_HANDLER_TYPES" :key="index">
-          <el-radio :key="item.value" :value="item.value" :label="$t(item.label)" />
+          <el-radio :key="item.value" :value="item.value" :label="item.label" />
         </div>
       </div>
     </el-radio-group>
 
-    <el-divider content-position="left">{{ $t('bpm.processDesigner.userTask.operationButtons.title') }}</el-divider>
+    <el-divider content-position="left">操作按钮</el-divider>
     <div class="button-setting-pane">
       <div class="button-setting-title">
-        <div class="button-title-label">{{ $t('bpm.processDesigner.userTask.operationButtons.operationButton') }}</div>
-        <div class="pl-4 button-title-label">{{ $t('bpm.processDesigner.userTask.operationButtons.displayName') }}</div>
-        <div class="button-title-label">{{ $t('bpm.processDesigner.userTask.operationButtons.enable') }}</div>
+        <div class="button-title-label">操作按钮</div>
+        <div class="pl-4 button-title-label">显示名称</div>
+        <div class="button-title-label">启用</div>
       </div>
       <div class="button-setting-item" v-for="(item, index) in buttonsSettingEl" :key="index">
-        <div class="button-setting-item-label">{{ $t(OPERATION_BUTTON_NAME.get(item.id)) }}</div>
+        <div class="button-setting-item-label"> {{ OPERATION_BUTTON_NAME.get(item.id) }} </div>
         <div class="button-setting-item-label">
           <input
             type="text"
@@ -109,33 +109,33 @@
             @blur="btnDisplayNameBlurEvent(index)"
             v-mountedFocus
             v-model="item.displayName"
-            :placeholder="$t(item.displayName)"
+            :placeholder="item.displayName"
             v-if="btnDisplayNameEdit[index]"
           />
-          <el-button v-else text @click="changeBtnDisplayName(index)"
-            >{{ $t(item.displayName) }} &nbsp;<Icon icon="ep:edit"
-          /></el-button>
+          <el-button v-else text @click="changeBtnDisplayName(index)">
+            {{ item.displayName }} &nbsp;<Icon icon="ep:edit" />
+          </el-button>
         </div>
         <div class="button-setting-item-label">
-          <el-switch v-model="item.enable" />
+          <el-switch v-model="item.enable" @change="updateElementExtensions" />
         </div>
       </div>
     </div>
 
-    <el-divider content-position="left">{{ $t('bpm.processDesigner.userTask.fieldPermissions.title') }}</el-divider>
+    <el-divider content-position="left">字段权限</el-divider>
     <div class="field-setting-pane" v-if="formType === BpmModelFormType.NORMAL">
       <div class="field-permit-title">
-        <div class="setting-title-label first-title">{{ $t('bpm.processDesigner.userTask.fieldPermissions.fieldName') }}</div>
+        <div class="setting-title-label first-title"> 字段名称 </div>
         <div class="other-titles">
-          <span class="setting-title-label cursor-pointer" @click="updatePermission('READ')"
-            >{{ $t('bpm.processDesigner.userTask.fieldPermissions.readOnly') }}</span
-          >
-          <span class="setting-title-label cursor-pointer" @click="updatePermission('WRITE')"
-            >{{ $t('bpm.processDesigner.userTask.fieldPermissions.editable') }}</span
-          >
-          <span class="setting-title-label cursor-pointer" @click="updatePermission('NONE')"
-            >{{ $t('bpm.processDesigner.userTask.fieldPermissions.hidden') }}</span
-          >
+          <span class="setting-title-label cursor-pointer" @click="updatePermission('READ')">
+            只读
+          </span>
+          <span class="setting-title-label cursor-pointer" @click="updatePermission('WRITE')">
+            可编辑
+          </span>
+          <span class="setting-title-label cursor-pointer" @click="updatePermission('NONE')">
+            隐藏
+          </span>
         </div>
       </div>
       <div class="field-setting-item" v-for="(item, index) in fieldsPermissionEl" :key="index">
@@ -175,22 +175,22 @@
       </div>
     </div>
 
-    <el-divider content-position="left">{{ $t('bpm.processDesigner.userTask.signature.title') }}</el-divider>
+    <el-divider content-position="left">是否需要签名</el-divider>
     <el-form-item prop="signEnable">
       <el-switch
         v-model="signEnable.value"
-        :active-text="$t('common.yes')"
-        :inactive-text="$t('common.no')"
+        active-text="是"
+        inactive-text="否"
         @change="updateElementExtensions"
       />
     </el-form-item>
 
-    <el-divider content-position="left">{{ $t('bpm.processDesigner.userTask.approveOpinion.title') }}</el-divider>
+    <el-divider content-position="left">审批意见</el-divider>
     <el-form-item prop="reasonRequire">
       <el-switch
         v-model="reasonRequire.value"
-        :active-text="$t('bpm.processDesigner.userTask.approveOpinion.required')"
-        :inactive-text="$t('bpm.processDesigner.userTask.approveOpinion.optional')"
+        active-text="必填"
+        inactive-text="非必填"
         @change="updateElementExtensions"
       />
     </el-form-item>
@@ -215,8 +215,19 @@ import * as UserApi from '@/api/system/user'
 import { useFormFieldsPermission } from '@/components/SimpleProcessDesignerV2/src/node'
 import { BpmModelFormType } from '@/utils/constants'
 
+type BpmnElement = {
+  id: string
+  type: string
+  businessObject: Record<string, any>
+  source?: BpmnElement
+  target?: BpmnElement
+}
+type ReturnTask = Record<string, any> & {
+  id: string
+  name?: string
+}
+
 defineOptions({ name: 'ElementCustomConfig4UserTask' })
-const { t } = useI18n()
 const props = defineProps({
   id: String,
   type: String
@@ -232,16 +243,16 @@ const rejectHandlerTypeEl = ref()
 const rejectHandlerType = ref()
 const returnNodeIdEl = ref()
 const returnNodeId = ref()
-const returnTaskList = ref([])
+const returnTaskList = ref<ReturnTask[]>([])
 
 // 审批人为空时
 const assignEmptyHandlerTypeEl = ref()
 const assignEmptyHandlerType = ref()
 const assignEmptyUserIdsEl = ref()
-const assignEmptyUserIds = ref()
+const assignEmptyUserIds = ref<Array<string | number>>([])
 
 // 操作按钮
-const buttonsSettingEl = ref()
+const buttonsSettingEl = ref<any[]>([])
 const { btnDisplayNameEdit, changeBtnDisplayName } = useButtonsSetting()
 const btnDisplayNameBlurEvent = (index: number) => {
   btnDisplayNameEdit.value[index] = false
@@ -251,7 +262,7 @@ const btnDisplayNameBlurEvent = (index: number) => {
 }
 
 // 字段权限
-const fieldsPermissionEl = ref([])
+const fieldsPermissionEl = ref<any[]>([])
 const { formType, fieldsPermissionConfig, getNodeConfigFormFields } = useFormFieldsPermission(
   FieldPermissionType.READ
 )
@@ -327,7 +338,6 @@ const resetCustomConfigList = () => {
   buttonsSettingEl.value = elExtensionElements.value.values?.filter(
     (ex) => ex.$type === `${prefix}:ButtonsSetting`
   )
-  console.log('buttonsSettingEl.value', buttonsSettingEl.value)
   if (buttonsSettingEl.value.length === 0) {
     DEFAULT_BUTTON_SETTING.forEach((item) => {
       buttonsSettingEl.value.push(
@@ -453,18 +463,20 @@ watch(
   { immediate: true }
 )
 
-function findAllPredecessorsExcludingStart(elementId, modeler) {
+function findAllPredecessorsExcludingStart(elementId: string, modeler: any) {
   const elementRegistry = modeler.get('elementRegistry')
-  const allConnections = elementRegistry.filter((element) => element.type === 'bpmn:SequenceFlow')
-  const predecessors = new Set() // 使用 Set 来避免重复节点
-  const visited = new Set() // 用于记录已访问的节点
+  const allConnections = elementRegistry.filter(
+    (element: BpmnElement) => element.type === 'bpmn:SequenceFlow'
+  )
+  const predecessors = new Set<Record<string, any>>() // 使用 Set 来避免重复节点
+  const visited = new Set<BpmnElement>() // 用于记录已访问的节点
 
   // 检查是否是开始事件节点
-  function isStartEvent(element) {
+  function isStartEvent(element: BpmnElement) {
     return element.type === 'bpmn:StartEvent'
   }
 
-  function findPredecessorsRecursively(element) {
+  function findPredecessorsRecursively(element: BpmnElement) {
     // 如果该节点已经访问过，直接返回，避免循环
     if (visited.has(element)) {
       return
@@ -474,10 +486,15 @@ function findAllPredecessorsExcludingStart(elementId, modeler) {
     visited.add(element)
 
     // 获取与当前节点相连的所有连接
-    const incomingConnections = allConnections.filter((connection) => connection.target === element)
+    const incomingConnections = allConnections.filter(
+      (connection: BpmnElement) => connection.target === element
+    )
 
-    incomingConnections.forEach((connection) => {
+    incomingConnections.forEach((connection: BpmnElement) => {
       const source = connection.source // 获取前置节点
+      if (!source) {
+        return
+      }
 
       // 只添加不是开始事件的前置节点
       if (!isStartEvent(source)) {
@@ -493,7 +510,7 @@ function findAllPredecessorsExcludingStart(elementId, modeler) {
     findPredecessorsRecursively(targetElement)
   }
 
-  return Array.from(predecessors) // 返回前置节点数组
+  return Array.from(predecessors) as ReturnTask[] // 返回前置节点数组
 }
 
 function useButtonsSetting() {

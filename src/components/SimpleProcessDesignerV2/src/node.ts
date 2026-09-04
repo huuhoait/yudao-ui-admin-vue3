@@ -21,9 +21,6 @@ import {
   COMPARISON_OPERATORS
 } from './consts'
 import { parseFormFields } from '@/components/FormCreate/src/utils'
-import { useI18n } from '@/hooks/web/useI18n'
-
-const { t } = useI18n()
 
 export function useWatchNode(props: { flowNode: SimpleFlowNode }): Ref<SimpleFlowNode> {
   const node = ref<SimpleFlowNode>(props.flowNode)
@@ -131,7 +128,7 @@ export function useFormFieldsAndStartUser() {
   // 添加发起人
   formFields.unshift({
     field: ProcessVariableEnum.START_USER_ID,
-    title: t('simpleProcessDesignerV2.nodes.startUser'),
+    title: '发起人',
     required: true
   })
   return formFields
@@ -239,9 +236,7 @@ export function useNodeForm(nodeType: NodeType) {
             candidateNames.push(item.nickname)
           }
         })
-        showText = t('simpleProcessDesignerV2.nodeText.selectedMembers', {
-          names: candidateNames.join(',')
-        })
+        showText = `指定成员：${candidateNames.join(',')}`
       }
     }
     // 指定角色
@@ -253,9 +248,7 @@ export function useNodeForm(nodeType: NodeType) {
             candidateNames.push(item.name)
           }
         })
-        showText = t('simpleProcessDesignerV2.nodeText.selectedRoles', {
-          names: candidateNames.join(',')
-        })
+        showText = `指定角色：${candidateNames.join(',')}`
       }
     }
     // 指定部门
@@ -272,17 +265,11 @@ export function useNodeForm(nodeType: NodeType) {
           }
         })
         if (configForm.value.candidateStrategy === CandidateStrategy.DEPT_MEMBER) {
-          showText = t('simpleProcessDesignerV2.nodeText.selectedDeptMembers', {
-            names: candidateNames.join(',')
-          })
+          showText = `部门成员：${candidateNames.join(',')}`
         } else if (configForm.value.candidateStrategy === CandidateStrategy.DEPT_LEADER) {
-          showText = t('simpleProcessDesignerV2.nodeText.selectedDeptLeaders', {
-            names: candidateNames.join(',')
-          })
+          showText = `部门的负责人：${candidateNames.join(',')}`
         } else {
-          showText = t('simpleProcessDesignerV2.nodeText.selectedMultiDeptLeaders', {
-            names: candidateNames.join(',')
-          })
+          showText = `多级部门的负责人：${candidateNames.join(',')}`
         }
       }
     }
@@ -296,9 +283,7 @@ export function useNodeForm(nodeType: NodeType) {
             candidateNames.push(item.name)
           }
         })
-        showText = t('simpleProcessDesignerV2.nodeText.selectedPosts', {
-          names: candidateNames.join(',')
-        })
+        showText = `指定岗位: ${candidateNames.join(',')}`
       }
     }
     // 指定用户组
@@ -310,9 +295,7 @@ export function useNodeForm(nodeType: NodeType) {
             candidateNames.push(item.name)
           }
         })
-        showText = t('simpleProcessDesignerV2.nodeText.selectedUserGroups', {
-          names: candidateNames.join(',')
-        })
+        showText = `指定用户组: ${candidateNames.join(',')}`
       }
     }
 
@@ -320,44 +303,40 @@ export function useNodeForm(nodeType: NodeType) {
     if (configForm.value?.candidateStrategy === CandidateStrategy.FORM_USER) {
       const formFieldOptions = parseFormCreateFields(unref(formFields))
       const item = formFieldOptions.find((item) => item.field === configForm.value?.formUser)
-      showText = t('simpleProcessDesignerV2.nodeText.formUserField', {
-        title: item?.title
-      })
+      showText = `表单用户：${item?.title}`
     }
 
     // 表单内部门负责人
     if (configForm.value?.candidateStrategy === CandidateStrategy.FORM_DEPT_LEADER) {
-      showText = t('simpleProcessDesignerV2.nodeText.formDeptLeader')
+      showText = `表单内部门负责人`
     }
 
     // 审批人自选
     if (configForm.value?.candidateStrategy === CandidateStrategy.APPROVE_USER_SELECT) {
-      showText = t('simpleProcessDesignerV2.nodeText.approverSelect')
+      showText = `审批人自选`
     }
 
     // 发起人自选
     if (configForm.value?.candidateStrategy === CandidateStrategy.START_USER_SELECT) {
-      showText = t('simpleProcessDesignerV2.nodeText.starterSelect')
+      showText = `发起人自选`
     }
     // 发起人自己
     if (configForm.value?.candidateStrategy === CandidateStrategy.START_USER) {
-      showText = t('simpleProcessDesignerV2.nodeText.starterSelf')
+      showText = `发起人自己`
     }
     // 发起人的部门负责人
     if (configForm.value?.candidateStrategy === CandidateStrategy.START_USER_DEPT_LEADER) {
-      showText = t('simpleProcessDesignerV2.nodeText.starterDeptLeader')
+      showText = `发起人的部门负责人`
     }
     // 发起人的部门负责人
     if (
       configForm.value?.candidateStrategy === CandidateStrategy.START_USER_MULTI_LEVEL_DEPT_LEADER
     ) {
-      showText = t('simpleProcessDesignerV2.nodeText.starterMultiDeptLeader')
+      showText = `发起人连续部门负责人`
     }
     // 流程表达式
     if (configForm.value?.candidateStrategy === CandidateStrategy.EXPRESSION) {
-      showText = t('simpleProcessDesignerV2.nodeText.processExpression', {
-        expression: configForm.value.expression
-      })
+      showText = `流程表达式：${configForm.value.expression}`
     }
     return showText
   }
@@ -429,17 +408,17 @@ export function useNodeForm(nodeType: NodeType) {
     }
     switch (candidateStrategy) {
       case CandidateStrategy.USER: {
-        configForm.value.userIds = candidateParam.split('simpleProcessDesignerV2.,').map((item) => +item)
+        configForm.value.userIds = candidateParam.split(',').map((item) => +item)
         break
       }
       case CandidateStrategy.ROLE:
-        configForm.value.roleIds = candidateParam.split('simpleProcessDesignerV2.,').map((item) => +item)
+        configForm.value.roleIds = candidateParam.split(',').map((item) => +item)
         break
       case CandidateStrategy.POST:
-        configForm.value.postIds = candidateParam.split('simpleProcessDesignerV2.,').map((item) => +item)
+        configForm.value.postIds = candidateParam.split(',').map((item) => +item)
         break
       case CandidateStrategy.USER_GROUP:
-        configForm.value.userGroups = candidateParam.split('simpleProcessDesignerV2.,').map((item) => +item)
+        configForm.value.userGroups = candidateParam.split(',').map((item) => +item)
         break
       case CandidateStrategy.FORM_USER:
         configForm.value.formUser = candidateParam
@@ -449,7 +428,7 @@ export function useNodeForm(nodeType: NodeType) {
         break
       case CandidateStrategy.DEPT_MEMBER:
       case CandidateStrategy.DEPT_LEADER:
-        configForm.value.deptIds = candidateParam.split('simpleProcessDesignerV2.,').map((item) => +item)
+        configForm.value.deptIds = candidateParam.split(',').map((item) => +item)
         break
       // 发起人部门负责人
       case CandidateStrategy.START_USER_DEPT_LEADER:
@@ -459,15 +438,15 @@ export function useNodeForm(nodeType: NodeType) {
       // 指定连续多级部门的负责人
       case CandidateStrategy.MULTI_LEVEL_DEPT_LEADER: {
         // 候选人参数格式: | 分隔 。左边为部门（多个部门用 , 分隔）。 右边为部门层级
-        const paramArray = candidateParam.split('simpleProcessDesignerV2.|')
-        configForm.value.deptIds = paramArray[0].split('simpleProcessDesignerV2.,').map((item) => +item)
+        const paramArray = candidateParam.split('|')
+        configForm.value.deptIds = paramArray[0].split(',').map((item) => +item)
         configForm.value.deptLevel = +paramArray[1]
         break
       }
       // 表单内的部门负责人
       case CandidateStrategy.FORM_DEPT_LEADER: {
         // 候选人参数格式: | 分隔 。左边为表单内的部门字段。 右边为部门层级
-        const paramArray = candidateParam.split('simpleProcessDesignerV2.|')
+        const paramArray = candidateParam.split('|')
         configForm.value.formDept = paramArray[0]
         configForm.value.deptLevel = +paramArray[1]
         break
@@ -525,7 +504,7 @@ export function useNodeName(nodeType: NodeType) {
   // 节点名称输入框失去焦点
   const blurEvent = () => {
     showInput.value = false
-    nodeName.value = nodeName.value || t(NODE_DEFAULT_NAME.get(nodeType) as string)
+    nodeName.value = nodeName.value || (NODE_DEFAULT_NAME.get(nodeType) as string)
   }
   return {
     nodeName,
@@ -541,7 +520,7 @@ export function useNodeName2(node: Ref<SimpleFlowNode>, nodeType: NodeType) {
   // 节点名称输入框失去焦点
   const blurEvent = () => {
     showInput.value = false
-    node.value.name = node.value.name || t(NODE_DEFAULT_NAME.get(nodeType) as string)
+    node.value.name = node.value.name || (NODE_DEFAULT_NAME.get(nodeType) as string)
   }
   // 点击节点标题进行输入
   const clickTitle = () => {
@@ -586,9 +565,7 @@ export function getConditionShowText(
   let showText = ''
   if (conditionType === ConditionType.EXPRESSION) {
     if (conditionExpression) {
-      showText = t('simpleProcessDesignerV2.condition.expression', {
-        expression: conditionExpression
-      })
+      showText = `表达式：${conditionExpression}`
     }
   }
   if (conditionType === ConditionType.RULE) {
@@ -610,26 +587,18 @@ export function getConditionShowText(
               )
             } else {
               // 有一条规则不完善。提示错误
-              warningMessage = t('simpleProcessDesignerV2.condition.warningIncomplete')
+              warningMessage = '请完善条件规则'
               return ''
             }
           })
-          .join(
-            item.and
-              ? t('simpleProcessDesignerV2.condition.and')
-              : t('simpleProcessDesignerV2.condition.or')
-          ) +
+          .join(item.and ? ' 且 ' : ' 或 ') +
         ' ) '
       )
     })
     if (warningMessage) {
       showText = ''
     } else {
-      showText = conditionGroup!.join(
-        groupAnd
-          ? t('simpleProcessDesignerV2.condition.and')
-          : t('simpleProcessDesignerV2.condition.or')
-      )
+      showText = conditionGroup!.join(groupAnd ? ' 且 ' : ' 或 ')
     }
   }
   return showText

@@ -7,17 +7,17 @@
       :rules="formRules"
       label-width="80px"
     >
-      <el-form-item :label="t('sys.post.name')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('sys.post.namePlaceholder')" />
+      <el-form-item :label="t('system.post._todo204')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('system.post._todo205')" />
       </el-form-item>
-      <el-form-item :label="t('sys.post.code')" prop="code">
-        <el-input v-model="formData.code" :placeholder="t('sys.post.codePlaceholder')" />
+      <el-form-item :label="t('system.post.postCode')" prop="code">
+        <el-input v-model="formData.code" :placeholder="t('system.post.inputPostCode')" />
       </el-form-item>
-      <el-form-item :label="t('sys.post.sort')" prop="sort">
-        <el-input v-model="formData.sort" :placeholder="t('sys.post.sortPlaceholder')" />
+      <el-form-item :label="t('system.post._todo206')" prop="sort">
+        <el-input v-model="formData.sort" :placeholder="t('system.post._todo207')" />
       </el-form-item>
-      <el-form-item :label="t('sys.post.status')" prop="status">
-        <el-select v-model="formData.status" clearable :placeholder="t('sys.post.selectStatus')">
+      <el-form-item :label="t('common.status')" prop="status">
+        <el-select v-model="formData.status" clearable :placeholder="t('system.post.selectStatus')">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
             :key="dict.value"
@@ -26,8 +26,8 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('sys.post.remark')" prop="remark">
-        <el-input v-model="formData.remark" :placeholder="t('sys.post.remarkPlaceholder')" type="textarea" />
+      <el-form-item :label="t('system.post.remark')" prop="remark">
+        <el-input v-model="formData.remark" :placeholder="t('system.post._todo208')" type="textarea" />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -59,10 +59,10 @@ const formData = ref({
   remark: ''
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('sys.post.nameRequired'), trigger: 'blur' }],
-  code: [{ required: true, message: t('sys.post.codeRequired'), trigger: 'change' }],
-  status: [{ required: true, message: t('sys.post.selectStatus'), trigger: 'change' }],
-  remark: [{ required: false, message: t('sys.post.remarkPlaceholder'), trigger: 'blur' }]
+  name: [{ required: true, message: t('system.post._todo209'), trigger: 'blur' }],
+  code: [{ required: true, message: t('system.post.postCodeRequired'), trigger: 'change' }],
+  status: [{ required: true, message: t('system.post._todo210'), trigger: 'change' }],
+  remark: [{ required: false, message: t('system.post._todo211'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

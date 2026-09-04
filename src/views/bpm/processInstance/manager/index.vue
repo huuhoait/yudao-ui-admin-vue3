@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="$t('bpm.processInstance.manager.docAlertTitle')" url="https://doc.iocoder.cn/bpm/" />
+  <doc-alert :title="t('bpm.processInstance.manager._todo242')" url="https://doc.iocoder.cn/bpm/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,12 +10,8 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="$t('bpm.processInstance.manager.form.startUser')" prop="startUserId">
-        <el-select
-          v-model="queryParams.startUserId"
-          :placeholder="$t('bpm.processInstance.manager.form.startUserPlaceholder')"
-          class="!w-240px"
-        >
+      <el-form-item :label="t('bpm.processInstance.manager.starter')" prop="startUserId">
+        <el-select v-model="queryParams.startUserId" :placeholder="t('bpm.processInstance.manager.selectStarter')" class="!w-240px">
           <el-option
             v-for="user in userList"
             :key="user.id"
@@ -24,28 +20,28 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="$t('bpm.processInstance.manager.form.name')" prop="name">
+      <el-form-item :label="t('bpm.processInstance.manager.processName')" prop="name">
         <el-input
           v-model="queryParams.name"
-          :placeholder="$t('bpm.processInstance.manager.form.namePlaceholder')"
+          :placeholder="t('bpm.processInstance.manager.inputProcessName')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="$t('bpm.processInstance.manager.form.processDefinitionId')" prop="processDefinitionId">
+      <el-form-item :label="t('bpm.processInstance.manager.belongProcess')" prop="processDefinitionId">
         <el-input
           v-model="queryParams.processDefinitionId"
-          :placeholder="$t('bpm.processInstance.manager.form.processDefinitionIdPlaceholder')"
+          :placeholder="t('bpm.processInstance.manager._todo243')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="$t('bpm.processInstance.manager.form.category')" prop="category">
+      <el-form-item :label="t('bpm.processInstance.manager.processCategory')" prop="category">
         <el-select
           v-model="queryParams.category"
-          :placeholder="$t('bpm.processInstance.manager.form.categoryPlaceholder')"
+          :placeholder="t('bpm.processInstance.manager.selectProcessCategory')"
           clearable
           class="!w-240px"
         >
@@ -57,10 +53,10 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="$t('bpm.processInstance.manager.form.status')" prop="status">
+      <el-form-item :label="t('bpm.processInstance.manager.processStatus')" prop="status">
         <el-select
           v-model="queryParams.status"
-          :placeholder="$t('bpm.processInstance.manager.form.statusPlaceholder')"
+          :placeholder="t('bpm.processInstance.manager.selectProcessStatus')"
           clearable
           class="!w-240px"
         >
@@ -72,20 +68,20 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="$t('bpm.processInstance.manager.form.createTime')" prop="createTime">
+      <el-form-item :label="t('bpm.processInstance.manager.startTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          :start-placeholder="$t('bpm.processInstance.manager.form.startDatePlaceholder')"
-          :end-placeholder="$t('bpm.processInstance.manager.form.endDatePlaceholder')"
+          :start-placeholder="t('bpm.processInstance.manager.startDate')"
+          :end-placeholder="t('bpm.processInstance.manager.endDate')"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
       </el-form-item>
     </el-form>
   </ContentWrap>
@@ -93,49 +89,49 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column :label="$t('bpm.processInstance.manager.table.name')" align="center" prop="name" min-width="200px" fixed="left" />
+      <el-table-column :label="t('bpm.processInstance.manager.processName')" align="center" prop="name" min-width="200px" fixed="left" />
       <el-table-column
-        :label="$t('bpm.processInstance.manager.table.category')"
+        :label="t('bpm.processInstance.manager.processCategory')"
         align="center"
         prop="categoryName"
         min-width="100"
         fixed="left"
       />
-      <el-table-column :label="$t('bpm.processInstance.manager.table.startUser')" align="center" prop="startUser.nickname" width="120" />
-      <el-table-column :label="$t('bpm.processInstance.manager.table.startDept')" align="center" prop="startUser.deptName" width="120" />
-      <el-table-column :label="$t('bpm.processInstance.manager.table.status')" prop="status" width="120">
+      <el-table-column :label="t('bpm.processInstance.manager.processStarter')" align="center" prop="startUser.nickname" width="120" />
+      <el-table-column :label="t('bpm.processInstance.manager._todo244')" align="center" prop="startUser.deptName" width="120" />
+      <el-table-column :label="t('bpm.processInstance.manager.processStatus')" prop="status" width="120">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.BPM_PROCESS_INSTANCE_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
       <el-table-column
-        :label="$t('bpm.processInstance.manager.table.startTime')"
+        :label="t('bpm.processInstance.manager.startTime')"
         align="center"
         prop="startTime"
         width="180"
         :formatter="dateFormatter"
       />
       <el-table-column
-        :label="$t('bpm.processInstance.manager.table.endTime')"
+        :label="t('bpm.processInstance.manager.endTime')"
         align="center"
         prop="endTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column align="center" :label="$t('bpm.processInstance.manager.table.duration')" prop="durationInMillis" width="169">
+      <el-table-column align="center" :label="t('bpm.processInstance.manager.duration')" prop="durationInMillis" width="169">
         <template #default="scope">
           {{ scope.row.durationInMillis > 0 ? formatPast2(scope.row.durationInMillis) : '-' }}
         </template>
       </el-table-column>
-      <el-table-column :label="$t('bpm.processInstance.manager.table.currentTasks')" align="center" prop="tasks" min-width="120px">
+      <el-table-column :label="t('bpm.processInstance.manager._todo245')" align="center" prop="tasks" min-width="120px">
         <template #default="scope">
           <el-button type="primary" v-for="task in scope.row.tasks" :key="task.id" link>
             <span>{{ task.name }}</span>
           </el-button>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('bpm.processInstance.manager.table.id')" align="center" prop="id" min-width="320px" />
-      <el-table-column :label="$t('common.operation')" align="center" fixed="right" width="180">
+      <el-table-column :label="t('bpm.processInstance.manager.processId')" align="center" prop="id" min-width="320px" />
+      <el-table-column :label="t('bpm.processInstance.manager.action')" align="center" fixed="right" width="180">
         <template #default="scope">
           <el-button
             link
@@ -143,7 +139,7 @@
             v-hasPermi="['bpm:process-instance:cancel']"
             @click="handleDetail(scope.row)"
           >
-            {{ $t('common.detail') }}
+            {{ t('bpm.processInstance.manager.detail') }}
           </el-button>
           <el-button
             link
@@ -152,7 +148,7 @@
             v-hasPermi="['bpm:process-instance:query']"
             @click="handleCancel(scope.row)"
           >
-            {{ $t('common.cancel') }}
+            {{ t('common.cancel') }}
           </el-button>
         </template>
       </el-table-column>
@@ -171,9 +167,8 @@ import { DICT_TYPE, getIntDictOptions } from '@/utils/dict'
 import { dateFormatter, formatPast2 } from '@/utils/formatTime'
 import { ElMessageBox } from 'element-plus'
 import * as ProcessInstanceApi from '@/api/bpm/processInstance'
-import { CategoryApi } from '@/api/bpm/category'
+import { CategoryApi, CategoryVO } from '@/api/bpm/category'
 import * as UserApi from '@/api/system/user'
-import { cancelProcessInstanceByAdmin } from '@/api/bpm/processInstance'
 
 // 它和【我的流程】的差异是，该菜单可以看全部的流程实例
 defineOptions({ name: 'BpmProcessInstanceManager' })
@@ -184,7 +179,7 @@ const { t } = useI18n() // 国际化
 
 const loading = ref(true) // 列表的加载中
 const total = ref(0) // 列表的总页数
-const list = ref([]) // 列表的数据
+const list = ref<ProcessInstanceApi.ProcessInstanceVO[]>([]) // 列表的数据
 const queryParams = reactive({
   pageNo: 1,
   pageSize: 10,
@@ -196,7 +191,7 @@ const queryParams = reactive({
   createTime: []
 })
 const queryFormRef = ref() // 搜索的表单
-const categoryList = ref([]) // 流程分类列表
+const categoryList = ref<CategoryVO[]>([]) // 流程分类列表
 const userList = ref<any[]>([]) // 用户列表
 
 /** 查询列表 */
@@ -224,7 +219,7 @@ const resetQuery = () => {
 }
 
 /** 查看详情 */
-const handleDetail = (row) => {
+const handleDetail = (row: ProcessInstanceApi.ProcessInstanceVO) => {
   router.push({
     name: 'BpmProcessInstanceDetail',
     query: {
@@ -234,21 +229,17 @@ const handleDetail = (row) => {
 }
 
 /** 取消按钮操作 */
-const handleCancel = async (row) => {
+const handleCancel = async (row: ProcessInstanceApi.ProcessInstanceVO) => {
   // 二次确认
-  const { value } = await ElMessageBox.prompt(
-    t('bpm.processInstance.manager.messages.cancelPromptMessage'),
-    t('bpm.processInstance.manager.messages.cancelPromptTitle'),
-    {
-      confirmButtonText: t('common.confirm'),
-      cancelButtonText: t('common.cancel'),
-      inputPattern: /^[\s\S]*.*\S[\s\S]*$/, // 判断非空，且非空格
-      inputErrorMessage: t('bpm.processInstance.manager.messages.cancelReasonRequired')
-    }
-  )
+  const { value } = await ElMessageBox.prompt(t('bpm.processInstance.manager.inputCancelReason'), t('bpm.processInstance.manager.cancelProcess'), {
+    confirmButtonText: t('common.ok'),
+    cancelButtonText: t('common.cancel'),
+    inputPattern: /^[\s\S]*.*\S[\s\S]*$/, // 判断非空，且非空格
+    inputErrorMessage: t('bpm.processInstance.manager.cancelReasonRequired')
+  })
   // 发起取消
   await ProcessInstanceApi.cancelProcessInstanceByAdmin(row.id, value)
-  message.success(t('bpm.processInstance.manager.messages.cancelSuccess'))
+  message.success(t('bpm.processInstance.manager.cancelSuccess'))
   // 刷新列表
   await getList()
 }

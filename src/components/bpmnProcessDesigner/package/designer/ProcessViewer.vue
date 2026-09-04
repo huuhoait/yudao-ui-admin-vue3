@@ -36,7 +36,7 @@
     </defs>
 
     <!-- 审批记录 -->
-    <el-dialog :title="dialogTitle || t('bpm.processViewer.approvalRecords')" v-model="dialogVisible" width="1000px">
+    <el-dialog :title="dialogTitle || '审批记录'" v-model="dialogVisible" width="1000px">
       <el-row>
         <el-table
           :data="selectTasks"
@@ -45,14 +45,14 @@
           header-cell-class-name="table-header-gray"
         >
           <el-table-column
-            :label="t('bpm.processViewer.serialNumber')"
+            label="序号"
             header-align="center"
             align="center"
             type="index"
             width="50"
           />
           <el-table-column
-            :label="t('bpm.processViewer.approver')"
+            label="审批人"
             min-width="100"
             align="center"
             v-if="selectActivityType === 'bpmn:UserTask'"
@@ -62,13 +62,13 @@
             </template>
           </el-table-column>
           <el-table-column
-            :label="t('bpm.processViewer.initiator')"
+            label="发起人"
             prop="assigneeUser.nickname"
             min-width="100"
             align="center"
             v-else
           />
-          <el-table-column :label="t('bpm.processViewer.department')" min-width="100" align="center">
+          <el-table-column label="部门" min-width="100" align="center">
             <template #default="scope">
               {{ scope.row.assigneeUser?.deptName || scope.row.ownerUser?.deptName }}
             </template>
@@ -76,30 +76,30 @@
           <el-table-column
             :formatter="dateFormatter"
             align="center"
-            :label="t('bpm.processViewer.startTime')"
+            label="开始时间"
             prop="createTime"
             min-width="140"
           />
           <el-table-column
             :formatter="dateFormatter"
             align="center"
-            :label="t('bpm.processViewer.endTime')"
+            label="结束时间"
             prop="endTime"
             min-width="140"
           />
-          <el-table-column align="center" :label="t('bpm.processViewer.approvalStatus')" prop="status" min-width="90">
+          <el-table-column align="center" label="审批状态" prop="status" min-width="90">
             <template #default="scope">
               <dict-tag :type="DICT_TYPE.BPM_TASK_STATUS" :value="scope.row.status" />
             </template>
           </el-table-column>
           <el-table-column
             align="center"
-            :label="t('bpm.processViewer.approvalSuggestion')"
+            label="审批建议"
             prop="reason"
             min-width="120"
             v-if="selectActivityType === 'bpmn:UserTask'"
           />
-          <el-table-column align="center" :label="t('bpm.processViewer.duration')" prop="durationInMillis" width="100">
+          <el-table-column align="center" label="耗时" prop="durationInMillis" width="100">
             <template #default="scope">
               {{ formatPast2(scope.row.durationInMillis) }}
             </template>
@@ -140,24 +140,24 @@
 import '../theme/index.scss'
 import BpmnViewer from 'bpmn-js/lib/Viewer'
 import MoveCanvasModule from 'diagram-js/lib/navigation/movecanvas'
+import type Canvas from 'diagram-js/lib/core/Canvas'
+import type ElementRegistry from 'diagram-js/lib/core/ElementRegistry'
 import { ZoomOut, ZoomIn, ScaleToOriginal } from '@element-plus/icons-vue'
 import { DICT_TYPE } from '@/utils/dict'
 import { dateFormatter, formatPast2 } from '@/utils/formatTime'
 import { BpmProcessInstanceStatus } from '@/utils/constants'
-import { useI18n } from '@/hooks/web/useI18n'
 
 const props = defineProps({
   xml: {
+    default: '',
     type: String,
-    required: true
   },
   view: {
+    default: () => ({}),
     type: Object,
     require: true
   }
 })
-
-const { t } = useI18n()
 
 const processCanvas = ref()
 const bpmnViewer = ref<BpmnViewer | null>(null)
@@ -173,10 +173,53 @@ const dialogTitle = ref<string | undefined>(undefined) // 弹窗标题
 const selectActivityType = ref<string | undefined>(undefined) // 选中 Task 的活动编号
 const selectTasks = ref<any[]>([]) // 选中的任务数组
 
+type BpmnCanvas = Omit<Canvas, 'zoom'> & {
+  _svg?: SVGSVGElement
+  zoom: (newScale?: number | 'fit-viewport', center?: 'auto' | { x: number; y: number }) => number
+}
+
+const getCanvas = () => bpmnViewer.value?.get<BpmnCanvas>('canvas')
+const getElementRegistry = () => bpmnViewer.value?.get<ElementRegistry>('elementRegistry')
+
 /** Zoom：恢复 */
 const processReZoom = () => {
   defaultZoom.value = 1
-  bpmnViewer.value?.get('canvas').zoom('fit-viewport', 'auto')
+  getCanvas()?.zoom('fit-viewport', 'auto')
+}
+
+let resizeObserver: ResizeObserver | null = null
+
+/** 停止 ResizeObserver */
+const stopResizeObserver = () => {
+  if (resizeObserver) {
+    resizeObserver.disconnect()
+    resizeObserver = null
+  }
+}
+
+/** 启动 ResizeObserver 监听容器尺寸变化 */
+const startResizeObserver = () => {
+  stopResizeObserver()
+  if (!processCanvas.value || !bpmnViewer.value) {
+    return
+  }
+
+  const { clientWidth, clientHeight } = processCanvas.value
+  if (clientWidth > 0 && clientHeight > 0) {
+    processReZoom()
+    return
+  }
+
+  resizeObserver = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+      const { width, height } = entry.contentRect
+      if (width > 0 && height > 0 && bpmnViewer.value) {
+        processReZoom()
+        stopResizeObserver()
+      }
+    }
+  })
+  resizeObserver.observe(processCanvas.value)
 }
 
 /** Zoom：放大 */
@@ -186,7 +229,7 @@ const processZoomIn = (zoomStep = 0.1) => {
     throw new Error('[Process Designer Warn ]: The zoom ratio cannot be greater than 4')
   }
   defaultZoom.value = newZoom
-  bpmnViewer.value?.get('canvas').zoom(defaultZoom.value)
+  getCanvas()?.zoom(defaultZoom.value)
 }
 
 /** Zoom：缩小 */
@@ -196,11 +239,12 @@ const processZoomOut = (zoomStep = 0.1) => {
     throw new Error('[Process Designer Warn ]: The zoom ratio cannot be less than 0.2')
   }
   defaultZoom.value = newZoom
-  bpmnViewer.value?.get('canvas').zoom(defaultZoom.value)
+  getCanvas()?.zoom(defaultZoom.value)
 }
 
 /** 流程图预览清空 */
 const clearViewer = () => {
+  stopResizeObserver()
   if (processCanvas.value) {
     processCanvas.value.innerHTML = ''
   }
@@ -216,9 +260,9 @@ const addCustomDefs = () => {
   if (!bpmnViewer.value) {
     return
   }
-  const canvas = bpmnViewer.value?.get('canvas')
+  const canvas = getCanvas()
   const svg = canvas?._svg
-  svg.appendChild(customDefs.value)
+  svg?.appendChild(customDefs.value)
 }
 
 /** 节点选中 */
@@ -238,7 +282,7 @@ const onSelectElement = (element: any) => {
     selectTasks.value = tasks.value.filter((item: any) => item?.taskDefinitionKey === element.id)
     dialogVisible.value = true
   } else if (activityType === 'bpmn:EndEvent' || activityType === 'bpmn:StartEvent') {
-    dialogTitle.value = t('bpm.processViewer.approvalInfo')
+    dialogTitle.value = '审批信息'
     selectTasks.value = [
       {
         assigneeUser: processInstance.value.startUser,
@@ -253,12 +297,12 @@ const onSelectElement = (element: any) => {
 }
 
 /** 初始化 BPMN 视图 */
-const importXML = async (xml: string) => {
+const importXML = async (xml?: string) => {
   // 清空流程图
   clearViewer()
 
   // 初始化流程图
-  if (xml != null && xml !== '') {
+  if (xml) {
     try {
       bpmnViewer.value = new BpmnViewer({
         additionalModules: [MoveCanvasModule],
@@ -280,6 +324,12 @@ const importXML = async (xml: string) => {
       isLoading.value = false
       // 高亮流程
       setProcessStatus(props.view)
+      // 启动 ResizeObserver，等待容器可见且有尺寸时自动居中
+      // 对应 https://github.com/yudaocode/yudao-ui-admin-vue3/pull/221 场景
+      if (bpmnViewer.value) {
+        await nextTick()
+        startResizeObserver()
+      }
     }
   }
 }
@@ -301,8 +351,11 @@ const setProcessStatus = (view: any) => {
     finishedSequenceFlowActivityIds,
     rejectedTaskActivityIds
   } = view
-  const canvas = bpmnViewer.value.get('canvas')
-  const elementRegistry = bpmnViewer.value.get('elementRegistry')
+  const canvas = getCanvas()
+  const elementRegistry = getElementRegistry()
+  if (!canvas || !elementRegistry) {
+    return
+  }
 
   // 已完成节点
   if (Array.isArray(finishedSequenceFlowActivityIds)) {
@@ -310,7 +363,7 @@ const setProcessStatus = (view: any) => {
       if (item != null) {
         canvas.addMarker(item, 'success')
         const element = elementRegistry.get(item)
-        const conditionExpression = element.businessObject.conditionExpression
+        const conditionExpression = element?.businessObject.conditionExpression
         if (conditionExpression) {
           canvas.addMarker(item, 'condition-expression')
         }
@@ -356,7 +409,7 @@ const setProcessStatus = (view: any) => {
 watch(
   () => props.xml,
   (newXml) => {
-    importXML(newXml)
+    importXML(newXml || '')
   },
   { immediate: true }
 )
@@ -371,7 +424,7 @@ watch(
 
 /** mounted：初始化 */
 onMounted(() => {
-  importXML(props.xml)
+  importXML(props.xml || '')
   setProcessStatus(props.view)
 })
 

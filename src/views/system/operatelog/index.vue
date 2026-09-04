@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('sys.operatelog.operateLogManagement')" url="https://doc.iocoder.cn/system-log/" />
+  <doc-alert :title="t('system.operatelog.systemLog')" url="https://doc.iocoder.cn/system-log/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,12 +10,12 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="t('sys.operatelog.userName')" prop="userId">
+      <el-form-item :label="t('system.operatelog._todo197')" prop="userId">
         <el-select
           v-model="queryParams.userId"
           clearable
           filterable
-          :placeholder="t('sys.operatelog.userIdPlaceholder')"
+          :placeholder="t('system.operatelog._todo198')"
           class="!w-240px"
         >
           <el-option
@@ -26,56 +26,56 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('sys.operatelog.type')" prop="type">
+      <el-form-item :label="t('system.operatelog._todo190')" prop="type">
         <el-input
           v-model="queryParams.type"
-          :placeholder="t('sys.operatelog.typePlaceholder')"
+          :placeholder="t('system.operatelog._todo199')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('sys.operatelog.subType')" prop="subType">
+      <el-form-item :label="t('system.operatelog._todo191')" prop="subType">
         <el-input
           v-model="queryParams.subType"
-          :placeholder="t('sys.operatelog.subTypePlaceholder')"
+          :placeholder="t('system.operatelog._todo200')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('sys.operatelog.action')" prop="action">
+      <el-form-item :label="t('system.operatelog._todo192')" prop="action">
         <el-input
           v-model="queryParams.action"
-          :placeholder="t('sys.operatelog.actionPlaceholder')"
+          :placeholder="t('system.operatelog._todo200')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('sys.operatelog.createTime')" prop="createTime">
+      <el-form-item :label="t('system.operatelog._todo195')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          :start-placeholder="t('sys.operatelog.startTimePlaceholder')"
-          :end-placeholder="t('sys.operatelog.endTimePlaceholder')"
+          :start-placeholder="t('system.operatelog.startDate')"
+          :end-placeholder="t('system.operatelog.endDate')"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('sys.operatelog.bizId')" prop="bizId">
+      <el-form-item :label="t('system.operatelog._todo196')" prop="bizId">
         <el-input
           v-model="queryParams.bizId"
-          :placeholder="t('sys.operatelog.bizIdPlaceholder')"
+          :placeholder="t('system.operatelog._todo201')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.operatelog.search') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.operatelog.reset') }}</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
         <el-button
           type="success"
           plain
@@ -83,7 +83,7 @@
           :loading="exportLoading"
           v-hasPermi="['system:operate-log:export']"
         >
-          <Icon icon="ep:download" class="mr-5px" /> {{ t('sys.operatelog.export') }}
+          <Icon icon="ep:download" class="mr-5px" /> {{ t('system.operatelog.export') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -92,21 +92,21 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column :label="t('sys.operatelog.logId')" align="center" prop="id" width="100" />
-      <el-table-column :label="t('sys.operatelog.userName')" align="center" prop="userName" width="120" />
-      <el-table-column :label="t('sys.operatelog.type')" align="center" prop="type" width="120" />
-      <el-table-column :label="t('sys.operatelog.subType')" align="center" prop="subType" width="160" />
-      <el-table-column :label="t('sys.operatelog.action')" align="center" prop="action" />
+      <el-table-column :label="t('system.operatelog._todo202')" align="center" prop="id" width="100" />
+      <el-table-column :label="t('system.operatelog._todo197')" align="center" prop="userName" width="120" />
+      <el-table-column :label="t('system.operatelog._todo190')" align="center" prop="type" width="120" />
+      <el-table-column :label="t('system.operatelog._todo191')" align="center" prop="subType" width="160" />
+      <el-table-column :label="t('system.operatelog._todo192')" align="center" prop="action" />
       <el-table-column
-        :label="t('sys.operatelog.createTime')"
+        :label="t('system.operatelog._todo195')"
         align="center"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('sys.operatelog.bizId')" align="center" prop="bizId" width="120" />
-      <el-table-column :label="t('sys.operatelog.userIp')" align="center" prop="userIp" width="120" />
-      <el-table-column :label="t('sys.operatelog.operation')" align="center" fixed="right" width="60">
+      <el-table-column :label="t('system.operatelog._todo196')" align="center" prop="bizId" width="120" />
+      <el-table-column :label="t('system.operatelog._todo203')" align="center" prop="userIp" width="120" />
+      <el-table-column :label="t('system.operatelog.action')" align="center" fixed="right" width="60">
         <template #default="scope">
           <el-button
             link
@@ -114,7 +114,7 @@
             @click="openDetail(scope.row)"
             v-hasPermi="['system:operate-log:query']"
           >
-            {{ t('sys.operatelog.detail') }}
+            {{ t('system.operatelog.detail') }}
           </el-button>
         </template>
       </el-table-column>
@@ -142,7 +142,6 @@ const userList = ref<UserApi.UserVO[]>([]) // 用户列表
 defineOptions({ name: 'SystemOperateLog' })
 
 const message = useMessage() // 消息弹窗
-const { t } = useI18n() // 国际化
 
 const loading = ref(true) // 列表的加载中
 const total = ref(0) // 列表的总页数

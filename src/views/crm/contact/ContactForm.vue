@@ -38,6 +38,7 @@
               v-model="formData.customerId"
               placeholder="请选择客户"
               class="w-1/1"
+              @change="handleCustomerChange"
             >
               <el-option
                 v-for="item in customerList"
@@ -89,7 +90,7 @@
             <el-radio-group v-model="formData.master">
               <el-radio
                 v-for="dict in getBoolDictOptions(DICT_TYPE.INFRA_BOOLEAN_STRING)"
-                :key="dict.value"
+                :key="String(dict.value)"
                 :value="dict.value"
               >
                 {{ dict.label }}
@@ -113,7 +114,12 @@
         </el-col>
         <el-col :span="12">
           <el-form-item label="直属上级" prop="parentId">
-            <el-select v-model="formData.parentId" placeholder="请选择直属上级" class="w-1/1">
+            <el-select
+              v-model="formData.parentId"
+              :disabled="!formData.customerId"
+              placeholder="请选择直属上级"
+              class="w-1/1"
+            >
               <el-option
                 v-for="item in contactList"
                 :key="item.id"
@@ -177,7 +183,7 @@ import * as UserApi from '@/api/system/user'
 import * as CustomerApi from '@/api/crm/customer'
 import * as AreaApi from '@/api/system/area'
 import { defaultProps } from '@/utils/tree'
-import { useUserStore } from '@/store/modules/user'
+import { getCurrentUserId } from '@/utils/auth'
 
 const { t } = useI18n() // 国际化
 const message = useMessage() // 消息弹窗
@@ -188,24 +194,24 @@ const formLoading = ref(false) // 表单的加载中：1）修改时的数据加
 const formType = ref('') // 表单的类型：create - 新增；update - 修改
 const areaList = ref([]) // 地区列表
 const formData = ref({
-  id: undefined,
-  name: undefined,
-  customerId: undefined,
+  id: undefined as number | undefined,
+  name: undefined as string | undefined,
+  customerId: undefined as number | undefined,
   contactNextTime: undefined,
   ownerUserId: 0,
-  mobile: undefined,
-  telephone: undefined,
-  qq: undefined,
-  wechat: undefined,
-  email: undefined,
-  areaId: undefined,
-  detailAddress: undefined,
-  sex: undefined,
+  mobile: undefined as string | undefined,
+  telephone: undefined as string | undefined,
+  qq: undefined as string | undefined,
+  wechat: undefined as string | undefined,
+  email: undefined as string | undefined,
+  areaId: undefined as number | undefined,
+  detailAddress: undefined as string | undefined,
+  sex: undefined as number | undefined,
   master: false,
-  post: undefined,
-  parentId: undefined,
-  remark: undefined,
-  businessId: undefined,
+  post: undefined as string | undefined,
+  parentId: undefined as number | undefined,
+  remark: undefined as string | undefined,
+  businessId: undefined as number | undefined,
   customerDefault: false
 })
 const formRules = reactive({
@@ -217,6 +223,21 @@ const formRef = ref() // 表单 Ref
 const userOptions = ref<UserApi.UserVO[]>([]) // 用户列表
 const customerList = ref<CustomerApi.CustomerVO[]>([]) // 客户列表
 const contactList = ref<ContactApi.ContactVO[]>([]) // 联系人列表
+
+/** 获得当前客户的联系人列表 */
+const getContactList = async () => {
+  if (!formData.value.customerId) {
+    contactList.value = []
+    return
+  }
+  contactList.value = await ContactApi.getContactListByCustomer(formData.value.customerId)
+}
+
+/** 客户切换时，清空并重新加载直属上级 */
+const handleCustomerChange = async () => {
+  formData.value.parentId = undefined
+  await getContactList()
+}
 
 /** 打开弹窗 */
 const open = async (type: string, id?: number, customerId?: number, businessId?: number) => {
@@ -242,8 +263,8 @@ const open = async (type: string, id?: number, customerId?: number, businessId?:
       formData.value.businessId = businessId
     }
   }
-  // 获得联系人列表
-  contactList.value = await ContactApi.getSimpleContactList()
+  // 获得当前客户的联系人列表
+  await getContactList()
   // 获得客户列表
   customerList.value = await CustomerApi.getCustomerSimpleList()
   // 获得地区列表
@@ -252,7 +273,7 @@ const open = async (type: string, id?: number, customerId?: number, businessId?:
   userOptions.value = await UserApi.getSimpleUserList()
   // 默认新建时选中自己
   if (formType.value === 'create') {
-    formData.value.ownerUserId = useUserStore().getUser.id
+    formData.value.ownerUserId = getCurrentUserId()
   }
 }
 defineExpose({ open }) // 提供 open 方法，用于打开弹窗

@@ -1,13 +1,13 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('sys.role.assignDataScope')" width="800">
+  <Dialog v-model="dialogVisible" :title="t('system.role._todo221')" width="800">
     <el-form ref="formRef" v-loading="formLoading" :model="formData" label-width="80px">
-      <el-form-item :label="t('sys.role.name')">
+      <el-form-item :label="t('system.role.roleName')">
         <el-tag>{{ formData.name }}</el-tag>
       </el-form-item>
-      <el-form-item :label="t('sys.role.code')">
+      <el-form-item :label="t('system.role.roleKey')">
         <el-tag>{{ formData.code }}</el-tag>
       </el-form-item>
-      <el-form-item :label="t('sys.role.permissionScope')">
+      <el-form-item :label="t('system.role._todo222')">
         <el-select v-model="formData.dataScope">
           <el-option
             v-for="item in getIntDictOptions(DICT_TYPE.SYSTEM_DATA_SCOPE)"
@@ -20,29 +20,29 @@
     </el-form>
     <el-form-item
       v-if="formData.dataScope === SystemDataScopeEnum.DEPT_CUSTOM"
-      :label="t('sys.role.deptScope')"
+      :label="t('system.role._todo223')"
       label-width="80px"
     >
       <el-card class="w-full h-400px !overflow-y-scroll" shadow="never">
         <template #header>
-          {{ t('sys.role.selectAllNone') }}:
+          {{ t('system.role._todo219') }}
           <el-switch
             v-model="treeNodeAll"
-            :active-text="t('common.yes')"
-            :inactive-text="t('common.no')"
+            :active-text="t('system.role._todo214')"
+            :inactive-text="t('system.role._todo215')"
             inline-prompt
             @change="handleCheckedTreeNodeAll()"
           />
-          {{ t('sys.role.expandCollapseAll') }}:
+          {{ t('system.role._todo220') }}
           <el-switch
             v-model="deptExpand"
-            :active-text="t('common.expand')"
-            :inactive-text="t('common.shrink')"
+            :active-text="t('system.role._todo216')"
+            :inactive-text="t('system.role._todo217')"
             inline-prompt
             @change="handleCheckedTreeExpand"
           />
-          {{ t('sys.role.linkParentChild') }}
-          <el-switch v-model="checkStrictly" :active-text="t('common.yes')" :inactive-text="t('common.no')" inline-prompt />
+          {{ t('system.role._todo225') }}
+          <el-switch v-model="checkStrictly" :active-text="t('system.role._todo214')" :inactive-text="t('system.role._todo215')" inline-prompt />
         </template>
         <el-tree
           ref="treeRef"
@@ -50,7 +50,7 @@
           :data="deptOptions"
           :props="defaultProps"
           default-expand-all
-          :empty-text="t('common.loading')"
+          :empty-text="t('system.role._todo224')"
           node-key="id"
           show-checkbox
         />
@@ -78,10 +78,10 @@ const message = useMessage() // 消息弹窗
 const dialogVisible = ref(false) // 弹窗的是否展示
 const formLoading = ref(false) // 表单的加载中：1）修改时的数据加载；2）提交的按钮禁用
 const formData = reactive({
-  id: undefined,
+  id: undefined as number | undefined,
   name: '',
   code: '',
-  dataScope: undefined,
+  dataScope: undefined as number | undefined,
   dataScopeDeptIds: []
 })
 const formRef = ref() // 表单 Ref
@@ -116,12 +116,12 @@ const submitForm = async () => {
   formLoading.value = true
   try {
     const data = {
-      roleId: formData.id,
-      dataScope: formData.dataScope,
+      roleId: formData.id!,
+      dataScope: formData.dataScope!,
       dataScopeDeptIds:
         formData.dataScope !== SystemDataScopeEnum.DEPT_CUSTOM
           ? []
-          : treeRef.value.getCheckedKeys(false)
+          : (treeRef.value.getCheckedKeys(false) as number[])
     }
     await PermissionApi.assignRoleDataScope(data)
     message.success(t('common.updateSuccess'))
@@ -140,13 +140,13 @@ const resetForm = () => {
   deptExpand.value = true
   checkStrictly.value = true
   // 重置表单
-  formData.value = {
+  Object.assign(formData, {
     id: undefined,
     name: '',
     code: '',
     dataScope: undefined,
     dataScopeDeptIds: []
-  }
+  })
   treeRef.value?.setCheckedNodes([])
   formRef.value?.resetFields()
 }

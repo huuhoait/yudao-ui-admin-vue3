@@ -1,6 +1,6 @@
 <template>
   <el-form label-width="120px">
-    <el-form-item :label="$t('bpm.design.candidateStrategy')" prop="candidateStrategy">
+    <el-form-item label="规则类型" prop="candidateStrategy">
       <el-select
         v-model="userTaskForm.candidateStrategy"
         clearable
@@ -10,14 +10,14 @@
         <el-option
           v-for="(dict, index) in CANDIDATE_STRATEGY"
           :key="index"
-          :label="$t(dict.label)"
+          :label="dict.label"
           :value="dict.value"
         />
       </el-select>
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy == CandidateStrategy.ROLE"
-      :label="$t('bpm.design.role')"
+      label="指定角色"
       prop="candidateParam"
     >
       <el-select
@@ -36,7 +36,7 @@
         userTaskForm.candidateStrategy == CandidateStrategy.DEPT_LEADER ||
         userTaskForm.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER
       "
-      :label="$t('bpm.design.dept')"
+      label="指定部门"
       prop="candidateParam"
       span="24"
     >
@@ -45,7 +45,7 @@
         v-model="userTaskForm.candidateParam"
         :data="deptTreeOptions"
         :props="defaultProps"
-        :empty-text="$t('bpm.design.loading')"
+        empty-text="加载中，请稍后"
         multiple
         node-key="id"
         show-checkbox
@@ -54,7 +54,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy == CandidateStrategy.POST"
-      :label="$t('bpm.design.post')"
+      label="指定岗位"
       prop="candidateParam"
       span="24"
     >
@@ -65,12 +65,17 @@
         style="width: 100%"
         @change="updateElementTask"
       >
-        <el-option v-for="item in postOptions" :key="item.id" :label="item.name" :value="item.id!" />
+        <el-option
+          v-for="item in postOptions"
+          :key="item.id"
+          :label="item.name"
+          :value="item.id!"
+        />
       </el-select>
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy == CandidateStrategy.USER"
-      :label="$t('bpm.design.user')"
+      label="指定用户"
       prop="candidateParam"
       span="24"
     >
@@ -91,7 +96,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy === CandidateStrategy.USER_GROUP"
-      :label="$t('bpm.design.userGroup')"
+      label="指定用户组"
       prop="candidateParam"
     >
       <el-select
@@ -111,7 +116,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy === CandidateStrategy.FORM_USER"
-      :label="$t('bpm.design.formUser')"
+      label="表单内用户字段"
       prop="formUser"
     >
       <el-select
@@ -131,7 +136,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy === CandidateStrategy.FORM_DEPT_LEADER"
-      :label="$t('bpm.design.formDept')"
+      label="表单内部门字段"
       prop="formDept"
     >
       <el-select
@@ -156,7 +161,7 @@
         userTaskForm.candidateStrategy == CandidateStrategy.START_USER_MULTI_LEVEL_DEPT_LEADER ||
         userTaskForm.candidateStrategy == CandidateStrategy.FORM_DEPT_LEADER
       "
-      :label="$t('bpm.design.deptLevel')"
+      :label="deptLevelLabel!"
       prop="deptLevel"
       span="24"
     >
@@ -164,14 +169,14 @@
         <el-option
           v-for="(item, index) in MULTI_LEVEL_DEPT"
           :key="index"
-          :label="$t(item.label, { level: item.level })"
+          :label="item.label"
           :value="item.value"
         />
       </el-select>
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy === CandidateStrategy.EXPRESSION"
-      :label="$t('bpm.design.expression')"
+      label="流程表达式"
       prop="candidateParam"
     >
       <el-input
@@ -181,19 +186,19 @@
         style="width: 100%"
         @change="updateElementTask"
       />
-      <XButton
+      <el-button
         class="!w-1/1 mt-5px"
         type="success"
-        preIcon="ep:select"
-        title="选择表达式"
         size="small"
         @click="openProcessExpressionDialog"
-      />
+      >
+        <Icon icon="ep:select" class="mr-1px" /> 选择表达式
+      </el-button>
       <!-- 选择弹窗 -->
       <ProcessExpressionDialog ref="processExpressionDialogRef" @select="selectProcessExpression" />
     </el-form-item>
 
-    <el-form-item :label="$t('bpm.design.skipExpression')" prop="skipExpression">
+    <el-form-item label="跳过表达式" prop="skipExpression">
       <el-input
         type="textarea"
         v-model="userTaskForm.skipExpression"
@@ -228,7 +233,13 @@ const props = defineProps({
   type: String
 })
 const prefix = inject('prefix')
-const userTaskForm = ref({
+type CandidateParam = Array<string | number> | string | number
+type UserTaskForm = {
+  candidateStrategy?: CandidateStrategy
+  candidateParam: CandidateParam
+  skipExpression: string
+}
+const userTaskForm = ref<UserTaskForm>({
   candidateStrategy: undefined, // 分配规则
   candidateParam: [], // 分配选项
   skipExpression: '' // 跳过表达式
@@ -254,13 +265,13 @@ const deptFieldOnFormOptions = computed(() => {
 
 const deptLevel = ref(1)
 const deptLevelLabel = computed(() => {
-  let label = 'Source of department head'
+  let label = '部门负责人来源'
   if (userTaskForm.value.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER) {
-    label = label + '(Multi Dept Leader)'
+    label = label + '(指定部门向上)'
   } else if (userTaskForm.value.candidateStrategy == CandidateStrategy.FORM_DEPT_LEADER) {
-    label = label + '(Dept Leader)'
+    label = label + '(表单内部门向上)'
   } else {
-    label = label + '(Initiator Department )'
+    label = label + '(发起人部门向上)'
   }
   return label
 })
@@ -354,12 +365,13 @@ const resetTaskForm = () => {
 const changeCandidateStrategy = () => {
   userTaskForm.value.candidateParam = []
   deptLevel.value = 1
-//  if (userTaskForm.value.candidateStrategy === CandidateStrategy.FORM_USER) {
-    // 特殊处理表单内用户字段，当只有发起人选项时应选中发起人
-//    if (!userFieldOnFormOptions.value || userFieldOnFormOptions.value.length <= 1) {
-//      userTaskForm.value.candidateStrategy = CandidateStrategy.START_USER
-//    }
-//  }
+  // 注释 by 芋艿：这个交互很多用户反馈费解，https://t.zsxq.com/xNmas 所以暂时屏蔽
+  // if (userTaskForm.value.candidateStrategy === CandidateStrategy.FORM_USER) {
+  //   // 特殊处理表单内用户字段，当只有发起人选项时应选中发起人
+  //   if (!userFieldOnFormOptions.value || userFieldOnFormOptions.value.length <= 1) {
+  //     userTaskForm.value.candidateStrategy = CandidateStrategy.START_USER
+  //   }
+  // }
   updateElementTask()
 }
 
@@ -398,13 +410,6 @@ const updateElementTask = () => {
   })
   bpmnInstances().modeling.updateProperties(toRaw(bpmnElement.value), {
     extensionElements: extensions
-  })
-
-  // 改用通过extensionElements来存储数据
-  return
-  bpmnInstances().modeling.updateProperties(toRaw(bpmnElement.value), {
-    candidateStrategy: userTaskForm.value.candidateStrategy,
-    candidateParam: userTaskForm.value.candidateParam.join(',')
   })
 }
 

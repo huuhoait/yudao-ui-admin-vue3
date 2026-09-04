@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="短信配置" url="https://doc.iocoder.cn/sms/" />
+  <doc-alert :title="t('system.sms.template.smsConfig')" url="https://doc.iocoder.cn/sms/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,10 +10,10 @@
       :inline="true"
       label-width="150px"
     >
-      <el-form-item label="短信类型" prop="type">
+      <el-form-item :label="t('system.sms.template.smsType')" prop="type">
         <el-select
           v-model="queryParams.type"
-          placeholder="请选择短信类型"
+          :placeholder="t('system.sms.template.selectSmsType')"
           clearable
           class="!w-240px"
         >
@@ -25,10 +25,10 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="开启状态" prop="status">
+      <el-form-item :label="t('system.sms.template.enableStatus')" prop="status">
         <el-select
           v-model="queryParams.status"
-          placeholder="请选择开启状态"
+          :placeholder="t('system.sms.template.selectEnableStatus')"
           clearable
           class="!w-240px"
         >
@@ -40,28 +40,28 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="模板编码" prop="code">
+      <el-form-item :label="t('system.sms.template.templateCode')" prop="code">
         <el-input
           v-model="queryParams.code"
-          placeholder="请输入模板编码"
+          :placeholder="t('system.sms.template.inputTemplateCode')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="短信 API 的模板编号" prop="apiTemplateId">
+      <el-form-item :label="t('system.sms.template._todo261')" prop="apiTemplateId">
         <el-input
           v-model="queryParams.apiTemplateId"
-          placeholder="请输入短信 API 的模板编号"
+          :placeholder="t('system.sms.template._todo257')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="短信渠道" prop="channelId">
+      <el-form-item :label="t('system.sms.template.smsChannel')" prop="channelId">
         <el-select
           v-model="queryParams.channelId"
-          placeholder="请选择短信渠道"
+          :placeholder="t('system.sms.template.selectSmsChannel')"
           clearable
           class="!w-240px"
         >
@@ -76,27 +76,27 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="创建时间" prop="createTime">
+      <el-form-item :label="t('common.createTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           style="width: 240px"
           type="daterange"
           value-format="YYYY-MM-DD HH:mm:ss"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
+          :start-placeholder="t('system.sms.template.startDate')"
+          :end-placeholder="t('system.sms.template.endDate')"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
         <el-button
           type="primary"
           plain
           @click="openForm('create')"
           v-hasPermi="['system:sms-template:create']"
         >
-          <Icon icon="ep:plus" class="mr-5px" />新增
+          <Icon icon="ep:plus" class="mr-5px" />{{ t('system.sms.template.create') }}
         </el-button>
         <el-button
           type="danger"
@@ -105,7 +105,7 @@
           @click="handleDeleteBatch"
           v-hasPermi="['system:sms-template:delete']"
         >
-          <Icon icon="ep:delete" class="mr-5px" />批量删除
+          <Icon icon="ep:delete" class="mr-5px" />{{ t('system.sms.template.deleteBatch') }}
         </el-button>
         <el-button
           type="success"
@@ -114,7 +114,7 @@
           :loading="exportLoading"
           v-hasPermi="['system:sms-template:export']"
         >
-          <Icon icon="ep:download" class="mr-5px" /> 导出
+          <Icon icon="ep:download" class="mr-5px" /> {{ t('system.sms.template.export') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -125,45 +125,45 @@
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
       <el-table-column
-        label="模板编码"
+        :label="t('system.sms.template.templateCode')"
         align="center"
         prop="code"
         width="120"
         :show-overflow-tooltip="true"
       />
       <el-table-column
-        label="模板名称"
+        :label="t('system.sms.template.templateName')"
         align="center"
         prop="name"
         width="120"
         :show-overflow-tooltip="true"
       />
       <el-table-column
-        label="模板内容"
+        :label="t('system.sms.template.templateContent')"
         align="center"
         prop="content"
         width="200"
         :show-overflow-tooltip="true"
       />
-      <el-table-column label="短信类型" align="center" prop="type">
+      <el-table-column :label="t('system.sms.template.smsType')" align="center" prop="type">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_SMS_TEMPLATE_TYPE" :value="scope.row.type" />
         </template>
       </el-table-column>
-      <el-table-column label="状态" align="center" prop="status" width="80">
+      <el-table-column :label="t('common.status')" align="center" prop="status" width="80">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column label="备注" align="center" prop="remark" />
+      <el-table-column :label="t('system.sms.template.remark')" align="center" prop="remark" />
       <el-table-column
-        label="短信 API 的模板编号"
+        :label="t('system.sms.template._todo261')"
         align="center"
         prop="apiTemplateId"
         width="200"
         :show-overflow-tooltip="true"
       />
-      <el-table-column label="短信渠道" align="center" width="120">
+      <el-table-column :label="t('system.sms.template.smsChannel')" align="center" width="120">
         <template #default="scope">
           <div>
             {{ channelList.find((channel) => channel.id === scope.row.channelId)?.signature }}
@@ -172,13 +172,13 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="创建时间"
+        :label="t('common.createTime')"
         align="center"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column label="操作" align="center" width="210" fixed="right">
+      <el-table-column :label="t('system.sms.template.action')" align="center" width="210" fixed="right">
         <template #default="scope">
           <el-button
             link
@@ -186,7 +186,7 @@
             @click="openForm('update', scope.row.id)"
             v-hasPermi="['system:sms-template:update']"
           >
-            修改
+            {{ t('system.sms.template.edit') }}
           </el-button>
           <el-button
             link
@@ -194,7 +194,7 @@
             @click="openSendForm(scope.row.id)"
             v-hasPermi="['system:sms-template:send-sms']"
           >
-            测试
+            {{ t('system.sms.template.test') }}
           </el-button>
           <el-button
             link
@@ -202,7 +202,7 @@
             @click="handleDelete(scope.row.id)"
             v-hasPermi="['system:sms-template:delete']"
           >
-            删除
+            {{ t('system.sms.template.delete') }}
           </el-button>
         </template>
       </el-table-column>
@@ -314,6 +314,7 @@ const handleDeleteBatch = async () => {
     await message.delConfirm()
     // 发起批量删除
     await SmsTemplateApi.deleteSmsTemplateList(checkedIds.value)
+    checkedIds.value = []
     message.success(t('common.delSuccess'))
     // 刷新列表
     await getList()

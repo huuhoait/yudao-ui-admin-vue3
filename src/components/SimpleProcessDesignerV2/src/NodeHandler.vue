@@ -13,61 +13,61 @@
             <div class="approve handler-item-icon">
               <span class="iconfont icon-approve icon-size"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.approver') }}</div>
+            <div class="handler-item-text">审批人</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.TRANSACTOR_NODE)">
             <div class="transactor handler-item-icon">
               <span class="iconfont icon-transactor icon-size"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.processor') }}</div>
+            <div class="handler-item-text">办理人</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.COPY_TASK_NODE)">
             <div class="handler-item-icon copy">
               <span class="iconfont icon-size icon-copy"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.copy') }}</div>
+            <div class="handler-item-text">抄送</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.CONDITION_BRANCH_NODE)">
             <div class="handler-item-icon condition">
               <span class="iconfont icon-size icon-exclusive"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.conditionBranch') }}</div>
+            <div class="handler-item-text">条件分支</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.PARALLEL_BRANCH_NODE)">
             <div class="handler-item-icon parallel">
               <span class="iconfont icon-size icon-parallel"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.parallelBranch') }}</div>
+            <div class="handler-item-text">并行分支</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.INCLUSIVE_BRANCH_NODE)">
             <div class="handler-item-icon inclusive">
               <span class="iconfont icon-size icon-inclusive"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.inclusiveBranch') }}</div>
+            <div class="handler-item-text">包容分支</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.DELAY_TIMER_NODE)">
             <div class="handler-item-icon delay">
               <span class="iconfont icon-size icon-delay"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.delay') }}</div>
+            <div class="handler-item-text">延迟器</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.ROUTER_BRANCH_NODE)">
             <div class="handler-item-icon router">
               <span class="iconfont icon-size icon-router"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.routerBranch') }}</div>
+            <div class="handler-item-text">路由分支</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.TRIGGER_NODE)">
             <div class="handler-item-icon trigger">
               <span class="iconfont icon-size icon-trigger"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.trigger') }}</div>
+            <div class="handler-item-text">触发器</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.CHILD_PROCESS_NODE)">
             <div class="handler-item-icon child-process">
               <span class="iconfont icon-size icon-child-process"></span>
             </div>
-            <div class="handler-item-text">{{ t('simpleProcessDesignerV2.nodeHandler.childProcess') }}</div>
+            <div class="handler-item-text">子流程</div>
           </div>
         </div>
         <template #reference>
@@ -97,8 +97,6 @@ defineOptions({
   name: 'NodeHandler'
 })
 
-const { t } = useI18n()
-
 const popoverShow = ref(false)
 const props = defineProps({
   childNode: {
@@ -120,7 +118,7 @@ const addNode = (type: number) => {
     const id = 'Activity_' + generateUUID()
     const data: SimpleFlowNode = {
       id: id,
-      name: t(NODE_DEFAULT_NAME.get(type) as string),
+      name: NODE_DEFAULT_NAME.get(type) as string,
       showText: '',
       type: type,
       approveMethod: ApproveMethodType.SEQUENTIAL_APPROVE,
@@ -151,7 +149,7 @@ const addNode = (type: number) => {
   if (type === NodeType.COPY_TASK_NODE) {
     const data: SimpleFlowNode = {
       id: 'Activity_' + generateUUID(),
-      name: t(NODE_DEFAULT_NAME.get(NodeType.COPY_TASK_NODE) as string),
+      name: NODE_DEFAULT_NAME.get(NodeType.COPY_TASK_NODE) as string,
       showText: '',
       type: NodeType.COPY_TASK_NODE,
       childNode: props.childNode
@@ -160,14 +158,14 @@ const addNode = (type: number) => {
   }
   if (type === NodeType.CONDITION_BRANCH_NODE) {
     const data: SimpleFlowNode = {
-      name: t('simpleProcessDesignerV2.nodeHandler.conditionBranch'),
+      name: '条件分支',
       type: NodeType.CONDITION_BRANCH_NODE,
       id: 'GateWay_' + generateUUID(),
       childNode: props.childNode,
       conditionNodes: [
         {
           id: 'Flow_' + generateUUID(),
-          name: t('simpleProcessDesignerV2.nodeHandler.conditionWithIndex', { index: 1 }),
+          name: '条件1',
           showText: '',
           type: NodeType.CONDITION_NODE,
           childNode: undefined,
@@ -179,8 +177,8 @@ const addNode = (type: number) => {
         },
         {
           id: 'Flow_' + generateUUID(),
-          name: t('simpleProcessDesignerV2.common.otherwise'),
-          showText: t('simpleProcessDesignerV2.nodeHandler.defaultBranchDesc'),
+          name: '其它情况',
+          showText: '未满足其它条件时，将进入此分支',
           type: NodeType.CONDITION_NODE,
           childNode: undefined,
           conditionSetting: {
@@ -193,22 +191,22 @@ const addNode = (type: number) => {
   }
   if (type === NodeType.PARALLEL_BRANCH_NODE) {
     const data: SimpleFlowNode = {
-      name: t('simpleProcessDesignerV2.nodeHandler.parallelBranch'),
+      name: '并行分支',
       type: NodeType.PARALLEL_BRANCH_NODE,
       id: 'GateWay_' + generateUUID(),
       childNode: props.childNode,
       conditionNodes: [
         {
           id: 'Flow_' + generateUUID(),
-          name: t('simpleProcessDesignerV2.nodeHandler.parallelWithIndex', { index: 1 }),
-          showText: t('simpleProcessDesignerV2.nodeHandler.parallelNoCondition'),
+          name: '并行1',
+          showText: '无需配置条件同时执行',
           type: NodeType.CONDITION_NODE,
           childNode: undefined
         },
         {
           id: 'Flow_' + generateUUID(),
-          name: t('simpleProcessDesignerV2.nodeHandler.parallelWithIndex', { index: 2 }),
-          showText: t('simpleProcessDesignerV2.nodeHandler.parallelNoCondition'),
+          name: '并行2',
+          showText: '无需配置条件同时执行',
           type: NodeType.CONDITION_NODE,
           childNode: undefined
         }
@@ -218,14 +216,14 @@ const addNode = (type: number) => {
   }
   if (type === NodeType.INCLUSIVE_BRANCH_NODE) {
     const data: SimpleFlowNode = {
-      name: t('simpleProcessDesignerV2.nodeHandler.inclusiveBranch'),
+      name: '包容分支',
       type: NodeType.INCLUSIVE_BRANCH_NODE,
       id: 'GateWay_' + generateUUID(),
       childNode: props.childNode,
       conditionNodes: [
         {
           id: 'Flow_' + generateUUID(),
-          name: t('simpleProcessDesignerV2.nodeHandler.inclusiveCondition', { index: 1 }),
+          name: '包容条件1',
           showText: '',
           type: NodeType.CONDITION_NODE,
           childNode: undefined,
@@ -237,8 +235,8 @@ const addNode = (type: number) => {
         },
         {
           id: 'Flow_' + generateUUID(),
-          name: t('simpleProcessDesignerV2.common.otherwise'),
-          showText: t('simpleProcessDesignerV2.nodeHandler.defaultBranchDesc'),
+          name: '其它情况',
+          showText: '未满足其它条件时，将进入此分支',
           type: NodeType.CONDITION_NODE,
           childNode: undefined,
           conditionSetting: {
@@ -252,7 +250,7 @@ const addNode = (type: number) => {
   if (type === NodeType.DELAY_TIMER_NODE) {
     const data: SimpleFlowNode = {
       id: 'Activity_' + generateUUID(),
-      name: t(NODE_DEFAULT_NAME.get(NodeType.DELAY_TIMER_NODE) as string),
+      name: NODE_DEFAULT_NAME.get(NodeType.DELAY_TIMER_NODE) as string,
       showText: '',
       type: NodeType.DELAY_TIMER_NODE,
       childNode: props.childNode
@@ -262,7 +260,7 @@ const addNode = (type: number) => {
   if (type === NodeType.ROUTER_BRANCH_NODE) {
     const data: SimpleFlowNode = {
       id: 'GateWay_' + generateUUID(),
-      name: t(NODE_DEFAULT_NAME.get(NodeType.ROUTER_BRANCH_NODE) as string),
+      name: NODE_DEFAULT_NAME.get(NodeType.ROUTER_BRANCH_NODE) as string,
       showText: '',
       type: NodeType.ROUTER_BRANCH_NODE,
       childNode: props.childNode
@@ -272,7 +270,7 @@ const addNode = (type: number) => {
   if (type === NodeType.TRIGGER_NODE) {
     const data: SimpleFlowNode = {
       id: 'Activity_' + generateUUID(),
-      name: t(NODE_DEFAULT_NAME.get(NodeType.TRIGGER_NODE) as string),
+      name: NODE_DEFAULT_NAME.get(NodeType.TRIGGER_NODE) as string,
       showText: '',
       type: NodeType.TRIGGER_NODE,
       childNode: props.childNode
@@ -282,7 +280,7 @@ const addNode = (type: number) => {
   if (type === NodeType.CHILD_PROCESS_NODE) {
     const data: SimpleFlowNode = {
       id: 'Activity_' + generateUUID(),
-      name: t(NODE_DEFAULT_NAME.get(NodeType.CHILD_PROCESS_NODE) as string),
+      name: NODE_DEFAULT_NAME.get(NodeType.CHILD_PROCESS_NODE) as string,
       showText: '',
       type: NodeType.CHILD_PROCESS_NODE,
       childNode: props.childNode,

@@ -1,13 +1,15 @@
 <template>
   <div class="panel-tab__content">
     <div class="panel-tab__content--title">
-      <span><Icon icon="ep:menu" style="margin-right: 8px; color: #555" />{{ $t('bpm.design.messageList') }}</span>
-      <XButton type="primary" :title="$t('bpm.design.createNewMessage')" preIcon="ep:plus" @click="openModel('message')" />
+      <span><Icon icon="ep:menu" style="margin-right: 8px; color: #555" />消息列表</span>
+      <el-button type="primary" @click="openModel('message')">
+        <Icon icon="ep:plus" class="mr-1px" /> 创建新消息
+      </el-button>
     </div>
     <el-table :data="messageList" border>
-      <el-table-column type="index" :label="$t('bpm.design.serialNumber')" width="60px" />
-      <el-table-column :label="$t('bpm.design.messageId')" prop="id" max-width="300px" show-overflow-tooltip />
-      <el-table-column :label="$t('bpm.design.messageName')" prop="name" max-width="300px" show-overflow-tooltip />
+      <el-table-column type="index" label="序号" width="60px" />
+      <el-table-column label="消息ID" prop="id" min-width="120px" show-overflow-tooltip />
+      <el-table-column label="消息名称" prop="name" min-width="120px" show-overflow-tooltip />
       <el-table-column label="操作" width="110px">
         <!-- 补充“编辑”、“移除”功能。相关 issue：https://github.com/YunaiV/yudao-cloud/issues/270 -->
         <template #default="scope">
@@ -19,7 +21,7 @@
             link
             size="small"
             style="color: #ff4d4f"
-            @click="removeObject('message', scope.row, scope.$index)"
+            @click="removeObject('message', scope.row)"
           >
             移除
           </el-button>
@@ -30,13 +32,15 @@
       class="panel-tab__content--title"
       style="padding-top: 8px; margin-top: 8px; border-top: 1px solid #eee"
     >
-      <span><Icon icon="ep:menu" style="margin-right: 8px; color: #555" />{{ $t('bpm.design.signalList') }}</span>
-      <XButton type="primary" :title="$t('bpm.design.createNewSignal')" preIcon="ep:plus" @click="openModel('signal')" />
+      <span><Icon icon="ep:menu" style="margin-right: 8px; color: #555" />信号列表</span>
+      <el-button type="primary" @click="openModel('signal')">
+        <Icon icon="ep:plus" class="mr-1px" /> 创建新信号
+      </el-button>
     </div>
     <el-table :data="signalList" border>
-      <el-table-column type="index" :label="$t('bpm.design.serialNumber')" width="60px" />
-      <el-table-column :label="$t('bpm.design.signalId')" prop="id" max-width="300px" show-overflow-tooltip />
-      <el-table-column :label="$t('bpm.design.signalName')" prop="name" max-width="300px" show-overflow-tooltip />
+      <el-table-column type="index" label="序号" width="60px" />
+      <el-table-column label="信号ID" prop="id" min-width="120px" show-overflow-tooltip />
+      <el-table-column label="信号名称" prop="name" min-width="120px" show-overflow-tooltip />
       <el-table-column label="操作" width="110px">
         <template #default="scope">
           <el-button link @click="openEditModel('signal', scope.row, scope.$index)" size="small">
@@ -47,7 +51,7 @@
             link
             size="small"
             style="color: #ff4d4f"
-            @click="removeObject('signal', scope.row, scope.$index)"
+            @click="removeObject('signal', scope.row)"
           >
             移除
           </el-button>
@@ -72,8 +76,8 @@
         </el-form-item>
       </el-form>
       <template #footer>
-        <el-button @click="dialogVisible = false">{{ $t('bpm.design.cancel') }}</el-button>
-        <el-button type="primary" @click="addNewObject">{{ $t('bpm.design.save') }}</el-button>
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="addNewObject">保 存</el-button>
       </template>
     </el-dialog>
   </div>
@@ -81,7 +85,7 @@
 <script lang="ts" setup>
 import { ElMessageBox } from 'element-plus'
 defineOptions({ name: 'SignalAndMassage' })
-const { t } = useI18n()
+
 const message = useMessage()
 const signalList = ref<any[]>([])
 const messageList = ref<any[]>([])
@@ -95,12 +99,28 @@ const editingIndex = ref(-1) // 正在编辑的索引，-1 表示新建
 const modelConfig = computed(() => {
   const isEdit = editingIndex.value !== -1
   if (modelType.value === 'message') {
-    return { title: t('bpm.design.createMessage'), idLabel: t('bpm.design.messageId'), nameLabel: t('bpm.design.messageName') }
+    return {
+      title: isEdit ? '编辑消息' : '创建消息',
+      idLabel: '消息ID',
+      nameLabel: '消息名称'
+    }
   } else {
-    return { title: t('bpm.design.createSignal'), idLabel: t('bpm.design.signalId'), nameLabel: t('bpm.design.signalName') }
+    return {
+      title: isEdit ? '编辑信号' : '创建信号',
+      idLabel: '信号ID',
+      nameLabel: '信号名称'
+    }
   }
 })
 const bpmnInstances = () => (window as any)?.bpmnInstances
+
+// 生成规范化的ID
+const generateStandardId = (type: string): string => {
+  const prefix = type === 'message' ? 'Message_' : 'Signal_'
+  const timestamp = Date.now()
+  const random = Math.random().toString(36).substring(2, 6).toUpperCase()
+  return `${prefix}${timestamp}_${random}`
+}
 
 const initDataList = () => {
   console.log(window, 'window')
@@ -123,7 +143,10 @@ const initDataList = () => {
 const openModel = (type) => {
   modelType.value = type
   editingIndex.value = -1
-  modelObjectForm.value = {}
+  modelObjectForm.value = {
+    id: generateStandardId(type),
+    name: ''
+  }
   dialogVisible.value = true
 }
 
@@ -178,10 +201,12 @@ const addNewObject = () => {
     }
   }
   dialogVisible.value = false
+  // 触发建模器更新以保存更改
+  saveChanges()
   initDataList()
 }
 
-const removeObject = (type, row, index) => {
+const removeObject = (type, row) => {
   ElMessageBox.confirm(`确认移除该${type === 'message' ? '消息' : '信号'}吗？`, '提示', {
     confirmButtonText: '确 认',
     cancelButtonText: '取 消'
@@ -195,11 +220,46 @@ const removeObject = (type, row, index) => {
       if (elementIndex !== -1) {
         rootElements.value.splice(elementIndex, 1)
       }
+      // 触发建模器更新以保存更改
+      saveChanges()
       // 刷新列表
       initDataList()
       message.success('移除成功')
     })
     .catch(() => console.info('操作取消'))
+}
+
+// 触发建模器更新以保存更改
+const saveChanges = () => {
+  const modeler = bpmnInstances().modeler
+  if (!modeler) return
+
+  try {
+    // 获取 canvas，通过它来触发图表的重新渲染
+    const canvas = modeler.get('canvas')
+
+    // 获取根元素（Process）
+    const rootElement = canvas.getRootElement()
+
+    // 触发 changed 事件，通知建模器数据已更改
+    const eventBus = modeler.get('eventBus')
+    if (eventBus) {
+      eventBus.fire('root.added', { element: rootElement })
+      eventBus.fire('elements.changed', { elements: [rootElement] })
+    }
+
+    // 标记建模器为已修改状态
+    const commandStack = modeler.get('commandStack')
+    if (commandStack && commandStack._stack) {
+      // 添加一个空命令以标记为已修改
+      commandStack.execute('element.updateProperties', {
+        element: rootElement,
+        properties: {}
+      })
+    }
+  } catch (error) {
+    console.warn('保存更改时出错:', error)
+  }
 }
 
 onMounted(() => {

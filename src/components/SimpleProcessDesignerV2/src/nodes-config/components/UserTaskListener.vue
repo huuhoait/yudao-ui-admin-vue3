@@ -2,30 +2,30 @@
   <el-form ref="listenerFormRef" :model="configForm" label-position="top">
     <div v-for="(listener, listenerIdx) in taskListener" :key="listenerIdx">
       <el-divider content-position="left">
-        <el-text tag="b" size="large">{{ t(listener.name) }}</el-text>
+        <el-text tag="b" size="large">{{ listener.name }}</el-text>
       </el-divider>
       <el-form-item>
         <el-switch
           v-model="configForm[`task${listener.type}ListenerEnable`]"
-          :active-text="t('common.enable')"
-          :inactive-text="t('common.disable')"
+          active-text="开启"
+          inactive-text="关闭"
         />
       </el-form-item>
       <div v-if="configForm[`task${listener.type}ListenerEnable`]">
         <el-form-item>
           <el-alert
-            :title="t('bpm.design.httpRequest.postOnlyWarning')"
+            title="仅支持 POST 请求，以请求体方式接收参数"
             type="warning"
             show-icon
             :closable="false"
           />
         </el-form-item>
         <el-form-item
-          :label="t('bpm.design.httpRequest.requestUrl')"
+          label="请求地址"
           :prop="`task${listener.type}ListenerPath`"
           :rules="{
             required: true,
-            message: t('bpm.design.httpRequest.requestUrlRequired'),
+            message: '请求地址不能为空',
             trigger: 'blur'
           }"
         >
@@ -42,10 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
 import HttpRequestParamSetting from './HttpRequestParamSetting.vue'
-
-const { t } = useI18n()
 
 const props = defineProps({
   modelValue: {
@@ -69,15 +66,15 @@ const configForm = computed({
 })
 const taskListener = ref([
   {
-    name: 'simpleProcessDesignerV2.userTaskListener.createTask',
+    name: '创建任务',
     type: 'Create'
   },
   {
-    name: 'simpleProcessDesignerV2.userTaskListener.assignTask',
+    name: '指派任务执行人员',
     type: 'Assign'
   },
   {
-    name: 'simpleProcessDesignerV2.userTaskListener.completeTask',
+    name: '完成任务',
     type: 'Complete'
   }
 ])

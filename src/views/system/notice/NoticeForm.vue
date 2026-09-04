@@ -7,14 +7,14 @@
       :rules="formRules"
       label-width="80px"
     >
-      <el-form-item :label="t('sys.notice.noticeTitle')" prop="title">
-        <el-input v-model="formData.title" :placeholder="t('sys.notice.titlePlaceholder')" />
+      <el-form-item :label="t('system.notice._todo114')" prop="title">
+        <el-input v-model="formData.title" :placeholder="t('system.notice._todo115')" />
       </el-form-item>
-      <el-form-item :label="t('sys.notice.content')" prop="content">
+      <el-form-item :label="t('system.notice._todo116')" prop="content">
         <Editor v-model="formData.content" height="150px" />
       </el-form-item>
-      <el-form-item :label="t('sys.notice.noticeType')" prop="type">
-        <el-select v-model="formData.type" clearable :placeholder="t('sys.notice.typePlaceholder')">
+      <el-form-item :label="t('system.notice._todo117')" prop="type">
+        <el-select v-model="formData.type" clearable :placeholder="t('system.notice._todo118')">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_NOTICE_TYPE)"
             :key="parseInt(dict.value as any)"
@@ -23,8 +23,8 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('sys.notice.noticeStatus')" prop="status">
-        <el-select v-model="formData.status" clearable :placeholder="t('sys.notice.statusPlaceholder')">
+      <el-form-item :label="t('common.status')" prop="status">
+        <el-select v-model="formData.status" clearable :placeholder="t('system.notice.selectStatus')">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
             :key="parseInt(dict.value as any)"
@@ -33,8 +33,8 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('sys.notice.remark')" prop="remark">
-        <el-input v-model="formData.remark" :placeholder="t('sys.notice.remarkPlaceholder')" type="textarea" />
+      <el-form-item :label="t('system.notice.remark')" prop="remark">
+        <el-input v-model="formData.remark" :placeholder="t('system.notice._todo119')" type="textarea" />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -66,10 +66,10 @@ const formData = ref({
   remark: ''
 })
 const formRules = reactive({
-  title: [{ required: true, message: t('sys.notice.titleRequired'), trigger: 'blur' }],
-  type: [{ required: true, message: t('sys.notice.typeRequired'), trigger: 'change' }],
-  status: [{ required: true, message: t('sys.notice.statusRequired'), trigger: 'change' }],
-  content: [{ required: true, message: t('sys.notice.contentRequired'), trigger: 'blur' }]
+  title: [{ required: true, message: t('system.notice._todo120'), trigger: 'blur' }],
+  type: [{ required: true, message: t('system.notice._todo121'), trigger: 'change' }],
+  status: [{ required: true, message: t('system.notice.statusRequired'), trigger: 'change' }],
+  content: [{ required: true, message: t('system.notice._todo122'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

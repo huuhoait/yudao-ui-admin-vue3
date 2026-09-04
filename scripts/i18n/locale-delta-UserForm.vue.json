@@ -1,0 +1,23 @@
+{
+  "system.user.nickname": "用户昵称",
+  "system.user.inputNickname": "请输入用户昵称",
+  "system.user.belongDept": "归属部门",
+  "system.user.selectBelongDept": "请选择归属部门",
+  "system.user.mobile": "手机号码",
+  "system.user.inputMobile": "请输入手机号码",
+  "system.user.email": "邮箱",
+  "system.user.inputEmail": "请输入邮箱",
+  "system.user.username": "用户名称",
+  "system.user.inputUsername": "请输入用户名称",
+  "system.user.password": "用户密码",
+  "system.user.inputPassword": "请输入用户密码",
+  "system.user.sex": "用户性别",
+  "system.user.post": "岗位",
+  "system.user.remark": "备注",
+  "system.user.inputContent": "请输入内容",
+  "system.user.usernameRequired": "用户名称不能为空",
+  "system.user.nicknameRequired": "用户昵称不能为空",
+  "system.user.passwordRequired": "用户密码不能为空",
+  "system.user._todo1": "请输入正确的邮箱地址",
+  "system.user._todo2": "请输入正确的手机号码"
+}

@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="$t('bpm.category.index.docAlertTitle')" url="https://doc.iocoder.cn/bpm/" />
+  <doc-alert :title="t('bpm.category._todo1')" url="https://doc.iocoder.cn/bpm/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,28 +10,28 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="$t('bpm.category.index.form.name')" prop="name">
+      <el-form-item :label="t('bpm.category.categoryName')" prop="name">
         <el-input
           v-model="queryParams.name"
-          :placeholder="$t('bpm.category.index.form.namePlaceholder')"
+          :placeholder="t('bpm.category.inputCategoryName')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="$t('bpm.category.index.form.code')" prop="code">
+      <el-form-item :label="t('bpm.category.categoryFlag')" prop="code">
         <el-input
           v-model="queryParams.code"
-          :placeholder="$t('bpm.category.index.form.codePlaceholder')"
+          :placeholder="t('bpm.category.inputCategoryFlag')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="$t('bpm.category.index.form.status')" prop="status">
+      <el-form-item :label="t('bpm.category.categoryStatus')" prop="status">
         <el-select
           v-model="queryParams.status"
-          :placeholder="$t('bpm.category.index.form.statusPlaceholder')"
+          :placeholder="t('bpm.category.selectCategoryStatus')"
           clearable
           class="!w-240px"
         >
@@ -43,27 +43,27 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="$t('bpm.category.index.form.createTime')" prop="createTime">
+      <el-form-item :label="t('common.createTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          :start-placeholder="$t('bpm.category.index.form.startDatePlaceholder')"
-          :end-placeholder="$t('bpm.category.index.form.endDatePlaceholder')"
+          :start-placeholder="t('bpm.category.startDate')"
+          :end-placeholder="t('bpm.category.endDate')"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ $t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ $t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
         <el-button
           type="primary"
           plain
           @click="openForm('create')"
           v-hasPermi="['bpm:category:create']"
         >
-          <Icon icon="ep:plus" class="mr-5px" /> {{ $t('common.add') }}
+          <Icon icon="ep:plus" class="mr-5px" /> {{ t('bpm.category.create') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -72,24 +72,24 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list" :stripe="true" :show-overflow-tooltip="true">
-      <el-table-column :label="$t('bpm.category.index.table.id')" align="center" prop="id" />
-      <el-table-column :label="$t('bpm.category.index.table.name')" align="center" prop="name" />
-      <el-table-column :label="$t('bpm.category.index.table.code')" align="center" prop="code" />
-      <el-table-column :label="$t('bpm.category.index.table.description')" align="center" prop="description" />
-      <el-table-column :label="$t('bpm.category.index.table.status')" align="center" prop="status">
+      <el-table-column :label="t('bpm.category._todo2')" align="center" prop="id" />
+      <el-table-column :label="t('bpm.category.categoryName')" align="center" prop="name" />
+      <el-table-column :label="t('bpm.category.categoryFlag')" align="center" prop="code" />
+      <el-table-column :label="t('bpm.category.categoryDesc')" align="center" prop="description" />
+      <el-table-column :label="t('bpm.category.categoryStatus')" align="center" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column :label="$t('bpm.category.index.table.sort')" align="center" prop="sort" />
+      <el-table-column :label="t('bpm.category.categorySort')" align="center" prop="sort" />
       <el-table-column
-        :label="$t('bpm.category.index.table.createTime')"
+        :label="t('common.createTime')"
         align="center"
         prop="createTime"
         :formatter="dateFormatter"
         width="180px"
       />
-      <el-table-column :label="$t('common.operation')" align="center">
+      <el-table-column :label="t('bpm.category.action')" align="center">
         <template #default="scope">
           <el-button
             link
@@ -97,7 +97,7 @@
             @click="openForm('update', scope.row.id)"
             v-hasPermi="['bpm:category:update']"
           >
-            {{ $t('common.edit') }}
+            {{ t('bpm.category.edit') }}
           </el-button>
           <el-button
             link
@@ -105,7 +105,7 @@
             @click="handleDelete(scope.row.id)"
             v-hasPermi="['bpm:category:delete']"
           >
-            {{ $t('common.delete') }}
+            {{ t('bpm.category.delete') }}
           </el-button>
         </template>
       </el-table-column>
@@ -147,7 +147,6 @@ const queryParams = reactive({
   createTime: []
 })
 const queryFormRef = ref() // 搜索的表单
-const exportLoading = ref(false) // 导出的加载中
 
 /** 查询列表 */
 const getList = async () => {

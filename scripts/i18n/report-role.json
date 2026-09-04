@@ -1,0 +1,656 @@
+{
+  "mode": "apply-dry",
+  "target": "src/views/system/role",
+  "scannedAt": "2026-09-03T14:05:02.986Z",
+  "totalFiles": 5,
+  "toConvert": 78,
+  "needReview": 2,
+  "todoKeys": 31,
+  "files": [
+    {
+      "file": "src/views/system/role/RoleAssignMenuForm.vue",
+      "ns": "system.role",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "菜单权限",
+          "key": "system.role.menuPermission",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "角色名称",
+          "key": "system.role.roleName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "角色标识",
+          "key": "system.role.roleKey",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "菜单权限",
+          "key": "system.role.menuPermission",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "是",
+          "key": "system.role._todo1",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "否",
+          "key": "system.role._todo2",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "展开",
+          "key": "system.role._todo3",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "折叠",
+          "key": "system.role._todo4",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "empty-text",
+          "text": "加载中，请稍候",
+          "key": "system.role._todo5",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "全选/全不选:",
+          "key": "system.role._todo6",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "全部展开/折叠:",
+          "key": "system.role._todo7",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/system/role/RoleDataPermissionForm.vue",
+      "ns": "system.role",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "数据权限",
+          "key": "system.role._todo8",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "角色名称",
+          "key": "system.role.roleName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "角色标识",
+          "key": "system.role.roleKey",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "权限范围",
+          "key": "system.role._todo9",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "部门范围",
+          "key": "system.role._todo10",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "是",
+          "key": "system.role._todo1",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "否",
+          "key": "system.role._todo2",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "展开",
+          "key": "system.role._todo3",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "折叠",
+          "key": "system.role._todo4",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "是",
+          "key": "system.role._todo1",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "否",
+          "key": "system.role._todo2",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "empty-text",
+          "text": "加载中，请稍后",
+          "key": "system.role._todo11",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "全选/全不选:",
+          "key": "system.role._todo6",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "全部展开/折叠:",
+          "key": "system.role._todo7",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "父子联动(选中父节点，自动选择子节点):",
+          "key": "system.role._todo12",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/system/role/RoleForm.vue",
+      "ns": "system.role",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "角色名称",
+          "key": "system.role.roleName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入角色名称",
+          "key": "system.role.inputRoleName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "角色标识",
+          "key": "system.role.roleKey",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入角色标识",
+          "key": "system.role.inputRoleKey",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "显示顺序",
+          "key": "system.role._todo13",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入显示顺序",
+          "key": "system.role._todo14",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择状态",
+          "key": "system.role.selectStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "备注",
+          "key": "system.role.remark",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输备注",
+          "key": "system.role._todo15",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "角色名称不能为空",
+          "key": "system.role.roleNameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "角色标识不能为空",
+          "key": "system.role.roleKeyRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "显示顺序不能为空",
+          "key": "system.role._todo16",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "状态不能为空",
+          "key": "system.role.statusRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "备注不能为空",
+          "key": "system.role.remarkRequired",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/system/role/components/RoleSelect.vue",
+      "ns": "system.role.components",
+      "convert": [],
+      "review": [
+        {
+          "where": "script",
+          "kind": "defineProps-default",
+          "text": "请选择角色"
+        }
+      ]
+    },
+    {
+      "file": "src/views/system/role/index.vue",
+      "ns": "system.role",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "功能权限",
+          "key": "system.role._todo17",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "数据权限",
+          "key": "system.role._todo8",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "角色名称",
+          "key": "system.role.roleName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入角色名称",
+          "key": "system.role.inputRoleName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "角色标识",
+          "key": "system.role.roleKey",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入角色标识",
+          "key": "system.role.inputRoleKey",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择状态",
+          "key": "system.role.selectStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "system.role.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "system.role.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "角色编号",
+          "key": "system.role._todo18",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "角色名称",
+          "key": "system.role.roleName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "角色类型",
+          "key": "system.role._todo19",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "角色标识",
+          "key": "system.role.roleKey",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "显示顺序",
+          "key": "system.role._todo13",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "备注",
+          "key": "system.role.remark",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "system.role.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "菜单权限",
+          "key": "system.role.menuPermission",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "数据权限",
+          "key": "system.role._todo8",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "system.role.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导出",
+          "key": "system.role.export",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "批量删除",
+          "key": "system.role.deleteBatch",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "system.role.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "菜单权限",
+          "key": "system.role.menuPermission",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "数据权限",
+          "key": "system.role._todo8",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "system.role.delete",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "filename",
+          "text": "角色数据.xls"
+        }
+      ]
+    }
+  ]
+}

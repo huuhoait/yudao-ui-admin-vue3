@@ -28,9 +28,7 @@
         <el-card class="mb-15px" v-for="(item, index) in routerGroups" :key="index">
           <template #header>
             <div class="flex flex-items-center">
-              <el-text size="large">
-                {{ t('simpleProcessDesignerV2.routerConfig.routeTitle', { index: index + 1 }) }}
-              </el-text>
+              <el-text size="large">路由{{ index + 1 }}</el-text>
               <el-select class="ml-15px" v-model="item.nodeId" style="width: 180px">
                 <el-option
                   v-for="node in nodeOptions"
@@ -40,7 +38,7 @@
                 />
               </el-select>
               <el-button class="mla" type="danger" link @click="deleteRouterGroup(index)">
-                {{ t('common.delete') }}
+                删除
               </el-button>
             </div>
           </template>
@@ -52,24 +50,24 @@
       </el-form>
 
       <el-button class="w-1/1" type="primary" :icon="Plus" @click="addRouterGroup">
-        {{ t('simpleProcessDesignerV2.routerConfig.addBranch') }}
+        新增路由分支
       </el-button>
     </div>
     <template #footer>
       <el-divider />
       <div>
-        <el-button type="primary" @click="saveConfig">{{ t('common.confirm') }}</el-button>
-        <el-button @click="closeDrawer">{{ t('common.cancel') }}</el-button>
+        <el-button type="primary" @click="saveConfig">确 定</el-button>
+        <el-button @click="closeDrawer">取 消</el-button>
       </div>
     </template>
   </el-drawer>
 </template>
 <script setup lang="ts">
 import { Plus } from '@element-plus/icons-vue'
+import type { ComponentPublicInstance } from 'vue'
 import { SimpleFlowNode, NodeType, ConditionType, RouterSetting } from '../consts'
 import { useWatchNode, useDrawer, useNodeName } from '../node'
 import Condition from './components/Condition.vue'
-import { useI18n } from '@/hooks/web/useI18n'
 
 defineOptions({
   name: 'RouterNodeConfig'
@@ -89,16 +87,18 @@ const currentNode = useWatchNode(props)
 // 节点名称
 const { nodeName, showInput, clickIcon, blurEvent } = useNodeName(NodeType.ROUTER_BRANCH_NODE)
 const routerGroups = ref<RouterSetting[]>([])
-const nodeOptions = ref<any>([])
-const conditionRef = ref([])
-const { t } = useI18n()
+const nodeOptions = ref<Array<{ label: string; value: string }>>([])
+type ConditionRef = ComponentPublicInstance & {
+  validate?: () => Promise<boolean>
+}
+const conditionRef = ref<Array<ConditionRef | Element | null>>([])
 
 /** 保存配置 */
 const saveConfig = async () => {
   // 校验表单
   let valid = true
   for (const item of conditionRef.value) {
-    if (item && !(await item.validate())) {
+    if (item && 'validate' in item && item.validate && !(await item.validate())) {
       valid = false
     }
   }
@@ -123,32 +123,30 @@ const showRouteNodeConfig = (node: SimpleFlowNode) => {
 
 const getShowText = () => {
   if (!routerGroups.value || !Array.isArray(routerGroups.value) || routerGroups.value.length <= 0) {
-    message.warning(t('simpleProcessDesignerV2.routerConfig.validate.missingRoutes'))
+    message.warning('请配置路由！')
     return ''
   }
   for (const route of routerGroups.value) {
     if (!route.nodeId || !route.conditionType) {
-      message.warning(t('simpleProcessDesignerV2.routerConfig.validate.incompleteRoute'))
+      message.warning('请完善路由配置项！')
       return ''
     }
     if (route.conditionType === ConditionType.EXPRESSION && !route.conditionExpression) {
-      message.warning(t('simpleProcessDesignerV2.routerConfig.validate.incompleteRoute'))
+      message.warning('请完善路由配置项！')
       return ''
     }
     if (route.conditionType === ConditionType.RULE) {
       for (const condition of route.conditionGroups.conditions) {
         for (const rule of condition.rules) {
           if (!rule.leftSide || !rule.rightSide) {
-            message.warning(t('simpleProcessDesignerV2.routerConfig.validate.incompleteRoute'))
+            message.warning('请完善路由配置项！')
             return ''
           }
         }
       }
     }
   }
-  return t('simpleProcessDesignerV2.routerConfig.summary', {
-    count: routerGroups.value.length
-  })
+  return `${routerGroups.value.length}条路由分支`
 }
 
 const addRouterGroup = () => {
@@ -179,7 +177,7 @@ const deleteRouterGroup = (index: number) => {
 }
 
 // 递归获取所有节点
-const getRouterNode = (node) => {
+const getRouterNode = (node?: SimpleFlowNode) => {
   // TODO 最好还需要满足以下要求
   // 并行分支、包容分支内部节点不能跳转到外部节点
   // 条件分支节点可以向上跳转到外部节点

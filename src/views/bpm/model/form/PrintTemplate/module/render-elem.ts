@@ -20,7 +20,7 @@ function renderProcessRecord(
       }
     },
     [
-      h('thead', [h('tr', [h('th', { attrs: { colSpan: 3 } }, 'Process Record')])]),
+      h('thead', [h('tr', [h('th', { attrs: { colSpan: 3 } }, t('bpm.model.form.PrintTemplate.module._todo124'))])]),
       h('tbody', [
         h('tr', [
           h('td', [
@@ -38,7 +38,7 @@ function renderProcessRecord(
                   padding: '0 3px'
                 }
               },
-              `node`
+              t('bpm.model.form.PrintTemplate.module._todo125')
             )
           ]),
           h('td', [
@@ -56,7 +56,7 @@ function renderProcessRecord(
                   padding: '0 3px'
                 }
               },
-              `Operation`
+              t('bpm.model.form.PrintTemplate.module.action')
             )
           ])
         ])

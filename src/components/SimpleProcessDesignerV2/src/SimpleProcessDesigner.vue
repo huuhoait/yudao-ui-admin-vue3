@@ -7,24 +7,17 @@
       :readonly="false"
       @save="saveSimpleFlowModel"
     />
-    <Dialog
-      v-model="errorDialogVisible"
-      :title="t('simpleProcessDesignerV2.common.saveFailed')"
-      width="400"
-      :fullscreen="false"
-    >
-      <div class="mb-2">{{ t('simpleProcessDesignerV2.common.incompleteNodeTip') }}</div>
+    <Dialog v-model="errorDialogVisible" title="保存失败" width="400" :fullscreen="false">
+      <div class="mb-2">以下节点内容不完善，请修改后保存</div>
       <div
         class="mb-3 b-rounded-1 bg-gray-100 p-2 line-height-normal"
         v-for="(item, index) in errorNodes"
         :key="index"
       >
-        {{ item.name }} : {{ t(NODE_DEFAULT_TEXT.get(item.type) as string) }}
+        {{ item.name }} : {{ NODE_DEFAULT_TEXT.get(item.type) }}
       </div>
       <template #footer>
-        <el-button type="primary" @click="errorDialogVisible = false">
-          {{ t('simpleProcessDesignerV2.common.gotIt') }}
-        </el-button>
+        <el-button type="primary" @click="errorDialogVisible = false">知道了</el-button>
       </template>
     </Dialog>
   </div>
@@ -57,13 +50,13 @@ const props = defineProps({
   modelFormId: {
     type: Number,
     required: false,
-    default: undefined,
+    default: undefined
   },
-   // 表单类型
+  // 表单类型
   modelFormType: {
     type: Number,
     required: false,
-    default: BpmModelFormType.NORMAL,
+    default: BpmModelFormType.NORMAL
   },
   // 可发起流程的人员编号
   startUserIds: {
@@ -77,35 +70,33 @@ const props = defineProps({
   }
 })
 
-const { t } = useI18n()
-
-const processData = inject('simpleProcessDesignerV2.processData') as Ref
+const processData = inject('processData') as Ref
 const loading = ref(false)
 const formFields = ref<string[]>([])
-const formType = ref(props.modelFormType);
+const formType = ref(props.modelFormType)
 
 // 监听 modelFormType 变化
 watch(
   () => props.modelFormType,
   (newVal) => {
-    formType.value = newVal;
-  },
-);
+    formType.value = newVal
+  }
+)
 
 // 监听 modelFormId 变化
 watch(
   () => props.modelFormId,
   async (newVal) => {
     if (newVal) {
-      const form = await getForm(newVal);
-      formFields.value = form?.fields;
+      const form = await getForm(newVal)
+      formFields.value = form?.fields
     } else {
       // 如果 modelFormId 为空，清空表单字段
-      formFields.value = [];
+      formFields.value = []
     }
   },
-  { immediate: true },
-);
+  { immediate: true }
+)
 
 const roleOptions = ref<RoleApi.RoleVO[]>([]) // 角色列表
 const postOptions = ref<PostApi.PostVO[]>([]) // 岗位列表
@@ -127,8 +118,6 @@ provide('startDeptIds', props.startDeptIds)
 provide('tasks', [])
 provide('processInstance', {})
 
-
-const message = useMessage() // 国际化
 const processNodeTree = ref<SimpleFlowNode | undefined>()
 provide('processNodeTree', processNodeTree)
 const errorDialogVisible = ref(false)
@@ -138,12 +127,12 @@ let errorNodes: SimpleFlowNode[] = []
 const updateModel = () => {
   if (!processNodeTree.value) {
     processNodeTree.value = {
-      name: t('simpleProcessDesignerV2.nodes.startUser'),
+      name: '发起人',
       type: NodeType.START_USER_NODE,
       id: NodeId.START_USER_NODE_ID,
       childNode: {
         id: NodeId.END_EVENT_NODE_ID,
-        name: t('simpleProcessDesignerV2.nodes.end'),
+        name: '结束',
         type: NodeType.END_EVENT_NODE
       }
     }
@@ -161,7 +150,7 @@ const saveSimpleFlowModel = async (simpleModelNode: SimpleFlowNode) => {
     processData.value = simpleModelNode
     emits('success', simpleModelNode)
   } catch (error) {
-    console.error(t('simpleProcessDesignerV2.common.saveFailedLog'), error)
+    console.error('保存失败:', error)
   }
 }
 
@@ -239,8 +228,6 @@ onMounted(async () => {
     loading.value = false
   }
 })
-
-const simpleProcessModelRef = ref()
 
 defineExpose({})
 </script>

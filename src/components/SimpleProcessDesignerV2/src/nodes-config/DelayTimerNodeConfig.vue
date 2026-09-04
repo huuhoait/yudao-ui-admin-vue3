@@ -25,10 +25,10 @@
     </template>
     <div>
       <el-form ref="formRef" :model="configForm" label-position="top" :rules="formRules">
-        <el-form-item :label="t('simpleProcessDesignerV2.delayTimerConfig.delayTime')" prop="delayType">
+        <el-form-item label="延迟时间" prop="delayType">
           <el-radio-group v-model="configForm.delayType">
             <el-radio-button
-              v-for="item in delayTypeOptions"
+              v-for="item in DELAY_TYPE"
               :key="item.value"
               :label="item.label"
               :value="item.value"
@@ -47,47 +47,46 @@
           </el-form-item>
           <el-select v-model="configForm.timeUnit" class="mr-2" :style="{ width: '100px' }">
             <el-option
-              v-for="item in timeUnitOptions"
+              v-for="item in TIME_UNIT_TYPES"
               :key="item.value"
               :label="item.label"
               :value="item.value"
             />
           </el-select>
-          <el-text>{{ t('simpleProcessDesignerV2.delayTimerConfig.afterwards') }}</el-text>
+          <el-text>后进入下一节点</el-text>
         </el-form-item>
         <el-form-item v-if="configForm.delayType === DelayTypeEnum.FIXED_DATE_TIME" prop="dateTime">
           <el-date-picker
             class="mr-2"
             v-model="configForm.dateTime"
             type="datetime"
-            :placeholder="t('simpleProcessDesignerV2.delayTimerConfig.selectDateTime')"
+            placeholder="请选择日期和时间"
             value-format="YYYY-MM-DDTHH:mm:ss"
           />
-          <el-text>{{ t('simpleProcessDesignerV2.delayTimerConfig.afterwards') }}</el-text>
+          <el-text>后进入下一节点</el-text>
         </el-form-item>
       </el-form>
     </div>
     <template #footer>
       <el-divider />
       <div>
-        <el-button type="primary" @click="saveConfig">{{ t('common.confirm') }}</el-button>
-        <el-button @click="closeDrawer">{{ t('common.cancel') }}</el-button>
+        <el-button type="primary" @click="saveConfig">确 定</el-button>
+        <el-button @click="closeDrawer">取 消</el-button>
       </div>
     </template>
   </el-drawer>
 </template>
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue'
 import {
   SimpleFlowNode,
   NodeType,
+  TIME_UNIT_TYPES,
   TimeUnitType,
   DelayTypeEnum,
   DELAY_TYPE
 } from '../consts'
 import { useWatchNode, useDrawer, useNodeName } from '../node'
 import { convertTimeUnit } from '../utils'
-import { useI18n } from '@/hooks/web/useI18n'
 defineOptions({
   name: 'DelayTimerNodeConfig'
 })
@@ -103,26 +102,13 @@ const { settingVisible, closeDrawer, openDrawer } = useDrawer()
 const currentNode = useWatchNode(props)
 // 节点名称
 const { nodeName, showInput, clickIcon, blurEvent } = useNodeName(NodeType.DELAY_TIMER_NODE)
-const { t } = useI18n()
 // 抄送人表单配置
 const formRef = ref() // 表单 Ref
 // 表单校验规则
 const formRules = reactive({
-  delayType: [{
-    required: true,
-    message: t('simpleProcessDesignerV2.delayTimerConfig.validate.delayTimeRequired'),
-    trigger: 'change'
-  }],
-  timeDuration: [{
-    required: true,
-    message: t('simpleProcessDesignerV2.delayTimerConfig.validate.delayTimeRequired'),
-    trigger: 'change'
-  }],
-  dateTime: [{
-    required: true,
-    message: t('simpleProcessDesignerV2.delayTimerConfig.validate.delayTimeRequired'),
-    trigger: 'change'
-  }]
+  delayType: [{ required: true, message: '延迟时间不能为空', trigger: 'change' }],
+  timeDuration: [{ required: true, message: '延迟时间不能为空', trigger: 'change' }],
+  dateTime: [{ required: true, message: '延迟时间不能为空', trigger: 'change' }]
 })
 // 配置表单数据
 const configForm = ref({
@@ -133,7 +119,7 @@ const configForm = ref({
 })
 // 保存配置
 const saveConfig = async () => {
-  if (!formRef.value) return false
+  if (!formRef) return false
   const valid = await formRef.value.validate()
   if (!valid) return false
   const showText = getShowText()
@@ -158,25 +144,20 @@ const saveConfig = async () => {
 const getShowText = (): string => {
   let showText = ''
   if (configForm.value.delayType === DelayTypeEnum.FIXED_TIME_DURATION) {
-    showText = t('delayTimerConfig.showText.fixedDuration', {
-      duration: configForm.value.timeDuration,
-      unit: getTimeUnitLabel(configForm.value.timeUnit)
-    })
+    showText = `延迟${configForm.value.timeDuration}${TIME_UNIT_TYPES.find((item) => item.value === configForm.value.timeUnit).label}`
   }
   if (configForm.value.delayType === DelayTypeEnum.FIXED_DATE_TIME) {
-    showText = t('delayTimerConfig.showText.fixedDate', {
-      datetime: configForm.value.dateTime.replace('T', ' ')
-    })
+    showText = `延迟至${configForm.value.dateTime.replace('T', ' ')}`
   }
   return showText
 }
 const getIsoTimeDuration = () => {
-  let strTimeDuration = 'PT'
+  let strTimeDuration = 'P'
   if (configForm.value.timeUnit === TimeUnitType.MINUTE) {
-    strTimeDuration += configForm.value.timeDuration + 'M'
+    strTimeDuration += 'T' + configForm.value.timeDuration + 'M'
   }
   if (configForm.value.timeUnit === TimeUnitType.HOUR) {
-    strTimeDuration += configForm.value.timeDuration + 'H'
+    strTimeDuration += 'T' + configForm.value.timeDuration + 'H'
   }
   if (configForm.value.timeUnit === TimeUnitType.DAY) {
     strTimeDuration += configForm.value.timeDuration + 'D'
@@ -191,7 +172,7 @@ const showDelayTimerNodeConfig = (node: SimpleFlowNode) => {
     // 固定时长
     if (configForm.value.delayType === DelayTypeEnum.FIXED_TIME_DURATION) {
       const strTimeDuration = node.delaySetting.delayTime
-      let parseTime = strTimeDuration.slice(2, strTimeDuration.length - 1)
+      let parseTime = strTimeDuration.match(/\d+/)?.[0] ?? ''
       let parseTimeUnit = strTimeDuration.slice(strTimeDuration.length - 1)
       configForm.value.timeDuration = parseInt(parseTime)
       configForm.value.timeUnit = convertTimeUnit(parseTimeUnit)
@@ -204,44 +185,6 @@ const showDelayTimerNodeConfig = (node: SimpleFlowNode) => {
 }
 
 defineExpose({ openDrawer, showDelayTimerNodeConfig }) // 暴露方法给父组件
-
-const delayTypeOptions = computed(() =>
-  DELAY_TYPE.map((item) => ({
-    value: item.value,
-    label:
-      item.value === DelayTypeEnum.FIXED_TIME_DURATION
-        ? t('simpleProcessDesignerV2.delayTimerConfig.delayTypeOptions.fixedDuration')
-        : t('simpleProcessDesignerV2.delayTimerConfig.delayTypeOptions.fixedDate')
-  }))
-)
-
-const timeUnitOptions = computed(() => [
-  {
-    value: TimeUnitType.MINUTE,
-    label: t('simpleProcessDesignerV2.delayTimerConfig.timeUnit.minute')
-  },
-  {
-    value: TimeUnitType.HOUR,
-    label: t('simpleProcessDesignerV2.delayTimerConfig.timeUnit.hour')
-  },
-  {
-    value: TimeUnitType.DAY,
-    label: t('simpleProcessDesignerV2.delayTimerConfig.timeUnit.day')
-  }
-])
-
-const getTimeUnitLabel = (unit: TimeUnitType) => {
-  switch (unit) {
-    case TimeUnitType.MINUTE:
-      return t('simpleProcessDesignerV2.delayTimerConfig.timeUnit.minute')
-    case TimeUnitType.HOUR:
-      return t('simpleProcessDesignerV2.delayTimerConfig.timeUnit.hour')
-    case TimeUnitType.DAY:
-      return t('simpleProcessDesignerV2.delayTimerConfig.timeUnit.day')
-    default:
-      return ''
-  }
-}
 </script>
 
 <style lang="scss" scoped></style>

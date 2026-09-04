@@ -7,32 +7,32 @@
       :rules="formRules"
       label-width="140px"
     >
-      <el-form-item label="邮箱账号" prop="accountId">
-        <el-select v-model="formData.accountId" placeholder="请选择邮箱账号">
+      <el-form-item :label="t('system.mail.template.emailAccount')" prop="accountId">
+        <el-select v-model="formData.accountId" :placeholder="t('system.mail.template.selectEmailAccount')">
           <el-option
             v-for="account in accountList"
             :key="account.id"
             :label="account.mail"
-            :value="account.id"
+            :value="account.id!"
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="模板编码" prop="code">
-        <el-input v-model="formData.code" placeholder="请输入模板编码" />
+      <el-form-item :label="t('system.mail.template.templateCode')" prop="code">
+        <el-input v-model="formData.code" :placeholder="t('system.mail.template.inputTemplateCode')" />
       </el-form-item>
-      <el-form-item label="模板名称" prop="name">
-        <el-input v-model="formData.name" placeholder="请输入模板名称" />
+      <el-form-item :label="t('system.mail.template.templateName')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('system.mail.template.inputTemplateName')" />
       </el-form-item>
-      <el-form-item label="发送人名称" prop="nickname">
-        <el-input v-model="formData.nickname" placeholder="请输入发送人名称" />
+      <el-form-item :label="t('system.mail.template.senderName')" prop="nickname">
+        <el-input v-model="formData.nickname" :placeholder="t('system.mail.template.inputSenderName')" />
       </el-form-item>
-      <el-form-item label="模板标题" prop="title">
-        <el-input v-model="formData.title" placeholder="请输入模板标题" />
+      <el-form-item :label="t('system.mail.template._todo73')" prop="title">
+        <el-input v-model="formData.title" :placeholder="t('system.mail.template._todo74')" />
       </el-form-item>
-      <el-form-item label="模板内容" prop="content">
+      <el-form-item :label="t('system.mail.template.templateContent')" prop="content">
         <Editor v-model="formData.content" height="200px" />
       </el-form-item>
-      <el-form-item label="开启状态" prop="status">
+      <el-form-item :label="t('system.mail.template.enableStatus')" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -43,13 +43,10 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="备注" prop="remark">
-        <el-input v-model="formData.remark" placeholder="请输入备注" type="textarea" />
-      </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -76,16 +73,15 @@ const formData = ref({
   nickname: '',
   title: '',
   content: '',
-  status: CommonStatusEnum.ENABLE,
-  remark: ''
+  status: CommonStatusEnum.ENABLE
 })
 const formRules = reactive({
-  accountId: [{ required: true, message: '邮箱账号不能为空', trigger: 'change' }],
-  code: [{ required: true, message: '模板编码不能为空', trigger: 'blur' }],
-  name: [{ required: true, message: '模板名称不能为空', trigger: 'blur' }],
-  title: [{ required: true, message: '模板标题不能为空', trigger: 'blur' }],
-  content: [{ required: true, message: '模板内容不能为空', trigger: 'blur' }],
-  status: [{ required: true, message: '开启状态不能为空', trigger: 'blur' }]
+  accountId: [{ required: true, message: t('system.mail.template.emailAccountRequired'), trigger: 'change' }],
+  code: [{ required: true, message: t('system.mail.template.templateCodeRequired'), trigger: 'blur' }],
+  name: [{ required: true, message: t('system.mail.template.templateNameRequired'), trigger: 'blur' }],
+  title: [{ required: true, message: t('system.mail.template._todo75'), trigger: 'blur' }],
+  content: [{ required: true, message: t('system.mail.template.templateContentRequired'), trigger: 'blur' }],
+  status: [{ required: true, message: t('system.mail.template.enableStatusRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 const accountList = ref<MailAccountApi.MailAccountVO[]>([]) // 邮箱账号列表
@@ -118,7 +114,7 @@ const submitForm = async () => {
   if (!valid) return
   formLoading.value = true
   try {
-    const data = formData.value as MailTemplateApi.MailTemplateVO
+    const data = formData.value as unknown as MailTemplateApi.MailTemplateVO
     if (formType.value === 'create') {
       await MailTemplateApi.createMailTemplate(data)
       message.success(t('common.createSuccess'))
@@ -144,8 +140,7 @@ const resetForm = () => {
     nickname: '',
     title: '',
     content: '',
-    status: CommonStatusEnum.ENABLE,
-    remark: ''
+    status: CommonStatusEnum.ENABLE
   }
   formRef.value?.resetFields()
 }

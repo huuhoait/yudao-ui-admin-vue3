@@ -1,16 +1,16 @@
 <template>
-  <el-form ref="formRef" :model="modelData" :rules="rules" label-width="180px" class="mt-20px">
-    <el-form-item :label="t('bpm.model.form.processIdentifier')" prop="key" class="mb-20px">
+  <el-form ref="formRef" :model="modelData" :rules="rules" label-width="120px" class="mt-20px">
+    <el-form-item :label="t('bpm.model.form.processKey')" prop="key" class="mb-20px">
       <div class="flex items-center">
         <el-input
           class="!w-440px"
           v-model="modelData.key"
           :disabled="!!modelData.id"
-          :placeholder="t('bpm.model.form.enterProcessIdentifier')"
+          :placeholder="t('bpm.model.form._todo55')"
         />
         <el-tooltip
           class="item"
-          :content="modelData.id ? t('bpm.model.form.identifierNotModifiable') : t('bpm.model.form.identifierNotModifiableAfterCreation')"
+          :content="modelData.id ? '流程标识不可修改！' : '新建后，流程标识不可修改！'"
           effect="light"
           placement="top"
         >
@@ -23,7 +23,7 @@
         v-model="modelData.name"
         :disabled="!!modelData.id"
         clearable
-        :placeholder="t('bpm.model.form.enterProcessName')"
+        :placeholder="t('bpm.model.form.inputProcessName')"
       />
     </el-form-item>
     <el-form-item :label="t('bpm.model.form.processCategory')" prop="category" class="mb-20px">
@@ -41,10 +41,10 @@
         />
       </el-select>
     </el-form-item>
-    <el-form-item :label="t('bpm.model.form.processIcon')" class="mb-20px">
+    <el-form-item :label="t('bpm.model.form._todo56')" class="mb-20px">
       <UploadImg v-model="modelData.icon" :limit="1" height="64px" width="64px" />
     </el-form-item>
-    <el-form-item :label="t('bpm.model.form.processDescription')" prop="description" class="mb-20px">
+    <el-form-item :label="t('bpm.model.form._todo57')" prop="description" class="mb-20px">
       <el-input v-model="modelData.description" clearable type="textarea" />
     </el-form-item>
     <el-form-item :label="t('bpm.model.form.processType')" prop="type" class="mb-20px">
@@ -58,26 +58,26 @@
         </el-radio>
       </el-radio-group>
     </el-form-item>
-    <el-form-item :label="t('bpm.model.form.isVisible')" prop="visible" class="mb-20px">
+    <el-form-item :label="t('bpm.model.form._todo58')" prop="visible" class="mb-20px">
       <el-radio-group v-model="modelData.visible">
         <el-radio
           v-for="dict in getBoolDictOptions(DICT_TYPE.INFRA_BOOLEAN_STRING)"
-          :key="dict.value as string"
+          :key="String(dict.value)"
           :value="dict.value"
         >
           {{ dict.label }}
         </el-radio>
       </el-radio-group>
     </el-form-item>
-    <el-form-item :label="t('bpm.model.form.whoCanInitiate')" prop="startUserType" class="mb-20px">
+    <el-form-item :label="t('bpm.model.form.whoCanStart')" prop="startUserType" class="mb-20px">
       <el-select
         v-model="modelData.startUserType"
-        :placeholder="t('bpm.model.form.selectWhoCanInitiate')"
+        :placeholder="t('bpm.model.form.selectWhoCanStart')"
         @change="handleStartUserTypeChange"
       >
-        <el-option :label="t('bpm.model.form.allMembers')" :value="0" />
-        <el-option :label="t('bpm.model.form.specificPersons')" :value="1" />
-        <el-option :label="t('bpm.model.form.specificDepartments')" :value="2" />
+        <el-option :label="t('bpm.model.form._todo59')" :value="0" />
+        <el-option :label="t('bpm.model.form._todo60')" :value="1" />
+        <el-option :label="t('bpm.model.form._todo61')" :value="2" />
       </el-select>
       <div v-if="modelData.startUserType === 1" class="mt-2 flex flex-wrap gap-2">
         <div
@@ -97,12 +97,12 @@
           />
         </div>
         <el-button type="primary" link @click="openStartUserSelect">
-          <Icon icon="ep:plus" /> {{ t('bpm.model.form.selectPerson') }}
+          <Icon icon="ep:plus" /> {{ t('bpm.model.form._todo63') }}
         </el-button>
       </div>
       <div v-if="modelData.startUserType === 2" class="mt-2 flex flex-wrap gap-2">
         <div
-          v-for="dept in selectedStartDepts" 
+          v-for="dept in selectedStartDepts"
           :key="dept.id"
           class="bg-gray-100 h-35px rounded-3xl flex items-center pr-8px dark:color-gray-600 position-relative"
         >
@@ -115,11 +115,11 @@
           />
         </div>
         <el-button type="primary" link @click="openStartDeptSelect">
-          <Icon icon="ep:plus" /> {{ t('bpm.model.form.selectDepartment') }}
+          <Icon icon="ep:plus" /> {{ t('bpm.model.form._todo64') }}
         </el-button>
       </div>
     </el-form-item>
-    <el-form-item :label="t('bpm.model.form.processAdmin')" prop="managerUserIds" class="mb-20px">
+    <el-form-item :label="t('bpm.model.form._todo62')" prop="managerUserIds" class="mb-20px">
       <div class="flex flex-wrap gap-2">
         <div
           v-for="user in selectedManagerUsers"
@@ -138,7 +138,7 @@
           />
         </div>
         <el-button type="primary" link @click="openManagerUserSelect">
-          <Icon icon="ep:plus" />{{ t('bpm.model.form.selectPerson') }}
+          <Icon icon="ep:plus" />{{ t('bpm.model.form._todo63') }}
         </el-button>
       </div>
     </el-form-item>
@@ -160,9 +160,7 @@ import { DICT_TYPE, getBoolDictOptions, getIntDictOptions } from '@/utils/dict'
 import { UserVO } from '@/api/system/user'
 import { DeptVO } from '@/api/system/dept'
 import { CategoryVO } from '@/api/bpm/category'
-import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n() // Add i18n support
+const { t } = useI18n() // 国际化
 
 const props = defineProps({
   categoryList: {
@@ -188,28 +186,28 @@ const deptSelectFormRef = ref()
 const currentSelectType = ref<'start' | 'manager'>('start')
 
 const rules = {
-  name: [{ required: true, message: '流程名称不能为空', trigger: 'blur' }],
+  name: [{ required: true, message: t('bpm.model.form.processNameRequired'), trigger: 'blur' }],
   key: [
-    { required: true, message: '流程标识不能为空', trigger: 'blur' },
+    { required: true, message: t('bpm.model.form.processKeyRequired'), trigger: 'blur' },
     {
-      validator: (_rule: any, value: string, callback: any) => {
+      validator: (_rule: any, value: string) => {
         if (!value) {
-          callback()
-          return
+          return Promise.resolve()
         }
         if (!/^[a-zA-Z_][\-_.0-9_a-zA-Z$]*$/.test(value)) {
-          callback(new Error('只能包含字母、数字、下划线、连字符和点号，且必须以字母或下划线开头'))
-          return
+          return Promise.reject(
+            new Error(t('bpm.model.form._todo65'))
+          )
         }
-        callback()
+        return Promise.resolve()
       },
       trigger: 'blur'
     }
   ],
-  category: [{ required: true, message: '流程分类不能为空', trigger: 'blur' }],
-  type: [{ required: true, message: '是否可见不能为空', trigger: 'blur' }],
-  visible: [{ required: true, message: '是否可见不能为空', trigger: 'blur' }],
-  managerUserIds: [{ required: true, message: '流程管理员不能为空', trigger: 'blur' }]
+  category: [{ required: true, message: t('bpm.model.form.processCategoryRequired'), trigger: 'blur' }],
+  type: [{ required: true, message: t('bpm.model.form._todo66'), trigger: 'blur' }],
+  visible: [{ required: true, message: t('bpm.model.form._todo66'), trigger: 'blur' }],
+  managerUserIds: [{ required: true, message: t('bpm.model.form._todo67'), trigger: 'blur' }]
 }
 
 // 创建本地数据副本

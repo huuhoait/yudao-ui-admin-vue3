@@ -7,17 +7,17 @@
       :rules="formRules"
       label-width="80px"
     >
-      <el-form-item :label="t('sys.dict.typeName')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('sys.dict.namePlaceholder')" />
+      <el-form-item :label="t('system.dict.dictName')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('system.dict.inputDictName')" />
       </el-form-item>
-      <el-form-item :label="t('sys.dict.typeCode')" prop="type">
+      <el-form-item :label="t('system.dict.dictType')" prop="type">
         <el-input
           v-model="formData.type"
           :disabled="typeof formData.id !== 'undefined'"
-          :placeholder="t('sys.dict.codePlaceholder')"
+          :placeholder="t('system.dict._todo16')"
         />
       </el-form-item>
-      <el-form-item :label="t('sys.dict.typeStatus')" prop="status">
+      <el-form-item :label="t('common.status')" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -28,8 +28,8 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :label="t('sys.dict.dataRemark')" prop="remark">
-        <el-input v-model="formData.remark" :placeholder="t('common.remarkPlaceholder')" type="textarea" />
+      <el-form-item :label="t('system.dict.remark')" prop="remark">
+        <el-input v-model="formData.remark" :placeholder="t('system.dict.inputContent')" type="textarea" />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -52,7 +52,7 @@ const dialogVisible = ref(false) // 弹窗的是否展示
 const dialogTitle = ref('') // 弹窗的标题
 const formLoading = ref(false) // 表单的加载中：1）修改时的数据加载；2）提交的按钮禁用
 const formType = ref('') // 表单的类型：create - 新增；update - 修改
-const formData = ref({
+const formData = ref<DictTypeApi.DictTypeVO>({
   id: undefined,
   name: '',
   type: '',
@@ -60,9 +60,9 @@ const formData = ref({
   remark: ''
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('sys.dict.nameRequired'), trigger: 'blur' }],
-  type: [{ required: true, message: t('sys.dict.codeRequired'), trigger: 'blur' }],
-  status: [{ required: true, message: t('sys.dict.selectStatus'), trigger: 'change' }]
+  name: [{ required: true, message: t('system.dict.dictNameRequired'), trigger: 'blur' }],
+  type: [{ required: true, message: t('system.dict.dictTypeRequired'), trigger: 'blur' }],
+  status: [{ required: true, message: t('system.dict.statusRequired'), trigger: 'change' }]
 })
 const formRef = ref() // 表单 Ref
 
@@ -94,7 +94,7 @@ const submitForm = async () => {
   // 提交请求
   formLoading.value = true
   try {
-    const data = formData.value as DictTypeApi.DictTypeVO
+    const data = formData.value
     if (formType.value === 'create') {
       await DictTypeApi.createDictType(data)
       message.success(t('common.createSuccess'))

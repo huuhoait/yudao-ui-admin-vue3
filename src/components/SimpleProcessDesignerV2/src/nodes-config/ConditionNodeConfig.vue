@@ -17,18 +17,18 @@
           v-model="currentNode.name"
           :placeholder="currentNode.name"
         />
-        <div v-else class="node-name"
-          >{{ currentNode.name }}
-          <Icon class="ml-1" icon="ep:edit-pen" :size="16" @click="clickIcon()"
-        /></div>
+        <div v-else class="node-name">
+          {{ currentNode.name }}
+          <Icon class="ml-1" icon="ep:edit-pen" :size="16" @click="clickIcon()" />
+        </div>
 
         <div class="divide-line"></div>
       </div>
     </template>
     <div>
-      <div class="mb-3 font-size-16px" v-if="currentNode.conditionSetting?.defaultFlow"
-        >{{ t('simpleProcessDesignerV2.conditionNode.defaultBranchTip') }}</div
-      >
+      <div class="mb-3 font-size-16px" v-if="currentNode.conditionSetting?.defaultFlow">
+        未满足其它条件时，将进入此分支（该分支不可编辑和删除）
+      </div>
       <div v-else>
         <Condition ref="conditionRef" v-model="condition" />
       </div>
@@ -36,10 +36,8 @@
     <template #footer>
       <el-divider />
       <div>
-        <el-button type="primary" @click="saveConfig">
-          {{ t('common.confirm') }}
-        </el-button>
-        <el-button @click="closeDrawer">{{ t('common.cancel') }}</el-button>
+        <el-button type="primary" @click="saveConfig">确 定</el-button>
+        <el-button @click="closeDrawer">取 消</el-button>
       </div>
     </template>
   </el-drawer>
@@ -54,7 +52,6 @@ import { cloneDeep } from 'lodash-es'
 defineOptions({
   name: 'ConditionNodeConfig'
 })
-const { t } = useI18n()
 const props = defineProps({
   conditionNode: {
     type: Object as () => SimpleFlowNode,

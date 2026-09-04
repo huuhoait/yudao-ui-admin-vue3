@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { Editor, Toolbar } from '@wangeditor-next/editor-for-vue'
 import { IDomEditor } from '@wangeditor-next/editor'
-import { useI18n } from 'vue-i18n'
 import MentionModal from './MentionModal.vue'
+const { t } = useI18n() // 国际化
 
 const emit = defineEmits(['confirm'])
-const { t } = useI18n() // 国际化
 
 // @mention 相关
 const isShowModal = ref(false)
@@ -45,7 +44,7 @@ const handleConfirm = () => {
 
 // Editor 相关
 const editorRef = shallowRef<IDomEditor>()
-const editorId = ref('wangeEditor-1')
+const editorId = ref('wangEditor-1')
 const toolbarConfig = {
   excludeKeys: ['group-video'],
   insertKeys: {
@@ -53,15 +52,15 @@ const toolbarConfig = {
     keys: ['ProcessRecordMenu']
   }
 }
-const editorConfig = computed(() => ({
-  placeholder: t('bpm.model.form.printTemplate.placeholder'),
+const editorConfig = {
+  placeholder: t('bpm.model.form.PrintTemplate._todo119'),
   EXTEND_CONF: {
     mentionConfig: {
       showModal,
       hideModal
     }
   }
-}))
+}
 const valueHtml = ref()
 const handleCreated = (editor: IDomEditor) => {
   editorRef.value = editor
@@ -78,21 +77,39 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <el-dialog v-model="dialogVisible" :title="t('bpm.model.form.printTemplate.dialogTitle')" fullscreen>
+  <el-dialog v-model="dialogVisible" :title="t('bpm.model.form.PrintTemplate._todo117')" fullscreen>
     <div style="margin: 0 10px">
-      <el-alert :title="t('bpm.model.form.printTemplate.mentionTip')" type="info" show-icon :closable="false" />
+      <el-alert
+        :title="t('bpm.model.form.PrintTemplate._todo118')"
+        type="info"
+        show-icon
+        :closable="false"
+      />
     </div>
     <!-- TODO @unocss 简化 style -->
-    <div style="border: 1px solid #ccc; margin: 10px">
-      <Toolbar style="border-bottom: 1px solid #ccc" :editor="editorRef" :editorId="editorId"
-        :defaultConfig="toolbarConfig" />
-      <Editor style="height: 500px; overflow-y: hidden" v-model="valueHtml" :defaultConfig="editorConfig"
-        :editorId="editorId" @on-created="handleCreated" />
-      <MentionModal v-if="isShowModal" @hide-mention-modal="hideModal" @insert-mention="insertMention" />
+    <div style="margin: 10px; border: 1px solid #ccc">
+      <Toolbar
+        style="border-bottom: 1px solid #ccc"
+        :editor="editorRef"
+        :editorId="editorId"
+        :defaultConfig="toolbarConfig"
+      />
+      <Editor
+        style="height: 500px; overflow-y: hidden"
+        v-model="valueHtml"
+        :defaultConfig="editorConfig"
+        :editorId="editorId"
+        @on-created="handleCreated"
+      />
+      <MentionModal
+        v-if="isShowModal"
+        @hide-mention-modal="hideModal"
+        @insert-mention="insertMention"
+      />
     </div>
-    <div style="margin-right: 10px; float: right">
+    <div style="float: right; margin-right: 10px">
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
-      <el-button type="primary" @click="handleConfirm">{{ t('common.confirm') }}</el-button>
+      <el-button type="primary" @click="handleConfirm">{{ t('common.ok') }}</el-button>
     </div>
   </el-dialog>
 </template>

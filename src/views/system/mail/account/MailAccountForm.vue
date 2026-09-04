@@ -7,47 +7,47 @@
       :rules="formRules"
       label-width="150px"
     >
-      <el-form-item label="邮箱" prop="mail">
-        <el-input v-model="formData.mail" placeholder="请输入邮箱" />
+      <el-form-item :label="t('system.mail.account.email')" prop="mail">
+        <el-input v-model="formData.mail" :placeholder="t('system.mail.account.inputEmail')" />
       </el-form-item>
-      <el-form-item label="用户名" prop="username">
-        <el-input v-model="formData.username" placeholder="请输入用户名" />
+      <el-form-item :label="t('system.mail.account.username')" prop="username">
+        <el-input v-model="formData.username" :placeholder="t('system.mail.account.inputUsername')" />
       </el-form-item>
-      <el-form-item label="密码" prop="password">
+      <el-form-item :label="t('system.mail.account._todo44')" prop="password">
         <el-input
           v-model="formData.password"
-          placeholder="请输入密码"
+          :placeholder="t('system.mail.account._todo45')"
           type="password"
           show-password
         />
       </el-form-item>
-      <el-form-item label="SMTP 服务器域名" prop="host">
-        <el-input v-model="formData.host" placeholder="请输入 SMTP 服务器域名" />
+      <el-form-item :label="t('system.mail.account._todo46')" prop="host">
+        <el-input v-model="formData.host" :placeholder="t('system.mail.account._todo47')" />
       </el-form-item>
-      <el-form-item label="SMTP 服务器端口" prop="port">
+      <el-form-item :label="t('system.mail.account._todo48')" prop="port">
         <el-input-number
           v-model="formData.port"
-          placeholder="请输入 SMTP 服务器端口"
+          :placeholder="t('system.mail.account._todo49')"
           :min="1"
           :max="65535"
         />
       </el-form-item>
-      <el-form-item label="是否开启 SSL">
+      <el-form-item :label="t('system.mail.account._todo50')">
         <el-radio-group v-model="formData.sslEnable">
           <el-radio
             v-for="dict in getBoolDictOptions(DICT_TYPE.INFRA_BOOLEAN_STRING)"
-            :key="dict.value"
+            :key="String(dict.value)"
             :value="dict.value"
           >
             {{ dict.label }}
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="是否开启 STARTTLS">
+      <el-form-item :label="t('system.mail.account._todo51')">
         <el-radio-group v-model="formData.starttlsEnable">
           <el-radio
             v-for="dict in getBoolDictOptions(DICT_TYPE.INFRA_BOOLEAN_STRING)"
-            :key="dict.value"
+            :key="String(dict.value)"
             :value="dict.value"
           >
             {{ dict.label }}
@@ -56,8 +56,8 @@
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -74,7 +74,7 @@ const dialogVisible = ref(false) // 弹窗的是否展示
 const dialogTitle = ref('') // 弹窗的标题
 const formLoading = ref(false) // 表单的加载中：1）修改时的数据加载；2）提交的按钮禁用
 const formType = ref('') // 表单的类型：create - 新增；update - 修改
-const formData = ref({
+const formData = ref<MailAccountApi.MailAccountVO>({
   id: undefined,
   mail: '',
   username: '',
@@ -86,15 +86,15 @@ const formData = ref({
 })
 const formRules = reactive({
   mail: [
-    { required: true, message: '邮箱不能为空', trigger: 'blur' },
-    { type: 'email', message: '请输入正确的邮箱格式', trigger: ['blur', 'change'] }
+    { required: true, message: t('system.mail.account.emailRequired'), trigger: 'blur' },
+    { type: 'email', message: t('system.mail.account._todo52'), trigger: ['blur', 'change'] }
   ],
-  username: [{ required: true, message: '用户名不能为空', trigger: 'blur' }],
-  password: [{ required: true, message: '密码不能为空', trigger: 'blur' }],
-  host: [{ required: true, message: 'SMTP 服务器域名不能为空', trigger: 'blur' }],
-  port: [{ required: true, message: 'SMTP 服务器端口不能为空', trigger: 'blur' }],
-  sslEnable: [{ required: true, message: '是否开启 SSL 不能为空', trigger: 'blur' }],
-  starttlsEnable: [{ required: true, message: '是否开启 STARTTLS 不能为空', trigger: 'blur' }]
+  username: [{ required: true, message: t('system.mail.account.usernameRequired'), trigger: 'blur' }],
+  password: [{ required: true, message: t('system.mail.account._todo53'), trigger: 'blur' }],
+  host: [{ required: true, message: t('system.mail.account._todo54'), trigger: 'blur' }],
+  port: [{ required: true, message: t('system.mail.account._todo55'), trigger: 'blur' }],
+  sslEnable: [{ required: true, message: t('system.mail.account._todo56'), trigger: 'blur' }],
+  starttlsEnable: [{ required: true, message: t('system.mail.account._todo57'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 
@@ -126,7 +126,7 @@ const submitForm = async () => {
   // 提交请求
   formLoading.value = true
   try {
-    const data = formData.value as MailAccountApi.MailAccountVO
+    const data = formData.value
     if (formType.value === 'create') {
       await MailAccountApi.createMailAccount(data)
       message.success(t('common.createSuccess'))

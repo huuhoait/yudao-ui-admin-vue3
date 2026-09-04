@@ -1,28 +1,28 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('sys.role.assignMenu')">
+  <Dialog v-model="dialogVisible" :title="t('system.role.menuPermission')">
     <el-form ref="formRef" v-loading="formLoading" :model="formData" label-width="80px">
-      <el-form-item :label="t('sys.role.name')">
+      <el-form-item :label="t('system.role.roleName')">
         <el-tag>{{ formData.name }}</el-tag>
       </el-form-item>
-      <el-form-item :label="t('sys.role.code')">
+      <el-form-item :label="t('system.role.roleKey')">
         <el-tag>{{ formData.code }}</el-tag>
       </el-form-item>
-      <el-form-item :label="t('sys.role.menuPermission')">
+      <el-form-item :label="t('system.role.menuPermission')">
         <el-card class="w-full h-400px !overflow-y-scroll" shadow="never">
           <template #header>
-            {{ t('sys.role.selectAllNone') }}:
+            {{ t('system.role._todo219') }}
             <el-switch
               v-model="treeNodeAll"
-              :active-text="t('common.yes')"
-              :inactive-text="t('common.no')"
+              :active-text="t('system.role._todo214')"
+              :inactive-text="t('system.role._todo215')"
               inline-prompt
               @change="handleCheckedTreeNodeAll"
             />
-            {{ t('sys.role.expandCollapseAll') }}:
+            {{ t('system.role._todo220') }}
             <el-switch
               v-model="menuExpand"
-              :active-text="t('common.expand')"
-              :inactive-text="t('common.shrink')"
+              :active-text="t('system.role._todo216')"
+              :inactive-text="t('system.role._todo217')"
               inline-prompt
               @change="handleCheckedTreeExpand"
             />
@@ -31,7 +31,7 @@
             ref="treeRef"
             :data="menuOptions"
             :props="defaultProps"
-            :empty-text="t('common.loading')"
+            :empty-text="t('system.role._todo218')"
             node-key="id"
             show-checkbox
           />
@@ -58,7 +58,7 @@ const message = useMessage() // 消息弹窗
 const dialogVisible = ref(false) // 弹窗的是否展示
 const formLoading = ref(false) // 表单的加载中：1）修改时的数据加载；2）提交的按钮禁用
 const formData = reactive({
-  id: undefined,
+  id: undefined as number | undefined,
   name: '',
   code: '',
   menuIds: []
@@ -81,9 +81,9 @@ const open = async (row: RoleApi.RoleVO) => {
   formData.code = row.code
   formLoading.value = true
   try {
-    formData.value.menuIds = await PermissionApi.getRoleMenuList(row.id)
+    formData.menuIds = await PermissionApi.getRoleMenuList(row.id)
     // 设置选中
-    formData.value.menuIds.forEach((menuId: number) => {
+    formData.menuIds.forEach((menuId: number) => {
       treeRef.value.setChecked(menuId, true, false)
     })
   } finally {
@@ -103,7 +103,7 @@ const submitForm = async () => {
   formLoading.value = true
   try {
     const data = {
-      roleId: formData.id,
+      roleId: formData.id!,
       menuIds: [
         ...(treeRef.value.getCheckedKeys(false) as unknown as Array<number>), // 获得当前选中节点
         ...(treeRef.value.getHalfCheckedKeys() as unknown as Array<number>) // 获得半选中的父节点
@@ -125,12 +125,12 @@ const resetForm = () => {
   treeNodeAll.value = false
   menuExpand.value = false
   // 重置表单
-  formData.value = {
+  Object.assign(formData, {
     id: undefined,
     name: '',
     code: '',
     menuIds: []
-  }
+  })
   treeRef.value?.setCheckedNodes([])
   formRef.value?.resetFields()
 }

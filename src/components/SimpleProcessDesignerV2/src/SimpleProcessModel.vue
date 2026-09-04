@@ -4,10 +4,10 @@
       <el-row type="flex" justify="end">
         <el-button-group key="scale-control" size="default">
           <el-button v-if="!readonly" size="default" @click="exportJson">
-            <Icon icon="ep:download" /> {{ t('simpleProcessDesignerV2.common.export') }}
+            <Icon icon="ep:download" /> 导出
           </el-button>
           <el-button v-if="!readonly" size="default" @click="importJson">
-            <Icon icon="ep:upload" />{{ t('simpleProcessDesignerV2.common.import') }}
+            <Icon icon="ep:upload" />导入
           </el-button>
           <!-- 用于打开本地文件-->
           <input
@@ -23,9 +23,7 @@
           <el-button size="default" :plain="true" :icon="ZoomOut" @click="zoomOut()" />
           <el-button size="default" class="w-80px"> {{ scaleValue }}% </el-button>
           <el-button size="default" :plain="true" :icon="ZoomIn" @click="zoomIn()" />
-          <el-button size="default" @click="resetPosition">
-            {{ t('simpleProcessDesignerV2.common.reset') }}
-          </el-button>
+          <el-button size="default" @click="resetPosition">重置</el-button>
         </el-button-group>
       </el-row>
     </div>
@@ -38,27 +36,24 @@
       @mouseleave="stopDrag"
       @mouseenter="setGrabCursor"
     >
-      <ProcessNodeTree v-if="processNodeTree" v-model:flow-node="processNodeTree" />
+      <ProcessNodeTree
+        v-if="processNodeTree"
+        :key="importKey"
+        v-model:flow-node="processNodeTree"
+      />
     </div>
   </div>
-  <Dialog
-    v-model="errorDialogVisible"
-    :title="t('simpleProcessDesignerV2.common.saveFailed')"
-    width="400"
-    :fullscreen="false"
-  >
-    <div class="mb-2">{{ t('simpleProcessDesignerV2.common.incompleteNodeTip') }}</div>
+  <Dialog v-model="errorDialogVisible" title="保存失败" width="400" :fullscreen="false">
+    <div class="mb-2">以下节点内容不完善，请修改后保存</div>
     <div
       class="mb-3 b-rounded-1 bg-gray-100 p-2 line-height-normal"
       v-for="(item, index) in errorNodes"
       :key="index"
     >
-      {{ item.name }} : {{ t(NODE_DEFAULT_TEXT.get(item.type) as string) }}
+      {{ item.name }} : {{ NODE_DEFAULT_TEXT.get(item.type) }}
     </div>
     <template #footer>
-      <el-button type="primary" @click="errorDialogVisible = false">
-        {{ t('simpleProcessDesignerV2.common.gotIt') }}
-      </el-button>
+      <el-button type="primary" @click="errorDialogVisible = false">知道了</el-button>
     </template>
   </Dialog>
 </template>
@@ -74,8 +69,6 @@ import download from '@/utils/download'
 defineOptions({
   name: 'SimpleProcessModel'
 })
-
-const { t } = useI18n()
 
 const props = defineProps({
   flowNode: {
@@ -217,7 +210,7 @@ const getCurrentFlowData = async () => {
     }
     return processNodeTree.value
   } catch (error) {
-    console.error(t('simpleProcessDesignerV2.common.loadFlowFailed'), error)
+    console.error('获取流程数据失败:', error)
     return undefined
   }
 }
@@ -233,16 +226,26 @@ const exportJson = () => {
 
 /** 导入 JSON */
 const refFile = ref()
+/** 导入后自增，作为 ProcessNodeTree 的 key，强制重新挂载以保证画布刷新 */
+const importKey = ref(0)
 const importJson = () => {
   refFile.value.click()
 }
 const importLocalFile = () => {
   const file = refFile.value.files[0]
+  // 清空 input 的 value，否则再次选择同一个文件时 change 事件不会触发
+  refFile.value.value = ''
+  if (!file) {
+    return
+  }
   const reader = new FileReader()
   reader.readAsText(file)
   reader.onload = function () {
     if (isString(this.result)) {
       processNodeTree.value = JSON.parse(this.result)
+      // 改变 key，强制 ProcessNodeTree 重新挂载，
+      // 规避 watch(() => props.flowNode) 在组件复用场景下同步失效导致画布不刷新的问题
+      importKey.value++
       emits('save', processNodeTree.value)
     }
   }
@@ -257,9 +260,9 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .simple-process-model-container {
+  position: relative;
   width: 100%;
   height: 100%;
-  position: relative;
   overflow: hidden;
   user-select: none; // 禁用文本选择
 }

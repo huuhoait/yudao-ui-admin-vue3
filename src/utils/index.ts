@@ -1,5 +1,4 @@
 import { toNumber } from 'lodash-es'
-import { useI18n } from '@/hooks/web/useI18n'
 
 /**
  *
@@ -53,7 +52,6 @@ export const setCssVar = (prop: string, val: any, dom = document.documentElement
  * @param {Array} ary 查找的数组
  * @param {Functon} fn 判断的方法
  */
-// eslint-disable-next-line
 export const findIndex = <T = Recordable>(ary: Array<T>, fn: Fn): number => {
   if (ary.findIndex) {
     return ary.findIndex(fn)
@@ -217,10 +215,10 @@ export const generateUUID = () => {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
     let random = Math.random() * 16
     if (timestamp > 0) {
-      random = (timestamp + random) % 16 | 0
+      random = ((timestamp + random) % 16) | 0
       timestamp = Math.floor(timestamp / 16)
     } else {
-      random = (performanceNow + random) % 16 | 0
+      random = ((performanceNow + random) % 16) | 0
       performanceNow = Math.floor(performanceNow / 16)
     }
     return (c === 'x' ? random : (random & 0x3) | 0x8).toString(16)
@@ -379,6 +377,13 @@ export const fenToYuan = (price: string | number): string => {
 }
 
 /**
+ * 分转元，返回数字
+ */
+export const fenToYuanNumber = (price: string | number): number => {
+  return Number(fenToYuan(price))
+}
+
+/**
  * 计算环比
  *
  * @param value 当前数值
@@ -510,32 +515,15 @@ export const areaReplace = (areaName: string) => {
 }
 
 /**
- * 解析 JSON 字符串 (支持 i18n)
+ * 解析 JSON 字符串
  *
  * @param str
- */
-export function jsonParseI18n(str: string) {
-  const { t } = useI18n()
-  try {
-    return JSON.parse(str)
-  } catch (e) {
-    console.warn(t('utils.validation.jsonParseError', { str }))
-    return str
-  }
-}
-
-/**
- * 解析 JSON 字符串 (保持向后兼容)
- *
- * @param str
- * @deprecated 请使用 jsonParseI18n() 以获得 i18n 支持
  */
 export function jsonParse(str: string) {
-  const { t } = useI18n()
   try {
     return JSON.parse(str)
   } catch (e) {
-    console.warn(t('utils.validation.deprecatedJsonParse', { str }))
+    console.warn(`str[${str}] 不是一个 JSON 字符串`)
     return str
   }
 }
@@ -552,4 +540,16 @@ export const subString = (str: string, start: number, end: number) => {
     return str.slice(start, end)
   }
   return str
+}
+
+/** HTML 转义函数，防止 XSS */
+export const escapeHtml = (text: string): string => {
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  }
+  return text.replace(/[&<>"']/g, (char) => map[char])
 }

@@ -7,7 +7,7 @@
       :rules="formRules"
       label-width="100px"
     >
-      <el-form-item :label="t('sys.menu.parentId')">
+      <el-form-item :label="t('system.menu._todo83')">
         <el-tree-select
           v-model="formData.parentId"
           :data="menuTree"
@@ -17,10 +17,10 @@
           node-key="id"
         />
       </el-form-item>
-      <el-form-item :label="t('sys.menu.name')" prop="name">
-        <el-input v-model="formData.name" clearable :placeholder="t('sys.menu.namePlaceholder')" />
+      <el-form-item :label="t('system.menu.menuName')" prop="name">
+        <el-input v-model="formData.name" clearable :placeholder="t('system.menu.inputMenuName')" />
       </el-form-item>
-      <el-form-item :label="t('sys.menu.type')" prop="type">
+      <el-form-item :label="t('system.menu._todo84')" prop="type">
         <el-radio-group v-model="formData.type">
           <el-radio-button
             v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_MENU_TYPE)"
@@ -31,43 +31,37 @@
           </el-radio-button>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="formData.type !== 3" :label="t('sys.menu.icon')">
+      <el-form-item v-if="formData.type !== 3" :label="t('system.menu._todo85')">
         <IconSelect v-model="formData.icon" clearable />
       </el-form-item>
-      <el-form-item v-if="formData.type !== 3" :label="t('sys.menu.path')" prop="path">
+      <el-form-item v-if="formData.type !== 3" :label="t('system.menu.routePath')" prop="path">
         <template #label>
           <Tooltip
-            :message="t('sys.menu.pathTip')"
-            :title="t('sys.menu.path')"
+            message="访问的路由地址，如：`user`。如需外网地址时，则以 `http(s)://` 开头"
+            :title="t('system.menu.routePath')"
           />
         </template>
-        <el-input v-model="formData.path" clearable :placeholder="t('sys.menu.pathPlaceholder')" />
+        <el-input v-model="formData.path" clearable :placeholder="t('system.menu.inputRoutePath')" />
       </el-form-item>
-      <el-form-item v-if="formData.type === 2" :label="t('sys.menu.componentPath')" prop="component">
+      <el-form-item v-if="formData.type === 2" :label="t('system.menu._todo86')" prop="component">
+        <el-input v-model="formData.component" clearable :placeholder="t('system.menu._todo87')" />
+      </el-form-item>
+      <el-form-item v-if="formData.type === 2" :label="t('system.menu._todo88')" prop="componentName">
+        <el-input v-model="formData.componentName" clearable :placeholder="t('system.menu._todo89')" />
+      </el-form-item>
+      <el-form-item v-if="formData.type !== 1" :label="t('system.menu._todo90')" prop="permission">
         <template #label>
           <Tooltip
-            :message="t('sys.menu.componentPathTip')"
-            :title="t('sys.menu.componentPath')"
+            message="Controller 方法上的权限字符，如：@PreAuthorize(`@ss.hasPermission('system:user:list')`)"
+            :title="t('system.menu._todo90')"
           />
         </template>
-        <el-input v-model="formData.component" clearable :placeholder="t('sys.menu.componentPlaceholder')" />
+        <el-input v-model="formData.permission" clearable :placeholder="t('system.menu._todo91')" />
       </el-form-item>
-      <el-form-item v-if="formData.type === 2" :label="t('sys.menu.componentName')" prop="componentName">
-        <el-input v-model="formData.componentName" clearable :placeholder="t('sys.menu.componentNamePlaceholder')" />
-      </el-form-item>
-      <el-form-item v-if="formData.type !== 1" :label="t('sys.menu.permission')" prop="permission">
-        <template #label>
-          <Tooltip
-            :message="t('sys.menu.permissionTip')"
-            :title="t('sys.menu.permission')"
-          />
-        </template>
-        <el-input v-model="formData.permission" clearable :placeholder="t('sys.menu.permissionPlaceholder')" />
-      </el-form-item>
-      <el-form-item :label="t('sys.menu.sort')" prop="sort">
+      <el-form-item :label="t('system.menu.displaySort')" prop="sort">
         <el-input-number v-model="formData.sort" :min="0" clearable controls-position="right" />
       </el-form-item>
-      <el-form-item :label="t('sys.menu.status')" prop="status">
+      <el-form-item :label="t('system.menu.menuStatus')" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -78,37 +72,37 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="formData.type !== 3" :label="t('sys.menu.visible')" prop="visible">
+      <el-form-item v-if="formData.type !== 3" :label="t('system.menu._todo92')" prop="visible">
         <template #label>
-          <Tooltip :message="t('sys.menu.visibleTip')" :title="t('sys.menu.visible')" />
+          <Tooltip message="选择隐藏时，路由将不会出现在侧边栏，但仍然可以访问" :title="t('system.menu._todo92')" />
         </template>
         <el-radio-group v-model="formData.visible">
-          <el-radio key="true" :value="true" border>{{ t('common.yes') }}</el-radio>
-          <el-radio key="false" :value="false" border>{{ t('common.no') }}</el-radio>
+          <el-radio key="true" :value="true" border>{{ t('system.menu._todo95') }}</el-radio>
+          <el-radio key="false" :value="false" border>{{ t('system.menu._todo96') }}</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="formData.type !== 3" :label="t('sys.menu.alwaysShow')" prop="alwaysShow">
+      <el-form-item v-if="formData.type !== 3" :label="t('system.menu._todo93')" prop="alwaysShow">
         <template #label>
           <Tooltip
-            :message="t('sys.menu.alwaysShowTip')"
-            :title="t('sys.menu.alwaysShow')"
+            message="选择不是时，当该菜单只有一个子菜单时，不展示自己，直接展示子菜单"
+            :title="t('system.menu._todo93')"
           />
         </template>
         <el-radio-group v-model="formData.alwaysShow">
-          <el-radio key="true" :value="true" border>{{ t('common.yes') }}</el-radio>
-          <el-radio key="false" :value="false" border>{{ t('common.no') }}</el-radio>
+          <el-radio key="true" :value="true" border>{{ t('system.menu._todo97') }}</el-radio>
+          <el-radio key="false" :value="false" border>{{ t('system.menu._todo98') }}</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="formData.type === 2" :label="t('sys.menu.keepAlive')" prop="keepAlive">
+      <el-form-item v-if="formData.type === 2" :label="t('system.menu._todo94')" prop="keepAlive">
         <template #label>
           <Tooltip
-            :message="t('sys.menu.keepAliveTip')"
-            :title="t('sys.menu.keepAlive')"
+            message="选择缓存时，则会被 `keep-alive` 缓存，必须填写「组件名称」字段"
+            :title="t('system.menu._todo94')"
           />
         </template>
         <el-radio-group v-model="formData.keepAlive">
-          <el-radio key="true" :value="true" border>{{ t('common.yes') }}</el-radio>
-          <el-radio key="false" :value="false" border>{{ t('common.no') }}</el-radio>
+          <el-radio key="true" :value="true" border>{{ t('system.menu._todo99') }}</el-radio>
+          <el-radio key="false" :value="false" border>{{ t('system.menu._todo100') }}</el-radio>
         </el-radio-group>
       </el-form-item>
     </el-form>
@@ -152,11 +146,11 @@ const formData = ref({
   alwaysShow: true
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('sys.menu.nameRequired'), trigger: 'blur' }],
-  type: [{ required: true, message: t('sys.menu.typeRequired'), trigger: 'blur' }],
-  sort: [{ required: true, message: t('sys.menu.sortRequired'), trigger: 'blur' }],
-  path: [{ required: true, message: t('sys.menu.pathRequired'), trigger: 'blur' }],
-  status: [{ required: true, message: t('sys.menu.statusRequired'), trigger: 'blur' }]
+  name: [{ required: true, message: t('system.menu.menuNameRequired'), trigger: 'blur' }],
+  type: [{ required: true, message: t('system.menu._todo101'), trigger: 'blur' }],
+  sort: [{ required: true, message: t('system.menu._todo102'), trigger: 'blur' }],
+  path: [{ required: true, message: t('system.menu.routePathRequired'), trigger: 'blur' }],
+  status: [{ required: true, message: t('system.menu.statusRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 
@@ -199,10 +193,10 @@ const submitForm = async () => {
     ) {
       if (!isExternal(formData.value.path)) {
         if (formData.value.parentId === 0 && formData.value.path.charAt(0) !== '/') {
-          message.error('路径必须以 / 开头')
+          message.error(t('system.menu._todo103'))
           return
         } else if (formData.value.parentId !== 0 && formData.value.path.charAt(0) === '/') {
-          message.error('路径不能以 / 开头')
+          message.error(t('system.menu._todo104'))
           return
         }
       }
@@ -230,7 +224,7 @@ const menuTree = ref<Tree[]>([]) // 树形结构
 const getTree = async () => {
   menuTree.value = []
   const res = await MenuApi.getSimpleMenusList()
-  let menu: Tree = { id: 0, name: '主类目', children: [] }
+  let menu: Tree = { id: 0, name: t('system.menu._todo105'), children: [] }
   menu.children = handleTree(res)
   menuTree.value.push(menu)
 }

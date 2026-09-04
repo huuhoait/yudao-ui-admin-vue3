@@ -1,0 +1,6536 @@
+{
+  "mode": "scan",
+  "target": "src/views/infra",
+  "scannedAt": "2026-09-04T01:18:08.063Z",
+  "totalFiles": 52,
+  "toConvert": 784,
+  "needReview": 29,
+  "todoKeys": 474,
+  "files": [
+    {
+      "file": "src/views/infra/apiAccessLog/ApiAccessLogDetail.vue",
+      "ns": "infra.apiAccessLog",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "详情",
+          "key": "infra.apiAccessLog.detail",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "日志主键",
+          "key": "infra.apiAccessLog.logId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "链路追踪",
+          "key": "infra.apiAccessLog._todo1",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "应用名",
+          "key": "infra.apiAccessLog.appName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户信息",
+          "key": "infra.apiAccessLog._todo2",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户 IP",
+          "key": "infra.apiAccessLog._todo3",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户 UA",
+          "key": "infra.apiAccessLog._todo4",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求信息",
+          "key": "infra.apiAccessLog._todo5",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求参数",
+          "key": "infra.apiAccessLog._todo6",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求结果",
+          "key": "infra.apiAccessLog._todo7",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求时间",
+          "key": "infra.apiAccessLog._todo8",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求耗时",
+          "key": "infra.apiAccessLog._todo9",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作结果",
+          "key": "infra.apiAccessLog._todo10",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作模块",
+          "key": "infra.apiAccessLog._todo11",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作名",
+          "key": "infra.apiAccessLog._todo12",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作名",
+          "key": "infra.apiAccessLog._todo12",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "正常",
+          "key": "infra.apiAccessLog._todo13",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/apiAccessLog/index.vue",
+      "ns": "infra.apiAccessLog",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "系统日志",
+          "key": "infra.apiAccessLog.systemLog",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户编号",
+          "key": "infra.apiAccessLog.userId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入用户编号",
+          "key": "infra.apiAccessLog.inputUserId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户类型",
+          "key": "infra.apiAccessLog.userType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择用户类型",
+          "key": "infra.apiAccessLog.selectUserType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "应用名",
+          "key": "infra.apiAccessLog.appName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入应用名",
+          "key": "infra.apiAccessLog.inputAppName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求时间",
+          "key": "infra.apiAccessLog._todo8",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "infra.apiAccessLog.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "infra.apiAccessLog.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "执行时长",
+          "key": "infra.apiAccessLog._todo14",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入执行时长",
+          "key": "infra.apiAccessLog._todo15",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "结果码",
+          "key": "infra.apiAccessLog._todo16",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入结果码",
+          "key": "infra.apiAccessLog._todo17",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "日志编号",
+          "key": "infra.apiAccessLog._todo18",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户编号",
+          "key": "infra.apiAccessLog.userId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户类型",
+          "key": "infra.apiAccessLog.userType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "应用名",
+          "key": "infra.apiAccessLog.appName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求方法",
+          "key": "infra.apiAccessLog._todo19",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求地址",
+          "key": "infra.apiAccessLog._todo20",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求时间",
+          "key": "infra.apiAccessLog._todo8",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "执行时长",
+          "key": "infra.apiAccessLog._todo14",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作结果",
+          "key": "infra.apiAccessLog._todo10",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作模块",
+          "key": "infra.apiAccessLog._todo11",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作名",
+          "key": "infra.apiAccessLog._todo12",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作类型",
+          "key": "infra.apiAccessLog._todo21",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.apiAccessLog.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导出",
+          "key": "infra.apiAccessLog.export",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "详细",
+          "key": "infra.apiAccessLog._todo22",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "filename",
+          "text": "API 访问日志.xls"
+        }
+      ]
+    },
+    {
+      "file": "src/views/infra/apiErrorLog/ApiErrorLogDetail.vue",
+      "ns": "infra.apiErrorLog",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "详情",
+          "key": "infra.apiErrorLog.detail",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "日志主键",
+          "key": "infra.apiErrorLog.logId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "链路追踪",
+          "key": "infra.apiErrorLog._todo23",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "应用名",
+          "key": "infra.apiErrorLog.appName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户编号",
+          "key": "infra.apiErrorLog.userId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户 IP",
+          "key": "infra.apiErrorLog._todo24",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户 UA",
+          "key": "infra.apiErrorLog._todo25",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求信息",
+          "key": "infra.apiErrorLog._todo26",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求参数",
+          "key": "infra.apiErrorLog._todo27",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "异常时间",
+          "key": "infra.apiErrorLog._todo28",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "异常名",
+          "key": "infra.apiErrorLog._todo29",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "异常堆栈",
+          "key": "infra.apiErrorLog._todo30",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理状态",
+          "key": "infra.apiErrorLog._todo31",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理人",
+          "key": "infra.apiErrorLog._todo32",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理时间",
+          "key": "infra.apiErrorLog._todo33",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/apiErrorLog/index.vue",
+      "ns": "infra.apiErrorLog",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "系统日志",
+          "key": "infra.apiErrorLog.systemLog",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户编号",
+          "key": "infra.apiErrorLog.userId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入用户编号",
+          "key": "infra.apiErrorLog.inputUserId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户类型",
+          "key": "infra.apiErrorLog.userType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择用户类型",
+          "key": "infra.apiErrorLog.selectUserType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "应用名",
+          "key": "infra.apiErrorLog.appName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入应用名",
+          "key": "infra.apiErrorLog.inputAppName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "异常时间",
+          "key": "infra.apiErrorLog._todo28",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "infra.apiErrorLog.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "infra.apiErrorLog.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理状态",
+          "key": "infra.apiErrorLog._todo31",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择处理状态",
+          "key": "infra.apiErrorLog._todo34",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "日志编号",
+          "key": "infra.apiErrorLog._todo35",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户编号",
+          "key": "infra.apiErrorLog.userId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户类型",
+          "key": "infra.apiErrorLog.userType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "应用名",
+          "key": "infra.apiErrorLog.appName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求方法",
+          "key": "infra.apiErrorLog._todo36",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求地址",
+          "key": "infra.apiErrorLog._todo37",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "异常发生时间",
+          "key": "infra.apiErrorLog._todo38",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "异常名",
+          "key": "infra.apiErrorLog._todo29",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理状态",
+          "key": "infra.apiErrorLog._todo31",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.apiErrorLog.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导出",
+          "key": "infra.apiErrorLog.export",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "详细",
+          "key": "infra.apiErrorLog._todo39",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "已处理",
+          "key": "infra.apiErrorLog._todo40",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "已忽略",
+          "key": "infra.apiErrorLog._todo41",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "已处理",
+          "key": "infra.apiErrorLog._todo40",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "已忽略",
+          "key": "infra.apiErrorLog._todo41",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "确认标记为"
+        },
+        {
+          "where": "script",
+          "kind": "filename",
+          "text": "异常日志.xls"
+        }
+      ]
+    },
+    {
+      "file": "src/views/infra/build/index.vue",
+      "ns": "infra.build",
+      "convert": [
+        {
+          "type": "vue-text",
+          "text": "生成JSON",
+          "key": "infra.build._todo42",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "生成Options",
+          "key": "infra.build._todo43",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "生成组件",
+          "key": "infra.build._todo44",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "生成 JSON",
+          "key": "infra.build._todo45",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "生成 Options",
+          "key": "infra.build._todo46",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "生成组件",
+          "key": "infra.build._todo44",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`<template>\n    <form-create\n      v-model:api=\"fApi\"\n      :rule=\"rule\"\n      :option=\"option\"\n      @submit=\"onSubmit\"\n    ></form-create>\n  </template>\n  <script setup lang=ts>\n    const faps = ref(null)\n    const rule = ref('')\n    const option = ref('')\n    const init = () => {\n      rule.value = formCreate.parseJson('${formCreate.toJson(rule).replaceAll('\\\\', '\\\\\\\\')}')\n      option.value = formCreate.parseJson('${JSON.stringify(opt)}')\n    }\n    const onSubmit = (formData) => {\n      //todo 提交表单\n    }\n    init()\n  <\\/script>`"
+        }
+      ]
+    },
+    {
+      "file": "src/views/infra/codegen/EditTable.vue",
+      "ns": "infra.codegen",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "基本信息",
+          "key": "infra.codegen._todo47",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "字段信息",
+          "key": "infra.codegen._todo48",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "生成信息",
+          "key": "infra.codegen._todo49",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "保存",
+          "key": "common.save",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "返回",
+          "key": "common.back",
+          "reuse": true,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/codegen/ImportTable.vue",
+      "ns": "infra.codegen",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "导入表",
+          "key": "infra.codegen._todo50",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "数据源",
+          "key": "infra.codegen._todo51",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择数据源",
+          "key": "infra.codegen._todo52",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表名称",
+          "key": "infra.codegen._todo53",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入表名称",
+          "key": "infra.codegen._todo54",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表描述",
+          "key": "infra.codegen._todo55",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入表描述",
+          "key": "infra.codegen._todo56",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表名称",
+          "key": "infra.codegen._todo53",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表描述",
+          "key": "infra.codegen._todo55",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导入",
+          "key": "infra.codegen.import",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "关闭",
+          "key": "common.close",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "导入成功",
+          "key": "infra.codegen._todo57",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/codegen/PreviewCode.vue",
+      "ns": "infra.codegen",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "代码预览",
+          "key": "infra.codegen._todo58",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-attr-unlisted",
+          "attr": "element-loading-text",
+          "text": "生成文件目录中..."
+        },
+        {
+          "where": "template",
+          "kind": "vue-attr-unlisted",
+          "attr": "element-loading-text",
+          "text": "加载代码中..."
+        }
+      ]
+    },
+    {
+      "file": "src/views/infra/codegen/components/BasicInfoForm.vue",
+      "ns": "infra.codegen.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表名称",
+          "key": "infra.codegen.components._todo59",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入仓库名称",
+          "key": "infra.codegen.components._todo60",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表描述",
+          "key": "infra.codegen.components._todo61",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入",
+          "key": "common.inputText",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "默认去除表名的前缀。如果存在重复，则需要手动添加前缀，避免 MyBatis 报 Alias 重复的问题。",
+          "key": "infra.codegen.components._todo62",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入",
+          "key": "common.inputText",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "作者",
+          "key": "infra.codegen.components._todo63",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入",
+          "key": "common.inputText",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "备注",
+          "key": "infra.codegen.components.remark",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "实体类名称",
+          "key": "infra.codegen.components._todo64",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/codegen/components/ColumInfoForm.vue",
+      "ns": "infra.codegen.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "字段列名",
+          "key": "infra.codegen.components._todo65",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "字段描述",
+          "key": "infra.codegen.components._todo66",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "物理类型",
+          "key": "infra.codegen.components._todo67",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "Java类型",
+          "key": "infra.codegen.components._todo68",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "java属性",
+          "key": "infra.codegen.components._todo69",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "插入",
+          "key": "infra.codegen.components._todo70",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "编辑",
+          "key": "infra.codegen.components.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "列表",
+          "key": "infra.codegen.components._todo71",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "查询",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "查询方式",
+          "key": "infra.codegen.components._todo72",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "允许空",
+          "key": "infra.codegen.components._todo73",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "显示类型",
+          "key": "infra.codegen.components._todo74",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "文本框",
+          "key": "infra.codegen.components._todo75",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "文本域",
+          "key": "infra.codegen.components._todo76",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "下拉框",
+          "key": "infra.codegen.components._todo77",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "单选框",
+          "key": "infra.codegen.components._todo78",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "复选框",
+          "key": "infra.codegen.components._todo79",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "日期控件",
+          "key": "infra.codegen.components._todo80",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "图片上传",
+          "key": "infra.codegen.components._todo81",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "文件上传",
+          "key": "infra.codegen.components._todo82",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "富文本控件",
+          "key": "infra.codegen.components._todo83",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "字典类型",
+          "key": "infra.codegen.components.dictType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择",
+          "key": "common.selectText",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "加载最新字典",
+          "key": "infra.codegen.components._todo84",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "示例",
+          "key": "infra.codegen.components._todo85",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/codegen/components/GenerateInfoForm.vue",
+      "ns": "infra.codegen.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "生成模板",
+          "key": "infra.codegen.components._todo86",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "前端类型",
+          "key": "infra.codegen.components._todo87",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "生成场景",
+          "key": "infra.codegen.components._todo88",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "分配到指定菜单下，例如 系统管理",
+          "key": "infra.codegen.components._todo89",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择系统菜单",
+          "key": "infra.codegen.components._todo90",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "生成在哪个java包下，例如 com.ruoyi.system",
+          "key": "infra.codegen.components._todo91",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "模块名，即一级目录，例如 system、infra、tool 等等",
+          "key": "infra.codegen.components._todo92",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "业务名，即二级目录，例如 user、permission、dict 等等",
+          "key": "infra.codegen.components._todo93",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "业务包，自定义二级目录。例如说，我们希望将 dictType 和 dictData 归类成 dict 业务",
+          "key": "infra.codegen.components._todo94",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "类名称（首字母大写），例如SysUser、SysMenu、SysDictData 等等",
+          "key": "infra.codegen.components._todo95",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "用作类描述，例如 用户",
+          "key": "infra.codegen.components._todo96",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "填写磁盘绝对路径，若不填写，则生成到当前Web项目下",
+          "key": "infra.codegen.components._todo97",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "树显示的父编码字段名， 如：parent_Id",
+          "key": "infra.codegen.components._todo98",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择",
+          "key": "common.selectText",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "树节点的显示名称字段名， 如：dept_name",
+          "key": "infra.codegen.components._todo99",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择",
+          "key": "common.selectText",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "关联主表（父表）的表名， 如：system_user",
+          "key": "infra.codegen.components._todo100",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择",
+          "key": "common.selectText",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "子表关联的字段， 如：user_id",
+          "key": "infra.codegen.components._todo101",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择",
+          "key": "common.selectText",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "主表与子表的关联关系",
+          "key": "infra.codegen.components._todo102",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择",
+          "key": "common.selectText",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "上级菜单",
+          "key": "infra.codegen.components._todo103",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "模块名",
+          "key": "infra.codegen.components._todo104",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "业务名",
+          "key": "infra.codegen.components._todo105",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "类名称",
+          "key": "infra.codegen.components._todo106",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "类描述",
+          "key": "infra.codegen.components._todo107",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "自定义路径",
+          "key": "infra.codegen.components._todo108",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "最近路径快速选择",
+          "key": "infra.codegen.components._todo109",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "恢复默认的生成基础路径",
+          "key": "infra.codegen.components._todo110",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "树表信息",
+          "key": "infra.codegen.components._todo111",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "父编号字段",
+          "key": "infra.codegen.components._todo112",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "树名称字段",
+          "key": "infra.codegen.components._todo113",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "主表信息",
+          "key": "infra.codegen.components._todo114",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "关联的主表",
+          "key": "infra.codegen.components._todo115",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "子表关联的字段",
+          "key": "infra.codegen.components._todo116",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "关联关系",
+          "key": "infra.codegen.components._todo117",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "一对多",
+          "key": "infra.codegen.components._todo118",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "一对一",
+          "key": "infra.codegen.components._todo119",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/codegen/index.vue",
+      "ns": "infra.codegen",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "代码生成（单表）",
+          "key": "infra.codegen._todo120",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "代码生成（树表）",
+          "key": "infra.codegen._todo121",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "代码生成（主子表）",
+          "key": "infra.codegen._todo122",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "单元测试",
+          "key": "infra.codegen._todo123",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表名称",
+          "key": "infra.codegen._todo53",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入表名称",
+          "key": "infra.codegen._todo54",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表描述",
+          "key": "infra.codegen._todo55",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入表描述",
+          "key": "infra.codegen._todo56",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "infra.codegen.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "infra.codegen.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "数据源",
+          "key": "infra.codegen._todo51",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表名称",
+          "key": "infra.codegen._todo53",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表描述",
+          "key": "infra.codegen._todo55",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "实体",
+          "key": "infra.codegen._todo124",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "更新时间",
+          "key": "common.updateTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.codegen.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导入",
+          "key": "infra.codegen.import",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "批量删除",
+          "key": "infra.codegen.deleteBatch",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "预览",
+          "key": "infra.codegen._todo125",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "infra.codegen.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "infra.codegen.delete",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "同步",
+          "key": "infra.codegen._todo126",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "生成代码",
+          "key": "infra.codegen._todo127",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "同步成功",
+          "key": "infra.codegen._todo128",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "确认要强制同步"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "表结构吗?"
+        }
+      ]
+    },
+    {
+      "file": "src/views/infra/config/ConfigForm.vue",
+      "ns": "infra.config",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "参数分类",
+          "key": "infra.config._todo129",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入参数分类",
+          "key": "infra.config._todo130",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "参数名称",
+          "key": "infra.config._todo131",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入参数名称",
+          "key": "infra.config._todo132",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "参数键名",
+          "key": "infra.config._todo133",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入参数键名",
+          "key": "infra.config._todo134",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "参数键值",
+          "key": "infra.config._todo135",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入参数键值",
+          "key": "infra.config._todo136",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "是否可见",
+          "key": "infra.config._todo137",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "备注",
+          "key": "infra.config.remark",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入内容",
+          "key": "infra.config.inputContent",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "参数分类不能为空",
+          "key": "infra.config._todo138",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "参数名称不能为空",
+          "key": "infra.config._todo139",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "参数键名不能为空",
+          "key": "infra.config._todo140",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "参数键值不能为空",
+          "key": "infra.config._todo141",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "是否可见不能为空",
+          "key": "infra.config._todo142",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/config/index.vue",
+      "ns": "infra.config",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "配置中心",
+          "key": "infra.config._todo143",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "参数名称",
+          "key": "infra.config._todo131",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入参数名称",
+          "key": "infra.config._todo132",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "参数键名",
+          "key": "infra.config._todo133",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入参数键名",
+          "key": "infra.config._todo134",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "系统内置",
+          "key": "infra.config._todo144",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择系统内置",
+          "key": "infra.config._todo145",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "infra.config.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "infra.config.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "参数主键",
+          "key": "infra.config._todo146",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "参数分类",
+          "key": "infra.config._todo129",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "参数名称",
+          "key": "infra.config._todo131",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "参数键名",
+          "key": "infra.config._todo133",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "参数键值",
+          "key": "infra.config._todo135",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "是否可见",
+          "key": "infra.config._todo137",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "系统内置",
+          "key": "infra.config._todo144",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "备注",
+          "key": "infra.config.remark",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.config.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "infra.config.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "批量删除",
+          "key": "infra.config.deleteBatch",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导出",
+          "key": "infra.config.export",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "infra.config.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "infra.config.delete",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "filename",
+          "text": "参数配置.xls"
+        }
+      ]
+    },
+    {
+      "file": "src/views/infra/dataSourceConfig/DataSourceConfigForm.vue",
+      "ns": "infra.dataSourceConfig",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "数据源名称",
+          "key": "infra.dataSourceConfig._todo147",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入参数名称",
+          "key": "infra.dataSourceConfig._todo148",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "数据源连接",
+          "key": "infra.dataSourceConfig._todo149",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入数据源连接",
+          "key": "infra.dataSourceConfig._todo150",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户名",
+          "key": "infra.dataSourceConfig.username",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入用户名",
+          "key": "infra.dataSourceConfig.inputUsername",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "密码",
+          "key": "infra.dataSourceConfig._todo151",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入密码",
+          "key": "infra.dataSourceConfig._todo152",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "数据源名称不能为空",
+          "key": "infra.dataSourceConfig._todo153",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "数据源连接不能为空",
+          "key": "infra.dataSourceConfig._todo154",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "用户名不能为空",
+          "key": "infra.dataSourceConfig.usernameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "密码不能为空",
+          "key": "infra.dataSourceConfig._todo155",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/dataSourceConfig/index.vue",
+      "ns": "infra.dataSourceConfig",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "主键编号",
+          "key": "infra.dataSourceConfig._todo156",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "数据源名称",
+          "key": "infra.dataSourceConfig._todo147",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "数据源连接",
+          "key": "infra.dataSourceConfig._todo149",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户名",
+          "key": "infra.dataSourceConfig.username",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.dataSourceConfig.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "infra.dataSourceConfig.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "批量删除",
+          "key": "infra.dataSourceConfig.deleteBatch",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "infra.dataSourceConfig.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "infra.dataSourceConfig.delete",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/demo/demo01/Demo01ContactForm.vue",
+      "ns": "infra.demo.demo01",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo01.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "infra.demo.demo01.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "性别",
+          "key": "infra.demo.demo01._todo157",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "出生年",
+          "key": "infra.demo.demo01._todo158",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "选择出生年",
+          "key": "infra.demo.demo01._todo159",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "简介",
+          "key": "infra.demo.demo01._todo160",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "头像",
+          "key": "infra.demo.demo01._todo161",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "名字不能为空",
+          "key": "infra.demo.demo01.nameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "性别不能为空",
+          "key": "infra.demo.demo01._todo162",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "出生年不能为空",
+          "key": "infra.demo.demo01._todo163",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "简介不能为空",
+          "key": "infra.demo.demo01._todo164",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/demo/demo01/index.vue",
+      "ns": "infra.demo.demo01",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo01.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "infra.demo.demo01.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "性别",
+          "key": "infra.demo.demo01._todo157",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择性别",
+          "key": "infra.demo.demo01._todo165",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "infra.demo.demo01.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "infra.demo.demo01.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "编号",
+          "key": "infra.demo.demo01.id",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo01.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "性别",
+          "key": "infra.demo.demo01._todo157",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "出生年",
+          "key": "infra.demo.demo01._todo158",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "简介",
+          "key": "infra.demo.demo01._todo160",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "头像",
+          "key": "infra.demo.demo01._todo161",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.demo.demo01.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "infra.demo.demo01.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导出",
+          "key": "infra.demo.demo01.export",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "批量删除",
+          "key": "infra.demo.demo01.deleteBatch",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "infra.demo.demo01.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "infra.demo.demo01.delete",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "filename",
+          "text": "示例联系人.xls"
+        }
+      ]
+    },
+    {
+      "file": "src/views/infra/demo/demo02/Demo02CategoryForm.vue",
+      "ns": "infra.demo.demo02",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo02.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "infra.demo.demo02.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "父级编号",
+          "key": "infra.demo.demo02._todo166",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择父级编号",
+          "key": "infra.demo.demo02._todo167",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "名字不能为空",
+          "key": "infra.demo.demo02.nameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "父级编号不能为空",
+          "key": "infra.demo.demo02._todo168",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "顶级示例分类",
+          "key": "infra.demo.demo02._todo169",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/demo/demo02/index.vue",
+      "ns": "infra.demo.demo02",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "代码生成（树表）",
+          "key": "infra.demo.demo02._todo170",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo02.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "infra.demo.demo02.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "infra.demo.demo02.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "infra.demo.demo02.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "编号",
+          "key": "infra.demo.demo02.id",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo02.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.demo.demo02.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "infra.demo.demo02.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导出",
+          "key": "infra.demo.demo02.export",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "展开/折叠",
+          "key": "infra.demo.demo02._todo171",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "infra.demo.demo02.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "infra.demo.demo02.delete",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "filename",
+          "text": "示例分类.xls"
+        }
+      ]
+    },
+    {
+      "file": "src/views/infra/demo/demo03/erp/Demo03StudentForm.vue",
+      "ns": "infra.demo.demo03.erp",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.erp.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "infra.demo.demo03.erp.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "性别",
+          "key": "infra.demo.demo03.erp._todo172",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "出生日期",
+          "key": "infra.demo.demo03.erp._todo173",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "选择出生日期",
+          "key": "infra.demo.demo03.erp._todo174",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "简介",
+          "key": "infra.demo.demo03.erp._todo175",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "名字不能为空",
+          "key": "infra.demo.demo03.erp.nameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "性别不能为空",
+          "key": "infra.demo.demo03.erp._todo176",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "出生日期不能为空",
+          "key": "infra.demo.demo03.erp._todo177",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "简介不能为空",
+          "key": "infra.demo.demo03.erp._todo178",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/demo/demo03/erp/components/Demo03CourseForm.vue",
+      "ns": "infra.demo.demo03.erp.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.erp.components.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "infra.demo.demo03.erp.components.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分数",
+          "key": "infra.demo.demo03.erp.components._todo179",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入分数",
+          "key": "infra.demo.demo03.erp.components._todo180",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "学生编号不能为空",
+          "key": "infra.demo.demo03.erp.components._todo181",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "名字不能为空",
+          "key": "infra.demo.demo03.erp.components.nameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "分数不能为空",
+          "key": "infra.demo.demo03.erp.components._todo182",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/demo/demo03/erp/components/Demo03CourseList.vue",
+      "ns": "infra.demo.demo03.erp.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "编号",
+          "key": "infra.demo.demo03.erp.components.id",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.erp.components.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分数",
+          "key": "infra.demo.demo03.erp.components._todo179",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.demo.demo03.erp.components.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "infra.demo.demo03.erp.components.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "批量删除",
+          "key": "infra.demo.demo03.erp.components.deleteBatch",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "infra.demo.demo03.erp.components.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "infra.demo.demo03.erp.components.delete",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请选择一个学生",
+          "key": "infra.demo.demo03.erp.components._todo183",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/demo/demo03/erp/components/Demo03GradeForm.vue",
+      "ns": "infra.demo.demo03.erp.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.erp.components.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "infra.demo.demo03.erp.components.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "班主任",
+          "key": "infra.demo.demo03.erp.components._todo184",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入班主任",
+          "key": "infra.demo.demo03.erp.components._todo185",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "学生编号不能为空",
+          "key": "infra.demo.demo03.erp.components._todo181",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "名字不能为空",
+          "key": "infra.demo.demo03.erp.components.nameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "班主任不能为空",
+          "key": "infra.demo.demo03.erp.components._todo186",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/demo/demo03/erp/components/Demo03GradeList.vue",
+      "ns": "infra.demo.demo03.erp.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "编号",
+          "key": "infra.demo.demo03.erp.components.id",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.erp.components.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "班主任",
+          "key": "infra.demo.demo03.erp.components._todo184",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.demo.demo03.erp.components.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "infra.demo.demo03.erp.components.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "批量删除",
+          "key": "infra.demo.demo03.erp.components.deleteBatch",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "infra.demo.demo03.erp.components.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "infra.demo.demo03.erp.components.delete",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请选择一个学生",
+          "key": "infra.demo.demo03.erp.components._todo183",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/demo/demo03/erp/index.vue",
+      "ns": "infra.demo.demo03.erp",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.erp.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "infra.demo.demo03.erp.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "性别",
+          "key": "infra.demo.demo03.erp._todo172",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择性别",
+          "key": "infra.demo.demo03.erp._todo187",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "infra.demo.demo03.erp.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "infra.demo.demo03.erp.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "编号",
+          "key": "infra.demo.demo03.erp.id",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.erp.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "性别",
+          "key": "infra.demo.demo03.erp._todo172",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "出生日期",
+          "key": "infra.demo.demo03.erp._todo173",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "简介",
+          "key": "infra.demo.demo03.erp._todo175",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.demo.demo03.erp.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "学生课程",
+          "key": "infra.demo.demo03.erp._todo188",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "学生班级",
+          "key": "infra.demo.demo03.erp._todo189",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "infra.demo.demo03.erp.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导出",
+          "key": "infra.demo.demo03.erp.export",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "批量删除",
+          "key": "infra.demo.demo03.erp.deleteBatch",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "infra.demo.demo03.erp.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "infra.demo.demo03.erp.delete",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "filename",
+          "text": "学生.xls"
+        }
+      ]
+    },
+    {
+      "file": "src/views/infra/demo/demo03/inner/Demo03StudentForm.vue",
+      "ns": "infra.demo.demo03.inner",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.inner.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "infra.demo.demo03.inner.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "性别",
+          "key": "infra.demo.demo03.inner._todo190",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "出生日期",
+          "key": "infra.demo.demo03.inner._todo191",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "选择出生日期",
+          "key": "infra.demo.demo03.inner._todo192",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "简介",
+          "key": "infra.demo.demo03.inner._todo193",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "学生课程",
+          "key": "infra.demo.demo03.inner._todo194",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "学生班级",
+          "key": "infra.demo.demo03.inner._todo195",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "名字不能为空",
+          "key": "infra.demo.demo03.inner.nameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "性别不能为空",
+          "key": "infra.demo.demo03.inner._todo196",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "出生日期不能为空",
+          "key": "infra.demo.demo03.inner._todo197",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "简介不能为空",
+          "key": "infra.demo.demo03.inner._todo198",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/demo/demo03/inner/components/Demo03CourseForm.vue",
+      "ns": "infra.demo.demo03.inner.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "序号",
+          "key": "common.index",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.inner.components.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "infra.demo.demo03.inner.components.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分数",
+          "key": "infra.demo.demo03.inner.components._todo199",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入分数",
+          "key": "infra.demo.demo03.inner.components._todo200",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.demo.demo03.inner.components.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "+ 添加学生课程",
+          "key": "infra.demo.demo03.inner.components._todo201",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "学生编号不能为空",
+          "key": "infra.demo.demo03.inner.components._todo202",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "名字不能为空",
+          "key": "infra.demo.demo03.inner.components.nameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "分数不能为空",
+          "key": "infra.demo.demo03.inner.components._todo203",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/demo/demo03/inner/components/Demo03CourseList.vue",
+      "ns": "infra.demo.demo03.inner.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "编号",
+          "key": "infra.demo.demo03.inner.components.id",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.inner.components.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分数",
+          "key": "infra.demo.demo03.inner.components._todo199",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/demo/demo03/inner/components/Demo03GradeForm.vue",
+      "ns": "infra.demo.demo03.inner.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.inner.components.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "infra.demo.demo03.inner.components.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "班主任",
+          "key": "infra.demo.demo03.inner.components._todo204",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入班主任",
+          "key": "infra.demo.demo03.inner.components._todo205",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "学生编号不能为空",
+          "key": "infra.demo.demo03.inner.components._todo202",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "名字不能为空",
+          "key": "infra.demo.demo03.inner.components.nameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "班主任不能为空",
+          "key": "infra.demo.demo03.inner.components._todo206",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/demo/demo03/inner/components/Demo03GradeList.vue",
+      "ns": "infra.demo.demo03.inner.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "编号",
+          "key": "infra.demo.demo03.inner.components.id",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.inner.components.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "班主任",
+          "key": "infra.demo.demo03.inner.components._todo204",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/demo/demo03/inner/index.vue",
+      "ns": "infra.demo.demo03.inner",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.inner.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "infra.demo.demo03.inner.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "性别",
+          "key": "infra.demo.demo03.inner._todo190",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择性别",
+          "key": "infra.demo.demo03.inner._todo207",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "infra.demo.demo03.inner.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "infra.demo.demo03.inner.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "学生课程",
+          "key": "infra.demo.demo03.inner._todo194",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "学生班级",
+          "key": "infra.demo.demo03.inner._todo195",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "编号",
+          "key": "infra.demo.demo03.inner.id",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.inner.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "性别",
+          "key": "infra.demo.demo03.inner._todo190",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "出生日期",
+          "key": "infra.demo.demo03.inner._todo191",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "简介",
+          "key": "infra.demo.demo03.inner._todo193",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.demo.demo03.inner.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "infra.demo.demo03.inner.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导出",
+          "key": "infra.demo.demo03.inner.export",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "批量删除",
+          "key": "infra.demo.demo03.inner.deleteBatch",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "infra.demo.demo03.inner.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "infra.demo.demo03.inner.delete",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "filename",
+          "text": "学生.xls"
+        }
+      ]
+    },
+    {
+      "file": "src/views/infra/demo/demo03/normal/Demo03StudentForm.vue",
+      "ns": "infra.demo.demo03.normal",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.normal.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "infra.demo.demo03.normal.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "性别",
+          "key": "infra.demo.demo03.normal._todo208",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "出生日期",
+          "key": "infra.demo.demo03.normal._todo209",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "选择出生日期",
+          "key": "infra.demo.demo03.normal._todo210",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "简介",
+          "key": "infra.demo.demo03.normal._todo211",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "学生课程",
+          "key": "infra.demo.demo03.normal._todo212",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "学生班级",
+          "key": "infra.demo.demo03.normal._todo213",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "名字不能为空",
+          "key": "infra.demo.demo03.normal.nameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "性别不能为空",
+          "key": "infra.demo.demo03.normal._todo214",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "出生日期不能为空",
+          "key": "infra.demo.demo03.normal._todo215",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "简介不能为空",
+          "key": "infra.demo.demo03.normal._todo216",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/demo/demo03/normal/components/Demo03CourseForm.vue",
+      "ns": "infra.demo.demo03.normal.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "序号",
+          "key": "common.index",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.normal.components.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "infra.demo.demo03.normal.components.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分数",
+          "key": "infra.demo.demo03.normal.components._todo217",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入分数",
+          "key": "infra.demo.demo03.normal.components._todo218",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.demo.demo03.normal.components.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "+ 添加学生课程",
+          "key": "infra.demo.demo03.normal.components._todo219",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "学生编号不能为空",
+          "key": "infra.demo.demo03.normal.components._todo220",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "名字不能为空",
+          "key": "infra.demo.demo03.normal.components.nameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "分数不能为空",
+          "key": "infra.demo.demo03.normal.components._todo221",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/demo/demo03/normal/components/Demo03GradeForm.vue",
+      "ns": "infra.demo.demo03.normal.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.normal.components.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "infra.demo.demo03.normal.components.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "班主任",
+          "key": "infra.demo.demo03.normal.components._todo222",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入班主任",
+          "key": "infra.demo.demo03.normal.components._todo223",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "学生编号不能为空",
+          "key": "infra.demo.demo03.normal.components._todo220",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "名字不能为空",
+          "key": "infra.demo.demo03.normal.components.nameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "班主任不能为空",
+          "key": "infra.demo.demo03.normal.components._todo224",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/demo/demo03/normal/index.vue",
+      "ns": "infra.demo.demo03.normal",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.normal.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "infra.demo.demo03.normal.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "性别",
+          "key": "infra.demo.demo03.normal._todo208",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择性别",
+          "key": "infra.demo.demo03.normal._todo225",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "infra.demo.demo03.normal.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "infra.demo.demo03.normal.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "编号",
+          "key": "infra.demo.demo03.normal.id",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "infra.demo.demo03.normal.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "性别",
+          "key": "infra.demo.demo03.normal._todo208",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "出生日期",
+          "key": "infra.demo.demo03.normal._todo209",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "简介",
+          "key": "infra.demo.demo03.normal._todo211",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.demo.demo03.normal.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "infra.demo.demo03.normal.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导出",
+          "key": "infra.demo.demo03.normal.export",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "批量删除",
+          "key": "infra.demo.demo03.normal.deleteBatch",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "infra.demo.demo03.normal.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "infra.demo.demo03.normal.delete",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "filename",
+          "text": "学生.xls"
+        }
+      ]
+    },
+    {
+      "file": "src/views/infra/druid/index.vue",
+      "ns": "infra.druid",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "数据库 MyBatis",
+          "key": "infra.druid._todo226",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "多数据源（读写分离）",
+          "key": "infra.druid._todo227",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/file/FileForm.vue",
+      "ns": "infra.file",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "上传文件",
+          "key": "infra.file._todo228",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "将文件拖到此处，或",
+          "key": "infra.file._todo229",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "点击上传",
+          "key": "infra.file.clickUpload",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "提示：仅允许导入 jpg、png、gif 格式文件！",
+          "key": "infra.file._todo230",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请上传文件",
+          "key": "infra.file._todo231",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "上传失败，请您重新上传！",
+          "key": "infra.file._todo232",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "最多只能上传一个文件！",
+          "key": "infra.file._todo233",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/file/index.vue",
+      "ns": "infra.file",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "上传下载",
+          "key": "infra.file._todo234",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "文件路径",
+          "key": "infra.file._todo235",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入文件路径",
+          "key": "infra.file._todo236",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "文件类型",
+          "key": "infra.file._todo237",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入文件类型",
+          "key": "infra.file._todo238",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "infra.file.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "infra.file.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "文件名",
+          "key": "infra.file._todo239",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "文件路径",
+          "key": "infra.file._todo235",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "文件大小",
+          "key": "infra.file._todo240",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "文件类型",
+          "key": "infra.file._todo237",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "文件内容",
+          "key": "infra.file._todo241",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "上传时间",
+          "key": "infra.file._todo242",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.file.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "上传文件",
+          "key": "infra.file._todo228",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "批量删除",
+          "key": "infra.file.deleteBatch",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "预览",
+          "key": "infra.file._todo243",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "下载",
+          "key": "infra.file._todo244",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "复制链接",
+          "key": "infra.file._todo245",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "infra.file.delete",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/fileConfig/FileConfigForm.vue",
+      "ns": "infra.fileConfig",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "配置名",
+          "key": "infra.fileConfig._todo246",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入配置名",
+          "key": "infra.fileConfig._todo247",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "备注",
+          "key": "infra.fileConfig.remark",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入备注",
+          "key": "infra.fileConfig.inputRemark",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "存储器",
+          "key": "infra.fileConfig._todo248",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择存储器",
+          "key": "infra.fileConfig._todo249",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "基础路径",
+          "key": "infra.fileConfig._todo250",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入基础路径",
+          "key": "infra.fileConfig._todo251",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "主机地址",
+          "key": "infra.fileConfig._todo252",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入主机地址",
+          "key": "infra.fileConfig._todo253",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "主机端口",
+          "key": "infra.fileConfig._todo254",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入主机端口",
+          "key": "infra.fileConfig._todo255",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户名",
+          "key": "infra.fileConfig.username",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入密码",
+          "key": "infra.fileConfig._todo256",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "密码",
+          "key": "infra.fileConfig._todo257",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入密码",
+          "key": "infra.fileConfig._todo256",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "连接模式",
+          "key": "infra.fileConfig._todo258",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "节点地址",
+          "key": "infra.fileConfig._todo259",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入节点地址",
+          "key": "infra.fileConfig._todo260",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "存储 bucket",
+          "key": "infra.fileConfig._todo261",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入 bucket",
+          "key": "infra.fileConfig._todo262",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入 accessKey",
+          "key": "infra.fileConfig._todo263",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入 accessSecret",
+          "key": "infra.fileConfig._todo264",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "是否 Path Style",
+          "key": "infra.fileConfig._todo265",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "公开访问",
+          "key": "infra.fileConfig._todo266",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "区域",
+          "key": "infra.fileConfig._todo267",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请填写区域，一般仅 AWS 需要填写",
+          "key": "infra.fileConfig._todo268",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "自定义域名",
+          "key": "infra.fileConfig._todo269",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入自定义域名",
+          "key": "infra.fileConfig._todo270",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "自定义域名",
+          "key": "infra.fileConfig._todo269",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入自定义域名",
+          "key": "infra.fileConfig._todo270",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "主动模式",
+          "key": "infra.fileConfig._todo271",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "被动模式",
+          "key": "infra.fileConfig._todo272",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "启用",
+          "key": "infra.fileConfig.enable",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "禁用",
+          "key": "infra.fileConfig._todo273",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "公开",
+          "key": "infra.fileConfig._todo274",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "私有",
+          "key": "infra.fileConfig._todo275",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "配置名不能为空",
+          "key": "infra.fileConfig._todo276",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "存储器不能为空",
+          "key": "infra.fileConfig._todo277",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "基础路径不能为空",
+          "key": "infra.fileConfig._todo278",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "主机地址不能为空",
+          "key": "infra.fileConfig._todo279",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "主机端口不能为空",
+          "key": "infra.fileConfig._todo280",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "用户名不能为空",
+          "key": "infra.fileConfig.usernameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "密码不能为空",
+          "key": "infra.fileConfig._todo281",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "连接模式不能为空",
+          "key": "infra.fileConfig._todo282",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "节点地址不能为空",
+          "key": "infra.fileConfig._todo283",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "存储 bucket 不能为空",
+          "key": "infra.fileConfig._todo284",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "accessKey 不能为空",
+          "key": "infra.fileConfig._todo285",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "accessSecret 不能为空",
+          "key": "infra.fileConfig._todo286",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "是否 PathStyle 访问不能为空",
+          "key": "infra.fileConfig._todo287",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "公开访问设置不能为空",
+          "key": "infra.fileConfig._todo288",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "自定义域名不能为空",
+          "key": "infra.fileConfig._todo289",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/fileConfig/index.vue",
+      "ns": "infra.fileConfig",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "上传下载",
+          "key": "infra.fileConfig._todo290",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "配置名",
+          "key": "infra.fileConfig._todo246",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入配置名",
+          "key": "infra.fileConfig._todo247",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "存储器",
+          "key": "infra.fileConfig._todo248",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择存储器",
+          "key": "infra.fileConfig._todo249",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "infra.fileConfig.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "infra.fileConfig.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "编号",
+          "key": "infra.fileConfig.id",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "配置名",
+          "key": "infra.fileConfig._todo246",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "存储器",
+          "key": "infra.fileConfig._todo248",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "备注",
+          "key": "infra.fileConfig.remark",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "主配置",
+          "key": "infra.fileConfig._todo291",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.fileConfig.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "infra.fileConfig.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "批量删除",
+          "key": "infra.fileConfig.deleteBatch",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "infra.fileConfig.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "主配置",
+          "key": "infra.fileConfig._todo291",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "测试",
+          "key": "infra.fileConfig.test",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "infra.fileConfig.delete",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "是否要访问该文件？",
+          "key": "infra.fileConfig._todo292",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "测试上传成功",
+          "key": "infra.fileConfig._todo293",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "是否确认修改配置编号为\""
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "\"的数据项为主配置?"
+        }
+      ]
+    },
+    {
+      "file": "src/views/infra/job/JobDetail.vue",
+      "ns": "infra.job",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "任务详细",
+          "key": "infra.job._todo294",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务编号",
+          "key": "infra.job.taskId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务名称",
+          "key": "infra.job.taskName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务状态",
+          "key": "infra.job._todo295",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理器的名字",
+          "key": "infra.job._todo296",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理器的参数",
+          "key": "infra.job._todo297",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "Cron 表达式",
+          "key": "infra.job._todo298",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "重试次数",
+          "key": "infra.job._todo299",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "重试间隔",
+          "key": "infra.job._todo300",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "监控超时时间",
+          "key": "infra.job._todo301",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "后续执行时间",
+          "key": "infra.job._todo302",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/job/JobForm.vue",
+      "ns": "infra.job",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务名称",
+          "key": "infra.job.taskName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入任务名称",
+          "key": "infra.job.inputTaskName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理器的名字",
+          "key": "infra.job._todo296",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入处理器的名字",
+          "key": "infra.job._todo303",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理器的参数",
+          "key": "infra.job._todo297",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入处理器的参数",
+          "key": "infra.job._todo304",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "CRON 表达式",
+          "key": "infra.job._todo305",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "重试次数",
+          "key": "infra.job._todo299",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入重试次数。设置为 0 时，不进行重试",
+          "key": "infra.job._todo306",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "重试间隔",
+          "key": "infra.job._todo300",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入重试间隔，单位：毫秒。设置为 0 时，无需间隔",
+          "key": "infra.job._todo307",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "监控超时时间",
+          "key": "infra.job._todo301",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入监控超时时间，单位：毫秒",
+          "key": "infra.job._todo308",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "任务名称不能为空",
+          "key": "infra.job.taskNameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "处理器的名字不能为空",
+          "key": "infra.job._todo309",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "CRON 表达式不能为空",
+          "key": "infra.job._todo310",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "重试次数不能为空",
+          "key": "infra.job._todo311",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "重试间隔不能为空",
+          "key": "infra.job._todo312",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/job/index.vue",
+      "ns": "infra.job",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "定时任务",
+          "key": "infra.job._todo313",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "异步任务",
+          "key": "infra.job._todo314",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "消息队列",
+          "key": "infra.job._todo315",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务名称",
+          "key": "infra.job.taskName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入任务名称",
+          "key": "infra.job.inputTaskName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务状态",
+          "key": "infra.job._todo295",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择任务状态",
+          "key": "infra.job._todo316",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理器的名字",
+          "key": "infra.job._todo296",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入处理器的名字",
+          "key": "infra.job._todo303",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务编号",
+          "key": "infra.job.taskId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务名称",
+          "key": "infra.job.taskName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务状态",
+          "key": "infra.job._todo295",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理器的名字",
+          "key": "infra.job._todo296",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理器的参数",
+          "key": "infra.job._todo297",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "CRON 表达式",
+          "key": "infra.job._todo305",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.job.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "infra.job.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "批量删除",
+          "key": "infra.job.deleteBatch",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导出",
+          "key": "infra.job.export",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "执行日志",
+          "key": "infra.job._todo317",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "同步任务",
+          "key": "infra.job._todo318",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "修改",
+          "key": "infra.job.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "infra.job.delete",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "更多",
+          "key": "infra.job.more",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "执行一次",
+          "key": "infra.job._todo319",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "任务详细",
+          "key": "infra.job._todo294",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "调度日志",
+          "key": "infra.job._todo320",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "确认要同步所有任务到调度器?",
+          "key": "infra.job._todo321",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "同步成功",
+          "key": "infra.job._todo322",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "开启",
+          "key": "infra.job._todo323",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "关闭",
+          "key": "common.close",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "执行成功",
+          "key": "infra.job._todo324",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "filename",
+          "text": "定时任务.xls"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "确认要"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "定时任务编号为\""
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "\"的数据项?"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "成功"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "确认要立即执行一次"
+        }
+      ]
+    },
+    {
+      "file": "src/views/infra/job/logger/JobLogDetail.vue",
+      "ns": "infra.job.logger",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "任务详细",
+          "key": "infra.job.logger._todo325",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "日志编号",
+          "key": "infra.job.logger._todo326",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务编号",
+          "key": "infra.job.logger.taskId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理器的名字",
+          "key": "infra.job.logger._todo327",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理器的参数",
+          "key": "infra.job.logger._todo328",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "第几次执行",
+          "key": "infra.job.logger._todo329",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "执行时间",
+          "key": "infra.job.logger._todo330",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "执行时长",
+          "key": "infra.job.logger._todo331",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务状态",
+          "key": "infra.job.logger._todo332",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "执行结果",
+          "key": "infra.job.logger._todo333",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/job/logger/index.vue",
+      "ns": "infra.job.logger",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "定时任务",
+          "key": "infra.job.logger._todo334",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "异步任务",
+          "key": "infra.job.logger._todo335",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "消息队列",
+          "key": "infra.job.logger._todo336",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理器的名字",
+          "key": "infra.job.logger._todo327",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入处理器的名字",
+          "key": "infra.job.logger._todo337",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "开始执行时间",
+          "key": "infra.job.logger._todo338",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "选择开始执行时间",
+          "key": "infra.job.logger._todo339",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "结束执行时间",
+          "key": "infra.job.logger._todo340",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "选择结束执行时间",
+          "key": "infra.job.logger._todo341",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务状态",
+          "key": "infra.job.logger._todo332",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择任务状态",
+          "key": "infra.job.logger._todo342",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "日志编号",
+          "key": "infra.job.logger._todo326",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务编号",
+          "key": "infra.job.logger.taskId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理器的名字",
+          "key": "infra.job.logger._todo327",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "处理器的参数",
+          "key": "infra.job.logger._todo328",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "第几次执行",
+          "key": "infra.job.logger._todo329",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "执行时间",
+          "key": "infra.job.logger._todo330",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "执行时长",
+          "key": "infra.job.logger._todo331",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务状态",
+          "key": "infra.job.logger._todo332",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "infra.job.logger.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导出",
+          "key": "infra.job.logger.export",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "详细",
+          "key": "infra.job.logger._todo343",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "filename",
+          "text": "定时任务执行日志.xls"
+        }
+      ]
+    },
+    {
+      "file": "src/views/infra/redis/index.vue",
+      "ns": "infra.redis",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "Redis 缓存",
+          "key": "infra.redis._todo344",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "本地缓存",
+          "key": "infra.redis._todo345",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "基本信息",
+          "key": "infra.redis._todo346",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "Redis版本 :",
+          "key": "infra.redis._todo347",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "运行模式 :",
+          "key": "infra.redis._todo348",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "端口 :",
+          "key": "infra.redis._todo349",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "客户端数 :",
+          "key": "infra.redis._todo350",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "运行时间(天) :",
+          "key": "infra.redis._todo351",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "使用内存 :",
+          "key": "infra.redis._todo352",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "使用CPU :",
+          "key": "infra.redis._todo353",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "内存配置 :",
+          "key": "infra.redis._todo354",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "AOF是否开启 :",
+          "key": "infra.redis._todo355",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "RDB是否成功 :",
+          "key": "infra.redis._todo356",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "Key数量 :",
+          "key": "infra.redis._todo357",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "网络入口/出口 :",
+          "key": "infra.redis._todo358",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "内存使用情况",
+          "key": "infra.redis._todo359",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "峰值",
+          "key": "infra.redis._todo360",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "命令统计",
+          "key": "infra.redis._todo361",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "命令",
+          "key": "infra.redis._todo362",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "内存消耗",
+          "key": "infra.redis._todo363",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/server/index.vue",
+      "ns": "infra.server",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "服务监控",
+          "key": "infra.server._todo364",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/skywalking/index.vue",
+      "ns": "infra.skywalking",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "服务监控",
+          "key": "infra.skywalking._todo365",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/swagger/index.vue",
+      "ns": "infra.swagger",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "接口文档",
+          "key": "infra.swagger._todo366",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/infra/webSocket/index.vue",
+      "ns": "infra.webSocket",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "WebSocket 实时通信",
+          "key": "infra.webSocket._todo367",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入你要发送的消息",
+          "key": "infra.webSocket._todo368",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择发送人",
+          "key": "infra.webSocket._todo369",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "所有人",
+          "key": "infra.webSocket._todo370",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "连接",
+          "key": "infra.webSocket._todo371",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "连接状态:",
+          "key": "infra.webSocket._todo372",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "服务地址",
+          "key": "infra.webSocket._todo373",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "消息输入框",
+          "key": "infra.webSocket._todo374",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "发送",
+          "key": "infra.webSocket._todo375",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "消息记录",
+          "key": "infra.webSocket._todo376",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "收到消息:",
+          "key": "infra.webSocket._todo377",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "未知的消息类型："
+        },
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`【单发】用户编号(${content.fromUserId})：${content.text}`"
+        },
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`【群发】用户编号(${content.fromUserId})：${content.text}`"
+        },
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`【系统通知】：${content.title}`"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "未处理消息："
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "处理消息发生异常："
+        }
+      ]
+    }
+  ]
+}

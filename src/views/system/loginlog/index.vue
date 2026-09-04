@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('sys.loginlog.loginLogManagement')" url="https://doc.iocoder.cn/system-log/" />
+  <doc-alert :title="t('system.loginlog.systemLog')" url="https://doc.iocoder.cn/system-log/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,38 +10,38 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="t('sys.loginlog.username')" prop="username">
+      <el-form-item :label="t('system.loginlog.username')" prop="username">
         <el-input
           v-model="queryParams.username"
-          :placeholder="t('sys.loginlog.usernamePlaceholder')"
+          :placeholder="t('system.loginlog.inputUsername')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('sys.loginlog.userIp')" prop="userIp">
+      <el-form-item :label="t('system.loginlog.loginAddress')" prop="userIp">
         <el-input
           v-model="queryParams.userIp"
-          :placeholder="t('sys.loginlog.userIpPlaceholder')"
+          :placeholder="t('system.loginlog.inputLoginAddress')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('sys.loginlog.createTime')" prop="createTime">
+      <el-form-item :label="t('system.loginlog._todo43')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          :start-placeholder="t('sys.loginlog.startTimePlaceholder')"
-          :end-placeholder="t('sys.loginlog.endTimePlaceholder')"
+          :start-placeholder="t('system.loginlog.startDate')"
+          :end-placeholder="t('system.loginlog.endDate')"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.loginlog.search') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.loginlog.reset') }}</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
         <el-button
           type="success"
           plain
@@ -49,7 +49,7 @@
           :loading="exportLoading"
           v-hasPermi="['system:login-log:export']"
         >
-          <Icon icon="ep:download" class="mr-5px" /> {{ t('sys.loginlog.export') }}
+          <Icon icon="ep:download" class="mr-5px" /> {{ t('system.loginlog.export') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -58,28 +58,28 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column :label="t('sys.loginlog.logId')" align="center" prop="id" />
-      <el-table-column :label="t('sys.loginlog.logType')" align="center" prop="logType">
+      <el-table-column :label="t('system.loginlog._todo39')" align="center" prop="id" />
+      <el-table-column :label="t('system.loginlog._todo40')" align="center" prop="logType">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_TYPE" :value="scope.row.logType" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('sys.loginlog.username')" align="center" prop="username" width="180" />
-      <el-table-column :label="t('sys.loginlog.userIp')" align="center" prop="userIp" width="180" />
-      <el-table-column :label="t('sys.loginlog.userAgent')" align="center" prop="userAgent" />
-      <el-table-column :label="t('sys.loginlog.result')" align="center" prop="result">
+      <el-table-column :label="t('system.loginlog.username')" align="center" prop="username" width="180" />
+      <el-table-column :label="t('system.loginlog.loginAddress')" align="center" prop="userIp" width="180" />
+      <el-table-column :label="t('system.loginlog._todo41')" align="center" prop="userAgent" />
+      <el-table-column :label="t('system.loginlog._todo42')" align="center" prop="result">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_RESULT" :value="scope.row.result" />
         </template>
       </el-table-column>
       <el-table-column
-        :label="t('sys.loginlog.createTime')"
+        :label="t('system.loginlog._todo43')"
         align="center"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('sys.loginlog.operation')" align="center">
+      <el-table-column :label="t('system.loginlog.action')" align="center">
         <template #default="scope">
           <el-button
             link
@@ -87,7 +87,7 @@
             @click="openDetail(scope.row)"
             v-hasPermi="['system:login-log:query']"
           >
-            {{ t('sys.loginlog.detail') }}
+            {{ t('system.loginlog.detail') }}
           </el-button>
         </template>
       </el-table-column>
@@ -114,7 +114,6 @@ import LoginLogDetail from './LoginLogDetail.vue'
 defineOptions({ name: 'SystemLoginLog' })
 
 const message = useMessage() // 消息弹窗
-const { t } = useI18n() // 国际化
 
 const loading = ref(true) // 列表的加载中
 const total = ref(0) // 列表的总页数

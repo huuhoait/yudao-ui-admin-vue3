@@ -35,14 +35,14 @@
             {{ currentNode.showText }}
           </div>
           <div class="node-text" v-else>
-            {{ t(NODE_DEFAULT_TEXT.get(currentNode.type) as string) }}
+            {{ NODE_DEFAULT_TEXT.get(currentNode.type) }}
           </div>
           <Icon icon="ep:arrow-right-bold" v-if="!readonly" />
         </div>
         <div v-if="!readonly" class="node-toolbar">
-          <div class="toolbar-icon"
-            ><Icon color="#0089ff" icon="ep:circle-close-filled" :size="18" @click="deleteNode"
-          /></div>
+          <div class="toolbar-icon">
+            <Icon color="#0089ff" icon="ep:circle-close-filled" :size="18" @click="deleteNode" />
+          </div>
         </div>
       </div>
       <!-- 传递子节点给添加节点组件。会在子节点前面添加节点 -->
@@ -61,7 +61,7 @@
   />
   <!-- 审批记录 -->
   <el-dialog
-    :title="dialogTitle || t('simpleProcessDesignerV2.userTaskNode.approvalRecords')"
+    :title="dialogTitle || '审批记录'"
     v-model="dialogVisible"
     width="1000px"
     append-to-body
@@ -69,19 +69,19 @@
     <el-row>
       <el-table :data="selectTasks" size="small" border header-cell-class-name="table-header-gray">
         <el-table-column
-          :label="t('simpleProcessDesignerV2.common.index')"
+          label="序号"
           header-align="center"
           align="center"
           type="index"
           width="50"
         />
-        <el-table-column :label="t('simpleProcessDesignerV2.userTaskNode.approver')" min-width="100" align="center">
+        <el-table-column label="审批人" min-width="100" align="center">
           <template #default="scope">
             {{ scope.row.assigneeUser?.nickname || scope.row.ownerUser?.nickname }}
           </template>
         </el-table-column>
 
-        <el-table-column :label="t('simpleProcessDesignerV2.userTaskNode.department')" min-width="100" align="center">
+        <el-table-column label="部门" min-width="100" align="center">
           <template #default="scope">
             {{ scope.row.assigneeUser?.deptName || scope.row.ownerUser?.deptName }}
           </template>
@@ -89,39 +89,24 @@
         <el-table-column
           :formatter="dateFormatter"
           align="center"
-          :label="t('simpleProcessDesignerV2.userTaskNode.startTime')"
+          label="开始时间"
           prop="createTime"
           min-width="140"
         />
         <el-table-column
           :formatter="dateFormatter"
           align="center"
-          :label="t('simpleProcessDesignerV2.userTaskNode.endTime')"
+          label="结束时间"
           prop="endTime"
           min-width="140"
         />
-        <el-table-column
-          align="center"
-          :label="t('simpleProcessDesignerV2.userTaskNode.status')"
-          prop="status"
-          min-width="90"
-        >
+        <el-table-column align="center" label="审批状态" prop="status" min-width="90">
           <template #default="scope">
             <dict-tag :type="DICT_TYPE.BPM_TASK_STATUS" :value="scope.row.status" />
           </template>
         </el-table-column>
-        <el-table-column
-          align="center"
-          :label="t('simpleProcessDesignerV2.userTaskNode.suggestion')"
-          prop="reason"
-          min-width="120"
-        />
-        <el-table-column
-          align="center"
-          :label="t('simpleProcessDesignerV2.userTaskNode.duration')"
-          prop="durationInMillis"
-          width="100"
-        >
+        <el-table-column align="center" label="审批建议" prop="reason" min-width="120" />
+        <el-table-column align="center" label="耗时" prop="durationInMillis" width="100">
           <template #default="scope">
             {{ formatPast2(scope.row.durationInMillis) }}
           </template>
@@ -140,7 +125,6 @@ import { DICT_TYPE } from '@/utils/dict'
 defineOptions({
   name: 'UserTaskNode'
 })
-const { t } = useI18n()
 const props = defineProps({
   flowNode: {
     type: Object as () => SimpleFlowNode,

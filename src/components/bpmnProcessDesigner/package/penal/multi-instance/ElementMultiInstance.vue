@@ -8,7 +8,7 @@
       <div class="flex-col">
         <div v-for="(item, index) in APPROVE_METHODS" :key="index">
           <el-radio :value="item.value" :label="item.value">
-            {{ $t(item.label) }}
+            {{ item.label }}
           </el-radio>
           <el-form-item prop="approveRatio">
             <el-input-number
@@ -27,33 +27,19 @@
         </div>
       </div>
     </el-radio-group>
-    <div v-else>
-      {{ $t('bpm.design.multiInstanceNotImplemented') }}
-    </div>
+    <div v-else> 除了UserTask以外节点的多实例待实现 </div>
     <!-- 与Simple设计器配置合并，保留以前的代码 -->
-    <el-form label-width="90px">
-      <el-form-item :label="$t('bpm.design.quickConfig')">
-        <el-button size="small" @click="changeConfig('SequentialApproval')">{{
-          $t('bpm.design.sequentialApproval')
-        }}</el-button>
-        <el-button size="small" @click="changeConfig('CounterSign')">{{
-          $t('bpm.design.countersign')
-        }}</el-button>
-        <el-button size="small" @click="changeConfig('OrSign')">{{
-          $t('bpm.design.orSign')
-        }}</el-button>
+    <el-form label-width="90px" style="display: none">
+      <el-form-item label="快捷配置">
+        <el-button size="small" @click="changeConfig('依次审批')">依次审批</el-button>
+        <el-button size="small" @click="changeConfig('会签')">会签</el-button>
+        <el-button size="small" @click="changeConfig('或签')">或签</el-button>
       </el-form-item>
-      <el-form-item :label="$t('bpm.design.countersignType')">
+      <el-form-item label="会签类型">
         <el-select v-model="loopCharacteristics" @change="changeLoopCharacteristicsType">
-          <el-option
-            :label="$t('bpm.design.parallelMultiInstance')"
-            value="ParallelMultiInstance"
-          />
-          <el-option
-            :label="$t('bpm.design.sequentialMultiInstance')"
-            value="SequentialMultiInstance"
-          />
-          <el-option :label="$t('bpm.design.none')" value="Null" />
+          <el-option label="并行多重事件" value="ParallelMultiInstance" />
+          <el-option label="时序多重事件" value="SequentialMultiInstance" />
+          <el-option label="无" value="Null" />
         </el-select>
       </el-form-item>
       <template
@@ -62,25 +48,21 @@
           loopCharacteristics === 'SequentialMultiInstance'
         "
       >
-        <el-form-item :label="$t('bpm.design.loopCardinality')" key="loopCardinality">
+        <el-form-item label="循环数量" key="loopCardinality">
           <el-input
             v-model="loopInstanceForm.loopCardinality"
             clearable
             @change="updateLoopCardinality"
           />
         </el-form-item>
-        <el-form-item :label="$t('bpm.design.collection')" key="collection" v-show="false">
+        <el-form-item label="集合" key="collection" v-show="false">
           <el-input v-model="loopInstanceForm.collection" clearable @change="updateLoopBase" />
         </el-form-item>
         <!-- add by 芋艿：由于「元素变量」暂时用不到，所以这里 display 为 none -->
-        <el-form-item
-          :label="$t('bpm.design.elementVariable')"
-          key="elementVariable"
-          style="display: none"
-        >
+        <el-form-item label="元素变量" key="elementVariable" style="display: none">
           <el-input v-model="loopInstanceForm.elementVariable" clearable @change="updateLoopBase" />
         </el-form-item>
-        <el-form-item :label="$t('bpm.design.completionCondition')" key="completionCondition">
+        <el-form-item label="完成条件" key="completionCondition">
           <el-input
             v-model="loopInstanceForm.completionCondition"
             clearable
@@ -88,29 +70,29 @@
           />
         </el-form-item>
         <!-- add by 芋艿：由于「异步状态」暂时用不到，所以这里 display 为 none -->
-        <el-form-item :label="$t('bpm.design.asyncState')" key="async" style="display: none">
+        <el-form-item label="异步状态" key="async" style="display: none">
           <el-checkbox
             v-model="loopInstanceForm.asyncBefore"
-            :label="$t('bpm.design.asyncBefore')"
-            :value="$t('bpm.design.asyncBefore')"
+            label="异步前"
+            value="异步前"
             @change="updateLoopAsync('asyncBefore')"
           />
           <el-checkbox
             v-model="loopInstanceForm.asyncAfter"
-            :label="$t('bpm.design.asyncAfter')"
-            :value="$t('bpm.design.asyncAfter')"
+            label="异步后"
+            value="异步后"
             @change="updateLoopAsync('asyncAfter')"
           />
           <el-checkbox
             v-model="loopInstanceForm.exclusive"
             v-if="loopInstanceForm.asyncAfter || loopInstanceForm.asyncBefore"
-            :label="$t('bpm.design.exclusive')"
-            :value="$t('bpm.design.exclusive')"
+            label="排除"
+            value="排除"
             @change="updateLoopAsync('exclusive')"
           />
         </el-form-item>
         <el-form-item
-          :label="$t('bpm.design.timeCycle')"
+          label="重试周期"
           prop="timeCycle"
           v-if="loopInstanceForm.asyncAfter || loopInstanceForm.asyncBefore"
           key="timeCycle"
@@ -134,55 +116,10 @@ const props = defineProps({
 })
 const prefix = inject('prefix')
 const loopCharacteristics = ref('')
-//默认配置，用来覆盖原始不存在的选项，避免报错
-const defaultLoopInstanceForm = ref({
-  completionCondition: '',
-  loopCardinality: '',
-  extensionElements: [],
-  asyncAfter: false,
-  asyncBefore: false,
-  exclusive: false
-})
 const loopInstanceForm = ref<any>({})
-const bpmnElement = ref(null)
-const multiLoopInstance = ref(null)
+const bpmnElement = ref<any | null>(null)
+const multiLoopInstance = ref<any | null>(null)
 const bpmnInstances = () => (window as any)?.bpmnInstances
-
-const getElementLoop = (businessObject) => {
-  if (!businessObject.loopCharacteristics) {
-    loopCharacteristics.value = 'Null'
-    loopInstanceForm.value = {}
-    return
-  }
-  if (businessObject.loopCharacteristics.$type === 'bpmn:StandardLoopCharacteristics') {
-    loopCharacteristics.value = 'StandardLoop'
-    loopInstanceForm.value = {}
-    return
-  }
-  if (businessObject.loopCharacteristics.isSequential) {
-    loopCharacteristics.value = 'SequentialMultiInstance'
-  } else {
-    loopCharacteristics.value = 'ParallelMultiInstance'
-  }
-  // 合并配置
-  loopInstanceForm.value = {
-    ...defaultLoopInstanceForm.value,
-    ...businessObject.loopCharacteristics,
-    completionCondition: businessObject.loopCharacteristics?.completionCondition?.body ?? '',
-    loopCardinality: businessObject.loopCharacteristics?.loopCardinality?.body ?? ''
-  }
-  // 保留当前元素 businessObject 上的 loopCharacteristics 实例
-  multiLoopInstance.value = bpmnInstances().bpmnElement.businessObject.loopCharacteristics
-  // 更新表单
-  if (
-    businessObject.loopCharacteristics.extensionElements &&
-    businessObject.loopCharacteristics.extensionElements.values &&
-    businessObject.loopCharacteristics.extensionElements.values.length
-  ) {
-    loopInstanceForm.value['timeCycle'] =
-      businessObject.loopCharacteristics.extensionElements.values[0].body
-  }
-}
 
 const changeLoopCharacteristicsType = (type) => {
   // this.loopInstanceForm = { ...this.defaultLoopInstanceForm }; // 切换类型取消原表单配置
@@ -304,14 +241,14 @@ const updateLoopAsync = (key) => {
 }
 
 const changeConfig = (config) => {
-  if (config === 'SequentialApproval') {
+  if (config === '依次审批') {
     changeLoopCharacteristicsType('SequentialMultiInstance')
     updateLoopCardinality('1')
     updateLoopCondition('${ nrOfCompletedInstances >= nrOfInstances }')
-  } else if (config === 'CounterSign') {
+  } else if (config === '会签') {
     changeLoopCharacteristicsType('ParallelMultiInstance')
     updateLoopCondition('${ nrOfCompletedInstances >= nrOfInstances }')
-  } else if (config === 'OrSign') {
+  } else if (config === '或签') {
     changeLoopCharacteristicsType('ParallelMultiInstance')
     updateLoopCondition('${ nrOfCompletedInstances > 0 }')
   }
@@ -324,7 +261,7 @@ const approveMethod = ref()
 const approveRatio = ref(100)
 const otherExtensions = ref()
 const getElementLoopNew = () => {
-  if (props.type === 'UserTask') {
+  if (props.type === 'UserTask' && bpmnElement.value) {
     const extensionElements =
       bpmnElement.value.businessObject?.extensionElements ??
       bpmnInstances().moddle.create('bpmn:ExtensionElements', { values: [] })
@@ -349,6 +286,9 @@ const onApproveRatioChange = () => {
   updateLoopCharacteristics()
 }
 const updateLoopCharacteristics = () => {
+  if (!bpmnElement.value) {
+    return
+  }
   // 根据ApproveMethod生成multiInstanceLoopCharacteristics节点
   if (approveMethod.value === ApproveMethodType.RANDOM_SELECT_ONE_APPROVE) {
     bpmnInstances().modeling.updateProperties(toRaw(bpmnElement.value), {
@@ -397,9 +337,11 @@ const updateLoopCharacteristics = () => {
         }
       )
     }
-    bpmnInstances().modeling.updateProperties(toRaw(bpmnElement.value), {
-      loopCharacteristics: toRaw(multiLoopInstance.value)
-    })
+    if (multiLoopInstance.value) {
+      bpmnInstances().modeling.updateProperties(toRaw(bpmnElement.value), {
+        loopCharacteristics: toRaw(multiLoopInstance.value)
+      })
+    }
   }
 
   // 添加ApproveMethod到ExtensionElements

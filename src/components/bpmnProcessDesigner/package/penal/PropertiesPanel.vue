@@ -5,27 +5,25 @@
         <!-- class="panel-tab__title" -->
         <template #title>
           <Icon icon="ep:info-filled" />
-          Information
-        </template>
-        <ElementBaseInfo :id-edit-disabled="idEditDisabled" :business-object="elementBusinessObject" :type="elementType"
-          :model="model" />
+          常规</template
+        >
+        <ElementBaseInfo
+          :id-edit-disabled="idEditDisabled"
+          :business-object="elementBusinessObject"
+          :type="elementType"
+          :model="model"
+        />
       </el-collapse-item>
       <el-collapse-item name="condition" v-if="elementType === 'Process'" key="message">
-        <template #title>
-          <Icon icon="ep:comment" />Messages & Signals
-        </template>
+        <template #title><Icon icon="ep:comment" />消息与信号</template>
         <signal-and-massage />
       </el-collapse-item>
       <el-collapse-item name="condition" v-if="conditionFormVisible" key="condition">
-        <template #title>
-          <Icon icon="ep:promotion" />Flow Conditions
-        </template>
+        <template #title><Icon icon="ep:promotion" />流转条件</template>
         <flow-condition :business-object="elementBusinessObject" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="condition" v-if="formVisible" key="form">
-        <template #title>
-          <Icon icon="ep:list" />Forms
-        </template>
+        <template #title><Icon icon="ep:list" />表单</template>
         <element-form :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="task" v-if="isTaskCollapseItemShow(elementType)" key="task">
@@ -34,48 +32,47 @@
         </template>
         <element-task :id="elementId" :type="elementType" />
       </el-collapse-item>
-      <el-collapse-item name="multiInstance" v-if="elementType.indexOf('Task') !== -1" key="multiInstance">
-        <template #title>
-          <Icon icon="ep:help-filled" />Multi-Instance
-        </template>
-        <element-multi-instance :id="elementId" :business-object="elementBusinessObject" :type="elementType" />
+      <el-collapse-item
+        name="multiInstance"
+        v-if="elementType.indexOf('Task') !== -1"
+        key="multiInstance"
+      >
+        <template #title><Icon icon="ep:help-filled" />多人审批方式</template>
+        <element-multi-instance
+          :id="elementId"
+          :business-object="elementBusinessObject"
+          :type="elementType"
+        />
       </el-collapse-item>
       <el-collapse-item name="listeners" key="listeners">
-        <template #title>
-          <Icon icon="ep:bell-filled" />Listener
-        </template>
+        <template #title><Icon icon="ep:bell-filled" />执行监听器</template>
         <element-listeners :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="taskListeners" v-if="elementType === 'UserTask'" key="taskListeners">
-        <template #title>
-          <Icon icon="ep:bell-filled" />Task Listener
-        </template>
+        <template #title><Icon icon="ep:bell-filled" />任务监听器</template>
         <user-task-listeners :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="extensions" key="extensions">
-        <template #title>
-          <Icon icon="ep:circle-plus-filled" />Extended properties
-        </template>
+        <template #title><Icon icon="ep:circle-plus-filled" />扩展属性</template>
         <element-properties :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="other" key="other">
-        <template #title>
-          <Icon icon="ep:promotion" />Other
-        </template>
+        <template #title><Icon icon="ep:promotion" />其他</template>
         <element-other-config :id="elementId" />
       </el-collapse-item>
       <el-collapse-item name="customConfig" key="customConfig">
-        <template #title>
-          <Icon icon="ep:tools" />Custom Configuration
-        </template>
-        <element-custom-config :id="elementId" :type="elementType" :business-object="elementBusinessObject" />
+        <template #title><Icon icon="ep:tools" />自定义配置</template>
+        <element-custom-config
+          :id="elementId"
+          :type="elementType"
+          :business-object="elementBusinessObject"
+        />
       </el-collapse-item>
       <!-- 新增的时间事件配置项 -->
       <el-collapse-item v-if="elementType === 'IntermediateCatchEvent'" name="timeEvent">
-        <template #title>
-          <Icon icon="ep:timer" />Time Event
-        </template>
-        <TimeEventConfig :businessObject="bpmnElement.value?.businessObject" :key="elementId" />
+        <template #title><Icon icon="ep:timer" />时间事件</template>
+        <!-- 相关 issue：https://gitee.com/yudaocode/yudao-ui-admin-vue3/issues/ICNRW2 -->
+        <TimeEventConfig :businessObject="elementBusinessObject" :key="elementId" />
       </el-collapse-item>
     </el-collapse>
   </div>
@@ -93,7 +90,7 @@ import ElementProperties from './properties/ElementProperties.vue'
 import UserTaskListeners from './listeners/UserTaskListeners.vue'
 import { getTaskCollapseItemName, isTaskCollapseItemShow } from './task/data'
 import TimeEventConfig from './time-event-config/TimeEventConfig.vue'
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch } from 'vue'
 
 defineOptions({ name: 'MyPropertiesPanel' })
 
@@ -106,7 +103,7 @@ defineOptions({ name: 'MyPropertiesPanel' })
 const props = defineProps({
   bpmnModeler: {
     type: Object,
-    default: () => { }
+    default: () => {}
   },
   prefix: {
     type: String,
@@ -114,7 +111,7 @@ const props = defineProps({
   },
   width: {
     type: Number,
-    default: 400
+    default: 480
   },
   idEditDisabled: {
     type: Boolean,
@@ -132,8 +129,6 @@ const formVisible = ref(false) // 表单配置
 const bpmnElement = ref()
 const isReady = ref(false)
 
-const type = ref('time')
-const condition = ref('')
 provide('prefix', props.prefix)
 provide('width', props.width)
 
@@ -170,7 +165,7 @@ const initBpmnInstances = () => {
 const bpmnInstances = () => (window as any)?.bpmnInstances
 
 // 监听 props.bpmnModeler 然后 initModels
-const unwatchBpmn = watch(
+watch(
   () => props.bpmnModeler,
   async () => {
     // 避免加载时 流程图 并未加载完成
@@ -268,48 +263,4 @@ watch(
     activeTab.value = 'base'
   }
 )
-
-function updateNode() {
-  const moddle = window.bpmnInstances?.moddle
-  const modeling = window.bpmnInstances?.modeling
-  const elementRegistry = window.bpmnInstances?.elementRegistry
-  if (!moddle || !modeling || !elementRegistry) return
-
-  const element = elementRegistry.get(props.businessObject.id)
-  if (!element) return
-
-  let timerDef = moddle.create('bpmn:TimerEventDefinition', {})
-  if (type.value === 'time') {
-    timerDef.timeDate = moddle.create('bpmn:FormalExpression', { body: condition.value })
-  } else if (type.value === 'duration') {
-    timerDef.timeDuration = moddle.create('bpmn:FormalExpression', { body: condition.value })
-  } else if (type.value === 'cycle') {
-    timerDef.timeCycle = moddle.create('bpmn:FormalExpression', { body: condition.value })
-  }
-
-  modeling.updateModdleProperties(element, element.businessObject, {
-    eventDefinitions: [timerDef]
-  })
-}
-
-// 初始化和监听
-function syncFromBusinessObject() {
-  if (props.businessObject) {
-    const timerDef = (props.businessObject.eventDefinitions || [])[0]
-    if (timerDef) {
-      if (timerDef.timeDate) {
-        type.value = 'time'
-        condition.value = timerDef.timeDate.body
-      } else if (timerDef.timeDuration) {
-        type.value = 'duration'
-        condition.value = timerDef.timeDuration.body
-      } else if (timerDef.timeCycle) {
-        type.value = 'cycle'
-        condition.value = timerDef.timeCycle.body
-      }
-    }
-  }
-}
-onMounted(syncFromBusinessObject)
-watch(() => props.businessObject, syncFromBusinessObject, { deep: true })
 </script>

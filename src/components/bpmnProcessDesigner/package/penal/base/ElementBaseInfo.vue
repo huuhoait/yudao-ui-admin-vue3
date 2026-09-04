@@ -3,22 +3,28 @@
     <el-form label-width="90px" :model="needProps" :rules="rules">
       <div v-if="needProps.type == 'bpmn:Process'">
         <!-- 如果是 Process 信息的时候，使用自定义表单 -->
-        <el-form-item :label="$t('bpm.design.processId')" prop="id">
+        <el-form-item label="流程标识" prop="id">
           <el-input
-v-model="needProps.id" :placeholder="$t('bpm.design.enterProcessId')"
-            :disabled="needProps.id !== undefined && needProps.id.length > 0" @change="handleKeyUpdate" />
+            v-model="needProps.id"
+            placeholder="请输入流标标识"
+            :disabled="needProps.id !== undefined && needProps.id.length > 0"
+            @change="handleKeyUpdate"
+          />
         </el-form-item>
-        <el-form-item :label="$t('bpm.design.processName')" prop="name">
+        <el-form-item label="流程名称" prop="name">
           <el-input
-v-model="needProps.name" :placeholder="$t('bpm.design.enterProcessName')" clearable
-            @change="handleNameUpdate" />
+            v-model="needProps.name"
+            placeholder="请输入流程名称"
+            clearable
+            @change="handleNameUpdate"
+          />
         </el-form-item>
       </div>
       <div v-else>
-        <el-form-item :label="$t('bpm.design.id')">
+        <el-form-item label="ID">
           <el-input v-model="elementBaseInfo.id" clearable @change="updateBaseInfo('id')" />
         </el-form-item>
-        <el-form-item :label="$t('bpm.design.name')">
+        <el-form-item label="名称">
           <el-input v-model="elementBaseInfo.name" clearable @change="updateBaseInfo('name')" />
         </el-form-item>
       </div>
@@ -31,23 +37,22 @@ defineOptions({ name: 'ElementBaseInfo' })
 const props = defineProps({
   businessObject: {
     type: Object,
-    default: () => { }
+    default: () => {}
   },
   model: {
     type: Object,
-    default: () => { }
+    default: () => {}
   }
 })
 const needProps = ref<any>({})
 const bpmnElement = ref()
 const elementBaseInfo = ref<any>({})
-const { t } = useI18n()
 // 流程表单的下拉框的数据
 // const forms = ref([])
 // 流程模型的校验
 const rules = reactive({
-  id: [{ required: true, message: t('bpm.design.processIdRequired'), trigger: 'blur' }],
-  name: [{ required: true, message: useI18n().t('bpm.design.processNameRequired'), trigger: 'blur' }]
+  id: [{ required: true, message: '流程标识不能为空', trigger: 'blur' }],
+  name: [{ required: true, message: '流程名称不能为空', trigger: 'blur' }]
 })
 
 const bpmnInstances = () => (window as any)?.bpmnInstances
@@ -70,10 +75,11 @@ const handleKeyUpdate = (value) => {
     return
   }
   if (!value.match(/[a-zA-Z_][\-_.0-9a-zA-Z$]*/)) {
-    console.log(t('bpm.design.xmlNCNameNotSatisfied'))
+    console.log('key 不满足 XML NCName 规则，所以不进行赋值')
     return
   }
-  console.log(t('bpm.design.xmlNCNameSatisfied'))
+  console.log('key 满足 XML NCName 规则，所以进行赋值')
+
   // 在 BPMN 的 XML 中，流程标识 key，其实对应的是 id 节点
   elementBaseInfo.value['id'] = value
 
@@ -99,19 +105,6 @@ const handleNameUpdate = (value) => {
 // }
 const updateBaseInfo = (key) => {
   console.log(key, 'key')
-
-  // Check if bpmnElement is available
-  if (!bpmnElement.value) {
-    console.error('bpmnElement is not available for updating properties')
-    return
-  }
-
-  const instances = bpmnInstances()
-  if (!instances?.modeling) {
-    console.error('bpmn modeling instance is not available')
-    return
-  }
-
   // 触发 elementBaseInfo 对应的字段
   const attrObj = Object.create(null)
   // console.log(attrObj, 'attrObj')

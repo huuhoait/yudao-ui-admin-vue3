@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="$t('bpm.form.index.docAlertTitle')" url="https://doc.iocoder.cn/bpm/use-bpm-form/" />
+  <doc-alert :title="t('bpm.form._todo5')" url="https://doc.iocoder.cn/bpm/use-bpm-form/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,27 +10,32 @@
       class="-mb-15px"
       label-width="68px"
     >
-      <el-form-item :label="$t('bpm.form.fields.name')" prop="name">
+      <el-form-item :label="t('bpm.form.formName')" prop="name">
         <el-input
           v-model="queryParams.name"
           class="!w-240px"
           clearable
-          :placeholder="$t('bpm.form.fields.namePlaceholder')"
+          :placeholder="t('bpm.form.inputFormName')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
       <el-form-item>
         <el-button @click="handleQuery">
           <Icon class="mr-5px" icon="ep:search" />
-          {{ $t('common.query') }}
+          {{ t('common.query') }}
         </el-button>
         <el-button @click="resetQuery">
           <Icon class="mr-5px" icon="ep:refresh" />
-          {{ $t('common.reset') }}
+          {{ t('common.reset') }}
         </el-button>
-        <el-button v-hasPermi="['bpm:form:create']" plain type="primary" @click="openForm">
+        <el-button
+          v-hasPermi="['bpm:form:create']"
+          plain
+          type="primary"
+          @click="openForm('create')"
+        >
           <Icon class="mr-5px" icon="ep:plus" />
-          {{ $t('common.add') }}
+          {{ t('bpm.form.create') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -39,21 +44,21 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column align="center" :label="$t('bpm.form.index.table.id')" prop="id" />
-      <el-table-column align="center" :label="$t('bpm.form.index.table.name')" prop="name" />
-      <el-table-column align="center" :label="$t('bpm.form.index.table.status')" prop="status">
+      <el-table-column align="center" :label="t('bpm.form.id')" prop="id" />
+      <el-table-column align="center" :label="t('bpm.form.formName')" prop="name" />
+      <el-table-column align="center" :label="t('common.status')" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column align="center" :label="$t('bpm.form.index.table.remark')" prop="remark" />
+      <el-table-column align="center" :label="t('bpm.form.remark')" prop="remark" />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="$t('bpm.form.index.table.createTime')"
+        :label="t('common.createTime')"
         prop="createTime"
       />
-      <el-table-column align="center" :label="$t('common.operation')">
+      <el-table-column align="center" :label="t('bpm.form.action')">
         <template #default="scope">
           <el-button
             v-hasPermi="['bpm:form:update']"
@@ -61,7 +66,7 @@
             type="primary"
             @click="openForm('copy', scope.row.id)"
           >
-            {{ $t('common.copy') }}
+            {{ t('common.copy') }}
           </el-button>
           <el-button
             v-hasPermi="['bpm:form:update']"
@@ -69,10 +74,10 @@
             type="primary"
             @click="openForm('update', scope.row.id)"
           >
-            {{ $t('common.edit') }}
+            {{ t('bpm.form.edit') }}
           </el-button>
           <el-button v-hasPermi="['bpm:form:query']" link @click="openDetail(scope.row.id)">
-            {{ $t('common.detail') }}
+            {{ t('bpm.form.detail') }}
           </el-button>
           <el-button
             v-hasPermi="['bpm:form:delete']"
@@ -80,7 +85,7 @@
             type="danger"
             @click="handleDelete(scope.row.id)"
           >
-            {{ $t('common.delete') }}
+            {{ t('bpm.form.delete') }}
           </el-button>
         </template>
       </el-table-column>
@@ -95,7 +100,7 @@
   </ContentWrap>
 
   <!-- 表单详情的弹窗 -->
-  <Dialog v-model="detailVisible" :title="$t('bpm.form.index.detailTitle')" width="800">
+  <Dialog v-model="detailVisible" :title="t('bpm.form.formDetail')" width="800">
     <form-create :option="detailData.option" :rule="detailData.rule" />
   </Dialog>
 </template>
@@ -114,7 +119,7 @@ const { currentRoute, push } = useRouter() // 路由
 
 const loading = ref(true) // 列表的加载中
 const total = ref(0) // 列表的总页数
-const list = ref([]) // 列表的数据
+const list = ref<FormApi.FormVO[]>([]) // 列表的数据
 const queryParams = reactive({
   pageNo: 1,
   pageSize: 10,

@@ -7,25 +7,25 @@
       :rules="formRules"
       label-width="80px"
     >
-      <el-form-item :label="t('sys.dept.parentId')" prop="parentId">
+      <el-form-item :label="t('system.dept._todo9')" prop="parentId">
         <el-tree-select
           v-model="formData.parentId"
           :data="deptTree"
           :props="defaultProps"
           check-strictly
           default-expand-all
-          :placeholder="t('sys.dept.selectParentDept')"
+          :placeholder="t('system.dept._todo10')"
           value-key="deptId"
         />
       </el-form-item>
-      <el-form-item :label="t('sys.dept.name')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('sys.dept.namePlaceholder')" />
+      <el-form-item :label="t('system.dept.deptName')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('system.dept.inputDeptName')" />
       </el-form-item>
-      <el-form-item :label="t('sys.dept.sort')" prop="sort">
+      <el-form-item :label="t('system.dept.displaySort')" prop="sort">
         <el-input-number v-model="formData.sort" :min="0" controls-position="right" />
       </el-form-item>
-      <el-form-item :label="t('sys.dept.leader')" prop="leaderUserId">
-        <el-select v-model="formData.leaderUserId" clearable :placeholder="t('sys.dept.leaderPlaceholder')">
+      <el-form-item :label="t('system.dept.owner')" prop="leaderUserId">
+        <el-select v-model="formData.leaderUserId" clearable :placeholder="t('system.dept.inputOwner')">
           <el-option
             v-for="item in userList"
             :key="item.id"
@@ -34,14 +34,14 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('sys.dept.phone')" prop="phone">
-        <el-input v-model="formData.phone" maxlength="11" :placeholder="t('sys.dept.phonePlaceholder')" />
+      <el-form-item :label="t('system.dept.contactPhone')" prop="phone">
+        <el-input v-model="formData.phone" maxlength="11" :placeholder="t('system.dept.inputContactPhone')" />
       </el-form-item>
-      <el-form-item :label="t('sys.dept.email')" prop="email">
-        <el-input v-model="formData.email" maxlength="50" :placeholder="t('sys.dept.emailPlaceholder')" />
+      <el-form-item :label="t('system.dept.email')" prop="email">
+        <el-input v-model="formData.email" maxlength="50" :placeholder="t('system.dept.inputEmail')" />
       </el-form-item>
-      <el-form-item :label="t('sys.dept.status')" prop="status">
-        <el-select v-model="formData.status" clearable :placeholder="t('sys.dept.selectStatus')">
+      <el-form-item :label="t('common.status')" prop="status">
+        <el-select v-model="formData.status" clearable :placeholder="t('system.dept.selectStatus')">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
             :key="dict.value"
@@ -86,14 +86,12 @@ const formData = ref({
   status: CommonStatusEnum.ENABLE
 })
 const formRules = reactive<FormRules>({
-  parentId: [{ required: true, message: t('sys.dept.parentIdRequired'), trigger: 'blur' }],
-  name: [{ required: true, message: t('sys.dept.nameRequired'), trigger: 'blur' }],
-  sort: [{ required: true, message: t('sys.dept.sortRequired'), trigger: 'blur' }],
-  email: [{ type: 'email', message: t('sys.dept.emailInvalid'), trigger: ['blur', 'change'] }],
-  phone: [
-    { pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/, message: t('sys.dept.phoneInvalid'), trigger: 'blur' }
-  ],
-  status: [{ required: true, message: t('sys.dept.selectStatus'), trigger: 'blur' }]
+  parentId: [{ required: true, message: t('system.dept._todo11'), trigger: 'blur' }],
+  name: [{ required: true, message: t('system.dept.deptNameRequired'), trigger: 'blur' }],
+  sort: [{ required: true, message: t('system.dept.displaySortRequired'), trigger: 'blur' }],
+  email: [{ type: 'email', message: t('system.dept._todo12'), trigger: ['blur', 'change'] }],
+  phone: [{ pattern: /^1[3-9]\d{9}$/, message: t('system.dept._todo13'), trigger: 'blur' }],
+  status: [{ required: true, message: t('system.dept.statusRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 const deptTree = ref() // 树形结构
@@ -167,7 +165,7 @@ const resetForm = () => {
 const getTree = async () => {
   deptTree.value = []
   const data = await DeptApi.getSimpleDeptList()
-  let dept: Tree = { id: 0, name: '顶级部门', children: [] }
+  let dept: Tree = { id: 0, name: t('system.dept._todo14'), children: [] }
   dept.children = handleTree(data)
   deptTree.value.push(dept)
 }

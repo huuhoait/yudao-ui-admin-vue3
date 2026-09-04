@@ -1,25 +1,25 @@
 <template>
-  <el-form-item label-position="top" :label="t('simpleProcessDesignerV2.httpRequestParamSetting.header')">
+  <el-form-item label-position="top" label="请求头">
     <div class="flex pb-4" v-for="(item, index) in props.header" :key="index">
       <div class="mr-2">
         <el-form-item
           :prop="`${bind}.header.${index}.key`"
           :rules="{
             required: true,
-            message: t('simpleProcessDesignerV2.httpRequestParamSetting.requiredParamKey'),
+            message: '参数名不能为空',
             trigger: 'blur'
           }"
         >
-          <el-input v-model="item.key" style="width: 160px" :placeholder="t('simpleProcessDesignerV2.httpRequestParamSetting.paramKeyPlaceholder')" />
+          <el-input v-model="item.key" style="width: 160px" />
         </el-form-item>
       </div>
       <div class="mr-2">
         <el-form-item>
-          <el-select v-model="item.type" style="width: 160px" :placeholder="t('simpleProcessDesignerV2.httpRequestParamSetting.paramType')" @change="handleTypeChange(item)">
+          <el-select v-model="item.type" style="width: 160px" @change="handleTypeChange(item)">
             <el-option
               v-for="types in BPM_HTTP_REQUEST_PARAM_TYPES"
               :key="types.value"
-              :label="t(types.label)"
+              :label="types.label"
               :value="types.value"
             />
           </el-select>
@@ -30,7 +30,7 @@
           :prop="`${bind}.header.${index}.value`"
           :rules="{
             required: true,
-            message: t('simpleProcessDesignerV2.httpRequestParamSetting.requiredParamValue'),
+            message: '参数值不能为空',
             trigger: 'blur'
           }"
         >
@@ -38,14 +38,13 @@
             v-if="item.type === BpmHttpRequestParamTypeEnum.FIXED_VALUE"
             v-model="item.value"
             style="width: 200px"
-            :placeholder="t('simpleProcessDesignerV2.httpRequestParamSetting.paramValuePlaceholder')"
           />
         </el-form-item>
         <el-form-item
           :prop="`${bind}.header.${index}.value`"
           :rules="{
             required: true,
-            message: t('simpleProcessDesignerV2.httpRequestParamSetting.requiredParamValue'),
+            message: '参数值不能为空',
             trigger: 'change'
           }"
         >
@@ -53,7 +52,6 @@
             v-if="item.type === BpmHttpRequestParamTypeEnum.FROM_FORM"
             v-model="item.value"
             style="width: 200px"
-            :placeholder="t('simpleProcessDesignerV2.httpRequestParamSetting.paramValuePlaceholder')"
           >
             <el-option
               v-for="(field, fIdx) in formFieldOptions"
@@ -66,34 +64,34 @@
         </el-form-item>
       </div>
       <div class="mr-1 flex items-center">
-        <Icon icon="ep:delete" :size="18" :title="t('simpleProcessDesignerV2.httpRequestParamSetting.deleteRow')" @click="deleteHttpRequestParam(props.header, index)" />
+        <Icon icon="ep:delete" :size="18" @click="deleteHttpRequestParam(props.header, index)" />
       </div>
     </div>
     <el-button type="primary" text @click="addHttpRequestParam(props.header)">
-      <Icon icon="ep:plus" class="mr-5px" />{{ t('simpleProcessDesignerV2.httpRequestParamSetting.addRow') }}
+      <Icon icon="ep:plus" class="mr-5px" />添加一行
     </el-button>
   </el-form-item>
-  <el-form-item label-position="top" :label="t('simpleProcessDesignerV2.httpRequestParamSetting.body')">
+  <el-form-item label-position="top" label="请求体">
     <div class="flex pb-4" v-for="(item, index) in props.body" :key="index">
       <div class="mr-2">
         <el-form-item
           :prop="`${bind}.body.${index}.key`"
           :rules="{
             required: true,
-            message: t('simpleProcessDesignerV2.httpRequestParamSetting.requiredParamKey'),
+            message: '参数名不能为空',
             trigger: 'blur'
           }"
         >
-          <el-input v-model="item.key" style="width: 160px" :placeholder="t('simpleProcessDesignerV2.httpRequestParamSetting.paramKeyPlaceholder')" />
+          <el-input v-model="item.key" style="width: 160px" />
         </el-form-item>
       </div>
       <div class="mr-2">
         <el-form-item>
-          <el-select v-model="item.type" style="width: 160px" :placeholder="t('simpleProcessDesignerV2.httpRequestParamSetting.paramType')" @change="handleTypeChange(item)">
+          <el-select v-model="item.type" style="width: 160px" @change="handleTypeChange(item)">
             <el-option
               v-for="types in BPM_HTTP_REQUEST_PARAM_TYPES"
               :key="types.value"
-              :label="t(types.label)"
+              :label="types.label"
               :value="types.value"
             />
           </el-select>
@@ -104,7 +102,7 @@
           :prop="`${bind}.body.${index}.value`"
           :rules="{
             required: true,
-            message: t('simpleProcessDesignerV2.httpRequestParamSetting.requiredParamValue'),
+            message: '参数值不能为空',
             trigger: 'blur'
           }"
         >
@@ -112,14 +110,13 @@
             v-if="item.type === BpmHttpRequestParamTypeEnum.FIXED_VALUE"
             v-model="item.value"
             style="width: 200px"
-            :placeholder="t('simpleProcessDesignerV2.httpRequestParamSetting.paramValuePlaceholder')"
           />
         </el-form-item>
         <el-form-item
           :prop="`${bind}.body.${index}.value`"
           :rules="{
             required: true,
-            message: t('simpleProcessDesignerV2.httpRequestParamSetting.requiredParamValue'),
+            message: '参数值不能为空',
             trigger: 'change'
           }"
         >
@@ -127,7 +124,6 @@
             v-if="item.type === BpmHttpRequestParamTypeEnum.FROM_FORM"
             v-model="item.value"
             style="width: 200px"
-            :placeholder="t('simpleProcessDesignerV2.httpRequestParamSetting.paramValuePlaceholder')"
           >
             <el-option
               v-for="(field, fIdx) in formFieldOptions"
@@ -140,25 +136,21 @@
         </el-form-item>
       </div>
       <div class="mr-1 flex items-center">
-        <Icon icon="ep:delete" :size="18" :title="t('simpleProcessDesignerV2.httpRequestParamSetting.deleteRow')" @click="deleteHttpRequestParam(props.body, index)" />
+        <Icon icon="ep:delete" :size="18" @click="deleteHttpRequestParam(props.body, index)" />
       </div>
     </div>
     <el-button type="primary" text @click="addHttpRequestParam(props.body)">
-      <Icon icon="ep:plus" class="mr-5px" />{{ t('simpleProcessDesignerV2.httpRequestParamSetting.addRow') }}
+      <Icon icon="ep:plus" class="mr-5px" />添加一行
     </el-button>
   </el-form-item>
 </template>
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
 import {
   HttpRequestParam,
   BPM_HTTP_REQUEST_PARAM_TYPES,
   BpmHttpRequestParamTypeEnum
 } from '../../consts'
 import { useFormFieldsAndStartUser } from '../../node'
-
-const { t } = useI18n()
-
 defineOptions({
   name: 'HttpRequestParamSetting'
 })

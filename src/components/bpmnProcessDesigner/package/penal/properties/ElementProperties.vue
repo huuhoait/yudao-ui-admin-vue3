@@ -1,13 +1,13 @@
 <template>
   <div class="panel-tab__content">
     <el-table :data="elementPropertyList" max-height="240" fit border>
-      <el-table-column :label="$t('bpm.design.index')" width="50px" type="index" />
-      <el-table-column :label="$t('bpm.design.propertyName')" prop="name" min-width="100px" show-overflow-tooltip />
-      <el-table-column :label="$t('bpm.design.propertyValue')" prop="value" min-width="100px" show-overflow-tooltip />
-      <el-table-column :label="$t('bpm.design.action')" width="110px">
+      <el-table-column label="序号" width="50px" type="index" />
+      <el-table-column label="属性名" prop="name" min-width="100px" show-overflow-tooltip />
+      <el-table-column label="属性值" prop="value" min-width="100px" show-overflow-tooltip />
+      <el-table-column label="操作" width="110px">
         <template #default="scope">
           <el-button link @click="openAttributesForm(scope.row, scope.$index)" size="small">
-            {{ $t('bpm.design.edit') }}
+            编辑
           </el-button>
           <el-divider direction="vertical" />
           <el-button
@@ -16,38 +16,35 @@
             style="color: #ff4d4f"
             @click="removeAttributes(scope.row, scope.$index)"
           >
-            {{ $t('bpm.design.remove') }}
+            移除
           </el-button>
         </template>
       </el-table-column>
     </el-table>
     <div class="element-drawer__button">
-      <XButton
-        type="primary"
-        preIcon="ep:plus"
-        :title="$t('bpm.design.addProperty')"
-        @click="openAttributesForm(null, -1)"
-      />
+      <el-button type="primary" @click="openAttributesForm(null, -1)">
+        <Icon icon="ep:plus" class="mr-1px" /> 添加属性
+      </el-button>
     </div>
 
     <el-dialog
       v-model="propertyFormModelVisible"
-      :title="$t('bpm.design.propertyConfig')"
+      title="属性配置"
       width="600px"
       append-to-body
       destroy-on-close
     >
       <el-form :model="propertyForm" label-width="80px" ref="attributeFormRef">
-        <el-form-item :label="$t('bpm.design.propertyNameLabel')" prop="name">
+        <el-form-item label="属性名：" prop="name">
           <el-input v-model="propertyForm.name" clearable />
         </el-form-item>
-        <el-form-item :label="$t('bpm.design.propertyValueLabel')" prop="value">
+        <el-form-item label="属性值：" prop="value">
           <el-input v-model="propertyForm.value" clearable />
         </el-form-item>
       </el-form>
       <template #footer>
-        <el-button @click="propertyFormModelVisible = false">{{ $t('bpm.design.cancel') }}</el-button>
-        <el-button type="primary" @click="saveAttribute">{{ $t('bpm.design.confirm') }}</el-button>
+        <el-button @click="propertyFormModelVisible = false">取 消</el-button>
+        <el-button type="primary" @click="saveAttribute">确 定</el-button>
       </template>
     </el-dialog>
   </div>
@@ -67,7 +64,6 @@ const elementPropertyList = ref<any[]>([])
 const propertyForm = ref<any>({})
 const editingPropertyIndex = ref(-1)
 const propertyFormModelVisible = ref(false)
-const bpmnElement = ref()
 const otherExtensionList = ref()
 const bpmnElementProperties = ref()
 const bpmnElementPropertyList = ref()
@@ -75,16 +71,21 @@ const attributeFormRef = ref()
 const bpmnInstances = () => (window as any)?.bpmnInstances
 
 const resetAttributesList = () => {
-  bpmnElement.value = bpmnInstances().bpmnElement
+  const instances = bpmnInstances()
+  if (!instances || !instances.bpmnElement) return
+
+  // 直接使用原始BPMN元素，避免Vue响应式代理问题
+  const bpmnElement = instances.bpmnElement
+  const businessObject = bpmnElement.businessObject
+
   otherExtensionList.value = [] // 其他扩展配置
   bpmnElementProperties.value =
-    // bpmnElement.value.businessObject?.extensionElements?.filter((ex) => {
-    bpmnElement.value.businessObject?.extensionElements?.values?.filter((ex) => {
+    businessObject?.extensionElements?.values?.filter((ex) => {
       if (ex.$type !== `${prefix}:Properties`) {
         otherExtensionList.value.push(ex)
       }
       return ex.$type === `${prefix}:Properties`
-    }) ?? [];
+    }) ?? []
 
   // 保存所有的 扩展属性字段
   bpmnElementPropertyList.value = bpmnElementProperties.value.reduce(
@@ -123,10 +124,15 @@ const removeAttributes = (attr, index) => {
 const saveAttribute = () => {
   console.log(propertyForm.value, 'propertyForm.value')
   const { name, value } = propertyForm.value
+  const instances = bpmnInstances()
+  if (!instances || !instances.bpmnElement) return
+
+  const bpmnElement = instances.bpmnElement
+
   if (editingPropertyIndex.value !== -1) {
-    bpmnInstances().modeling.updateModdleProperties(
-      toRaw(bpmnElement.value),
-      toRaw(bpmnElementPropertyList.value)[toRaw(editingPropertyIndex.value)],
+    instances.modeling.updateModdleProperties(
+      bpmnElement,
+      bpmnElementPropertyList.value[editingPropertyIndex.value],
       {
         name,
         value
@@ -134,12 +140,12 @@ const saveAttribute = () => {
     )
   } else {
     // 新建属性字段
-    const newPropertyObject = bpmnInstances().moddle.create(`${prefix}:Property`, {
+    const newPropertyObject = instances.moddle.create(`${prefix}:Property`, {
       name,
       value
     })
     // 新建一个属性字段的保存列表
-    const propertiesObject = bpmnInstances().moddle.create(`${prefix}:Properties`, {
+    const propertiesObject = instances.moddle.create(`${prefix}:Properties`, {
       values: bpmnElementPropertyList.value.concat([newPropertyObject])
     })
     updateElementExtensions(propertiesObject)
@@ -148,10 +154,14 @@ const saveAttribute = () => {
   resetAttributesList()
 }
 const updateElementExtensions = (properties) => {
-  const extensions = bpmnInstances().moddle.create('bpmn:ExtensionElements', {
+  const instances = bpmnInstances()
+  if (!instances || !instances.bpmnElement) return
+
+  const bpmnElement = instances.bpmnElement
+  const extensions = instances.moddle.create('bpmn:ExtensionElements', {
     values: otherExtensionList.value.concat([properties])
   })
-  bpmnInstances().modeling.updateProperties(toRaw(bpmnElement.value), {
+  instances.modeling.updateProperties(bpmnElement, {
     extensionElements: extensions
   })
 }

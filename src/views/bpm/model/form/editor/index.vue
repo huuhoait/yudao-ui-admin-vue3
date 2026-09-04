@@ -38,6 +38,7 @@ import { BpmModelFormType } from '@/utils/constants'
 import * as FormApi from '@/api/bpm/form'
 
 defineOptions({ name: 'BpmModelEditor' })
+const { t } = useI18n() // 国际化
 
 defineProps<{
   modelId?: string
@@ -62,7 +63,6 @@ const xmlString = inject('processData') as Ref
 const modelData = inject('modelData') as Ref
 
 const modeler = shallowRef() // BPMN Modeler
-const processDesigner = ref()
 const controlForm = ref({
   simulation: true,
   labelEditing: false,
@@ -86,8 +86,8 @@ const save = async (bpmnXml: string) => {
     xmlString.value = bpmnXml
     emit('success', bpmnXml)
   } catch (error) {
-    console.error('保存失败:', error)
-    message.error('保存失败')
+    console.error(t('bpm.model.form.editor._todo127'), error)
+    message.error(t('bpm.model.form.editor._todo128'))
   }
 }
 

@@ -26,14 +26,23 @@ import * as ProductSpuApi from '@/api/mall/product/spu'
 import * as TradeStatisticsApi from '@/api/mall/statistics/trade'
 import * as PayStatisticsApi from '@/api/mall/statistics/pay'
 import { CardTitle } from '@/components/Card'
+import { fenToYuan } from '@/utils'
 
 /** 运营数据卡片 */
 defineOptions({ name: 'OperationDataCard' })
 
 const router = useRouter() // 路由
 
+type OperationDataItem = {
+  name: string
+  value: number
+  routerName: string
+  prefix?: string
+  decimals?: number
+}
+
 /** 数据 */
-const data = reactive({
+const data = reactive<Record<string, OperationDataItem>>({
   orderUndelivered: { name: '待发货订单', value: 9, routerName: 'TradeOrder' },
   orderAfterSaleApply: { name: '退款中订单', value: 4, routerName: 'TradeAfterSale' },
   orderWaitePickUp: { name: '待核销订单', value: 0, routerName: 'TradeOrder' },
@@ -78,7 +87,7 @@ const getProductData = async () => {
 /** 查询钱包充值数据 */
 const getWalletRechargeData = async () => {
   const paySummary = await PayStatisticsApi.getWalletRechargePrice()
-  data.rechargePrice.value = paySummary.rechargePrice
+  data.rechargePrice.value = Number(fenToYuan(paySummary.rechargePrice || 0))
 }
 
 /**

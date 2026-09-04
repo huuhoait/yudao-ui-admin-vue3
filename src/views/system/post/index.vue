@@ -8,26 +8,26 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="t('sys.post.name')" prop="name">
+      <el-form-item :label="t('system.post.postName')" prop="name">
         <el-input
           v-model="queryParams.name"
-          :placeholder="t('sys.post.namePlaceholder')"
+          :placeholder="t('system.post.inputPostName')"
           clearable
           class="!w-240px"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item :label="t('sys.post.code')" prop="code">
+      <el-form-item :label="t('system.post.postCode')" prop="code">
         <el-input
           v-model="queryParams.code"
-          :placeholder="t('sys.post.codePlaceholder')"
+          :placeholder="t('system.post.inputPostCode')"
           clearable
           class="!w-240px"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item :label="t('sys.post.status')" prop="status">
-        <el-select v-model="queryParams.status" :placeholder="t('sys.post.selectStatus')" clearable class="!w-240px">
+      <el-form-item :label="t('common.status')" prop="status">
+        <el-select v-model="queryParams.status" :placeholder="t('system.post.selectStatus')" clearable class="!w-240px">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
             :key="dict.value"
@@ -45,7 +45,7 @@
           @click="openForm('create')"
           v-hasPermi="['system:post:create']"
         >
-          <Icon icon="ep:plus" class="mr-5px" /> {{ t('action.create') }}
+          <Icon icon="ep:plus" class="mr-5px" /> {{ t('system.post.create') }}
         </el-button>
         <el-button
           type="success"
@@ -54,7 +54,7 @@
           :loading="exportLoading"
           v-hasPermi="['system:post:export']"
         >
-          <Icon icon="ep:download" class="mr-5px" /> {{ t('action.export') }}
+          <Icon icon="ep:download" class="mr-5px" /> {{ t('system.post.export') }}
         </el-button>
         <el-button
           type="danger"
@@ -63,7 +63,7 @@
           @click="handleDeleteBatch"
           v-hasPermi="['system:post:delete']"
         >
-          <Icon icon="ep:delete" class="mr-5px" /> {{ t('action.delete') }}
+          <Icon icon="ep:delete" class="mr-5px" /> {{ t('system.post.deleteBatch') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -73,24 +73,24 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column :label="t('common.index')" align="center" prop="id" />
-      <el-table-column :label="t('sys.post.name')" align="center" prop="name" />
-      <el-table-column :label="t('sys.post.code')" align="center" prop="code" />
-      <el-table-column :label="t('sys.post.sort')" align="center" prop="sort" />
-      <el-table-column :label="t('sys.post.remark')" align="center" prop="remark" />
-      <el-table-column :label="t('sys.post.status')" align="center" prop="status">
+      <el-table-column :label="t('system.post._todo212')" align="center" prop="id" />
+      <el-table-column :label="t('system.post.postName')" align="center" prop="name" />
+      <el-table-column :label="t('system.post.postCode')" align="center" prop="code" />
+      <el-table-column :label="t('system.post._todo206')" align="center" prop="sort" />
+      <el-table-column :label="t('system.post._todo213')" align="center" prop="remark" />
+      <el-table-column :label="t('common.status')" align="center" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
       <el-table-column
-        :label="t('sys.post.createTime')"
+        :label="t('common.createTime')"
         align="center"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('sys.post.operation')" align="center">
+      <el-table-column :label="t('system.post.action')" align="center">
         <template #default="scope">
           <el-button
             link
@@ -98,7 +98,7 @@
             @click="openForm('update', scope.row.id)"
             v-hasPermi="['system:post:update']"
           >
-            {{ t('action.edit') }}
+            {{ t('system.post.edit') }}
           </el-button>
           <el-button
             link
@@ -106,7 +106,7 @@
             @click="handleDelete(scope.row.id)"
             v-hasPermi="['system:post:delete']"
           >
-            {{ t('action.delete') }}
+            {{ t('system.post.delete') }}
           </el-button>
         </template>
       </el-table-column>
@@ -194,7 +194,7 @@ const handleDelete = async (id: number) => {
 /** 批量删除按钮操作 */
 const checkedIds = ref<number[]>([])
 const handleRowCheckboxChange = (rows: PostApi.PostVO[]) => {
-  checkedIds.value = rows.map((row) => row.id)
+  checkedIds.value = rows.map((row) => row.id!)
 }
 
 const handleDeleteBatch = async () => {
@@ -203,6 +203,7 @@ const handleDeleteBatch = async () => {
     await message.delConfirm()
     // 发起批量删除
     await PostApi.deletePostList(checkedIds.value)
+    checkedIds.value = []
     message.success(t('common.delSuccess'))
     // 刷新列表
     await getList()

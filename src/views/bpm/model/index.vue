@@ -1,7 +1,7 @@
 <template>
   <ContentWrap>
     <div class="flex justify-between pl-20px items-center">
-      <h3 class="font-extrabold">{{ $t('bpm.model.index.title') }}</h3>
+      <h3 class="font-extrabold">{{ t('bpm.model._todo154') }}</h3>
       <!-- 搜索工作栏 -->
       <el-form
         v-if="!isCategorySorting"
@@ -15,7 +15,7 @@
         <el-form-item prop="name" class="ml-auto">
           <el-input
             v-model="queryParams.name"
-            :placeholder="$t('bpm.model.index.searchPlaceholder')"
+            :placeholder="t('bpm.model._todo153')"
             clearable
             @keyup.enter="handleQuery"
             class="!w-240px"
@@ -28,7 +28,12 @@
         <!-- 右上角：新建模型、更多操作 -->
         <el-form-item>
           <el-button type="primary" @click="openForm('create')" v-hasPermi="['bpm:model:create']">
-            <Icon icon="ep:plus" class="mr-5px" /> {{ $t('bpm.model.index.createModel') }}
+            <Icon icon="ep:plus" class="mr-5px" /> {{ t('bpm.model._todo155') }}
+          </el-button>
+        </el-form-item>
+        <el-form-item>
+          <el-button @click="modelImportFormRef?.open()" v-hasPermi="['bpm:model:import']">
+            <Icon icon="ep:upload" class="mr-5px" /> {{ t('bpm.model._todo156') }}
           </el-button>
         </el-form-item>
         <el-form-item>
@@ -40,11 +45,11 @@
               <el-dropdown-menu>
                 <el-dropdown-item command="handleCategoryAdd">
                   <Icon icon="ep:circle-plus" :size="13" class="mr-5px" />
-                  {{ $t('bpm.model.index.createCategory') }}
+                  {{ t('bpm.model._todo157') }}
                 </el-dropdown-item>
                 <el-dropdown-item command="handleCategorySort">
                   <Icon icon="fa:sort-amount-desc" :size="13" class="mr-5px" />
-                  {{ $t('bpm.model.index.sortCategory') }}
+                  {{ t('bpm.model.categorySort') }}
                 </el-dropdown-item>
               </el-dropdown-menu>
             </template>
@@ -52,10 +57,8 @@
         </el-form-item>
       </el-form>
       <div class="mr-20px" v-else>
-        <el-button @click="handleCategorySortCancel"> {{ $t('common.cancel') }} </el-button>
-        <el-button type="primary" @click="handleCategorySortSubmit">
-          {{ $t('bpm.model.index.saveSort') }}
-        </el-button>
+        <el-button @click="handleCategorySortCancel"> {{ t('common.cancel') }} </el-button>
+        <el-button type="primary" @click="handleCategorySortSubmit"> {{ t('bpm.model._todo21') }} </el-button>
       </div>
     </div>
 
@@ -89,8 +92,9 @@
 
   <!-- 表单弹窗：添加分类 -->
   <CategoryForm ref="categoryFormRef" @success="getList" />
+  <ModelImportForm ref="modelImportFormRef" @success="getList" />
   <!-- 弹窗：表单详情 -->
-  <Dialog :title="$t('bpm.model.index.formDetailTitle')" v-model="formDetailVisible" width="800">
+  <Dialog :title="t('bpm.model.formDetail')" v-model="formDetailVisible" width="800">
     <form-create :rule="formDetailPreview.rule" :option="formDetailPreview.option" />
   </Dialog>
 </template>
@@ -102,20 +106,21 @@ import * as ModelApi from '@/api/bpm/model'
 import CategoryForm from '../category/CategoryForm.vue'
 import { cloneDeep } from 'lodash-es'
 import CategoryDraggableModel from './CategoryDraggableModel.vue'
+import ModelImportForm from './ModelImportForm.vue'
 
 defineOptions({ name: 'BpmModel' })
+const { t } = useI18n() // 国际化
 
 const { push } = useRouter()
 const message = useMessage() // 消息弹窗
-const { t } = useI18n() // 国际化
 const loading = ref(true) // 列表的加载中
 const isCategorySorting = ref(false) // 是否 category 正处于排序状态
 const queryParams = reactive({
   name: undefined
 })
-const queryFormRef = ref() // 搜索的表单
 const categoryGroup: any = ref([]) // 按照 category 分组的数据
 const originalData: any = ref([]) // 原始数据
+const modelImportFormRef = ref<InstanceType<typeof ModelImportForm>>()
 
 /** 搜索按钮操作 */
 const handleQuery = () => {
@@ -182,7 +187,7 @@ const handleCategorySortSubmit = async () => {
   await CategoryApi.updateCategorySortBatch(ids)
   // 刷新列表
   isCategorySorting.value = false
-  message.success(t('bpm.model.index.sortSuccess'))
+  message.success(t('bpm.model._todo158'))
   await getList()
 }
 
@@ -215,12 +220,15 @@ onActivated(() => {
   .el-table--fit .el-table__inner-wrapper::before {
     height: 0;
   }
+
   .el-card {
     border-radius: 8px;
   }
+
   .el-form--inline .el-form-item {
     margin-right: 10px;
   }
+
   .el-divider--horizontal {
     margin-top: 6px;
   }

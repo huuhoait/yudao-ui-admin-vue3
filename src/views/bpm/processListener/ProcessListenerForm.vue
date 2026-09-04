@@ -7,10 +7,10 @@
       label-width="110px"
       v-loading="formLoading"
     >
-      <el-form-item :label="t('bpm.processListener.form.name')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('bpm.processListener.form.namePlaceholder')" />
+      <el-form-item :label="t('bpm.processListener.name')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('bpm.processListener.inputName')" />
       </el-form-item>
-      <el-form-item :label="t('bpm.processListener.form.status')" prop="status">
+      <el-form-item :label="t('common.status')" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -21,10 +21,10 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :label="t('bpm.processListener.form.type')" prop="type">
+      <el-form-item :label="t('bpm.processListener.type')" prop="type">
         <el-select
           v-model="formData.type"
-          :placeholder="t('bpm.processListener.form.typePlaceholder')"
+          :placeholder="t('bpm.processListener.selectType')"
           @change="formData.event = undefined"
         >
           <el-option
@@ -35,23 +35,20 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('bpm.processListener.form.event')" prop="event">
-        <el-select v-model="formData.event" :placeholder="t('bpm.processListener.form.eventPlaceholder')">
+      <el-form-item :label="t('bpm.processListener._todo247')" prop="event">
+        <el-select v-model="formData.event" :placeholder="t('bpm.processListener._todo248')">
           <el-option
             v-for="event in formData.type == 'execution'
-              ? ['start', 'end']
-              : ['create', 'assignment', 'complete', 'delete', 'update', 'timeout']"
+              ? ['开始', '结束']
+              : ['创建', '指派', '完成', '删除', '更新', '超时']"
             :label="event"
             :value="event"
             :key="event"
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('bpm.processListener.form.valueType')" prop="valueType">
-        <el-select
-          v-model="formData.valueType"
-          :placeholder="t('bpm.processListener.form.valueTypePlaceholder')"
-        >
+      <el-form-item :label="t('bpm.processListener._todo249')" prop="valueType">
+        <el-select v-model="formData.valueType" :placeholder="t('bpm.processListener._todo250')">
           <el-option
             v-for="dict in getStrDictOptions(DICT_TYPE.BPM_PROCESS_LISTENER_VALUE_TYPE)"
             :key="dict.value"
@@ -60,17 +57,15 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('bpm.processListener.form.classPath')" prop="value" v-if="formData.type == 'class'">
-        <el-input v-model="formData.value" :placeholder="t('bpm.processListener.form.classPathPlaceholder')" />
+      <el-form-item :label="t('bpm.processListener._todo251')" prop="value" v-if="formData.type == 'class'">
+        <el-input v-model="formData.value" :placeholder="t('bpm.processListener._todo252')" />
       </el-form-item>
-      <el-form-item :label="t('bpm.processListener.form.expression')" prop="value" v-else>
-        <el-input v-model="formData.value" :placeholder="t('bpm.processListener.form.expressionPlaceholder')" />
+      <el-form-item :label="t('bpm.processListener.expression')" prop="value" v-else>
+        <el-input v-model="formData.value" :placeholder="t('bpm.processListener.inputExpression')" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="submitForm" type="primary" :disabled="formLoading">
-        {{ t('common.confirm') }}
-      </el-button>
+      <el-button @click="submitForm" type="primary" :disabled="formLoading">{{ t('common.ok') }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
@@ -91,21 +86,21 @@ const dialogTitle = ref('') // 弹窗的标题
 const formLoading = ref(false) // 表单的加载中：1）修改时的数据加载；2）提交的按钮禁用
 const formType = ref('') // 表单的类型：create - 新增；update - 修改
 const formData = ref({
-  id: undefined,
-  name: undefined,
-  type: undefined,
-  status: undefined,
-  event: undefined,
-  valueType: undefined,
-  value: undefined
+  id: undefined as number | undefined,
+  name: undefined as string | undefined,
+  type: undefined as string | undefined,
+  status: undefined as number | undefined,
+  event: undefined as string | undefined,
+  valueType: undefined as string | undefined,
+  value: undefined as string | undefined
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('bpm.processListener.form.rules.name'), trigger: 'blur' }],
-  type: [{ required: true, message: t('bpm.processListener.form.rules.type'), trigger: 'change' }],
-  status: [{ required: true, message: t('bpm.processListener.form.rules.status'), trigger: 'blur' }],
-  event: [{ required: true, message: t('bpm.processListener.form.rules.event'), trigger: 'blur' }],
-  valueType: [{ required: true, message: t('bpm.processListener.form.rules.valueType'), trigger: 'change' }],
-  value: [{ required: true, message: t('bpm.processListener.form.rules.value'), trigger: 'blur' }]
+  name: [{ required: true, message: t('bpm.processListener.nameRequired'), trigger: 'blur' }],
+  type: [{ required: true, message: t('bpm.processListener.typeRequired'), trigger: 'change' }],
+  status: [{ required: true, message: t('bpm.processListener.statusRequired'), trigger: 'blur' }],
+  event: [{ required: true, message: t('bpm.processListener._todo253'), trigger: 'blur' }],
+  valueType: [{ required: true, message: t('bpm.processListener._todo254'), trigger: 'change' }],
+  value: [{ required: true, message: t('bpm.processListener._todo255'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

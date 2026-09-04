@@ -33,9 +33,9 @@
           <Icon v-if="!readonly" icon="ep:arrow-right-bold" />
         </div>
         <div v-if="!readonly" class="node-toolbar">
-          <div class="toolbar-icon"
-            ><Icon color="#0089ff" icon="ep:circle-close-filled" :size="18" @click="deleteNode"
-          /></div>
+          <div class="toolbar-icon">
+            <Icon color="#0089ff" icon="ep:circle-close-filled" :size="18" @click="deleteNode" />
+          </div>
         </div>
       </div>
 
@@ -61,7 +61,6 @@ import DelayTimerNodeConfig from '../nodes-config/DelayTimerNodeConfig.vue'
 defineOptions({
   name: 'DelayTimerNode'
 })
-const { t } = useI18n()
 const props = defineProps({
   flowNode: {
     type: Object as () => SimpleFlowNode,

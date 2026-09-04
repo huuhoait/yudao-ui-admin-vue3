@@ -7,17 +7,17 @@
       :rules="formRules"
       label-width="80px"
     >
-      <el-form-item :label="t('sys.role.name')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('sys.role.namePlaceholder')" />
+      <el-form-item :label="t('system.role.roleName')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('system.role.inputRoleName')" />
       </el-form-item>
-      <el-form-item :label="t('sys.role.code')" prop="code">
-        <el-input v-model="formData.code" :placeholder="t('sys.role.codePlaceholder')" />
+      <el-form-item :label="t('system.role.roleKey')" prop="code">
+        <el-input v-model="formData.code" :placeholder="t('system.role.inputRoleKey')" />
       </el-form-item>
-      <el-form-item :label="t('sys.role.sort')" prop="sort">
-        <el-input v-model="formData.sort" :placeholder="t('sys.role.sortPlaceholder')" />
+      <el-form-item :label="t('system.role._todo226')" prop="sort">
+        <el-input v-model="formData.sort" :placeholder="t('system.role._todo227')" />
       </el-form-item>
-      <el-form-item :label="t('sys.role.status')" prop="status">
-        <el-select v-model="formData.status" clearable :placeholder="t('common.selectText')">
+      <el-form-item :label="t('common.status')" prop="status">
+        <el-select v-model="formData.status" clearable :placeholder="t('system.role.selectStatus')">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
             :key="dict.value"
@@ -26,8 +26,8 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('sys.role.remark')" prop="remark">
-        <el-input v-model="formData.remark" :placeholder="t('sys.role.remarkPlaceholder')" type="textarea" />
+      <el-form-item :label="t('system.role.remark')" prop="remark">
+        <el-input v-model="formData.remark" :placeholder="t('system.role._todo228')" type="textarea" />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -59,11 +59,11 @@ const formData = ref({
   remark: ''
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('sys.role.nameRequired'), trigger: 'blur' }],
-  code: [{ required: true, message: t('sys.role.codeRequired'), trigger: 'change' }],
-  sort: [{ required: true, message: t('sys.role.sortRequired'), trigger: 'change' }],
-  status: [{ required: true, message: t('sys.role.statusRequired'), trigger: 'change' }],
-  remark: [{ required: false, message: t('sys.role.remarkPlaceholder'), trigger: 'blur' }]
+  name: [{ required: true, message: t('system.role.roleNameRequired'), trigger: 'blur' }],
+  code: [{ required: true, message: t('system.role.roleKeyRequired'), trigger: 'change' }],
+  sort: [{ required: true, message: t('system.role._todo229'), trigger: 'change' }],
+  status: [{ required: true, message: t('system.role.statusRequired'), trigger: 'change' }],
+  remark: [{ required: false, message: t('system.role.remarkRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

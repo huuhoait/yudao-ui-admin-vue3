@@ -1,22 +1,22 @@
 <template>
-  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" :title="t('sys.notify.my.detail')">
+  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" :title="t('system.notify.my._todo134')">
     <el-descriptions :column="1" border>
-      <el-descriptions-item :label="t('sys.notify.my.sender')">
+      <el-descriptions-item :label="t('system.notify.my._todo135')">
         {{ detailData.templateNickname }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.notify.my.sendTime')">
+      <el-descriptions-item :label="t('system.notify.my.sendTime')">
         {{ formatDate(detailData.createTime) }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.notify.my.type')">
+      <el-descriptions-item :label="t('system.notify.my._todo136')">
         <dict-tag :type="DICT_TYPE.SYSTEM_NOTIFY_TEMPLATE_TYPE" :value="detailData.templateType" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.notify.my.isRead')">
+      <el-descriptions-item :label="t('system.notify.my._todo137')">
         <dict-tag :type="DICT_TYPE.INFRA_BOOLEAN_STRING" :value="detailData.readStatus" />
       </el-descriptions-item>
-      <el-descriptions-item v-if="detailData.readStatus" :label="t('sys.notify.my.readTime')">
+      <el-descriptions-item v-if="detailData.readStatus" :label="t('system.notify.my.readTime')">
         {{ formatDate(detailData.readTime) }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.notify.my.content')">
+      <el-descriptions-item :label="t('system.notify.my._todo138')">
         {{ detailData.templateContent }}
       </el-descriptions-item>
     </el-descriptions>
@@ -28,8 +28,6 @@ import { formatDate } from '@/utils/formatTime'
 import * as NotifyMessageApi from '@/api/system/notify/message'
 
 defineOptions({ name: 'MyNotifyMessageDetailDetail' })
-
-const { t } = useI18n() // 国际化
 
 const dialogVisible = ref(false) // 弹窗的是否展示
 const detailLoading = ref(false) // 表单的加载中

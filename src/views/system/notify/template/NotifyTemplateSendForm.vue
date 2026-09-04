@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('sys.notify.template.test')" :max-height="500">
+  <Dialog v-model="dialogVisible" :title="t('system.notify.template._todo153')" :max-height="500">
     <el-form
       ref="formRef"
       v-loading="formLoading"
@@ -7,15 +7,15 @@
       :rules="formRules"
       label-width="140px"
     >
-      <el-form-item :label="t('sys.notify.template.content')" prop="content">
+      <el-form-item :label="t('system.notify.template.templateContent')" prop="content">
         <el-input
           v-model="formData.content"
-          :placeholder="t('sys.notify.template.contentPlaceholder')"
+          :placeholder="t('system.notify.template.inputTemplateContent')"
           readonly
           type="textarea"
         />
       </el-form-item>
-      <el-form-item :label="t('sys.notify.template.userType')" prop="userType">
+      <el-form-item :label="t('system.notify.template.userType')" prop="userType">
         <el-radio-group v-model="formData.userType">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.USER_TYPE)"
@@ -26,11 +26,11 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-show="formData.userType === 1" :label="t('sys.notify.template.userId')" prop="userId">
+      <el-form-item v-show="formData.userType === 1" :label="t('system.notify.template._todo154')" prop="userId">
         <el-input v-model="formData.userId" style="width: 160px" />
       </el-form-item>
-      <el-form-item v-show="formData.userType === 2" :label="t('sys.notify.template.userId')" prop="userId">
-        <el-select v-model="formData.userId" :placeholder="t('sys.notify.template.userPlaceholder')">
+      <el-form-item v-show="formData.userType === 2" :label="t('system.notify.template._todo155')" prop="userId">
+        <el-select v-model="formData.userId" :placeholder="t('system.notify.template._todo156')">
           <el-option
             v-for="item in userOption"
             :key="item.id"
@@ -42,12 +42,12 @@
       <el-form-item
         v-for="param in formData.params"
         :key="param"
-        :label="t('common.param') + ' {' + param + '}'"
+        :label="'参数 {' + param + '}'"
         :prop="'templateParams.' + param"
       >
         <el-input
           v-model="formData.templateParams[param]"
-          :placeholder="t('common.paramPlaceholder', { param: param })"
+          :placeholder="'请输入 ' + param + ' 参数'"
         />
       </el-form-item>
     </el-form>
@@ -63,9 +63,9 @@ import * as NotifyTemplateApi from '@/api/system/notify/template'
 import { DICT_TYPE, getIntDictOptions } from '@/utils/dict'
 
 defineOptions({ name: 'SystemNotifyTemplateSendForm' })
+const { t } = useI18n() // 国际化
 
 const message = useMessage() // 消息弹窗
-const { t } = useI18n() // 国际化
 
 const dialogVisible = ref(false) // 弹窗的是否展示
 const formLoading = ref(false) // 表单的加载中：1）修改时的数据加载；2）提交的按钮禁用
@@ -78,8 +78,8 @@ const formData = ref({
   templateParams: new Map()
 })
 const formRules = reactive({
-  userId: [{ required: true, message: t('sys.notify.template.userIdRequired'), trigger: 'change' }],
-  templateCode: [{ required: true, message: t('sys.notify.template.templateCodeRequired'), trigger: 'blur' }],
+  userId: [{ required: true, message: t('system.notify.template.userIdRequired'), trigger: 'change' }],
+  templateCode: [{ required: true, message: t('system.notify.template._todo157'), trigger: 'blur' }],
   templateParams: {}
 })
 const formRef = ref() // 表单 Ref
@@ -101,7 +101,7 @@ const open = async (id: number) => {
       return obj
     }, {})
     formRules.templateParams = data.params.reduce((obj, item) => {
-      obj[item] = { required: true, message: t('sys.notify.template.paramRequired', { param: item }), trigger: 'blur' }
+      obj[item] = { required: true, message: '参数 ' + item + ' 不能为空', trigger: 'blur' }
       return obj
     }, {})
   } finally {
@@ -124,7 +124,7 @@ const submitForm = async () => {
     const data = formData.value as unknown as NotifyTemplateApi.NotifySendReqVO
     const logId = await NotifyTemplateApi.sendNotify(data)
     if (logId) {
-      message.success(t('sys.notify.template.sendSuccess') + logId)
+      message.success('提交发送成功！发送结果，见发送日志编号：' + logId)
     }
     dialogVisible.value = false
   } finally {

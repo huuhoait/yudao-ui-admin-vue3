@@ -8,19 +8,19 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="t('sys.notice.noticeTitle')" prop="title">
+      <el-form-item :label="t('system.notice._todo114')" prop="title">
         <el-input
           v-model="queryParams.title"
-          :placeholder="t('sys.notice.titlePlaceholder')"
+          :placeholder="t('system.notice._todo115')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('sys.notice.noticeStatus')" prop="status">
+      <el-form-item :label="t('system.notice._todo123')" prop="status">
         <el-select
           v-model="queryParams.status"
-          :placeholder="t('sys.notice.statusPlaceholder')"
+          :placeholder="t('system.notice._todo124')"
           clearable
           class="!w-240px"
         >
@@ -33,15 +33,15 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('sys.notice.search') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('sys.notice.reset') }}</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
         <el-button
           type="primary"
           plain
           @click="openForm('create')"
           v-hasPermi="['system:notice:create']"
         >
-          <Icon icon="ep:plus" class="mr-5px" /> {{ t('sys.notice.create') }}
+          <Icon icon="ep:plus" class="mr-5px" /> {{ t('system.notice.create') }}
         </el-button>
         <el-button
           type="danger"
@@ -50,7 +50,7 @@
           @click="handleDeleteBatch"
           v-hasPermi="['system:notice:delete']"
         >
-          <Icon icon="ep:delete" class="mr-5px" /> {{ t('sys.notice.delete') }}
+          <Icon icon="ep:delete" class="mr-5px" /> {{ t('system.notice.deleteBatch') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -60,26 +60,26 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column :label="t('common.index')" align="center" prop="id" />
-      <el-table-column :label="t('sys.notice.noticeTitle')" align="center" prop="title" />
-      <el-table-column :label="t('sys.notice.noticeType')" align="center" prop="type">
+      <el-table-column :label="t('system.notice._todo125')" align="center" prop="id" />
+      <el-table-column :label="t('system.notice._todo114')" align="center" prop="title" />
+      <el-table-column :label="t('system.notice._todo117')" align="center" prop="type">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_NOTICE_TYPE" :value="scope.row.type" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('sys.notice.noticeStatus')" align="center" prop="status">
+      <el-table-column :label="t('common.status')" align="center" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
       <el-table-column
-        :label="t('sys.notice.createTime')"
+        :label="t('common.createTime')"
         align="center"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('sys.notice.operation')" align="center">
+      <el-table-column :label="t('system.notice.action')" align="center">
         <template #default="scope">
           <el-button
             link
@@ -87,7 +87,7 @@
             @click="openForm('update', scope.row.id)"
             v-hasPermi="['system:notice:update']"
           >
-            {{ t('sys.notice.edit') }}
+            {{ t('system.notice.edit') }}
           </el-button>
           <el-button
             link
@@ -95,10 +95,10 @@
             @click="handleDelete(scope.row.id)"
             v-hasPermi="['system:notice:delete']"
           >
-            {{ t('sys.notice.delete') }}
+            {{ t('system.notice.delete') }}
           </el-button>
           <el-button link @click="handlePush(scope.row.id)" v-hasPermi="['system:notice:update']">
-            {{ t('sys.notice.push') }}
+            {{ t('system.notice._todo126') }}
           </el-button>
         </template>
       </el-table-column>
@@ -184,7 +184,7 @@ const handleDelete = async (id: number) => {
 /** 批量删除按钮操作 */
 const checkedIds = ref<number[]>([])
 const handleRowCheckboxChange = (rows: NoticeApi.NoticeVO[]) => {
-  checkedIds.value = rows.map((row) => row.id)
+  checkedIds.value = rows.map((row) => row.id!)
 }
 
 const handleDeleteBatch = async () => {
@@ -193,6 +193,7 @@ const handleDeleteBatch = async () => {
     await message.delConfirm()
     // 发起批量删除
     await NoticeApi.deleteNoticeList(checkedIds.value)
+    checkedIds.value = []
     message.success(t('common.delSuccess'))
     // 刷新列表
     await getList()
@@ -203,10 +204,10 @@ const handleDeleteBatch = async () => {
 const handlePush = async (id: number) => {
   try {
     // 推送的二次确认
-    await message.confirm(t('sys.notice.pushConfirm'))
+    await message.confirm(t('system.notice._todo127'))
     // 发起推送
     await NoticeApi.pushNotice(id)
-    message.success(t('common.updateSuccess'))
+    message.success(t('推送成功'))
   } catch {}
 }
 

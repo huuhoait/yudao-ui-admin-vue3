@@ -7,10 +7,10 @@
       label-width="100px"
       v-loading="formLoading"
     >
-      <el-form-item :label="t('bpm.processExpression.form.name')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('bpm.processExpression.form.namePlaceholder')" />
+      <el-form-item :label="t('bpm.processExpression.name')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('bpm.processExpression.inputName')" />
       </el-form-item>
-      <el-form-item :label="t('bpm.processExpression.form.status')" prop="status">
+      <el-form-item :label="t('common.status')" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -21,18 +21,12 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :label="t('bpm.processExpression.form.expression')" prop="expression">
-        <el-input
-          type="textarea"
-          v-model="formData.expression"
-          :placeholder="t('bpm.processExpression.form.expressionPlaceholder')"
-        />
+      <el-form-item :label="t('bpm.processExpression.expression')" prop="expression">
+        <el-input type="textarea" v-model="formData.expression" :placeholder="t('bpm.processExpression.inputExpression')" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="submitForm" type="primary" :disabled="formLoading">
-        {{ t('common.confirm') }}
-      </el-button>
+      <el-button @click="submitForm" type="primary" :disabled="formLoading">{{ t('common.ok') }}</el-button>
       <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
@@ -53,15 +47,15 @@ const dialogTitle = ref('') // 弹窗的标题
 const formLoading = ref(false) // 表单的加载中：1）修改时的数据加载；2）提交的按钮禁用
 const formType = ref('') // 表单的类型：create - 新增；update - 修改
 const formData = ref({
-  id: undefined,
-  name: undefined,
-  status: undefined,
-  expression: undefined
+  id: undefined as number | undefined,
+  name: undefined as string | undefined,
+  status: undefined as number | undefined,
+  expression: undefined as string | undefined
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('bpm.processExpression.form.rules.name'), trigger: 'blur' }],
-  status: [{ required: true, message: t('bpm.processExpression.form.rules.status'), trigger: 'blur' }],
-  expression: [{ required: true, message: t('bpm.processExpression.form.rules.expression'), trigger: 'blur' }]
+  name: [{ required: true, message: t('bpm.processExpression.nameRequired'), trigger: 'blur' }],
+  status: [{ required: true, message: t('bpm.processExpression.statusRequired'), trigger: 'blur' }],
+  expression: [{ required: true, message: t('bpm.processExpression.expressionRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

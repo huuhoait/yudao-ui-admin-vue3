@@ -4,7 +4,7 @@
     <el-input
       v-model="searchName"
       class="!w-50% mb-15px"
-      :placeholder="t('bpm.processInstance.create.searchPlaceholder')"
+      :placeholder="t('bpm.processInstance.create.inputProcessName')"
       clearable
       @input="handleQuery"
       @clear="handleQuery"
@@ -78,12 +78,7 @@
           </el-scrollbar>
         </el-col>
       </el-row>
-      <el-empty
-        class="!py-200px"
-        :image-size="200"
-        :description="t('bpm.processInstance.create.empty')"
-        v-else
-      />
+      <el-empty class="!py-200px" :image-size="200" :description="t('bpm.processInstance.create._todo185')" v-else />
     </ContentWrap>
   </template>
 
@@ -105,11 +100,11 @@ import { groupBy } from 'lodash-es'
 import { subString } from '@/utils/index'
 
 defineOptions({ name: 'BpmProcessInstanceCreate' })
+const { t } = useI18n() // 国际化
 
 const { proxy } = getCurrentInstance() as any
 const route = useRoute() // 路由
 const message = useMessage() // 消息
-const { t } = useI18n() // 国际化
 
 const searchName = ref('') // 当前搜索关键字
 const processInstanceId: any = route.query.processInstanceId // 流程实例编号。场景：重新发起时
@@ -131,14 +126,14 @@ const getList = async () => {
     if (processInstanceId?.length > 0) {
       const processInstance = await ProcessInstanceApi.getProcessInstance(processInstanceId)
       if (!processInstance) {
-        message.error(t('bpm.processInstance.create.messages.restartInstanceMissing'))
+        message.error(t('bpm.processInstance.create._todo186'))
         return
       }
       const processDefinition = processDefinitionList.value.find(
         (item: any) => item.key == processInstance.processDefinition?.key
       )
       if (!processDefinition) {
-        message.error(t('bpm.processInstance.create.messages.restartDefinitionMissing'))
+        message.error(t('bpm.processInstance.create._todo187'))
         return
       }
       await handleSelect(processDefinition, processInstance.formVariables)

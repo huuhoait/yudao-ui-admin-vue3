@@ -1,0 +1,6104 @@
+{
+  "mode": "apply",
+  "target": "src/views/bpm",
+  "scannedAt": "2026-09-03T13:47:04.453Z",
+  "totalFiles": 53,
+  "toConvert": 752,
+  "needReview": 22,
+  "todoKeys": 312,
+  "files": [
+    {
+      "file": "src/views/bpm/category/CategoryForm.vue",
+      "ns": "bpm.category",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类名",
+          "key": "bpm.category.categoryName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入分类名",
+          "key": "bpm.category.inputCategoryName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类标志",
+          "key": "bpm.category.categoryFlag",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入分类标志",
+          "key": "bpm.category.inputCategoryFlag",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类描述",
+          "key": "bpm.category.categoryDesc",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入分类描述",
+          "key": "bpm.category.inputCategoryDesc",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类状态",
+          "key": "bpm.category.categoryStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类排序",
+          "key": "bpm.category.categorySort",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入分类排序",
+          "key": "bpm.category.inputCategorySort",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "分类名不能为空",
+          "key": "bpm.category.categoryNameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "分类标志不能为空",
+          "key": "bpm.category.categoryFlagRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "分类状态不能为空",
+          "key": "bpm.category.categoryStatusRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "分类排序不能为空",
+          "key": "bpm.category.categorySortRequired",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/category/index.vue",
+      "ns": "bpm.category",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "工作流手册",
+          "key": "bpm.category._todo1",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类名",
+          "key": "bpm.category.categoryName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入分类名",
+          "key": "bpm.category.inputCategoryName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类标志",
+          "key": "bpm.category.categoryFlag",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入分类标志",
+          "key": "bpm.category.inputCategoryFlag",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类状态",
+          "key": "bpm.category.categoryStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择分类状态",
+          "key": "bpm.category.selectCategoryStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "bpm.category.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "bpm.category.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类编号",
+          "key": "bpm.category._todo2",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类名",
+          "key": "bpm.category.categoryName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类标志",
+          "key": "bpm.category.categoryFlag",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类描述",
+          "key": "bpm.category.categoryDesc",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类状态",
+          "key": "bpm.category.categoryStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类排序",
+          "key": "bpm.category.categorySort",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "bpm.category.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "bpm.category.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "bpm.category.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "bpm.category.delete",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/form/editor/index.vue",
+      "ns": "bpm.form.editor",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "保存表单",
+          "key": "bpm.form.editor._todo3",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表单名",
+          "key": "bpm.form.editor.formName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入表单名",
+          "key": "bpm.form.editor.inputFormName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "备注",
+          "key": "bpm.form.editor.remark",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入备注",
+          "key": "bpm.form.editor.inputRemark",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "保存",
+          "key": "common.save",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "表单名不能为空",
+          "key": "bpm.form.editor.formNameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "开启状态不能为空",
+          "key": "bpm.form.editor._todo4",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/form/index.vue",
+      "ns": "bpm.form",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "审批接入（流程表单）",
+          "key": "bpm.form._todo5",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表单名",
+          "key": "bpm.form.formName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入表单名",
+          "key": "bpm.form.inputFormName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "编号",
+          "key": "bpm.form.id",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表单名",
+          "key": "bpm.form.formName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "备注",
+          "key": "bpm.form.remark",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "bpm.form.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "表单详情",
+          "key": "bpm.form.formDetail",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "bpm.form.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "复制",
+          "key": "common.copy",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "bpm.form.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "详情",
+          "key": "bpm.form.detail",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "bpm.form.delete",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/group/UserGroupForm.vue",
+      "ns": "bpm.group",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "组名",
+          "key": "bpm.group._todo6",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入组名",
+          "key": "bpm.group._todo7",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "描述",
+          "key": "bpm.group.description",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入描述",
+          "key": "bpm.group.inputDescription",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "成员",
+          "key": "bpm.group._todo8",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择成员",
+          "key": "bpm.group._todo9",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "组名不能为空",
+          "key": "bpm.group._todo10",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "描述不能为空",
+          "key": "bpm.group.descriptionRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "成员不能为空",
+          "key": "bpm.group._todo11",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "状态不能为空",
+          "key": "bpm.group.statusRequired",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/group/index.vue",
+      "ns": "bpm.group",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "工作流手册",
+          "key": "bpm.group._todo12",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "组名",
+          "key": "bpm.group._todo6",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入组名",
+          "key": "bpm.group._todo7",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择状态",
+          "key": "bpm.group.selectStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "bpm.group.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "bpm.group.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "编号",
+          "key": "bpm.group.id",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "组名",
+          "key": "bpm.group._todo6",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "描述",
+          "key": "bpm.group.description",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "成员",
+          "key": "bpm.group._todo8",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "bpm.group.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "bpm.group.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "bpm.group.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "bpm.group.delete",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/model/CategoryDraggableModel.vue",
+      "ns": "bpm.model",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "拖动排序",
+          "key": "bpm.model._todo13",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程名",
+          "key": "bpm.model._todo14",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "拖动排序",
+          "key": "bpm.model._todo13",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "可见范围",
+          "key": "bpm.model._todo15",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程类型",
+          "key": "bpm.model.processType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表单信息",
+          "key": "bpm.model.formInfo",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "最后发布",
+          "key": "bpm.model._todo16",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "bpm.model.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "表单详情",
+          "key": "bpm.model.formDetail",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "排序",
+          "key": "bpm.model.sort",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新建",
+          "key": "bpm.model._todo17",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "分类",
+          "key": "bpm.model._todo18",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "重命名",
+          "key": "bpm.model._todo19",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "删除该类",
+          "key": "bpm.model._todo20",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "保存排序",
+          "key": "bpm.model._todo21",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "全部可见",
+          "key": "bpm.model._todo22",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "暂无表单",
+          "key": "bpm.model._todo23",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "未部署",
+          "key": "bpm.model._todo24",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "已停用",
+          "key": "bpm.model._todo25",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "修改",
+          "key": "bpm.model.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "复制",
+          "key": "common.copy",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "发布",
+          "key": "bpm.model._todo26",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "更多",
+          "key": "bpm.model.more",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "历史",
+          "key": "bpm.model.history",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导出",
+          "key": "bpm.model.export",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "报表",
+          "key": "bpm.model._todo27",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "清理",
+          "key": "bpm.model._todo28",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "bpm.model.delete",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重命名分类",
+          "key": "bpm.model._todo29",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "导出成功",
+          "key": "bpm.model._todo30",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "清理成功",
+          "key": "bpm.model._todo31",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "停用",
+          "key": "bpm.model.disable",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "启用",
+          "key": "bpm.model.enable",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "是否确认发布该流程？",
+          "key": "bpm.model._todo32",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "排序模型成功",
+          "key": "bpm.model._todo33",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请输入名称",
+          "key": "bpm.model.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "重命名成功",
+          "key": "bpm.model._todo34",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "该分类下仍有流程定义,不允许删除",
+          "key": "bpm.model._todo35",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "确认删除分类吗?",
+          "key": "bpm.model._todo36",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "是否确认清理流程名字为\""
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "\"的数据项?"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "是否确认"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "流程名字为\""
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "\"的数据项?"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "成功"
+        }
+      ]
+    },
+    {
+      "file": "src/views/bpm/model/ModelImportForm.vue",
+      "ns": "bpm.model",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "导入流程模型",
+          "key": "bpm.model._todo37",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "description",
+          "text": "导入会完整保留流程配置，并将新模型归属到当前租户。请确认人员、部门、表单、子流程等关联在当前租户有效后再发布。",
+          "key": "bpm.model._todo38",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "导入说明",
+          "key": "bpm.model._todo39",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程模型文件",
+          "key": "bpm.model._todo40",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程标识",
+          "key": "bpm.model.processKey",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入流程标识",
+          "key": "bpm.model.inputProcessKey",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程名称",
+          "key": "bpm.model.processName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入流程名称",
+          "key": "bpm.model.inputProcessName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "点击或拖拽 JSON 流程模型文件到此处",
+          "key": "bpm.model._todo41",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请输入流程标识",
+          "key": "bpm.model.inputProcessKey",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请输入流程名称",
+          "key": "bpm.model.inputProcessName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "仅支持上传 JSON 格式的流程模型文件",
+          "key": "bpm.model._todo42",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "JSON 文件格式不正确",
+          "key": "bpm.model._todo43",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请上传流程模型文件",
+          "key": "bpm.model._todo44",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "导入成功",
+          "key": "bpm.model._todo45",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/model/definition/index.vue",
+      "ns": "bpm.model.definition",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "工作流手册",
+          "key": "bpm.model.definition._todo46",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "定义编号",
+          "key": "bpm.model.definition._todo47",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程名称",
+          "key": "bpm.model.definition.processName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程图标",
+          "key": "bpm.model.definition._todo48",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "可见范围",
+          "key": "bpm.model.definition._todo49",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程类型",
+          "key": "bpm.model.definition.processType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表单信息",
+          "key": "bpm.model.definition.formInfo",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程版本",
+          "key": "bpm.model.definition._todo50",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "部署时间",
+          "key": "bpm.model.definition._todo51",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "bpm.model.definition.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "表单详情",
+          "key": "bpm.model.definition.formDetail",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "全部可见",
+          "key": "bpm.model.definition._todo52",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "暂无表单",
+          "key": "bpm.model.definition._todo53",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "恢复",
+          "key": "bpm.model.definition._todo54",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/model/form/BasicInfo.vue",
+      "ns": "bpm.model.form",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程标识",
+          "key": "bpm.model.form.processKey",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入流程标识，以字母或下划线开头",
+          "key": "bpm.model.form._todo55",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程名称",
+          "key": "bpm.model.form.processName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入流程名称",
+          "key": "bpm.model.form.inputProcessName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程分类",
+          "key": "bpm.model.form.processCategory",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择流程分类",
+          "key": "bpm.model.form.selectProcessCategory",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程图标",
+          "key": "bpm.model.form._todo56",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程描述",
+          "key": "bpm.model.form._todo57",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程类型",
+          "key": "bpm.model.form.processType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "是否可见",
+          "key": "bpm.model.form._todo58",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "谁可以发起",
+          "key": "bpm.model.form.whoCanStart",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择谁可以发起",
+          "key": "bpm.model.form.selectWhoCanStart",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "全员",
+          "key": "bpm.model.form._todo59",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "指定人员",
+          "key": "bpm.model.form._todo60",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "指定部门",
+          "key": "bpm.model.form._todo61",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程管理员",
+          "key": "bpm.model.form._todo62",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "选择人员",
+          "key": "bpm.model.form._todo63",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "选择部门",
+          "key": "bpm.model.form._todo64",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "选择人员",
+          "key": "bpm.model.form._todo63",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "流程名称不能为空",
+          "key": "bpm.model.form.processNameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "流程标识不能为空",
+          "key": "bpm.model.form.processKeyRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "只能包含字母、数字、下划线、连字符和点号，且必须以字母或下划线开头",
+          "key": "bpm.model.form._todo65",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "流程分类不能为空",
+          "key": "bpm.model.form.processCategoryRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "是否可见不能为空",
+          "key": "bpm.model.form._todo66",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "是否可见不能为空",
+          "key": "bpm.model.form._todo66",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "流程管理员不能为空",
+          "key": "bpm.model.form._todo67",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/model/form/ExtraSettings.vue",
+      "ns": "bpm.model.form",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "允许撤销审批中的申请",
+          "key": "bpm.model.form._todo68",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "允许审批人撤回任务",
+          "key": "bpm.model.form._todo69",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "前缀",
+          "key": "bpm.model.form._todo70",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "中缀",
+          "key": "bpm.model.form._todo71",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "后缀",
+          "key": "bpm.model.form._todo72",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "输入字符 '{' 即可插入表单字段",
+          "key": "bpm.model.form._todo73",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请插入表单字段（输入 '{' 可以选择表单字段）或输入文本",
+          "key": "bpm.model.form._todo74",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择要展示的表单字段",
+          "key": "bpm.model.form._todo75",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "提交人权限",
+          "key": "bpm.model.form._todo76",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "审批人权限",
+          "key": "bpm.model.form._todo77",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "审批人可撤回正在审批节点的前一节点",
+          "key": "bpm.model.form._todo78",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "流程编码",
+          "key": "bpm.model.form._todo79",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "自动去重",
+          "key": "bpm.model.form._todo80",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "同一审批人在流程中重复出现时：",
+          "key": "bpm.model.form._todo81",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "不自动通过",
+          "key": "bpm.model.form._todo82",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "仅审批一次，后续重复的审批节点均自动通过",
+          "key": "bpm.model.form._todo83",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "仅针对连续审批的节点自动通过",
+          "key": "bpm.model.form._todo84",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "标题设置",
+          "key": "bpm.model.form._todo85",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "系统默认",
+          "key": "bpm.model.form._todo86",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "展示流程名称",
+          "key": "bpm.model.form._todo87",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "自定义标题",
+          "key": "bpm.model.form._todo88",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "摘要设置",
+          "key": "bpm.model.form._todo89",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "系统默认",
+          "key": "bpm.model.form._todo86",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "展示表单前 3 个字段",
+          "key": "bpm.model.form._todo90",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "自定义摘要",
+          "key": "bpm.model.form._todo91",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "流程前置通知",
+          "key": "bpm.model.form._todo92",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "流程启动后通知",
+          "key": "bpm.model.form._todo93",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "流程后置通知",
+          "key": "bpm.model.form._todo94",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "流程结束后通知",
+          "key": "bpm.model.form._todo95",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "任务前置通知",
+          "key": "bpm.model.form._todo96",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "任务执行时通知",
+          "key": "bpm.model.form._todo97",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "任务后置通知",
+          "key": "bpm.model.form._todo98",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "任务结束后通知",
+          "key": "bpm.model.form._todo99",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "自定义打印模板",
+          "key": "bpm.model.form._todo100",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑模板",
+          "key": "bpm.model.form._todo101",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "无",
+          "key": "bpm.model.form._todo102",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "精确到日",
+          "key": "bpm.model.form._todo103",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "精确到时",
+          "key": "bpm.model.form._todo104",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "精确到分",
+          "key": "bpm.model.form._todo105",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "精确到秒",
+          "key": "bpm.model.form._todo106",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "流程名称",
+          "key": "bpm.model.form.processName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "发起时间",
+          "key": "bpm.model.form.startTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "发起人",
+          "key": "bpm.model.form.starter",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "html-or-long",
+          "text": "<p style=\"text-align: center;\"><span data-w-e-type=\"mention\""
+        }
+      ]
+    },
+    {
+      "file": "src/views/bpm/model/form/FormDesign.vue",
+      "ns": "bpm.model.form",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表单类型",
+          "key": "bpm.model.form._todo107",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程表单",
+          "key": "bpm.model.form._todo108",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表单提交路由",
+          "key": "bpm.model.form.formSubmitRoute",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入表单提交路由",
+          "key": "bpm.model.form.inputFormSubmitRoute",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "自定义表单的提交路径，使用 Vue 的路由地址，例如说：bpm/oa/leave/create.vue",
+          "key": "bpm.model.form._todo109",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表单查看地址",
+          "key": "bpm.model.form._todo110",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入表单查看的组件地址",
+          "key": "bpm.model.form._todo111",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "自定义表单的查看组件地址，使用 Vue 的组件地址，例如说：bpm/oa/leave/detail.vue",
+          "key": "bpm.model.form._todo112",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "表单预览",
+          "key": "bpm.model.form._todo113",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "表单类型不能为空",
+          "key": "bpm.model.form._todo114",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "流程表单不能为空",
+          "key": "bpm.model.form._todo115",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "表单提交路由不能为空",
+          "key": "bpm.model.form.formSubmitRouteRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "表单查看地址不能为空",
+          "key": "bpm.model.form._todo116",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/model/form/PrintTemplate/Index.vue",
+      "ns": "bpm.model.form.PrintTemplate",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "自定义模板",
+          "key": "bpm.model.form.PrintTemplate._todo117",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "输入 @ 可选择插入流程表单选项和默认选项",
+          "key": "bpm.model.form.PrintTemplate._todo118",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请输入内容...",
+          "key": "bpm.model.form.PrintTemplate._todo119",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/model/form/PrintTemplate/MentionModal.vue",
+      "ns": "bpm.model.form.PrintTemplate",
+      "convert": [
+        {
+          "type": "script-string",
+          "text": "发起人",
+          "key": "bpm.model.form.PrintTemplate.starter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "发起人部门",
+          "key": "bpm.model.form.PrintTemplate._todo120",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "流程名称",
+          "key": "bpm.model.form.PrintTemplate.processName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "流程编号",
+          "key": "bpm.model.form.PrintTemplate.processId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "发起时间",
+          "key": "bpm.model.form.PrintTemplate.startTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "结束时间",
+          "key": "bpm.model.form.PrintTemplate.endTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "流程状态",
+          "key": "bpm.model.form.PrintTemplate.processStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "打印人",
+          "key": "bpm.model.form.PrintTemplate._todo121",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "打印时间",
+          "key": "bpm.model.form.PrintTemplate._todo122",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "[表单]"
+        }
+      ]
+    },
+    {
+      "file": "src/views/bpm/model/form/PrintTemplate/module/elem-to-html.ts",
+      "ns": "bpm.model.form.PrintTemplate.module",
+      "convert": [],
+      "review": [
+        {
+          "kind": "html-or-long",
+          "text": "<span data-w-e-type=\"process-record\" data-w-e-is-void data-w"
+        }
+      ]
+    },
+    {
+      "file": "src/views/bpm/model/form/PrintTemplate/module/menu/ProcessRecordMenu.ts",
+      "ns": "bpm.model.form.PrintTemplate.module.menu",
+      "convert": [
+        {
+          "type": "script-string",
+          "text": "流程记录",
+          "key": "bpm.model.form.PrintTemplate.module.menu._todo123",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/model/form/PrintTemplate/module/render-elem.ts",
+      "ns": "bpm.model.form.PrintTemplate.module",
+      "convert": [
+        {
+          "type": "script-string",
+          "text": "流程记录",
+          "key": "bpm.model.form.PrintTemplate.module._todo124",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-template",
+          "text": "节点",
+          "key": "bpm.model.form.PrintTemplate.module._todo125",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-template",
+          "text": "操作",
+          "key": "bpm.model.form.PrintTemplate.module.action",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/model/form/ProcessDesign.vue",
+      "ns": "bpm.model.form",
+      "convert": [
+        {
+          "type": "script-string",
+          "text": "请设计流程",
+          "key": "bpm.model.form._todo126",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/model/form/editor/index.vue",
+      "ns": "bpm.model.form.editor",
+      "convert": [
+        {
+          "type": "script-string",
+          "text": "保存失败:",
+          "key": "bpm.model.form.editor._todo127",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "保存失败",
+          "key": "bpm.model.form.editor._todo128",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/model/form/index.vue",
+      "ns": "bpm.model.form",
+      "convert": [
+        {
+          "type": "vue-text",
+          "text": "发 布",
+          "key": "bpm.model.form._todo129",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "恢 复",
+          "key": "bpm.model.form._todo130",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "保 存",
+          "key": "bpm.model.form._todo131",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "基本信息",
+          "key": "bpm.model.form._todo132",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "表单设计",
+          "key": "bpm.model.form._todo133",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "流程设计",
+          "key": "bpm.model.form._todo134",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "更多设置",
+          "key": "bpm.model.form._todo135",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "副本",
+          "key": "bpm.model.form._todo136",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "复制流程",
+          "key": "bpm.model.form._todo137",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "加载流程数据",
+          "key": "bpm.model.form._todo138",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请完善基本信息",
+          "key": "bpm.model.form._todo139",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请完善自定义表单信息",
+          "key": "bpm.model.form._todo140",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请设计流程",
+          "key": "bpm.model.form._todo126",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "恢复成功，可点击【发布】按钮，进行发布模型",
+          "key": "bpm.model.form._todo141",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "修改成功，可点击【发布】按钮，进行发布模型",
+          "key": "bpm.model.form._todo142",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "复制成功，可点击【发布】按钮，进行发布模型",
+          "key": "bpm.model.form._todo143",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "新建成功，可点击【发布】按钮，进行发布模型",
+          "key": "bpm.model.form._todo144",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "保存失败:",
+          "key": "bpm.model.form._todo145",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请完善所有步骤的必填信息",
+          "key": "bpm.model.form._todo146",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "是否确认发布该流程？",
+          "key": "bpm.model.form._todo147",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "发布成功",
+          "key": "bpm.model.form._todo148",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "发布失败:",
+          "key": "bpm.model.form._todo149",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "发布失败",
+          "key": "bpm.model.form._todo150",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "步骤切换失败:",
+          "key": "bpm.model.form._todo151",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请先完善当前步骤必填信息",
+          "key": "bpm.model.form._todo152",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "副本"
+        }
+      ]
+    },
+    {
+      "file": "src/views/bpm/model/index.vue",
+      "ns": "bpm.model",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "搜索流程",
+          "key": "bpm.model._todo153",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "表单详情",
+          "key": "bpm.model.formDetail",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "流程模型",
+          "key": "bpm.model._todo154",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "新建模型",
+          "key": "bpm.model._todo155",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "导入模型",
+          "key": "bpm.model._todo156",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "新建分类",
+          "key": "bpm.model._todo157",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "分类排序",
+          "key": "bpm.model.categorySort",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "保存排序",
+          "key": "bpm.model._todo21",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "排序分类成功",
+          "key": "bpm.model._todo158",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/oa/leave/create.vue",
+      "ns": "bpm.oa.leave",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "申请信息",
+          "key": "bpm.oa.leave._todo159",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请假类型",
+          "key": "bpm.oa.leave.leaveType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择请假类型",
+          "key": "bpm.oa.leave.selectLeaveType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "开始时间",
+          "key": "bpm.oa.leave.beginTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择开始时间",
+          "key": "bpm.oa.leave.selectBeginTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "结束时间",
+          "key": "bpm.oa.leave.endTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择结束时间",
+          "key": "bpm.oa.leave.selectEndTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "原因",
+          "key": "bpm.oa.leave._todo160",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入请假原因",
+          "key": "bpm.oa.leave._todo161",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "审批流程",
+          "key": "bpm.oa.leave._todo162",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请假类型不能为空",
+          "key": "bpm.oa.leave.leaveTypeRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请假原因不能为空",
+          "key": "bpm.oa.leave._todo163",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请假开始时间不能为空",
+          "key": "bpm.oa.leave._todo164",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请假结束时间不能为空",
+          "key": "bpm.oa.leave._todo165",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "发起成功",
+          "key": "bpm.oa.leave._todo166",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "查询不到审批详情信息！",
+          "key": "bpm.oa.leave._todo167",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "重新发起请假失败，原因：请假数据不存在",
+          "key": "bpm.oa.leave._todo168",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "OA 请假的流程模型未配置，请检查！",
+          "key": "bpm.oa.leave._todo169",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`请选择${userTask.name}的审批人`"
+        }
+      ]
+    },
+    {
+      "file": "src/views/bpm/oa/leave/detail.vue",
+      "ns": "bpm.oa.leave",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请假类型",
+          "key": "bpm.oa.leave.leaveType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "开始时间",
+          "key": "bpm.oa.leave.beginTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "结束时间",
+          "key": "bpm.oa.leave.endTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "原因",
+          "key": "bpm.oa.leave._todo160",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/oa/leave/index.vue",
+      "ns": "bpm.oa.leave",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "审批接入（业务表单）",
+          "key": "bpm.oa.leave._todo170",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请假类型",
+          "key": "bpm.oa.leave.leaveType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择请假类型",
+          "key": "bpm.oa.leave.selectLeaveType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "申请时间",
+          "key": "bpm.oa.leave._todo171",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "bpm.oa.leave.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "bpm.oa.leave.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批结果",
+          "key": "bpm.oa.leave._todo172",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择审批结果",
+          "key": "bpm.oa.leave._todo173",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "原因",
+          "key": "bpm.oa.leave._todo160",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入原因",
+          "key": "bpm.oa.leave._todo174",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "申请编号",
+          "key": "bpm.oa.leave._todo175",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "开始时间",
+          "key": "bpm.oa.leave.beginTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "结束时间",
+          "key": "bpm.oa.leave.endTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请假类型",
+          "key": "bpm.oa.leave.leaveType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "原因",
+          "key": "bpm.oa.leave._todo160",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "申请时间",
+          "key": "bpm.oa.leave._todo171",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "bpm.oa.leave.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "发起请假",
+          "key": "bpm.oa.leave._todo176",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "详情",
+          "key": "bpm.oa.leave.detail",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "进度",
+          "key": "bpm.oa.leave._todo177",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重新发起",
+          "key": "bpm.oa.leave.restart",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请输入取消原因",
+          "key": "bpm.oa.leave.inputCancelReason",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "取消流程",
+          "key": "bpm.oa.leave.cancelProcess",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "取消原因不能为空",
+          "key": "bpm.oa.leave.cancelReasonRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "取消成功",
+          "key": "bpm.oa.leave.cancelSuccess",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/processExpression/ProcessExpressionForm.vue",
+      "ns": "bpm.processExpression",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "bpm.processExpression.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "bpm.processExpression.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表达式",
+          "key": "bpm.processExpression.expression",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入表达式",
+          "key": "bpm.processExpression.inputExpression",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "名字不能为空",
+          "key": "bpm.processExpression.nameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "状态不能为空",
+          "key": "bpm.processExpression.statusRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "表达式不能为空",
+          "key": "bpm.processExpression.expressionRequired",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/processExpression/index.vue",
+      "ns": "bpm.processExpression",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "流程表达式",
+          "key": "bpm.processExpression._todo178",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "bpm.processExpression.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "bpm.processExpression.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择状态",
+          "key": "bpm.processExpression.selectStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "bpm.processExpression.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "bpm.processExpression.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "编号",
+          "key": "bpm.processExpression.id",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "bpm.processExpression.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表达式",
+          "key": "bpm.processExpression.expression",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "bpm.processExpression.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "bpm.processExpression.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "bpm.processExpression.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "bpm.processExpression.delete",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/processInstance/create/ProcessDefinitionDetail.vue",
+      "ns": "bpm.processInstance.create",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表单填写",
+          "key": "bpm.processInstance.create._todo179",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程图",
+          "key": "bpm.processInstance.create._todo180",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "查询不到审批详情信息！",
+          "key": "bpm.processInstance.create._todo181",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "修改字段验证规则失败:",
+          "key": "bpm.processInstance.create._todo182",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "表单验证失败:",
+          "key": "bpm.processInstance.create._todo183",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "发起流程成功",
+          "key": "bpm.processInstance.create._todo184",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "template",
+          "kind": "html-or-long",
+          "text": "&nbsp; 发起"
+        },
+        {
+          "where": "template",
+          "kind": "html-or-long",
+          "text": "&nbsp; 取消"
+        },
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`请选择${userTask.name}的候选人`"
+        }
+      ]
+    },
+    {
+      "file": "src/views/bpm/processInstance/create/index.vue",
+      "ns": "bpm.processInstance.create",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入流程名称",
+          "key": "bpm.processInstance.create.inputProcessName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "description",
+          "text": "没有找到搜索结果",
+          "key": "bpm.processInstance.create._todo185",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "重新发起流程失败，原因：流程实例不存在",
+          "key": "bpm.processInstance.create._todo186",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "重新发起流程失败，原因：流程定义不存在",
+          "key": "bpm.processInstance.create._todo187",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/processInstance/detail/PrintDialog.vue",
+      "ns": "bpm.processInstance.detail",
+      "convert": [
+        {
+          "type": "vue-text",
+          "text": "发起人",
+          "key": "bpm.processInstance.detail.starter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "发起时间",
+          "key": "bpm.processInstance.detail.startTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "所属部门",
+          "key": "bpm.processInstance.detail._todo188",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "流程状态",
+          "key": "bpm.processInstance.detail.processStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "表单内容",
+          "key": "bpm.processInstance.detail._todo189",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "流程节点",
+          "key": "bpm.processInstance.detail._todo190",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "打 印",
+          "key": "bpm.processInstance.detail._todo191",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "是",
+          "key": "bpm.processInstance.detail._todo192",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "否",
+          "key": "bpm.processInstance.detail._todo193",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "否",
+          "key": "bpm.processInstance.detail._todo193",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "是",
+          "key": "bpm.processInstance.detail._todo192",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "否",
+          "key": "bpm.processInstance.detail._todo193",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "流程节点",
+          "key": "bpm.processInstance.detail._todo190",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/processInstance/detail/ProcessInstanceCommentList.vue",
+      "ns": "bpm.processInstance.detail",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "description",
+          "text": "暂无评论",
+          "key": "bpm.processInstance.detail._todo194",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "流程评论",
+          "key": "bpm.processInstance.detail._todo195",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "任务",
+          "key": "bpm.processInstance.detail.task",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "评论",
+          "key": "bpm.processInstance.detail._todo196",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/processInstance/detail/ProcessInstanceOperationButton.vue",
+      "ns": "bpm.processInstance.detail",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "上传附件/图片",
+          "key": "bpm.processInstance.detail._todo197",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "下一个节点的审批人",
+          "key": "bpm.processInstance.detail._todo198",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "签名",
+          "key": "bpm.processInstance.detail.signature",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批意见",
+          "key": "bpm.processInstance.detail.approveOpinion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入审批意见",
+          "key": "bpm.processInstance.detail.inputApproveOpinion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "上传附件/图片",
+          "key": "bpm.processInstance.detail._todo197",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "评论内容",
+          "key": "bpm.processInstance.detail.commentContent",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入评论内容",
+          "key": "bpm.processInstance.detail.inputCommentContent",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "抄送人",
+          "key": "bpm.processInstance.detail.ccUser",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择抄送人",
+          "key": "bpm.processInstance.detail.selectCcUser",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "抄送意见",
+          "key": "bpm.processInstance.detail.ccOpinion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入抄送意见",
+          "key": "bpm.processInstance.detail.inputCcOpinion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "新审批人",
+          "key": "bpm.processInstance.detail._todo199",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批意见",
+          "key": "bpm.processInstance.detail.approveOpinion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入审批意见",
+          "key": "bpm.processInstance.detail.inputApproveOpinion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "接收人",
+          "key": "bpm.processInstance.detail._todo200",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批意见",
+          "key": "bpm.processInstance.detail.approveOpinion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入审批意见",
+          "key": "bpm.processInstance.detail.inputApproveOpinion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "加签处理人",
+          "key": "bpm.processInstance.detail._todo201",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批意见",
+          "key": "bpm.processInstance.detail.approveOpinion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入审批意见",
+          "key": "bpm.processInstance.detail.inputApproveOpinion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "减签人员",
+          "key": "bpm.processInstance.detail._todo202",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批意见",
+          "key": "bpm.processInstance.detail.approveOpinion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入审批意见",
+          "key": "bpm.processInstance.detail.inputApproveOpinion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "退回节点",
+          "key": "bpm.processInstance.detail._todo203",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "退回理由",
+          "key": "bpm.processInstance.detail.returnReason",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入退回理由",
+          "key": "bpm.processInstance.detail.inputReturnReason",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "取消理由",
+          "key": "bpm.processInstance.detail._todo204",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入取消理由",
+          "key": "bpm.processInstance.detail._todo205",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "点击签名",
+          "key": "bpm.processInstance.detail._todo206",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "提交",
+          "key": "bpm.processInstance.detail._todo207",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "减签",
+          "key": "bpm.processInstance.detail._todo208",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确认",
+          "key": "bpm.processInstance.detail.confirm",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "审批",
+          "key": "bpm.processInstance.detail._todo209",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "签名不能为空",
+          "key": "bpm.processInstance.detail.signatureRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "审批人不能为空",
+          "key": "bpm.processInstance.detail._todo210",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "审批意见不能为空",
+          "key": "bpm.processInstance.detail.approveOpinionRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "抄送人不能为空",
+          "key": "bpm.processInstance.detail.ccUserRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "评论内容不能为空",
+          "key": "bpm.processInstance.detail.commentContentRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "新审批人不能为空",
+          "key": "bpm.processInstance.detail._todo211",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "审批意见不能为空",
+          "key": "bpm.processInstance.detail.approveOpinionRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "接收人不能为空",
+          "key": "bpm.processInstance.detail._todo212",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "审批意见不能为空",
+          "key": "bpm.processInstance.detail.approveOpinionRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "加签处理人不能为空",
+          "key": "bpm.processInstance.detail._todo213",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "审批意见不能为空",
+          "key": "bpm.processInstance.detail.approveOpinionRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "减签人员不能为空",
+          "key": "bpm.processInstance.detail._todo214",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "审批意见不能为空",
+          "key": "bpm.processInstance.detail.approveOpinionRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "退回节点不能为空",
+          "key": "bpm.processInstance.detail._todo215",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "退回理由不能为空",
+          "key": "bpm.processInstance.detail.returnReasonRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "取消理由不能为空",
+          "key": "bpm.processInstance.detail._todo216",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "表单校验不通过，请先完善表单!!",
+          "key": "bpm.processInstance.detail._todo217",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "当前没有可退回的节点",
+          "key": "bpm.processInstance.detail._todo218",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "下一个节点的审批人不能为空!",
+          "key": "bpm.processInstance.detail._todo219",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "表单校验不通过，请先完善表单!!",
+          "key": "bpm.processInstance.detail._todo217",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "审批通过成功",
+          "key": "bpm.processInstance.detail._todo220",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "审批不通过成功",
+          "key": "bpm.processInstance.detail._todo221",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "操作成功",
+          "key": "bpm.processInstance.detail._todo222",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "评论内容不能为空",
+          "key": "bpm.processInstance.detail.commentContentRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "评论成功",
+          "key": "bpm.processInstance.detail._todo223",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "操作成功",
+          "key": "bpm.processInstance.detail._todo222",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "操作成功",
+          "key": "bpm.processInstance.detail._todo222",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "操作成功",
+          "key": "bpm.processInstance.detail._todo222",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "操作成功",
+          "key": "bpm.processInstance.detail._todo222",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "操作成功",
+          "key": "bpm.processInstance.detail._todo222",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "减签成功",
+          "key": "bpm.processInstance.detail._todo224",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "办理",
+          "key": "bpm.processInstance.detail._todo225",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "审批",
+          "key": "bpm.processInstance.detail._todo209",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "template",
+          "kind": "html-or-long",
+          "text": "&nbsp; 评论"
+        },
+        {
+          "where": "template",
+          "kind": "html-or-long",
+          "text": "&nbsp; 减签"
+        },
+        {
+          "where": "template",
+          "kind": "html-or-long",
+          "text": "&nbsp; 取消"
+        },
+        {
+          "where": "template",
+          "kind": "html-or-long",
+          "text": "&nbsp; 取消后，该审批流程将自动结束"
+        },
+        {
+          "where": "template",
+          "kind": "html-or-long",
+          "text": "&nbsp; 再次提交"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "意见不能为空"
+        },
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`${nickname} ( 所属部门：${deptName} )`"
+        }
+      ]
+    },
+    {
+      "file": "src/views/bpm/processInstance/detail/ProcessInstanceTaskList.vue",
+      "ns": "bpm.processInstance.detail",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批节点",
+          "key": "bpm.processInstance.detail._todo226",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批人",
+          "key": "bpm.processInstance.detail._todo227",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "开始时间",
+          "key": "bpm.processInstance.detail.beginTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "结束时间",
+          "key": "bpm.processInstance.detail.endTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批状态",
+          "key": "bpm.processInstance.detail.approveStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批建议",
+          "key": "bpm.processInstance.detail.approveSuggestion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "附件/签名",
+          "key": "bpm.processInstance.detail._todo228",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "耗时",
+          "key": "bpm.processInstance.detail.duration",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "表单详情",
+          "key": "bpm.processInstance.detail.formDetail",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "查看表单",
+          "key": "bpm.processInstance.detail._todo229",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/processInstance/detail/ProcessInstanceTimeline.vue",
+      "ns": "bpm.processInstance.detail",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "添加用户",
+          "key": "bpm.processInstance.detail._todo230",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "【跳过】",
+          "key": "bpm.processInstance.detail._todo231",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "查看子流程",
+          "key": "bpm.processInstance.detail._todo232",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "办理意见",
+          "key": "bpm.processInstance.detail._todo233",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "审批意见",
+          "key": "bpm.processInstance.detail.approveOpinion",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/processInstance/detail/SignDialog.vue",
+      "ns": "bpm.processInstance.detail",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "签名",
+          "key": "bpm.processInstance.detail.signature",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "清除",
+          "key": "bpm.processInstance.detail._todo234",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "提交",
+          "key": "bpm.processInstance.detail._todo207",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "签名上传中请稍等。。。",
+          "key": "bpm.processInstance.detail._todo235",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "签名",
+          "key": "bpm.processInstance.detail.signature",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/processInstance/detail/index.vue",
+      "ns": "bpm.processInstance.detail",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批详情",
+          "key": "bpm.processInstance.detail._todo236",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程图",
+          "key": "bpm.processInstance.detail._todo237",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流转记录",
+          "key": "bpm.processInstance.detail._todo238",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程评论",
+          "key": "bpm.processInstance.detail._todo195",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "查询不到审批详情信息！",
+          "key": "bpm.processInstance.detail._todo239",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "查询不到流程信息！",
+          "key": "bpm.processInstance.detail._todo240",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/processInstance/index.vue",
+      "ns": "bpm.processInstance",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "流程发起、取消、重新发起",
+          "key": "bpm.processInstance._todo241",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入流程名称",
+          "key": "bpm.processInstance.inputProcessName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择流程分类",
+          "key": "bpm.processInstance.selectProcessCategory",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择流程状态",
+          "key": "bpm.processInstance.selectProcessStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "所属流程",
+          "key": "bpm.processInstance.belongProcess",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择流程定义",
+          "key": "bpm.processInstance.selectProcessDefinition",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起时间",
+          "key": "bpm.processInstance.startTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "bpm.processInstance.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "bpm.processInstance.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程名称",
+          "key": "bpm.processInstance.processName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "摘要",
+          "key": "bpm.processInstance.summary",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程分类",
+          "key": "bpm.processInstance.processCategory",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程状态",
+          "key": "bpm.processInstance.processStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起时间",
+          "key": "bpm.processInstance.startTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "结束时间",
+          "key": "bpm.processInstance.endTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "bpm.processInstance.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "高级筛选",
+          "key": "bpm.processInstance.advancedFilter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "清空",
+          "key": "bpm.processInstance.clear",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确认",
+          "key": "bpm.processInstance.confirm",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "详情",
+          "key": "bpm.processInstance.detail",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重新发起",
+          "key": "bpm.processInstance.restart",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请输入取消原因",
+          "key": "bpm.processInstance.inputCancelReason",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "取消流程",
+          "key": "bpm.processInstance.cancelProcess",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "取消原因不能为空",
+          "key": "bpm.processInstance.cancelReasonRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "取消成功",
+          "key": "bpm.processInstance.cancelSuccess",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/processInstance/manager/index.vue",
+      "ns": "bpm.processInstance.manager",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "工作流手册",
+          "key": "bpm.processInstance.manager._todo242",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起人",
+          "key": "bpm.processInstance.manager.starter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择发起人",
+          "key": "bpm.processInstance.manager.selectStarter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程名称",
+          "key": "bpm.processInstance.manager.processName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入流程名称",
+          "key": "bpm.processInstance.manager.inputProcessName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "所属流程",
+          "key": "bpm.processInstance.manager.belongProcess",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入流程定义的编号",
+          "key": "bpm.processInstance.manager._todo243",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程分类",
+          "key": "bpm.processInstance.manager.processCategory",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择流程分类",
+          "key": "bpm.processInstance.manager.selectProcessCategory",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程状态",
+          "key": "bpm.processInstance.manager.processStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择流程状态",
+          "key": "bpm.processInstance.manager.selectProcessStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起时间",
+          "key": "bpm.processInstance.manager.startTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "bpm.processInstance.manager.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "bpm.processInstance.manager.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程名称",
+          "key": "bpm.processInstance.manager.processName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程分类",
+          "key": "bpm.processInstance.manager.processCategory",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程发起人",
+          "key": "bpm.processInstance.manager.processStarter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起部门",
+          "key": "bpm.processInstance.manager._todo244",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程状态",
+          "key": "bpm.processInstance.manager.processStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起时间",
+          "key": "bpm.processInstance.manager.startTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "结束时间",
+          "key": "bpm.processInstance.manager.endTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "耗时",
+          "key": "bpm.processInstance.manager.duration",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "当前审批任务",
+          "key": "bpm.processInstance.manager._todo245",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程编号",
+          "key": "bpm.processInstance.manager.processId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "bpm.processInstance.manager.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "详情",
+          "key": "bpm.processInstance.manager.detail",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请输入取消原因",
+          "key": "bpm.processInstance.manager.inputCancelReason",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "取消流程",
+          "key": "bpm.processInstance.manager.cancelProcess",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "取消原因不能为空",
+          "key": "bpm.processInstance.manager.cancelReasonRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "取消成功",
+          "key": "bpm.processInstance.manager.cancelSuccess",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/processInstance/report/index.vue",
+      "ns": "bpm.processInstance.report",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "工作流手册",
+          "key": "bpm.processInstance.report._todo246",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起人",
+          "key": "bpm.processInstance.report.starter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择发起人",
+          "key": "bpm.processInstance.report.selectStarter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程名称",
+          "key": "bpm.processInstance.report.processName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入流程名称",
+          "key": "bpm.processInstance.report.inputProcessName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程状态",
+          "key": "bpm.processInstance.report.processStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择流程状态",
+          "key": "bpm.processInstance.report.selectProcessStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起时间",
+          "key": "bpm.processInstance.report.startTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "bpm.processInstance.report.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "bpm.processInstance.report.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "结束时间",
+          "key": "bpm.processInstance.report.endTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "bpm.processInstance.report.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "bpm.processInstance.report.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程名称",
+          "key": "bpm.processInstance.report.processName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程发起人",
+          "key": "bpm.processInstance.report.processStarter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程状态",
+          "key": "bpm.processInstance.report.processStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起时间",
+          "key": "bpm.processInstance.report.startTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "结束时间",
+          "key": "bpm.processInstance.report.endTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "bpm.processInstance.report.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "详情",
+          "key": "bpm.processInstance.report.detail",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请输入取消原因",
+          "key": "bpm.processInstance.report.inputCancelReason",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "取消流程",
+          "key": "bpm.processInstance.report.cancelProcess",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "取消原因不能为空",
+          "key": "bpm.processInstance.report.cancelReasonRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "取消成功",
+          "key": "bpm.processInstance.report.cancelSuccess",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/processListener/ProcessListenerForm.vue",
+      "ns": "bpm.processListener",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "bpm.processListener.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "bpm.processListener.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "类型",
+          "key": "bpm.processListener.type",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择类型",
+          "key": "bpm.processListener.selectType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "事件",
+          "key": "bpm.processListener._todo247",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择事件",
+          "key": "bpm.processListener._todo248",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "值类型",
+          "key": "bpm.processListener._todo249",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择值类型",
+          "key": "bpm.processListener._todo250",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "类路径",
+          "key": "bpm.processListener._todo251",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入类路径",
+          "key": "bpm.processListener._todo252",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表达式",
+          "key": "bpm.processListener.expression",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入表达式",
+          "key": "bpm.processListener.inputExpression",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "名字不能为空",
+          "key": "bpm.processListener.nameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "类型不能为空",
+          "key": "bpm.processListener.typeRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "状态不能为空",
+          "key": "bpm.processListener.statusRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "监听事件不能为空",
+          "key": "bpm.processListener._todo253",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "值类型不能为空",
+          "key": "bpm.processListener._todo254",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "值不能为空",
+          "key": "bpm.processListener._todo255",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-attr-unlisted",
+          "attr": "v-for",
+          "text": "event in formData.type == 'execution'\n              ? ['开始', '结束']\n              : ['创建', '指派', '完成', '删除', '更新', '超时']"
+        }
+      ]
+    },
+    {
+      "file": "src/views/bpm/processListener/index.vue",
+      "ns": "bpm.processListener",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "执行监听器、任务监听器",
+          "key": "bpm.processListener._todo256",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "bpm.processListener.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入名字",
+          "key": "bpm.processListener.inputName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "类型",
+          "key": "bpm.processListener.type",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择类型",
+          "key": "bpm.processListener.selectType",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "编号",
+          "key": "bpm.processListener.id",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "名字",
+          "key": "bpm.processListener.name",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "类型",
+          "key": "bpm.processListener.type",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "事件",
+          "key": "bpm.processListener._todo247",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "值类型",
+          "key": "bpm.processListener._todo249",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "值",
+          "key": "bpm.processListener._todo257",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "bpm.processListener.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "bpm.processListener.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "bpm.processListener.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "bpm.processListener.delete",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/task/components/TaskEvidenceCell.vue",
+      "ns": "bpm.task.components",
+      "convert": [
+        {
+          "type": "vue-text",
+          "text": "签名",
+          "key": "bpm.task.components.signature",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/task/copy/index.vue",
+      "ns": "bpm.task.copy",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "审批转办、委派、抄送",
+          "key": "bpm.task.copy._todo258",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程名称",
+          "key": "bpm.task.copy.processName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入流程名称",
+          "key": "bpm.task.copy.inputProcessName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "抄送时间",
+          "key": "bpm.task.copy._todo259",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "bpm.task.copy.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "bpm.task.copy.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程名",
+          "key": "bpm.task.copy._todo260",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "摘要",
+          "key": "bpm.task.copy.summary",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程发起人",
+          "key": "bpm.task.copy.processStarter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程发起时间",
+          "key": "bpm.task.copy._todo261",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "抄送节点",
+          "key": "bpm.task.copy._todo262",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "抄送人",
+          "key": "bpm.task.copy.ccUser",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "抄送意见",
+          "key": "bpm.task.copy.ccOpinion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "抄送时间",
+          "key": "bpm.task.copy._todo259",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "bpm.task.copy.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "详情",
+          "key": "bpm.task.copy.detail",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/task/done/index.vue",
+      "ns": "bpm.task.done",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "审批通过、不通过、驳回",
+          "key": "bpm.task.done._todo263",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "审批加签、减签",
+          "key": "bpm.task.done._todo264",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "审批转办、委派、抄送",
+          "key": "bpm.task.done._todo265",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "审批加签、减签",
+          "key": "bpm.task.done._todo264",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入任务名称",
+          "key": "bpm.task.done.inputTaskName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择流程分类",
+          "key": "bpm.task.done.selectProcessCategory",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择审批状态",
+          "key": "bpm.task.done.selectApproveStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "所属流程",
+          "key": "bpm.task.done.belongProcess",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择流程定义",
+          "key": "bpm.task.done.selectProcessDefinition",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起时间",
+          "key": "bpm.task.done.startTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "bpm.task.done.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "bpm.task.done.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程",
+          "key": "bpm.task.done.process",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "摘要",
+          "key": "bpm.task.done.summary",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起人",
+          "key": "bpm.task.done.starter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起时间",
+          "key": "bpm.task.done.startTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "当前任务",
+          "key": "bpm.task.done.currentTask",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务开始时间",
+          "key": "bpm.task.done._todo266",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务结束时间",
+          "key": "bpm.task.done._todo267",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批状态",
+          "key": "bpm.task.done.approveStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批建议",
+          "key": "bpm.task.done.approveSuggestion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "耗时",
+          "key": "bpm.task.done.duration",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程编号",
+          "key": "bpm.task.done.processId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务编号",
+          "key": "bpm.task.done.taskId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "bpm.task.done.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "高级筛选",
+          "key": "bpm.task.done.advancedFilter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确认",
+          "key": "bpm.task.done.confirm",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "清空",
+          "key": "bpm.task.done.clear",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "撤回",
+          "key": "bpm.task.done._todo268",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "历史",
+          "key": "bpm.task.done.history",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "撤回成功",
+          "key": "bpm.task.done._todo269",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/task/manager/index.vue",
+      "ns": "bpm.task.manager",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "工作流手册",
+          "key": "bpm.task.manager._todo270",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务名称",
+          "key": "bpm.task.manager.taskName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入任务名称",
+          "key": "bpm.task.manager.inputTaskName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "bpm.task.manager.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "bpm.task.manager.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程",
+          "key": "bpm.task.manager.process",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起人",
+          "key": "bpm.task.manager.starter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起时间",
+          "key": "bpm.task.manager.startTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "当前任务",
+          "key": "bpm.task.manager.currentTask",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务开始时间",
+          "key": "bpm.task.manager._todo271",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务结束时间",
+          "key": "bpm.task.manager._todo272",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批人",
+          "key": "bpm.task.manager._todo273",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批状态",
+          "key": "bpm.task.manager.approveStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批建议",
+          "key": "bpm.task.manager.approveSuggestion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "附件/签名",
+          "key": "bpm.task.manager._todo274",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "耗时",
+          "key": "bpm.task.manager.duration",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程编号",
+          "key": "bpm.task.manager.processId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务编号",
+          "key": "bpm.task.manager.taskId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "bpm.task.manager.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "历史",
+          "key": "bpm.task.manager.history",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/task/todo/index.vue",
+      "ns": "bpm.task.todo",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "审批通过、不通过、驳回",
+          "key": "bpm.task.todo._todo275",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "审批加签、减签",
+          "key": "bpm.task.todo._todo276",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "审批转办、委派、抄送",
+          "key": "bpm.task.todo._todo277",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "审批加签、减签",
+          "key": "bpm.task.todo._todo276",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入任务名称",
+          "key": "bpm.task.todo.inputTaskName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择流程分类",
+          "key": "bpm.task.todo.selectProcessCategory",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "所属流程",
+          "key": "bpm.task.todo.belongProcess",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择流程定义",
+          "key": "bpm.task.todo.selectProcessDefinition",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起时间",
+          "key": "bpm.task.todo.startTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "bpm.task.todo.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "bpm.task.todo.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程",
+          "key": "bpm.task.todo.process",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "摘要",
+          "key": "bpm.task.todo.summary",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起人",
+          "key": "bpm.task.todo.starter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起时间",
+          "key": "bpm.task.todo.startTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "当前任务",
+          "key": "bpm.task.todo.currentTask",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务时间",
+          "key": "bpm.task.todo._todo278",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程编号",
+          "key": "bpm.task.todo.processId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "任务编号",
+          "key": "bpm.task.todo.taskId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "bpm.task.todo.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "高级筛选",
+          "key": "bpm.task.todo.advancedFilter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "清空",
+          "key": "bpm.task.todo.clear",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确认",
+          "key": "bpm.task.todo.confirm",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "办理",
+          "key": "bpm.task.todo._todo279",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    }
+  ]
+}

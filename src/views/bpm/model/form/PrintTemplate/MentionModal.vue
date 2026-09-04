@@ -1,36 +1,25 @@
-<script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+<script setup lang="ts">const { t } = useI18n() // 国际化
 
 const emit = defineEmits(['hideMentionModal', 'insertMention'])
-const { t } = useI18n() // 国际化
 
 const inputRef = ref()
 const top = ref('')
 const left = ref('')
 const searchVal = ref('')
-const formFields = inject<any>('formFieldsObj')
-const baseMentionList = computed(() => [
-  { id: 'startUser', name: t('bpm.model.form.printTemplate.option.startUser') },
-  { id: 'startUserDept', name: t('bpm.model.form.printTemplate.option.startUserDept') },
-  { id: 'processName', name: t('bpm.model.form.printTemplate.option.processName') },
-  { id: 'processNum', name: t('bpm.model.form.printTemplate.option.processNum') },
-  { id: 'startTime', name: t('bpm.model.form.printTemplate.option.startTime') },
-  { id: 'endTime', name: t('bpm.model.form.printTemplate.option.endTime') },
-  { id: 'processStatus', name: t('bpm.model.form.printTemplate.option.processStatus') },
-  { id: 'printUser', name: t('bpm.model.form.printTemplate.option.printUser') },
-  { id: 'printTime', name: t('bpm.model.form.printTemplate.option.printTime') }
+const list = ref([
+  { id: 'startUser', name: t('bpm.model.form.PrintTemplate.starter') },
+  { id: 'startUserDept', name: t('bpm.model.form.PrintTemplate._todo120') },
+  { id: 'processName', name: t('bpm.model.form.PrintTemplate.processName') },
+  { id: 'processNum', name: t('bpm.model.form.PrintTemplate.processId') },
+  { id: 'startTime', name: t('bpm.model.form.PrintTemplate.startTime') },
+  { id: 'endTime', name: t('bpm.model.form.PrintTemplate.endTime') },
+  { id: 'processStatus', name: t('bpm.model.form.PrintTemplate.processStatus') },
+  { id: 'printUser', name: t('bpm.model.form.PrintTemplate._todo121') },
+  { id: 'printTime', name: t('bpm.model.form.PrintTemplate._todo122') }
 ])
-const dynamicMentionList = computed(() => {
-  const fields = formFields?.value || []
-  return fields.map((item) => ({
-    name: `${t('bpm.model.form.printTemplate.formFieldPrefix')}${item.title}`,
-    id: item.field
-  }))
-})
-const mentionList = computed(() => [...baseMentionList.value, ...dynamicMentionList.value])
 const searchedList = computed(() => {
   const searchValStr = searchVal.value.trim().toLowerCase()
-  return mentionList.value.filter((item) => {
+  return list.value.filter((item) => {
     const name = item.name.toLowerCase()
     return name.indexOf(searchValStr) >= 0
   })
@@ -52,7 +41,17 @@ const insertMentionHandler = (id: any, name: any) => {
   emit('hideMentionModal')
 }
 
+const formFields = inject<any>('formFieldsObj')
 onMounted(() => {
+  if (formFields.value && formFields.value.length > 0) {
+    const cloneFormField = formFields.value.map((item) => {
+      return {
+        name: '[表单]' + item.title,
+        id: item.field
+      }
+    })
+    list.value.push(...cloneFormField)
+  }
   const domSelection = document.getSelection()
   const domRange = domSelection?.getRangeAt(0)
   if (domRange == null) return
@@ -84,9 +83,9 @@ onMounted(() => {
 <style>
 #mention-modal {
   position: absolute;
-  border: 1px solid #ccc;
-  background-color: #fff;
   padding: 5px;
+  background-color: #fff;
+  border: 1px solid #ccc;
 }
 
 #mention-modal input {
@@ -100,10 +99,10 @@ onMounted(() => {
 }
 
 #mention-modal ul li {
-  list-style: none;
-  cursor: pointer;
   padding: 3px 0;
   text-align: left;
+  list-style: none;
+  cursor: pointer;
 }
 
 #mention-modal ul li:hover {

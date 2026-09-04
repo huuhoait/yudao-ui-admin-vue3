@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { store } from '../index'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import en from 'element-plus/es/locale/lang/en'
+import vi from 'element-plus/es/locale/lang/vi'
 import { CACHE_KEY, useCache } from '@/hooks/web/useCache'
 import { LocaleDropdownType } from '@/types/localeDropdown'
 
@@ -9,7 +10,8 @@ const { wsCache } = useCache()
 
 const elLocaleMap = {
   'zh-CN': zhCn,
-  en: en
+  en: en,
+  vi: vi
 }
 interface LocaleState {
   currentLocale: LocaleDropdownType
@@ -32,13 +34,16 @@ export const useLocaleStore = defineStore('locales', {
         {
           lang: 'en',
           name: 'English'
+        },
+        {
+          lang: 'vi',
+          name: 'Tiếng Việt'
         }
       ]
     }
   },
   getters: {
     getCurrentLocale(): LocaleDropdownType {
-      
       return this.currentLocale
     },
     getLocaleMap(): LocaleDropdownType[] {

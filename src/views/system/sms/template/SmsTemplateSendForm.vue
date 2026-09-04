@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-model="dialogVisible" title="测试">
+  <Dialog v-model="dialogVisible" :title="t('system.sms.template.test')">
     <el-form
       ref="formRef"
       v-loading="formLoading"
@@ -7,16 +7,16 @@
       :rules="formRules"
       label-width="140px"
     >
-      <el-form-item label="模板内容" prop="content">
+      <el-form-item :label="t('system.sms.template.templateContent')" prop="content">
         <el-input
           v-model="formData.content"
-          placeholder="请输入模板内容"
+          :placeholder="t('system.sms.template.inputTemplateContent')"
           readonly
           type="textarea"
         />
       </el-form-item>
-      <el-form-item label="手机号" prop="mobile">
-        <el-input v-model="formData.mobile" placeholder="请输入手机号" />
+      <el-form-item :label="t('system.sms.template.mobile')" prop="mobile">
+        <el-input v-model="formData.mobile" :placeholder="t('system.sms.template.inputMobile')" />
       </el-form-item>
       <el-form-item
         v-for="param in formData.params"
@@ -31,8 +31,8 @@
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -40,6 +40,7 @@
 import * as SmsTemplateApi from '@/api/system/sms/smsTemplate'
 
 defineOptions({ name: 'SystemSmsTemplateSendForm' })
+const { t } = useI18n() // 国际化
 
 const message = useMessage() // 消息弹窗
 
@@ -55,8 +56,8 @@ const formData = ref({
   templateParams: new Map()
 })
 const formRules = reactive({
-  mobile: [{ required: true, message: '手机不能为空', trigger: 'blur' }],
-  templateCode: [{ required: true, message: '模版编码不能为空', trigger: 'blur' }],
+  mobile: [{ required: true, message: t('system.sms.template._todo259'), trigger: 'blur' }],
+  templateCode: [{ required: true, message: t('system.sms.template._todo260'), trigger: 'blur' }],
   templateParams: {}
 })
 const formRef = ref() // 表单 Ref

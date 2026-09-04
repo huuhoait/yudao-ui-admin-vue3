@@ -1,43 +1,43 @@
 <template>
-  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" :title="t('sys.operatelog.detail')" width="800">
+  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" :title="t('system.operatelog.detail')" width="800">
     <el-descriptions :column="1" border>
-      <el-descriptions-item :label="t('sys.operatelog.logId')" min-width="120">
+      <el-descriptions-item :label="t('system.operatelog.logId')" min-width="120">
         {{ detailData.id }}
       </el-descriptions-item>
-      <el-descriptions-item v-if="detailData.traceId" :label="t('sys.operatelog.traceId')">
+      <el-descriptions-item :label="t('system.operatelog._todo185')" v-if="detailData.traceId">
         {{ detailData.traceId }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.operatelog.userId')">
+      <el-descriptions-item :label="t('system.operatelog._todo186')">
         {{ detailData.userId }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.operatelog.userName')">
+      <el-descriptions-item :label="t('system.operatelog._todo187')">
         {{ detailData.userName }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.operatelog.userIp')">
+      <el-descriptions-item :label="t('system.operatelog._todo188')">
         {{ detailData.userIp }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.operatelog.userAgent')">
+      <el-descriptions-item :label="t('system.operatelog._todo189')">
         {{ detailData.userAgent }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.operatelog.type')">
+      <el-descriptions-item :label="t('system.operatelog._todo190')">
         {{ detailData.type }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.operatelog.subType')">
+      <el-descriptions-item :label="t('system.operatelog._todo191')">
         {{ detailData.subType }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.operatelog.action')">
+      <el-descriptions-item :label="t('system.operatelog._todo192')">
         {{ detailData.action }}
       </el-descriptions-item>
-      <el-descriptions-item v-if="detailData.extra" :label="t('sys.operatelog.extra')">
+      <el-descriptions-item v-if="detailData.extra" :label="t('system.operatelog._todo193')">
         {{ detailData.extra }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.operatelog.requestUrl')">
+      <el-descriptions-item :label="t('system.operatelog._todo194')">
         {{ detailData.requestMethod }} {{ detailData.requestUrl }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.operatelog.createTime')">
+      <el-descriptions-item :label="t('system.operatelog._todo195')">
         {{ formatDate(detailData.createTime) }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('sys.operatelog.bizId')">
+      <el-descriptions-item :label="t('system.operatelog._todo196')">
         {{ detailData.bizId }}
       </el-descriptions-item>
     </el-descriptions>
@@ -48,8 +48,6 @@ import { formatDate } from '@/utils/formatTime'
 import * as OperateLogApi from '@/api/system/operatelog'
 
 defineOptions({ name: 'SystemOperateLogDetail' })
-
-const { t } = useI18n() // 国际化
 
 const dialogVisible = ref(false) // 弹窗的是否展示
 const detailLoading = ref(false) // 表单的加载中

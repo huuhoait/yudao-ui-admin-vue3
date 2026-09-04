@@ -2,20 +2,19 @@
   <ContentWrap :bodyStyle="{ padding: '10px 20px 0' }">
     <div class="processInstance-wrap-main">
       <el-scrollbar>
-        <div class="text-#878c93 h-15px">
-          {{ t('bpm.processInstance.create.detail.processLabel', { name: selectProcessDefinition.name }) }}
-        </div>
+        <div class="text-#878c93 h-15px">流程：{{ selectProcessDefinition.name }}</div>
         <el-divider class="!my-8px" />
 
         <!-- 中间主要内容 tab 栏 -->
         <el-tabs v-model="activeTab">
           <!-- 表单信息 -->
-          <el-tab-pane :label="$t('bpm.processInstance.create.detail.tabs.form')" name="form">
+          <el-tab-pane :label="t('bpm.processInstance.create._todo179')" name="form">
             <div class="form-scroll-area" v-loading="processInstanceStartLoading">
               <el-scrollbar>
                 <el-row>
                   <el-col :span="17">
                     <form-create
+                      v-if="detailForm.rule.length"
                       :rule="detailForm.rule"
                       v-model:api="fApi"
                       v-model="detailForm.value"
@@ -38,7 +37,7 @@
             </div>
           </el-tab-pane>
           <!-- 流程图 -->
-          <el-tab-pane :label="$t('bpm.processInstance.create.detail.tabs.diagram')" name="diagram">
+          <el-tab-pane :label="t('bpm.processInstance.create._todo180')" name="diagram">
             <div class="form-scroll-area">
               <!-- BPMN 流程图预览 -->
               <ProcessInstanceBpmnViewer
@@ -63,10 +62,10 @@
             class="h-50px bottom-10 text-14px flex items-center color-#32373c dark:color-#fff font-bold btn-container"
           >
             <el-button plain type="success" @click="submitForm">
-              <Icon icon="ep:select" />&nbsp;{{ t('bpm.processInstance.create.detail.actions.submit') }}
+              <Icon icon="ep:select" />&nbsp; 发起
             </el-button>
             <el-button plain type="danger" @click="handleCancel">
-              <Icon icon="ep:close" />&nbsp;{{ t('common.cancel') }}
+              <Icon icon="ep:close" />&nbsp; 取消
             </el-button>
           </div>
         </div>
@@ -85,7 +84,7 @@ import {
 import ProcessInstanceBpmnViewer from '../detail/ProcessInstanceBpmnViewer.vue'
 import ProcessInstanceSimpleViewer from '../detail/ProcessInstanceSimpleViewer.vue'
 import ProcessInstanceTimeline from '../detail/ProcessInstanceTimeline.vue'
-import type { ApiAttrs } from '@form-create/element-ui/types/config'
+import type { Api as FormCreateApi } from '@form-create/element-ui'
 import { useTagsViewStore } from '@/store/modules/tagsView'
 import * as ProcessInstanceApi from '@/api/bpm/processInstance'
 import * as DefinitionApi from '@/api/bpm/definition'
@@ -93,6 +92,7 @@ import { ApprovalNodeInfo } from '@/api/bpm/processInstance'
 import formCreate from '@form-create/element-ui'
 
 defineOptions({ name: 'ProcessDefinitionDetail' })
+const { t } = useI18n() // 国际化
 const props = defineProps<{
   selectProcessDefinition: any
 }>()
@@ -100,7 +100,6 @@ const emit = defineEmits(['cancel'])
 const processInstanceStartLoading = ref(false) // 流程实例发起中
 const { push, currentRoute } = useRouter() // 路由
 const message = useMessage() // 消息弹窗
-const { t } = useI18n() // 国际化
 const { delView } = useTagsViewStore() // 视图操作
 
 const detailForm: any = ref({
@@ -108,12 +107,12 @@ const detailForm: any = ref({
   option: {},
   value: {}
 }) // 流程表单详情
-const fApi = ref<ApiAttrs>()
+const fApi = ref<FormCreateApi>()
 // 指定审批人
 const startUserSelectTasks: any = ref([]) // 发起人需要选择审批人或抄送人的任务列表
 const startUserSelectAssignees = ref({}) // 发起人选择审批人的数据
 const tempStartUserSelectAssignees = ref({}) // 历史发起人选择审批人的数据，用于每次表单变更时，临时保存
-const bpmnXML: any = ref(null) // BPMN 数据
+const bpmnXML = ref('') // BPMN 数据
 const simpleJson = ref<string | undefined>() // Simple 设计器数据 json 格式
 
 const activeTab = ref('form') // 当前的 Tab
@@ -195,7 +194,7 @@ const getApprovalDetail = async (row: any) => {
     })
 
     if (!data) {
-      message.error(t('bpm.processInstance.create.detail.messages.approvalDetailMissing'))
+      message.error(t('bpm.processInstance.create._todo181'))
       return
     }
     // 获取审批节点，显示 Timeline 的数据
@@ -237,12 +236,10 @@ const getApprovalDetail = async (row: any) => {
 const setFieldPermission = (field: string, permission: string) => {
   if (permission === FieldPermissionType.READ) {
     // 1. 设置字段为只读
-    //@ts-ignore
     fApi.value?.disabled(true, field)
     // 2. 只读字段， 去掉验证规则
     //  fApi.value?.updateValidate(field, []); 这个方法貌似不起作用，
     try {
-      //@ts-ignore
       const rule = fApi.value?.getRule(field)
       if (rule) {
         // 必填验证设置为false
@@ -253,15 +250,13 @@ const setFieldPermission = (field: string, permission: string) => {
         }
       }
     } catch (error) {
-      console.warn('修改字段验证规则失败:', error)
+      console.warn(t('bpm.processInstance.create._todo182'), error)
     }
   }
   if (permission === FieldPermissionType.WRITE) {
-    //@ts-ignore
     fApi.value?.disabled(false, field)
   }
   if (permission === FieldPermissionType.NONE) {
-    //@ts-ignore
     fApi.value?.hidden(true, field)
   }
 }
@@ -271,13 +266,13 @@ const submitForm = async () => {
   if (!fApi.value || !props.selectProcessDefinition) {
     return
   }
-  
+
   try {
     // 流程表单校验
     await fApi.value.validate()
   } catch (error) {
     // 如果验证失败，检查是否是只读字段的验证错误
-    console.warn('表单验证失败:', error)
+    console.warn(t('bpm.processInstance.create._todo183'), error)
     return
   }
   // 如果有指定审批人，需要校验
@@ -300,7 +295,7 @@ const submitForm = async () => {
       startUserSelectAssignees: startUserSelectAssignees.value
     })
     // 提示
-    message.success(t('bpm.processInstance.create.detail.messages.submitSuccess'))
+    message.success(t('bpm.processInstance.create._todo184'))
     // 跳转回去
     delView(unref(currentRoute))
     await push({

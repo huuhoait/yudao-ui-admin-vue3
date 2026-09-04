@@ -15,7 +15,6 @@
           class="!w-240px"
           type="year"
           value-format="YYYY"
-          :default-time="[new Date().getFullYear()]"
         />
       </el-form-item>
       <el-form-item label="归属部门" prop="deptId">
@@ -65,6 +64,10 @@
           ref="ReceivablePricePerformanceRef"
         />
       </el-tab-pane>
+      <!-- 合同汇总表 -->
+      <el-tab-pane label="合同汇总表" name="ContractSummary" lazy>
+        <ContractSummary :query-params="queryParams" ref="ContractSummaryRef" />
+      </el-tab-pane>
     </el-tabs>
   </el-col>
 </template>
@@ -78,8 +81,9 @@ import { defaultProps, handleTree } from '@/utils/tree'
 import ContractCountPerformance from './components/ContractCountPerformance.vue'
 import ContractPricePerformance from './components/ContractPricePerformance.vue'
 import ReceivablePricePerformance from './components/ReceivablePricePerformance.vue'
+import ContractSummary from './components/ContractSummary.vue'
 
-defineOptions({ name: 'CrmStatisticsCustomer' })
+defineOptions({ name: 'CrmStatisticsPerformance' })
 
 const queryParams = reactive({
   deptId: useUserStore().getUser.deptId,
@@ -105,6 +109,7 @@ const activeTab = ref('ContractCountPerformance')
 const ContractCountPerformanceRef = ref() // 员工合同数量统计
 const ContractPricePerformanceRef = ref() // 员工合同金额统计
 const ReceivablePricePerformanceRef = ref() // 员工回款金额统计
+const ContractSummaryRef = ref() // 合同汇总表
 
 /** 搜索按钮操作 */
 const handleQuery = () => {
@@ -123,6 +128,9 @@ const handleQuery = () => {
       break
     case 'ReceivablePricePerformance':
       ReceivablePricePerformanceRef.value?.loadData?.()
+      break
+    case 'ContractSummary':
+      ContractSummaryRef.value?.loadData?.()
       break
   }
 }

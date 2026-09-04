@@ -2,12 +2,13 @@
   <ContentWrap :body-style="{ padding: '0px' }" class="!mb-0">
     <!-- 表单设计器 -->
     <div
-      class="h-[calc(100vh-var(--top-tool-height)-var(--tags-view-height)-var(--app-content-padding)-var(--app-content-padding)-2px)]">
-      <fc-designer class="my-designer" ref="designer" :config="designerConfig" :locale="en">
+      class="h-[calc(100vh-var(--top-tool-height)-var(--tags-view-height)-var(--app-content-padding)-var(--app-content-padding)-2px)]"
+    >
+      <fc-designer class="my-designer" ref="designer" :config="designerConfig">
         <template #handle>
           <el-button size="small" type="success" plain @click="handleSave">
             <Icon class="mr-5px" icon="ep:plus" />
-            {{ $t('common.save') }}
+            {{ t('common.save') }}
           </el-button>
         </template>
       </fc-designer>
@@ -15,27 +16,29 @@
   </ContentWrap>
 
   <!-- 表单保存的弹窗 -->
-  <Dialog v-model="dialogVisible" :title="$t('bpm.form.editor.saveDialogTitle')" width="600">
+  <Dialog v-model="dialogVisible" :title="t('bpm.form.editor._todo3')" width="600">
     <el-form ref="formRef" :model="formData" :rules="formRules" label-width="80px">
-      <el-form-item :label="$t('bpm.form.fields.name')" prop="name">
-        <el-input v-model="formData.name" :placeholder="$t('bpm.form.fields.namePlaceholder')" />
+      <el-form-item :label="t('bpm.form.editor.formName')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('bpm.form.editor.inputFormName')" />
       </el-form-item>
-      <el-form-item :label="$t('bpm.form.fields.status')" prop="status">
+      <el-form-item :label="t('common.status')" prop="status">
         <el-radio-group v-model="formData.status">
-          <el-radio v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)" :key="dict.value" :value="dict.value">
+          <el-radio
+            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
+            :key="dict.value"
+            :value="dict.value"
+          >
             {{ dict.label }}
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :label="$t('bpm.form.fields.remark')" prop="remark">
-        <el-input v-model="formData.remark" :placeholder="$t('bpm.form.fields.remarkPlaceholder')" type="textarea" />
+      <el-form-item :label="t('bpm.form.editor.remark')" prop="remark">
+        <el-input v-model="formData.remark" :placeholder="t('bpm.form.editor.inputRemark')" type="textarea" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">
-        {{ $t('common.confirm') }}
-      </el-button>
-      <el-button @click="dialogVisible = false">{{ $t('common.cancel') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -48,7 +51,6 @@ import { encodeConf, encodeFields, setConfAndFields } from '@/utils/formCreate'
 import { useTagsViewStore } from '@/store/modules/tagsView'
 import { useFormCreateDesigner } from '@/components/FormCreate'
 import { useRoute } from 'vue-router'
-import en from '@form-create/designer/locale/en'
 
 defineOptions({ name: 'BpmFormEditor' })
 
@@ -61,7 +63,6 @@ const { delView } = useTagsViewStore() // 视图操作
 
 // 表单设计器配置
 const designerConfig = ref({
-  locale: 'en', // 语言，支持中文 'zh-CN' 和英文 'en'
   switchType: [], // 是否可以切换组件类型,或者可以相互切换的字段
   autoActive: true, // 是否自动选中拖入的组件
   useTemplate: false, // 是否生成vue2语法的模板组件
@@ -90,9 +91,7 @@ const designerConfig = ref({
   appendConfigData: [] // 定义渲染规则所需的formData
 })
 const designer = ref() // 表单设计器
-
 useFormCreateDesigner(designer) // 表单设计器增强
-
 const dialogVisible = ref(false) // 弹窗是否展示
 const formLoading = ref(false) // 表单的加载中：提交的按钮禁用
 const formData = ref({
@@ -101,8 +100,8 @@ const formData = ref({
   remark: ''
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('bpm.form.editor.rules.nameRequired'), trigger: 'blur' }],
-  status: [{ required: true, message: t('bpm.form.editor.rules.statusRequired'), trigger: 'blur' }]
+  name: [{ required: true, message: t('bpm.form.editor.formNameRequired'), trigger: 'blur' }],
+  status: [{ required: true, message: t('bpm.form.editor._todo4'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 
@@ -161,15 +160,11 @@ onMounted(async () => {
   const { id: foo, ...copied } = data
   formData.value = copied
   formData.value.name += '_copy'
-
-
 })
-
 </script>
 
 <style>
 .my-designer {
-
   ._fc-l,
   ._fc-m,
   ._fc-r {

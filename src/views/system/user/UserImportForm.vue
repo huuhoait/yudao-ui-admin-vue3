@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('sys.user.userImport')" width="400">
+  <Dialog v-model="dialogVisible" :title="t('system.user.userImport')" width="400">
     <el-upload
       ref="uploadRef"
       v-model:file-list="fileList"
@@ -15,21 +15,21 @@
       drag
     >
       <Icon icon="ep:upload" />
-      <div class="el-upload__text">{{ t('common.dropTip') }}<em>{{ t('common.clickUpload') }}</em></div>
+      <div class="el-upload__text">{{ t('system.user._todo3') }}<em>{{ t('system.user.clickUpload') }}</em></div>
       <template #tip>
         <div class="el-upload__tip text-center">
           <div class="el-upload__tip">
             <el-checkbox v-model="updateSupport" />
-            {{ t('sys.user.userImportTip') }}
+            {{ t('system.user._todo4') }}
           </div>
-          <span>{{ t('common.xlsFormatTip') }}</span>
+          <span>{{ t('system.user._todo5') }}</span>
           <el-link
             :underline="false"
             style="font-size: 12px; vertical-align: baseline"
             type="primary"
             @click="importTemplate"
           >
-            {{ t('common.downloadTemplate') }}
+            {{ t('system.user.downloadTemplate') }}
           </el-link>
         </div>
       </template>
@@ -46,9 +46,9 @@ import { getAccessToken, getTenantId } from '@/utils/auth'
 import download from '@/utils/download'
 
 defineOptions({ name: 'SystemUserImportForm' })
+const { t } = useI18n() // 国际化
 
 const message = useMessage() // 消息弹窗
-const { t } = useI18n() // 国际化
 
 const dialogVisible = ref(false) // 弹窗的是否展示
 const formLoading = ref(false) // 表单的加载中
@@ -71,7 +71,7 @@ defineExpose({ open }) // 提供 open 方法，用于打开弹窗
 /** 提交表单 */
 const submitForm = async () => {
   if (fileList.value.length == 0) {
-    message.error('请上传文件')
+    message.error(t('system.user._todo6'))
     return
   }
   // 提交请求
@@ -88,7 +88,7 @@ const emits = defineEmits(['success'])
 const submitFormSuccess = (response: any) => {
   if (response.code !== 0) {
     message.error(response.msg)
-    formLoading.value = false
+    resetForm()
     return
   }
   // 拼接提示语
@@ -114,7 +114,7 @@ const submitFormSuccess = (response: any) => {
 
 /** 上传错误提示 */
 const submitFormError = (): void => {
-  message.error('上传失败，请您重新上传！')
+  message.error(t('system.user._todo7'))
   formLoading.value = false
 }
 
@@ -128,7 +128,7 @@ const resetForm = async (): Promise<void> => {
 
 /** 文件数超出提示 */
 const handleExceed = (): void => {
-  message.error('最多只能上传一个文件！')
+  message.error(t('system.user._todo8'))
 }
 
 /** 下载模板操作 */

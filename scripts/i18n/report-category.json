@@ -1,0 +1,318 @@
+{
+  "mode": "apply-dry",
+  "target": "src/views/bpm/category",
+  "scannedAt": "2026-09-03T13:46:53.215Z",
+  "totalFiles": 2,
+  "toConvert": 38,
+  "needReview": 0,
+  "todoKeys": 2,
+  "files": [
+    {
+      "file": "src/views/bpm/category/CategoryForm.vue",
+      "ns": "bpm.category",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类名",
+          "key": "bpm.category.categoryName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入分类名",
+          "key": "bpm.category.inputCategoryName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类标志",
+          "key": "bpm.category.categoryFlag",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入分类标志",
+          "key": "bpm.category.inputCategoryFlag",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类描述",
+          "key": "bpm.category.categoryDesc",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入分类描述",
+          "key": "bpm.category.inputCategoryDesc",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类状态",
+          "key": "bpm.category.categoryStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类排序",
+          "key": "bpm.category.categorySort",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入分类排序",
+          "key": "bpm.category.inputCategorySort",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "分类名不能为空",
+          "key": "bpm.category.categoryNameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "分类标志不能为空",
+          "key": "bpm.category.categoryFlagRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "分类状态不能为空",
+          "key": "bpm.category.categoryStatusRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "分类排序不能为空",
+          "key": "bpm.category.categorySortRequired",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/bpm/category/index.vue",
+      "ns": "bpm.category",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "工作流手册",
+          "key": "bpm.category._todo1",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类名",
+          "key": "bpm.category.categoryName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入分类名",
+          "key": "bpm.category.inputCategoryName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类标志",
+          "key": "bpm.category.categoryFlag",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入分类标志",
+          "key": "bpm.category.inputCategoryFlag",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类状态",
+          "key": "bpm.category.categoryStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择分类状态",
+          "key": "bpm.category.selectCategoryStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "bpm.category.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "bpm.category.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类编号",
+          "key": "bpm.category._todo2",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类名",
+          "key": "bpm.category.categoryName",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类标志",
+          "key": "bpm.category.categoryFlag",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类描述",
+          "key": "bpm.category.categoryDesc",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类状态",
+          "key": "bpm.category.categoryStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "分类排序",
+          "key": "bpm.category.categorySort",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "bpm.category.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "bpm.category.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "编辑",
+          "key": "bpm.category.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "bpm.category.delete",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    }
+  ]
+}

@@ -1,178 +1,251 @@
 <template>
-  <el-form ref="formRef" :model="modelData" label-width="180px" class="mt-20px">
+  <el-form ref="formRef" :model="modelData" label-width="130px" class="mt-20px">
     <el-form-item class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form.submitterPermissions') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form._todo76') }}</el-text>
       </template>
       <div class="flex flex-col">
-        <el-checkbox v-model="modelData.allowCancelRunningProcess" :label="t('bpm.model.form.allowCancelRunning')" />
-        <div class="ml-22px">
-          <el-text type="info">{{ t('bpm.model.form.cancelRunningTip') }}</el-text>
-        </div>
+        <el-checkbox v-model="modelData.allowCancelRunningProcess" :label="t('bpm.model.form._todo68')" />
       </div>
     </el-form-item>
     <el-form-item class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form.approverPermissions') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form._todo77') }}</el-text>
       </template>
       <div class="flex flex-col">
-        <el-checkbox v-model="modelData.allowWithdrawTask" :label="t('bpm.model.form.allowWithdrawTask')" />
+        <el-checkbox v-model="modelData.allowWithdrawTask" :label="t('bpm.model.form._todo69')" />
         <div class="ml-22px">
-          <el-text type="info">{{ t('bpm.model.form.withdrawTaskTip') }}</el-text>
+          <el-text type="info"> {{ t('bpm.model.form._todo78') }} </el-text>
         </div>
       </div>
     </el-form-item>
     <el-form-item v-if="modelData.processIdRule" class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form.processCode') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form._todo79') }}</el-text>
       </template>
       <div class="flex flex-col">
         <div>
-          <el-input v-model="modelData.processIdRule.prefix" class="w-130px!" :placeholder="t('bpm.model.form.prefix')"
-            :disabled="!modelData.processIdRule.enable">
+          <el-input
+            v-model="modelData.processIdRule.prefix"
+            class="w-130px!"
+            :placeholder="t('bpm.model.form._todo70')"
+            :disabled="!modelData.processIdRule.enable"
+          >
             <template #prepend>
               <el-checkbox v-model="modelData.processIdRule.enable" />
             </template>
           </el-input>
-          <el-select v-model="modelData.processIdRule.infix" class="w-130px! ml-5px"
-            :placeholder="t('bpm.model.form.infix')" :disabled="!modelData.processIdRule.enable">
-            <el-option v-for="item in timeOptions" :key="item.value" :label="item.label" :value="item.value" />
+          <el-select
+            v-model="modelData.processIdRule.infix"
+            class="w-130px! ml-5px"
+            :placeholder="t('bpm.model.form._todo71')"
+            :disabled="!modelData.processIdRule.enable"
+          >
+            <el-option
+              v-for="item in timeOptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
           </el-select>
-          <el-input v-model="modelData.processIdRule.postfix" class="w-80px! ml-5px"
-            :placeholder="t('bpm.model.form.postfix')" :disabled="!modelData.processIdRule.enable" />
-          <el-input-number v-model="modelData.processIdRule.length" class="w-120px! ml-5px" :min="5"
-            :disabled="!modelData.processIdRule.enable" />
+          <el-input
+            v-model="modelData.processIdRule.postfix"
+            class="w-80px! ml-5px"
+            :placeholder="t('bpm.model.form._todo72')"
+            :disabled="!modelData.processIdRule.enable"
+          />
+          <el-input-number
+            v-model="modelData.processIdRule.length"
+            class="w-120px! ml-5px"
+            :min="5"
+            :disabled="!modelData.processIdRule.enable"
+          />
         </div>
         <div class="ml-22px" v-if="modelData.processIdRule.enable">
-          <el-text type="info">{{ t('bpm.model.form.codeExample', { example: numberExample }) }}</el-text>
+          <el-text type="info"> 编码示例：{{ numberExample }} </el-text>
         </div>
       </div>
     </el-form-item>
     <el-form-item class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form.autoDeduplicate') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form._todo80') }}</el-text>
       </template>
       <div class="flex flex-col">
         <div>
-          <el-text>{{ t('bpm.model.form.duplicateApproverTip') }}</el-text>
+          <el-text> {{ t('bpm.model.form._todo81') }} </el-text>
         </div>
         <el-radio-group v-model="modelData.autoApprovalType">
           <div class="flex flex-col">
-            <el-radio :value="0">{{ t('bpm.model.form.noAutoApproval') }}</el-radio>
-            <el-radio :value="1">{{ t('bpm.model.form.approveOnce') }}</el-radio>
-            <el-radio :value="2">{{ t('bpm.model.form.approveConsecutive') }}</el-radio>
+            <el-radio :value="0">{{ t('bpm.model.form._todo82') }}</el-radio>
+            <el-radio :value="1">{{ t('bpm.model.form._todo83') }}</el-radio>
+            <el-radio :value="2">{{ t('bpm.model.form._todo84') }}</el-radio>
           </div>
         </el-radio-group>
       </div>
     </el-form-item>
     <el-form-item v-if="modelData.titleSetting" class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form.titleSettings') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form._todo85') }}</el-text>
       </template>
       <div class="flex flex-col">
         <el-radio-group v-model="modelData.titleSetting.enable">
           <div class="flex flex-col">
             <el-radio :value="false">
-              {{ t('bpm.model.form.systemDefault') }}
-              <el-text type="info">{{ t('bpm.model.form.showProcessName') }}</el-text>
+              {{ t('bpm.model.form._todo86') }} <el-text type="info"> {{ t('bpm.model.form._todo87') }} </el-text>
             </el-radio>
             <el-radio :value="true">
-              {{ t('bpm.model.form.customTitle') }}
+              {{ t('bpm.model.form._todo88') }}
               <el-text>
-                <el-tooltip :content="t('bpm.model.form.insertFieldTip')" effect="light" placement="top">
+                <el-tooltip :content="t('bpm.model.form._todo73')" effect="light" placement="top">
                   <Icon icon="ep:question-filled" class="ml-5px" />
                 </el-tooltip>
               </el-text>
             </el-radio>
           </div>
         </el-radio-group>
-        <el-mention v-if="modelData.titleSetting.enable" v-model="modelData.titleSetting.title" type="textarea"
-          prefix="{" split="}" whole :options="formFieldOptions4Title"
-          :placeholder="t('bpm.model.form.insertFieldPlaceholder')" class="w-600px!" />
+        <el-mention
+          v-if="modelData.titleSetting.enable"
+          v-model="modelData.titleSetting.title"
+          type="textarea"
+          prefix="{"
+          split="}"
+          whole
+          :options="formFieldOptions4Title"
+          :placeholder="t('bpm.model.form._todo74')"
+          class="w-600px!"
+        />
       </div>
     </el-form-item>
-    <el-form-item v-if="modelData.summarySetting && modelData.formType === BpmModelFormType.NORMAL" class="mb-20px">
+    <el-form-item
+      v-if="modelData.summarySetting && modelData.formType === BpmModelFormType.NORMAL"
+      class="mb-20px"
+    >
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form.summarySettings') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form._todo89') }}</el-text>
       </template>
       <div class="flex flex-col">
         <el-radio-group v-model="modelData.summarySetting.enable">
           <div class="flex flex-col">
             <el-radio :value="false">
-              {{ t('bpm.model.form.systemDefault') }}
-              <el-text type="info">{{ t('bpm.model.form.showFirstThreeFields') }}</el-text>
+              {{ t('bpm.model.form._todo86') }} <el-text type="info"> {{ t('bpm.model.form._todo90') }} </el-text>
             </el-radio>
-            <el-radio :value="true">{{ t('bpm.model.form.customSummary') }}</el-radio>
+            <el-radio :value="true"> {{ t('bpm.model.form._todo91') }} </el-radio>
           </div>
         </el-radio-group>
-        <el-select class="w-500px!" v-if="modelData.summarySetting.enable" v-model="modelData.summarySetting.summary"
-          multiple :placeholder="t('bpm.model.form.selectDisplayFields')">
-          <el-option v-for="item in formFieldOptions4Summary" :key="item.value" :label="item.label"
-            :value="item.value" />
+        <el-select
+          class="w-500px!"
+          v-if="modelData.summarySetting.enable"
+          v-model="modelData.summarySetting.summary"
+          multiple
+          :placeholder="t('bpm.model.form._todo75')"
+        >
+          <el-option
+            v-for="item in formFieldOptions4Summary"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
         </el-select>
       </div>
     </el-form-item>
     <el-form-item class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form.processPreNotification') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form._todo92') }}</el-text>
       </template>
       <div class="flex flex-col w-100%">
         <div class="flex">
-          <el-switch v-model="processBeforeTriggerEnable" @change="handleProcessBeforeTriggerEnableChange" />
-          <div class="ml-80px">{{ t('bpm.model.form.notifyAfterStart') }}</div>
+          <el-switch
+            v-model="processBeforeTriggerEnable"
+            @change="handleProcessBeforeTriggerEnableChange"
+          />
+          <div class="ml-80px">{{ t('bpm.model.form._todo93') }}</div>
         </div>
-        <HttpRequestSetting v-if="processBeforeTriggerEnable" v-model:setting="modelData.processBeforeTriggerSetting"
-          :responseEnable="true" :formItemPrefix="'processBeforeTriggerSetting'" />
+        <HttpRequestSetting
+          v-if="processBeforeTriggerEnable"
+          v-model:setting="modelData.processBeforeTriggerSetting"
+          :responseEnable="true"
+          :formItemPrefix="'processBeforeTriggerSetting'"
+        />
       </div>
     </el-form-item>
     <el-form-item class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form.processPostNotification') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form._todo94') }}</el-text>
       </template>
       <div class="flex flex-col w-100%">
         <div class="flex">
-          <el-switch v-model="processAfterTriggerEnable" @change="handleProcessAfterTriggerEnableChange" />
-          <div class="ml-80px">{{ t('bpm.model.form.notifyAfterEnd') }}</div>
+          <el-switch
+            v-model="processAfterTriggerEnable"
+            @change="handleProcessAfterTriggerEnableChange"
+          />
+          <div class="ml-80px">{{ t('bpm.model.form._todo95') }}</div>
         </div>
-        <HttpRequestSetting v-if="processAfterTriggerEnable" v-model:setting="modelData.processAfterTriggerSetting"
-          :responseEnable="true" :formItemPrefix="'processAfterTriggerSetting'" />
+        <HttpRequestSetting
+          v-if="processAfterTriggerEnable"
+          v-model:setting="modelData.processAfterTriggerSetting"
+          :responseEnable="true"
+          :formItemPrefix="'processAfterTriggerSetting'"
+        />
       </div>
     </el-form-item>
     <el-form-item class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form.taskPreNotification') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form._todo96') }}</el-text>
       </template>
       <div class="flex flex-col w-100%">
         <div class="flex">
-          <el-switch v-model="taskBeforeTriggerEnable" @change="handleTaskBeforeTriggerEnableChange" />
-          <div class="ml-80px">{{ t('bpm.model.form.notifyDuringTask') }}</div>
+          <el-switch
+            v-model="taskBeforeTriggerEnable"
+            @change="handleTaskBeforeTriggerEnableChange"
+          />
+          <div class="ml-80px">{{ t('bpm.model.form._todo97') }}</div>
         </div>
-        <HttpRequestSetting v-if="taskBeforeTriggerEnable" v-model:setting="modelData.taskBeforeTriggerSetting"
-          :responseEnable="true" :formItemPrefix="'taskBeforeTriggerSetting'" />
+        <HttpRequestSetting
+          v-if="taskBeforeTriggerEnable"
+          v-model:setting="modelData.taskBeforeTriggerSetting"
+          :responseEnable="true"
+          :formItemPrefix="'taskBeforeTriggerSetting'"
+        />
       </div>
     </el-form-item>
     <el-form-item class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form.taskPostNotification') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form._todo98') }}</el-text>
       </template>
       <div class="flex flex-col w-100%">
         <div class="flex">
-          <el-switch v-model="taskAfterTriggerEnable" @change="handleTaskAfterTriggerEnableChange" />
-          <div class="ml-80px">{{ t('bpm.model.form.notifyAfterTask') }}</div>
+          <el-switch
+            v-model="taskAfterTriggerEnable"
+            @change="handleTaskAfterTriggerEnableChange"
+          />
+          <div class="ml-80px">{{ t('bpm.model.form._todo99') }}</div>
         </div>
-        <HttpRequestSetting v-if="taskAfterTriggerEnable" v-model:setting="modelData.taskAfterTriggerSetting"
-          :responseEnable="true" :formItemPrefix="'taskAfterTriggerSetting'" />
+        <HttpRequestSetting
+          v-if="taskAfterTriggerEnable"
+          v-model:setting="modelData.taskAfterTriggerSetting"
+          :responseEnable="true"
+          :formItemPrefix="'taskAfterTriggerSetting'"
+        />
       </div>
     </el-form-item>
     <el-form-item class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form.customPrintTemplate') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form._todo100') }}</el-text>
       </template>
       <div class="flex flex-col w-100%">
         <div class="flex">
-          <el-switch v-model="printTemplateEnable" @change="handlePrintTemplateEnableChange" />
-          <el-button v-if="printTemplateEnable" class="ml-80px" type="primary" link @click="handleEditPrintTemplate">
-            {{ t('bpm.model.form.editTemplate') }}
+          <el-switch
+            v-model="modelData.printTemplateSetting.enable"
+            @change="handlePrintTemplateEnableChange"
+          />
+          <el-button
+            v-if="modelData.printTemplateSetting.enable"
+            class="ml-80px"
+            type="primary"
+            link
+            @click="handleEditPrintTemplate"
+          >
+            {{ t('bpm.model.form._todo101') }}
           </el-button>
         </div>
       </div>
@@ -182,8 +255,6 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n() // Initialize i18n translation function
-import { useI18n } from 'vue-i18n'
 import dayjs from 'dayjs'
 import { BpmAutoApproveType, BpmModelFormType } from '@/utils/constants'
 import * as FormApi from '@/api/bpm/form'
@@ -191,34 +262,33 @@ import { parseFormFields } from '@/components/FormCreate/src/utils'
 import { ProcessVariableEnum } from '@/components/SimpleProcessDesignerV2/src/consts'
 import HttpRequestSetting from '@/components/SimpleProcessDesignerV2/src/nodes-config/components/HttpRequestSetting.vue'
 import PrintTemplate from './PrintTemplate/Index.vue'
+const { t } = useI18n() // 国际化
 
 const modelData = defineModel<any>()
 
-/** Time options for process ID code */
+/** 自定义 ID 流程编码 */
 const timeOptions = ref([
   {
     value: '',
-    label: t('bpm.model.form.timeNone')
+    label: t('bpm.model.form._todo102')
   },
   {
     value: 'DAY',
-    label: t('bpm.model.form.accurateToDay')
+    label: t('bpm.model.form._todo103')
   },
   {
     value: 'HOUR',
-    label: t('bpm.model.form.accurateToHour')
+    label: t('bpm.model.form._todo104')
   },
   {
     value: 'MINUTE',
-    label: t('bpm.model.form.accurateToMinute')
+    label: t('bpm.model.form._todo105')
   },
   {
     value: 'SECOND',
-    label: t('bpm.model.form.accurateToSecond')
+    label: t('bpm.model.form._todo106')
   }
 ])
-
-/** Calculate example number based on process ID rule */
 const numberExample = computed(() => {
   if (modelData.value.processIdRule.enable) {
     let infix = ''
@@ -249,7 +319,7 @@ const numberExample = computed(() => {
   }
 })
 
-/** Process pre-notification trigger enable flag */
+/** 是否开启流程前置通知 */
 const processBeforeTriggerEnable = ref(false)
 const handleProcessBeforeTriggerEnableChange = (val: boolean | string | number) => {
   if (val) {
@@ -264,7 +334,7 @@ const handleProcessBeforeTriggerEnableChange = (val: boolean | string | number) 
   }
 }
 
-/** Process post-notification trigger enable flag */
+/** 是否开启流程后置通知 */
 const processAfterTriggerEnable = ref(false)
 const handleProcessAfterTriggerEnableChange = (val: boolean | string | number) => {
   if (val) {
@@ -279,7 +349,7 @@ const handleProcessAfterTriggerEnableChange = (val: boolean | string | number) =
   }
 }
 
-/** Task pre-notification trigger enable flag */
+/** 是否开启任务前置通知 */
 const taskBeforeTriggerEnable = ref(false)
 const handleTaskBeforeTriggerEnableChange = (val: boolean | string | number) => {
   if (val) {
@@ -294,7 +364,7 @@ const handleTaskBeforeTriggerEnableChange = (val: boolean | string | number) => 
   }
 }
 
-/** Task post-notification trigger enable flag */
+/** 是否开启任务后置通知 */
 const taskAfterTriggerEnable = ref(false)
 const handleTaskAfterTriggerEnableChange = (val: boolean | string | number) => {
   if (val) {
@@ -318,22 +388,21 @@ const formFieldOptions4Title = computed(() => {
       value: item.field
     }
   })
-  // Add fixed process initiator ID field
+  // 固定添加发起人 ID 字段
   cloneFormField.unshift({
-    label: t('bpm.model.form.processNameField'),
+    label: t('bpm.model.form.processName'),
     value: ProcessVariableEnum.PROCESS_DEFINITION_NAME
   })
   cloneFormField.unshift({
-    label: t('bpm.model.form.startTimeField'),
+    label: t('bpm.model.form.startTime'),
     value: ProcessVariableEnum.START_TIME
   })
   cloneFormField.unshift({
-    label: t('bpm.model.form.initiatorField'),
+    label: t('bpm.model.form.starter'),
     value: ProcessVariableEnum.START_USER_ID
   })
   return cloneFormField
 })
-
 const formFieldOptions4Summary = computed(() => {
   return formFields.value.map((item) => {
     return {
@@ -351,9 +420,6 @@ provide('formFieldsObj', formFields)
 
 /** 兼容以前未配置更多设置的流程 */
 const initData = () => {
-  if (!modelData.value) {
-    modelData.value = {}
-  }
   if (!modelData.value.processIdRule) {
     modelData.value.processIdRule = {
       enable: false,
@@ -394,32 +460,14 @@ const initData = () => {
     modelData.value.allowWithdrawTask = false
   }
   if (!modelData.value.printTemplateSetting) {
-    console.log('init printTemplateSetting')
     modelData.value.printTemplateSetting = {
       enable: false
     }
   }
 }
-
-/** Computed property for print template enable state */
-const printTemplateEnable = computed({
-  get: () => modelData.value?.printTemplateSetting?.enable || false,
-  set: (value: boolean) => {
-    if (!modelData.value) {
-      modelData.value = {}
-    }
-    if (!modelData.value.printTemplateSetting) {
-      modelData.value.printTemplateSetting = { enable: false }
-    }
-    modelData.value.printTemplateSetting.enable = value
-  }
-})
 defineExpose({ initData })
-onMounted(() => {
-  initData()
-})
 
-/** Watch form ID changes to load form data */
+/** 监听表单 ID 变化，加载表单数据 */
 watch(
   () => modelData.value.formId,
   async (newFormId) => {
@@ -442,12 +490,8 @@ watch(
 )
 
 const defaultTemplate =
-  '<p style="text-align: center;"><span data-w-e-type="mention" data-w-e-is-void="" data-w-e-is-inline="" data-value="Process Name" data-info="%7B%22id%22%3A%22processName%22%7D">@Process Name</span></p><p style="text-align: right;">Printed by: <span data-w-e-type="mention" data-w-e-is-void="" data-w-e-is-inline="" data-value="Printer" data-info="%7B%22id%22%3A%22printUser%22%7D">@Printer</span></p><p style="text-align: right;">Process Number: <span data-w-e-type="mention" data-w-e-is-void="" data-w-e-is-inline="" data-value="Process Number" data-info="%7B%22id%22%3A%22processNum%22%7D">@Process Number</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Printed Time: <span data-w-e-type="mention" data-w-e-is-void="" data-w-e-is-inline="" data-value="Printed Time" data-info="%7B%22id%22%3A%22printTime%22%7D">@Printed Time</span></p><table style="width: 100%;"><tbody><tr><td colSpan="1" rowSpan="1" width="auto">Initiator</td><td colSpan="1" rowSpan="1" width="auto"><span data-w-e-type="mention" data-w-e-is-void data-w-e-is-inline data-value="Initiator" data-info="%7B%22id%22%3A%22startUser%22%7D">@Initiator</span></td><td colSpan="1" rowSpan="1" width="auto">Start Time</td><td colSpan="1" rowSpan="1" width="auto"><span data-w-e-type="mention" data-w-e-is-void data-w-e-is-inline data-value="Start Time" data-info="%7B%22id%22%3A%22startTime%22%7D">@Start Time</span></td></tr><tr><td colSpan="1" rowSpan="1" width="auto">Department</td><td colSpan="1" rowSpan="1" width="auto"><span data-w-e-type="mention" data-w-e-is-void data-w-e-is-inline data-value="Initiator Department" data-info="%7B%22id%22%3A%22startUserDept%22%7D">@Initiator Department</span></td><td colSpan="1" rowSpan="1" width="auto">Process Status</td><td colSpan="1" rowSpan="1" width="auto"><span data-w-e-type="mention" data-w-e-is-void data-w-e-is-inline data-value="Process Status" data-info="%7B%22id%22%3A%22processStatus%22%7D">@Process Status</span></td></tr></tbody></table><p><span data-w-e-type="process-record" data-w-e-is-void data-w-e-is-inline>Process Record</span></p>'
+  '<p style="text-align: center;"><span data-w-e-type="mention" data-w-e-is-void="" data-w-e-is-inline="" data-value="流程名称" data-info="%7B%22id%22%3A%22processName%22%7D">@流程名称</span></p><p style="text-align: right;">打印人：<span data-w-e-type="mention" data-w-e-is-void="" data-w-e-is-inline="" data-value="打印人" data-info="%7B%22id%22%3A%22printUser%22%7D">@打印人</span></p><p style="text-align: right;">流程编号：<span data-w-e-type="mention" data-w-e-is-void="" data-w-e-is-inline="" data-value="流程编号" data-info="%7B%22id%22%3A%22processNum%22%7D">@流程编号</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;打印时间：<span data-w-e-type="mention" data-w-e-is-void="" data-w-e-is-inline="" data-value="打印时间" data-info="%7B%22id%22%3A%22printTime%22%7D">@打印时间</span></p><table style="width: 100%;"><tbody><tr><td colSpan="1" rowSpan="1" width="auto">发起人</td><td colSpan="1" rowSpan="1" width="auto"><span data-w-e-type="mention" data-w-e-is-void data-w-e-is-inline data-value="发起人" data-info="%7B%22id%22%3A%22startUser%22%7D">@发起人</span></td><td colSpan="1" rowSpan="1" width="auto">发起时间</td><td colSpan="1" rowSpan="1" width="auto"><span data-w-e-type="mention" data-w-e-is-void data-w-e-is-inline data-value="发起时间" data-info="%7B%22id%22%3A%22startTime%22%7D">@发起时间</span></td></tr><tr><td colSpan="1" rowSpan="1" width="auto">所属部门</td><td colSpan="1" rowSpan="1" width="auto"><span data-w-e-type="mention" data-w-e-is-void data-w-e-is-inline data-value="发起人部门" data-info="%7B%22id%22%3A%22startUserDept%22%7D">@发起人部门</span></td><td colSpan="1" rowSpan="1" width="auto">流程状态</td><td colSpan="1" rowSpan="1" width="auto"><span data-w-e-type="mention" data-w-e-is-void data-w-e-is-inline data-value="流程状态" data-info="%7B%22id%22%3A%22processStatus%22%7D">@流程状态</span></td></tr></tbody></table><p><span data-w-e-type="process-record" data-w-e-is-void data-w-e-is-inline>流程记录</span></p>'
 const handlePrintTemplateEnableChange = (val: boolean) => {
-  if (!modelData.value.printTemplateSetting) {
-    modelData.value.printTemplateSetting = { enable: false }
-  }
-
   if (val) {
     if (!modelData.value.printTemplateSetting.template) {
       modelData.value.printTemplateSetting.template = defaultTemplate

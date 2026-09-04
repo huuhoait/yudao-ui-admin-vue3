@@ -39,6 +39,7 @@
       </el-col>
       <Verify
         ref="verify"
+        v-if="resetPasswordData.captchaEnable === 'true'"
         :captchaType="captchaType"
         :imgSize="{ width: '400px', height: '200px' }"
         mode="pop"
@@ -96,23 +97,16 @@
       <!-- 登录按钮 / 返回按钮 -->
       <el-col :span="24" class="px-10px">
         <el-form-item>
-          <XButton
-            :loading="loginLoading"
-            :title="t('login.resetPassword')"
-            class="w-full"
-            type="primary"
-            @click="resetPassword()"
-          />
+          <el-button :loading="loginLoading" class="w-full" type="primary" @click="resetPassword()">
+            {{ t('login.resetPassword') }}
+          </el-button>
         </el-form-item>
       </el-col>
       <el-col :span="24" class="px-10px">
         <el-form-item>
-          <XButton
-            :loading="loginLoading"
-            :title="t('login.backLogin')"
-            class="w-full"
-            @click="handleBackLogin()"
-          />
+          <el-button :loading="loginLoading" class="w-full" @click="handleBackLogin()">
+            {{ t('login.backLogin') }}
+          </el-button>
         </el-form-item>
       </el-col>
     </el-row>
@@ -145,14 +139,14 @@ const { handleBackLogin, getLoginState, setLoginState } = useLoginState()
 const getShow = computed(() => unref(getLoginState) === LoginStateEnum.RESET_PASSWORD)
 const captchaType = ref('blockPuzzle') // blockPuzzle 滑块 clickWord 点击文字 pictureWord 文字验证码
 
-const validatePass2 = (_rule, value, callback) => {
+const validatePass2 = (_rule, value) => {
   if (value === '') {
-    callback(new Error('请再次输入密码'))
-  } else if (value !== resetPasswordData.password) {
-    callback(new Error('两次输入密码不一致!'))
-  } else {
-    callback()
+    return Promise.reject(new Error('请再次输入密码'))
   }
+  if (value !== resetPasswordData.password) {
+    return Promise.reject(new Error('两次输入密码不一致!'))
+  }
+  return Promise.resolve()
 }
 
 const rules = {

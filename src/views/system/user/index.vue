@@ -1,13 +1,17 @@
 <template>
+  <doc-alert :title="t('system.user.userSystem')" url="https://doc.iocoder.cn/user-center/" />
+  <doc-alert :title="t('system.user.socialLogin')" url="https://doc.iocoder.cn/social-user/" />
+  <doc-alert :title="t('system.user._todo11')" url="https://doc.iocoder.cn/excel-import-and-export/" />
+
   <el-row :gutter="20">
-    <!-- Left department tree -->
+    <!-- 左侧部门树 -->
     <el-col :span="4" :xs="24">
       <ContentWrap class="h-1/1">
-        <DeptTree @node-click="handleDeptNodeClick" />
+        <DeptTreeSelect @node-click="handleDeptNodeClick" />
       </ContentWrap>
     </el-col>
     <el-col :span="20" :xs="24">
-      <!-- Search -->
+      <!-- 搜索 -->
       <ContentWrap>
         <el-form
           class="-mb-15px"
@@ -16,28 +20,28 @@
           :inline="true"
           label-width="68px"
         >
-          <el-form-item :label="$t('sys.user.username')" prop="username">
+          <el-form-item :label="t('system.user.username')" prop="username">
             <el-input
               v-model="queryParams.username"
-              :placeholder="$t('sys.user.inputUsername')"
+              :placeholder="t('system.user.inputUsername')"
               clearable
               @keyup.enter="handleQuery"
               class="!w-240px"
             />
           </el-form-item>
-          <el-form-item :label="$t('sys.user.mobile')" prop="mobile">
+          <el-form-item :label="t('system.user.mobile')" prop="mobile">
             <el-input
               v-model="queryParams.mobile"
-              :placeholder="$t('sys.user.inputMobile')"
+              :placeholder="t('system.user.inputMobile')"
               clearable
               @keyup.enter="handleQuery"
               class="!w-240px"
             />
           </el-form-item>
-          <el-form-item :label="$t('sys.user.status')" prop="status">
+          <el-form-item :label="t('common.status')" prop="status">
             <el-select
               v-model="queryParams.status"
-              :placeholder="$t('sys.user.selectStatus')"
+              :placeholder="t('system.user.selectUserStatus')"
               clearable
               class="!w-240px"
             >
@@ -49,30 +53,26 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item :label="$t('sys.user.createTime')" prop="createTime">
+          <el-form-item :label="t('common.createTime')" prop="createTime">
             <el-date-picker
               v-model="queryParams.createTime"
               value-format="YYYY-MM-DD HH:mm:ss"
               type="datetimerange"
-              :start-placeholder="$t('sys.user.startDate')"
-              :end-placeholder="$t('sys.user.endDate')"
+              :start-placeholder="t('system.user.startDate')"
+              :end-placeholder="t('system.user.endDate')"
               class="!w-240px"
             />
           </el-form-item>
           <el-form-item>
-            <el-button @click="handleQuery"
-              ><Icon icon="ep:search" />{{ $t('sys.user.search') }}</el-button
-            >
-            <el-button @click="resetQuery"
-              ><Icon icon="ep:refresh" />{{ $t('sys.user.reset') }}</el-button
-            >
+            <el-button @click="handleQuery"><Icon icon="ep:search" />{{ t('common.query') }}</el-button>
+            <el-button @click="resetQuery"><Icon icon="ep:refresh" />{{ t('common.reset') }}</el-button>
             <el-button
               type="primary"
               plain
               @click="openForm('create')"
               v-hasPermi="['system:user:create']"
             >
-              <Icon icon="ep:plus" /> {{ $t('sys.user.add') }}
+              <Icon icon="ep:plus" /> {{ t('system.user.create') }}
             </el-button>
             <el-button
               type="warning"
@@ -80,7 +80,7 @@
               @click="handleImport"
               v-hasPermi="['system:user:import']"
             >
-              <Icon icon="ep:upload" /> {{ $t('sys.user.import') }}
+              <Icon icon="ep:upload" /> {{ t('system.user.import') }}
             </el-button>
             <el-button
               type="success"
@@ -89,7 +89,7 @@
               :loading="exportLoading"
               v-hasPermi="['system:user:export']"
             >
-              <Icon icon="ep:download" />{{ $t('sys.user.export') }}
+              <Icon icon="ep:download" />{{ t('system.user.export') }}
             </el-button>
             <el-button
               type="danger"
@@ -98,43 +98,36 @@
               @click="handleDeleteBatch"
               v-hasPermi="['system:user:delete']"
             >
-              <Icon icon="ep:delete" />批量删除
+              <Icon icon="ep:delete" />{{ t('system.user.deleteBatch') }}
             </el-button>
           </el-form-item>
         </el-form>
       </ContentWrap>
       <ContentWrap>
-
         <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
           <el-table-column type="selection" width="55" />
-          <el-table-column :label="$t('sys.user.id')" align="center" key="id" prop="id" />
-
+          <el-table-column :label="t('system.user.userId')" align="center" key="id" prop="id" />
           <el-table-column
-            :label="$t('sys.user.username')"
+            :label="t('system.user.username')"
             align="center"
             prop="username"
             :show-overflow-tooltip="true"
           />
           <el-table-column
-            :label="$t('sys.user.nickname')"
+            :label="t('system.user.nickname')"
             align="center"
             prop="nickname"
             :show-overflow-tooltip="true"
           />
           <el-table-column
-            :label="$t('sys.user.deptName')"
+            :label="t('system.user.dept')"
             align="center"
             key="deptName"
             prop="deptName"
             :show-overflow-tooltip="true"
           />
-          <el-table-column
-            :label="$t('sys.user.mobile')"
-            align="center"
-            prop="mobile"
-            width="120"
-          />
-          <el-table-column :label="$t('sys.user.status')" key="status">
+          <el-table-column :label="t('system.user.mobile')" align="center" prop="mobile" width="120" />
+          <el-table-column :label="t('common.status')" key="status">
             <template #default="scope">
               <el-switch
                 v-model="scope.row.status"
@@ -146,13 +139,13 @@
             </template>
           </el-table-column>
           <el-table-column
-            :label="$t('sys.user.createTime')"
+            :label="t('common.createTime')"
             align="center"
             prop="createTime"
             :formatter="dateFormatter"
             width="180"
           />
-          <el-table-column :label="$t('sys.user.operation')" align="center" width="160">
+          <el-table-column :label="t('system.user.action')" align="center" width="160">
             <template #default="scope">
               <div class="flex items-center justify-center">
                 <el-button
@@ -161,7 +154,7 @@
                   @click="openForm('update', scope.row.id)"
                   v-hasPermi="['system:user:update']"
                 >
-                  <Icon icon="ep:edit" />{{ $t('sys.user.edit') }}
+                  <Icon icon="ep:edit" />{{ t('system.user.edit') }}
                 </el-button>
                 <el-dropdown
                   @command="(command) => handleCommand(command, scope.row)"
@@ -171,28 +164,26 @@
                     'system:permission:assign-user-role'
                   ]"
                 >
-                  <el-button type="primary" link
-                    ><Icon icon="ep:d-arrow-right" /> {{ $t('sys.user.more') }}</el-button
-                  >
+                  <el-button type="primary" link><Icon icon="ep:d-arrow-right" /> {{ t('system.user.more') }}</el-button>
                   <template #dropdown>
                     <el-dropdown-menu>
                       <el-dropdown-item
                         command="handleDelete"
                         v-if="checkPermi(['system:user:delete'])"
                       >
-                        <Icon icon="ep:delete" />Delete user
+                        <Icon icon="ep:delete" />{{ t('system.user.delete') }}
                       </el-dropdown-item>
                       <el-dropdown-item
                         command="handleResetPwd"
                         v-if="checkPermi(['system:user:update-password'])"
                       >
-                        <Icon icon="ep:key" />Change password
+                        <Icon icon="ep:key" />{{ t('system.user.resetPassword') }}
                       </el-dropdown-item>
                       <el-dropdown-item
                         command="handleRole"
                         v-if="checkPermi(['system:permission:assign-user-role'])"
                       >
-                        <Icon icon="ep:circle-check" />Change role
+                        <Icon icon="ep:circle-check" />{{ t('system.user.assignRole') }}
                       </el-dropdown-item>
                     </el-dropdown-menu>
                   </template>
@@ -228,7 +219,7 @@ import * as UserApi from '@/api/system/user'
 import UserForm from './UserForm.vue'
 import UserImportForm from './UserImportForm.vue'
 import UserAssignRoleForm from './UserAssignRoleForm.vue'
-import DeptTree from './DeptTree.vue'
+import DeptTreeSelect from '@/views/system/dept/components/DeptTreeSelect.vue'
 
 defineOptions({ name: 'SystemUser' })
 
@@ -244,7 +235,7 @@ const queryParams = reactive({
   username: undefined,
   mobile: undefined,
   status: undefined,
-  deptId: undefined,
+  deptId: undefined as number | undefined,
   createTime: []
 })
 const queryFormRef = ref() // 搜索的表单
@@ -274,14 +265,9 @@ const resetQuery = () => {
 }
 
 /** 处理部门被点击 */
-const handleDeptNodeClick = async (row: any) => {
-  if (row === undefined) {
-    queryParams.deptId = undefined
-    await getList()
-  } else {
-    queryParams.deptId = row.id
-    await getList()
-  }
+const handleDeptNodeClick = async (deptId: number | undefined) => {
+  queryParams.deptId = deptId
+  await getList()
 }
 
 /** 添加/修改操作 */
@@ -300,11 +286,8 @@ const handleImport = () => {
 const handleStatusChange = async (row: UserApi.UserVO) => {
   try {
     // 修改状态的二次确认
-    const text =
-      row.status === CommonStatusEnum.ENABLE ? t('sys.user.enable') : t('sys.user.disable')
-    await message.confirm(
-      t('sys.user.confirmChangeStatus', { status: text, username: row.username })
-    )
+    const text = row.status === CommonStatusEnum.ENABLE ? t('system.user.enable') : t('system.user.disable')
+    await message.confirm('确认要"' + text + '""' + row.username + '"用户吗?')
     // 发起修改状态
     await UserApi.updateUserStatus(row.id, row.status)
     // 刷新列表
@@ -325,7 +308,7 @@ const handleExport = async () => {
     // 发起导出
     exportLoading.value = true
     const data = await UserApi.exportUser(queryParams)
-    download.excel(data, 'export.xls')
+    download.excel(data, '用户数据.xls')
   } catch {
   } finally {
     exportLoading.value = false
