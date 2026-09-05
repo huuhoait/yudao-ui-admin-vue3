@@ -1,0 +1,3488 @@
+{
+  "mode": "scan",
+  "target": "src/components/SimpleProcessDesignerV2",
+  "scannedAt": "2026-09-05T13:07:39.199Z",
+  "totalFiles": 33,
+  "toConvert": 435,
+  "needReview": 27,
+  "todoKeys": 368,
+  "files": [
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/NodeHandler.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src",
+      "convert": [
+        {
+          "type": "vue-text",
+          "text": "审批人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo1",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "办理人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo2",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "抄送",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo3",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "条件分支",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo4",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "并行分支",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo5",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "包容分支",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo6",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "延迟器",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo7",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "路由分支",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo8",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "触发器",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo9",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "子流程",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo10",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "条件分支",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo4",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "条件1",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo11",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "其它情况",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo12",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "未满足其它条件时，将进入此分支",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo13",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "并行分支",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo5",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "并行1",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo14",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "无需配置条件同时执行",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo15",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "并行2",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo16",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "无需配置条件同时执行",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo15",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "包容分支",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo6",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "包容条件1",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo17",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "其它情况",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo12",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "未满足其它条件时，将进入此分支",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo13",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/SimpleProcessDesigner.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "保存失败",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo18",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "以下节点内容不完善，请修改后保存",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo19",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "知道了",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo20",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "发起人",
+          "key": "src.components.SimpleProcessDesignerV2.src.starter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "结束",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo21",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "保存失败:",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo22",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/SimpleProcessModel.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "保存失败",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo18",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "导出",
+          "key": "src.components.SimpleProcessDesignerV2.src.export",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导入",
+          "key": "src.components.SimpleProcessDesignerV2.src.import",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "以下节点内容不完善，请修改后保存",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo19",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "知道了",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo20",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "获取流程数据失败:",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo23",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/consts.ts",
+      "ns": "src.components.SimpleProcessDesignerV2.src",
+      "convert": [
+        {
+          "type": "script-string",
+          "text": "固定值",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo24",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "表单",
+          "key": "src.components.SimpleProcessDesignerV2.src.form",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请配置审批人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo25",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请配置抄送人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo26",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请设置条件",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo27",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请设置发起人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo28",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请设置延迟器",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo29",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请设置路由节点",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo30",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请设置触发器",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo31",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请设置办理人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo32",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请设置子流程",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo33",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "审批人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo1",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "抄送人",
+          "key": "src.components.SimpleProcessDesignerV2.src.ccUser",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "条件",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo34",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "发起人",
+          "key": "src.components.SimpleProcessDesignerV2.src.starter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "延迟器",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo7",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "路由分支",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo8",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "触发器",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo9",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "办理人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo2",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "子流程",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo10",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "指定成员",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo35",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "指定角色",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo36",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "指定岗位",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo37",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "部门成员",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo38",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "部门负责人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo39",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "连续多级部门负责人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo40",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "发起人自选",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo41",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "审批人自选",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo42",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "发起人本人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo43",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "发起人部门负责人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo44",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "发起人连续部门负责人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo45",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "用户组",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo46",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "表单内用户字段",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo47",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "表单内部门负责人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo48",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "流程表达式",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo49",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "人工审批",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo50",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "自动通过",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo51",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "自动拒绝",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo52",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "按顺序依次审批",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo53",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "会签（可同时审批，至少 % 人必须审批通过）",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo54",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "或签(可同时审批，有一人通过即可)",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo55",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "随机挑选一人审批",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo56",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "条件规则",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo57",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "条件表达式",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo58",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "分钟",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo59",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "小时",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo60",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "天",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo61",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "自动提醒",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo62",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "自动同意",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo63",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "自动拒绝",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo52",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "终止流程",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo64",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "驳回到指定节点",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo65",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "自动通过",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo51",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "自动拒绝",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo52",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "指定成员审批",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo66",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "转交给流程管理员",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo67",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "由发起人对自己审批",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo68",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "自动跳过",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo69",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "转交给部门负责人审批",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo70",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "等于",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo71",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "不等于",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo72",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "大于",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo73",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "大于等于",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo74",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "小于",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo75",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "小于等于",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo76",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "包含",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo77",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "不包含",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo78",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "通过",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo79",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "拒绝",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo80",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "转办",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo81",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "委派",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo82",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "加签",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo83",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "退回",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo84",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "抄送",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo3",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "通过",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo79",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "拒绝",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo80",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "转办",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo81",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "委派",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo82",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "加签",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo83",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "退回",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo84",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "办理",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo85",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "拒绝",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo80",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "转办",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo81",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "委派",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo82",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "加签",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo83",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "退回",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo84",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "提交",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo86",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "拒绝",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo80",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "转办",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo81",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "委派",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo82",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "加签",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo83",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "退回",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo84",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "第 1 级部门",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo87",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "第 2 级部门",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo88",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "第 3 级部门",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo89",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "第 4 级部门",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo90",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "第 5 级部门",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo91",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "第 6 级部门",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo92",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "第 7 级部门",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo93",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "第 8 级部门",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo94",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "第 9 级部门",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo95",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "第 10 级部门",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo96",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "第 11 级部门",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo97",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "第 12 级部门",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo98",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "第 13 级部门",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo99",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "第 14 级部门",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo100",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "第 15 级部门",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo101",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "固定时长",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo102",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "固定日期",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo103",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "发送 HTTP 请求",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo104",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "接收 HTTP 回调",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo105",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "修改表单数据",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo106",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "删除表单数据",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo107",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "同主流程发起人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo108",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "表单",
+          "key": "src.components.SimpleProcessDesignerV2.src.form",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "同主流程发起人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo108",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "子流程管理员",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo109",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "主流程管理员",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo110",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "固定数量",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo111",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "数字表单",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo112",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "多选表单",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo113",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/node.ts",
+      "ns": "src.components.SimpleProcessDesignerV2.src",
+      "convert": [
+        {
+          "type": "script-string",
+          "text": "发起人",
+          "key": "src.components.SimpleProcessDesignerV2.src.starter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-template",
+          "text": "表单内部门负责人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo48",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-template",
+          "text": "审批人自选",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo42",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-template",
+          "text": "发起人自选",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo41",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-template",
+          "text": "发起人自己",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo114",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-template",
+          "text": "发起人的部门负责人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo115",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-template",
+          "text": "发起人连续部门负责人",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo45",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请完善条件规则",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo116",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": " 且 ",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo117",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": " 或 ",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo118",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": " 且 ",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo117",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": " 或 ",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo118",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`指定成员：${candidateNames.join(',')}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`指定角色：${candidateNames.join(',')}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`部门成员：${candidateNames.join(',')}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`部门的负责人：${candidateNames.join(',')}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`多级部门的负责人：${candidateNames.join(',')}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`指定岗位: ${candidateNames.join(',')}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`指定用户组: ${candidateNames.join(',')}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`表单用户：${item?.title}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`流程表达式：${configForm.value.expression}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`表达式：${conditionExpression}`"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes/EndEventNode.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "结束",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes._todo119",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "审批信息",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes._todo120",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "序号",
+          "key": "common.index",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起人",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.starter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "部门",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.dept",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "开始时间",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.beginTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "结束时间",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.endTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批状态",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.approveStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "耗时",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.duration",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "结束",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes._todo119",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes/ExclusiveNode.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes",
+      "convert": [
+        {
+          "type": "vue-text",
+          "text": "添加条件",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes._todo121",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "条件"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes/InclusiveNode.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes",
+      "convert": [
+        {
+          "type": "vue-text",
+          "text": "添加条件",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes._todo121",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "包容条件"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes/ParallelNode.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes",
+      "convert": [
+        {
+          "type": "vue-text",
+          "text": "添加分支",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes._todo122",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "无优先级",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes._todo123",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "无需配置条件同时执行",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes._todo124",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`并行${index + 1}`"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "并行"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes/StartUserNode.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "序号",
+          "key": "common.index",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批人",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes._todo125",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "部门",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.dept",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "开始时间",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.beginTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "结束时间",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.endTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批状态",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.approveStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批建议",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.approveSuggestion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "耗时",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.duration",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes/UserTaskNode.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "序号",
+          "key": "common.index",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批人",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes._todo125",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "部门",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.dept",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "开始时间",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.beginTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "结束时间",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.endTime",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批状态",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.approveStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "审批建议",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.approveSuggestion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "耗时",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes.duration",
+          "reuse": false,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/ChildProcessNodeConfig.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes-config",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "子流程",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo126",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "是否异步",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo127",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "异步",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo128",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "不异步",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo129",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "选择子流程",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo130",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "是否自动跳过子流程发起节点",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo131",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "跳过",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo132",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "不跳过",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo133",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "主→子变量传递",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo134",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "子→主变量传递",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo135",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "子流程发起人",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo136",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "当子流程发起人为空时",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo137",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "发起人表单",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo138",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "启用开关",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo139",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "开启",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo140",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "关闭",
+          "key": "common.close",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择日期和时间",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo141",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "启用开关",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo139",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "开启",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo140",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "关闭",
+          "key": "common.close",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "串行",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo142",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "并行",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo143",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "添加一行",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo144",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "添加一行",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo144",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "超时设置",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo145",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "后进入下一节点",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo146",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "后进入下一节点",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo146",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "多实例设置",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo147",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "完成比例(%)",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo148",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "多实例来源",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo149",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "是否异步不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo150",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "子流程不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo151",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "是否自动跳过子流程发起节点不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo152",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "子流程发起人不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo153",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "当子流程发起人为空时不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo154",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "发起人表单不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo155",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "超时设置是否开启不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo156",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "超时设置时间不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo157",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "超时设置时间不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo157",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "超时设置时间不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo157",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "多实例设置不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo158",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`调用子流程：${childInfo.name}`"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/ConditionNodeConfig.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes-config",
+      "convert": [
+        {
+          "type": "vue-text",
+          "text": "未满足其它条件时，将进入此分支（该分支不可编辑和删除）",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo159",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/CopyTaskNodeConfig.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes-config",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "抄送人",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.ccUser",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "抄送人设置",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo160",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "指定角色",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo161",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "指定部门",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo162",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "empty-text",
+          "text": "加载中，请稍后",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo163",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "指定岗位",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo164",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "指定用户",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo165",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "指定用户组",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo166",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表单内用户字段",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo167",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表单内部门字段",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo168",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程表达式",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo169",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表单字段权限",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo170",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "字段权限",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo171",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "字段名称",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo172",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "只读",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo173",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "可编辑",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo174",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "隐藏",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo175",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "部门负责人来源",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo176",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "抄送人设置不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo177",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "用户不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.userRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "角色不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.roleRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "部门不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.deptRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "用户组不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo178",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "岗位不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.postRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "表单内用户字段不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo179",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "表单内部门字段不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo180",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "流程表达式不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo181",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "(指定部门向上)"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "(发起人部门向上)"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/DelayTimerNodeConfig.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes-config",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "延迟时间",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo182",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择日期和时间",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo141",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "后进入下一节点",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo146",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "后进入下一节点",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo146",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "延迟时间不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo183",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "延迟时间不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo183",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "延迟时间不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo183",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`延迟${configForm.value.timeDuration}${TIME_UNIT_TYPES.find((item) => item.value === configForm.value.timeUnit).label}`"
+        },
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`延迟至${configForm.value.dateTime.replace('T', ' ')}`"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/RouterNodeConfig.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes-config",
+      "convert": [
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.delete",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增路由分支",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo184",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请配置路由！",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo185",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请完善路由配置项！",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo186",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请完善路由配置项！",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo186",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请完善路由配置项！",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo186",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`${routerGroups.value.length}条路由分支`"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/StartUserNodeConfig.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes-config",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "权限",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo187",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表单字段权限",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo170",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "全部成员可以发起流程",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo188",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "字段权限",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo171",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "字段名称",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo172",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "只读",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo173",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "可编辑",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo174",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "隐藏",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo175",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "已设置",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo189",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/TriggerNodeConfig.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes-config",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "触发器类型",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo190",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择表单字段",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo191",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入",
+          "key": "common.inputText",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择要删除的字段",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo192",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "添加条件",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo193",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "修改表单字段设置",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo194",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "的值设置为",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo195",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "添加修改字段",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo196",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "添加设置",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo197",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "添加条件",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo193",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "删除表单字段设置",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo198",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "添加设置",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo197",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "触发器类型不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo199",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请求地址不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo200",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "修改表单数据",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo201",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "删除表单数据",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo202",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`请添加表单设置${index + 1}的修改字段`"
+        },
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`请选择表单设置${index + 1}要删除的字段`"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/UserTaskNodeConfig.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes-config",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "指定角色",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo161",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "指定部门",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo162",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "empty-text",
+          "text": "加载中，请稍后",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo163",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "指定岗位",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo164",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "指定用户",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo165",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "指定用户组",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo166",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表单内用户字段",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo167",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表单内部门字段",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo168",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "流程表达式",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo169",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "驳回节点",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo203",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "启用开关",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo139",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "开启",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo140",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "关闭",
+          "key": "common.close",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "执行动作",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo204",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "超时时间设置",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo205",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "最大提醒次数",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo206",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "指定用户",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo165",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "是",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo207",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "否",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo208",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "必填",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo209",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "非必填",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo210",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作按钮设置",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo211",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "表单字段权限",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo170",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "监听器",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo212",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "审批类型 :",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo213",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "审批人拒绝时",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo214",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "审批人超时未处理时",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo215",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "当超过",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo216",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "未处理",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo217",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "审批人与提交人为同一人时",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo218",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "是否需要签名",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo219",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "审批意见",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.approveOpinion",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "跳过表达式",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo220",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "操作按钮",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo221",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "操作按钮",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo221",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "显示名称",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo222",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "启用",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.enable",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "字段权限",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo171",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "字段名称",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo172",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "只读",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo173",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "可编辑",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo174",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "隐藏",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo175",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "部门负责人来源",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo176",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "发起人",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.starter",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "审批人设置不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo223",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "用户不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.userRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "角色不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.roleRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "部门不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.deptRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "用户组不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo178",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "表单内用户字段不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo179",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "表单内部门字段不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo180",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "岗位不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.postRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "流程表达式不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo181",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "多人审批方式不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo224",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "通过比例不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo225",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "驳回节点不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo226",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "超时时间不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo227",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "提醒次数不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo228",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "用户不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.userRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "办理",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo229",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "审批",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config._todo230",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "(指定部门向上)"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "(表单内部门向上)"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "(发起人部门向上)"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/components/Condition.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes-config.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "配置方式",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo231",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "条件规则",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo232",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "且",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo233",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "或",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo234",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "且",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo233",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "或",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo234",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "text": "表单字段非必填时不能作为流程分支条件",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo235",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "添加条件组",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo236",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "条件表达式",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo237",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "条件组关系",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo238",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "条件组",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo239",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "规则关系",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo240",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "配置方式不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo241",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "条件表达式不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo242",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/components/ConditionDialog.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes-config.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "条件配置",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo243",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "配置方式",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo231",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "条件规则",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo232",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "且",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo233",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "或",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo234",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "且",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo233",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "或",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo234",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "添加条件组",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo236",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "条件表达式",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo237",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "条件组关系",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo238",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "条件组",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo239",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "规则关系",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo240",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "配置方式不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo241",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "条件表达式不能为空",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo242",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请完善条件规则",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo244",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/components/HttpRequestParamSetting.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes-config.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求头",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo245",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求体",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo246",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "添加一行",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo247",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "添加一行",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo247",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/components/HttpRequestSetting.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes-config.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "仅支持 POST 请求，以请求体方式接收参数",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo248",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求地址",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo249",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "返回值",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo250",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "通过请求返回值, 可以修改流程表单的值",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo251",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择表单字段",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo252",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请求返回字段",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo253",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "添加一行",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo247",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/components/UserTaskListener.vue",
+      "ns": "src.components.SimpleProcessDesignerV2.src.nodes-config.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "text": "开启",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo254",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "text": "关闭",
+          "key": "common.close",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "仅支持 POST 请求，以请求体方式接收参数",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo248",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "请求地址",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo249",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "创建任务",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo255",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "指派任务执行人员",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo256",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "完成任务",
+          "key": "src.components.SimpleProcessDesignerV2.src.nodes-config.components._todo257",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/utils.ts",
+      "ns": "src.components.SimpleProcessDesignerV2.src",
+      "convert": [
+        {
+          "type": "script-string",
+          "text": "其它情况",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo12",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "其它情况",
+          "key": "src.components.SimpleProcessDesignerV2.src._todo12",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "kind": "string-concat",
+          "text": "条件"
+        },
+        {
+          "kind": "string-concat",
+          "text": "包容条件"
+        }
+      ]
+    }
+  ]
+}

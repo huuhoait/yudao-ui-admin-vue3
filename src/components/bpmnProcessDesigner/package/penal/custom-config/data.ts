@@ -3,11 +3,11 @@ import BoundaryEventTimer from './components/BoundaryEventTimer.vue'
 
 export const CustomConfigMap = {
   UserTask: {
-    name: '用户任务',
+    name: 'User Task',
     componet: UserTaskCustomConfig
   },
   BoundaryEventTimerEventDefinition: {
-    name: '定时边界事件(非中断)',
+    name: '定Hour边界Event(非中断)',
     componet: BoundaryEventTimer
   }
 }

@@ -35,7 +35,7 @@ export default function customTranslate(translations) {
 
     // 替换模板中的占位符
     return template.replace(/{([^}]+)}/g, function (_, key) {
-      // 如果替换值存在，返回替换值；否则返回原始占位符
+      // 如果替换Value存在，返回替换Value；No则返回原始占位符
       return replacements[key] !== undefined ? replacements[key] : `{${key}}`
     })
   }

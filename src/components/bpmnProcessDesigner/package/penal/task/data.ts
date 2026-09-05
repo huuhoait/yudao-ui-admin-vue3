@@ -6,7 +6,7 @@ import CallActivity from './task-components/CallActivity.vue'
 
 export const installedComponent = {
   UserTask: {
-    name: '用户任务',
+    name: 'User Task',
     component: UserTask
   },
   ServiceTask: {
@@ -14,7 +14,7 @@ export const installedComponent = {
     component: ServiceTask
   },
   ScriptTask: {
-    name: '脚本任务',
+    name: 'Script Task',
     component: ScriptTask
   },
   ReceiveTask: {
@@ -22,7 +22,7 @@ export const installedComponent = {
     component: ReceiveTask
   },
   CallActivity: {
-    name: '调用活动',
+    name: 'Call Activity',
     component: CallActivity
   }
 }

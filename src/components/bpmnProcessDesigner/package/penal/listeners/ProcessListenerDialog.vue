@@ -1,16 +1,16 @@
-<!-- 执行器选择 -->
+<!-- 执行器Select -->
 <template>
-  <Dialog title="请选择监听器" v-model="dialogVisible" width="1024px">
+  <Dialog title="Please select listener" v-model="dialogVisible" width="1024px">
     <ContentWrap>
       <el-table v-loading="loading" :data="list" :stripe="true" :show-overflow-tooltip="true">
-        <el-table-column label="名字" align="center" prop="name" />
-        <el-table-column label="类型" align="center" prop="type">
+        <el-table-column label="Name" align="center" prop="name" />
+        <el-table-column label="Type" align="center" prop="type">
           <template #default="scope">
             <dict-tag :type="DICT_TYPE.BPM_PROCESS_LISTENER_TYPE" :value="scope.row.type" />
           </template>
         </el-table-column>
-        <el-table-column label="事件" align="center" prop="event" />
-        <el-table-column label="值类型" align="center" prop="valueType">
+        <el-table-column label="Event" align="center" prop="event" />
+        <el-table-column label="Value Type" align="center" prop="valueType">
           <template #default="scope">
             <dict-tag
               :type="DICT_TYPE.BPM_PROCESS_LISTENER_VALUE_TYPE"
@@ -18,14 +18,14 @@
             />
           </template>
         </el-table-column>
-        <el-table-column label="值" align="center" prop="value" />
-        <el-table-column label="操作" align="center">
+        <el-table-column label="Value" align="center" prop="value" />
+        <el-table-column label="Action" align="center">
           <template #default="scope">
-            <el-button link type="primary" @click="select(scope.row)"> 选择 </el-button>
+            <el-button link type="primary" @click="select(scope.row)"> Select </el-button>
           </template>
         </el-table-column>
       </el-table>
-      <!-- 分页 -->
+      <!-- Minute页 -->
       <Pagination
         :total="total"
         v-model:page="queryParams.pageNo"
@@ -40,10 +40,10 @@ import { ProcessListenerApi, ProcessListenerVO } from '@/api/bpm/processListener
 import { DICT_TYPE } from '@/utils/dict'
 import { CommonStatusEnum } from '@/utils/constants'
 
-/** BPM 流程 表单 */
+/** BPM 流程 Form */
 defineOptions({ name: 'ProcessListenerDialog' })
 
-const dialogVisible = ref(false) // 弹窗的是否展示
+const dialogVisible = ref(false) // 弹窗的Whether展示
 const loading = ref(true) // 列表的加载中
 const list = ref<ProcessListenerVO[]>([]) // 列表的数据
 const total = ref(0) // 列表的总页数
@@ -75,11 +75,11 @@ const getList = async () => {
   }
 }
 
-/** 提交表单 */
-const emit = defineEmits(['success', 'select']) // 定义 success/select 事件，用于操作成功后的回调
+/** 提交Form */
+const emit = defineEmits(['success', 'select']) // 定义 success/select Event，用于Action成功后的回调
 const select = async (row: ProcessListenerVO) => {
   dialogVisible.value = false
-  // 发送操作成功的事件
+  // 发送Action成功的Event
   emit('select', row)
 }
 </script>

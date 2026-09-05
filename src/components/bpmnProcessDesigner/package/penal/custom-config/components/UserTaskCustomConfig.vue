@@ -1,15 +1,15 @@
-<!-- UserTask 自定义配置：
-     1. 审批人与提交人为同一人时
-     2. 审批人拒绝时
-     3. 审批人为空时
-     4. 操作按钮
-     5. 字段权限
-     6. 审批类型
-     7. 是否需要签名
+<!-- UserTask Custom Config：
+     1. When approver is the same as submitter
+     2. When approver rejects
+     3. When approver is empty
+     4. Action Button
+     5. Field Permission
+     6. Approval Type
+     7. Signature Required
 -->
 <template>
   <div>
-    <el-divider content-position="left">审批类型</el-divider>
+    <el-divider content-position="left">Approval Type</el-divider>
     <el-form-item prop="approveType">
       <el-radio-group v-model="approveType.value">
         <el-radio
@@ -23,7 +23,7 @@
       </el-radio-group>
     </el-form-item>
 
-    <el-divider content-position="left">审批人拒绝时</el-divider>
+    <el-divider content-position="left">When approver rejects</el-divider>
     <el-form-item prop="rejectHandlerType">
       <el-radio-group
         v-model="rejectHandlerType"
@@ -39,7 +39,7 @@
     </el-form-item>
     <el-form-item
       v-if="rejectHandlerType == RejectHandlerType.RETURN_USER_TASK"
-      label="驳回节点"
+      label="Reject Node"
       prop="returnNodeId"
     >
       <el-select v-model="returnNodeId" clearable style="width: 100%" @change="updateReturnNodeId">
@@ -52,7 +52,7 @@
       </el-select>
     </el-form-item>
 
-    <el-divider content-position="left">审批人为空时</el-divider>
+    <el-divider content-position="left">When approver is empty</el-divider>
     <el-form-item prop="assignEmptyHandlerType">
       <el-radio-group v-model="assignEmptyHandlerType" @change="updateAssignEmptyHandlerType">
         <div class="flex-col">
@@ -64,7 +64,7 @@
     </el-form-item>
     <el-form-item
       v-if="assignEmptyHandlerType == AssignEmptyHandlerType.ASSIGN_USER"
-      label="指定用户"
+      label="Specified User"
       prop="assignEmptyHandlerUserIds"
       span="24"
     >
@@ -84,7 +84,7 @@
       </el-select>
     </el-form-item>
 
-    <el-divider content-position="left">审批人与提交人为同一人时</el-divider>
+    <el-divider content-position="left">When approver is the same as submitter</el-divider>
     <el-radio-group v-model="assignStartUserHandlerType" @change="updateAssignStartUserHandlerType">
       <div class="flex-col">
         <div v-for="(item, index) in ASSIGN_START_USER_HANDLER_TYPES" :key="index">
@@ -93,12 +93,12 @@
       </div>
     </el-radio-group>
 
-    <el-divider content-position="left">操作按钮</el-divider>
+    <el-divider content-position="left">Action Button</el-divider>
     <div class="button-setting-pane">
       <div class="button-setting-title">
-        <div class="button-title-label">操作按钮</div>
-        <div class="pl-4 button-title-label">显示名称</div>
-        <div class="button-title-label">启用</div>
+        <div class="button-title-label">Action Button</div>
+        <div class="pl-4 button-title-label">Display Name</div>
+        <div class="button-title-label">Enable</div>
       </div>
       <div class="button-setting-item" v-for="(item, index) in buttonsSettingEl" :key="index">
         <div class="button-setting-item-label"> {{ OPERATION_BUTTON_NAME.get(item.id) }} </div>
@@ -122,19 +122,19 @@
       </div>
     </div>
 
-    <el-divider content-position="left">字段权限</el-divider>
+    <el-divider content-position="left">Field Permission</el-divider>
     <div class="field-setting-pane" v-if="formType === BpmModelFormType.NORMAL">
       <div class="field-permit-title">
-        <div class="setting-title-label first-title"> 字段名称 </div>
+        <div class="setting-title-label first-title"> Field Name </div>
         <div class="other-titles">
           <span class="setting-title-label cursor-pointer" @click="updatePermission('READ')">
             只读
           </span>
           <span class="setting-title-label cursor-pointer" @click="updatePermission('WRITE')">
-            可编辑
+            可Edit
           </span>
           <span class="setting-title-label cursor-pointer" @click="updatePermission('NONE')">
-            隐藏
+            Hide
           </span>
         </div>
       </div>
@@ -175,22 +175,22 @@
       </div>
     </div>
 
-    <el-divider content-position="left">是否需要签名</el-divider>
+    <el-divider content-position="left">Signature Required</el-divider>
     <el-form-item prop="signEnable">
       <el-switch
         v-model="signEnable.value"
-        active-text="是"
-        inactive-text="否"
+        active-text="Yes"
+        inactive-text="No"
         @change="updateElementExtensions"
       />
     </el-form-item>
 
-    <el-divider content-position="left">审批意见</el-divider>
+    <el-divider content-position="left">Approval Comment</el-divider>
     <el-form-item prop="reasonRequire">
       <el-switch
         v-model="reasonRequire.value"
-        active-text="必填"
-        inactive-text="非必填"
+        active-text="Required"
+        inactive-text="Optional"
         @change="updateElementExtensions"
       />
     </el-form-item>
@@ -234,24 +234,24 @@ const props = defineProps({
 })
 const prefix = inject('prefix')
 
-// 审批人与提交人为同一人时
+// When approver is the same as submitter
 const assignStartUserHandlerTypeEl = ref()
 const assignStartUserHandlerType = ref()
 
-// 审批人拒绝时
+// When approver rejects
 const rejectHandlerTypeEl = ref()
 const rejectHandlerType = ref()
 const returnNodeIdEl = ref()
 const returnNodeId = ref()
 const returnTaskList = ref<ReturnTask[]>([])
 
-// 审批人为空时
+// When approver is empty
 const assignEmptyHandlerTypeEl = ref()
 const assignEmptyHandlerType = ref()
 const assignEmptyUserIdsEl = ref()
 const assignEmptyUserIds = ref<Array<string | number>>([])
 
-// 操作按钮
+// Action Button
 const buttonsSettingEl = ref<any[]>([])
 const { btnDisplayNameEdit, changeBtnDisplayName } = useButtonsSetting()
 const btnDisplayNameBlurEvent = (index: number) => {
@@ -261,19 +261,19 @@ const btnDisplayNameBlurEvent = (index: number) => {
   updateElementExtensions()
 }
 
-// 字段权限
+// Field Permission
 const fieldsPermissionEl = ref<any[]>([])
 const { formType, fieldsPermissionConfig, getNodeConfigFormFields } = useFormFieldsPermission(
   FieldPermissionType.READ
 )
 
-// 审批类型
+// Approval Type
 const approveType = ref({ value: ApproveType.USER })
 
-// 是否需要签名
+// Signature Required
 const signEnable = ref({ value: false })
 
-// 审批意见
+// Approval Comment
 const reasonRequire = ref({ value: false })
 
 const elExtensionElements = ref()
@@ -289,24 +289,24 @@ const resetCustomConfigList = () => {
     bpmnElement.value.id,
     bpmnInstances().modeler
   )
-  // 获取元素扩展属性 或者 创建扩展属性
+  // 获取元素Extension Properties 或者 创建Extension Properties
   elExtensionElements.value =
     bpmnElement.value.businessObject?.extensionElements ??
     bpmnInstances().moddle.create('bpmn:ExtensionElements', { values: [] })
 
-  // 审批类型
+  // Approval Type
   approveType.value =
     elExtensionElements.value.values?.filter((ex) => ex.$type === `${prefix}:ApproveType`)?.[0] ||
     bpmnInstances().moddle.create(`${prefix}:ApproveType`, { value: ApproveType.USER })
 
-  // 审批人与提交人为同一人时
+  // When approver is the same as submitter
   assignStartUserHandlerTypeEl.value =
     elExtensionElements.value.values?.filter(
       (ex) => ex.$type === `${prefix}:AssignStartUserHandlerType`
     )?.[0] || bpmnInstances().moddle.create(`${prefix}:AssignStartUserHandlerType`, { value: 1 })
   assignStartUserHandlerType.value = assignStartUserHandlerTypeEl.value.value
 
-  // 审批人拒绝时
+  // When approver rejects
   rejectHandlerTypeEl.value =
     elExtensionElements.value.values?.filter(
       (ex) => ex.$type === `${prefix}:RejectHandlerType`
@@ -318,7 +318,7 @@ const resetCustomConfigList = () => {
     )?.[0] || bpmnInstances().moddle.create(`${prefix}:RejectReturnTaskId`, { value: '' })
   returnNodeId.value = returnNodeIdEl.value.value
 
-  // 审批人为空时
+  // When approver is empty
   assignEmptyHandlerTypeEl.value =
     elExtensionElements.value.values?.filter(
       (ex) => ex.$type === `${prefix}:AssignEmptyHandlerType`
@@ -334,7 +334,7 @@ const resetCustomConfigList = () => {
     return num > Number.MAX_SAFE_INTEGER || num < -Number.MAX_SAFE_INTEGER ? item : num
   })
 
-  // 操作按钮
+  // Action Button
   buttonsSettingEl.value = elExtensionElements.value.values?.filter(
     (ex) => ex.$type === `${prefix}:ButtonsSetting`
   )
@@ -350,7 +350,7 @@ const resetCustomConfigList = () => {
     })
   }
 
-  // 字段权限
+  // Field Permission
   if (formType.value === BpmModelFormType.NORMAL) {
     const fieldsPermissionList = elExtensionElements.value.values?.filter(
       (ex) => ex.$type === `${prefix}:FieldsPermission`
@@ -367,12 +367,12 @@ const resetCustomConfigList = () => {
     })
   }
 
-  // 是否需要签名
+  // Signature Required
   signEnable.value =
     elExtensionElements.value.values?.filter((ex) => ex.$type === `${prefix}:SignEnable`)?.[0] ||
     bpmnInstances().moddle.create(`${prefix}:SignEnable`, { value: false })
 
-  // 审批意见
+  // Approval Comment
   reasonRequire.value =
     elExtensionElements.value.values?.filter((ex) => ex.$type === `${prefix}:ReasonRequire`)?.[0] ||
     bpmnInstances().moddle.create(`${prefix}:ReasonRequire`, { value: false })
@@ -393,7 +393,7 @@ const resetCustomConfigList = () => {
         ex.$type !== `${prefix}:ReasonRequire`
     ) ?? []
 
-  // 更新元素扩展属性，避免后续报错
+  // 更新元素Extension Properties，避免后续报错
   updateElementExtensions()
 }
 
@@ -471,13 +471,13 @@ function findAllPredecessorsExcludingStart(elementId: string, modeler: any) {
   const predecessors = new Set<Record<string, any>>() // 使用 Set 来避免重复节点
   const visited = new Set<BpmnElement>() // 用于记录已访问的节点
 
-  // 检查是否是开始事件节点
+  // 检查WhetherYes开始Event节点
   function isStartEvent(element: BpmnElement) {
     return element.type === 'bpmn:StartEvent'
   }
 
   function findPredecessorsRecursively(element: BpmnElement) {
-    // 如果该节点已经访问过，直接返回，避免循环
+    // 如果该节点已经访问过，直接返回，避免Loop
     if (visited.has(element)) {
       return
     }
@@ -496,7 +496,7 @@ function findAllPredecessorsExcludingStart(elementId: string, modeler: any) {
         return
       }
 
-      // 只添加不是开始事件的前置节点
+      // 只添加不Yes开始Event的前置节点
       if (!isStartEvent(source)) {
         predecessors.add(source.businessObject)
         // 递归查找前置节点
@@ -515,7 +515,7 @@ function findAllPredecessorsExcludingStart(elementId: string, modeler: any) {
 
 function useButtonsSetting() {
   const buttonsSetting = ref<ButtonSetting[]>()
-  // 操作按钮显示名称可编辑
+  // Action ButtonDisplay Name可Edit
   const btnDisplayNameEdit = ref<boolean[]>([])
   const changeBtnDisplayName = (index: number) => {
     btnDisplayNameEdit.value[index] = true

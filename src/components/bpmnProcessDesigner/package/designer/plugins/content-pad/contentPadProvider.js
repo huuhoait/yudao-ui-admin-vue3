@@ -321,7 +321,7 @@ ContextPadProvider.prototype.getContextPadEntries = function (element) {
       replace: {
         group: 'edit',
         className: 'bpmn-icon-screw-wrench',
-        title: '修改类型',
+        title: translate('Change type'),
         action: {
           click: function (event, element) {
             const position = assign(getReplaceMenuPosition(element), {

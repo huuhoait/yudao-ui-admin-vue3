@@ -1,9 +1,9 @@
 const bpmnInstances = () => (window as any)?.bpmnInstances
-// 创建监听器实例
+// 创建Listener实例
 export function createListenerObject(options, isTask, prefix) {
   const listenerObj = Object.create(null)
   listenerObj.event = options.event
-  isTask && (listenerObj.id = options.id) // 任务监听器特有的 id 字段
+  isTask && (listenerObj.id = options.id) // Task Listener特有的 id 字段
   switch (options.listenerType) {
     case 'scriptListener':
       listenerObj.script = createScriptObject(options, prefix)
@@ -17,13 +17,13 @@ export function createListenerObject(options, isTask, prefix) {
     default:
       listenerObj.class = options.class
   }
-  // 注入字段
+  // Inject Fields
   if (options.fields) {
     listenerObj.fields = options.fields.map((field) => {
       return createFieldObject(field, prefix)
     })
   }
-  // 任务监听器的 定时器 设置
+  // Task Listener的 Timer 设置
   if (isTask && options.event === 'timeout' && !!options.eventDefinitionType) {
     const timeDefinition = bpmnInstances().moddle.create('bpmn:FormalExpression', {
       body: options.eventTimeDefinitions
@@ -40,14 +40,14 @@ export function createListenerObject(options, isTask, prefix) {
   )
 }
 
-// 创建 监听器的注入字段 实例
+// 创建 Listener的Inject Fields 实例
 export function createFieldObject(option, prefix) {
   const { name, fieldType, string, expression } = option
   const fieldConfig = fieldType === 'string' ? { name, string } : { name, expression }
   return bpmnInstances().moddle.create(`${prefix}:Field`, fieldConfig)
 }
 
-// 创建脚本实例
+// 创建Script实例
 export function createScriptObject(options, prefix) {
   const { scriptType, scriptFormat, value, resource } = options
   const scriptConfig =
@@ -55,7 +55,7 @@ export function createScriptObject(options, prefix) {
   return bpmnInstances().moddle.create(`${prefix}:Script`, scriptConfig)
 }
 
-// 更新元素扩展属性
+// 更新元素Extension Properties
 export function updateElementExtensions(element, extensionList) {
   const extensions = bpmnInstances().moddle.create('bpmn:ExtensionElements', {
     values: extensionList

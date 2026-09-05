@@ -1,16 +1,16 @@
 <template>
   <div>
-    <el-form-item label="执行类型" key="executeType">
+    <el-form-item label="Execution Type" key="executeType">
       <el-select v-model="serviceTaskForm.executeType" @change="handleExecuteTypeChange">
-        <el-option label="Java类" value="class" />
-        <el-option label="表达式" value="expression" />
-        <el-option label="代理表达式" value="delegateExpression" />
-        <el-option label="HTTP 调用" value="http" />
+        <el-option label="Java Class" value="class" />
+        <el-option label="Expression" value="expression" />
+        <el-option label="Delegate Expression" value="delegateExpression" />
+        <el-option label="HTTP Call" value="http" />
       </el-select>
     </el-form-item>
     <el-form-item
       v-if="serviceTaskForm.executeType === 'class'"
-      label="Java类"
+      label="Java Class"
       prop="class"
       key="execute-class"
     >
@@ -18,7 +18,7 @@
     </el-form-item>
     <el-form-item
       v-if="serviceTaskForm.executeType === 'expression'"
-      label="表达式"
+      label="Expression"
       prop="expression"
       key="execute-expression"
     >
@@ -26,7 +26,7 @@
     </el-form-item>
     <el-form-item
       v-if="serviceTaskForm.executeType === 'delegateExpression'"
-      label="代理表达式"
+      label="Delegate Expression"
       prop="delegateExpression"
       key="execute-delegate"
     >
@@ -37,7 +37,7 @@
       />
     </el-form-item>
     <template v-if="serviceTaskForm.executeType === 'http'">
-      <el-form-item label="请求方法" key="http-method">
+      <el-form-item label="Request Method" key="http-method">
         <el-radio-group v-model="httpTaskForm.requestMethod">
           <el-radio-button label="GET" value="GET" />
           <el-radio-button label="POST" value="POST" />
@@ -45,10 +45,10 @@
           <el-radio-button label="DELETE" value="DELETE" />
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="请求地址" key="http-url" prop="requestUrl">
+      <el-form-item label="Request URL" key="http-url" prop="requestUrl">
         <el-input v-model="httpTaskForm.requestUrl" clearable />
       </el-form-item>
-      <el-form-item label="请求头" key="http-headers">
+      <el-form-item label="Request Header" key="http-headers">
         <div style="display: flex; gap: 8px; align-items: flex-start; width: 100%">
           <el-input
             v-model="httpTaskForm.requestHeaders"
@@ -56,7 +56,7 @@
             resize="vertical"
             :autosize="{ minRows: 4, maxRows: 8 }"
             readonly
-            placeholder="点击右侧编辑按钮添加请求头"
+            placeholder="Click the edit button on the right to add a header"
             style="flex: 1; min-width: 0"
           />
           <el-button
@@ -65,31 +65,31 @@
             @click="showHeaderEditor = true"
             style="flex-shrink: 0"
           >
-            编辑
+            Edit
           </el-button>
         </div>
       </el-form-item>
-      <el-form-item label="禁止重定向" key="http-disallow-redirects">
+      <el-form-item label="Disable Redirect" key="http-disallow-redirects">
         <el-switch v-model="httpTaskForm.disallowRedirects" />
       </el-form-item>
-      <el-form-item label="忽略异常" key="http-ignore-exception">
+      <el-form-item label="Ignore Exception" key="http-ignore-exception">
         <el-switch v-model="httpTaskForm.ignoreException" />
       </el-form-item>
-      <el-form-item label="保存返回变量" key="http-save-response">
+      <el-form-item label="Save Return Variable" key="http-save-response">
         <el-switch v-model="httpTaskForm.saveResponseParameters" />
       </el-form-item>
-      <el-form-item label="是否瞬间变量" key="http-save-transient">
+      <el-form-item label="Is Transient Variable" key="http-save-transient">
         <el-switch v-model="httpTaskForm.saveResponseParametersTransient" />
       </el-form-item>
-      <el-form-item label="返回变量前缀" key="http-result-variable-prefix">
+      <el-form-item label="Return Variable Prefix" key="http-result-variable-prefix">
         <el-input v-model="httpTaskForm.resultVariablePrefix" />
       </el-form-item>
-      <el-form-item label="格式化返回为JSON" key="http-save-json">
+      <el-form-item label="Format return as JSON" key="http-save-json">
         <el-switch v-model="httpTaskForm.saveResponseVariableAsJson" />
       </el-form-item>
     </template>
 
-    <!-- 请求头编辑器 -->
+    <!-- Request HeaderEdit器 -->
     <HttpHeaderEditor
       v-model="showHeaderEditor"
       :headers="httpTaskForm.requestHeaders"
@@ -159,10 +159,10 @@ const showHeaderEditor = ref(false)
 
 const bpmnInstances = () => (window as any)?.bpmnInstances
 
-// 判断字符串是否包含表达式
+// 判断字符串Whether包含Expression
 const isExpression = (value: string): boolean => {
   if (!value) return false
-  // 检测 ${...} 或 #{...} 格式的表达式
+  // 检测 ${...} 或 #{...} 格式的Expression
   return /\${[^}]+}/.test(value) || /#{[^}]+}/.test(value)
 }
 
@@ -234,7 +234,7 @@ const resetServiceTaskForm = () => {
     if (businessObject.$attrs?.[flowableTypeKey] === 'http') {
       nextForm.executeType = 'http'
     } else {
-      // 兜底：如缺少 flowable:type=http，但扩展里已有 HTTP 的字段，也认为是 HTTP
+      // 兜底：如缺少 flowable:type=http，但扩展里已有 HTTP 的字段，也认为Yes HTTP
       const { httpFields } = collectHttpExtensionInfo()
       if (httpFields.size > 0) {
         nextForm.executeType = 'http'
@@ -286,7 +286,7 @@ const updateHttpExtensions = (force = false) => {
     desiredEntries.push([name, persisted])
   })
 
-  // 检查是否有变化：不仅比较值，还要比较字段类型（string vs expression）
+  // 检查Whether有变化：不仅比较Value，还要比较Field Type（string vs expression）
   if (!force && desiredEntries.length === existingFields.size) {
     let noChange = true
     for (const [name, value] of desiredEntries) {
@@ -305,7 +305,7 @@ const updateHttpExtensions = (force = false) => {
 
   const moddle = bpmnInstances().moddle
   const httpFieldElements = desiredEntries.map(([name, value]) => {
-    // 根据值是否包含表达式来决定使用 string 还是 expression 属性
+    // 根据ValueWhether包含Expression来决定使用 string 还Yes expression 属性
     const isExpr = isExpression(value)
     return moddle.create(flowableFieldType, {
       name,

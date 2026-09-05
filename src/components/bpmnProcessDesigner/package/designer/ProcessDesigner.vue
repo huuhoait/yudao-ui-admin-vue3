@@ -5,47 +5,42 @@
       <template v-if="!$slots['control-header']">
         <ElButtonGroup key="file-control">
           <el-button @click="refFile.click()">
-            <Icon icon="ep:folder-opened" class="mr-1px" /> 打开文件
+            <Icon icon="ep:folder-opened" class="mr-1px" /> Open File
           </el-button>
           <el-tooltip effect="light" placement="bottom">
             <template #content>
               <div style="color: #409eff">
-                <!-- <el-button link @click="downloadProcessAsXml()">下载为XML文件</el-button> -->
-                <el-button link @click="downloadProcessAsXml()">下载为XML文件</el-button>
+                <el-button link @click="downloadProcessAsXml()">Download as XML</el-button>
                 <br />
 
-                <!-- <el-button link @click="downloadProcessAsSvg()">下载为SVG文件</el-button> -->
-                <el-button link @click="downloadProcessAsSvg()">下载为SVG文件</el-button>
+                <el-button link @click="downloadProcessAsSvg()">Download as SVG</el-button>
                 <br />
 
-                <!-- <el-button link @click="downloadProcessAsBpmn()">下载为BPMN文件</el-button> -->
-                <el-button link @click="downloadProcessAsBpmn()">下载为BPMN文件</el-button>
+                <el-button link @click="downloadProcessAsBpmn()">Download as BPMN</el-button>
               </div>
             </template>
-            <el-button> <Icon icon="ep:download" class="mr-1px" /> 下载文件 </el-button>
+            <el-button> <Icon icon="ep:download" class="mr-1px" /> Download </el-button>
           </el-tooltip>
           <el-tooltip effect="light">
-            <el-button> <Icon icon="ep:view" class="mr-1px" /> 浏览 </el-button>
+            <el-button> <Icon icon="ep:view" class="mr-1px" /> Preview </el-button>
             <template #content>
-              <!-- <el-button link @click="previewProcessXML">预览XML</el-button> -->
-              <el-button link @click="previewProcessXML">预览XML</el-button>
+              <el-button link @click="previewProcessXML">Preview XML</el-button>
               <br />
-              <!-- <el-button link @click="previewProcessJson">预览JSON</el-button> -->
-              <el-button link @click="previewProcessJson">预览JSON</el-button>
+              <el-button link @click="previewProcessJson">Preview JSON</el-button>
             </template>
           </el-tooltip>
           <el-tooltip
             v-if="props.simulation"
             effect="light"
-            :content="simulationStatus ? '退出模拟' : '开启模拟'"
+            :content="simulationStatus ? 'Exit Simulation' : 'Start Simulation'"
           >
             <el-button @click="processSimulation">
-              <Icon icon="ep:cpu" class="mr-1px" /> 模拟
+              <Icon icon="ep:cpu" class="mr-1px" /> Simulate
             </el-button>
           </el-tooltip>
         </ElButtonGroup>
         <ElButtonGroup key="align-control">
-          <el-tooltip effect="light" content="向左对齐">
+          <el-tooltip effect="light" content="Align Left">
             <!-- <el-button
               class="align align-left"
               icon="el-icon-s-data"
@@ -55,7 +50,7 @@
               <Icon icon="fa:align-left" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="向右对齐">
+          <el-tooltip effect="light" content="Align Right">
             <!-- <el-button
               class="align align-right"
               icon="el-icon-s-data"
@@ -65,7 +60,7 @@
               <Icon icon="fa:align-left" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="向上对齐">
+          <el-tooltip effect="light" content="Align Top">
             <!-- <el-button
               class="align align-top"
               icon="el-icon-s-data"
@@ -75,7 +70,7 @@
               <Icon icon="fa:align-left" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="向下对齐">
+          <el-tooltip effect="light" content="Align Bottom">
             <!-- <el-button
               class="align align-bottom"
               icon="el-icon-s-data"
@@ -85,7 +80,7 @@
               <Icon icon="fa:align-left" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="水平居中">
+          <el-tooltip effect="light" content="Center Horizontally">
             <!-- <el-button
               class="align align-center"
               icon="el-icon-s-data"
@@ -96,7 +91,7 @@
               <Icon icon="fa:align-left" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="垂直居中">
+          <el-tooltip effect="light" content="Center Vertically">
             <!-- <el-button
               class="align align-middle"
               icon="el-icon-s-data"
@@ -108,7 +103,7 @@
           </el-tooltip>
         </ElButtonGroup>
         <ElButtonGroup key="scale-control">
-          <el-tooltip effect="light" content="缩小视图">
+          <el-tooltip effect="light" content="Zoom Out">
             <!-- <el-button
               :disabled="defaultZoom < 0.2"
               icon="el-icon-zoom-out"
@@ -119,7 +114,7 @@
             </el-button>
           </el-tooltip>
           <el-button>{{ Math.floor(defaultZoom * 10 * 10) + '%' }}</el-button>
-          <el-tooltip effect="light" content="放大视图">
+          <el-tooltip effect="light" content="Zoom In">
             <!-- <el-button
               :disabled="defaultZoom > 4"
               icon="el-icon-zoom-in"
@@ -129,7 +124,7 @@
               <Icon icon="ep:zoom-in" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="重置视图并居中">
+          <el-tooltip effect="light" content="Reset & Center View">
             <!-- <el-button icon="el-icon-c-scale-to-original" @click="processReZoom()" /> -->
             <el-button @click="processReZoom()">
               <Icon icon="ep:scale-to-original" class="mr-1px" />
@@ -137,13 +132,13 @@
           </el-tooltip>
         </ElButtonGroup>
         <ElButtonGroup key="stack-control">
-          <el-tooltip effect="light" content="撤销">
+          <el-tooltip effect="light" content="Undo">
             <!-- <el-button :disabled="!revocable" icon="el-icon-refresh-left" @click="processUndo()" /> -->
             <el-button @click="processUndo()" :disabled="!revocable">
               <Icon icon="ep:refresh-left" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="恢复">
+          <el-tooltip effect="light" content="Redo">
             <!-- <el-button
               :disabled="!recoverable"
               icon="el-icon-refresh-right"
@@ -153,7 +148,7 @@
               <Icon icon="ep:refresh-right" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="重新绘制">
+          <el-tooltip effect="light" content="Redraw">
             <!-- <el-button icon="el-icon-refresh" @click="processRestart" /> -->
             <el-button @click="processRestart()">
               <Icon icon="ep:refresh" class="mr-1px" />
@@ -182,7 +177,7 @@
       <!-- <div class="my-process-designer__canvas" ref="bpmn-canvas"></div> -->
     </div>
     <Dialog
-      title="预览"
+      title="Preview"
       v-model="previewModelVisible"
       width="80%"
       :scroll="true"
@@ -196,7 +191,7 @@
 </template>
 
 <script lang="ts" setup>
-// import 'bpmn-js/dist/assets/diagram-js.css' // 左边工具栏以及编辑节点的样式
+// import 'bpmn-js/dist/assets/diagram-js.css' // 左边工具栏以及Edit节点的样式
 // import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
 // import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css'
 // import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'
@@ -206,7 +201,8 @@ import BpmnModeler from 'bpmn-js/lib/Modeler'
 import DefaultEmptyXML from './plugins/defaultEmpty'
 // 翻译方法
 import customTranslate from './plugins/translate/customTranslate'
-import translationsCN from './plugins/translate/zh'
+// 中文翻译表已停用，默认英文；如需其它语言，通过 props.translations 传入
+// import translationsCN from './plugins/translate/zh'
 // 模拟流转流程
 import tokenSimulation from 'bpmn-js-token-simulation'
 // 标签解析构建器
@@ -255,16 +251,16 @@ const props = defineProps({
   value: String, // xml 字符串
   // valueWatch: true, // xml 字符串的 watch 状态
   processId: String, // 流程 key 标识
-  processName: String, // 流程 name 名字
-  formId: Number, // 流程 form 表单编号
+  processName: String, // 流程 name Name
+  formId: Number, // 流程 form FormID
   translations: {
-    // 自定义的翻译文件
+    // Custom的翻译文件
     type: Object,
     default: () => {}
   },
-  additionalModel: [Object, Array], // 自定义model
+  additionalModel: [Object, Array], // Custommodel
   moddleExtension: {
-    // 自定义moddle
+    // Custommoddle
     type: Object,
     default: () => {}
   },
@@ -329,7 +325,7 @@ const revocable = ref(false)
 const additionalModules = computed(() => {
   console.log(props.additionalModel, 'additionalModel')
   const Modules: any[] = []
-  // 仅保留用户自定义扩展模块
+  // 仅保留用户Custom扩展模块
   if (props.onlyCustomizeAddi) {
     if (Object.prototype.toString.call(props.additionalModel) == '[object Array]') {
       return props.additionalModel || []
@@ -337,16 +333,16 @@ const additionalModules = computed(() => {
     return [props.additionalModel]
   }
 
-  // 插入用户自定义扩展模块
+  // 插入用户Custom扩展模块
   if (Object.prototype.toString.call(props.additionalModel) == '[object Array]') {
     Modules.push(...(props.additionalModel as any[]))
   } else {
     props.additionalModel && Modules.push(props.additionalModel)
   }
 
-  // 翻译模块
+  // 翻译模块：默认使用英文（bpmn-js 原生英文），若外部传入 translations 则以其为准
   const TranslateModule = {
-    translate: ['value', customTranslate(props.translations || translationsCN)]
+    translate: ['value', customTranslate(props.translations || {})]
   }
   Modules.push(TranslateModule)
 
@@ -355,7 +351,7 @@ const additionalModules = computed(() => {
     Modules.push(tokenSimulation)
   }
 
-  // 根据需要的流程类型设置扩展元素构建模块
+  // 根据需要的流程Type设置扩展元素构建模块
   // if (this.prefix === "bpmn") {
   //   Modules.push(bpmnModdleExtension);
   // }
@@ -377,19 +373,19 @@ const moddleExtensions = computed(() => {
   console.log(props.moddleExtension, 'props.moddleExtension')
   console.log(props.prefix, 'props.prefix')
   const Extensions: any = {}
-  // 仅使用用户自定义模块
+  // 仅使用用户Custom模块
   if (props.onlyCustomizeModdle) {
     return props.moddleExtension || null
   }
 
-  // 插入用户自定义模块
+  // 插入用户Custom模块
   if (props.moddleExtension) {
     for (let key in props.moddleExtension) {
       Extensions[key] = props.moddleExtension[key]
     }
   }
 
-  // 根据需要的 "流程类型" 设置 对应的解析文件
+  // 根据需要的 "流程Type" 设置 对应的解析文件
   if (props.prefix === 'activiti') {
     Extensions.activiti = activitiModdleDescriptor
   }
@@ -449,7 +445,7 @@ const initBpmnModeler = () => {
 const initModelListeners = () => {
   const EventBus = bpmnModeler.get('eventBus')
   console.log(EventBus, 'EventBus')
-  // 注册需要的监听事件, 将. 替换为 - , 避免解析异常
+  // 注册需要的监听Event, 将. 替换为 - , 避免解析异常
   props.events.forEach((event: any) => {
     EventBus.on(event, function (eventObj) {
       let eventName = event.replace(/\./g, '-')
@@ -485,7 +481,7 @@ const initModelListeners = () => {
 /* 创建新的流程图 */
 const createNewDiagram = async (xml) => {
   console.log(xml, 'xml')
-  // 将字符串转换成图显示出来
+  // 将字符串转换成图Display出来
   let newId = props.processId || `Process_${new Date().getTime()}`
   let newName = props.processName || `业务流程_${new Date().getTime()}`
   let xmlString = xml || DefaultEmptyXML(newId, newName, props.prefix)
@@ -505,10 +501,10 @@ const createNewDiagram = async (xml) => {
 // 下载流程图到本地
 const downloadProcess = async (type) => {
   try {
-    // 按需要类型创建文件并下载
+    // 按需要Type创建文件并下载
     if (type === 'xml' || type === 'bpmn') {
       const { err, xml } = await bpmnModeler.saveXML()
-      // 读取异常时抛出异常
+      // 读取异常Hour抛出异常
       if (err) {
         console.error(`[Process Designer Warn ]: ${err.message || err}`)
       }
@@ -516,7 +512,7 @@ const downloadProcess = async (type) => {
       downloadFunc(href, filename)
     } else {
       const { err, svg } = await bpmnModeler.saveSVG()
-      // 读取异常时抛出异常
+      // 读取异常Hour抛出异常
       if (err) {
         return console.error(err)
       }
@@ -530,7 +526,7 @@ const downloadProcess = async (type) => {
   function downloadFunc(href, filename) {
     if (href && filename) {
       let a = document.createElement('a')
-      a.download = filename //指定下载的文件名
+      a.download = filename //Specified下载的文件名
       a.href = href //  URL对象
       a.click() // 模拟点击
       URL.revokeObjectURL(a.href) // 释放URL 对象
@@ -538,7 +534,7 @@ const downloadProcess = async (type) => {
   }
 }
 
-// 根据所需类型进行转码并返回下载地址
+// 根据所需Type进行转码并返回下载地址
 const setEncoded = (type, data) => {
   const filename = 'diagram'
   const encodedData = encodeURIComponent(data)
@@ -613,13 +609,12 @@ const elementsAlign = (align) => {
   const Selection = bpmnModeler.get('selection')
   const SelectedElements = Selection.get()
   if (!SelectedElements || SelectedElements.length <= 1) {
-    ElMessage.warning('请按住 Shift 键选择多个元素对齐')
-    // alert('请按住 Ctrl 键选择多个元素对齐
+    ElMessage.warning('Hold Shift to select multiple elements to align')
     return
   }
-  ElMessageBox.confirm('自动对齐可能造成图形变形，是否继续？', '警告', {
-    confirmButtonText: '确定',
-    cancelButtonText: '取消',
+  ElMessageBox.confirm('Auto-align may distort the diagram. Continue?', 'Warning', {
+    confirmButtonText: 'Confirm',
+    cancelButtonText: 'Cancel',
     type: 'warning'
   }).then(() => {
     Align.trigger(SelectedElements, align)
@@ -644,7 +639,7 @@ const previewProcessJson = () => {
   })
 }
 
-/* ------------------------------------------------ 芋道源码 methods ------------------------------------------------------ */
+/* ------------------------------------------------ 芋道Source码 methods ------------------------------------------------------ */
 onMounted(() => {
   initBpmnModeler()
   createNewDiagram(props.value)

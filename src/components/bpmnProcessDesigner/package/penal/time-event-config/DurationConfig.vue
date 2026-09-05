@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="margin-bottom: 10px">
-      当前选择：<el-input v-model="isoString" readonly style="width: 300px" />
+      当前Select：<el-input v-model="isoString" readonly style="width: 300px" />
     </div>
     <div v-for="unit in units" :key="unit.key" style="margin-bottom: 8px">
       <span>{{ unit.label }}：</span>
@@ -18,7 +18,7 @@
           v-model.number="custom[unit.key]"
           size="small"
           style="width: 60px; margin-left: 8px"
-          placeholder="自定义"
+          placeholder="Custom"
           @change="setUnit(unit.key, custom[unit.key])"
         />
       </el-button-group>
@@ -32,12 +32,12 @@ const props = defineProps({ value: String })
 const emit = defineEmits(['change'])
 
 const units = [
-  { key: 'Y', label: '年', presets: [1, 2, 3, 4] },
-  { key: 'M', label: '月', presets: [1, 2, 3, 4] },
-  { key: 'D', label: '天', presets: [1, 2, 3, 4] },
-  { key: 'H', label: '时', presets: [4, 8, 12, 24] },
-  { key: 'm', label: '分', presets: [5, 10, 30, 50] },
-  { key: 'S', label: '秒', presets: [5, 10, 30, 50] }
+  { key: 'Y', label: 'Year', presets: [1, 2, 3, 4] },
+  { key: 'M', label: 'Month', presets: [1, 2, 3, 4] },
+  { key: 'D', label: 'Day', presets: [1, 2, 3, 4] },
+  { key: 'H', label: 'Hour', presets: [4, 8, 12, 24] },
+  { key: 'm', label: 'Minute', presets: [5, 10, 30, 50] },
+  { key: 'S', label: 'Second', presets: [5, 10, 30, 50] }
 ]
 const custom = ref({ Y: '', M: '', D: '', H: '', m: '', S: '' })
 const isoString = ref('')

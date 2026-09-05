@@ -4,5 +4,5 @@ MyProcessViewer.install = function (Vue) {
   Vue.component(MyProcessViewer.name, MyProcessViewer)
 }
 
-// 流程图的查看器，不可编辑
+// 流程图的查看器，不可Edit
 export default MyProcessViewer

@@ -1,21 +1,21 @@
 <template>
   <div class="panel-tab__content">
     <el-form :model="flowConditionForm" label-width="90px" size="small">
-      <el-form-item label="流转类型">
+      <el-form-item label="Flow Type">
         <el-select v-model="flowConditionForm.type" @change="updateFlowType">
-          <el-option label="普通流转路径" value="normal" />
-          <el-option label="默认流转路径" value="default" />
-          <el-option label="条件流转路径" value="condition" />
+          <el-option label="Normal Flow" value="normal" />
+          <el-option label="Default Flow" value="default" />
+          <el-option label="Conditional Flow" value="condition" />
         </el-select>
       </el-form-item>
-      <el-form-item label="条件格式" v-if="flowConditionForm.type === 'condition'" key="condition">
+      <el-form-item label="Condition Format" v-if="flowConditionForm.type === 'condition'" key="condition">
         <el-select v-model="flowConditionForm.conditionType">
-          <el-option label="表达式" value="expression" />
-          <el-option label="脚本" value="script" />
+          <el-option label="Expression" value="expression" />
+          <el-option label="Script" value="script" />
         </el-select>
       </el-form-item>
       <el-form-item
-        label="表达式"
+        label="Expression"
         v-if="flowConditionForm.conditionType && flowConditionForm.conditionType === 'expression'"
         key="express"
       >
@@ -29,17 +29,17 @@
       <template
         v-if="flowConditionForm.conditionType && flowConditionForm.conditionType === 'script'"
       >
-        <el-form-item label="脚本语言" key="language">
+        <el-form-item label="Script Language" key="language">
           <el-input v-model="flowConditionForm.language" clearable @change="updateFlowCondition" />
         </el-form-item>
-        <el-form-item label="脚本类型" key="scriptType">
+        <el-form-item label="Script Type" key="scriptType">
           <el-select v-model="flowConditionForm.scriptType">
-            <el-option label="内联脚本" value="inlineScript" />
-            <el-option label="外部脚本" value="externalScript" />
+            <el-option label="Inline Script" value="inlineScript" />
+            <el-option label="External Script" value="externalScript" />
           </el-select>
         </el-form-item>
         <el-form-item
-          label="脚本"
+          label="Script"
           v-if="flowConditionForm.scriptType === 'inlineScript'"
           key="body"
         >
@@ -51,7 +51,7 @@
           />
         </el-form-item>
         <el-form-item
-          label="资源地址"
+          label="Resource Address"
           v-if="flowConditionForm.scriptType === 'externalScript'"
           key="resource"
         >
@@ -94,7 +94,7 @@ const resetFlowCondition = () => {
     // 带条件
     const conditionExpression = bpmnElement.value.businessObject.conditionExpression
     flowConditionForm.value = { ...conditionExpression, type: 'condition' }
-    // resource 可直接标识 是否是外部资源脚本
+    // resource 可直接标识 WhetherYesExternal ResourceScript
     if (flowConditionForm.value.resource) {
       // this.$set(this.flowConditionForm, "conditionType", "script");
       // this.$set(this.flowConditionForm, "scriptType", "externalScript");
@@ -133,7 +133,7 @@ const updateFlowType = (flowType) => {
     })
     return
   }
-  // 正常路径，如果来源节点的默认路径是当前连线时，清除父元素的默认路径配置
+  // 正常路径，如果来Source节点的默认路径Yes当前连线Hour，清除父元素的默认路径Config
   if (
     bpmnElementSourceRef.value.default &&
     bpmnElementSourceRef.value.default.id === bpmnElement.value.id

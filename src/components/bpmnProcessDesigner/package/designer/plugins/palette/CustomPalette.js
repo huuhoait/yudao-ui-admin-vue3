@@ -26,7 +26,7 @@ export default function CustomPalette(
 }
 
 const F = function () {} // 核心，利用空对象作为中介；
-F.prototype = PaletteProvider.prototype // 核心，将父类的原型赋值给空对象F；
+F.prototype = PaletteProvider.prototype // 核心，将父类的原型赋Value给空对象F；
 
 // 利用中介函数重写原型链方法
 F.prototype.getPaletteEntries = function () {
@@ -93,8 +93,7 @@ F.prototype.getPaletteEntries = function () {
     'hand-tool': {
       group: 'tools',
       className: 'bpmn-icon-hand-tool',
-      title: '激活抓手工具',
-      // title: translate("Activate the hand tool"),
+      title: translate('Activate the hand tool'),
       action: {
         click: function (event) {
           handTool.activateHand(event)
@@ -229,5 +228,5 @@ CustomPalette.$inject = [
   'translate'
 ]
 
-CustomPalette.prototype = new F() // 核心，将 F的实例赋值给子类；
+CustomPalette.prototype = new F() // 核心，将 F的实例赋Value给子类；
 CustomPalette.prototype.constructor = CustomPalette // 修复子类CustomPalette的构造器指向，防止原型链的混乱；

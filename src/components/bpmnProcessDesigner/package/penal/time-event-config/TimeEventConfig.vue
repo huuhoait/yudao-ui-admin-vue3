@@ -1,10 +1,10 @@
 <template>
   <div class="panel-tab__content">
     <div style="margin-top: 10px">
-      <span>类型：</span>
+      <span>Type:</span>
       <el-button-group>
         <el-button size="small" :type="type === 'time' ? 'primary' : ''" @click="setType('time')">
-          时间
+          Hour间
         </el-button>
         <el-button
           size="small"
@@ -14,13 +14,13 @@
           持续
         </el-button>
         <el-button size="small" :type="type === 'cycle' ? 'primary' : ''" @click="setType('cycle')">
-          循环
+          Loop
         </el-button>
       </el-button-group>
       <el-icon v-if="valid" color="green" style="margin-left: 8px"><CircleCheckFilled /></el-icon>
     </div>
     <div style="display: flex; margin-top: 10px; align-items: center">
-      <span>条件：</span>
+      <span>Condition:</span>
       <el-input
         v-model="condition"
         :placeholder="placeholder"
@@ -30,7 +30,7 @@
         @blur="updateNode"
       >
         <template #suffix>
-          <el-tooltip v-if="!valid" content="格式错误" placement="top">
+          <el-tooltip v-if="!valid" content="Format Error" placement="top">
             <el-icon color="orange"><WarningFilled /></el-icon>
           </el-tooltip>
           <el-tooltip :content="helpText" placement="top">
@@ -68,56 +68,56 @@
         </template>
       </el-input>
     </div>
-    <!-- 时间选择器 -->
+    <!-- Hour间Select器 -->
     <el-dialog
       v-model="showDatePicker"
-      title="选择时间"
+      title="Select Time"
       width="400px"
       @close="showDatePicker = false"
     >
       <el-date-picker
         v-model="dateValue"
         type="datetime"
-        placeholder="选择日期时间"
+        placeholder="Select Date Time"
         style="width: 100%"
         @change="onDateChange"
       />
       <template #footer>
-        <el-button @click="showDatePicker = false">取消</el-button>
-        <el-button type="primary" @click="onDateConfirm">确定</el-button>
+        <el-button @click="showDatePicker = false">Cancel</el-button>
+        <el-button type="primary" @click="onDateConfirm">Confirm</el-button>
       </template>
     </el-dialog>
-    <!-- 持续时长选择器 -->
+    <!-- DurationSelect器 -->
     <el-dialog
       v-model="showDurationDialog"
-      title="时间配置"
+      title="Timer Config"
       width="600px"
       @close="showDurationDialog = false"
     >
       <DurationConfig :value="condition" @change="onDurationChange" />
       <template #footer>
-        <el-button @click="showDurationDialog = false">取消</el-button>
-        <el-button type="primary" @click="onDurationConfirm">确定</el-button>
+        <el-button @click="showDurationDialog = false">Cancel</el-button>
+        <el-button type="primary" @click="onDurationConfirm">Confirm</el-button>
       </template>
     </el-dialog>
-    <!-- 循环配置器 -->
+    <!-- LoopConfig器 -->
     <el-dialog
       v-model="showCycleDialog"
-      title="时间配置"
+      title="Timer Config"
       width="800px"
       @close="showCycleDialog = false"
     >
       <CycleConfig :value="condition" @change="onCycleChange" />
       <template #footer>
-        <el-button @click="showCycleDialog = false">取消</el-button>
-        <el-button type="primary" @click="onCycleConfirm">确定</el-button>
+        <el-button @click="showCycleDialog = false">Cancel</el-button>
+        <el-button type="primary" @click="onCycleConfirm">Confirm</el-button>
       </template>
     </el-dialog>
     <!-- 帮助说明 -->
-    <el-dialog v-model="showHelp" title="格式说明" width="600px" @close="showHelp = false">
+    <el-dialog v-model="showHelp" title="Format Description" width="600px" @close="showHelp = false">
       <div v-html="helpHtml"></div>
       <template #footer>
-        <el-button @click="showHelp = false">关闭</el-button>
+        <el-button @click="showHelp = false">Close</el-button>
       </template>
     </el-dialog>
   </div>
@@ -140,25 +140,25 @@ const showHelp = ref(false)
 const dateValue = ref(null)
 
 const placeholder = computed(() => {
-  if (type.value === 'time') return '请输入时间'
-  if (type.value === 'duration') return '请输入持续时长'
-  if (type.value === 'cycle') return '请输入循环表达式'
+  if (type.value === 'time') return 'Please enter time'
+  if (type.value === 'duration') return 'Please enter duration'
+  if (type.value === 'cycle') return 'Please enter loop expression'
   return ''
 })
 const helpText = computed(() => {
-  if (type.value === 'time') return '选择具体时间'
+  if (type.value === 'time') return 'Select Specific Time'
   if (type.value === 'duration') return 'ISO 8601格式，如PT1H'
-  if (type.value === 'cycle') return 'CRON表达式或ISO 8601周期'
+  if (type.value === 'cycle') return 'CRON Expression或ISO 8601Week期'
   return ''
 })
 const helpHtml = computed(() => {
   if (type.value === 'duration') {
-    return `指定定时器之前要等待多长时间。S表示秒，M表示分，D表示天；P表示时间段，T表示精确到时间的时间段。<br>
-    时间格式依然为ISO 8601格式，一年两个月三天四小时五分六秒内，可以写成P1Y2M3DT4H5M6S。<br>
-    P是开始标记，T是时间和日期分割标记，没有日期只有时间T是不能省去的，比如1小时执行一次应写成PT1H。`
+    return `SpecifiedTimer之前要等待多长Hour间。S表示Second，M表示Minute，D表示Day；P表示Hour间段，T表示精确到Hour间的Hour间段。<br>
+    Time Format依然为ISO 8601格式，一Year两个Month三Day四小Hour五Minute六Second内，可以写成P1Y2M3DT4H5M6S。<br>
+    PYes开始标记，TYesHour间和DateMinute割标记，没有Date只有Hour间TYes不能省去的，比如1小Hour执行一次应写成PT1H。`
   }
   if (type.value === 'cycle') {
-    return `支持CRON表达式（如0 0/30 * * * ?）或ISO 8601周期（如R3/PT10M）。`
+    return `支持CRON Expression（如0 0/30 * * * ?）或ISO 8601Week期（如R3/PT10M）。`
   }
   return ''
 })
@@ -183,14 +183,14 @@ function syncFromBusinessObject() {
 }
 onMounted(syncFromBusinessObject)
 
-// 切换类型
+// 切换Type
 function setType(t) {
   type.value = t
   condition.value = ''
   updateNode()
 }
 
-// 输入校验
+// 输入Validate
 watch([type, condition], () => {
   valid.value = validate()
   // updateNode() // 可以注释掉，避免频繁触发
@@ -209,7 +209,7 @@ function validate() {
   return true
 }
 
-// 选择时间
+// Select Time
 function onDateChange(val) {
   dateValue.value = val
 }
@@ -221,7 +221,7 @@ function onDateConfirm() {
   }
 }
 
-// 持续时长
+// Duration
 function onDurationChange(val) {
   condition.value = val
 }
@@ -230,7 +230,7 @@ function onDurationConfirm() {
   updateNode()
 }
 
-// 循环
+// Loop
 function onCycleChange(val) {
   condition.value = val
 }
@@ -239,7 +239,7 @@ function onCycleConfirm() {
   updateNode()
 }
 
-// 输入框聚焦时弹窗（可选）
+// 输入框聚焦Hour弹窗（可选）
 function handleInputFocus() {
   if (type.value === 'time') showDatePicker.value = true
   if (type.value === 'duration') showDurationDialog.value = true

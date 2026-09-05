@@ -1,6 +1,6 @@
 <template>
   <el-form label-width="120px">
-    <el-form-item label="规则类型" prop="candidateStrategy">
+    <el-form-item label="Rule Type" prop="candidateStrategy">
       <el-select
         v-model="userTaskForm.candidateStrategy"
         clearable
@@ -17,7 +17,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy == CandidateStrategy.ROLE"
-      label="指定角色"
+      label="Specified Role"
       prop="candidateParam"
     >
       <el-select
@@ -36,7 +36,7 @@
         userTaskForm.candidateStrategy == CandidateStrategy.DEPT_LEADER ||
         userTaskForm.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER
       "
-      label="指定部门"
+      label="Specified Department"
       prop="candidateParam"
       span="24"
     >
@@ -54,7 +54,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy == CandidateStrategy.POST"
-      label="指定岗位"
+      label="Specified Position"
       prop="candidateParam"
       span="24"
     >
@@ -75,7 +75,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy == CandidateStrategy.USER"
-      label="指定用户"
+      label="Specified User"
       prop="candidateParam"
       span="24"
     >
@@ -96,7 +96,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy === CandidateStrategy.USER_GROUP"
-      label="指定用户组"
+      label="Specified User Group"
       prop="candidateParam"
     >
       <el-select
@@ -116,7 +116,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy === CandidateStrategy.FORM_USER"
-      label="表单内用户字段"
+      label="User Field in Form"
       prop="formUser"
     >
       <el-select
@@ -136,7 +136,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy === CandidateStrategy.FORM_DEPT_LEADER"
-      label="表单内部门字段"
+      label="Department Field in Form"
       prop="formDept"
     >
       <el-select
@@ -176,7 +176,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy === CandidateStrategy.EXPRESSION"
-      label="流程表达式"
+      label="Process Expression"
       prop="candidateParam"
     >
       <el-input
@@ -192,13 +192,13 @@
         size="small"
         @click="openProcessExpressionDialog"
       >
-        <Icon icon="ep:select" class="mr-1px" /> 选择表达式
+        <Icon icon="ep:select" class="mr-1px" /> Select Expression
       </el-button>
-      <!-- 选择弹窗 -->
+      <!-- Select弹窗 -->
       <ProcessExpressionDialog ref="processExpressionDialogRef" @select="selectProcessExpression" />
     </el-form-item>
 
-    <el-form-item label="跳过表达式" prop="skipExpression">
+    <el-form-item label="Skip Expression" prop="skipExpression">
       <el-input
         type="textarea"
         v-model="userTaskForm.skipExpression"
@@ -240,38 +240,38 @@ type UserTaskForm = {
   skipExpression: string
 }
 const userTaskForm = ref<UserTaskForm>({
-  candidateStrategy: undefined, // 分配规则
-  candidateParam: [], // 分配选项
-  skipExpression: '' // 跳过表达式
+  candidateStrategy: undefined, // Minute配规则
+  candidateParam: [], // Minute配选项
+  skipExpression: '' // Skip Expression
 })
 const bpmnElement = ref()
 const bpmnInstances = () => (window as any)?.bpmnInstances
 
 const roleOptions = ref<RoleApi.RoleVO[]>([]) // 角色列表
-const deptTreeOptions = ref() // 部门树
+const deptTreeOptions = ref() // Department树
 const postOptions = ref<PostApi.PostVO[]>([]) // 岗位列表
 const userOptions = ref<UserApi.UserVO[]>([]) // 用户列表
 const userGroupOptions = ref<UserGroupApi.UserGroupVO[]>([]) // 用户组列表
 
 const { formFieldOptions } = useFormFieldsPermission(FieldPermissionType.READ)
-// 表单内用户字段选项, 必须是必填和用户选择器
+// User Field in Form选项, 必须YesRequired和用户Select器
 const userFieldOnFormOptions = computed(() => {
   return formFieldOptions.filter((item) => item.type === 'UserSelect')
 })
-// 表单内部门字段选项, 必须是必填和部门选择器
+// Department Field in Form选项, 必须YesRequired和DepartmentSelect器
 const deptFieldOnFormOptions = computed(() => {
   return formFieldOptions.filter((item) => item.type === 'DeptSelect')
 })
 
 const deptLevel = ref(1)
 const deptLevelLabel = computed(() => {
-  let label = '部门负责人来源'
+  let label = 'Department Leader Source'
   if (userTaskForm.value.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER) {
-    label = label + '(指定部门向上)'
+    label = label + '(Specified Department向上)'
   } else if (userTaskForm.value.candidateStrategy == CandidateStrategy.FORM_DEPT_LEADER) {
-    label = label + '(表单内部门向上)'
+    label = label + '(Form内Department向上)'
   } else {
-    label = label + '(发起人部门向上)'
+    label = label + '(发起人Department向上)'
   }
   return label
 })
@@ -295,10 +295,10 @@ const resetTaskForm = () => {
   )?.[0]?.value
   if (candidateParamStr && candidateParamStr.length > 0) {
     if (userTaskForm.value.candidateStrategy === CandidateStrategy.EXPRESSION) {
-      // 特殊：流程表达式，只有一个 input 输入框
+      // 特殊：Process Expression，只有一个 input 输入框
       userTaskForm.value.candidateParam = [candidateParamStr]
     } else if (userTaskForm.value.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER) {
-      // 特殊：多级不部门负责人，需要通过'|'分割
+      // 特殊：多级不Department负责人，需要通过'|'Minute割
       userTaskForm.value.candidateParam = candidateParamStr
         .split('|')[0]
         .split(',')
@@ -333,7 +333,7 @@ const resetTaskForm = () => {
       (ex) => ex.$type !== `${prefix}:CandidateStrategy` && ex.$type !== `${prefix}:CandidateParam`
     ) ?? []
 
-  // 跳过表达式
+  // Skip Expression
   if (businessObject.skipExpression != undefined) {
     userTaskForm.value.skipExpression = businessObject.skipExpression
   } else {
@@ -349,7 +349,7 @@ const resetTaskForm = () => {
   }
   if (businessObject.candidateParam && businessObject.candidateParam.length > 0) {
     if (userTaskForm.value.candidateStrategy === 60) {
-      // 特殊：流程表达式，只有一个 input 输入框
+      // 特殊：Process Expression，只有一个 input 输入框
       userTaskForm.value.candidateParam = [businessObject.candidateParam]
     } else {
       userTaskForm.value.candidateParam = businessObject.candidateParam
@@ -361,13 +361,13 @@ const resetTaskForm = () => {
   }
 }
 
-/** 更新 candidateStrategy 字段时，需要清空 candidateParam，并触发 bpmn 图更新 */
+/** 更新 candidateStrategy 字段Hour，需要清空 candidateParam，并触发 bpmn 图更新 */
 const changeCandidateStrategy = () => {
   userTaskForm.value.candidateParam = []
   deptLevel.value = 1
-  // 注释 by 芋艿：这个交互很多用户反馈费解，https://t.zsxq.com/xNmas 所以暂时屏蔽
+  // 注释 by 芋艿：这个交互很多用户反馈费解，https://t.zsxq.com/xNmas 所以暂Hour屏蔽
   // if (userTaskForm.value.candidateStrategy === CandidateStrategy.FORM_USER) {
-  //   // 特殊处理表单内用户字段，当只有发起人选项时应选中发起人
+  //   // 特殊处理User Field in Form，当只有发起人选项Hour应选中发起人
   //   if (!userFieldOnFormOptions.value || userFieldOnFormOptions.value.length <= 1) {
   //     userTaskForm.value.candidateStrategy = CandidateStrategy.START_USER
   //   }
@@ -375,21 +375,21 @@ const changeCandidateStrategy = () => {
   updateElementTask()
 }
 
-/** 选中某个 options 时候，更新 bpmn 图  */
+/** 选中某个 options Hour候，更新 bpmn 图  */
 const updateElementTask = () => {
   let candidateParam =
     userTaskForm.value.candidateParam instanceof Array
       ? userTaskForm.value.candidateParam.join(',')
       : userTaskForm.value.candidateParam
 
-  // 特殊处理多级部门情况
+  // 特殊处理多级Department情况
   if (
     userTaskForm.value.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER ||
     userTaskForm.value.candidateStrategy == CandidateStrategy.FORM_DEPT_LEADER
   ) {
     candidateParam += '|' + deptLevel.value
   }
-  // 特殊处理发起人部门负责人、发起人连续部门负责人
+  // 特殊处理发起人Department负责人、发起人连续Department负责人
   if (
     userTaskForm.value.candidateStrategy == CandidateStrategy.START_USER_DEPT_LEADER ||
     userTaskForm.value.candidateStrategy == CandidateStrategy.START_USER_MULTI_LEVEL_DEPT_LEADER
@@ -425,7 +425,7 @@ const updateSkipExpression = () => {
   }
 }
 
-// 打开监听器弹窗
+// 打开Listener弹窗
 const processExpressionDialogRef = ref()
 const openProcessExpressionDialog = async () => {
   processExpressionDialogRef.value.open()
@@ -457,7 +457,7 @@ watch(
 onMounted(async () => {
   // 获得角色列表
   roleOptions.value = await RoleApi.getSimpleRoleList()
-  // 获得部门列表
+  // 获得Department列表
   const deptOptions = await DeptApi.getSimpleDeptList()
   deptTreeOptions.value = handleTree(deptOptions, 'id')
   // 获得岗位列表

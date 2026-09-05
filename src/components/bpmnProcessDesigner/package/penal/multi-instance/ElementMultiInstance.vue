@@ -27,19 +27,19 @@
         </div>
       </div>
     </el-radio-group>
-    <div v-else> 除了UserTask以外节点的多实例待实现 </div>
-    <!-- 与Simple设计器配置合并，保留以前的代码 -->
+    <div v-else> Multi-instance for nodes other than UserTask is not implemented yet </div>
+    <!-- 与Simple设计器Config合并，保留以前的代码 -->
     <el-form label-width="90px" style="display: none">
-      <el-form-item label="快捷配置">
+      <el-form-item label="Quick Config">
         <el-button size="small" @click="changeConfig('依次审批')">依次审批</el-button>
         <el-button size="small" @click="changeConfig('会签')">会签</el-button>
         <el-button size="small" @click="changeConfig('或签')">或签</el-button>
       </el-form-item>
-      <el-form-item label="会签类型">
+      <el-form-item label="Countersign Type">
         <el-select v-model="loopCharacteristics" @change="changeLoopCharacteristicsType">
-          <el-option label="并行多重事件" value="ParallelMultiInstance" />
-          <el-option label="时序多重事件" value="SequentialMultiInstance" />
-          <el-option label="无" value="Null" />
+          <el-option label="Parallel Multiple Event" value="ParallelMultiInstance" />
+          <el-option label="Sequential Multiple Event" value="SequentialMultiInstance" />
+          <el-option label="None" value="Null" />
         </el-select>
       </el-form-item>
       <template
@@ -48,51 +48,51 @@
           loopCharacteristics === 'SequentialMultiInstance'
         "
       >
-        <el-form-item label="循环数量" key="loopCardinality">
+        <el-form-item label="Loop Cardinality" key="loopCardinality">
           <el-input
             v-model="loopInstanceForm.loopCardinality"
             clearable
             @change="updateLoopCardinality"
           />
         </el-form-item>
-        <el-form-item label="集合" key="collection" v-show="false">
+        <el-form-item label="Collection" key="collection" v-show="false">
           <el-input v-model="loopInstanceForm.collection" clearable @change="updateLoopBase" />
         </el-form-item>
-        <!-- add by 芋艿：由于「元素变量」暂时用不到，所以这里 display 为 none -->
-        <el-form-item label="元素变量" key="elementVariable" style="display: none">
+        <!-- add by 芋艿：由于「Element Variable」暂Hour用不到，所以这里 display 为 none -->
+        <el-form-item label="Element Variable" key="elementVariable" style="display: none">
           <el-input v-model="loopInstanceForm.elementVariable" clearable @change="updateLoopBase" />
         </el-form-item>
-        <el-form-item label="完成条件" key="completionCondition">
+        <el-form-item label="Completion Condition" key="completionCondition">
           <el-input
             v-model="loopInstanceForm.completionCondition"
             clearable
             @change="updateLoopCondition"
           />
         </el-form-item>
-        <!-- add by 芋艿：由于「异步状态」暂时用不到，所以这里 display 为 none -->
-        <el-form-item label="异步状态" key="async" style="display: none">
+        <!-- add by 芋艿：由于「Async Status」暂Hour用不到，所以这里 display 为 none -->
+        <el-form-item label="Async Status" key="async" style="display: none">
           <el-checkbox
             v-model="loopInstanceForm.asyncBefore"
-            label="异步前"
-            value="异步前"
+            label="Async Before"
+            value="Async Before"
             @change="updateLoopAsync('asyncBefore')"
           />
           <el-checkbox
             v-model="loopInstanceForm.asyncAfter"
-            label="异步后"
-            value="异步后"
+            label="Async After"
+            value="Async After"
             @change="updateLoopAsync('asyncAfter')"
           />
           <el-checkbox
             v-model="loopInstanceForm.exclusive"
             v-if="loopInstanceForm.asyncAfter || loopInstanceForm.asyncBefore"
-            label="排除"
-            value="排除"
+            label="Exclude"
+            value="Exclude"
             @change="updateLoopAsync('exclusive')"
           />
         </el-form-item>
         <el-form-item
-          label="重试周期"
+          label="Retry Cycle"
           prop="timeCycle"
           v-if="loopInstanceForm.asyncAfter || loopInstanceForm.asyncBefore"
           key="timeCycle"
@@ -122,15 +122,15 @@ const multiLoopInstance = ref<any | null>(null)
 const bpmnInstances = () => (window as any)?.bpmnInstances
 
 const changeLoopCharacteristicsType = (type) => {
-  // this.loopInstanceForm = { ...this.defaultLoopInstanceForm }; // 切换类型取消原表单配置
-  // 取消多实例配置
+  // this.loopInstanceForm = { ...this.defaultLoopInstanceForm }; // 切换TypeCancel原FormConfig
+  // Cancel多实例Config
   if (type === 'Null') {
     bpmnInstances().modeling.updateProperties(toRaw(bpmnElement.value), {
       loopCharacteristics: null
     })
     return
   }
-  // 配置循环
+  // ConfigLoop
   if (type === 'StandardLoop') {
     const loopCharacteristicsObject = bpmnInstances().moddle.create(
       'bpmn:StandardLoopCharacteristics'
@@ -141,7 +141,7 @@ const changeLoopCharacteristicsType = (type) => {
     multiLoopInstance.value = null
     return
   }
-  // 时序
+  // Hour序
   if (type === 'SequentialMultiInstance') {
     multiLoopInstance.value = bpmnInstances().moddle.create(
       'bpmn:MultiInstanceLoopCharacteristics',
@@ -158,7 +158,7 @@ const changeLoopCharacteristicsType = (type) => {
   })
 }
 
-// 循环基数
+// Loop基数
 const updateLoopCardinality = (cardinality) => {
   let loopCardinality = null
   if (cardinality && cardinality.length) {
@@ -175,7 +175,7 @@ const updateLoopCardinality = (cardinality) => {
   )
 }
 
-// 完成条件
+// Completion Condition
 const updateLoopCondition = (condition) => {
   let completionCondition = null
   if (condition && condition.length) {
@@ -192,7 +192,7 @@ const updateLoopCondition = (condition) => {
   )
 }
 
-// 重试周期
+// Retry Cycle
 const updateLoopTimeCycle = (timeCycle) => {
   const extensionElements = bpmnInstances().moddle.create('bpmn:ExtensionElements', {
     values: [
@@ -222,7 +222,7 @@ const updateLoopBase = () => {
   )
 }
 
-// 各异步状态
+// 各Async Status
 const updateLoopAsync = (key) => {
   const { asyncBefore, asyncAfter } = loopInstanceForm.value
   let asyncAttr = Object.create(null)
