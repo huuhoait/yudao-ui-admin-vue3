@@ -69,7 +69,7 @@ const dialogVisible = computed({
 
 const headerList = ref<HeaderItem[]>([])
 
-// 解析Request Header字符串为列表
+// 解析请求头字符串为列表
 const parseHeaders = (headersStr: string): HeaderItem[] => {
   if (!headersStr || !headersStr.trim()) {
     return [{ key: '', value: '' }]
@@ -90,7 +90,7 @@ const parseHeaders = (headersStr: string): HeaderItem[] => {
   return parsed.length > 0 ? parsed : [{ key: '', value: '' }]
 }
 
-// 将列表转换为Request Header字符串
+// 将列表转换为请求头字符串
 const stringifyHeaders = (headers: HeaderItem[]): string => {
   return headers
     .filter((item) => item.key.trim())
@@ -98,12 +98,12 @@ const stringifyHeaders = (headers: HeaderItem[]): string => {
     .join('\n')
 }
 
-// Add Header
+// 添加请求头
 const addHeader = () => {
   headerList.value.push({ key: '', value: '' })
 }
 
-// RemoveRequest Header
+// 移除请求头
 const removeHeader = (index: number) => {
   if (headerList.value.length === 1) {
     // 至少保留一行
@@ -113,14 +113,14 @@ const removeHeader = (index: number) => {
   }
 }
 
-// Save
+// 保存
 const handleSave = () => {
   const headersStr = stringifyHeaders(headerList.value)
   emit('save', headersStr)
   dialogVisible.value = false
 }
 
-// Close
+// 关闭
 const handleClose = () => {
   dialogVisible.value = false
 }

@@ -1,25 +1,25 @@
 <template>
   <div class="panel-tab__content">
     <el-form size="small" label-width="90px">
-      <!-- add by 芋艿：由于「Async Continuation」暂Hour用不到，所以这里 display 为 none -->
+      <!-- add by 芋艿：由于「异步延续」暂时用不到，所以这里 display 为 none -->
       <el-form-item label="Async Continuation" style="display: none">
         <el-checkbox
           v-model="taskConfigForm.asyncBefore"
           label="Async Before"
-          value="Async Before"
+          value="异步前"
           @change="changeTaskAsync"
         />
         <el-checkbox
           v-model="taskConfigForm.asyncAfter"
           label="Async After"
-          value="Async After"
+          value="异步后"
           @change="changeTaskAsync"
         />
         <el-checkbox
           v-model="taskConfigForm.exclusive"
           v-if="taskConfigForm.asyncAfter || taskConfigForm.asyncBefore"
           label="Exclude"
-          value="Exclude"
+          value="排除"
           @change="changeTaskAsync"
         />
       </el-form-item>

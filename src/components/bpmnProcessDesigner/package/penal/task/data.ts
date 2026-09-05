@@ -10,7 +10,7 @@ export const installedComponent = {
     component: UserTask
   },
   ServiceTask: {
-    name: '服务任务',
+    name: 'Service Task',
     component: ServiceTask
   },
   ScriptTask: {
@@ -18,7 +18,7 @@ export const installedComponent = {
     component: ScriptTask
   },
   ReceiveTask: {
-    name: '接收任务',
+    name: 'Receive Task',
     component: ReceiveTask
   },
   CallActivity: {

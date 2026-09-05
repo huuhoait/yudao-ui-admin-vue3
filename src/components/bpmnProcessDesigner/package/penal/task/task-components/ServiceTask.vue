@@ -89,7 +89,7 @@
       </el-form-item>
     </template>
 
-    <!-- Request HeaderEdit器 -->
+    <!-- 请求头编辑器 -->
     <HttpHeaderEditor
       v-model="showHeaderEditor"
       :headers="httpTaskForm.requestHeaders"
@@ -159,10 +159,10 @@ const showHeaderEditor = ref(false)
 
 const bpmnInstances = () => (window as any)?.bpmnInstances
 
-// 判断字符串Whether包含Expression
+// 判断字符串是否包含表达式
 const isExpression = (value: string): boolean => {
   if (!value) return false
-  // 检测 ${...} 或 #{...} 格式的Expression
+  // 检测 ${...} 或 #{...} 格式的表达式
   return /\${[^}]+}/.test(value) || /#{[^}]+}/.test(value)
 }
 
@@ -234,7 +234,7 @@ const resetServiceTaskForm = () => {
     if (businessObject.$attrs?.[flowableTypeKey] === 'http') {
       nextForm.executeType = 'http'
     } else {
-      // 兜底：如缺少 flowable:type=http，但扩展里已有 HTTP 的字段，也认为Yes HTTP
+      // 兜底：如缺少 flowable:type=http，但扩展里已有 HTTP 的字段，也认为是 HTTP
       const { httpFields } = collectHttpExtensionInfo()
       if (httpFields.size > 0) {
         nextForm.executeType = 'http'
@@ -286,7 +286,7 @@ const updateHttpExtensions = (force = false) => {
     desiredEntries.push([name, persisted])
   })
 
-  // 检查Whether有变化：不仅比较Value，还要比较Field Type（string vs expression）
+  // 检查是否有变化：不仅比较值，还要比较字段类型（string vs expression）
   if (!force && desiredEntries.length === existingFields.size) {
     let noChange = true
     for (const [name, value] of desiredEntries) {
@@ -305,7 +305,7 @@ const updateHttpExtensions = (force = false) => {
 
   const moddle = bpmnInstances().moddle
   const httpFieldElements = desiredEntries.map(([name, value]) => {
-    // 根据ValueWhether包含Expression来决定使用 string 还Yes expression 属性
+    // 根据值是否包含表达式来决定使用 string 还是 expression 属性
     const isExpr = isExpression(value)
     return moddle.create(flowableFieldType, {
       name,

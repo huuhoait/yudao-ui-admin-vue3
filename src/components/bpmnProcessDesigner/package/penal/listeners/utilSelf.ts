@@ -1,4 +1,4 @@
-// 初始化Form数据
+// 初始化表单数据
 export function initListenerForm(listener) {
   let self = {
     ...listener
@@ -64,26 +64,26 @@ export function initListenerForm2(processListener) {
       fields: []
     }
   }
-  throw new Error('未知的Listener Type')
+  throw new Error('Unknown listener type')
 }
 
 export const listenerType = {
-  classListener: 'Java 类',
+  classListener: 'Java Class',
   expressionListener: 'Expression',
   delegateExpressionListener: 'Delegate Expression',
   scriptListener: 'Script'
 }
 
 export const eventType = {
-  create: '创建',
-  assignment: '指派',
-  complete: '完成',
-  delete: '删除',
-  update: '更新',
+  create: 'Create',
+  assignment: 'Assign',
+  complete: 'Complete',
+  delete: 'Delete',
+  update: 'Update',
   timeout: 'Timeout'
 }
 
 export const fieldType = {
-  string: '字符串',
+  string: 'String',
   expression: 'Expression'
 }

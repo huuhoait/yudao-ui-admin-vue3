@@ -10,7 +10,7 @@
         />
       </el-form-item>
 
-      <!-- TODO 需要可Select已存在的流程 -->
+      <!-- TODO 需要可选择已存在的流程 -->
       <el-form-item label="Called Process" prop="calledElement">
         <el-input
           v-model="formData.calledElement"
@@ -161,8 +161,8 @@ const formData = ref({
 })
 const inVariableList = ref()
 const outVariableList = ref()
-const variableType = ref() // 参数Type
-const editingVariableIndex = ref(-1) // Edit参数下标
+const variableType = ref() // 参数类型
+const editingVariableIndex = ref(-1) // 编辑参数下标
 const variableDialogVisible = ref(false)
 const varialbeFormData = ref({
   source: '',
@@ -177,15 +177,15 @@ const initCallActivity = () => {
   bpmnElement.value = bpmnInstances().bpmnElement
   console.log(bpmnElement.value.businessObject, 'callActivity')
 
-  // 初始化所有Config项
+  // 初始化所有配置项
   Object.keys(formData.value).forEach((key) => {
     formData.value[key] = bpmnElement.value.businessObject[key] ?? formData.value[key]
   })
 
-  otherExtensionList.value = [] // Others扩展Config
+  otherExtensionList.value = [] // 其他扩展配置
   inVariableList.value = []
   outVariableList.value = []
-  // 初始化Input Parameter
+  // 初始化输入参数
   bpmnElement.value.businessObject?.extensionElements?.values?.forEach((ex) => {
     if (ex.$type === `${prefix}:In`) {
       inVariableList.value.push(ex)

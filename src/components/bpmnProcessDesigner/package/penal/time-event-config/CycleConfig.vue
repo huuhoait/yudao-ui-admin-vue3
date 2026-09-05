@@ -22,9 +22,9 @@
         <el-tab-pane v-for="f in cronFieldList" :label="f.label" :name="f.key" :key="f.key">
           <div style="margin-bottom: 8px">
             <el-radio-group v-model="cronMode[f.key]" :key="'radio-' + f.key">
-              <el-radio label="every" :key="'every-' + f.key">每{{ f.label }}</el-radio>
+              <el-radio label="every" :key="'every-' + f.key">Every {{ f.label }}</el-radio>
               <el-radio label="range" :key="'range-' + f.key">
-                从
+                From
                 <el-input-number
                   v-model="cronRange[f.key][0]"
                   :min="f.min"
@@ -33,7 +33,7 @@
                   style="width: 60px"
                   :key="'range0-' + f.key"
                 />
-                到
+                To
                 <el-input-number
                   v-model="cronRange[f.key][1]"
                   :min="f.min"
@@ -42,10 +42,10 @@
                   style="width: 60px"
                   :key="'range1-' + f.key"
                 />
-                之间每{{ f.label }}
+                , every {{ f.label }}
               </el-radio>
               <el-radio label="step" :key="'step-' + f.key">
-                从第
+                Starting at
                 <el-input-number
                   v-model="cronStep[f.key][0]"
                   :min="f.min"
@@ -54,7 +54,7 @@
                   style="width: 60px"
                   :key="'step0-' + f.key"
                 />
-                开始每
+                then every
                 <el-input-number
                   v-model="cronStep[f.key][1]"
                   :min="1"
@@ -92,10 +92,10 @@
         />
       </div>
       <div style="margin-bottom: 10px">
-        Loop次数：<el-input-number v-model="repeat" :min="1" style="width: 100px" :key="'repeat'" />
+        Repetitions:<el-input-number v-model="repeat" :min="1" style="width: 100px" :key="'repeat'" />
       </div>
       <div style="margin-bottom: 10px">
-        DateHour间：<el-date-picker
+        Date & time:<el-date-picker
           v-model="isoDate"
           type="datetime"
           placeholder="Select Date Time"
@@ -104,7 +104,7 @@
         />
       </div>
       <div style="margin-bottom: 10px">
-        当前Hour长：<el-input
+        Current duration:<el-input
           v-model="isoDuration"
           placeholder="e.g. P3DT30M30S"
           style="width: 200px"
@@ -123,7 +123,7 @@
           Custom
         </div>
         <div>
-          Minute：<el-button
+          Min:<el-button
             v-for="m in [5, 10, 30, 50]"
             @click="setDuration('M', m)"
             :key="'min-' + m"
@@ -133,7 +133,7 @@
           Custom
         </div>
         <div>
-          小Hour：<el-button
+          Hour:<el-button
             v-for="h in [4, 8, 12, 24]"
             @click="setDuration('H', h)"
             :key="'hour-' + h"
@@ -143,13 +143,13 @@
           Custom
         </div>
         <div>
-          Day：<el-button v-for="d in [1, 2, 3, 4]" @click="setDuration('D', d)" :key="'day-' + d">
+          Day:<el-button v-for="d in [1, 2, 3, 4]" @click="setDuration('D', d)" :key="'day-' + d">
             {{ d }}
           </el-button>
           Custom
         </div>
         <div>
-          Month：<el-button
+          Month:<el-button
             v-for="mo in [1, 2, 3, 4]"
             @click="setDuration('M', mo)"
             :key="'mon-' + mo"
@@ -159,7 +159,7 @@
           Custom
         </div>
         <div>
-          Year：<el-button v-for="y in [1, 2, 3, 4]" @click="setDuration('Y', y)" :key="'year-' + y">
+          Year:<el-button v-for="y in [1, 2, 3, 4]" @click="setDuration('Y', y)" :key="'year-' + y">
             {{ y }}
           </el-button>
           Custom
@@ -238,7 +238,7 @@ function pad(n) {
 watch(
   [fields, cronMode, cronAppoint, cronRange, cronStep],
   () => {
-    // 组装cronExpression
+    // 组装cron表达式
     let arr = cronFieldList.map((f) => {
       if (cronMode.value[f.key] === 'every') return '*'
       if (cronMode.value[f.key] === 'appoint') return cronAppoint.value[f.key].join(',') || '*'
@@ -256,7 +256,7 @@ watch(
   { deep: true }
 )
 
-// Standard Format
+// 标准格式
 const isoStr = ref('')
 const repeat = ref(1)
 const isoDate = ref('')

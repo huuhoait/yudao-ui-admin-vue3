@@ -4,10 +4,10 @@
       <el-row type="flex" justify="end">
         <el-button-group key="scale-control" size="default">
           <el-button v-if="!readonly" size="default" @click="exportJson">
-            <Icon icon="ep:download" /> 导出
+            <Icon icon="ep:download" /> Export
           </el-button>
           <el-button v-if="!readonly" size="default" @click="importJson">
-            <Icon icon="ep:upload" />导入
+            <Icon icon="ep:upload" />Import
           </el-button>
           <!-- 用于打开本地文件-->
           <input
@@ -23,7 +23,7 @@
           <el-button size="default" :plain="true" :icon="ZoomOut" @click="zoomOut()" />
           <el-button size="default" class="w-80px"> {{ scaleValue }}% </el-button>
           <el-button size="default" :plain="true" :icon="ZoomIn" @click="zoomIn()" />
-          <el-button size="default" @click="resetPosition">重置</el-button>
+          <el-button size="default" @click="resetPosition">Reset</el-button>
         </el-button-group>
       </el-row>
     </div>
@@ -43,8 +43,8 @@
       />
     </div>
   </div>
-  <Dialog v-model="errorDialogVisible" title="保存失败" width="400" :fullscreen="false">
-    <div class="mb-2">以下节点内容不完善，请修改后保存</div>
+  <Dialog v-model="errorDialogVisible" title="Save failed" width="400" :fullscreen="false">
+    <div class="mb-2">The following nodes are incomplete. Please fix them before saving.</div>
     <div
       class="mb-3 b-rounded-1 bg-gray-100 p-2 line-height-normal"
       v-for="(item, index) in errorNodes"
@@ -53,7 +53,7 @@
       {{ item.name }} : {{ NODE_DEFAULT_TEXT.get(item.type) }}
     </div>
     <template #footer>
-      <el-button type="primary" @click="errorDialogVisible = false">知道了</el-button>
+      <el-button type="primary" @click="errorDialogVisible = false">Got it</el-button>
     </template>
   </Dialog>
 </template>
@@ -210,7 +210,7 @@ const getCurrentFlowData = async () => {
     }
     return processNodeTree.value
   } catch (error) {
-    console.error('获取流程数据失败:', error)
+    console.error('Failed to load process data: ', error)
     return undefined
   }
 }

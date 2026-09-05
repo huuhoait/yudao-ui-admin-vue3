@@ -24,7 +24,7 @@ export default {
     }
 
     setTimeout(() => {
-      document.addEventListener('touchstart', documentHandler) // 为document绑定Event
+      document.addEventListener('touchstart', documentHandler) // 为document绑定事件
     })
   },
   update(el, binding) {

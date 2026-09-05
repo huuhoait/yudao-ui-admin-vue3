@@ -28,7 +28,7 @@
         <el-card class="mb-15px" v-for="(item, index) in routerGroups" :key="index">
           <template #header>
             <div class="flex flex-items-center">
-              <el-text size="large">路由{{ index + 1 }}</el-text>
+              <el-text size="large">Route {{ index + 1 }}</el-text>
               <el-select class="ml-15px" v-model="item.nodeId" style="width: 180px">
                 <el-option
                   v-for="node in nodeOptions"
@@ -38,7 +38,7 @@
                 />
               </el-select>
               <el-button class="mla" type="danger" link @click="deleteRouterGroup(index)">
-                删除
+                Delete
               </el-button>
             </div>
           </template>
@@ -50,14 +50,14 @@
       </el-form>
 
       <el-button class="w-1/1" type="primary" :icon="Plus" @click="addRouterGroup">
-        新增路由分支
+        Add Router Branch
       </el-button>
     </div>
     <template #footer>
       <el-divider />
       <div>
-        <el-button type="primary" @click="saveConfig">确 定</el-button>
-        <el-button @click="closeDrawer">取 消</el-button>
+        <el-button type="primary" @click="saveConfig">OK</el-button>
+        <el-button @click="closeDrawer">Cancel</el-button>
       </div>
     </template>
   </el-drawer>
@@ -123,30 +123,30 @@ const showRouteNodeConfig = (node: SimpleFlowNode) => {
 
 const getShowText = () => {
   if (!routerGroups.value || !Array.isArray(routerGroups.value) || routerGroups.value.length <= 0) {
-    message.warning('请配置路由！')
+    message.warning('Please configure the router!')
     return ''
   }
   for (const route of routerGroups.value) {
     if (!route.nodeId || !route.conditionType) {
-      message.warning('请完善路由配置项！')
+      message.warning('Please complete the router configuration!')
       return ''
     }
     if (route.conditionType === ConditionType.EXPRESSION && !route.conditionExpression) {
-      message.warning('请完善路由配置项！')
+      message.warning('Please complete the router configuration!')
       return ''
     }
     if (route.conditionType === ConditionType.RULE) {
       for (const condition of route.conditionGroups.conditions) {
         for (const rule of condition.rules) {
           if (!rule.leftSide || !rule.rightSide) {
-            message.warning('请完善路由配置项！')
+            message.warning('Please complete the router configuration!')
             return ''
           }
         }
       }
     }
   }
-  return `${routerGroups.value.length}条路由分支`
+  return `${routerGroups.value.length} router branch(es)`
 }
 
 const addRouterGroup = () => {

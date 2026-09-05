@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="margin-bottom: 10px">
-      当前Select：<el-input v-model="isoString" readonly style="width: 300px" />
+      Current selection:<el-input v-model="isoString" readonly style="width: 300px" />
     </div>
     <div v-for="unit in units" :key="unit.key" style="margin-bottom: 8px">
       <span>{{ unit.label }}：</span>

@@ -7,7 +7,7 @@ export const CustomConfigMap = {
     componet: UserTaskCustomConfig
   },
   BoundaryEventTimerEventDefinition: {
-    name: '定Hour边界Event(非中断)',
+    name: 'Timer Boundary Event (non-interrupting)',
     componet: BoundaryEventTimer
   }
 }

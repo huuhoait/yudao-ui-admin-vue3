@@ -25,7 +25,7 @@
     </template>
     <div>
       <el-form ref="formRef" :model="configForm" label-position="top" :rules="formRules">
-        <el-form-item label="触发器类型" prop="type">
+        <el-form-item label="Trigger Type" prop="type">
           <el-select v-model="configForm.type" @change="changeTriggerType">
             <el-option
               v-for="(item, index) in TRIGGER_TYPES"
@@ -56,7 +56,7 @@
             <el-card class="w-580px mt-4">
               <template #header>
                 <div class="flex items-center justify-between">
-                  <div>修改表单设置 {{ index + 1 }}</div>
+                  <div>Update form setting {{ index + 1 }}</div>
                   <el-button
                     type="primary"
                     plain
@@ -91,9 +91,9 @@
                 text
                 @click="addFormSettingCondition(index, formSetting)"
               >
-                <Icon icon="ep:link" class="mr-5px" />添加条件
+                <Icon icon="ep:link" class="mr-5px" />Add Condition
               </el-button>
-              <el-divider content-position="left">修改表单字段设置</el-divider>
+              <el-divider content-position="left">Update Form Field Setting</el-divider>
               <!-- 表单字段修改设置 -->
               <div
                 class="flex items-center"
@@ -106,7 +106,7 @@
                       class="w-160px!"
                       :model-value="key"
                       @update:model-value="(newKey) => updateFormFieldKey(formSetting, key, newKey)"
-                      placeholder="请选择表单字段"
+                      placeholder="Please select a form field"
                       :disabled="key !== ''"
                     >
                       <el-option
@@ -119,20 +119,20 @@
                     </el-select>
                   </el-form-item>
                 </div>
-                <div class="mx-2"><el-form-item>的值设置为</el-form-item></div>
+                <div class="mx-2"><el-form-item>set value to</el-form-item></div>
                 <div class="mr-2">
                   <el-form-item
                     :prop="`formSettings.${index}.updateFormFields.${key}`"
                     :rules="{
                       required: true,
-                      message: '值不能为空',
+                      message: 'Value is required',
                       trigger: 'blur'
                     }"
                   >
                     <el-input
                       class="w-160px"
                       v-model="formSetting.updateFormFields![key]"
-                      placeholder="请输入"
+                      placeholder="Please enter"
                       :disabled="!key"
                     />
                   </el-form-item>
@@ -150,14 +150,14 @@
 
               <!-- 添加表单字段按钮 -->
               <el-button type="primary" text @click="addFormFieldSetting(formSetting)">
-                <Icon icon="ep:memo" class="mr-5px" />添加修改字段
+                <Icon icon="ep:memo" class="mr-5px" />Add Field to Update
               </el-button>
             </el-card>
           </div>
 
           <!-- 添加新的设置 -->
           <el-button class="mt-6" type="primary" text @click="addFormSetting">
-            <Icon icon="ep:setting" class="mr-5px" />添加设置
+            <Icon icon="ep:setting" class="mr-5px" />Add Setting
           </el-button>
         </div>
 
@@ -167,7 +167,7 @@
             <el-card class="w-580px mt-4">
               <template #header>
                 <div class="flex items-center justify-between">
-                  <div>删除表单设置 {{ index + 1 }}</div>
+                  <div>Delete form setting {{ index + 1 }}</div>
                   <el-button
                     type="primary"
                     plain
@@ -202,16 +202,16 @@
                 text
                 @click="addFormSettingCondition(index, formSetting)"
               >
-                <Icon icon="ep:link" class="mr-5px" />添加条件
+                <Icon icon="ep:link" class="mr-5px" />Add Condition
               </el-button>
 
-              <el-divider content-position="left">删除表单字段设置</el-divider>
+              <el-divider content-position="left">Delete Form Field Setting</el-divider>
               <!-- 表单字段删除设置 -->
               <div class="flex flex-wrap gap-2">
                 <el-select
                   v-model="formSetting.deleteFields"
                   multiple
-                  placeholder="请选择要删除的字段"
+                  placeholder="Please select the field to delete"
                   class="w-full"
                 >
                   <el-option
@@ -227,7 +227,7 @@
 
           <!-- 添加新的设置 -->
           <el-button class="mt-6" type="primary" text @click="addFormSetting">
-            <Icon icon="ep:setting" class="mr-5px" />添加设置
+            <Icon icon="ep:setting" class="mr-5px" />Add Setting
           </el-button>
         </div>
       </el-form>
@@ -235,8 +235,8 @@
     <template #footer>
       <el-divider />
       <div>
-        <el-button type="primary" @click="saveConfig">确 定</el-button>
-        <el-button @click="cancelConfig">取 消</el-button>
+        <el-button type="primary" @click="saveConfig">OK</el-button>
+        <el-button @click="cancelConfig">Cancel</el-button>
       </div>
     </template>
   </el-drawer>
@@ -277,8 +277,8 @@ const { nodeName, showInput, clickIcon, blurEvent } = useNodeName(NodeType.TRIGG
 const formRef = ref() // 表单 Ref
 // 表单校验规则
 const formRules = reactive({
-  type: [{ required: true, message: '触发器类型不能为空', trigger: 'change' }],
-  'httpRequestSetting.url': [{ required: true, message: '请求地址不能为空', trigger: 'blur' }]
+  type: [{ required: true, message: 'Trigger type is required', trigger: 'change' }],
+  'httpRequestSetting.url': [{ required: true, message: 'Request URL is required', trigger: 'blur' }]
 })
 // 触发器配置表单数据
 const configForm = ref<TriggerSetting>({
@@ -485,19 +485,19 @@ const getShowText = (): string => {
   } else if (configForm.value.type === TriggerTypeEnum.FORM_UPDATE) {
     for (const [index, setting] of configForm.value.formSettings!.entries()) {
       if (!setting.updateFormFields || Object.keys(setting.updateFormFields).length === 0) {
-        message.warning(`请添加表单设置${index + 1}的修改字段`)
+        message.warning(`Please add the fields to update for form setting ${index + 1}`)
         return ''
       }
     }
-    showText = '修改表单数据'
+    showText = 'Update Form Data'
   } else if (configForm.value.type === TriggerTypeEnum.FORM_DELETE) {
     for (const [index, setting] of configForm.value.formSettings!.entries()) {
       if (!setting.deleteFields || setting.deleteFields.length === 0) {
-        message.warning(`请选择表单设置${index + 1}要删除的字段`)
+        message.warning(`Please select the fields to delete for form setting ${index + 1}`)
         return ''
       }
     }
-    showText = '删除表单数据'
+    showText = 'Delete Form Data'
   }
   return showText
 }

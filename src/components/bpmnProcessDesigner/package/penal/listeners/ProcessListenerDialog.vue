@@ -1,4 +1,4 @@
-<!-- 执行器Select -->
+<!-- 执行器选择 -->
 <template>
   <Dialog title="Please select listener" v-model="dialogVisible" width="1024px">
     <ContentWrap>
@@ -25,7 +25,7 @@
           </template>
         </el-table-column>
       </el-table>
-      <!-- Minute页 -->
+      <!-- 分页 -->
       <Pagination
         :total="total"
         v-model:page="queryParams.pageNo"
@@ -40,10 +40,10 @@ import { ProcessListenerApi, ProcessListenerVO } from '@/api/bpm/processListener
 import { DICT_TYPE } from '@/utils/dict'
 import { CommonStatusEnum } from '@/utils/constants'
 
-/** BPM 流程 Form */
+/** BPM 流程 表单 */
 defineOptions({ name: 'ProcessListenerDialog' })
 
-const dialogVisible = ref(false) // 弹窗的Whether展示
+const dialogVisible = ref(false) // 弹窗的是否展示
 const loading = ref(true) // 列表的加载中
 const list = ref<ProcessListenerVO[]>([]) // 列表的数据
 const total = ref(0) // 列表的总页数
@@ -75,11 +75,11 @@ const getList = async () => {
   }
 }
 
-/** 提交Form */
-const emit = defineEmits(['success', 'select']) // 定义 success/select Event，用于Action成功后的回调
+/** 提交表单 */
+const emit = defineEmits(['success', 'select']) // 定义 success/select 事件，用于操作成功后的回调
 const select = async (row: ProcessListenerVO) => {
   dialogVisible.value = false
-  // 发送Action成功的Event
+  // 发送操作成功的事件
   emit('select', row)
 }
 </script>

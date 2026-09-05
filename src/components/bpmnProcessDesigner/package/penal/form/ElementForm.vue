@@ -55,7 +55,7 @@
     <!--      <el-button type="primary" proIcon="ep:plus" @click="openFieldForm(null, -1)">Add Field</el-button>-->
     <!--    </div>-->
 
-    <!--Field Config侧边栏-->
+    <!--字段配置侧边栏-->
     <!--    <el-drawer-->
     <!--      v-model="fieldModelVisible"-->
     <!--      title="Field Config"-->
@@ -91,7 +91,7 @@
     <!--        </el-form-item>-->
     <!--      </el-form>-->
 
-    <!--      &lt;!&ndash; 枚举Value设置 &ndash;&gt;-->
+    <!--      &lt;!&ndash; 枚举值设置 &ndash;&gt;-->
     <!--      <template v-if="formFieldForm.type === 'enum'">-->
     <!--        <el-divider key="enum-divider" />-->
     <!--        <p class="listener-filed__title" key="enum-title">-->
@@ -125,7 +125,7 @@
     <!--        </el-table>-->
     <!--      </template>-->
 
-    <!--      &lt;!&ndash; Validate规则 &ndash;&gt;-->
+    <!--      &lt;!&ndash; 校验规则 &ndash;&gt;-->
     <!--      <el-divider key="validation-divider" />-->
     <!--      <p class="listener-filed__title" key="validation-title">-->
     <!--        <span><Icon icon="ep:menu" />Constraint List:</span>-->
@@ -157,7 +157,7 @@
     <!--        </el-table-column>-->
     <!--      </el-table>-->
 
-    <!--      &lt;!&ndash; Form属性 &ndash;&gt;-->
+    <!--      &lt;!&ndash; 表单属性 &ndash;&gt;-->
     <!--      <el-divider key="property-divider" />-->
     <!--      <p class="listener-filed__title" key="property-title">-->
     <!--        <span><Icon icon="ep:menu" />Field Property List:</span>-->
@@ -249,11 +249,11 @@ const resetFormList = () => {
   // if (formKey.value?.length > 0) {
   //   formKey.value = parseInt(formKey.value)
   // }
-  // 获取元素Extension Properties 或者 创建Extension Properties
+  // 获取元素扩展属性 或者 创建扩展属性
   elExtensionElements.value =
     bpmnELement.value.businessObject.get('extensionElements') ||
     bpmnInstances().moddle.create('bpmn:ExtensionElements', { values: [] })
-  // 获取元素FormConfig 或者 创建新的FormConfig
+  // 获取元素表单配置 或者 创建新的表单配置
   formData.value =
     elExtensionElements.value.values.filter((ex) => ex.$type === `${prefix}:FormData`)?.[0] ||
     bpmnInstances().moddle.create(`${prefix}:FormData`, { fields: [] })
@@ -263,7 +263,7 @@ const resetFormList = () => {
     (ex) => ex.$type !== `${prefix}:FormData`
   )
 
-  // 更新元素Extension Properties，避免后续报错
+  // 更新元素扩展属性，避免后续报错
   updateElementExtensions()
 }
 const updateElementFormKey = () => {
@@ -282,7 +282,7 @@ const updateElementExtensions = () => {
   })
 }
 
-const formList = ref<Array<{ id: number; name: string }>>([]) // Process Form的下拉框的数据
+const formList = ref<Array<{ id: number; name: string }>>([]) // 流程表单的下拉框的数据
 onMounted(async () => {
   formList.value = await FormApi.getFormSimpleList()
   formKey.value = formKey.value != null ? Number(formKey.value) : undefined

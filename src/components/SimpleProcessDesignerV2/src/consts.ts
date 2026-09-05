@@ -285,11 +285,11 @@ export enum BpmHttpRequestParamTypeEnum {
 export const BPM_HTTP_REQUEST_PARAM_TYPES = [
   {
     value: 1,
-    label: '固定值'
+    label: 'Fixed Value'
   },
   {
     value: 2,
-    label: '表单'
+    label: 'Form'
   }
 ]
 
@@ -517,184 +517,184 @@ export type Condition = {
 }
 
 export const NODE_DEFAULT_TEXT = new Map<number, string>()
-NODE_DEFAULT_TEXT.set(NodeType.USER_TASK_NODE, '请配置审批人')
-NODE_DEFAULT_TEXT.set(NodeType.COPY_TASK_NODE, '请配置抄送人')
-NODE_DEFAULT_TEXT.set(NodeType.CONDITION_NODE, '请设置条件')
-NODE_DEFAULT_TEXT.set(NodeType.START_USER_NODE, '请设置发起人')
-NODE_DEFAULT_TEXT.set(NodeType.DELAY_TIMER_NODE, '请设置延迟器')
-NODE_DEFAULT_TEXT.set(NodeType.ROUTER_BRANCH_NODE, '请设置路由节点')
-NODE_DEFAULT_TEXT.set(NodeType.TRIGGER_NODE, '请设置触发器')
-NODE_DEFAULT_TEXT.set(NodeType.TRANSACTOR_NODE, '请设置办理人')
-NODE_DEFAULT_TEXT.set(NodeType.CHILD_PROCESS_NODE, '请设置子流程')
+NODE_DEFAULT_TEXT.set(NodeType.USER_TASK_NODE, 'Please configure the approver')
+NODE_DEFAULT_TEXT.set(NodeType.COPY_TASK_NODE, 'Please configure the CC recipient')
+NODE_DEFAULT_TEXT.set(NodeType.CONDITION_NODE, 'Please set the condition')
+NODE_DEFAULT_TEXT.set(NodeType.START_USER_NODE, 'Please set the initiator')
+NODE_DEFAULT_TEXT.set(NodeType.DELAY_TIMER_NODE, 'Please set the delay timer')
+NODE_DEFAULT_TEXT.set(NodeType.ROUTER_BRANCH_NODE, 'Please set the router node')
+NODE_DEFAULT_TEXT.set(NodeType.TRIGGER_NODE, 'Please set the trigger')
+NODE_DEFAULT_TEXT.set(NodeType.TRANSACTOR_NODE, 'Please set the assignee')
+NODE_DEFAULT_TEXT.set(NodeType.CHILD_PROCESS_NODE, 'Please set the sub process')
 
 export const NODE_DEFAULT_NAME = new Map<number, string>()
-NODE_DEFAULT_NAME.set(NodeType.USER_TASK_NODE, '审批人')
-NODE_DEFAULT_NAME.set(NodeType.COPY_TASK_NODE, '抄送人')
-NODE_DEFAULT_NAME.set(NodeType.CONDITION_NODE, '条件')
-NODE_DEFAULT_NAME.set(NodeType.START_USER_NODE, '发起人')
-NODE_DEFAULT_NAME.set(NodeType.DELAY_TIMER_NODE, '延迟器')
-NODE_DEFAULT_NAME.set(NodeType.ROUTER_BRANCH_NODE, '路由分支')
-NODE_DEFAULT_NAME.set(NodeType.TRIGGER_NODE, '触发器')
-NODE_DEFAULT_NAME.set(NodeType.TRANSACTOR_NODE, '办理人')
-NODE_DEFAULT_NAME.set(NodeType.CHILD_PROCESS_NODE, '子流程')
+NODE_DEFAULT_NAME.set(NodeType.USER_TASK_NODE, 'Approver')
+NODE_DEFAULT_NAME.set(NodeType.COPY_TASK_NODE, 'CC Recipient')
+NODE_DEFAULT_NAME.set(NodeType.CONDITION_NODE, 'Condition')
+NODE_DEFAULT_NAME.set(NodeType.START_USER_NODE, 'Initiator')
+NODE_DEFAULT_NAME.set(NodeType.DELAY_TIMER_NODE, 'Delay Timer')
+NODE_DEFAULT_NAME.set(NodeType.ROUTER_BRANCH_NODE, 'Router Branch')
+NODE_DEFAULT_NAME.set(NodeType.TRIGGER_NODE, 'Trigger')
+NODE_DEFAULT_NAME.set(NodeType.TRANSACTOR_NODE, 'Assignee')
+NODE_DEFAULT_NAME.set(NodeType.CHILD_PROCESS_NODE, 'Sub Process')
 
 // 候选人策略。暂时不从字典中取。 后续可能调整。控制显示顺序
 export const CANDIDATE_STRATEGY: DictDataVO[] = [
-  { label: '指定成员', value: CandidateStrategy.USER },
-  { label: '指定角色', value: CandidateStrategy.ROLE },
-  { label: '指定岗位', value: CandidateStrategy.POST },
-  { label: '部门成员', value: CandidateStrategy.DEPT_MEMBER },
-  { label: '部门负责人', value: CandidateStrategy.DEPT_LEADER },
-  { label: '连续多级部门负责人', value: CandidateStrategy.MULTI_LEVEL_DEPT_LEADER },
-  { label: '发起人自选', value: CandidateStrategy.START_USER_SELECT },
-  { label: '审批人自选', value: CandidateStrategy.APPROVE_USER_SELECT },
-  { label: '发起人本人', value: CandidateStrategy.START_USER },
-  { label: '发起人部门负责人', value: CandidateStrategy.START_USER_DEPT_LEADER },
-  { label: '发起人连续部门负责人', value: CandidateStrategy.START_USER_MULTI_LEVEL_DEPT_LEADER },
-  { label: '用户组', value: CandidateStrategy.USER_GROUP },
-  { label: '表单内用户字段', value: CandidateStrategy.FORM_USER },
-  { label: '表单内部门负责人', value: CandidateStrategy.FORM_DEPT_LEADER },
-  { label: '流程表达式', value: CandidateStrategy.EXPRESSION }
+  { label: 'Specified Members', value: CandidateStrategy.USER },
+  { label: 'Specified Roles', value: CandidateStrategy.ROLE },
+  { label: 'Specified Positions', value: CandidateStrategy.POST },
+  { label: 'Department Members', value: CandidateStrategy.DEPT_MEMBER },
+  { label: 'Department Leader', value: CandidateStrategy.DEPT_LEADER },
+  { label: 'Multi-level Department Leaders', value: CandidateStrategy.MULTI_LEVEL_DEPT_LEADER },
+  { label: 'Selected by Initiator', value: CandidateStrategy.START_USER_SELECT },
+  { label: 'Selected by Approver', value: CandidateStrategy.APPROVE_USER_SELECT },
+  { label: 'The Initiator', value: CandidateStrategy.START_USER },
+  { label: 'Initiator\'s Department Leader', value: CandidateStrategy.START_USER_DEPT_LEADER },
+  { label: 'Initiator\'s Multi-level Department Leaders', value: CandidateStrategy.START_USER_MULTI_LEVEL_DEPT_LEADER },
+  { label: 'User Group', value: CandidateStrategy.USER_GROUP },
+  { label: 'User Field in Form', value: CandidateStrategy.FORM_USER },
+  { label: 'Department Leader from Form Field', value: CandidateStrategy.FORM_DEPT_LEADER },
+  { label: 'Process Expression', value: CandidateStrategy.EXPRESSION }
 ]
 // 审批节点 的审批类型
 export const APPROVE_TYPE: DictDataVO[] = [
-  { label: '人工审批', value: ApproveType.USER },
-  { label: '自动通过', value: ApproveType.AUTO_APPROVE },
-  { label: '自动拒绝', value: ApproveType.AUTO_REJECT }
+  { label: 'Manual Approval', value: ApproveType.USER },
+  { label: 'Auto Approve', value: ApproveType.AUTO_APPROVE },
+  { label: 'Auto Reject', value: ApproveType.AUTO_REJECT }
 ]
 
 export const APPROVE_METHODS: DictDataVO[] = [
-  { label: '按顺序依次审批', value: ApproveMethodType.SEQUENTIAL_APPROVE },
-  { label: '会签（可同时审批，至少 % 人必须审批通过）', value: ApproveMethodType.APPROVE_BY_RATIO },
-  { label: '或签(可同时审批，有一人通过即可)', value: ApproveMethodType.ANY_APPROVE },
-  { label: '随机挑选一人审批', value: ApproveMethodType.RANDOM_SELECT_ONE_APPROVE }
+  { label: 'Approve in sequence', value: ApproveMethodType.SEQUENTIAL_APPROVE },
+  { label: 'Countersign (concurrent approval, at least % of approvers must approve)', value: ApproveMethodType.APPROVE_BY_RATIO },
+  { label: 'Or-sign (concurrent approval, one approval is enough)', value: ApproveMethodType.ANY_APPROVE },
+  { label: 'Randomly pick one approver', value: ApproveMethodType.RANDOM_SELECT_ONE_APPROVE }
 ]
 
 export const CONDITION_CONFIG_TYPES: DictDataVO[] = [
-  { label: '条件规则', value: ConditionType.RULE },
-  { label: '条件表达式', value: ConditionType.EXPRESSION }
+  { label: 'Condition Rule', value: ConditionType.RULE },
+  { label: 'Condition Expression', value: ConditionType.EXPRESSION }
 ]
 
 // 时间单位类型
 export const TIME_UNIT_TYPES: DictDataVO[] = [
-  { label: '分钟', value: TimeUnitType.MINUTE },
-  { label: '小时', value: TimeUnitType.HOUR },
-  { label: '天', value: TimeUnitType.DAY }
+  { label: 'Minute', value: TimeUnitType.MINUTE },
+  { label: 'Hour', value: TimeUnitType.HOUR },
+  { label: 'Day', value: TimeUnitType.DAY }
 ]
 // 超时处理执行动作类型
 export const TIMEOUT_HANDLER_TYPES: DictDataVO[] = [
-  { label: '自动提醒', value: 1 },
-  { label: '自动同意', value: 2 },
-  { label: '自动拒绝', value: 3 }
+  { label: 'Auto Remind', value: 1 },
+  { label: 'Auto Agree', value: 2 },
+  { label: 'Auto Reject', value: 3 }
 ]
 export const REJECT_HANDLER_TYPES: DictDataVO[] = [
-  { label: '终止流程', value: RejectHandlerType.FINISH_PROCESS },
-  { label: '驳回到指定节点', value: RejectHandlerType.RETURN_USER_TASK }
+  { label: 'Terminate Process', value: RejectHandlerType.FINISH_PROCESS },
+  { label: 'Reject to a Specified Node', value: RejectHandlerType.RETURN_USER_TASK }
   // { label: '结束任务', value: RejectHandlerType.FINISH_TASK }
 ]
 export const ASSIGN_EMPTY_HANDLER_TYPES: DictDataVO[] = [
-  { label: '自动通过', value: 1 },
-  { label: '自动拒绝', value: 2 },
-  { label: '指定成员审批', value: 3 },
-  { label: '转交给流程管理员', value: 4 }
+  { label: 'Auto Approve', value: 1 },
+  { label: 'Auto Reject', value: 2 },
+  { label: 'Approval by Specified Members', value: 3 },
+  { label: 'Transfer to Process Admin', value: 4 }
 ]
 export const ASSIGN_START_USER_HANDLER_TYPES: DictDataVO[] = [
-  { label: '由发起人对自己审批', value: 1 },
-  { label: '自动跳过', value: 2 },
-  { label: '转交给部门负责人审批', value: 3 }
+  { label: 'Approved by the Initiator', value: 1 },
+  { label: 'Auto Skip', value: 2 },
+  { label: 'Transfer to the Department Leader', value: 3 }
 ]
 
 // 比较运算符
 export const COMPARISON_OPERATORS: DictDataVO = [
   {
     value: '==',
-    label: '等于'
+    label: 'Equals'
   },
   {
     value: '!=',
-    label: '不等于'
+    label: 'Not equals'
   },
   {
     value: '>',
-    label: '大于'
+    label: 'Greater than'
   },
   {
     value: '>=',
-    label: '大于等于'
+    label: 'Greater than or equal'
   },
   {
     value: '<',
-    label: '小于'
+    label: 'Less than'
   },
   {
     value: '<=',
-    label: '小于等于'
+    label: 'Less than or equal'
   },
   {
     value: 'contain',
-    label: '包含'
+    label: 'Contains'
   },
   {
     value: '!contain',
-    label: '不包含'
+    label: 'Not contains'
   }
 ]
 // 审批操作按钮名称
 export const OPERATION_BUTTON_NAME = new Map<number, string>()
-OPERATION_BUTTON_NAME.set(OperationButtonType.APPROVE, '通过')
-OPERATION_BUTTON_NAME.set(OperationButtonType.REJECT, '拒绝')
-OPERATION_BUTTON_NAME.set(OperationButtonType.TRANSFER, '转办')
-OPERATION_BUTTON_NAME.set(OperationButtonType.DELEGATE, '委派')
-OPERATION_BUTTON_NAME.set(OperationButtonType.ADD_SIGN, '加签')
-OPERATION_BUTTON_NAME.set(OperationButtonType.RETURN, '退回')
-OPERATION_BUTTON_NAME.set(OperationButtonType.COPY, '抄送')
+OPERATION_BUTTON_NAME.set(OperationButtonType.APPROVE, 'Approve')
+OPERATION_BUTTON_NAME.set(OperationButtonType.REJECT, 'Reject')
+OPERATION_BUTTON_NAME.set(OperationButtonType.TRANSFER, 'Transfer')
+OPERATION_BUTTON_NAME.set(OperationButtonType.DELEGATE, 'Delegate')
+OPERATION_BUTTON_NAME.set(OperationButtonType.ADD_SIGN, 'Add Signer')
+OPERATION_BUTTON_NAME.set(OperationButtonType.RETURN, 'Return')
+OPERATION_BUTTON_NAME.set(OperationButtonType.COPY, 'CC')
 
 // 默认的按钮权限设置
 export const DEFAULT_BUTTON_SETTING: ButtonSetting[] = [
-  { id: OperationButtonType.APPROVE, displayName: '通过', enable: true },
-  { id: OperationButtonType.REJECT, displayName: '拒绝', enable: true },
-  { id: OperationButtonType.TRANSFER, displayName: '转办', enable: true },
-  { id: OperationButtonType.DELEGATE, displayName: '委派', enable: true },
-  { id: OperationButtonType.ADD_SIGN, displayName: '加签', enable: true },
-  { id: OperationButtonType.RETURN, displayName: '退回', enable: true }
+  { id: OperationButtonType.APPROVE, displayName: 'Approve', enable: true },
+  { id: OperationButtonType.REJECT, displayName: 'Reject', enable: true },
+  { id: OperationButtonType.TRANSFER, displayName: 'Transfer', enable: true },
+  { id: OperationButtonType.DELEGATE, displayName: 'Delegate', enable: true },
+  { id: OperationButtonType.ADD_SIGN, displayName: 'Add Signer', enable: true },
+  { id: OperationButtonType.RETURN, displayName: 'Return', enable: true }
 ]
 
 // 办理人默认的按钮权限设置
 export const TRANSACTOR_DEFAULT_BUTTON_SETTING: ButtonSetting[] = [
-  { id: OperationButtonType.APPROVE, displayName: '办理', enable: true },
-  { id: OperationButtonType.REJECT, displayName: '拒绝', enable: false },
-  { id: OperationButtonType.TRANSFER, displayName: '转办', enable: false },
-  { id: OperationButtonType.DELEGATE, displayName: '委派', enable: false },
-  { id: OperationButtonType.ADD_SIGN, displayName: '加签', enable: false },
-  { id: OperationButtonType.RETURN, displayName: '退回', enable: false }
+  { id: OperationButtonType.APPROVE, displayName: 'Handle', enable: true },
+  { id: OperationButtonType.REJECT, displayName: 'Reject', enable: false },
+  { id: OperationButtonType.TRANSFER, displayName: 'Transfer', enable: false },
+  { id: OperationButtonType.DELEGATE, displayName: 'Delegate', enable: false },
+  { id: OperationButtonType.ADD_SIGN, displayName: 'Add Signer', enable: false },
+  { id: OperationButtonType.RETURN, displayName: 'Return', enable: false }
 ]
 
 // 发起人的按钮权限。暂时定死，不可以编辑
 export const START_USER_BUTTON_SETTING: ButtonSetting[] = [
-  { id: OperationButtonType.APPROVE, displayName: '提交', enable: true },
-  { id: OperationButtonType.REJECT, displayName: '拒绝', enable: false },
-  { id: OperationButtonType.TRANSFER, displayName: '转办', enable: false },
-  { id: OperationButtonType.DELEGATE, displayName: '委派', enable: false },
-  { id: OperationButtonType.ADD_SIGN, displayName: '加签', enable: false },
-  { id: OperationButtonType.RETURN, displayName: '退回', enable: false }
+  { id: OperationButtonType.APPROVE, displayName: 'Submit', enable: true },
+  { id: OperationButtonType.REJECT, displayName: 'Reject', enable: false },
+  { id: OperationButtonType.TRANSFER, displayName: 'Transfer', enable: false },
+  { id: OperationButtonType.DELEGATE, displayName: 'Delegate', enable: false },
+  { id: OperationButtonType.ADD_SIGN, displayName: 'Add Signer', enable: false },
+  { id: OperationButtonType.RETURN, displayName: 'Return', enable: false }
 ]
 
 export const MULTI_LEVEL_DEPT: DictDataVO = [
-  { label: '第 1 级部门', value: 1 },
-  { label: '第 2 级部门', value: 2 },
-  { label: '第 3 级部门', value: 3 },
-  { label: '第 4 级部门', value: 4 },
-  { label: '第 5 级部门', value: 5 },
-  { label: '第 6 级部门', value: 6 },
-  { label: '第 7 级部门', value: 7 },
-  { label: '第 8 级部门', value: 8 },
-  { label: '第 9 级部门', value: 9 },
-  { label: '第 10 级部门', value: 10 },
-  { label: '第 11 级部门', value: 11 },
-  { label: '第 12 级部门', value: 12 },
-  { label: '第 13 级部门', value: 13 },
-  { label: '第 14 级部门', value: 14 },
-  { label: '第 15 级部门', value: 15 }
+  { label: 'Level 1 Department', value: 1 },
+  { label: 'Level 2 Department', value: 2 },
+  { label: 'Level 3 Department', value: 3 },
+  { label: 'Level 4 Department', value: 4 },
+  { label: 'Level 5 Department', value: 5 },
+  { label: 'Level 6 Department', value: 6 },
+  { label: 'Level 7 Department', value: 7 },
+  { label: 'Level 8 Department', value: 8 },
+  { label: 'Level 9 Department', value: 9 },
+  { label: 'Level 10 Department', value: 10 },
+  { label: 'Level 11 Department', value: 11 },
+  { label: 'Level 12 Department', value: 12 },
+  { label: 'Level 13 Department', value: 13 },
+  { label: 'Level 14 Department', value: 14 },
+  { label: 'Level 15 Department', value: 15 }
 ]
 
 /**
@@ -738,8 +738,8 @@ export enum DelayTypeEnum {
   FIXED_DATE_TIME = 2
 }
 export const DELAY_TYPE = [
-  { label: '固定时长', value: DelayTypeEnum.FIXED_TIME_DURATION },
-  { label: '固定日期', value: DelayTypeEnum.FIXED_DATE_TIME }
+  { label: 'Fixed Duration', value: DelayTypeEnum.FIXED_TIME_DURATION },
+  { label: 'Fixed Date', value: DelayTypeEnum.FIXED_DATE_TIME }
 ]
 
 /**
@@ -815,10 +815,10 @@ export type FormTriggerSetting = {
 }
 
 export const TRIGGER_TYPES: DictDataVO[] = [
-  { label: '发送 HTTP 请求', value: TriggerTypeEnum.HTTP_REQUEST },
-  { label: '接收 HTTP 回调', value: TriggerTypeEnum.HTTP_CALLBACK },
-  { label: '修改表单数据', value: TriggerTypeEnum.FORM_UPDATE },
-  { label: '删除表单数据', value: TriggerTypeEnum.FORM_DELETE }
+  { label: 'Send HTTP Request', value: TriggerTypeEnum.HTTP_REQUEST },
+  { label: 'Receive HTTP Callback', value: TriggerTypeEnum.HTTP_CALLBACK },
+  { label: 'Update Form Data', value: TriggerTypeEnum.FORM_UPDATE },
+  { label: 'Delete Form Data', value: TriggerTypeEnum.FORM_DELETE }
 ]
 
 /**
@@ -867,8 +867,8 @@ export enum ChildProcessStartUserTypeEnum {
   FROM_FORM = 2
 }
 export const CHILD_PROCESS_START_USER_TYPE = [
-  { label: '同主流程发起人', value: ChildProcessStartUserTypeEnum.MAIN_PROCESS_START_USER },
-  { label: '表单', value: ChildProcessStartUserTypeEnum.FROM_FORM }
+  { label: 'Same as the main process initiator', value: ChildProcessStartUserTypeEnum.MAIN_PROCESS_START_USER },
+  { label: 'Form', value: ChildProcessStartUserTypeEnum.FROM_FORM }
 ]
 export enum ChildProcessStartUserEmptyTypeEnum {
   /**
@@ -885,9 +885,9 @@ export enum ChildProcessStartUserEmptyTypeEnum {
   MAIN_PROCESS_ADMIN = 3
 }
 export const CHILD_PROCESS_START_USER_EMPTY_TYPE = [
-  { label: '同主流程发起人', value: ChildProcessStartUserEmptyTypeEnum.MAIN_PROCESS_START_USER },
-  { label: '子流程管理员', value: ChildProcessStartUserEmptyTypeEnum.CHILD_PROCESS_ADMIN },
-  { label: '主流程管理员', value: ChildProcessStartUserEmptyTypeEnum.MAIN_PROCESS_ADMIN }
+  { label: 'Same as the main process initiator', value: ChildProcessStartUserEmptyTypeEnum.MAIN_PROCESS_START_USER },
+  { label: 'Sub Process Admin', value: ChildProcessStartUserEmptyTypeEnum.CHILD_PROCESS_ADMIN },
+  { label: 'Main Process Admin', value: ChildProcessStartUserEmptyTypeEnum.MAIN_PROCESS_ADMIN }
 ]
 export enum ChildProcessMultiInstanceSourceTypeEnum {
   /**
@@ -904,7 +904,7 @@ export enum ChildProcessMultiInstanceSourceTypeEnum {
   MULTIPLE_FORM = 3
 }
 export const CHILD_PROCESS_MULTI_INSTANCE_SOURCE_TYPE = [
-  { label: '固定数量', value: ChildProcessMultiInstanceSourceTypeEnum.FIXED_QUANTITY },
-  { label: '数字表单', value: ChildProcessMultiInstanceSourceTypeEnum.NUMBER_FORM },
-  { label: '多选表单', value: ChildProcessMultiInstanceSourceTypeEnum.MULTIPLE_FORM }
+  { label: 'Fixed Quantity', value: ChildProcessMultiInstanceSourceTypeEnum.FIXED_QUANTITY },
+  { label: 'Numeric Form Field', value: ChildProcessMultiInstanceSourceTypeEnum.NUMBER_FORM },
+  { label: 'Multi-select Form Field', value: ChildProcessMultiInstanceSourceTypeEnum.MULTIPLE_FORM }
 ]

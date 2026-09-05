@@ -45,7 +45,7 @@
         v-model="userTaskForm.candidateParam"
         :data="deptTreeOptions"
         :props="defaultProps"
-        empty-text="加载中，请稍后"
+        empty-text="Loading, please wait"
         multiple
         node-key="id"
         show-checkbox
@@ -194,7 +194,7 @@
       >
         <Icon icon="ep:select" class="mr-1px" /> Select Expression
       </el-button>
-      <!-- Select弹窗 -->
+      <!-- 选择弹窗 -->
       <ProcessExpressionDialog ref="processExpressionDialogRef" @select="selectProcessExpression" />
     </el-form-item>
 
@@ -240,25 +240,25 @@ type UserTaskForm = {
   skipExpression: string
 }
 const userTaskForm = ref<UserTaskForm>({
-  candidateStrategy: undefined, // Minute配规则
-  candidateParam: [], // Minute配选项
-  skipExpression: '' // Skip Expression
+  candidateStrategy: undefined, // 分配规则
+  candidateParam: [], // 分配选项
+  skipExpression: '' // 跳过表达式
 })
 const bpmnElement = ref()
 const bpmnInstances = () => (window as any)?.bpmnInstances
 
 const roleOptions = ref<RoleApi.RoleVO[]>([]) // 角色列表
-const deptTreeOptions = ref() // Department树
+const deptTreeOptions = ref() // 部门树
 const postOptions = ref<PostApi.PostVO[]>([]) // 岗位列表
 const userOptions = ref<UserApi.UserVO[]>([]) // 用户列表
 const userGroupOptions = ref<UserGroupApi.UserGroupVO[]>([]) // 用户组列表
 
 const { formFieldOptions } = useFormFieldsPermission(FieldPermissionType.READ)
-// User Field in Form选项, 必须YesRequired和用户Select器
+// 表单内用户字段选项, 必须是必填和用户选择器
 const userFieldOnFormOptions = computed(() => {
   return formFieldOptions.filter((item) => item.type === 'UserSelect')
 })
-// Department Field in Form选项, 必须YesRequired和DepartmentSelect器
+// 表单内部门字段选项, 必须是必填和部门选择器
 const deptFieldOnFormOptions = computed(() => {
   return formFieldOptions.filter((item) => item.type === 'DeptSelect')
 })
@@ -267,11 +267,11 @@ const deptLevel = ref(1)
 const deptLevelLabel = computed(() => {
   let label = 'Department Leader Source'
   if (userTaskForm.value.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER) {
-    label = label + '(Specified Department向上)'
+    label = label + ' (from the specified department upwards)'
   } else if (userTaskForm.value.candidateStrategy == CandidateStrategy.FORM_DEPT_LEADER) {
-    label = label + '(Form内Department向上)'
+    label = label + ' (from the form department upwards)'
   } else {
-    label = label + '(发起人Department向上)'
+    label = label + " (from the initiator's department upwards)"
   }
   return label
 })
@@ -295,10 +295,10 @@ const resetTaskForm = () => {
   )?.[0]?.value
   if (candidateParamStr && candidateParamStr.length > 0) {
     if (userTaskForm.value.candidateStrategy === CandidateStrategy.EXPRESSION) {
-      // 特殊：Process Expression，只有一个 input 输入框
+      // 特殊：流程表达式，只有一个 input 输入框
       userTaskForm.value.candidateParam = [candidateParamStr]
     } else if (userTaskForm.value.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER) {
-      // 特殊：多级不Department负责人，需要通过'|'Minute割
+      // 特殊：多级不部门负责人，需要通过'|'分割
       userTaskForm.value.candidateParam = candidateParamStr
         .split('|')[0]
         .split(',')
@@ -333,7 +333,7 @@ const resetTaskForm = () => {
       (ex) => ex.$type !== `${prefix}:CandidateStrategy` && ex.$type !== `${prefix}:CandidateParam`
     ) ?? []
 
-  // Skip Expression
+  // 跳过表达式
   if (businessObject.skipExpression != undefined) {
     userTaskForm.value.skipExpression = businessObject.skipExpression
   } else {
@@ -349,7 +349,7 @@ const resetTaskForm = () => {
   }
   if (businessObject.candidateParam && businessObject.candidateParam.length > 0) {
     if (userTaskForm.value.candidateStrategy === 60) {
-      // 特殊：Process Expression，只有一个 input 输入框
+      // 特殊：流程表达式，只有一个 input 输入框
       userTaskForm.value.candidateParam = [businessObject.candidateParam]
     } else {
       userTaskForm.value.candidateParam = businessObject.candidateParam
@@ -361,13 +361,13 @@ const resetTaskForm = () => {
   }
 }
 
-/** 更新 candidateStrategy 字段Hour，需要清空 candidateParam，并触发 bpmn 图更新 */
+/** 更新 candidateStrategy 字段时，需要清空 candidateParam，并触发 bpmn 图更新 */
 const changeCandidateStrategy = () => {
   userTaskForm.value.candidateParam = []
   deptLevel.value = 1
-  // 注释 by 芋艿：这个交互很多用户反馈费解，https://t.zsxq.com/xNmas 所以暂Hour屏蔽
+  // 注释 by 芋艿：这个交互很多用户反馈费解，https://t.zsxq.com/xNmas 所以暂时屏蔽
   // if (userTaskForm.value.candidateStrategy === CandidateStrategy.FORM_USER) {
-  //   // 特殊处理User Field in Form，当只有发起人选项Hour应选中发起人
+  //   // 特殊处理表单内用户字段，当只有发起人选项时应选中发起人
   //   if (!userFieldOnFormOptions.value || userFieldOnFormOptions.value.length <= 1) {
   //     userTaskForm.value.candidateStrategy = CandidateStrategy.START_USER
   //   }
@@ -375,21 +375,21 @@ const changeCandidateStrategy = () => {
   updateElementTask()
 }
 
-/** 选中某个 options Hour候，更新 bpmn 图  */
+/** 选中某个 options 时候，更新 bpmn 图  */
 const updateElementTask = () => {
   let candidateParam =
     userTaskForm.value.candidateParam instanceof Array
       ? userTaskForm.value.candidateParam.join(',')
       : userTaskForm.value.candidateParam
 
-  // 特殊处理多级Department情况
+  // 特殊处理多级部门情况
   if (
     userTaskForm.value.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER ||
     userTaskForm.value.candidateStrategy == CandidateStrategy.FORM_DEPT_LEADER
   ) {
     candidateParam += '|' + deptLevel.value
   }
-  // 特殊处理发起人Department负责人、发起人连续Department负责人
+  // 特殊处理发起人部门负责人、发起人连续部门负责人
   if (
     userTaskForm.value.candidateStrategy == CandidateStrategy.START_USER_DEPT_LEADER ||
     userTaskForm.value.candidateStrategy == CandidateStrategy.START_USER_MULTI_LEVEL_DEPT_LEADER
@@ -425,7 +425,7 @@ const updateSkipExpression = () => {
   }
 }
 
-// 打开Listener弹窗
+// 打开监听器弹窗
 const processExpressionDialogRef = ref()
 const openProcessExpressionDialog = async () => {
   processExpressionDialogRef.value.open()
@@ -457,7 +457,7 @@ watch(
 onMounted(async () => {
   // 获得角色列表
   roleOptions.value = await RoleApi.getSimpleRoleList()
-  // 获得Department列表
+  // 获得部门列表
   const deptOptions = await DeptApi.getSimpleDeptList()
   deptTreeOptions.value = handleTree(deptOptions, 'id')
   // 获得岗位列表

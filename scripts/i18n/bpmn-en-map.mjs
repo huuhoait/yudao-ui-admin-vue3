@@ -543,7 +543,85 @@ const PAIRS = [
   ['名称', 'Name'],
   ['值', 'Value'],
   ['配置', 'Config'],
-  ['时', 'Hour']
+  ['时', 'Hour'],
+  // ===== Bổ sung: chuỗi khớp NGUYÊN chuỗi còn thiếu (quét bằng to-en.mjs) =====
+  // toolbar ProcessDesigner
+  ['向左对齐', 'Align left'],
+  ['向右对齐', 'Align right'],
+  ['向上对齐', 'Align top'],
+  ['向下对齐', 'Align bottom'],
+  ['垂直居中', 'Align center vertically'],
+  ['放大视图', 'Zoom view'],
+  ['撤销', 'Undo'],
+  ['恢复', 'Redo'],
+  ['打开文件', 'Open file'],
+  ['下载文件', 'Download file'],
+  ['下载为XML文件', 'Download as XML'],
+  ['下载为SVG文件', 'Download as SVG'],
+  ['下载为BPMN文件', 'Download as BPMN'],
+  ['模拟', 'Simulate'],
+  ['请按住 Shift 键选择多个元素对齐', 'Hold Shift to select multiple elements to align'],
+  ['自动对齐可能造成图形变形，是否继续？', 'Auto-align may distort the diagram. Continue?'],
+  // ProcessViewer
+  ['审批人', 'Approver'],
+  ['发起人', 'Initiator'],
+  ['开始时间', 'Start Time'],
+  ['审批状态', 'Approval Status'],
+  ['审批建议', 'Approval Suggestion'],
+  ['审批信息', 'Approval Info'],
+  // content pad / palette
+  ['修改类型', 'Change type'],
+  ['测试任务', 'Test task'],
+  // custom config
+  ['未处理', 'Not handled'],
+  ['只读', 'Read-only'],
+  ['可编辑', 'Editable'],
+  ['定时边界事件(非中断)', 'Timer Boundary Event (non-interrupting)'],
+  // listeners
+  ['未知的监听器类型', 'Unknown listener type'],
+  ['Java 类', 'Java Class'],
+  ['创建', 'Create'],
+  ['指派', 'Assign'],
+  ['完成', 'Complete'],
+  ['删除', 'Delete'],
+  ['更新', 'Update'],
+  ['字符串', 'String'],
+  // multi instance
+  ['依次审批', 'Approve in sequence'],
+  ['会签', 'Countersign'],
+  ['或签', 'Or-sign'],
+  // signal & message
+  ['创建新信号', 'Create new signal'],
+  ['创建消息', 'Create message'],
+  ['创建信号', 'Create signal'],
+  ['信号', 'Signal'],
+  ['保存更改时出错:', 'Error while saving changes: '],
+  // task
+  ['服务任务', 'Service Task'],
+  ['接收任务', 'Receive Task'],
+  ['加载中，请稍后', 'Loading, please wait'],
+  // time event config
+  ['从', 'From'],
+  ['到', 'To'],
+  ['从第', 'Starting at'],
+  ['开始每', 'then every'],
+  ['循环次数：', 'Repetitions:'],
+  ['日期时间：', 'Date & time:'],
+  ['当前时长：', 'Current duration:'],
+  ['分：', 'Min:'],
+  ['小时：', 'Hour:'],
+  ['天：', 'Day:'],
+  ['月：', 'Month:'],
+  ['年：', 'Year:'],
+  ['当前选择：', 'Current selection:'],
+  ['时间', 'Date'],
+  ['持续', 'Duration'],
+  ['ISO 8601格式，如PT1H', 'ISO 8601 format, e.g. PT1H'],
+  ['CRON表达式或ISO 8601周期', 'CRON expression or ISO 8601 cycle'],
+  ['支持CRON表达式（如0 0/30 * * * ?）或ISO 8601周期（如R3/PT10M）。', 'Supports a CRON expression (e.g. 0 0/30 * * * ?) or an ISO 8601 cycle (e.g. R3/PT10M).']
 ]
 
 export const MAP = PAIRS
+
+// Bảng khớp NGUYÊN chuỗi cho scripts/i18n/to-en.mjs.
+export const EN = Object.fromEntries(PAIRS)

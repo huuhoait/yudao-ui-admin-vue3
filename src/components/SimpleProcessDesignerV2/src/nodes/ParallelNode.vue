@@ -9,7 +9,7 @@
         <span class="iconfont icon-parallel icon-size parallel"></span>
       </div>
       <el-button v-else class="branch-node-add" color="#626aef" @click="addCondition" plain>
-        添加分支
+        Add Branch
       </el-button>
       <div
         class="branch-node-item"
@@ -38,7 +38,7 @@
                   />
                 </div>
                 <div v-else class="branch-title" @click="clickEvent(index)"> {{ item.name }} </div>
-                <div class="branch-priority">无优先级</div>
+                <div class="branch-priority">No Priority</div>
               </div>
               <div class="branch-node-content" @click="conditionNodeConfig(item.id)">
                 <div class="branch-node-text" :title="item.showText" v-if="item.showText">
@@ -122,7 +122,7 @@ const showInputs = ref<boolean[]>([])
 const blurEvent = (index: number) => {
   showInputs.value[index] = false
   const conditionNode = currentNode.value.conditionNodes?.at(index) as SimpleFlowNode
-  conditionNode.name = conditionNode.name || `并行${index + 1}`
+  conditionNode.name = conditionNode.name || `Parallel ${index + 1}`
 }
 
 // 点击条件名称
@@ -143,8 +143,8 @@ const addCondition = () => {
     let lastIndex = len - 1
     const conditionData: SimpleFlowNode = {
       id: 'Flow_' + generateUUID(),
-      name: '并行' + len,
-      showText: '无需配置条件同时执行',
+      name: 'Parallel ' + len,
+      showText: 'Runs at the same time, no condition required',
       type: NodeType.CONDITION_NODE,
       childNode: undefined,
       conditionNodes: []

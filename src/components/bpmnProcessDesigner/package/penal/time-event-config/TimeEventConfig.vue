@@ -4,14 +4,14 @@
       <span>Type:</span>
       <el-button-group>
         <el-button size="small" :type="type === 'time' ? 'primary' : ''" @click="setType('time')">
-          Hour间
+          Date
         </el-button>
         <el-button
           size="small"
           :type="type === 'duration' ? 'primary' : ''"
           @click="setType('duration')"
         >
-          持续
+          Duration
         </el-button>
         <el-button size="small" :type="type === 'cycle' ? 'primary' : ''" @click="setType('cycle')">
           Loop
@@ -68,7 +68,7 @@
         </template>
       </el-input>
     </div>
-    <!-- Hour间Select器 -->
+    <!-- 时间选择器 -->
     <el-dialog
       v-model="showDatePicker"
       title="Select Time"
@@ -87,7 +87,7 @@
         <el-button type="primary" @click="onDateConfirm">Confirm</el-button>
       </template>
     </el-dialog>
-    <!-- DurationSelect器 -->
+    <!-- 持续时长选择器 -->
     <el-dialog
       v-model="showDurationDialog"
       title="Timer Config"
@@ -100,7 +100,7 @@
         <el-button type="primary" @click="onDurationConfirm">Confirm</el-button>
       </template>
     </el-dialog>
-    <!-- LoopConfig器 -->
+    <!-- 循环配置器 -->
     <el-dialog
       v-model="showCycleDialog"
       title="Timer Config"
@@ -147,18 +147,18 @@ const placeholder = computed(() => {
 })
 const helpText = computed(() => {
   if (type.value === 'time') return 'Select Specific Time'
-  if (type.value === 'duration') return 'ISO 8601格式，如PT1H'
-  if (type.value === 'cycle') return 'CRON Expression或ISO 8601Week期'
+  if (type.value === 'duration') return 'ISO 8601 format, e.g. PT1H'
+  if (type.value === 'cycle') return 'CRON expression or ISO 8601 cycle'
   return ''
 })
 const helpHtml = computed(() => {
   if (type.value === 'duration') {
-    return `SpecifiedTimer之前要等待多长Hour间。S表示Second，M表示Minute，D表示Day；P表示Hour间段，T表示精确到Hour间的Hour间段。<br>
-    Time Format依然为ISO 8601格式，一Year两个Month三Day四小Hour五Minute六Second内，可以写成P1Y2M3DT4H5M6S。<br>
-    PYes开始标记，TYesHour间和DateMinute割标记，没有Date只有Hour间TYes不能省去的，比如1小Hour执行一次应写成PT1H。`
+    return `How long to wait before the timer fires. S means seconds, M means minutes, D means days; P marks a period and T marks a period given down to the time of day.<br>
+    The format is ISO 8601: one year, two months, three days, four hours, five minutes and six seconds is written as P1Y2M3DT4H5M6S.<br>
+    P is the leading marker and T separates the date part from the time part. T cannot be omitted when only a time is given — "once per hour" is written as PT1H.`
   }
   if (type.value === 'cycle') {
-    return `支持CRON Expression（如0 0/30 * * * ?）或ISO 8601Week期（如R3/PT10M）。`
+    return `Supports a CRON expression (e.g. 0 0/30 * * * ?) or an ISO 8601 cycle (e.g. R3/PT10M).`
   }
   return ''
 })
@@ -183,14 +183,14 @@ function syncFromBusinessObject() {
 }
 onMounted(syncFromBusinessObject)
 
-// 切换Type
+// 切换类型
 function setType(t) {
   type.value = t
   condition.value = ''
   updateNode()
 }
 
-// 输入Validate
+// 输入校验
 watch([type, condition], () => {
   valid.value = validate()
   // updateNode() // 可以注释掉，避免频繁触发
@@ -209,7 +209,7 @@ function validate() {
   return true
 }
 
-// Select Time
+// 选择时间
 function onDateChange(val) {
   dateValue.value = val
 }
@@ -221,7 +221,7 @@ function onDateConfirm() {
   }
 }
 
-// Duration
+// 持续时长
 function onDurationChange(val) {
   condition.value = val
 }
@@ -230,7 +230,7 @@ function onDurationConfirm() {
   updateNode()
 }
 
-// Loop
+// 循环
 function onCycleChange(val) {
   condition.value = val
 }
@@ -239,7 +239,7 @@ function onCycleConfirm() {
   updateNode()
 }
 
-// 输入框聚焦Hour弹窗（可选）
+// 输入框聚焦时弹窗（可选）
 function handleInputFocus() {
   if (type.value === 'time') showDatePicker.value = true
   if (type.value === 'duration') showDurationDialog.value = true

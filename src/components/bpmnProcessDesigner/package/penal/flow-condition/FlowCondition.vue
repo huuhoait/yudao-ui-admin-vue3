@@ -94,7 +94,7 @@ const resetFlowCondition = () => {
     // 带条件
     const conditionExpression = bpmnElement.value.businessObject.conditionExpression
     flowConditionForm.value = { ...conditionExpression, type: 'condition' }
-    // resource 可直接标识 WhetherYesExternal ResourceScript
+    // resource 可直接标识 是否是外部资源脚本
     if (flowConditionForm.value.resource) {
       // this.$set(this.flowConditionForm, "conditionType", "script");
       // this.$set(this.flowConditionForm, "scriptType", "externalScript");
@@ -133,7 +133,7 @@ const updateFlowType = (flowType) => {
     })
     return
   }
-  // 正常路径，如果来Source节点的默认路径Yes当前连线Hour，清除父元素的默认路径Config
+  // 正常路径，如果来源节点的默认路径是当前连线时，清除父元素的默认路径配置
   if (
     bpmnElementSourceRef.value.default &&
     bpmnElementSourceRef.value.default.id === bpmnElement.value.id

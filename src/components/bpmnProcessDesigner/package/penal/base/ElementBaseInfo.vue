@@ -2,7 +2,7 @@
   <div class="panel-tab__content">
     <el-form label-width="90px" :model="needProps" :rules="rules">
       <div v-if="needProps.type == 'bpmn:Process'">
-        <!-- 如果Yes Process 信息的Hour候，使用CustomForm -->
+        <!-- 如果是 Process 信息的时候，使用自定义表单 -->
         <el-form-item label="Process Key" prop="id">
           <el-input
             v-model="needProps.id"
@@ -47,9 +47,9 @@ const props = defineProps({
 const needProps = ref<any>({})
 const bpmnElement = ref()
 const elementBaseInfo = ref<any>({})
-// Process Form的下拉框的数据
+// 流程表单的下拉框的数据
 // const forms = ref([])
-// 流程模型的Validate
+// 流程模型的校验
 const rules = reactive({
   id: [{ required: true, message: 'Process key is required', trigger: 'blur' }],
   name: [{ required: true, message: 'Process name is required', trigger: 'blur' }]
@@ -70,7 +70,7 @@ const resetBaseInfo = () => {
   // console.log(elementBaseInfo.value, 'elementBaseInfo22222222222')
 }
 const handleKeyUpdate = (value) => {
-  // Validate value 的Value，只有 XML NCName 通过的情况下，才进行赋Value。No则，会导致流程图报错，None法绘制的问题
+  // 校验 value 的值，只有 XML NCName 通过的情况下，才进行赋值。否则，会导致流程图报错，无法绘制的问题
   if (!value) {
     return
   }
@@ -80,7 +80,7 @@ const handleKeyUpdate = (value) => {
   }
   console.log('key satisfies XML NCName rule, assigning')
 
-  // 在 BPMN 的 XML 中，Process Key key，其实对应的Yes id 节点
+  // 在 BPMN 的 XML 中，流程标识 key，其实对应的是 id 节点
   elementBaseInfo.value['id'] = value
 
   setTimeout(() => {
@@ -99,7 +99,7 @@ const handleNameUpdate = (value) => {
   }, 100)
 }
 // const handleDescriptionUpdate=(value)=> {
-// TODO 芋艿：documentation 暂HourNone法修改，后续在看看
+// TODO 芋艿：documentation 暂时无法修改，后续在看看
 // this.elementBaseInfo['documentation'] = value;
 // this.updateBaseInfo('documentation');
 // }
@@ -147,7 +147,7 @@ watch(
 watch(
   () => props.model?.key,
   (val) => {
-    // 针对上传的 bpmn 流程图Hour，保证 key 和 name 的更新
+    // 针对上传的 bpmn 流程图时，保证 key 和 name 的更新
     if (val) {
       handleKeyUpdate(props.model.key)
       handleNameUpdate(props.model.name)

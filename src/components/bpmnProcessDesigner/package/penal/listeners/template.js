@@ -17,7 +17,7 @@ export const template = (isTaskListener) => {
       <el-button size="small" type="primary" icon="el-icon-plus" @click="openListenerForm(null)">Add Listener</el-button>
     </div>
 
-    <!-- Listener Edit/创建 部Minute -->
+    <!-- 监听器 编辑/创建 部分 -->
     <el-drawer :visible.sync="listenerFormModelVisible" title="Execution Listener" :size="width + 'px'" append-to-body destroy-on-close>
       <el-form size="small" :model="listenerForm" label-width="96px" ref="listenerFormRef" @submit.native.prevent>
         <el-form-item label="Event Type" prop="event" :rules="{ required: true, trigger: ['blur', 'change'] }">
@@ -63,7 +63,7 @@ export const template = (isTaskListener) => {
             label="Script Format"
             prop="scriptFormat"
             key="listener-script-format"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: '请填写Script Format' }"
+            :rules="{ required: true, trigger: ['blur', 'change'], message: 'Please enter the script format' }"
           >
             <el-input v-model="listenerForm.scriptFormat" clearable />
           </el-form-item>
@@ -71,7 +71,7 @@ export const template = (isTaskListener) => {
             label="Script Type"
             prop="scriptType"
             key="listener-script-type"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: '请SelectScript Type' }"
+            :rules="{ required: true, trigger: ['blur', 'change'], message: 'Please select the script type' }"
           >
             <el-select v-model="listenerForm.scriptType">
               <el-option label="Inline Script" value="inlineScript" />
@@ -83,16 +83,16 @@ export const template = (isTaskListener) => {
             label="Script Content"
             prop="value"
             key="listener-script"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: '请填写Script Content' }"
+            :rules="{ required: true, trigger: ['blur', 'change'], message: 'Please enter the script content' }"
           >
             <el-input v-model="listenerForm.value" clearable />
           </el-form-item>
           <el-form-item
             v-if="listenerForm.scriptType === 'externalScript'"
-            label="Resource Address"
+            label="Resource URL"
             prop="resource"
             key="listener-resource"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: '请填写Resource Address' }"
+            :rules="{ required: true, trigger: ['blur', 'change'], message: 'Please enter the resource URL' }"
           >
             <el-input v-model="listenerForm.resource" clearable />
           </el-form-item>
@@ -103,7 +103,7 @@ export const template = (isTaskListener) => {
               "<el-select v-model='listenerForm.eventDefinitionType'>" +
               "<el-option label='Date' value='date' />" +
               "<el-option label='Duration' value='duration' />" +
-              "<el-option label='Loop' value='cycle' />" +
+              "<el-option label='Cycle' value='cycle' />" +
               "<el-option label='None' value='' />" +
               '</el-select>' +
               '</el-form-item>' +
@@ -115,7 +115,7 @@ export const template = (isTaskListener) => {
       </el-form>
       <el-divider />
       <p class="listener-filed__title">
-        <span><i class="el-icon-menu"></i>Inject Fields:</span>
+        <span><i class="el-icon-menu"></i>Injected fields:</span>
         <el-button size="small" type="primary" @click="openListenerFieldForm(null)">Add Field</el-button>
       </p>
       <el-table :data="fieldsListOfListener" size="small" max-height="240" border fit style="flex: none">
@@ -138,8 +138,8 @@ export const template = (isTaskListener) => {
       </div>
     </el-drawer>
 
-    <!-- 注入西段 Edit/创建 部Minute -->
-    <el-dialog title="Field Config" :visible.sync="listenerFieldFormModelVisible" width="600px" append-to-body destroy-on-close>
+    <!-- 注入西段 编辑/创建 部分 -->
+    <el-dialog title="Field Configuration" :visible.sync="listenerFieldFormModelVisible" width="600px" append-to-body destroy-on-close>
       <el-form :model="listenerFieldForm" size="small" label-width="96px" ref="listenerFieldFormRef" style="height: 136px" @submit.native.prevent>
         <el-form-item label="Field Name:" prop="name" :rules="{ required: true, trigger: ['blur', 'change'] }">
           <el-input v-model="listenerFieldForm.name" clearable />
@@ -170,7 +170,7 @@ export const template = (isTaskListener) => {
       </el-form>
       <template #footer>
         <el-button size="small" @click="listenerFieldFormModelVisible = false">Cancel</el-button>
-        <el-button size="small" type="primary" @click="saveListenerFiled">Confirm</el-button>
+        <el-button size="small" type="primary" @click="saveListenerFiled">OK</el-button>
       </template>
     </el-dialog>
   </div>

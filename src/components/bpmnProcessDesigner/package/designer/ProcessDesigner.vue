@@ -5,34 +5,39 @@
       <template v-if="!$slots['control-header']">
         <ElButtonGroup key="file-control">
           <el-button @click="refFile.click()">
-            <Icon icon="ep:folder-opened" class="mr-1px" /> Open File
+            <Icon icon="ep:folder-opened" class="mr-1px" /> Open file
           </el-button>
           <el-tooltip effect="light" placement="bottom">
             <template #content>
               <div style="color: #409eff">
+                <!-- <el-button link @click="downloadProcessAsXml()">Download as XML</el-button> -->
                 <el-button link @click="downloadProcessAsXml()">Download as XML</el-button>
                 <br />
 
+                <!-- <el-button link @click="downloadProcessAsSvg()">Download as SVG</el-button> -->
                 <el-button link @click="downloadProcessAsSvg()">Download as SVG</el-button>
                 <br />
 
+                <!-- <el-button link @click="downloadProcessAsBpmn()">Download as BPMN</el-button> -->
                 <el-button link @click="downloadProcessAsBpmn()">Download as BPMN</el-button>
               </div>
             </template>
-            <el-button> <Icon icon="ep:download" class="mr-1px" /> Download </el-button>
+            <el-button> <Icon icon="ep:download" class="mr-1px" /> Download file </el-button>
           </el-tooltip>
           <el-tooltip effect="light">
-            <el-button> <Icon icon="ep:view" class="mr-1px" /> Preview </el-button>
+            <el-button> <Icon icon="ep:view" class="mr-1px" /> Browse </el-button>
             <template #content>
+              <!-- <el-button link @click="previewProcessXML">Preview XML</el-button> -->
               <el-button link @click="previewProcessXML">Preview XML</el-button>
               <br />
+              <!-- <el-button link @click="previewProcessJson">Preview JSON</el-button> -->
               <el-button link @click="previewProcessJson">Preview JSON</el-button>
             </template>
           </el-tooltip>
           <el-tooltip
             v-if="props.simulation"
             effect="light"
-            :content="simulationStatus ? 'Exit Simulation' : 'Start Simulation'"
+            :content="simulationStatus ? 'Exit simulation' : 'Start simulation'"
           >
             <el-button @click="processSimulation">
               <Icon icon="ep:cpu" class="mr-1px" /> Simulate
@@ -40,7 +45,7 @@
           </el-tooltip>
         </ElButtonGroup>
         <ElButtonGroup key="align-control">
-          <el-tooltip effect="light" content="Align Left">
+          <el-tooltip effect="light" content="Align left">
             <!-- <el-button
               class="align align-left"
               icon="el-icon-s-data"
@@ -50,7 +55,7 @@
               <Icon icon="fa:align-left" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="Align Right">
+          <el-tooltip effect="light" content="Align right">
             <!-- <el-button
               class="align align-right"
               icon="el-icon-s-data"
@@ -60,7 +65,7 @@
               <Icon icon="fa:align-left" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="Align Top">
+          <el-tooltip effect="light" content="Align top">
             <!-- <el-button
               class="align align-top"
               icon="el-icon-s-data"
@@ -70,7 +75,7 @@
               <Icon icon="fa:align-left" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="Align Bottom">
+          <el-tooltip effect="light" content="Align bottom">
             <!-- <el-button
               class="align align-bottom"
               icon="el-icon-s-data"
@@ -91,7 +96,7 @@
               <Icon icon="fa:align-left" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="Center Vertically">
+          <el-tooltip effect="light" content="Align center vertically">
             <!-- <el-button
               class="align align-middle"
               icon="el-icon-s-data"
@@ -114,7 +119,7 @@
             </el-button>
           </el-tooltip>
           <el-button>{{ Math.floor(defaultZoom * 10 * 10) + '%' }}</el-button>
-          <el-tooltip effect="light" content="Zoom In">
+          <el-tooltip effect="light" content="Zoom view">
             <!-- <el-button
               :disabled="defaultZoom > 4"
               icon="el-icon-zoom-in"
@@ -191,7 +196,7 @@
 </template>
 
 <script lang="ts" setup>
-// import 'bpmn-js/dist/assets/diagram-js.css' // 左边工具栏以及Edit节点的样式
+// import 'bpmn-js/dist/assets/diagram-js.css' // 左边工具栏以及编辑节点的样式
 // import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
 // import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css'
 // import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'
@@ -201,8 +206,6 @@ import BpmnModeler from 'bpmn-js/lib/Modeler'
 import DefaultEmptyXML from './plugins/defaultEmpty'
 // 翻译方法
 import customTranslate from './plugins/translate/customTranslate'
-// 中文翻译表已停用，默认英文；如需其它语言，通过 props.translations 传入
-// import translationsCN from './plugins/translate/zh'
 // 模拟流转流程
 import tokenSimulation from 'bpmn-js-token-simulation'
 // 标签解析构建器
@@ -251,16 +254,16 @@ const props = defineProps({
   value: String, // xml 字符串
   // valueWatch: true, // xml 字符串的 watch 状态
   processId: String, // 流程 key 标识
-  processName: String, // 流程 name Name
-  formId: Number, // 流程 form FormID
+  processName: String, // 流程 name 名字
+  formId: Number, // 流程 form 表单编号
   translations: {
-    // Custom的翻译文件
+    // 自定义的翻译文件. Mặc định rỗng -> dùng tiếng Anh gốc của bpmn-js.
     type: Object,
-    default: () => {}
+    default: () => ({})
   },
-  additionalModel: [Object, Array], // Custommodel
+  additionalModel: [Object, Array], // 自定义model
   moddleExtension: {
-    // Custommoddle
+    // 自定义moddle
     type: Object,
     default: () => {}
   },
@@ -325,7 +328,7 @@ const revocable = ref(false)
 const additionalModules = computed(() => {
   console.log(props.additionalModel, 'additionalModel')
   const Modules: any[] = []
-  // 仅保留用户Custom扩展模块
+  // 仅保留用户自定义扩展模块
   if (props.onlyCustomizeAddi) {
     if (Object.prototype.toString.call(props.additionalModel) == '[object Array]') {
       return props.additionalModel || []
@@ -333,14 +336,14 @@ const additionalModules = computed(() => {
     return [props.additionalModel]
   }
 
-  // 插入用户Custom扩展模块
+  // 插入用户自定义扩展模块
   if (Object.prototype.toString.call(props.additionalModel) == '[object Array]') {
     Modules.push(...(props.additionalModel as any[]))
   } else {
     props.additionalModel && Modules.push(props.additionalModel)
   }
 
-  // 翻译模块：默认使用英文（bpmn-js 原生英文），若外部传入 translations 则以其为准
+  // 翻译模块
   const TranslateModule = {
     translate: ['value', customTranslate(props.translations || {})]
   }
@@ -351,7 +354,7 @@ const additionalModules = computed(() => {
     Modules.push(tokenSimulation)
   }
 
-  // 根据需要的流程Type设置扩展元素构建模块
+  // 根据需要的流程类型设置扩展元素构建模块
   // if (this.prefix === "bpmn") {
   //   Modules.push(bpmnModdleExtension);
   // }
@@ -373,19 +376,19 @@ const moddleExtensions = computed(() => {
   console.log(props.moddleExtension, 'props.moddleExtension')
   console.log(props.prefix, 'props.prefix')
   const Extensions: any = {}
-  // 仅使用用户Custom模块
+  // 仅使用用户自定义模块
   if (props.onlyCustomizeModdle) {
     return props.moddleExtension || null
   }
 
-  // 插入用户Custom模块
+  // 插入用户自定义模块
   if (props.moddleExtension) {
     for (let key in props.moddleExtension) {
       Extensions[key] = props.moddleExtension[key]
     }
   }
 
-  // 根据需要的 "流程Type" 设置 对应的解析文件
+  // 根据需要的 "流程类型" 设置 对应的解析文件
   if (props.prefix === 'activiti') {
     Extensions.activiti = activitiModdleDescriptor
   }
@@ -445,7 +448,7 @@ const initBpmnModeler = () => {
 const initModelListeners = () => {
   const EventBus = bpmnModeler.get('eventBus')
   console.log(EventBus, 'EventBus')
-  // 注册需要的监听Event, 将. 替换为 - , 避免解析异常
+  // 注册需要的监听事件, 将. 替换为 - , 避免解析异常
   props.events.forEach((event: any) => {
     EventBus.on(event, function (eventObj) {
       let eventName = event.replace(/\./g, '-')
@@ -481,9 +484,9 @@ const initModelListeners = () => {
 /* 创建新的流程图 */
 const createNewDiagram = async (xml) => {
   console.log(xml, 'xml')
-  // 将字符串转换成图Display出来
+  // 将字符串转换成图显示出来
   let newId = props.processId || `Process_${new Date().getTime()}`
-  let newName = props.processName || `业务流程_${new Date().getTime()}`
+  let newName = props.processName || `Business Process_${new Date().getTime()}`
   let xmlString = xml || DefaultEmptyXML(newId, newName, props.prefix)
   try {
     // console.log(xmlString, 'xmlString')
@@ -501,10 +504,10 @@ const createNewDiagram = async (xml) => {
 // 下载流程图到本地
 const downloadProcess = async (type) => {
   try {
-    // 按需要Type创建文件并下载
+    // 按需要类型创建文件并下载
     if (type === 'xml' || type === 'bpmn') {
       const { err, xml } = await bpmnModeler.saveXML()
-      // 读取异常Hour抛出异常
+      // 读取异常时抛出异常
       if (err) {
         console.error(`[Process Designer Warn ]: ${err.message || err}`)
       }
@@ -512,7 +515,7 @@ const downloadProcess = async (type) => {
       downloadFunc(href, filename)
     } else {
       const { err, svg } = await bpmnModeler.saveSVG()
-      // 读取异常Hour抛出异常
+      // 读取异常时抛出异常
       if (err) {
         return console.error(err)
       }
@@ -526,7 +529,7 @@ const downloadProcess = async (type) => {
   function downloadFunc(href, filename) {
     if (href && filename) {
       let a = document.createElement('a')
-      a.download = filename //Specified下载的文件名
+      a.download = filename //指定下载的文件名
       a.href = href //  URL对象
       a.click() // 模拟点击
       URL.revokeObjectURL(a.href) // 释放URL 对象
@@ -534,7 +537,7 @@ const downloadProcess = async (type) => {
   }
 }
 
-// 根据所需Type进行转码并返回下载地址
+// 根据所需类型进行转码并返回下载地址
 const setEncoded = (type, data) => {
   const filename = 'diagram'
   const encodedData = encodeURIComponent(data)
@@ -610,6 +613,7 @@ const elementsAlign = (align) => {
   const SelectedElements = Selection.get()
   if (!SelectedElements || SelectedElements.length <= 1) {
     ElMessage.warning('Hold Shift to select multiple elements to align')
+    // alert('请按住 Ctrl 键选择多个元素对齐
     return
   }
   ElMessageBox.confirm('Auto-align may distort the diagram. Continue?', 'Warning', {
@@ -639,7 +643,7 @@ const previewProcessJson = () => {
   })
 }
 
-/* ------------------------------------------------ 芋道Source码 methods ------------------------------------------------------ */
+/* ------------------------------------------------ 芋道源码 methods ------------------------------------------------------ */
 onMounted(() => {
   initBpmnModeler()
   createNewDiagram(props.value)

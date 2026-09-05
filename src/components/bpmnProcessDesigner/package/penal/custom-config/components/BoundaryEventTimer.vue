@@ -49,7 +49,7 @@
           :value="item.value"
         />
       </el-select>
-      未处理
+      Not handled
     </el-form-item>
     <el-form-item
       label="Max Reminder Count"
@@ -108,12 +108,12 @@ const resetElement = () => {
   bpmnElement.value = bpmnInstances().bpmnElement
   eventDefinition.value = bpmnElement.value.businessObject.eventDefinitions[0]
 
-  // 获取元素Extension Properties 或者 创建Extension Properties
+  // 获取元素扩展属性 或者 创建扩展属性
   elExtensionElements.value =
     bpmnElement.value.businessObject?.extensionElements ??
     bpmnInstances().moddle.create('bpmn:ExtensionElements', { values: [] })
 
-  // WhetherOnCustomUser TaskTimeout处理
+  // 是否开启自定义用户任务超时处理
   boundaryEventType.value = elExtensionElements.value.values?.filter(
     (ex) => ex.$type === `${prefix}:BoundaryEventType`
   )?.[0]
@@ -122,7 +122,7 @@ const resetElement = () => {
     configExtensions.value.push(boundaryEventType.value)
   }
 
-  // Execution Action
+  // 执行动作
   timeoutHandlerType.value = elExtensionElements.value.values?.filter(
     (ex) => ex.$type === `${prefix}:TimeoutHandlerType`
   )?.[0]
@@ -157,18 +157,18 @@ const resetElement = () => {
 const timeoutHandlerChange = (val) => {
   timeoutHandlerEnable.value = val
   if (val) {
-    // EnableCustomUser TaskTimeout处理
-    // 边界Event Type --- Timeout
+    // 启用自定义用户任务超时处理
+    // 边界事件类型 --- 超时
     boundaryEventType.value = bpmnInstances().moddle.create(`${prefix}:BoundaryEventType`, {
       value: 1
     })
     configExtensions.value.push(boundaryEventType.value)
-    // Timeout处理Type
+    // 超时处理类型
     timeoutHandlerType.value = bpmnInstances().moddle.create(`${prefix}:TimeoutHandlerType`, {
       value: 1
     })
     configExtensions.value.push(timeoutHandlerType.value)
-    // TimeoutHour间Expression
+    // 超时时间表达式
     timeDuration.value = 6
     timeUnit.value = 2
     maxRemindCount.value = 1
@@ -177,7 +177,7 @@ const timeoutHandlerChange = (val) => {
     })
     eventDefinition.value.timeDuration = timeModdle.value
   } else {
-    // CloseCustomUser TaskTimeout处理
+    // 关闭自定义用户任务超时处理
     configExtensions.value = []
     delete eventDefinition.value.timeDuration
     delete eventDefinition.value.timeCycle
@@ -192,15 +192,15 @@ const onTimeoutHandlerTypeChanged = () => {
 }
 
 const onTimeUnitChange = () => {
-  // Minute钟，默认Yes 60 Minute钟
+  // 分钟，默认是 60 分钟
   if (timeUnit.value === TimeUnitType.MINUTE) {
     timeDuration.value = 60
   }
-  // 小Hour，默认Yes 6 个小Hour
+  // 小时，默认是 6 个小时
   if (timeUnit.value === TimeUnitType.HOUR) {
     timeDuration.value = 6
   }
-  // Day， 默认 1Day
+  // 天， 默认 1天
   if (timeUnit.value === TimeUnitType.DAY) {
     timeDuration.value = 1
   }

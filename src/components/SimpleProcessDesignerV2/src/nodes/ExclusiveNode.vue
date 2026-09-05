@@ -9,7 +9,7 @@
         <span class="iconfont icon-exclusive icon-size condition"></span>
       </div>
       <el-button v-else class="branch-node-add" color="#67c23a" @click="addCondition" plain>
-        添加条件
+        Add Condition
       </el-button>
 
       <div
@@ -45,7 +45,7 @@
                   />
                 </div>
                 <div v-else class="branch-title" @click="clickEvent(index)"> {{ item.name }} </div>
-                <div class="branch-priority"> 优先级{{ index + 1 }} </div>
+                <div class="branch-priority"> Priority {{ index + 1 }} </div>
               </div>
               <div class="branch-node-content" @click="conditionNodeConfig(item.id)">
                 <div class="branch-node-text" :title="item.showText" v-if="item.showText">
@@ -181,7 +181,7 @@ const addCondition = () => {
     let lastIndex = len - 1
     const conditionData: SimpleFlowNode = {
       id: 'Flow_' + generateUUID(),
-      name: '条件' + len,
+      name: 'Condition ' + len,
       showText: '',
       type: NodeType.CONDITION_NODE,
       childNode: undefined,

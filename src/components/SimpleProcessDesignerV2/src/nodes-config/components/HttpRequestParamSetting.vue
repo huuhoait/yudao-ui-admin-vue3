@@ -1,12 +1,12 @@
 <template>
-  <el-form-item label-position="top" label="请求头">
+  <el-form-item label-position="top" label="Request Headers">
     <div class="flex pb-4" v-for="(item, index) in props.header" :key="index">
       <div class="mr-2">
         <el-form-item
           :prop="`${bind}.header.${index}.key`"
           :rules="{
             required: true,
-            message: '参数名不能为空',
+            message: 'Parameter name is required',
             trigger: 'blur'
           }"
         >
@@ -30,7 +30,7 @@
           :prop="`${bind}.header.${index}.value`"
           :rules="{
             required: true,
-            message: '参数值不能为空',
+            message: 'Parameter value is required',
             trigger: 'blur'
           }"
         >
@@ -44,7 +44,7 @@
           :prop="`${bind}.header.${index}.value`"
           :rules="{
             required: true,
-            message: '参数值不能为空',
+            message: 'Parameter value is required',
             trigger: 'change'
           }"
         >
@@ -68,17 +68,17 @@
       </div>
     </div>
     <el-button type="primary" text @click="addHttpRequestParam(props.header)">
-      <Icon icon="ep:plus" class="mr-5px" />添加一行
+      <Icon icon="ep:plus" class="mr-5px" />Add a Row
     </el-button>
   </el-form-item>
-  <el-form-item label-position="top" label="请求体">
+  <el-form-item label-position="top" label="Request Body">
     <div class="flex pb-4" v-for="(item, index) in props.body" :key="index">
       <div class="mr-2">
         <el-form-item
           :prop="`${bind}.body.${index}.key`"
           :rules="{
             required: true,
-            message: '参数名不能为空',
+            message: 'Parameter name is required',
             trigger: 'blur'
           }"
         >
@@ -102,7 +102,7 @@
           :prop="`${bind}.body.${index}.value`"
           :rules="{
             required: true,
-            message: '参数值不能为空',
+            message: 'Parameter value is required',
             trigger: 'blur'
           }"
         >
@@ -116,7 +116,7 @@
           :prop="`${bind}.body.${index}.value`"
           :rules="{
             required: true,
-            message: '参数值不能为空',
+            message: 'Parameter value is required',
             trigger: 'change'
           }"
         >
@@ -140,7 +140,7 @@
       </div>
     </div>
     <el-button type="primary" text @click="addHttpRequestParam(props.body)">
-      <Icon icon="ep:plus" class="mr-5px" />添加一行
+      <Icon icon="ep:plus" class="mr-5px" />Add a Row
     </el-button>
   </el-form-item>
 </template>

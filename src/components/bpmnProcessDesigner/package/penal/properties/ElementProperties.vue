@@ -78,7 +78,7 @@ const resetAttributesList = () => {
   const bpmnElement = instances.bpmnElement
   const businessObject = bpmnElement.businessObject
 
-  otherExtensionList.value = [] // Others扩展Config
+  otherExtensionList.value = [] // 其他扩展配置
   bpmnElementProperties.value =
     businessObject?.extensionElements?.values?.filter((ex) => {
       if (ex.$type !== `${prefix}:Properties`) {
@@ -87,12 +87,12 @@ const resetAttributesList = () => {
       return ex.$type === `${prefix}:Properties`
     }) ?? []
 
-  // Save所有的 Extension Properties字段
+  // 保存所有的 扩展属性字段
   bpmnElementPropertyList.value = bpmnElementProperties.value.reduce(
     (pre, current) => pre.concat(current.values),
     []
   )
-  // 复制 Display
+  // 复制 显示
   elementPropertyList.value = JSON.parse(JSON.stringify(bpmnElementPropertyList.value ?? []))
 }
 const openAttributesForm = (attr, index) => {
@@ -112,7 +112,7 @@ const removeAttributes = (attr, index) => {
     .then(() => {
       elementPropertyList.value.splice(index, 1)
       bpmnElementPropertyList.value.splice(index, 1)
-      // 新建一个属性字段的Save列表
+      // 新建一个属性字段的保存列表
       const propertiesObject = bpmnInstances().moddle.create(`${prefix}:Properties`, {
         values: bpmnElementPropertyList.value
       })
@@ -144,7 +144,7 @@ const saveAttribute = () => {
       name,
       value
     })
-    // 新建一个属性字段的Save列表
+    // 新建一个属性字段的保存列表
     const propertiesObject = instances.moddle.create(`${prefix}:Properties`, {
       values: bpmnElementPropertyList.value.concat([newPropertyObject])
     })

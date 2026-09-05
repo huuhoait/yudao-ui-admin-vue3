@@ -1,7 +1,7 @@
 <template>
   <div class="process-viewer">
     <div style="height: 100%" ref="processCanvas" v-show="!isLoading"> </div>
-    <!-- Custom箭头样式，用于已完成状态下流程连线箭头 -->
+    <!-- 自定义箭头样式，用于已完成状态下流程连线箭头 -->
     <defs ref="customDefs">
       <marker
         id="sequenceflow-end-white-success"
@@ -36,7 +36,7 @@
     </defs>
 
     <!-- 审批记录 -->
-    <el-dialog :title="dialogTitle || '审批记录'" v-model="dialogVisible" width="1000px">
+    <el-dialog :title="dialogTitle || 'Approval Records'" v-model="dialogVisible" width="1000px">
       <el-row>
         <el-table
           :data="selectTasks"
@@ -52,7 +52,7 @@
             width="50"
           />
           <el-table-column
-            label="审批人"
+            label="Approver"
             min-width="100"
             align="center"
             v-if="selectActivityType === 'bpmn:UserTask'"
@@ -62,7 +62,7 @@
             </template>
           </el-table-column>
           <el-table-column
-            label="发起人"
+            label="Initiator"
             prop="assigneeUser.nickname"
             min-width="100"
             align="center"
@@ -76,7 +76,7 @@
           <el-table-column
             :formatter="dateFormatter"
             align="center"
-            label="开始Hour间"
+            label="Start Time"
             prop="createTime"
             min-width="140"
           />
@@ -87,14 +87,14 @@
             prop="endTime"
             min-width="140"
           />
-          <el-table-column align="center" label="审批状态" prop="status" min-width="90">
+          <el-table-column align="center" label="Approval Status" prop="status" min-width="90">
             <template #default="scope">
               <dict-tag :type="DICT_TYPE.BPM_TASK_STATUS" :value="scope.row.status" />
             </template>
           </el-table-column>
           <el-table-column
             align="center"
-            label="审批建议"
+            label="Approval Suggestion"
             prop="reason"
             min-width="120"
             v-if="selectActivityType === 'bpmn:UserTask'"
@@ -163,14 +163,14 @@ const processCanvas = ref()
 const bpmnViewer = ref<BpmnViewer | null>(null)
 const customDefs = ref()
 const defaultZoom = ref(1) // 默认缩放比例
-const isLoading = ref(false) // Whether加载中
+const isLoading = ref(false) // 是否加载中
 
 const processInstance = ref<any>({}) // 流程实例
 const tasks = ref([]) // 流程任务
 
 const dialogVisible = ref(false) // 弹窗可见性
 const dialogTitle = ref<string | undefined>(undefined) // 弹窗标题
-const selectActivityType = ref<string | undefined>(undefined) // 选中 Task 的活动ID
+const selectActivityType = ref<string | undefined>(undefined) // 选中 Task 的活动编号
 const selectTasks = ref<any[]>([]) // 选中的任务数组
 
 type BpmnCanvas = Omit<Canvas, 'zoom'> & {
@@ -242,7 +242,7 @@ const processZoomOut = (zoomStep = 0.1) => {
   getCanvas()?.zoom(defaultZoom.value)
 }
 
-/** 流程图Preview清空 */
+/** 流程图预览清空 */
 const clearViewer = () => {
   stopResizeObserver()
   if (processCanvas.value) {
@@ -254,8 +254,8 @@ const clearViewer = () => {
   bpmnViewer.value = null
 }
 
-/** 添加Custom箭头 */
-// TODO 芋艿：Custom箭头不生效，有点奇怪！！！！相关的 marker-end、marker-start 暂Hour也注释了！！！
+/** 添加自定义箭头 */
+// TODO 芋艿：自定义箭头不生效，有点奇怪！！！！相关的 marker-end、marker-start 暂时也注释了！！！
 const addCustomDefs = () => {
   if (!bpmnViewer.value) {
     return
@@ -282,7 +282,7 @@ const onSelectElement = (element: any) => {
     selectTasks.value = tasks.value.filter((item: any) => item?.taskDefinitionKey === element.id)
     dialogVisible.value = true
   } else if (activityType === 'bpmn:EndEvent' || activityType === 'bpmn:StartEvent') {
-    dialogTitle.value = '审批信息'
+    dialogTitle.value = 'Approval Info'
     selectTasks.value = [
       {
         assigneeUser: processInstance.value.startUser,
@@ -308,7 +308,7 @@ const importXML = async (xml?: string) => {
         additionalModules: [MoveCanvasModule],
         container: processCanvas.value
       })
-      // 增加点击Event
+      // 增加点击事件
       bpmnViewer.value.on('element.click', ({ element }) => {
         onSelectElement(element)
       })
@@ -316,7 +316,7 @@ const importXML = async (xml?: string) => {
       // 初始化 BPMN 视图
       isLoading.value = true
       await bpmnViewer.value.importXML(xml)
-      // Custom成功的箭头
+      // 自定义成功的箭头
       addCustomDefs()
     } catch (e) {
       clearViewer()
@@ -324,7 +324,7 @@ const importXML = async (xml?: string) => {
       isLoading.value = false
       // 高亮流程
       setProcessStatus(props.view)
-      // 启动 ResizeObserver，等待容器可见且有尺寸Hour自动居中
+      // 启动 ResizeObserver，等待容器可见且有尺寸时自动居中
       // 对应 https://github.com/yudaocode/yudao-ui-admin-vue3/pull/221 场景
       if (bpmnViewer.value) {
         await nextTick()
@@ -388,7 +388,7 @@ const setProcessStatus = (view: any) => {
     })
   }
 
-  // 特殊：处理 end 节点的高亮。因为 end 在拒绝、CancelHour，被后端计算成了 finishedTaskActivityIds 里
+  // 特殊：处理 end 节点的高亮。因为 end 在拒绝、取消时，被后端计算成了 finishedTaskActivityIds 里
   if (
     [BpmProcessInstanceStatus.CANCEL, BpmProcessInstanceStatus.REJECT].includes(
       processInstance.value.status

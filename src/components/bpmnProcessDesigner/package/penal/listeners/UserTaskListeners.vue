@@ -41,7 +41,7 @@
       </el-button>
     </div>
 
-    <!-- Listener Edit/创建 部Minute -->
+    <!-- 监听器 编辑/创建 部分 -->
     <el-drawer
       v-model="listenerFormModelVisible"
       title="Task Listener"
@@ -117,7 +117,7 @@
             label="Script Format"
             prop="scriptFormat"
             key="listener-script-format"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: '请填写Script Format' }"
+            :rules="{ required: true, trigger: ['blur', 'change'], message: 'Please enter the script format' }"
           >
             <el-input v-model="listenerForm.scriptFormat" clearable />
           </el-form-item>
@@ -125,7 +125,7 @@
             label="Script Type"
             prop="scriptType"
             key="listener-script-type"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: '请SelectScript Type' }"
+            :rules="{ required: true, trigger: ['blur', 'change'], message: 'Please select the script type' }"
           >
             <el-select v-model="listenerForm.scriptType">
               <el-option label="Inline Script" value="inlineScript" />
@@ -137,7 +137,7 @@
             label="Script Content"
             prop="value"
             key="listener-script"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: '请填写Script Content' }"
+            :rules="{ required: true, trigger: ['blur', 'change'], message: 'Please enter the script content' }"
           >
             <el-input v-model="listenerForm.value" clearable />
           </el-form-item>
@@ -146,7 +146,7 @@
             label="Resource Address"
             prop="resource"
             key="listener-resource"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: '请填写Resource Address' }"
+            :rules="{ required: true, trigger: ['blur', 'change'], message: 'Please enter the resource URL' }"
           >
             <el-input v-model="listenerForm.resource" clearable />
           </el-form-item>
@@ -166,7 +166,7 @@
             label="Timer"
             prop="eventTimeDefinitions"
             key="eventTimeDefinitions"
-            :rules="{ required: true, trigger: ['blur', 'change'], message: '请填写TimerConfig' }"
+            :rules="{ required: true, trigger: ['blur', 'change'], message: 'Please enter the timer configuration' }"
           >
             <el-input v-model="listenerForm.eventTimeDefinitions" clearable />
           </el-form-item>
@@ -226,7 +226,7 @@
       </div>
     </el-drawer>
 
-    <!-- 注入西段 Edit/创建 部Minute -->
+    <!-- 注入西段 编辑/创建 部分 -->
     <el-dialog
       title="Field Config"
       v-model="listenerFieldFormModelVisible"
@@ -288,7 +288,7 @@
     </el-dialog>
   </div>
 
-  <!-- Select弹窗 -->
+  <!-- 选择弹窗 -->
   <ProcessListenerDialog ref="processListenerDialogRef" @select="selectProcessListener" />
 </template>
 <script lang="ts" setup>
@@ -319,10 +319,10 @@ const listenerFormModelVisible = ref(false)
 const listenerForm = ref<any>({})
 const fieldTypeObject = ref(fieldType)
 const fieldsListOfListener = ref<any[]>([])
-const listenerFieldFormModelVisible = ref(false) // Listener Inject FieldsForm弹窗 Display状态
-const editingListenerIndex = ref(-1) // Listener所在下标，-1 为新增
+const listenerFieldFormModelVisible = ref(false) // 监听器 注入字段表单弹窗 显示状态
+const editingListenerIndex = ref(-1) // 监听器所在下标，-1 为新增
 const editingListenerFieldIndex = ref(-1) // 字段所在下标，-1 为新增
-const listenerFieldForm = ref<any>({}) // Listener Inject Fields DetailForm
+const listenerFieldForm = ref<any>({}) // 监听器 注入字段 详情表单
 const bpmnElementListeners = ref()
 const otherExtensionList = ref()
 const listenerFormRef = ref()
@@ -342,7 +342,7 @@ const resetListenersList = () => {
   otherExtensionList.value =
     businessObject?.extensionElements?.values?.filter(
       (ex) => ex.$type !== `${prefix}:TaskListener`
-    ) ?? [] // 保留非Listener Type的Extension Properties，避免RemoveListenerHour清空OthersConfig（如审批人等）。相关案例：https://gitee.com/yudaocode/yudao-ui-admin-vue3/issues/ICMSYC
+    ) ?? [] // 保留非监听器类型的扩展属性，避免移除监听器时清空其他配置（如审批人等）。相关案例：https://gitee.com/yudaocode/yudao-ui-admin-vue3/issues/ICMSYC
   bpmnElementListeners.value =
     businessObject?.extensionElements?.values?.filter(
       (ex) => ex.$type === `${prefix}:TaskListener`
@@ -374,7 +374,7 @@ const openListenerForm = (listener, index?) => {
     if (listenerFormRef.value) listenerFormRef.value.clearValidate()
   })
 }
-// RemoveListener
+// 移除监听器
 const removeListener = (listener, index?) => {
   console.log(listener, 'listener')
   ElMessageBox.confirm('Confirm removing this listener?', 'Tip', {
@@ -394,7 +394,7 @@ const removeListener = (listener, index?) => {
     })
     .catch(() => console.info('Operation cancelled'))
 }
-// SaveListener
+// 保存监听器
 const saveListenerConfig = async () => {
   let validateStatus = await listenerFormRef.value.validate()
   if (!validateStatus) return // 验证不通过直接返回
@@ -412,17 +412,17 @@ const saveListenerConfig = async () => {
     bpmnElementListeners.value.splice(editingListenerIndex.value, 1, listenerObject)
     elementListenersList.value.splice(editingListenerIndex.value, 1, listenerForm.value)
   }
-  // SaveOthersConfig
+  // 保存其他配置
   otherExtensionList.value =
     bpmnElement.businessObject?.extensionElements?.values?.filter(
       (ex) => ex.$type !== `${prefix}:TaskListener`
     ) ?? []
   updateElementExtensions(bpmnElement, otherExtensionList.value.concat(bpmnElementListeners.value))
-  // 4. Hide侧边栏
+  // 4. 隐藏侧边栏
   listenerFormModelVisible.value = false
   listenerForm.value = {}
 }
-// 打开Listener字段Edit弹窗
+// 打开监听器字段编辑弹窗
 const openListenerFieldForm = (field, index?) => {
   listenerFieldForm.value = field ? JSON.parse(JSON.stringify(field)) : {}
   editingListenerFieldIndex.value = field ? index : -1
@@ -431,7 +431,7 @@ const openListenerFieldForm = (field, index?) => {
     if (listenerFieldFormRef.value) listenerFieldFormRef.value.clearValidate()
   })
 }
-// SaveListenerInject Fields
+// 保存监听器注入字段
 const saveListenerFiled = async () => {
   let validateStatus = await listenerFieldFormRef.value.validate()
   if (!validateStatus) return // 验证不通过直接返回
@@ -447,7 +447,7 @@ const saveListenerFiled = async () => {
     listenerFieldForm.value = {}
   })
 }
-// RemoveListener字段
+// 移除监听器字段
 const removeListenerField = (field, index) => {
   console.log(field, 'field')
   ElMessageBox.confirm('Confirm removing this field?', 'Tip', {
@@ -461,7 +461,7 @@ const removeListenerField = (field, index) => {
     .catch(() => console.info('Operation cancelled'))
 }
 
-// 打开Listener弹窗
+// 打开监听器弹窗
 const processListenerDialogRef = ref()
 const openProcessListenerDialog = async () => {
   processListenerDialogRef.value.open('task')
@@ -476,7 +476,7 @@ const selectProcessListener = (listener) => {
   bpmnElementListeners.value.push(listenerObject)
   elementListenersList.value.push(listenerForm)
 
-  // SaveOthersConfig
+  // 保存其他配置
   otherExtensionList.value =
     bpmnElement.businessObject?.extensionElements?.values?.filter(
       (ex) => ex.$type !== `${prefix}:TaskListener`
