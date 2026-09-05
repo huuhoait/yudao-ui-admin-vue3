@@ -129,3 +129,62 @@ Mỗi file bị apply có backup `<file>.i18nbak`. Để hoàn tác một file:
 mv src/views/system/role/index.vue.i18nbak src/views/system/role/index.vue
 ```
 Để hoàn tác cả thư mục, khôi phục lần lượt rồi xóa các entry generated + import trong file locale.
+
+---
+
+## Chuyển thẳng sang tiếng Anh (không dùng i18n key)
+
+Dùng cho hai trình thiết kế quy trình — `bpmnProcessDesigner` và `SimpleProcessDesignerV2` —
+nơi yêu cầu chỉ là hiển thị tiếng Anh, không cần đa ngôn ngữ.
+
+```bash
+# 1. Scan (chỉ đọc): xem chuỗi nào thay được, chuỗi nào còn thiếu bản dịch
+node scripts/i18n/to-en.mjs src/components/SimpleProcessDesignerV2 --map scripts/i18n/en-map-simple.mjs
+
+# 2. Bổ sung chuỗi còn thiếu vào file map, scan lại tới khi missing = 0
+
+# 3. Xem diff trước khi ghi
+node scripts/i18n/to-en.mjs src/components/SimpleProcessDesignerV2 --map scripts/i18n/en-map-simple.mjs --apply --dry
+
+# 4. Ghi thật
+node scripts/i18n/to-en.mjs src/components/SimpleProcessDesignerV2 --map scripts/i18n/en-map-simple.mjs --apply
+```
+
+| File | Vai trò |
+|---|---|
+| `to-en.mjs` | Thay chuỗi hiển thị Trung -> Anh tại chỗ, dùng AST. |
+| `en-map-simple.mjs` | Bảng dịch cho SimpleProcessDesignerV2 (`EN`). |
+| `bpmn-en-map.mjs` | Bảng dịch cho bpmnProcessDesigner (`EN`). |
+
+### Vì sao KHÔNG dùng `replace-en.mjs` nữa (đã xóa)
+
+Script cũ thay theo **chuỗi con** trên toàn file, kể cả trong comment và mã logic.
+Nó đã sinh ra ~605 chỗ chuỗi lai kiểu `开始Hour间`, `芋道Source码`, `流程 name Name`
+trong `bpmnProcessDesigner` (đã khôi phục từ commit `93a3d911`).
+
+`to-en.mjs` khắc phục bằng cách:
+- Chỉ khớp **nguyên chuỗi** (`EN[text]`), không bao giờ thay chuỗi con.
+- Chỉ đụng vị trí hiển thị do AST xác định: text node, attribute trong danh sách trắng,
+  string literal / template literal tĩnh trong script.
+- KHÔNG đụng comment, vế so sánh (`x === '中文'`), object key, tên file, HTML markup,
+  biểu thức binding (`:label="\`${x}人\`"`), interpolation.
+- Chuỗi không có trong map thì **bỏ qua**, đồng thời liệt kê ở mục `missingStrings`
+  của `report-en-<tên>.json` để bổ sung tay.
+
+Các vị trí rủi ro được liệt kê ở mục `review` của report và phải sửa tay.
+Sau khi apply, kiểm tra lại bằng:
+
+```bash
+# không còn chuỗi lai Trung-Anh ngoài comment
+grep -rnP "(['\"\`])[^'\"\`]*[\x{4e00}-\x{9fa5}][^'\"\`]*[A-Za-z]{3,}[^'\"\`]*\1" <dir>
+```
+
+### Ghi chú riêng cho bpmnProcessDesigner
+
+- `ProcessDesigner.vue` không còn nạp `plugins/translate/zh.js`; module translate
+  mặc định nhận `{}` nên bpmn-js dùng **tiếng Anh gốc** của thư viện.
+  File `zh.js` và `src/translations.ts` được giữ nguyên (không dùng tới).
+- `value="异步前"` / `value="异步后"` / `value="排除"` **cố ý giữ tiếng Trung**:
+  đây là giá trị được lưu vào BPMN XML, đổi sẽ vỡ dữ liệu cũ. Chỉ `label` được dịch.
+- `penal/listeners/template.js` là mã chết (cú pháp Vue 2, không nơi nào import),
+  vẫn dịch để đồng bộ.
