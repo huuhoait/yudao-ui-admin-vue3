@@ -1,0 +1,4590 @@
+{
+  "mode": "apply",
+  "target": "src/components/bpmnProcessDesigner",
+  "map": "scripts/i18n/bpmn-en-map.mjs",
+  "scannedAt": "2026-09-05T13:19:51.123Z",
+  "totalFiles": 60,
+  "replaced": 644,
+  "missing": 132,
+  "review": 33,
+  "missingStrings": {
+    "文本注释": 1,
+    "在上面添加道": 1,
+    "分割成两个道": 1,
+    "分割成三个道": 1,
+    "在下面添加道": 1,
+    "使用关联连接": 1,
+    "使用顺序/消息流或者关联连接": 1,
+    "使用数据输入关联连接": 1,
+    "创建扩展子过程": 1,
+    "创建中间抛出事件/边界事件": 1,
+    "创建池/参与者": 1,
+    "参与者多重性": 1,
+    "收缩池/参与者": 1,
+    "展开池/参与者": 1,
+    "数据对象参考": 1,
+    "数据存储参考": 1,
+    "数据对象引用 ": 1,
+    "数据存储引用 ": 1,
+    "即席": 1,
+    "创建 {type}": 1,
+    "任务": 1,
+    "发送任务": 1,
+    "手工任务": 1,
+    "业务规则任务": 1,
+    "子流程（折叠的）": 1,
+    "子流程（展开的）": 1,
+    "即席子流程": 1,
+    "即席子流程（折叠的）": 1,
+    "即席子流程（展开的）": 1,
+    "开始事件": 2,
+    "中间事件": 1,
+    "创建开始事件": 1,
+    "创建结束事件": 1,
+    "创建任务": 1,
+    "创建用户任务": 1,
+    "创建调用活动": 1,
+    "创建服务任务": 1,
+    "创建网关": 1,
+    "创建数据对象": 1,
+    "创建数据存储": 1,
+    "创建分组": 1,
+    "创建中间/边界事件": 1,
+    "定时开始事件": 1,
+    "信号开始事件": 1,
+    "升级开始事件": 1,
+    "定时开始事件（非中断）": 1,
+    "信号开始事件（非中断）": 1,
+    "升级开始事件（非中断）": 1,
+    "定时中间捕获事件": 1,
+    "升级中间抛出事件": 1,
+    "条件中间捕获事件": 1,
+    "信号中间捕获事件": 1,
+    "信号中间抛出事件": 1,
+    "定时结束事件": 1,
+    "取消结束事件": 1,
+    "信号结束事件": 1,
+    "定时边界事件": 1,
+    "定时边界事件（非中断）": 1,
+    "升级边界事件": 1,
+    "升级边界事件（非中断）": 1,
+    "取消边界事件": 1,
+    "信号边界事件": 1,
+    "信号边界事件（非中断）": 1,
+    "互斥网关": 1,
+    "并行网关": 1,
+    "复杂网关": 1,
+    "事件网关": 1,
+    "子流程": 1,
+    "事件子流程": 1,
+    "折叠池": 1,
+    "展开池": 1,
+    "在{parent}里，{element}没有父类": 1,
+    "子道大于{count} ": 1,
+    "元素不能为空": 1,
+    "{element} 已被渲染": 1,
+    "导入{element}失败": 1,
+    "创建者": 1,
+    "持续异步": 1,
+    "工作配置": 1,
+    "工作优先级": 1,
+    "文档": 1,
+    "元素文档": 1,
+    "历史配置": 1,
+    "历史的生存时间": 1,
+    "业务key": 1,
+    "属性": 1,
+    "执行监听": 1,
+    "必须提供一个值": 1,
+    "字段注入": 2,
+    "扩展": 1,
+    "参数": 1,
+    "定时器定义类型": 1,
+    "定时器定义": 1,
+    "升级": 1,
+    "变量名称": 1,
+    "变量事件": 1,
+    "多个变量事件以逗号隔开": 1,
+    "可执行文件": 1,
+    "扩展任务配置": 1,
+    "任务优先级": 1,
+    "外部": 1,
+    "必须配置连接器": 1,
+    "实现方式": 1,
+    "字段": 1,
+    "主题": 1,
+    "代理人": 1,
+    "候选用户": 1,
+    "候选组": 1,
+    "到期时间": 1,
+    "优先级": 1,
+    "变量": 1,
+    "候选人起动器配置": 1,
+    "候选人起动器组": 1,
+    "候选人起动器的用户": 1,
+    "指定多个用户作为逗号分隔的列表。": 1,
+    "Tasklist配置": 1,
+    "启动": 1,
+    "指定多个组作为逗号分隔的列表。": 1,
+    "消息启动事件": 1,
+    "定时启动事件": 1,
+    "条件启动事件": 1,
+    "信号启动事件": 1,
+    "错误启动事件": 1,
+    "升级启动事件": 1,
+    "补偿启动事件": 1,
+    "消息启动事件 (非中断)": 1,
+    "定时启动事件 (非中断)": 1,
+    "条件启动事件 (非中断)": 1,
+    "信号启动事件 (非中断)": 1,
+    "升级启动事件 (非中断)": 1
+  },
+  "files": [
+    {
+      "file": "src/components/bpmnProcessDesigner/package/designer/ProcessDesigner.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "zh": "向左对齐",
+          "en": "Align left"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "zh": "向右对齐",
+          "en": "Align right"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "zh": "向上对齐",
+          "en": "Align top"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "zh": "向下对齐",
+          "en": "Align bottom"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "zh": "水平居中",
+          "en": "Center Horizontally"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "zh": "垂直居中",
+          "en": "Align center vertically"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "zh": "缩小视图",
+          "en": "Zoom Out"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "zh": "放大视图",
+          "en": "Zoom view"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "zh": "重置视图并居中",
+          "en": "Reset & Center View"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "zh": "撤销",
+          "en": "Undo"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "zh": "恢复",
+          "en": "Redo"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "zh": "重新绘制",
+          "en": "Redraw"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "预览",
+          "en": "Preview"
+        },
+        {
+          "type": "vue-text",
+          "zh": "打开文件",
+          "en": "Open file"
+        },
+        {
+          "type": "vue-text",
+          "zh": "下载为XML文件",
+          "en": "Download as XML"
+        },
+        {
+          "type": "vue-text",
+          "zh": "下载为XML文件",
+          "en": "Download as XML"
+        },
+        {
+          "type": "vue-text",
+          "zh": "下载为SVG文件",
+          "en": "Download as SVG"
+        },
+        {
+          "type": "vue-text",
+          "zh": "下载为SVG文件",
+          "en": "Download as SVG"
+        },
+        {
+          "type": "vue-text",
+          "zh": "下载为BPMN文件",
+          "en": "Download as BPMN"
+        },
+        {
+          "type": "vue-text",
+          "zh": "下载为BPMN文件",
+          "en": "Download as BPMN"
+        },
+        {
+          "type": "vue-text",
+          "zh": "下载文件",
+          "en": "Download file"
+        },
+        {
+          "type": "vue-text",
+          "zh": "浏览",
+          "en": "Browse"
+        },
+        {
+          "type": "vue-text",
+          "zh": "预览XML",
+          "en": "Preview XML"
+        },
+        {
+          "type": "vue-text",
+          "zh": "预览XML",
+          "en": "Preview XML"
+        },
+        {
+          "type": "vue-text",
+          "zh": "预览JSON",
+          "en": "Preview JSON"
+        },
+        {
+          "type": "vue-text",
+          "zh": "预览JSON",
+          "en": "Preview JSON"
+        },
+        {
+          "type": "vue-text",
+          "zh": "模拟",
+          "en": "Simulate"
+        },
+        {
+          "type": "script-string",
+          "zh": "请按住 Shift 键选择多个元素对齐",
+          "en": "Hold Shift to select multiple elements to align"
+        },
+        {
+          "type": "script-string",
+          "zh": "自动对齐可能造成图形变形，是否继续？",
+          "en": "Auto-align may distort the diagram. Continue?"
+        },
+        {
+          "type": "script-string",
+          "zh": "警告",
+          "en": "Warning"
+        },
+        {
+          "type": "script-string",
+          "zh": "确定",
+          "en": "Confirm"
+        },
+        {
+          "type": "script-string",
+          "zh": "取消",
+          "en": "Cancel"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":content",
+          "text": "simulationStatus ? '退出模拟' : '开启模拟'"
+        },
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`业务流程_${new Date().getTime()}`"
+        }
+      ]
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/designer/ProcessViewer.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "序号",
+          "en": "No."
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "审批人",
+          "en": "Approver"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "发起人",
+          "en": "Initiator"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "部门",
+          "en": "Department"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "开始时间",
+          "en": "Start Time"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "结束时间",
+          "en": "End Time"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "审批状态",
+          "en": "Approval Status"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "审批建议",
+          "en": "Approval Suggestion"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "耗时",
+          "en": "Duration"
+        },
+        {
+          "type": "script-string",
+          "zh": "审批信息",
+          "en": "Approval Info"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":title",
+          "text": "dialogTitle || '审批记录'"
+        }
+      ]
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/designer/plugins/content-pad/contentPadProvider.js",
+      "replaced": [
+        {
+          "type": "script-string",
+          "zh": "修改类型",
+          "en": "Change type"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/designer/plugins/palette/CustomPalette.js",
+      "replaced": [
+        {
+          "type": "script-string",
+          "zh": "激活抓手工具",
+          "en": "Activate the hand tool"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/designer/plugins/translate/zh.js",
+      "replaced": [
+        {
+          "type": "script-string",
+          "zh": "追加结束事件",
+          "en": "Append End Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "追加网关",
+          "en": "Append Gateway"
+        },
+        {
+          "type": "script-string",
+          "zh": "追加任务",
+          "en": "Append Task"
+        },
+        {
+          "type": "script-string",
+          "zh": "追加中间抛出事件/边界事件",
+          "en": "Append Intermediate/Boundary Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "激活全局连接工具",
+          "en": "Activate the global connect tool"
+        },
+        {
+          "type": "script-string",
+          "zh": "添加 {type}",
+          "en": "Add {type}"
+        },
+        {
+          "type": "script-string",
+          "zh": "追加补偿活动",
+          "en": "Append Compensation Activity"
+        },
+        {
+          "type": "script-string",
+          "zh": "修改类型",
+          "en": "Change type"
+        },
+        {
+          "type": "script-string",
+          "zh": "移除",
+          "en": "Remove"
+        },
+        {
+          "type": "script-string",
+          "zh": "激活抓手工具",
+          "en": "Activate the hand tool"
+        },
+        {
+          "type": "script-string",
+          "zh": "激活套索工具",
+          "en": "Activate the lasso tool"
+        },
+        {
+          "type": "script-string",
+          "zh": "激活创建/删除空间工具",
+          "en": "Activate the create/remove space tool"
+        },
+        {
+          "type": "script-string",
+          "zh": "清空池/参与者（移除内容）",
+          "en": "Clear Pool/Participant (remove content)"
+        },
+        {
+          "type": "script-string",
+          "zh": "并行多重事件",
+          "en": "Parallel Multiple Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "时序多重事件",
+          "en": "Sequential Multiple Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "循环",
+          "en": "Loop"
+        },
+        {
+          "type": "script-string",
+          "zh": "接收任务",
+          "en": "Receive Task"
+        },
+        {
+          "type": "script-string",
+          "zh": "用户任务",
+          "en": "User Task"
+        },
+        {
+          "type": "script-string",
+          "zh": "服务任务",
+          "en": "Service Task"
+        },
+        {
+          "type": "script-string",
+          "zh": "脚本任务",
+          "en": "Script Task"
+        },
+        {
+          "type": "script-string",
+          "zh": "调用活动",
+          "en": "Call Activity"
+        },
+        {
+          "type": "script-string",
+          "zh": "结束事件",
+          "en": "End Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "结束事件",
+          "en": "End Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "消息开始事件",
+          "en": "Message Start Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "条件开始事件",
+          "en": "Conditional Start Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "错误开始事件",
+          "en": "Error Start Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "补偿开始事件",
+          "en": "Compensation Start Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "消息开始事件（非中断）",
+          "en": "Message Start Event (Non-interrupting)"
+        },
+        {
+          "type": "script-string",
+          "zh": "条件开始事件（非中断）",
+          "en": "Conditional Start Event (Non-interrupting)"
+        },
+        {
+          "type": "script-string",
+          "zh": "消息中间捕获事件",
+          "en": "Message Intermediate Catch Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "消息中间抛出事件",
+          "en": "Message Intermediate Throw Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "链接中间捕获事件",
+          "en": "Link Intermediate Catch Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "链接中间抛出事件",
+          "en": "Link Intermediate Throw Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "补偿中间抛出事件",
+          "en": "Compensation Intermediate Throw Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "消息结束事件",
+          "en": "Message End Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "错误结束事件",
+          "en": "Error End Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "补偿结束事件",
+          "en": "Compensation End Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "终止结束事件",
+          "en": "Terminate End Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "消息边界事件",
+          "en": "Message Boundary Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "消息边界事件（非中断）",
+          "en": "Message Boundary Event (Non-interrupting)"
+        },
+        {
+          "type": "script-string",
+          "zh": "条件边界事件",
+          "en": "Conditional Boundary Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "条件边界事件（非中断）",
+          "en": "Conditional Boundary Event (Non-interrupting)"
+        },
+        {
+          "type": "script-string",
+          "zh": "错误边界事件",
+          "en": "Error Boundary Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "补偿边界事件",
+          "en": "Compensation Boundary Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "相容网关",
+          "en": "Inclusive Gateway"
+        },
+        {
+          "type": "script-string",
+          "zh": "转运",
+          "en": "Transfer"
+        },
+        {
+          "type": "script-string",
+          "zh": "没有指定的形状类型",
+          "en": "No shape type specified"
+        },
+        {
+          "type": "script-string",
+          "zh": "流元素必须是池/参与者的子类",
+          "en": "Flow element must be a child of a Pool/Participant"
+        },
+        {
+          "type": "script-string",
+          "zh": "流程图不符合bpmn规范",
+          "en": "The diagram does not comply with the BPMN spec"
+        },
+        {
+          "type": "script-string",
+          "zh": "没有可展示的流程图",
+          "en": "No process diagram to display"
+        },
+        {
+          "type": "script-string",
+          "zh": "没有可展示的流程/协作",
+          "en": "No process/collaboration to display"
+        },
+        {
+          "type": "script-string",
+          "zh": "由{referenced}#{property}引用的{element}元素仍未绘制",
+          "en": "Element {element} referenced by {referenced}#{property} is not yet drawn"
+        },
+        {
+          "type": "script-string",
+          "zh": "编号",
+          "en": "ID"
+        },
+        {
+          "type": "script-string",
+          "zh": "名称",
+          "en": "Name"
+        },
+        {
+          "type": "script-string",
+          "zh": "常规",
+          "en": "General"
+        },
+        {
+          "type": "script-string",
+          "zh": "详情",
+          "en": "Detail"
+        },
+        {
+          "type": "script-string",
+          "zh": "消息名称",
+          "en": "Message Name"
+        },
+        {
+          "type": "script-string",
+          "zh": "消息",
+          "en": "Message"
+        },
+        {
+          "type": "script-string",
+          "zh": "异步前",
+          "en": "Async Before"
+        },
+        {
+          "type": "script-string",
+          "zh": "异步后",
+          "en": "Async After"
+        },
+        {
+          "type": "script-string",
+          "zh": "排除",
+          "en": "Exclude"
+        },
+        {
+          "type": "script-string",
+          "zh": "重试时间周期",
+          "en": "Retry Time Cycle"
+        },
+        {
+          "type": "script-string",
+          "zh": "表单",
+          "en": "Form"
+        },
+        {
+          "type": "script-string",
+          "zh": "表单key",
+          "en": "Form Key"
+        },
+        {
+          "type": "script-string",
+          "zh": "表单字段",
+          "en": "Form Field"
+        },
+        {
+          "type": "script-string",
+          "zh": "表单字段",
+          "en": "Form Field"
+        },
+        {
+          "type": "script-string",
+          "zh": "编号",
+          "en": "ID"
+        },
+        {
+          "type": "script-string",
+          "zh": "类型",
+          "en": "Type"
+        },
+        {
+          "type": "script-string",
+          "zh": "名称",
+          "en": "Name"
+        },
+        {
+          "type": "script-string",
+          "zh": "默认值",
+          "en": "Default Value"
+        },
+        {
+          "type": "script-string",
+          "zh": "默认流转路径",
+          "en": "Default Flow"
+        },
+        {
+          "type": "script-string",
+          "zh": "条件流转路径",
+          "en": "Conditional Flow"
+        },
+        {
+          "type": "script-string",
+          "zh": "普通流转路径",
+          "en": "Normal Flow"
+        },
+        {
+          "type": "script-string",
+          "zh": "校验",
+          "en": "Validate"
+        },
+        {
+          "type": "script-string",
+          "zh": "添加约束",
+          "en": "Add Constraint"
+        },
+        {
+          "type": "script-string",
+          "zh": "配置",
+          "en": "Config"
+        },
+        {
+          "type": "script-string",
+          "zh": "添加属性",
+          "en": "Add Property"
+        },
+        {
+          "type": "script-string",
+          "zh": "值",
+          "en": "Value"
+        },
+        {
+          "type": "script-string",
+          "zh": "监听器",
+          "en": "Listener"
+        },
+        {
+          "type": "script-string",
+          "zh": "事件类型",
+          "en": "Event Type"
+        },
+        {
+          "type": "script-string",
+          "zh": "监听器类型",
+          "en": "Listener Type"
+        },
+        {
+          "type": "script-string",
+          "zh": "Java类",
+          "en": "Java Class"
+        },
+        {
+          "type": "script-string",
+          "zh": "表达式",
+          "en": "Expression"
+        },
+        {
+          "type": "script-string",
+          "zh": "代理表达式",
+          "en": "Delegate Expression"
+        },
+        {
+          "type": "script-string",
+          "zh": "脚本",
+          "en": "Script"
+        },
+        {
+          "type": "script-string",
+          "zh": "脚本格式",
+          "en": "Script Format"
+        },
+        {
+          "type": "script-string",
+          "zh": "脚本类型",
+          "en": "Script Type"
+        },
+        {
+          "type": "script-string",
+          "zh": "内联脚本",
+          "en": "Inline Script"
+        },
+        {
+          "type": "script-string",
+          "zh": "外部脚本",
+          "en": "External Script"
+        },
+        {
+          "type": "script-string",
+          "zh": "资源",
+          "en": "Resource"
+        },
+        {
+          "type": "script-string",
+          "zh": "输入/输出",
+          "en": "Input/Output"
+        },
+        {
+          "type": "script-string",
+          "zh": "输入参数",
+          "en": "Input Parameter"
+        },
+        {
+          "type": "script-string",
+          "zh": "输出参数",
+          "en": "Output Parameter"
+        },
+        {
+          "type": "script-string",
+          "zh": "输出参数",
+          "en": "Output Parameter"
+        },
+        {
+          "type": "script-string",
+          "zh": "日期",
+          "en": "Date"
+        },
+        {
+          "type": "script-string",
+          "zh": "持续",
+          "en": "Duration"
+        },
+        {
+          "type": "script-string",
+          "zh": "循环",
+          "en": "Loop"
+        },
+        {
+          "type": "script-string",
+          "zh": "信号",
+          "en": "Signal"
+        },
+        {
+          "type": "script-string",
+          "zh": "信号名称",
+          "en": "Signal Name"
+        },
+        {
+          "type": "script-string",
+          "zh": "错误",
+          "en": "Error"
+        },
+        {
+          "type": "script-string",
+          "zh": "链接名称",
+          "en": "Link Name"
+        },
+        {
+          "type": "script-string",
+          "zh": "条件名称",
+          "en": "Condition Name"
+        },
+        {
+          "type": "script-string",
+          "zh": "等待完成",
+          "en": "Wait for Completion"
+        },
+        {
+          "type": "script-string",
+          "zh": "活动参考",
+          "en": "Activity Reference"
+        },
+        {
+          "type": "script-string",
+          "zh": "版本标签",
+          "en": "Version Tag"
+        },
+        {
+          "type": "script-string",
+          "zh": "连接器",
+          "en": "Connector"
+        },
+        {
+          "type": "script-string",
+          "zh": "连接器编号",
+          "en": "Connector ID"
+        },
+        {
+          "type": "script-string",
+          "zh": "结果变量",
+          "en": "Result Variable"
+        },
+        {
+          "type": "script-string",
+          "zh": "配置连接器",
+          "en": "Configure Connector"
+        },
+        {
+          "type": "script-string",
+          "zh": "输入参数",
+          "en": "Input Parameter"
+        },
+        {
+          "type": "script-string",
+          "zh": "跟踪日期",
+          "en": "Due Date"
+        },
+        {
+          "type": "script-string",
+          "zh": "跟踪日期必须符合EL表达式，如： ${someDate} ,或者一个ISO标准日期，如：2015-06-26T09:54:00",
+          "en": "Due date must be an EL expression like ${someDate}, or an ISO date like 2015-06-26T09:54:00"
+        },
+        {
+          "type": "script-string",
+          "zh": "跟踪日期必须符合EL表达式，如： ${someDate} ,或者一个ISO标准日期，如：2015-06-26T09:54:00",
+          "en": "Due date must be an EL expression like ${someDate}, or an ISO date like 2015-06-26T09:54:00"
+        },
+        {
+          "type": "script-string",
+          "zh": "这映射到流程定义键。",
+          "en": "This maps to the process definition key."
+        }
+      ],
+      "missing": [
+        {
+          "type": "script-string",
+          "text": "文本注释"
+        },
+        {
+          "type": "script-string",
+          "text": "在上面添加道"
+        },
+        {
+          "type": "script-string",
+          "text": "分割成两个道"
+        },
+        {
+          "type": "script-string",
+          "text": "分割成三个道"
+        },
+        {
+          "type": "script-string",
+          "text": "在下面添加道"
+        },
+        {
+          "type": "script-string",
+          "text": "使用关联连接"
+        },
+        {
+          "type": "script-string",
+          "text": "使用顺序/消息流或者关联连接"
+        },
+        {
+          "type": "script-string",
+          "text": "使用数据输入关联连接"
+        },
+        {
+          "type": "script-string",
+          "text": "创建扩展子过程"
+        },
+        {
+          "type": "script-string",
+          "text": "创建中间抛出事件/边界事件"
+        },
+        {
+          "type": "script-string",
+          "text": "创建池/参与者"
+        },
+        {
+          "type": "script-string",
+          "text": "参与者多重性"
+        },
+        {
+          "type": "script-string",
+          "text": "收缩池/参与者"
+        },
+        {
+          "type": "script-string",
+          "text": "展开池/参与者"
+        },
+        {
+          "type": "script-string",
+          "text": "数据对象参考"
+        },
+        {
+          "type": "script-string",
+          "text": "数据存储参考"
+        },
+        {
+          "type": "script-string",
+          "text": "数据对象引用 "
+        },
+        {
+          "type": "script-string",
+          "text": "数据存储引用 "
+        },
+        {
+          "type": "script-string",
+          "text": "即席"
+        },
+        {
+          "type": "script-string",
+          "text": "创建 {type}"
+        },
+        {
+          "type": "script-string",
+          "text": "任务"
+        },
+        {
+          "type": "script-string",
+          "text": "发送任务"
+        },
+        {
+          "type": "script-string",
+          "text": "手工任务"
+        },
+        {
+          "type": "script-string",
+          "text": "业务规则任务"
+        },
+        {
+          "type": "script-string",
+          "text": "子流程（折叠的）"
+        },
+        {
+          "type": "script-string",
+          "text": "子流程（展开的）"
+        },
+        {
+          "type": "script-string",
+          "text": "即席子流程"
+        },
+        {
+          "type": "script-string",
+          "text": "即席子流程（折叠的）"
+        },
+        {
+          "type": "script-string",
+          "text": "即席子流程（展开的）"
+        },
+        {
+          "type": "script-string",
+          "text": "开始事件"
+        },
+        {
+          "type": "script-string",
+          "text": "开始事件"
+        },
+        {
+          "type": "script-string",
+          "text": "中间事件"
+        },
+        {
+          "type": "script-string",
+          "text": "创建开始事件"
+        },
+        {
+          "type": "script-string",
+          "text": "创建结束事件"
+        },
+        {
+          "type": "script-string",
+          "text": "创建任务"
+        },
+        {
+          "type": "script-string",
+          "text": "创建用户任务"
+        },
+        {
+          "type": "script-string",
+          "text": "创建调用活动"
+        },
+        {
+          "type": "script-string",
+          "text": "创建服务任务"
+        },
+        {
+          "type": "script-string",
+          "text": "创建网关"
+        },
+        {
+          "type": "script-string",
+          "text": "创建数据对象"
+        },
+        {
+          "type": "script-string",
+          "text": "创建数据存储"
+        },
+        {
+          "type": "script-string",
+          "text": "创建分组"
+        },
+        {
+          "type": "script-string",
+          "text": "创建中间/边界事件"
+        },
+        {
+          "type": "script-string",
+          "text": "定时开始事件"
+        },
+        {
+          "type": "script-string",
+          "text": "信号开始事件"
+        },
+        {
+          "type": "script-string",
+          "text": "升级开始事件"
+        },
+        {
+          "type": "script-string",
+          "text": "定时开始事件（非中断）"
+        },
+        {
+          "type": "script-string",
+          "text": "信号开始事件（非中断）"
+        },
+        {
+          "type": "script-string",
+          "text": "升级开始事件（非中断）"
+        },
+        {
+          "type": "script-string",
+          "text": "定时中间捕获事件"
+        },
+        {
+          "type": "script-string",
+          "text": "升级中间抛出事件"
+        },
+        {
+          "type": "script-string",
+          "text": "条件中间捕获事件"
+        },
+        {
+          "type": "script-string",
+          "text": "信号中间捕获事件"
+        },
+        {
+          "type": "script-string",
+          "text": "信号中间抛出事件"
+        },
+        {
+          "type": "script-string",
+          "text": "定时结束事件"
+        },
+        {
+          "type": "script-string",
+          "text": "取消结束事件"
+        },
+        {
+          "type": "script-string",
+          "text": "信号结束事件"
+        },
+        {
+          "type": "script-string",
+          "text": "定时边界事件"
+        },
+        {
+          "type": "script-string",
+          "text": "定时边界事件（非中断）"
+        },
+        {
+          "type": "script-string",
+          "text": "升级边界事件"
+        },
+        {
+          "type": "script-string",
+          "text": "升级边界事件（非中断）"
+        },
+        {
+          "type": "script-string",
+          "text": "取消边界事件"
+        },
+        {
+          "type": "script-string",
+          "text": "信号边界事件"
+        },
+        {
+          "type": "script-string",
+          "text": "信号边界事件（非中断）"
+        },
+        {
+          "type": "script-string",
+          "text": "互斥网关"
+        },
+        {
+          "type": "script-string",
+          "text": "并行网关"
+        },
+        {
+          "type": "script-string",
+          "text": "复杂网关"
+        },
+        {
+          "type": "script-string",
+          "text": "事件网关"
+        },
+        {
+          "type": "script-string",
+          "text": "子流程"
+        },
+        {
+          "type": "script-string",
+          "text": "事件子流程"
+        },
+        {
+          "type": "script-string",
+          "text": "折叠池"
+        },
+        {
+          "type": "script-string",
+          "text": "展开池"
+        },
+        {
+          "type": "script-string",
+          "text": "在{parent}里，{element}没有父类"
+        },
+        {
+          "type": "script-string",
+          "text": "子道大于{count} "
+        },
+        {
+          "type": "script-string",
+          "text": "元素不能为空"
+        },
+        {
+          "type": "script-string",
+          "text": "{element} 已被渲染"
+        },
+        {
+          "type": "script-string",
+          "text": "导入{element}失败"
+        },
+        {
+          "type": "script-string",
+          "text": "创建者"
+        },
+        {
+          "type": "script-string",
+          "text": "持续异步"
+        },
+        {
+          "type": "script-string",
+          "text": "工作配置"
+        },
+        {
+          "type": "script-string",
+          "text": "工作优先级"
+        },
+        {
+          "type": "script-string",
+          "text": "文档"
+        },
+        {
+          "type": "script-string",
+          "text": "元素文档"
+        },
+        {
+          "type": "script-string",
+          "text": "历史配置"
+        },
+        {
+          "type": "script-string",
+          "text": "历史的生存时间"
+        },
+        {
+          "type": "script-string",
+          "text": "业务key"
+        },
+        {
+          "type": "script-string",
+          "text": "属性"
+        },
+        {
+          "type": "script-string",
+          "text": "执行监听"
+        },
+        {
+          "type": "script-string",
+          "text": "必须提供一个值"
+        },
+        {
+          "type": "script-string",
+          "text": "字段注入"
+        },
+        {
+          "type": "script-string",
+          "text": "扩展"
+        },
+        {
+          "type": "script-string",
+          "text": "参数"
+        },
+        {
+          "type": "script-string",
+          "text": "定时器定义类型"
+        },
+        {
+          "type": "script-string",
+          "text": "定时器定义"
+        },
+        {
+          "type": "script-string",
+          "text": "升级"
+        },
+        {
+          "type": "script-string",
+          "text": "变量名称"
+        },
+        {
+          "type": "script-string",
+          "text": "变量事件"
+        },
+        {
+          "type": "script-string",
+          "text": "多个变量事件以逗号隔开"
+        },
+        {
+          "type": "script-string",
+          "text": "可执行文件"
+        },
+        {
+          "type": "script-string",
+          "text": "扩展任务配置"
+        },
+        {
+          "type": "script-string",
+          "text": "任务优先级"
+        },
+        {
+          "type": "script-string",
+          "text": "外部"
+        },
+        {
+          "type": "script-string",
+          "text": "必须配置连接器"
+        },
+        {
+          "type": "script-string",
+          "text": "实现方式"
+        },
+        {
+          "type": "script-string",
+          "text": "字段注入"
+        },
+        {
+          "type": "script-string",
+          "text": "字段"
+        },
+        {
+          "type": "script-string",
+          "text": "主题"
+        },
+        {
+          "type": "script-string",
+          "text": "代理人"
+        },
+        {
+          "type": "script-string",
+          "text": "候选用户"
+        },
+        {
+          "type": "script-string",
+          "text": "候选组"
+        },
+        {
+          "type": "script-string",
+          "text": "到期时间"
+        },
+        {
+          "type": "script-string",
+          "text": "优先级"
+        },
+        {
+          "type": "script-string",
+          "text": "变量"
+        },
+        {
+          "type": "script-string",
+          "text": "候选人起动器配置"
+        },
+        {
+          "type": "script-string",
+          "text": "候选人起动器组"
+        },
+        {
+          "type": "script-string",
+          "text": "候选人起动器的用户"
+        },
+        {
+          "type": "script-string",
+          "text": "指定多个用户作为逗号分隔的列表。"
+        },
+        {
+          "type": "script-string",
+          "text": "Tasklist配置"
+        },
+        {
+          "type": "script-string",
+          "text": "启动"
+        },
+        {
+          "type": "script-string",
+          "text": "指定多个组作为逗号分隔的列表。"
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/palette/ProcessPalette.vue",
+      "replaced": [
+        {
+          "type": "vue-text",
+          "zh": "测试任务",
+          "en": "Test task"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/PropertiesPanel.vue",
+      "replaced": [
+        {
+          "type": "vue-text",
+          "zh": "常规",
+          "en": "General"
+        },
+        {
+          "type": "vue-text",
+          "zh": "消息与信号",
+          "en": "Message & Signal"
+        },
+        {
+          "type": "vue-text",
+          "zh": "流转条件",
+          "en": "Flow Condition"
+        },
+        {
+          "type": "vue-text",
+          "zh": "表单",
+          "en": "Form"
+        },
+        {
+          "type": "vue-text",
+          "zh": "多人审批方式",
+          "en": "Multi-approval Method"
+        },
+        {
+          "type": "vue-text",
+          "zh": "执行监听器",
+          "en": "Execution Listener"
+        },
+        {
+          "type": "vue-text",
+          "zh": "任务监听器",
+          "en": "Task Listener"
+        },
+        {
+          "type": "vue-text",
+          "zh": "扩展属性",
+          "en": "Extension Properties"
+        },
+        {
+          "type": "vue-text",
+          "zh": "其他",
+          "en": "Others"
+        },
+        {
+          "type": "vue-text",
+          "zh": "自定义配置",
+          "en": "Custom Config"
+        },
+        {
+          "type": "vue-text",
+          "zh": "时间事件",
+          "en": "Timer Event"
+        },
+        {
+          "type": "script-string",
+          "zh": "初始化 bpmnInstances 失败:",
+          "en": "Failed to init bpmnInstances:"
+        },
+        {
+          "type": "script-string",
+          "zh": "缺少props.bpmnModeler",
+          "en": "Missing props.bpmnModeler"
+        },
+        {
+          "type": "script-string",
+          "zh": "modeler 实例未完全初始化",
+          "en": "modeler instance not fully initialized"
+        },
+        {
+          "type": "script-string",
+          "zh": "初始化失败:",
+          "en": "Init failed:"
+        },
+        {
+          "type": "script-string",
+          "zh": "初始化表单数据失败:",
+          "en": "Failed to init form data:"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/base/ElementBaseInfo.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "流程标识",
+          "en": "Process Key"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "请输入流标标识",
+          "en": "Please enter process key"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "流程名称",
+          "en": "Process Name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "请输入流程名称",
+          "en": "Please enter process name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "名称",
+          "en": "Name"
+        },
+        {
+          "type": "script-string",
+          "zh": "流程标识不能为空",
+          "en": "Process key is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "流程名称不能为空",
+          "en": "Process name is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "key 不满足 XML NCName 规则，所以不进行赋值",
+          "en": "key does not satisfy XML NCName rule, skip assignment"
+        },
+        {
+          "type": "script-string",
+          "zh": "key 满足 XML NCName 规则，所以进行赋值",
+          "en": "key satisfies XML NCName rule, assigning"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/custom-config/components/BoundaryEventTimer.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "启用开关",
+          "en": "Enable Switch"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "zh": "开启",
+          "en": "On"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "zh": "关闭",
+          "en": "Close"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "执行动作",
+          "en": "Execution Action"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "超时时间设置",
+          "en": "Timeout Setting"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "最大提醒次数",
+          "en": "Max Reminder Count"
+        },
+        {
+          "type": "vue-text",
+          "zh": "审批人超时未处理时",
+          "en": "When approver times out"
+        },
+        {
+          "type": "vue-text",
+          "zh": "当超过",
+          "en": "When exceeds"
+        },
+        {
+          "type": "vue-text",
+          "zh": "未处理",
+          "en": "Not handled"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/custom-config/components/UserTaskCustomConfig.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "驳回节点",
+          "en": "Reject Node"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定用户",
+          "en": "Specified User"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "zh": "是",
+          "en": "Yes"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "zh": "否",
+          "en": "No"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "zh": "必填",
+          "en": "Required"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "zh": "非必填",
+          "en": "Optional"
+        },
+        {
+          "type": "vue-text",
+          "zh": "审批类型",
+          "en": "Approval Type"
+        },
+        {
+          "type": "vue-text",
+          "zh": "审批人拒绝时",
+          "en": "When approver rejects"
+        },
+        {
+          "type": "vue-text",
+          "zh": "审批人为空时",
+          "en": "When approver is empty"
+        },
+        {
+          "type": "vue-text",
+          "zh": "审批人与提交人为同一人时",
+          "en": "When approver is the same as submitter"
+        },
+        {
+          "type": "vue-text",
+          "zh": "操作按钮",
+          "en": "Action Button"
+        },
+        {
+          "type": "vue-text",
+          "zh": "操作按钮",
+          "en": "Action Button"
+        },
+        {
+          "type": "vue-text",
+          "zh": "显示名称",
+          "en": "Display Name"
+        },
+        {
+          "type": "vue-text",
+          "zh": "启用",
+          "en": "Enable"
+        },
+        {
+          "type": "vue-text",
+          "zh": "字段权限",
+          "en": "Field Permission"
+        },
+        {
+          "type": "vue-text",
+          "zh": "字段名称",
+          "en": "Field Name"
+        },
+        {
+          "type": "vue-text",
+          "zh": "只读",
+          "en": "Read-only"
+        },
+        {
+          "type": "vue-text",
+          "zh": "可编辑",
+          "en": "Editable"
+        },
+        {
+          "type": "vue-text",
+          "zh": "隐藏",
+          "en": "Hide"
+        },
+        {
+          "type": "vue-text",
+          "zh": "是否需要签名",
+          "en": "Signature Required"
+        },
+        {
+          "type": "vue-text",
+          "zh": "审批意见",
+          "en": "Approval Comment"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/custom-config/data.ts",
+      "replaced": [
+        {
+          "type": "script-string",
+          "zh": "用户任务",
+          "en": "User Task"
+        },
+        {
+          "type": "script-string",
+          "zh": "定时边界事件(非中断)",
+          "en": "Timer Boundary Event (non-interrupting)"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/flow-condition/FlowCondition.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "流转类型",
+          "en": "Flow Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "普通流转路径",
+          "en": "Normal Flow"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "默认流转路径",
+          "en": "Default Flow"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "条件流转路径",
+          "en": "Conditional Flow"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "条件格式",
+          "en": "Condition Format"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表达式",
+          "en": "Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "脚本",
+          "en": "Script"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表达式",
+          "en": "Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "脚本语言",
+          "en": "Script Language"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "脚本类型",
+          "en": "Script Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "内联脚本",
+          "en": "Inline Script"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "外部脚本",
+          "en": "External Script"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "脚本",
+          "en": "Script"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "资源地址",
+          "en": "Resource Address"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/form/ElementForm.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "流程表单",
+          "en": "Process Form"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "业务标识",
+          "en": "Business Key"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "无",
+          "en": "None"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "序号",
+          "en": "No."
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "字段名称",
+          "en": "Field Name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "字段类型",
+          "en": "Field Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "默认值",
+          "en": "Default Value"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "操作",
+          "en": "Action"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "字段配置",
+          "en": "Field Config"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "字段ID",
+          "en": "Field ID"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "类型",
+          "en": "Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "请选择字段类型",
+          "en": "Please select field type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "类型名称",
+          "en": "Type Name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "名称",
+          "en": "Name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "时间格式",
+          "en": "Time Format"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "默认值",
+          "en": "Default Value"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "序号",
+          "en": "No."
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "枚举值编号",
+          "en": "Enum Value ID"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "枚举值名称",
+          "en": "Enum Value Name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "操作",
+          "en": "Action"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "序号",
+          "en": "No."
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "约束名称",
+          "en": "Constraint Name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "约束配置",
+          "en": "Constraint Config"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "操作",
+          "en": "Action"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "序号",
+          "en": "No."
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "属性编号",
+          "en": "Property ID"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "属性值",
+          "en": "Property Value"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "操作",
+          "en": "Action"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "编号/ID",
+          "en": "ID"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "名称",
+          "en": "Name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "配置",
+          "en": "Config"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "值",
+          "en": "Value"
+        },
+        {
+          "type": "vue-text",
+          "zh": "表单字段",
+          "en": "Form Field"
+        },
+        {
+          "type": "vue-text",
+          "zh": "编辑",
+          "en": "Edit"
+        },
+        {
+          "type": "vue-text",
+          "zh": "移除",
+          "en": "Remove"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加字段",
+          "en": "Add Field"
+        },
+        {
+          "type": "vue-text",
+          "zh": "枚举值列表：",
+          "en": "Enum Value List:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加枚举值",
+          "en": "Add Enum Value"
+        },
+        {
+          "type": "vue-text",
+          "zh": "编辑",
+          "en": "Edit"
+        },
+        {
+          "type": "vue-text",
+          "zh": "移除",
+          "en": "Remove"
+        },
+        {
+          "type": "vue-text",
+          "zh": "约束条件列表：",
+          "en": "Constraint List:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加约束",
+          "en": "Add Constraint"
+        },
+        {
+          "type": "vue-text",
+          "zh": "编辑",
+          "en": "Edit"
+        },
+        {
+          "type": "vue-text",
+          "zh": "移除",
+          "en": "Remove"
+        },
+        {
+          "type": "vue-text",
+          "zh": "字段属性列表：",
+          "en": "Field Property List:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加属性",
+          "en": "Add Property"
+        },
+        {
+          "type": "vue-text",
+          "zh": "编辑",
+          "en": "Edit"
+        },
+        {
+          "type": "vue-text",
+          "zh": "移除",
+          "en": "Remove"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "vue-text",
+          "zh": "保 存",
+          "en": "Save"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确 定",
+          "en": "Confirm"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/listeners/ElementListeners.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "序号",
+          "en": "No."
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "事件类型",
+          "en": "Event Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "监听器类型",
+          "en": "Listener Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "操作",
+          "en": "Action"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "执行监听器",
+          "en": "Execution Listener"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "事件类型",
+          "en": "Event Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "监听器类型",
+          "en": "Listener Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "Java类",
+          "en": "Java Class"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表达式",
+          "en": "Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "代理表达式",
+          "en": "Delegate Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "脚本格式",
+          "en": "Script Format"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "脚本类型",
+          "en": "Script Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "内联脚本",
+          "en": "Inline Script"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "外部脚本",
+          "en": "External Script"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "脚本内容",
+          "en": "Script Content"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "资源地址",
+          "en": "Resource Address"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "序号",
+          "en": "No."
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "字段名称",
+          "en": "Field Name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "字段类型",
+          "en": "Field Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "字段值/表达式",
+          "en": "Field Value / Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "操作",
+          "en": "Action"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "字段配置",
+          "en": "Field Config"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "字段名称：",
+          "en": "Field Name:"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "字段类型：",
+          "en": "Field Type:"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "字段值：",
+          "en": "Field Value:"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表达式：",
+          "en": "Expression:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "编辑",
+          "en": "Edit"
+        },
+        {
+          "type": "vue-text",
+          "zh": "移除",
+          "en": "Remove"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加监听器",
+          "en": "Add Listener"
+        },
+        {
+          "type": "vue-text",
+          "zh": "选择监听器",
+          "en": "Select Listener"
+        },
+        {
+          "type": "vue-text",
+          "zh": "注入字段：",
+          "en": "Inject Fields:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加字段",
+          "en": "Add Field"
+        },
+        {
+          "type": "vue-text",
+          "zh": "编辑",
+          "en": "Edit"
+        },
+        {
+          "type": "vue-text",
+          "zh": "移除",
+          "en": "Remove"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "vue-text",
+          "zh": "保 存",
+          "en": "Save"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确 定",
+          "en": "Confirm"
+        },
+        {
+          "type": "script-string",
+          "zh": "确认移除该字段吗？",
+          "en": "Confirm removing this field?"
+        },
+        {
+          "type": "script-string",
+          "zh": "提示",
+          "en": "Tip"
+        },
+        {
+          "type": "script-string",
+          "zh": "确 认",
+          "en": "Confirm"
+        },
+        {
+          "type": "script-string",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "script-string",
+          "zh": "操作取消",
+          "en": "Operation cancelled"
+        },
+        {
+          "type": "script-string",
+          "zh": "确认移除该监听器吗？",
+          "en": "Confirm removing this listener?"
+        },
+        {
+          "type": "script-string",
+          "zh": "提示",
+          "en": "Tip"
+        },
+        {
+          "type": "script-string",
+          "zh": "确 认",
+          "en": "Confirm"
+        },
+        {
+          "type": "script-string",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "script-string",
+          "zh": "操作取消",
+          "en": "Operation cancelled"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{ required: true, trigger: ['blur', 'change'], message: '请填写脚本格式' }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{ required: true, trigger: ['blur', 'change'], message: '请选择脚本类型' }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{ required: true, trigger: ['blur', 'change'], message: '请填写脚本内容' }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{ required: true, trigger: ['blur', 'change'], message: '请填写资源地址' }"
+        }
+      ]
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/listeners/ProcessListenerDialog.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "请选择监听器",
+          "en": "Please select listener"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "名字",
+          "en": "Name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "类型",
+          "en": "Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "事件",
+          "en": "Event"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "值类型",
+          "en": "Value Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "值",
+          "en": "Value"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "操作",
+          "en": "Action"
+        },
+        {
+          "type": "vue-text",
+          "zh": "选择",
+          "en": "Select"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/listeners/UserTaskListeners.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "序号",
+          "en": "No."
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "事件类型",
+          "en": "Event Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "事件id",
+          "en": "Event ID"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "监听器类型",
+          "en": "Listener Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "操作",
+          "en": "Action"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "任务监听器",
+          "en": "Task Listener"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "事件类型",
+          "en": "Event Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "监听器ID",
+          "en": "Listener ID"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "监听器类型",
+          "en": "Listener Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "Java类",
+          "en": "Java Class"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表达式",
+          "en": "Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "代理表达式",
+          "en": "Delegate Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "脚本格式",
+          "en": "Script Format"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "脚本类型",
+          "en": "Script Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "内联脚本",
+          "en": "Inline Script"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "外部脚本",
+          "en": "External Script"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "脚本内容",
+          "en": "Script Content"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "资源地址",
+          "en": "Resource Address"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "定时器类型",
+          "en": "Timer Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "日期",
+          "en": "Date"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "持续时长",
+          "en": "Duration"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "循环",
+          "en": "Loop"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "无",
+          "en": "None"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "定时器",
+          "en": "Timer"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "序号",
+          "en": "No."
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "字段名称",
+          "en": "Field Name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "字段类型",
+          "en": "Field Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "字段值/表达式",
+          "en": "Field Value / Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "操作",
+          "en": "Action"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "字段配置",
+          "en": "Field Config"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "字段名称：",
+          "en": "Field Name:"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "字段类型：",
+          "en": "Field Type:"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "字段值：",
+          "en": "Field Value:"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表达式：",
+          "en": "Expression:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "编辑",
+          "en": "Edit"
+        },
+        {
+          "type": "vue-text",
+          "zh": "移除",
+          "en": "Remove"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加监听器",
+          "en": "Add Listener"
+        },
+        {
+          "type": "vue-text",
+          "zh": "选择监听器",
+          "en": "Select Listener"
+        },
+        {
+          "type": "vue-text",
+          "zh": "注入字段：",
+          "en": "Inject Fields:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加字段",
+          "en": "Add Field"
+        },
+        {
+          "type": "vue-text",
+          "zh": "编辑",
+          "en": "Edit"
+        },
+        {
+          "type": "vue-text",
+          "zh": "移除",
+          "en": "Remove"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "vue-text",
+          "zh": "保 存",
+          "en": "Save"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确 定",
+          "en": "Confirm"
+        },
+        {
+          "type": "script-string",
+          "zh": "确认移除该监听器吗？",
+          "en": "Confirm removing this listener?"
+        },
+        {
+          "type": "script-string",
+          "zh": "提示",
+          "en": "Tip"
+        },
+        {
+          "type": "script-string",
+          "zh": "确 认",
+          "en": "Confirm"
+        },
+        {
+          "type": "script-string",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "script-string",
+          "zh": "操作取消",
+          "en": "Operation cancelled"
+        },
+        {
+          "type": "script-string",
+          "zh": "确认移除该字段吗？",
+          "en": "Confirm removing this field?"
+        },
+        {
+          "type": "script-string",
+          "zh": "提示",
+          "en": "Tip"
+        },
+        {
+          "type": "script-string",
+          "zh": "确 认",
+          "en": "Confirm"
+        },
+        {
+          "type": "script-string",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "script-string",
+          "zh": "操作取消",
+          "en": "Operation cancelled"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{ required: true, trigger: ['blur', 'change'], message: '请填写脚本格式' }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{ required: true, trigger: ['blur', 'change'], message: '请选择脚本类型' }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{ required: true, trigger: ['blur', 'change'], message: '请填写脚本内容' }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{ required: true, trigger: ['blur', 'change'], message: '请填写资源地址' }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{ required: true, trigger: ['blur', 'change'], message: '请填写定时器配置' }"
+        }
+      ]
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/listeners/template.js",
+      "replaced": [],
+      "missing": [],
+      "review": [
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`\n  <div class=\"panel-tab__content\">\n    <el-table :data=\"elementListenersList\" size=\"small\" border>\n      <el-table-column label=\"序号\" width=\"50px\" type=\"index\" />\n      <el-table-column label=\"事件类型\" min-width=\"100px\" prop=\"event\" />\n      <el-table-column label=\"监听器类型\" min-width=\"100px\" show-overflow-tooltip :formatter=\"row => listenerTypeObject[row.listenerType]\" />\n      <el-table-column label=\"操作\" width=\"90px\">\n        <template #default=\"scope\">\n          <el-button size=\"small\" type=\"primary\" link @click=\"openListenerForm(scope, scope.$index)\">编辑</el-button>\n          <el-divider direction=\"vertical\" />\n          <el-button size=\"small\" type=\"primary\" link style=\"color: #ff4d4f\" @click=\"removeListener(scope, scope.$index)\">移除</el-button>\n        </template>\n      </el-table-column>\n    </el-table>\n    <div class=\"element-drawer__button\">\n      <el-button size=\"small\" type=\"primary\" icon=\"el-icon-plus\" @click=\"openListenerForm(null)\">添加监听器</el-button>\n    </div>\n\n    <!-- 监听器 编辑/创建 部分 -->\n    <el-drawer :visible.sync=\"listenerFormModelVisible\" title=\"执行监听器\" :size=\"width + 'px'\" append-to-body destroy-on-close>\n      <el-form size=\"small\" :model=\"listenerForm\" label-width=\"96px\" ref=\"listenerFormRef\" @submit.native.prevent>\n        <el-form-item label=\"事件类型\" prop=\"event\" :rules=\"{ required: true, trigger: ['blur', 'change'] }\">\n          <el-select v-model=\"listenerForm.event\">\n            <el-option label=\"start\" value=\"start\" />\n            <el-option label=\"end\" value=\"end\" />\n          </el-select>\n        </el-form-item>\n        <el-form-item label=\"监听器类型\" prop=\"listenerType\" :rules=\"{ required: true, trigger: ['blur', 'change'] }\">\n          <el-select v-model=\"listenerForm.listenerType\">\n            <el-option v-for=\"i in Object.keys(listenerTypeObject)\" :key=\"i\" :label=\"listenerTypeObject[i]\" :value=\"i\" />\n          </el-select>\n        </el-form-item>\n        <el-form-item\n          v-if=\"listenerForm.listenerType === 'classListener'\"\n          label=\"Java类\"\n          prop=\"class\"\n          key=\"listener-class\"\n          :rules=\"{ required: true, trigger: ['blur', 'change'] }\"\n        >\n          <el-input v-model=\"listenerForm.class\" clearable />\n        </el-form-item>\n        <el-form-item\n          v-if=\"listenerForm.listenerType === 'expressionListener'\"\n          label=\"表达式\"\n          prop=\"expression\"\n          key=\"listener-expression\"\n          :rules=\"{ required: true, trigger: ['blur', 'change'] }\"\n        >\n          <el-input v-model=\"listenerForm.expression\" clearable />\n        </el-form-item>\n        <el-form-item\n          v-if=\"listenerForm.listenerType === 'delegateExpressionListener'\"\n          label=\"代理表达式\"\n          prop=\"delegateExpression\"\n          key=\"listener-delegate\"\n          :rules=\"{ required: true, trigger: ['blur', 'change'] }\"\n        >\n          <el-input v-model=\"listenerForm.delegateExpression\" clearable />\n        </el-form-item>\n        <template v-if=\"listenerForm.listenerType === 'scriptListener'\">\n          <el-form-item\n            label=\"脚本格式\"\n            prop=\"scriptFormat\"\n            key=\"listener-script-format\"\n            :rules=\"{ required: true, trigger: ['blur', 'change'], message: '请填写脚本格式' }\"\n          >\n            <el-input v-model=\"listenerForm.scriptFormat\" clearable />\n          </el-form-item>\n          <el-form-item\n            label=\"脚本类型\"\n            prop=\"scriptType\"\n            key=\"listener-script-type\"\n            :rules=\"{ required: true, trigger: ['blur', 'change'], message: '请选择脚本类型' }\"\n          >\n            <el-select v-model=\"listenerForm.scriptType\">\n              <el-option label=\"内联脚本\" value=\"inlineScript\" />\n              <el-option label=\"外部脚本\" value=\"externalScript\" />\n            </el-select>\n          </el-form-item>\n          <el-form-item\n            v-if=\"listenerForm.scriptType === 'inlineScript'\"\n            label=\"脚本内容\"\n            prop=\"value\"\n            key=\"listener-script\"\n            :rules=\"{ required: true, trigger: ['blur', 'change'], message: '请填写脚本内容' }\"\n          >\n            <el-input v-model=\"listenerForm.value\" clearable />\n          </el-form-item>\n          <el-form-item\n            v-if=\"listenerForm.scriptType === 'externalScript'\"\n            label=\"资源地址\"\n            prop=\"resource\"\n            key=\"listener-resource\"\n            :rules=\"{ required: true, trigger: ['blur', 'change'], message: '请填写资源地址' }\"\n          >\n            <el-input v-model=\"listenerForm.resource\" clearable />\n          </el-form-item>\n        </template>\n        ${\n          isTaskListener\n            ? \"<el-form-item label='定时器类型' prop='eventDefinitionType' key='eventDefinitionType'>\" +\n              \"<el-select v-model='listenerForm.eventDefinitionType'>\" +\n              \"<el-option label='日期' value='date' />\" +\n              \"<el-option label='持续时长' value='duration' />\" +\n              \"<el-option label='循环' value='cycle' />\" +\n              \"<el-option label='无' value='' />\" +\n              '</el-select>' +\n              '</el-form-item>' +\n              \"<el-form-item v-if='!!listenerForm.eventDefinitionType' label='定时器' prop='eventDefinitions' key='eventDefinitions'>\" +\n              \"<el-input v-model='listenerForm.eventDefinitions' clearable />\" +\n              '</el-form-item>'\n            : ''\n        }\n      </el-form>\n      <el-divider />\n      <p class=\"listener-filed__title\">\n        <span><i class=\"el-icon-menu\"></i>注入字段：</span>\n        <el-button size=\"small\" type=\"primary\" @click=\"openListenerFieldForm(null)\">添加字段</el-button>\n      </p>\n      <el-table :data=\"fieldsListOfListener\" size=\"small\" max-height=\"240\" border fit style=\"flex: none\">\n        <el-table-column label=\"序号\" width=\"50px\" type=\"index\" />\n        <el-table-column label=\"字段名称\" min-width=\"100px\" prop=\"name\" />\n        <el-table-column label=\"字段类型\" min-width=\"80px\" show-overflow-tooltip :formatter=\"row => fieldTypeObject[row.fieldType]\" />\n        <el-table-column label=\"字段值/表达式\" min-width=\"100px\" show-overflow-tooltip :formatter=\"row => row.string || row.expression\" />\n        <el-table-column label=\"操作\" width=\"100px\">\n          <template #default=\"scope\">\n            <el-button size=\"small\" type=\"primary\" link @click=\"openListenerFieldForm(scope, scope.$index)\">编辑</el-button>\n            <el-divider direction=\"vertical\" />\n            <el-button size=\"small\" type=\"primary\" link style=\"color: #ff4d4f\" @click=\"removeListenerField(scope, scope.$index)\">移除</el-button>\n          </template>\n        </el-table-column>\n      </el-table>\n\n      <div class=\"element-drawer__button\">\n        <el-button size=\"small\" @click=\"listenerFormModelVisible = false\">取 消</el-button>\n        <el-button size=\"small\" type=\"primary\" @click=\"saveListenerConfig\">保 存</el-button>\n      </div>\n    </el-drawer>\n\n    <!-- 注入西段 编辑/创建 部分 -->\n    <el-dialog title=\"字段配置\" :visible.sync=\"listenerFieldFormModelVisible\" width=\"600px\" append-to-body destroy-on-close>\n      <el-form :model=\"listenerFieldForm\" size=\"small\" label-width=\"96px\" ref=\"listenerFieldFormRef\" style=\"height: 136px\" @submit.native.prevent>\n        <el-form-item label=\"字段名称：\" prop=\"name\" :rules=\"{ required: true, trigger: ['blur', 'change'] }\">\n          <el-input v-model=\"listenerFieldForm.name\" clearable />\n        </el-form-item>\n        <el-form-item label=\"字段类型：\" prop=\"fieldType\" :rules=\"{ required: true, trigger: ['blur', 'change'] }\">\n          <el-select v-model=\"listenerFieldForm.fieldType\">\n            <el-option v-for=\"i in Object.keys(fieldTypeObject)\" :key=\"i\" :label=\"fieldTypeObject[i]\" :value=\"i\" />\n          </el-select>\n        </el-form-item>\n        <el-form-item\n          v-if=\"listenerFieldForm.fieldType === 'string'\"\n          label=\"字段值：\"\n          prop=\"string\"\n          key=\"field-string\"\n          :rules=\"{ required: true, trigger: ['blur', 'change'] }\"\n        >\n          <el-input v-model=\"listenerFieldForm.string\" clearable />\n        </el-form-item>\n        <el-form-item\n          v-if=\"listenerFieldForm.fieldType === 'expression'\"\n          label=\"表达式：\"\n          prop=\"expression\"\n          key=\"field-expression\"\n          :rules=\"{ required: true, trigger: ['blur', 'change'] }\"\n        >\n          <el-input v-model=\"listenerFieldForm.expression\" clearable />\n        </el-form-item>\n      </el-form>\n      <template #footer>\n        <el-button size=\"small\" @click=\"listenerFieldFormModelVisible = false\">取 消</el-button>\n        <el-button size=\"small\" type=\"primary\" @click=\"saveListenerFiled\">确 定</el-button>\n      </template>\n    </el-dialog>\n  </div>\n  `"
+        },
+        {
+          "kind": "string-concat",
+          "text": "<el-form-item label='定时器类型' prop='eventDefinitionType' key='eventDefinitionType'>"
+        },
+        {
+          "kind": "string-concat",
+          "text": "<el-option label='日期' value='date' />"
+        },
+        {
+          "kind": "string-concat",
+          "text": "<el-option label='持续时长' value='duration' />"
+        },
+        {
+          "kind": "string-concat",
+          "text": "<el-option label='循环' value='cycle' />"
+        },
+        {
+          "kind": "string-concat",
+          "text": "<el-option label='无' value='' />"
+        },
+        {
+          "kind": "string-concat",
+          "text": "<el-form-item v-if='!!listenerForm.eventDefinitionType' label='定时器' prop='eventDefinitions' key='eventDefinitions'>"
+        }
+      ]
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/listeners/utilSelf.ts",
+      "replaced": [
+        {
+          "type": "script-string",
+          "zh": "未知的监听器类型",
+          "en": "Unknown listener type"
+        },
+        {
+          "type": "script-string",
+          "zh": "Java 类",
+          "en": "Java Class"
+        },
+        {
+          "type": "script-string",
+          "zh": "表达式",
+          "en": "Expression"
+        },
+        {
+          "type": "script-string",
+          "zh": "代理表达式",
+          "en": "Delegate Expression"
+        },
+        {
+          "type": "script-string",
+          "zh": "脚本",
+          "en": "Script"
+        },
+        {
+          "type": "script-string",
+          "zh": "创建",
+          "en": "Create"
+        },
+        {
+          "type": "script-string",
+          "zh": "指派",
+          "en": "Assign"
+        },
+        {
+          "type": "script-string",
+          "zh": "完成",
+          "en": "Complete"
+        },
+        {
+          "type": "script-string",
+          "zh": "删除",
+          "en": "Delete"
+        },
+        {
+          "type": "script-string",
+          "zh": "更新",
+          "en": "Update"
+        },
+        {
+          "type": "script-string",
+          "zh": "超时",
+          "en": "Timeout"
+        },
+        {
+          "type": "script-string",
+          "zh": "字符串",
+          "en": "String"
+        },
+        {
+          "type": "script-string",
+          "zh": "表达式",
+          "en": "Expression"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/multi-instance/ElementMultiInstance.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "快捷配置",
+          "en": "Quick Config"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "会签类型",
+          "en": "Countersign Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "并行多重事件",
+          "en": "Parallel Multiple Event"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "时序多重事件",
+          "en": "Sequential Multiple Event"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "无",
+          "en": "None"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "循环数量",
+          "en": "Loop Cardinality"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "集合",
+          "en": "Collection"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "元素变量",
+          "en": "Element Variable"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "完成条件",
+          "en": "Completion Condition"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "异步状态",
+          "en": "Async Status"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "异步前",
+          "en": "Async Before"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "异步后",
+          "en": "Async After"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "排除",
+          "en": "Exclude"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "重试周期",
+          "en": "Retry Cycle"
+        },
+        {
+          "type": "vue-text",
+          "zh": "除了UserTask以外节点的多实例待实现",
+          "en": "Multi-instance for nodes other than UserTask is not implemented yet"
+        },
+        {
+          "type": "vue-text",
+          "zh": "依次审批",
+          "en": "Approve in sequence"
+        },
+        {
+          "type": "vue-text",
+          "zh": "会签",
+          "en": "Countersign"
+        },
+        {
+          "type": "vue-text",
+          "zh": "或签",
+          "en": "Or-sign"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-attr-unlisted",
+          "attr": "value",
+          "text": "异步前"
+        },
+        {
+          "where": "template",
+          "kind": "vue-attr-unlisted",
+          "attr": "value",
+          "text": "异步后"
+        },
+        {
+          "where": "template",
+          "kind": "vue-attr-unlisted",
+          "attr": "value",
+          "text": "排除"
+        },
+        {
+          "where": "script",
+          "kind": "comparison",
+          "text": "依次审批"
+        },
+        {
+          "where": "script",
+          "kind": "comparison",
+          "text": "会签"
+        },
+        {
+          "where": "script",
+          "kind": "comparison",
+          "text": "或签"
+        }
+      ]
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/other/ElementOtherConfig.vue",
+      "replaced": [
+        {
+          "type": "vue-text",
+          "zh": "元素文档：",
+          "en": "Element Documentation:"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/properties/ElementProperties.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "序号",
+          "en": "No."
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "属性名",
+          "en": "Property Name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "属性值",
+          "en": "Property Value"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "操作",
+          "en": "Action"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "属性配置",
+          "en": "Property Config"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "属性名：",
+          "en": "Property Name:"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "属性值：",
+          "en": "Property Value:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "编辑",
+          "en": "Edit"
+        },
+        {
+          "type": "vue-text",
+          "zh": "移除",
+          "en": "Remove"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加属性",
+          "en": "Add Property"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确 定",
+          "en": "Confirm"
+        },
+        {
+          "type": "script-string",
+          "zh": "确认移除该属性吗？",
+          "en": "Confirm removing this property?"
+        },
+        {
+          "type": "script-string",
+          "zh": "提示",
+          "en": "Tip"
+        },
+        {
+          "type": "script-string",
+          "zh": "确 认",
+          "en": "Confirm"
+        },
+        {
+          "type": "script-string",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "script-string",
+          "zh": "操作取消",
+          "en": "Operation cancelled"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/signal-message/SignalAndMessage.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "序号",
+          "en": "No."
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "消息ID",
+          "en": "Message ID"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "消息名称",
+          "en": "Message Name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "操作",
+          "en": "Action"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "序号",
+          "en": "No."
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "信号ID",
+          "en": "Signal ID"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "信号名称",
+          "en": "Signal Name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "操作",
+          "en": "Action"
+        },
+        {
+          "type": "vue-text",
+          "zh": "消息列表",
+          "en": "Message List"
+        },
+        {
+          "type": "vue-text",
+          "zh": "创建新消息",
+          "en": "Create New Message"
+        },
+        {
+          "type": "vue-text",
+          "zh": "编辑",
+          "en": "Edit"
+        },
+        {
+          "type": "vue-text",
+          "zh": "移除",
+          "en": "Remove"
+        },
+        {
+          "type": "vue-text",
+          "zh": "信号列表",
+          "en": "Signal List"
+        },
+        {
+          "type": "vue-text",
+          "zh": "创建新信号",
+          "en": "Create new signal"
+        },
+        {
+          "type": "vue-text",
+          "zh": "编辑",
+          "en": "Edit"
+        },
+        {
+          "type": "vue-text",
+          "zh": "移除",
+          "en": "Remove"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "vue-text",
+          "zh": "保 存",
+          "en": "Save"
+        },
+        {
+          "type": "script-string",
+          "zh": "编辑消息",
+          "en": "Edit Message"
+        },
+        {
+          "type": "script-string",
+          "zh": "创建消息",
+          "en": "Create message"
+        },
+        {
+          "type": "script-string",
+          "zh": "消息ID",
+          "en": "Message ID"
+        },
+        {
+          "type": "script-string",
+          "zh": "消息名称",
+          "en": "Message Name"
+        },
+        {
+          "type": "script-string",
+          "zh": "编辑信号",
+          "en": "Edit Signal"
+        },
+        {
+          "type": "script-string",
+          "zh": "创建信号",
+          "en": "Create signal"
+        },
+        {
+          "type": "script-string",
+          "zh": "信号ID",
+          "en": "Signal ID"
+        },
+        {
+          "type": "script-string",
+          "zh": "信号名称",
+          "en": "Signal Name"
+        },
+        {
+          "type": "script-string",
+          "zh": "该消息已存在，请修改id后重新保存",
+          "en": "This message already exists, please change the id and save again"
+        },
+        {
+          "type": "script-string",
+          "zh": "该信号已存在，请修改id后重新保存",
+          "en": "This signal already exists, please change the id and save again"
+        },
+        {
+          "type": "script-string",
+          "zh": "消息",
+          "en": "Message"
+        },
+        {
+          "type": "script-string",
+          "zh": "信号",
+          "en": "Signal"
+        },
+        {
+          "type": "script-string",
+          "zh": "提示",
+          "en": "Tip"
+        },
+        {
+          "type": "script-string",
+          "zh": "确 认",
+          "en": "Confirm"
+        },
+        {
+          "type": "script-string",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "script-string",
+          "zh": "移除成功",
+          "en": "Removed successfully"
+        },
+        {
+          "type": "script-string",
+          "zh": "操作取消",
+          "en": "Operation cancelled"
+        },
+        {
+          "type": "script-string",
+          "zh": "保存更改时出错:",
+          "en": "Error while saving changes: "
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`确认移除该${type === 'message' ? '消息' : '信号'}吗？`"
+        }
+      ]
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/task/ElementTask.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "异步延续",
+          "en": "Async Continuation"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "异步前",
+          "en": "Async Before"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "异步后",
+          "en": "Async After"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "排除",
+          "en": "Exclude"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-attr-unlisted",
+          "attr": "value",
+          "text": "异步前"
+        },
+        {
+          "where": "template",
+          "kind": "vue-attr-unlisted",
+          "attr": "value",
+          "text": "异步后"
+        },
+        {
+          "where": "template",
+          "kind": "vue-attr-unlisted",
+          "attr": "value",
+          "text": "排除"
+        }
+      ]
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/task/data.ts",
+      "replaced": [
+        {
+          "type": "script-string",
+          "zh": "用户任务",
+          "en": "User Task"
+        },
+        {
+          "type": "script-string",
+          "zh": "服务任务",
+          "en": "Service Task"
+        },
+        {
+          "type": "script-string",
+          "zh": "脚本任务",
+          "en": "Script Task"
+        },
+        {
+          "type": "script-string",
+          "zh": "接收任务",
+          "en": "Receive Task"
+        },
+        {
+          "type": "script-string",
+          "zh": "调用活动",
+          "en": "Call Activity"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/task/task-components/CallActivity.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "实例名称",
+          "en": "Instance Name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "请输入实例名称",
+          "en": "Please enter instance name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "被调用流程",
+          "en": "Called Process"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "请输入被调用流程",
+          "en": "Please enter called process"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "继承变量",
+          "en": "Inherit Variables"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "继承业务键",
+          "en": "Inherit Business Key"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "业务键表达式",
+          "en": "Business Key Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "请输入业务键表达式",
+          "en": "Please enter business key expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "源",
+          "en": "Source"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "目标",
+          "en": "Target"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "操作",
+          "en": "Action"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "源",
+          "en": "Source"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "目标",
+          "en": "Target"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "操作",
+          "en": "Action"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "参数配置",
+          "en": "Parameter Config"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "源：",
+          "en": "Source:"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "目标：",
+          "en": "Target:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "输入参数",
+          "en": "Input Parameter"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加参数",
+          "en": "Add Parameter"
+        },
+        {
+          "type": "vue-text",
+          "zh": "编辑",
+          "en": "Edit"
+        },
+        {
+          "type": "vue-text",
+          "zh": "移除",
+          "en": "Remove"
+        },
+        {
+          "type": "vue-text",
+          "zh": "输出参数",
+          "en": "Output Parameter"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加参数",
+          "en": "Add Parameter"
+        },
+        {
+          "type": "vue-text",
+          "zh": "编辑",
+          "en": "Edit"
+        },
+        {
+          "type": "vue-text",
+          "zh": "移除",
+          "en": "Remove"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确 定",
+          "en": "Confirm"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/task/task-components/HttpHeaderEditor.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "编辑请求头",
+          "en": "Edit Header"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "请输入参数名",
+          "en": "Please enter parameter name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "请输入参数值 (支持表达式 ${变量名})",
+          "en": "Please enter parameter value (supports expression ${var})"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加请求头",
+          "en": "Add Header"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取消",
+          "en": "Cancel"
+        },
+        {
+          "type": "vue-text",
+          "zh": "保存",
+          "en": "Save"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/task/task-components/ProcessExpressionDialog.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "请选择表达式",
+          "en": "Please select expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "名字",
+          "en": "Name"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表达式",
+          "en": "Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "操作",
+          "en": "Action"
+        },
+        {
+          "type": "vue-text",
+          "zh": "选择",
+          "en": "Select"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/task/task-components/ReceiveTask.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "消息实例",
+          "en": "Message Instance"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "创建新消息",
+          "en": "Create New Message"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "消息ID",
+          "en": "Message ID"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "消息名称",
+          "en": "Message Name"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确 认",
+          "en": "Confirm"
+        },
+        {
+          "type": "script-string",
+          "zh": "该消息已存在，请修改id后重新保存",
+          "en": "This message already exists, please change the id and save again"
+        },
+        {
+          "type": "script-string",
+          "zh": "无",
+          "en": "None"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/task/task-components/ScriptTask.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "脚本格式",
+          "en": "Script Format"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "脚本类型",
+          "en": "Script Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "内联脚本",
+          "en": "Inline Script"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "外部资源",
+          "en": "External Resource"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "脚本",
+          "en": "Script"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "资源地址",
+          "en": "Resource Address"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "结果变量",
+          "en": "Result Variable"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/task/task-components/ServiceTask.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "执行类型",
+          "en": "Execution Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "Java类",
+          "en": "Java Class"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表达式",
+          "en": "Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "代理表达式",
+          "en": "Delegate Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "HTTP 调用",
+          "en": "HTTP Call"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "Java类",
+          "en": "Java Class"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表达式",
+          "en": "Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "代理表达式",
+          "en": "Delegate Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "请求方法",
+          "en": "Request Method"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "请求地址",
+          "en": "Request URL"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "请求头",
+          "en": "Request Header"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "点击右侧编辑按钮添加请求头",
+          "en": "Click the edit button on the right to add a header"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "禁止重定向",
+          "en": "Disable Redirect"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "忽略异常",
+          "en": "Ignore Exception"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "保存返回变量",
+          "en": "Save Return Variable"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "是否瞬间变量",
+          "en": "Is Transient Variable"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "返回变量前缀",
+          "en": "Return Variable Prefix"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "格式化返回为JSON",
+          "en": "Format return as JSON"
+        },
+        {
+          "type": "vue-text",
+          "zh": "编辑",
+          "en": "Edit"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/task/task-components/UserTask.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "规则类型",
+          "en": "Rule Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定角色",
+          "en": "Specified Role"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定部门",
+          "en": "Specified Department"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "empty-text",
+          "zh": "加载中，请稍后",
+          "en": "Loading, please wait"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定岗位",
+          "en": "Specified Position"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定用户",
+          "en": "Specified User"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定用户组",
+          "en": "Specified User Group"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表单内用户字段",
+          "en": "User Field in Form"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表单内部门字段",
+          "en": "Department Field in Form"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "流程表达式",
+          "en": "Process Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "跳过表达式",
+          "en": "Skip Expression"
+        },
+        {
+          "type": "vue-text",
+          "zh": "选择表达式",
+          "en": "Select Expression"
+        },
+        {
+          "type": "script-string",
+          "zh": "部门负责人来源",
+          "en": "Department Leader Source"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "(指定部门向上)"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "(表单内部门向上)"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "(发起人部门向上)"
+        }
+      ]
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/time-event-config/CycleConfig.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "CRON表达式",
+          "en": "CRON Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "秒",
+          "en": "Second"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "分",
+          "en": "Minute"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "时",
+          "en": "Hour"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "天",
+          "en": "Day"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "月",
+          "en": "Month"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "周",
+          "en": "Week"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "年",
+          "en": "Year"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "标准格式",
+          "en": "Standard Format"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "如R1/2025-05-21T21:59:54/P3DT30M30S",
+          "en": "e.g. R1/2025-05-21T21:59:54/P3DT30M30S"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "选择日期时间",
+          "en": "Select Date Time"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "如P3DT30M30S",
+          "en": "e.g. P3DT30M30S"
+        },
+        {
+          "type": "vue-text",
+          "zh": "从",
+          "en": "From"
+        },
+        {
+          "type": "vue-text",
+          "zh": "到",
+          "en": "To"
+        },
+        {
+          "type": "vue-text",
+          "zh": "从第",
+          "en": "Starting at"
+        },
+        {
+          "type": "vue-text",
+          "zh": "开始每",
+          "en": "then every"
+        },
+        {
+          "type": "vue-text",
+          "zh": "指定",
+          "en": "Specified"
+        },
+        {
+          "type": "vue-text",
+          "zh": "循环次数：",
+          "en": "Repetitions:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "日期时间：",
+          "en": "Date & time:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "当前时长：",
+          "en": "Current duration:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "秒：",
+          "en": "Second:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "自定义",
+          "en": "Custom"
+        },
+        {
+          "type": "vue-text",
+          "zh": "分：",
+          "en": "Min:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "自定义",
+          "en": "Custom"
+        },
+        {
+          "type": "vue-text",
+          "zh": "小时：",
+          "en": "Hour:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "自定义",
+          "en": "Custom"
+        },
+        {
+          "type": "vue-text",
+          "zh": "天：",
+          "en": "Day:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "自定义",
+          "en": "Custom"
+        },
+        {
+          "type": "vue-text",
+          "zh": "月：",
+          "en": "Month:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "自定义",
+          "en": "Custom"
+        },
+        {
+          "type": "vue-text",
+          "zh": "年：",
+          "en": "Year:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "自定义",
+          "en": "Custom"
+        },
+        {
+          "type": "script-string",
+          "zh": "秒",
+          "en": "Second"
+        },
+        {
+          "type": "script-string",
+          "zh": "分",
+          "en": "Minute"
+        },
+        {
+          "type": "script-string",
+          "zh": "时",
+          "en": "Hour"
+        },
+        {
+          "type": "script-string",
+          "zh": "天",
+          "en": "Day"
+        },
+        {
+          "type": "script-string",
+          "zh": "月",
+          "en": "Month"
+        },
+        {
+          "type": "script-string",
+          "zh": "周",
+          "en": "Week"
+        },
+        {
+          "type": "script-string",
+          "zh": "年",
+          "en": "Year"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/time-event-config/DurationConfig.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "自定义",
+          "en": "Custom"
+        },
+        {
+          "type": "vue-text",
+          "zh": "当前选择：",
+          "en": "Current selection:"
+        },
+        {
+          "type": "script-string",
+          "zh": "年",
+          "en": "Year"
+        },
+        {
+          "type": "script-string",
+          "zh": "月",
+          "en": "Month"
+        },
+        {
+          "type": "script-string",
+          "zh": "天",
+          "en": "Day"
+        },
+        {
+          "type": "script-string",
+          "zh": "时",
+          "en": "Hour"
+        },
+        {
+          "type": "script-string",
+          "zh": "分",
+          "en": "Minute"
+        },
+        {
+          "type": "script-string",
+          "zh": "秒",
+          "en": "Second"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/package/penal/time-event-config/TimeEventConfig.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "zh": "格式错误",
+          "en": "Format Error"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "选择时间",
+          "en": "Select Time"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "选择日期时间",
+          "en": "Select Date Time"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "时间配置",
+          "en": "Timer Config"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "时间配置",
+          "en": "Timer Config"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "格式说明",
+          "en": "Format Description"
+        },
+        {
+          "type": "vue-text",
+          "zh": "类型：",
+          "en": "Type:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "时间",
+          "en": "Date"
+        },
+        {
+          "type": "vue-text",
+          "zh": "持续",
+          "en": "Duration"
+        },
+        {
+          "type": "vue-text",
+          "zh": "循环",
+          "en": "Loop"
+        },
+        {
+          "type": "vue-text",
+          "zh": "条件：",
+          "en": "Condition:"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取消",
+          "en": "Cancel"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确定",
+          "en": "Confirm"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取消",
+          "en": "Cancel"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确定",
+          "en": "Confirm"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取消",
+          "en": "Cancel"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确定",
+          "en": "Confirm"
+        },
+        {
+          "type": "vue-text",
+          "zh": "关闭",
+          "en": "Close"
+        },
+        {
+          "type": "script-string",
+          "zh": "请输入时间",
+          "en": "Please enter time"
+        },
+        {
+          "type": "script-string",
+          "zh": "请输入持续时长",
+          "en": "Please enter duration"
+        },
+        {
+          "type": "script-string",
+          "zh": "请输入循环表达式",
+          "en": "Please enter loop expression"
+        },
+        {
+          "type": "script-string",
+          "zh": "选择具体时间",
+          "en": "Select Specific Time"
+        },
+        {
+          "type": "script-string",
+          "zh": "ISO 8601格式，如PT1H",
+          "en": "ISO 8601 format, e.g. PT1H"
+        },
+        {
+          "type": "script-string",
+          "zh": "CRON表达式或ISO 8601周期",
+          "en": "CRON expression or ISO 8601 cycle"
+        },
+        {
+          "type": "script-template",
+          "zh": "支持CRON表达式（如0 0/30 * * * ?）或ISO 8601周期（如R3/PT10M）。",
+          "en": "Supports a CRON expression (e.g. 0 0/30 * * * ?) or an ISO 8601 cycle (e.g. R3/PT10M)."
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "script",
+          "kind": "html-or-long",
+          "text": "指定定时器之前要等待多长时间。S表示秒，M表示分，D表示天；P表示时间段，T表示精确到时间的时间段。<br>\n    时间格式依然为ISO 8601格式，一年两个月三天四小时五分六秒内，可以写成P1Y2M3DT4H5M6S。<br>\n    P是开始标记，T是时间和日期分割标记，没有日期只有时间T是不能省去的，比如1小时执行一次应写成PT1H。"
+        }
+      ]
+    },
+    {
+      "file": "src/components/bpmnProcessDesigner/src/translations.ts",
+      "replaced": [],
+      "missing": [
+        {
+          "type": "script-string",
+          "text": "消息启动事件"
+        },
+        {
+          "type": "script-string",
+          "text": "定时启动事件"
+        },
+        {
+          "type": "script-string",
+          "text": "条件启动事件"
+        },
+        {
+          "type": "script-string",
+          "text": "信号启动事件"
+        },
+        {
+          "type": "script-string",
+          "text": "错误启动事件"
+        },
+        {
+          "type": "script-string",
+          "text": "升级启动事件"
+        },
+        {
+          "type": "script-string",
+          "text": "补偿启动事件"
+        },
+        {
+          "type": "script-string",
+          "text": "消息启动事件 (非中断)"
+        },
+        {
+          "type": "script-string",
+          "text": "定时启动事件 (非中断)"
+        },
+        {
+          "type": "script-string",
+          "text": "条件启动事件 (非中断)"
+        },
+        {
+          "type": "script-string",
+          "text": "信号启动事件 (非中断)"
+        },
+        {
+          "type": "script-string",
+          "text": "升级启动事件 (非中断)"
+        }
+      ],
+      "review": []
+    }
+  ]
+}

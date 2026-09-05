@@ -1,0 +1,2783 @@
+{
+  "mode": "apply",
+  "target": "src/components/SimpleProcessDesignerV2",
+  "map": "scripts/i18n/en-map-simple.mjs",
+  "scannedAt": "2026-09-05T13:16:05.926Z",
+  "totalFiles": 33,
+  "replaced": 435,
+  "missing": 0,
+  "review": 53,
+  "missingStrings": {},
+  "files": [
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/NodeHandler.vue",
+      "replaced": [
+        {
+          "type": "vue-text",
+          "zh": "审批人",
+          "en": "Approver"
+        },
+        {
+          "type": "vue-text",
+          "zh": "办理人",
+          "en": "Assignee"
+        },
+        {
+          "type": "vue-text",
+          "zh": "抄送",
+          "en": "CC"
+        },
+        {
+          "type": "vue-text",
+          "zh": "条件分支",
+          "en": "Conditional Branch"
+        },
+        {
+          "type": "vue-text",
+          "zh": "并行分支",
+          "en": "Parallel Branch"
+        },
+        {
+          "type": "vue-text",
+          "zh": "包容分支",
+          "en": "Inclusive Branch"
+        },
+        {
+          "type": "vue-text",
+          "zh": "延迟器",
+          "en": "Delay Timer"
+        },
+        {
+          "type": "vue-text",
+          "zh": "路由分支",
+          "en": "Router Branch"
+        },
+        {
+          "type": "vue-text",
+          "zh": "触发器",
+          "en": "Trigger"
+        },
+        {
+          "type": "vue-text",
+          "zh": "子流程",
+          "en": "Sub Process"
+        },
+        {
+          "type": "script-string",
+          "zh": "条件分支",
+          "en": "Conditional Branch"
+        },
+        {
+          "type": "script-string",
+          "zh": "条件1",
+          "en": "Condition 1"
+        },
+        {
+          "type": "script-string",
+          "zh": "其它情况",
+          "en": "Other Cases"
+        },
+        {
+          "type": "script-string",
+          "zh": "未满足其它条件时，将进入此分支",
+          "en": "Taken when none of the other conditions are met"
+        },
+        {
+          "type": "script-string",
+          "zh": "并行分支",
+          "en": "Parallel Branch"
+        },
+        {
+          "type": "script-string",
+          "zh": "并行1",
+          "en": "Parallel 1"
+        },
+        {
+          "type": "script-string",
+          "zh": "无需配置条件同时执行",
+          "en": "Runs at the same time, no condition required"
+        },
+        {
+          "type": "script-string",
+          "zh": "并行2",
+          "en": "Parallel 2"
+        },
+        {
+          "type": "script-string",
+          "zh": "无需配置条件同时执行",
+          "en": "Runs at the same time, no condition required"
+        },
+        {
+          "type": "script-string",
+          "zh": "包容分支",
+          "en": "Inclusive Branch"
+        },
+        {
+          "type": "script-string",
+          "zh": "包容条件1",
+          "en": "Inclusive Condition 1"
+        },
+        {
+          "type": "script-string",
+          "zh": "其它情况",
+          "en": "Other Cases"
+        },
+        {
+          "type": "script-string",
+          "zh": "未满足其它条件时，将进入此分支",
+          "en": "Taken when none of the other conditions are met"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/SimpleProcessDesigner.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "保存失败",
+          "en": "Save failed"
+        },
+        {
+          "type": "vue-text",
+          "zh": "以下节点内容不完善，请修改后保存",
+          "en": "The following nodes are incomplete. Please fix them before saving."
+        },
+        {
+          "type": "vue-text",
+          "zh": "知道了",
+          "en": "Got it"
+        },
+        {
+          "type": "script-string",
+          "zh": "发起人",
+          "en": "Initiator"
+        },
+        {
+          "type": "script-string",
+          "zh": "结束",
+          "en": "End"
+        },
+        {
+          "type": "script-string",
+          "zh": "保存失败:",
+          "en": "Save failed: "
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/SimpleProcessModel.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "保存失败",
+          "en": "Save failed"
+        },
+        {
+          "type": "vue-text",
+          "zh": "导出",
+          "en": "Export"
+        },
+        {
+          "type": "vue-text",
+          "zh": "导入",
+          "en": "Import"
+        },
+        {
+          "type": "vue-text",
+          "zh": "重置",
+          "en": "Reset"
+        },
+        {
+          "type": "vue-text",
+          "zh": "以下节点内容不完善，请修改后保存",
+          "en": "The following nodes are incomplete. Please fix them before saving."
+        },
+        {
+          "type": "vue-text",
+          "zh": "知道了",
+          "en": "Got it"
+        },
+        {
+          "type": "script-string",
+          "zh": "获取流程数据失败:",
+          "en": "Failed to load process data: "
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/consts.ts",
+      "replaced": [
+        {
+          "type": "script-string",
+          "zh": "固定值",
+          "en": "Fixed Value"
+        },
+        {
+          "type": "script-string",
+          "zh": "表单",
+          "en": "Form"
+        },
+        {
+          "type": "script-string",
+          "zh": "请配置审批人",
+          "en": "Please configure the approver"
+        },
+        {
+          "type": "script-string",
+          "zh": "请配置抄送人",
+          "en": "Please configure the CC recipient"
+        },
+        {
+          "type": "script-string",
+          "zh": "请设置条件",
+          "en": "Please set the condition"
+        },
+        {
+          "type": "script-string",
+          "zh": "请设置发起人",
+          "en": "Please set the initiator"
+        },
+        {
+          "type": "script-string",
+          "zh": "请设置延迟器",
+          "en": "Please set the delay timer"
+        },
+        {
+          "type": "script-string",
+          "zh": "请设置路由节点",
+          "en": "Please set the router node"
+        },
+        {
+          "type": "script-string",
+          "zh": "请设置触发器",
+          "en": "Please set the trigger"
+        },
+        {
+          "type": "script-string",
+          "zh": "请设置办理人",
+          "en": "Please set the assignee"
+        },
+        {
+          "type": "script-string",
+          "zh": "请设置子流程",
+          "en": "Please set the sub process"
+        },
+        {
+          "type": "script-string",
+          "zh": "审批人",
+          "en": "Approver"
+        },
+        {
+          "type": "script-string",
+          "zh": "抄送人",
+          "en": "CC Recipient"
+        },
+        {
+          "type": "script-string",
+          "zh": "条件",
+          "en": "Condition"
+        },
+        {
+          "type": "script-string",
+          "zh": "发起人",
+          "en": "Initiator"
+        },
+        {
+          "type": "script-string",
+          "zh": "延迟器",
+          "en": "Delay Timer"
+        },
+        {
+          "type": "script-string",
+          "zh": "路由分支",
+          "en": "Router Branch"
+        },
+        {
+          "type": "script-string",
+          "zh": "触发器",
+          "en": "Trigger"
+        },
+        {
+          "type": "script-string",
+          "zh": "办理人",
+          "en": "Assignee"
+        },
+        {
+          "type": "script-string",
+          "zh": "子流程",
+          "en": "Sub Process"
+        },
+        {
+          "type": "script-string",
+          "zh": "指定成员",
+          "en": "Specified Members"
+        },
+        {
+          "type": "script-string",
+          "zh": "指定角色",
+          "en": "Specified Roles"
+        },
+        {
+          "type": "script-string",
+          "zh": "指定岗位",
+          "en": "Specified Positions"
+        },
+        {
+          "type": "script-string",
+          "zh": "部门成员",
+          "en": "Department Members"
+        },
+        {
+          "type": "script-string",
+          "zh": "部门负责人",
+          "en": "Department Leader"
+        },
+        {
+          "type": "script-string",
+          "zh": "连续多级部门负责人",
+          "en": "Multi-level Department Leaders"
+        },
+        {
+          "type": "script-string",
+          "zh": "发起人自选",
+          "en": "Selected by Initiator"
+        },
+        {
+          "type": "script-string",
+          "zh": "审批人自选",
+          "en": "Selected by Approver"
+        },
+        {
+          "type": "script-string",
+          "zh": "发起人本人",
+          "en": "The Initiator"
+        },
+        {
+          "type": "script-string",
+          "zh": "发起人部门负责人",
+          "en": "Initiator's Department Leader"
+        },
+        {
+          "type": "script-string",
+          "zh": "发起人连续部门负责人",
+          "en": "Initiator's Multi-level Department Leaders"
+        },
+        {
+          "type": "script-string",
+          "zh": "用户组",
+          "en": "User Group"
+        },
+        {
+          "type": "script-string",
+          "zh": "表单内用户字段",
+          "en": "User Field in Form"
+        },
+        {
+          "type": "script-string",
+          "zh": "表单内部门负责人",
+          "en": "Department Leader from Form Field"
+        },
+        {
+          "type": "script-string",
+          "zh": "流程表达式",
+          "en": "Process Expression"
+        },
+        {
+          "type": "script-string",
+          "zh": "人工审批",
+          "en": "Manual Approval"
+        },
+        {
+          "type": "script-string",
+          "zh": "自动通过",
+          "en": "Auto Approve"
+        },
+        {
+          "type": "script-string",
+          "zh": "自动拒绝",
+          "en": "Auto Reject"
+        },
+        {
+          "type": "script-string",
+          "zh": "按顺序依次审批",
+          "en": "Approve in sequence"
+        },
+        {
+          "type": "script-string",
+          "zh": "会签（可同时审批，至少 % 人必须审批通过）",
+          "en": "Countersign (concurrent approval, at least % of approvers must approve)"
+        },
+        {
+          "type": "script-string",
+          "zh": "或签(可同时审批，有一人通过即可)",
+          "en": "Or-sign (concurrent approval, one approval is enough)"
+        },
+        {
+          "type": "script-string",
+          "zh": "随机挑选一人审批",
+          "en": "Randomly pick one approver"
+        },
+        {
+          "type": "script-string",
+          "zh": "条件规则",
+          "en": "Condition Rule"
+        },
+        {
+          "type": "script-string",
+          "zh": "条件表达式",
+          "en": "Condition Expression"
+        },
+        {
+          "type": "script-string",
+          "zh": "分钟",
+          "en": "Minute"
+        },
+        {
+          "type": "script-string",
+          "zh": "小时",
+          "en": "Hour"
+        },
+        {
+          "type": "script-string",
+          "zh": "天",
+          "en": "Day"
+        },
+        {
+          "type": "script-string",
+          "zh": "自动提醒",
+          "en": "Auto Remind"
+        },
+        {
+          "type": "script-string",
+          "zh": "自动同意",
+          "en": "Auto Agree"
+        },
+        {
+          "type": "script-string",
+          "zh": "自动拒绝",
+          "en": "Auto Reject"
+        },
+        {
+          "type": "script-string",
+          "zh": "终止流程",
+          "en": "Terminate Process"
+        },
+        {
+          "type": "script-string",
+          "zh": "驳回到指定节点",
+          "en": "Reject to a Specified Node"
+        },
+        {
+          "type": "script-string",
+          "zh": "自动通过",
+          "en": "Auto Approve"
+        },
+        {
+          "type": "script-string",
+          "zh": "自动拒绝",
+          "en": "Auto Reject"
+        },
+        {
+          "type": "script-string",
+          "zh": "指定成员审批",
+          "en": "Approval by Specified Members"
+        },
+        {
+          "type": "script-string",
+          "zh": "转交给流程管理员",
+          "en": "Transfer to Process Admin"
+        },
+        {
+          "type": "script-string",
+          "zh": "由发起人对自己审批",
+          "en": "Approved by the Initiator"
+        },
+        {
+          "type": "script-string",
+          "zh": "自动跳过",
+          "en": "Auto Skip"
+        },
+        {
+          "type": "script-string",
+          "zh": "转交给部门负责人审批",
+          "en": "Transfer to the Department Leader"
+        },
+        {
+          "type": "script-string",
+          "zh": "等于",
+          "en": "Equals"
+        },
+        {
+          "type": "script-string",
+          "zh": "不等于",
+          "en": "Not equals"
+        },
+        {
+          "type": "script-string",
+          "zh": "大于",
+          "en": "Greater than"
+        },
+        {
+          "type": "script-string",
+          "zh": "大于等于",
+          "en": "Greater than or equal"
+        },
+        {
+          "type": "script-string",
+          "zh": "小于",
+          "en": "Less than"
+        },
+        {
+          "type": "script-string",
+          "zh": "小于等于",
+          "en": "Less than or equal"
+        },
+        {
+          "type": "script-string",
+          "zh": "包含",
+          "en": "Contains"
+        },
+        {
+          "type": "script-string",
+          "zh": "不包含",
+          "en": "Not contains"
+        },
+        {
+          "type": "script-string",
+          "zh": "通过",
+          "en": "Approve"
+        },
+        {
+          "type": "script-string",
+          "zh": "拒绝",
+          "en": "Reject"
+        },
+        {
+          "type": "script-string",
+          "zh": "转办",
+          "en": "Transfer"
+        },
+        {
+          "type": "script-string",
+          "zh": "委派",
+          "en": "Delegate"
+        },
+        {
+          "type": "script-string",
+          "zh": "加签",
+          "en": "Add Signer"
+        },
+        {
+          "type": "script-string",
+          "zh": "退回",
+          "en": "Return"
+        },
+        {
+          "type": "script-string",
+          "zh": "抄送",
+          "en": "CC"
+        },
+        {
+          "type": "script-string",
+          "zh": "通过",
+          "en": "Approve"
+        },
+        {
+          "type": "script-string",
+          "zh": "拒绝",
+          "en": "Reject"
+        },
+        {
+          "type": "script-string",
+          "zh": "转办",
+          "en": "Transfer"
+        },
+        {
+          "type": "script-string",
+          "zh": "委派",
+          "en": "Delegate"
+        },
+        {
+          "type": "script-string",
+          "zh": "加签",
+          "en": "Add Signer"
+        },
+        {
+          "type": "script-string",
+          "zh": "退回",
+          "en": "Return"
+        },
+        {
+          "type": "script-string",
+          "zh": "办理",
+          "en": "Handle"
+        },
+        {
+          "type": "script-string",
+          "zh": "拒绝",
+          "en": "Reject"
+        },
+        {
+          "type": "script-string",
+          "zh": "转办",
+          "en": "Transfer"
+        },
+        {
+          "type": "script-string",
+          "zh": "委派",
+          "en": "Delegate"
+        },
+        {
+          "type": "script-string",
+          "zh": "加签",
+          "en": "Add Signer"
+        },
+        {
+          "type": "script-string",
+          "zh": "退回",
+          "en": "Return"
+        },
+        {
+          "type": "script-string",
+          "zh": "提交",
+          "en": "Submit"
+        },
+        {
+          "type": "script-string",
+          "zh": "拒绝",
+          "en": "Reject"
+        },
+        {
+          "type": "script-string",
+          "zh": "转办",
+          "en": "Transfer"
+        },
+        {
+          "type": "script-string",
+          "zh": "委派",
+          "en": "Delegate"
+        },
+        {
+          "type": "script-string",
+          "zh": "加签",
+          "en": "Add Signer"
+        },
+        {
+          "type": "script-string",
+          "zh": "退回",
+          "en": "Return"
+        },
+        {
+          "type": "script-string",
+          "zh": "第 1 级部门",
+          "en": "Level 1 Department"
+        },
+        {
+          "type": "script-string",
+          "zh": "第 2 级部门",
+          "en": "Level 2 Department"
+        },
+        {
+          "type": "script-string",
+          "zh": "第 3 级部门",
+          "en": "Level 3 Department"
+        },
+        {
+          "type": "script-string",
+          "zh": "第 4 级部门",
+          "en": "Level 4 Department"
+        },
+        {
+          "type": "script-string",
+          "zh": "第 5 级部门",
+          "en": "Level 5 Department"
+        },
+        {
+          "type": "script-string",
+          "zh": "第 6 级部门",
+          "en": "Level 6 Department"
+        },
+        {
+          "type": "script-string",
+          "zh": "第 7 级部门",
+          "en": "Level 7 Department"
+        },
+        {
+          "type": "script-string",
+          "zh": "第 8 级部门",
+          "en": "Level 8 Department"
+        },
+        {
+          "type": "script-string",
+          "zh": "第 9 级部门",
+          "en": "Level 9 Department"
+        },
+        {
+          "type": "script-string",
+          "zh": "第 10 级部门",
+          "en": "Level 10 Department"
+        },
+        {
+          "type": "script-string",
+          "zh": "第 11 级部门",
+          "en": "Level 11 Department"
+        },
+        {
+          "type": "script-string",
+          "zh": "第 12 级部门",
+          "en": "Level 12 Department"
+        },
+        {
+          "type": "script-string",
+          "zh": "第 13 级部门",
+          "en": "Level 13 Department"
+        },
+        {
+          "type": "script-string",
+          "zh": "第 14 级部门",
+          "en": "Level 14 Department"
+        },
+        {
+          "type": "script-string",
+          "zh": "第 15 级部门",
+          "en": "Level 15 Department"
+        },
+        {
+          "type": "script-string",
+          "zh": "固定时长",
+          "en": "Fixed Duration"
+        },
+        {
+          "type": "script-string",
+          "zh": "固定日期",
+          "en": "Fixed Date"
+        },
+        {
+          "type": "script-string",
+          "zh": "发送 HTTP 请求",
+          "en": "Send HTTP Request"
+        },
+        {
+          "type": "script-string",
+          "zh": "接收 HTTP 回调",
+          "en": "Receive HTTP Callback"
+        },
+        {
+          "type": "script-string",
+          "zh": "修改表单数据",
+          "en": "Update Form Data"
+        },
+        {
+          "type": "script-string",
+          "zh": "删除表单数据",
+          "en": "Delete Form Data"
+        },
+        {
+          "type": "script-string",
+          "zh": "同主流程发起人",
+          "en": "Same as the main process initiator"
+        },
+        {
+          "type": "script-string",
+          "zh": "表单",
+          "en": "Form"
+        },
+        {
+          "type": "script-string",
+          "zh": "同主流程发起人",
+          "en": "Same as the main process initiator"
+        },
+        {
+          "type": "script-string",
+          "zh": "子流程管理员",
+          "en": "Sub Process Admin"
+        },
+        {
+          "type": "script-string",
+          "zh": "主流程管理员",
+          "en": "Main Process Admin"
+        },
+        {
+          "type": "script-string",
+          "zh": "固定数量",
+          "en": "Fixed Quantity"
+        },
+        {
+          "type": "script-string",
+          "zh": "数字表单",
+          "en": "Numeric Form Field"
+        },
+        {
+          "type": "script-string",
+          "zh": "多选表单",
+          "en": "Multi-select Form Field"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/node.ts",
+      "replaced": [
+        {
+          "type": "script-string",
+          "zh": "发起人",
+          "en": "Initiator"
+        },
+        {
+          "type": "script-template",
+          "zh": "表单内部门负责人",
+          "en": "Department Leader from Form Field"
+        },
+        {
+          "type": "script-template",
+          "zh": "审批人自选",
+          "en": "Selected by Approver"
+        },
+        {
+          "type": "script-template",
+          "zh": "发起人自选",
+          "en": "Selected by Initiator"
+        },
+        {
+          "type": "script-template",
+          "zh": "发起人自己",
+          "en": "The Initiator"
+        },
+        {
+          "type": "script-template",
+          "zh": "发起人的部门负责人",
+          "en": "Initiator's Department Leader"
+        },
+        {
+          "type": "script-template",
+          "zh": "发起人连续部门负责人",
+          "en": "Initiator's Multi-level Department Leaders"
+        },
+        {
+          "type": "script-string",
+          "zh": "请完善条件规则",
+          "en": "Please complete the condition rule"
+        },
+        {
+          "type": "script-string",
+          "zh": " 且 ",
+          "en": " And "
+        },
+        {
+          "type": "script-string",
+          "zh": " 或 ",
+          "en": " Or "
+        },
+        {
+          "type": "script-string",
+          "zh": " 且 ",
+          "en": " And "
+        },
+        {
+          "type": "script-string",
+          "zh": " 或 ",
+          "en": " Or "
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`指定成员：${candidateNames.join(',')}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`指定角色：${candidateNames.join(',')}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`部门成员：${candidateNames.join(',')}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`部门的负责人：${candidateNames.join(',')}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`多级部门的负责人：${candidateNames.join(',')}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`指定岗位: ${candidateNames.join(',')}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`指定用户组: ${candidateNames.join(',')}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`表单用户：${item?.title}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`流程表达式：${configForm.value.expression}`"
+        },
+        {
+          "kind": "template-literal-dynamic",
+          "text": "`表达式：${conditionExpression}`"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes/EndEventNode.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "结束",
+          "en": "End"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "审批信息",
+          "en": "Approval Info"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "序号",
+          "en": "No."
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "发起人",
+          "en": "Initiator"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "部门",
+          "en": "Department"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "开始时间",
+          "en": "Start Time"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "结束时间",
+          "en": "End Time"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "审批状态",
+          "en": "Approval Status"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "耗时",
+          "en": "Duration"
+        },
+        {
+          "type": "vue-text",
+          "zh": "结束",
+          "en": "End"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes/ExclusiveNode.vue",
+      "replaced": [
+        {
+          "type": "vue-text",
+          "zh": "添加条件",
+          "en": "Add Condition"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "条件"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes/InclusiveNode.vue",
+      "replaced": [
+        {
+          "type": "vue-text",
+          "zh": "添加条件",
+          "en": "Add Condition"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "包容条件"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes/ParallelNode.vue",
+      "replaced": [
+        {
+          "type": "vue-text",
+          "zh": "添加分支",
+          "en": "Add Branch"
+        },
+        {
+          "type": "vue-text",
+          "zh": "无优先级",
+          "en": "No Priority"
+        },
+        {
+          "type": "script-string",
+          "zh": "无需配置条件同时执行",
+          "en": "Runs at the same time, no condition required"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`并行${index + 1}`"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "并行"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes/StartUserNode.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "序号",
+          "en": "No."
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "审批人",
+          "en": "Approver"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "部门",
+          "en": "Department"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "开始时间",
+          "en": "Start Time"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "结束时间",
+          "en": "End Time"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "审批状态",
+          "en": "Approval Status"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "审批建议",
+          "en": "Approval Suggestion"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "耗时",
+          "en": "Duration"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":title",
+          "text": "dialogTitle || '审批记录'"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes/UserTaskNode.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "序号",
+          "en": "No."
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "审批人",
+          "en": "Approver"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "部门",
+          "en": "Department"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "开始时间",
+          "en": "Start Time"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "结束时间",
+          "en": "End Time"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "审批状态",
+          "en": "Approval Status"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "审批建议",
+          "en": "Approval Suggestion"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "耗时",
+          "en": "Duration"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":title",
+          "text": "dialogTitle || '审批记录'"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/ChildProcessNodeConfig.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "子流程",
+          "en": "Sub Process"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "是否异步",
+          "en": "Asynchronous"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "zh": "异步",
+          "en": "Asynchronous"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "zh": "不异步",
+          "en": "Synchronous"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "选择子流程",
+          "en": "Select Sub Process"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "是否自动跳过子流程发起节点",
+          "en": "Automatically skip the start node of the sub process"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "zh": "跳过",
+          "en": "Skip"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "zh": "不跳过",
+          "en": "Do not skip"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "主→子变量传递",
+          "en": "Main → Sub Variable Mapping"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "子→主变量传递",
+          "en": "Sub → Main Variable Mapping"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "子流程发起人",
+          "en": "Sub Process Initiator"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "当子流程发起人为空时",
+          "en": "When the sub-process initiator is empty"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "发起人表单",
+          "en": "Initiator Form"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "启用开关",
+          "en": "Enable"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "zh": "开启",
+          "en": "On"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "zh": "关闭",
+          "en": "Off"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "请选择日期和时间",
+          "en": "Please select date and time"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "启用开关",
+          "en": "Enable"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "zh": "开启",
+          "en": "On"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "zh": "关闭",
+          "en": "Off"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "zh": "串行",
+          "en": "Serial"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "zh": "并行",
+          "en": "Parallel"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加一行",
+          "en": "Add a Row"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加一行",
+          "en": "Add a Row"
+        },
+        {
+          "type": "vue-text",
+          "zh": "超时设置",
+          "en": "Timeout Setting"
+        },
+        {
+          "type": "vue-text",
+          "zh": "后进入下一节点",
+          "en": "then go to the next node"
+        },
+        {
+          "type": "vue-text",
+          "zh": "后进入下一节点",
+          "en": "then go to the next node"
+        },
+        {
+          "type": "vue-text",
+          "zh": "多实例设置",
+          "en": "Multi-instance Setting"
+        },
+        {
+          "type": "vue-text",
+          "zh": "完成比例(%)",
+          "en": "Completion Ratio (%)"
+        },
+        {
+          "type": "vue-text",
+          "zh": "多实例来源",
+          "en": "Multi-instance Source"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确 定",
+          "en": "OK"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "script-string",
+          "zh": "是否异步不能为空",
+          "en": "Asynchronous is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "子流程不能为空",
+          "en": "Sub process is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "是否自动跳过子流程发起节点不能为空",
+          "en": "Skipping the sub-process start node is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "子流程发起人不能为空",
+          "en": "Sub-process initiator is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "当子流程发起人为空时不能为空",
+          "en": "The fallback for an empty sub-process initiator is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "发起人表单不能为空",
+          "en": "Initiator form is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "超时设置是否开启不能为空",
+          "en": "Enabling the timeout setting is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "超时设置时间不能为空",
+          "en": "Timeout duration is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "超时设置时间不能为空",
+          "en": "Timeout duration is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "超时设置时间不能为空",
+          "en": "Timeout duration is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "多实例设置不能为空",
+          "en": "Multi-instance setting is required"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n                      required: true,\n                      message: '变量不能为空',\n                      trigger: 'blur'\n                    }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n                      required: true,\n                      message: '变量不能为空',\n                      trigger: 'blur'\n                    }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n                      required: true,\n                      message: '变量不能为空',\n                      trigger: 'blur'\n                    }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n                      required: true,\n                      message: '变量不能为空',\n                      trigger: 'blur'\n                    }"
+        },
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`调用子流程：${childInfo.name}`"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/ConditionNodeConfig.vue",
+      "replaced": [
+        {
+          "type": "vue-text",
+          "zh": "未满足其它条件时，将进入此分支（该分支不可编辑和删除）",
+          "en": "Taken when none of the other conditions are met (this branch cannot be edited or deleted)"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确 定",
+          "en": "OK"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/CopyTaskNodeConfig.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "抄送人",
+          "en": "CC Recipient"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "抄送人设置",
+          "en": "CC Recipient Setting"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定角色",
+          "en": "Specified Roles"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定部门",
+          "en": "Specified Departments"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "empty-text",
+          "zh": "加载中，请稍后",
+          "en": "Loading, please wait"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定岗位",
+          "en": "Specified Positions"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定用户",
+          "en": "Specified Users"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定用户组",
+          "en": "Specified User Groups"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表单内用户字段",
+          "en": "User Field in Form"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表单内部门字段",
+          "en": "Department Field in Form"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "流程表达式",
+          "en": "Process Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表单字段权限",
+          "en": "Form Field Permission"
+        },
+        {
+          "type": "vue-text",
+          "zh": "字段权限",
+          "en": "Field Permission"
+        },
+        {
+          "type": "vue-text",
+          "zh": "字段名称",
+          "en": "Field Name"
+        },
+        {
+          "type": "vue-text",
+          "zh": "只读",
+          "en": "Read-only"
+        },
+        {
+          "type": "vue-text",
+          "zh": "可编辑",
+          "en": "Editable"
+        },
+        {
+          "type": "vue-text",
+          "zh": "隐藏",
+          "en": "Hidden"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确 定",
+          "en": "OK"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "script-string",
+          "zh": "部门负责人来源",
+          "en": "Department Leader Source"
+        },
+        {
+          "type": "script-string",
+          "zh": "抄送人设置不能为空",
+          "en": "CC recipient setting is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "用户不能为空",
+          "en": "User is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "角色不能为空",
+          "en": "Role is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "部门不能为空",
+          "en": "Department is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "用户组不能为空",
+          "en": "User group is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "岗位不能为空",
+          "en": "Position is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "表单内用户字段不能为空",
+          "en": "User field in the form is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "表单内部门字段不能为空",
+          "en": "Department field in the form is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "流程表达式不能为空",
+          "en": "Process expression is required"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "(指定部门向上)"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "(发起人部门向上)"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/DelayTimerNodeConfig.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "延迟时间",
+          "en": "Delay Time"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "请选择日期和时间",
+          "en": "Please select date and time"
+        },
+        {
+          "type": "vue-text",
+          "zh": "后进入下一节点",
+          "en": "then go to the next node"
+        },
+        {
+          "type": "vue-text",
+          "zh": "后进入下一节点",
+          "en": "then go to the next node"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确 定",
+          "en": "OK"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "script-string",
+          "zh": "延迟时间不能为空",
+          "en": "Delay time is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "延迟时间不能为空",
+          "en": "Delay time is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "延迟时间不能为空",
+          "en": "Delay time is required"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`延迟${configForm.value.timeDuration}${TIME_UNIT_TYPES.find((item) => item.value === configForm.value.timeUnit).label}`"
+        },
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`延迟至${configForm.value.dateTime.replace('T', ' ')}`"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/RouterNodeConfig.vue",
+      "replaced": [
+        {
+          "type": "vue-text",
+          "zh": "删除",
+          "en": "Delete"
+        },
+        {
+          "type": "vue-text",
+          "zh": "新增路由分支",
+          "en": "Add Router Branch"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确 定",
+          "en": "OK"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "script-string",
+          "zh": "请配置路由！",
+          "en": "Please configure the router!"
+        },
+        {
+          "type": "script-string",
+          "zh": "请完善路由配置项！",
+          "en": "Please complete the router configuration!"
+        },
+        {
+          "type": "script-string",
+          "zh": "请完善路由配置项！",
+          "en": "Please complete the router configuration!"
+        },
+        {
+          "type": "script-string",
+          "zh": "请完善路由配置项！",
+          "en": "Please complete the router configuration!"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`${routerGroups.value.length}条路由分支`"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/StartUserNodeConfig.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "权限",
+          "en": "Permission"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表单字段权限",
+          "en": "Form Field Permission"
+        },
+        {
+          "type": "vue-text",
+          "zh": "全部成员可以发起流程",
+          "en": "All members can start this process"
+        },
+        {
+          "type": "vue-text",
+          "zh": "字段权限",
+          "en": "Field Permission"
+        },
+        {
+          "type": "vue-text",
+          "zh": "字段名称",
+          "en": "Field Name"
+        },
+        {
+          "type": "vue-text",
+          "zh": "只读",
+          "en": "Read-only"
+        },
+        {
+          "type": "vue-text",
+          "zh": "可编辑",
+          "en": "Editable"
+        },
+        {
+          "type": "vue-text",
+          "zh": "隐藏",
+          "en": "Hidden"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确 定",
+          "en": "OK"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "script-string",
+          "zh": "已设置",
+          "en": "Configured"
+        }
+      ],
+      "missing": [],
+      "review": []
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/TriggerNodeConfig.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "触发器类型",
+          "en": "Trigger Type"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "请选择表单字段",
+          "en": "Please select a form field"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "请输入",
+          "en": "Please enter"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "请选择要删除的字段",
+          "en": "Please select the field to delete"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加条件",
+          "en": "Add Condition"
+        },
+        {
+          "type": "vue-text",
+          "zh": "修改表单字段设置",
+          "en": "Update Form Field Setting"
+        },
+        {
+          "type": "vue-text",
+          "zh": "的值设置为",
+          "en": "set value to"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加修改字段",
+          "en": "Add Field to Update"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加设置",
+          "en": "Add Setting"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加条件",
+          "en": "Add Condition"
+        },
+        {
+          "type": "vue-text",
+          "zh": "删除表单字段设置",
+          "en": "Delete Form Field Setting"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加设置",
+          "en": "Add Setting"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确 定",
+          "en": "OK"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "script-string",
+          "zh": "触发器类型不能为空",
+          "en": "Trigger type is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "请求地址不能为空",
+          "en": "Request URL is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "修改表单数据",
+          "en": "Update Form Data"
+        },
+        {
+          "type": "script-string",
+          "zh": "删除表单数据",
+          "en": "Delete Form Data"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n                      required: true,\n                      message: '值不能为空',\n                      trigger: 'blur'\n                    }"
+        },
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`请添加表单设置${index + 1}的修改字段`"
+        },
+        {
+          "where": "script",
+          "kind": "template-literal-dynamic",
+          "text": "`请选择表单设置${index + 1}要删除的字段`"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/UserTaskNodeConfig.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定角色",
+          "en": "Specified Roles"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定部门",
+          "en": "Specified Departments"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "empty-text",
+          "zh": "加载中，请稍后",
+          "en": "Loading, please wait"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定岗位",
+          "en": "Specified Positions"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定用户",
+          "en": "Specified Users"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定用户组",
+          "en": "Specified User Groups"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表单内用户字段",
+          "en": "User Field in Form"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表单内部门字段",
+          "en": "Department Field in Form"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "流程表达式",
+          "en": "Process Expression"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "驳回节点",
+          "en": "Reject Node"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "启用开关",
+          "en": "Enable"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "zh": "开启",
+          "en": "On"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "zh": "关闭",
+          "en": "Off"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "执行动作",
+          "en": "Action"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "超时时间设置",
+          "en": "Timeout Duration Setting"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "最大提醒次数",
+          "en": "Max Reminder Count"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "指定用户",
+          "en": "Specified Users"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "zh": "是",
+          "en": "Yes"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "zh": "否",
+          "en": "No"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "zh": "必填",
+          "en": "Required"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "zh": "非必填",
+          "en": "Optional"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "操作按钮设置",
+          "en": "Action Button Setting"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "表单字段权限",
+          "en": "Form Field Permission"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "监听器",
+          "en": "Listener"
+        },
+        {
+          "type": "vue-text",
+          "zh": "审批类型 :",
+          "en": "Approval Type :"
+        },
+        {
+          "type": "vue-text",
+          "zh": "审批人拒绝时",
+          "en": "When the approver rejects"
+        },
+        {
+          "type": "vue-text",
+          "zh": "审批人超时未处理时",
+          "en": "When the approver does not respond in time"
+        },
+        {
+          "type": "vue-text",
+          "zh": "当超过",
+          "en": "When more than"
+        },
+        {
+          "type": "vue-text",
+          "zh": "未处理",
+          "en": "without action"
+        },
+        {
+          "type": "vue-text",
+          "zh": "审批人与提交人为同一人时",
+          "en": "When the approver and the submitter are the same person"
+        },
+        {
+          "type": "vue-text",
+          "zh": "是否需要签名",
+          "en": "Signature Required"
+        },
+        {
+          "type": "vue-text",
+          "zh": "审批意见",
+          "en": "Approval Comment"
+        },
+        {
+          "type": "vue-text",
+          "zh": "跳过表达式",
+          "en": "Skip Expression"
+        },
+        {
+          "type": "vue-text",
+          "zh": "操作按钮",
+          "en": "Action Buttons"
+        },
+        {
+          "type": "vue-text",
+          "zh": "操作按钮",
+          "en": "Action Buttons"
+        },
+        {
+          "type": "vue-text",
+          "zh": "显示名称",
+          "en": "Display Name"
+        },
+        {
+          "type": "vue-text",
+          "zh": "启用",
+          "en": "Enable"
+        },
+        {
+          "type": "vue-text",
+          "zh": "字段权限",
+          "en": "Field Permission"
+        },
+        {
+          "type": "vue-text",
+          "zh": "字段名称",
+          "en": "Field Name"
+        },
+        {
+          "type": "vue-text",
+          "zh": "只读",
+          "en": "Read-only"
+        },
+        {
+          "type": "vue-text",
+          "zh": "可编辑",
+          "en": "Editable"
+        },
+        {
+          "type": "vue-text",
+          "zh": "隐藏",
+          "en": "Hidden"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确 定",
+          "en": "OK"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "script-string",
+          "zh": "部门负责人来源",
+          "en": "Department Leader Source"
+        },
+        {
+          "type": "script-string",
+          "zh": "发起人",
+          "en": "Initiator"
+        },
+        {
+          "type": "script-string",
+          "zh": "审批人设置不能为空",
+          "en": "Approver setting is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "用户不能为空",
+          "en": "User is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "角色不能为空",
+          "en": "Role is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "部门不能为空",
+          "en": "Department is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "用户组不能为空",
+          "en": "User group is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "表单内用户字段不能为空",
+          "en": "User field in the form is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "表单内部门字段不能为空",
+          "en": "Department field in the form is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "岗位不能为空",
+          "en": "Position is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "流程表达式不能为空",
+          "en": "Process expression is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "多人审批方式不能为空",
+          "en": "Multi-approver method is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "通过比例不能为空",
+          "en": "Approval ratio is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "驳回节点不能为空",
+          "en": "Reject node is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "超时时间不能为空",
+          "en": "Timeout is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "提醒次数不能为空",
+          "en": "Reminder count is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "用户不能为空",
+          "en": "User is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "办理",
+          "en": "Handle"
+        },
+        {
+          "type": "script-string",
+          "zh": "审批",
+          "en": "Approval"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":label",
+          "text": "`${nodeTypeName}人`"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":label",
+          "text": "`${nodeTypeName}人设置`"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":label",
+          "text": "`多人${nodeTypeName}方式`"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "(指定部门向上)"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "(表单内部门向上)"
+        },
+        {
+          "where": "script",
+          "kind": "string-concat",
+          "text": "(发起人部门向上)"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/components/Condition.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "配置方式",
+          "en": "Configuration Mode"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "条件规则",
+          "en": "Condition Rule"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "zh": "且",
+          "en": "And"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "zh": "或",
+          "en": "Or"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "zh": "且",
+          "en": "And"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "zh": "或",
+          "en": "Or"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "content",
+          "zh": "表单字段非必填时不能作为流程分支条件",
+          "en": "An optional form field cannot be used as a branch condition"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "添加条件组",
+          "en": "Add Condition Group"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "条件表达式",
+          "en": "Condition Expression"
+        },
+        {
+          "type": "vue-text",
+          "zh": "条件组关系",
+          "en": "Condition Group Relation"
+        },
+        {
+          "type": "vue-text",
+          "zh": "条件组",
+          "en": "Condition Group"
+        },
+        {
+          "type": "vue-text",
+          "zh": "规则关系",
+          "en": "Rule Relation"
+        },
+        {
+          "type": "script-string",
+          "zh": "配置方式不能为空",
+          "en": "Configuration mode is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "条件表达式不能为空",
+          "en": "Condition expression is required"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":spacer",
+          "text": "condition.conditionGroups.and ? '且' : '或'"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n                  required: true,\n                  message: '左值不能为空',\n                  trigger: 'change'\n                }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n                  required: true,\n                  message: '右值不能为空',\n                  trigger: 'blur'\n                }"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/components/ConditionDialog.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "条件配置",
+          "en": "Condition Configuration"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "配置方式",
+          "en": "Configuration Mode"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "条件规则",
+          "en": "Condition Rule"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "zh": "且",
+          "en": "And"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "zh": "或",
+          "en": "Or"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "zh": "且",
+          "en": "And"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "zh": "或",
+          "en": "Or"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "添加条件组",
+          "en": "Add Condition Group"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "条件表达式",
+          "en": "Condition Expression"
+        },
+        {
+          "type": "vue-text",
+          "zh": "条件组关系",
+          "en": "Condition Group Relation"
+        },
+        {
+          "type": "vue-text",
+          "zh": "条件组",
+          "en": "Condition Group"
+        },
+        {
+          "type": "vue-text",
+          "zh": "规则关系",
+          "en": "Rule Relation"
+        },
+        {
+          "type": "vue-text",
+          "zh": "确 定",
+          "en": "OK"
+        },
+        {
+          "type": "vue-text",
+          "zh": "取 消",
+          "en": "Cancel"
+        },
+        {
+          "type": "script-string",
+          "zh": "配置方式不能为空",
+          "en": "Configuration mode is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "条件表达式不能为空",
+          "en": "Condition expression is required"
+        },
+        {
+          "type": "script-string",
+          "zh": "请完善条件规则",
+          "en": "Please complete the condition rule"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":spacer",
+          "text": "condition.conditionGroups.and ? '且' : '或'"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n                        required: true,\n                        message: '左值不能为空',\n                        trigger: 'change'\n                      }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n                        required: true,\n                        message: '右值不能为空',\n                        trigger: 'blur'\n                      }"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/components/HttpRequestParamSetting.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "请求头",
+          "en": "Request Headers"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "请求体",
+          "en": "Request Body"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加一行",
+          "en": "Add a Row"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加一行",
+          "en": "Add a Row"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n            required: true,\n            message: '参数名不能为空',\n            trigger: 'blur'\n          }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n            required: true,\n            message: '参数值不能为空',\n            trigger: 'blur'\n          }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n            required: true,\n            message: '参数值不能为空',\n            trigger: 'change'\n          }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n            required: true,\n            message: '参数名不能为空',\n            trigger: 'blur'\n          }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n            required: true,\n            message: '参数值不能为空',\n            trigger: 'blur'\n          }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n            required: true,\n            message: '参数值不能为空',\n            trigger: 'change'\n          }"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/components/HttpRequestSetting.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "仅支持 POST 请求，以请求体方式接收参数",
+          "en": "Only POST requests are supported; parameters are read from the request body"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "请求地址",
+          "en": "Request URL"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "返回值",
+          "en": "Response"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "通过请求返回值, 可以修改流程表单的值",
+          "en": "The response can be used to update the values of the process form"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "请选择表单字段",
+          "en": "Please select a form field"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "zh": "请求返回字段",
+          "en": "Response Field"
+        },
+        {
+          "type": "vue-text",
+          "zh": "添加一行",
+          "en": "Add a Row"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n      required: true,\n      message: '请求地址不能为空',\n      trigger: 'blur'\n    }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n              required: true,\n              message: '表单字段不能为空',\n              trigger: 'blur'\n            }"
+        },
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n              required: true,\n              message: '请求返回字段不能为空',\n              trigger: 'blur'\n            }"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/nodes-config/components/UserTaskListener.vue",
+      "replaced": [
+        {
+          "type": "vue-attr",
+          "attr": "active-text",
+          "zh": "开启",
+          "en": "On"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "inactive-text",
+          "zh": "关闭",
+          "en": "Off"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "zh": "仅支持 POST 请求，以请求体方式接收参数",
+          "en": "Only POST requests are supported; parameters are read from the request body"
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "zh": "请求地址",
+          "en": "Request URL"
+        },
+        {
+          "type": "script-string",
+          "zh": "创建任务",
+          "en": "Create Task"
+        },
+        {
+          "type": "script-string",
+          "zh": "指派任务执行人员",
+          "en": "Assign Task Handler"
+        },
+        {
+          "type": "script-string",
+          "zh": "完成任务",
+          "en": "Complete Task"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "where": "template",
+          "kind": "vue-binding-expression",
+          "attr": ":rules",
+          "text": "{\n            required: true,\n            message: '请求地址不能为空',\n            trigger: 'blur'\n          }"
+        }
+      ]
+    },
+    {
+      "file": "src/components/SimpleProcessDesignerV2/src/utils.ts",
+      "replaced": [
+        {
+          "type": "script-string",
+          "zh": "其它情况",
+          "en": "Other Cases"
+        },
+        {
+          "type": "script-string",
+          "zh": "其它情况",
+          "en": "Other Cases"
+        }
+      ],
+      "missing": [],
+      "review": [
+        {
+          "kind": "string-concat",
+          "text": "条件"
+        },
+        {
+          "kind": "string-concat",
+          "text": "包容条件"
+        }
+      ]
+    }
+  ]
+}
