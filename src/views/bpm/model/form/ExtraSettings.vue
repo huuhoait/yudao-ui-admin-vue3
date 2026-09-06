@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="formRef" :model="modelData" label-width="130px" class="mt-20px">
+  <el-form ref="formRef" :model="modelData" label-width="180px" class="mt-20px">
     <el-form-item class="mb-20px">
       <template #label>
         <el-text size="large" tag="b">{{ t('bpm.model.form._todo76') }}</el-text>
@@ -228,7 +228,7 @@
         />
       </div>
     </el-form-item>
-    <el-form-item class="mb-20px">
+    <el-form-item v-if="modelData.printTemplateSetting" class="mb-20px">
       <template #label>
         <el-text size="large" tag="b">{{ t('bpm.model.form._todo100') }}</el-text>
       </template>
@@ -490,7 +490,8 @@ watch(
 )
 
 const defaultTemplate =
-  '<p style="text-align: center;"><span data-w-e-type="mention" data-w-e-is-void="" data-w-e-is-inline="" data-value="流程名称" data-info="%7B%22id%22%3A%22processName%22%7D">@流程名称</span></p><p style="text-align: right;">打印人：<span data-w-e-type="mention" data-w-e-is-void="" data-w-e-is-inline="" data-value="打印人" data-info="%7B%22id%22%3A%22printUser%22%7D">@打印人</span></p><p style="text-align: right;">流程编号：<span data-w-e-type="mention" data-w-e-is-void="" data-w-e-is-inline="" data-value="流程编号" data-info="%7B%22id%22%3A%22processNum%22%7D">@流程编号</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;打印时间：<span data-w-e-type="mention" data-w-e-is-void="" data-w-e-is-inline="" data-value="打印时间" data-info="%7B%22id%22%3A%22printTime%22%7D">@打印时间</span></p><table style="width: 100%;"><tbody><tr><td colSpan="1" rowSpan="1" width="auto">发起人</td><td colSpan="1" rowSpan="1" width="auto"><span data-w-e-type="mention" data-w-e-is-void data-w-e-is-inline data-value="发起人" data-info="%7B%22id%22%3A%22startUser%22%7D">@发起人</span></td><td colSpan="1" rowSpan="1" width="auto">发起时间</td><td colSpan="1" rowSpan="1" width="auto"><span data-w-e-type="mention" data-w-e-is-void data-w-e-is-inline data-value="发起时间" data-info="%7B%22id%22%3A%22startTime%22%7D">@发起时间</span></td></tr><tr><td colSpan="1" rowSpan="1" width="auto">所属部门</td><td colSpan="1" rowSpan="1" width="auto"><span data-w-e-type="mention" data-w-e-is-void data-w-e-is-inline data-value="发起人部门" data-info="%7B%22id%22%3A%22startUserDept%22%7D">@发起人部门</span></td><td colSpan="1" rowSpan="1" width="auto">流程状态</td><td colSpan="1" rowSpan="1" width="auto"><span data-w-e-type="mention" data-w-e-is-void data-w-e-is-inline data-value="流程状态" data-info="%7B%22id%22%3A%22processStatus%22%7D">@流程状态</span></td></tr></tbody></table><p><span data-w-e-type="process-record" data-w-e-is-void data-w-e-is-inline>流程记录</span></p>'
+'<p style="text-align: center;"><span data-w-e-type="mention" data-w-e-is-void="" data-w-e-is-inline="" data-value="Process Name" data-info="%7B%22id%22%3A%22processName%22%7D">@Process Name</span></p><p style="text-align: right;">Printed by: <span data-w-e-type="mention" data-w-e-is-void="" data-w-e-is-inline="" data-value="Print User" data-info="%7B%22id%22%3A%22printUser%22%7D">@Print User</span></p><p style="text-align: right;">Process No.: <span data-w-e-type="mention" data-w-e-is-void="" data-w-e-is-inline="" data-value="Process No." data-info="%7B%22id%22%3A%22processNum%22%7D">@Process No.</span>                        Print Time: <span data-w-e-type="mention" data-w-e-is-void="" data-w-e-is-inline="" data-value="Print Time" data-info="%7B%22id%22%3A%22printTime%22%7D">@Print Time</span></p><table style="width: 100%;"><tbody><tr><td colSpan="1" rowSpan="1" width="auto">Initiator</td><td colSpan="1" rowSpan="1" width="auto"><span data-w-e-type="mention" data-w-e-is-void data-w-e-is-inline data-value="Initiator" data-info="%7B%22id%22%3A%22startUser%22%7D">@Initiator</span></td><td colSpan="1" rowSpan="1" width="auto">Start Time</td><td colSpan="1" rowSpan="1" width="auto"><span data-w-e-type="mention" data-w-e-is-void data-w-e-is-inline data-value="Start Time" data-info="%7B%22id%22%3A%22startTime%22%7D">@Start Time</span></td></tr><tr><td colSpan="1" rowSpan="1" width="auto">Department</td><td colSpan="1" rowSpan="1" width="auto"><span data-w-e-type="mention" data-w-e-is-void data-w-e-is-inline data-value="Initiator Department" data-info="%7B%22id%22%3A%22startUserDept%22%7D">@Initiator Department</span></td><td colSpan="1" rowSpan="1" width="auto">Process Status</td><td colSpan="1" rowSpan="1" width="auto"><span data-w-e-type="mention" data-w-e-is-void data-w-e-is-inline data-value="Process Status" data-info="%7B%22id%22%3A%22processStatus%22%7D">@Process Status</span></td></tr></tbody></table><p><span data-w-e-type="process-record" data-w-e-is-void data-w-e-is-inline>Process Record</span></p>'
+
 const handlePrintTemplateEnableChange = (val: boolean) => {
   if (val) {
     if (!modelData.value.printTemplateSetting.template) {

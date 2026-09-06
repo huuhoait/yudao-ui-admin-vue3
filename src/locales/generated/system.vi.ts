@@ -282,7 +282,7 @@ export default {
       action: "Thao tác",
       _todo113: "Sắp cập nhật cache, làm mới trình duyệt!",
       routePathTip: "Đường dẫn route, ví dụ `user`. Nếu là địa chỉ ngoài, hãy bắt đầu bằng `http(s)://`",
-      permissionTip: "Chuỗi quyền trên phương thức Controller, ví dụ: @PreAuthorize(`@ss.hasPermission('system:user:list')`)",
+      permissionTip: "Chuỗi quyền trên phương thức Controller, ví dụ: {'@'}PreAuthorize(`{'@'}ss.hasPermission('system:user:list')`)",
       visibleTip: "Khi chọn ẩn, route sẽ không hiện ở thanh bên nhưng vẫn truy cập được",
       alwaysShowTip: "Khi chọn không, nếu menu chỉ có một menu con thì không hiện chính nó mà hiện thẳng menu con",
       keepAliveTip: "Khi bật cache, trang sẽ được `keep-alive` lưu lại; bắt buộc điền trường \"Tên component\""

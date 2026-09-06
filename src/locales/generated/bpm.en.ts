@@ -217,7 +217,7 @@ export default {
         _todo116: "Form view path is required",
         PrintTemplate: {
           _todo117: "Custom Template",
-          _todo118: "Type @ to insert form fields and default options",
+          _todo118: "Type {'@'} to insert form fields and default options",
           _todo119: "Please enter content...",
           starter: "Starter",
           _todo120: "Starter Department",

@@ -282,7 +282,7 @@ export default {
       action: "Action",
       _todo113: "Cache is about to update, refreshing browser!",
       routePathTip: "Route path to visit, e.g. `user`. For an external address, start with `http(s)://`",
-      permissionTip: "Permission string on the Controller method, e.g. @PreAuthorize(`@ss.hasPermission('system:user:list')`)",
+      permissionTip: "Permission string on the Controller method, e.g. {'@'}PreAuthorize(`{'@'}ss.hasPermission('system:user:list')`)",
       visibleTip: "When set to hidden, the route will not appear in the sidebar but can still be accessed",
       alwaysShowTip: "When set to no, a menu with only one child is not shown itself — the child is shown directly",
       keepAliveTip: "When caching is enabled the page is cached by `keep-alive`; the \"Component Name\" field is required"

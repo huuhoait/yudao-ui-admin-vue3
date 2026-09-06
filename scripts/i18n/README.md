@@ -110,10 +110,23 @@ Tool đưa các chuỗi sau vào danh sách **review** (không tự convert), li
    Lỗi runtime `Unterminated single quote in placeholder`. vue-i18n coi `{...}` là placeholder.
    Cách sửa: escape thành `{'{'}` / `{'}'}`. `gen-locale.mjs` đã tự động escape khi sinh locale.
 
-3. **Menu title từ backend**
+3. **Dấu `@` trong chuỗi làm vỡ vue-i18n** (cùng họ với mục 2, khác ký tự)
+   Lỗi runtime `SyntaxError: Message compilation error: Invalid linked format` (compile lỗi
+   ngay khi vue-i18n parse message, không phải lỗi cú pháp file .ts). vue-i18n coi `@` là ký
+   tự mở đầu "linked message" (`@:key`, `@.modifier:key`) — một `@` bất kỳ không theo sau
+   bởi `:`/`.` (vd `"Type @ to insert..."`, `"@PreAuthorize(...)"`) vẫn khiến compiler ném
+   lỗi thay vì coi là ký tự thường. Lỗi này **im lặng lúc build/dev**, chỉ lộ khi người dùng
+   mở đúng màn hình dùng key đó (vd bấm nút "Edit Template" trong BPM print template).
+   Cách sửa: escape thành `{'@'}`. `escapeI18n`/`unescapeI18n` trong `locale-io.mjs` (dùng
+   bởi `gen-locale.mjs` và `apply-translations.mjs`) đã tự động escape/unescape `@` cùng lúc
+   với `{`/`}` — không cần sửa tay khi đi qua quy trình chuẩn. Chỉ cần sửa tay khi chuỗi được
+   gõ trực tiếp vào file locale (không qua `gen-locale.mjs`), như trường hợp phát hiện lần
+   đầu (`bpm.model.form.PrintTemplate._todo118`, `system.menu.permissionTip`).
+
+4. **Menu title từ backend**
    Tool chỉ xử lý chuỗi trong mã nguồn frontend. Tên menu lưu ở database (bảng `system_menu`) không nằm trong phạm vi — cần xử lý ở backend hoặc bảng dịch riêng.
 
-4. **Thiếu hẳn `const { t } = useI18n()`** (khác lỗi TDZ ở mục 2 — đây là THIẾU, không phải SAI THỨ TỰ)
+5. **Thiếu hẳn `const { t } = useI18n()`** (khác lỗi TDZ ở mục 2 — đây là THIẾU, không phải SAI THỨ TỰ)
    Dự án auto-import `useI18n` qua unplugin-auto-import (`build/vite/index.ts`), nhưng
    KHÔNG auto-import `t` — luôn phải tự `const { t } = useI18n()` rồi mới có `t`. Convert.mjs
    tự chèn dòng này vào `<script setup>` khi apply, nhưng gặp đúng dòng này bị mất trong các

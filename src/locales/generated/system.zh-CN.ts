@@ -282,7 +282,7 @@ export default {
       action: "操作",
       _todo113: "即将更新缓存刷新浏览器！",
       routePathTip: "访问的路由地址，如：`user`。如需外网地址时，则以 `http(s)://` 开头",
-      permissionTip: "Controller 方法上的权限字符，如：@PreAuthorize(`@ss.hasPermission('system:user:list')`)",
+      permissionTip: "Controller 方法上的权限字符，如：{'@'}PreAuthorize(`{'@'}ss.hasPermission('system:user:list')`)",
       visibleTip: "选择隐藏时，路由将不会出现在侧边栏，但仍然可以访问",
       alwaysShowTip: "选择不是时，当该菜单只有一个子菜单时，不展示自己，直接展示子菜单",
       keepAliveTip: "选择缓存时，则会被 `keep-alive` 缓存，必须填写「组件名称」字段"

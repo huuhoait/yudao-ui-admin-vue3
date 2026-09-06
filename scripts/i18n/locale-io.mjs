@@ -6,26 +6,35 @@
  *  - `merge-locale.mjs`: chuyển bản dịch en/vi cũ sang bộ key mới.
  *
  * Parse bằng @babel/parser (không eval) để lấy đúng giá trị chuỗi, sau đó gỡ
- * escape của vue-i18n do `gen-locale.mjs` thêm vào (`{'{'}` -> `{`).
+ * escape của vue-i18n do `gen-locale.mjs` thêm vào (`{'{'}` -> `{`, `{'@'}` -> `@`).
  */
 import { readFileSync, existsSync } from 'node:fs'
 import { parse as babelParse } from '@babel/parser'
 
-/** Gỡ escape vue-i18n: `{'{'}` -> `{`, `{'}'}` -> `}`. */
+/** Gỡ escape vue-i18n: `{'{'}` -> `{`, `{'}'}` -> `}`, `{'@'}` -> `@`. */
 export function unescapeI18n(s) {
-  return String(s).replace(/\{'\{'\}/g, '{').replace(/\{'\}'\}/g, '}')
+  return String(s)
+    .replace(/\{'\{'\}/g, '{')
+    .replace(/\{'\}'\}/g, '}')
+    .replace(/\{'@'\}/g, '@')
 }
 
 /**
  * Thêm escape vue-i18n trước khi ghi ra file locale: vue-i18n coi `{...}` là placeholder
- * nên `{` `}` literal phải bọc thành `{'{'}` `{'}'}`.
+ * nên `{` `}` literal phải bọc thành `{'{'}` `{'}'}`; `@` cũng phải escape vì vue-i18n
+ * coi nó là ký tự mở đầu "linked message" (`@:key`, `@.modifier:key`) — một `@` KHÔNG
+ * theo sau bởi `:`/`.` vẫn khiến message-compiler ném lỗi biên dịch runtime
+ * `SyntaxError: Invalid linked format` (không phải lỗi lúc build, chỉ lộ khi màn hình
+ * đó được mở). Bọc thành `{'@'}`.
  *
- * PHẢI thay 1 lượt duy nhất. Nếu thay 2 lượt (`{` trước rồi `}` sau) thì dấu `}` do
- * lượt đầu sinh ra sẽ bị lượt sau thay tiếp -> chuỗi hỏng:
- *   '共{n}条' -> "共{'{'{'}'}n{'}'}条"
+ * PHẢI thay 1 lượt duy nhất. Nếu thay nhiều lượt riêng biệt (`{` trước rồi `}` sau...)
+ * thì `{`/`}` do lượt trước sinh ra (kể cả từ escape `@` -> `{'@'}`) sẽ bị lượt sau thay
+ * tiếp -> chuỗi hỏng, vd '共{n}条' -> "共{'{'{'}'}n{'}'}条". Dùng 1 regex với character
+ * class gộp cả 3 ký tự, callback chỉ nhìn ký tự gốc trong chuỗi ĐẦU VÀO (replace không
+ * quét lại chuỗi kết quả) nên an toàn.
  */
 export function escapeI18n(s) {
-  return String(s).replace(/[{}]/g, (ch) => (ch === '{' ? "{'{'}" : "{'}'}"))
+  return String(s).replace(/[{}@]/g, (ch) => (ch === '{' ? "{'{'}" : ch === '}' ? "{'}'}" : "{'@'}"))
 }
 
 /**

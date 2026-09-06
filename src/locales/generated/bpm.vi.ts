@@ -217,7 +217,7 @@ export default {
         _todo116: "Đường dẫn xem biểu mẫu không được để trống",
         PrintTemplate: {
           _todo117: "Mẫu tùy chỉnh",
-          _todo118: "Nhập @ để chọn chèn trường biểu mẫu và tùy chọn mặc định",
+          _todo118: "Nhập {'@'} để chọn chèn trường biểu mẫu và tùy chọn mặc định",
           _todo119: "Vui lòng nhập nội dung...",
           starter: "Người khởi tạo",
           _todo120: "Phòng ban người khởi tạo",

@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { Editor, Toolbar } from '@wangeditor-next/editor-for-vue'
-import { IDomEditor } from '@wangeditor-next/editor'
+import { IDomEditor, i18nChangeLanguage } from '@wangeditor-next/editor'
 import MentionModal from './MentionModal.vue'
+import { useLocaleStore } from '@/store/modules/locale'
 const { t } = useI18n() // 国际化
+
+const localeStore = useLocaleStore()
+i18nChangeLanguage(localeStore.getCurrentLocale.lang)
 
 const emit = defineEmits(['confirm'])
 
