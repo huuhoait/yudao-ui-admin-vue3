@@ -63,7 +63,9 @@ const editorConfig = {
       showModal,
       hideModal
     }
-  }
+  },
+  // 打印模板只是静态 HTML，不需要走后端上传接口，直接以 base64 内嵌图片
+  uploadImgShowBase64: true
 }
 const valueHtml = ref()
 const handleCreated = (editor: IDomEditor) => {
@@ -119,3 +121,12 @@ onBeforeUnmount(() => {
 </template>
 
 <style src="@wangeditor-next/editor/dist/css/style.css"></style>
+<style>
+/* Mention là void node (@wangeditor-next/plugin-mention), không nhận font-family/font-size
+   qua toolbar vì không có text thật để đánh mark. Cho chip kế thừa font của đoạn văn bản
+   xung quanh thay vì dùng font mặc định của trình duyệt. */
+[data-w-e-type='mention'] {
+  font-family: inherit;
+  font-size: inherit;
+}
+</style>
