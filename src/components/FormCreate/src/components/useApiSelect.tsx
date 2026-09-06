@@ -139,25 +139,25 @@ export const useApiSelect = (option: ApiSelectProps) => {
       }
 
       function parseOptions(data: any) {
-        //  情况一：如果有自定义解析函数优先使用自定义解析
+        // Case 1: if a custom parse function is set, prefer it
         if (!isEmpty(props.parseFunc)) {
           options.value = parseFunc()?.(data)
           return
         }
-        // 情况二：返回的直接是一个列表
+        // Case 2: the response is directly a list
         if (Array.isArray(data)) {
           parseOptions0(data)
           return
         }
-        // 情况二：返回的是分页数据,尝试读取 list
+        // Case 2: the response is paginated data, try reading `list`
         data = data.list
         if (!!data && Array.isArray(data)) {
           parseOptions0(data)
           return
         }
-        // 情况三：不是 yudao-vue-pro 标准返回
+        // Case 3: not a standard yudao-vue-pro response
         console.warn(
-          `接口[${props.url}] 返回结果不是 yudao-vue-pro 标准返回建议采用自定义解析函数处理`
+          `API [${props.url}] response is not a standard yudao-vue-pro response; consider using a custom parse function`
         )
       }
 
@@ -167,8 +167,8 @@ export const useApiSelect = (option: ApiSelectProps) => {
             const label = parseExpression(item, props.labelField)
             let value = parseExpression(item, props.valueField)
 
-            // 根据 returnType 决定返回值
-            // 如果设置了 returnType 为 'name'，则返回 label 作为 value
+            // decide the return value based on returnType
+            // if returnType is set to 'name', return the label as the value
             if (props.returnType === 'name') {
               value = label
             }
@@ -180,32 +180,32 @@ export const useApiSelect = (option: ApiSelectProps) => {
           })
           return
         }
-        console.warn(`接口[${props.url}] 返回结果不是一个数组`)
+        console.warn(`API [${props.url}] response is not an array`)
       }
 
       function parseFunc() {
         let parse: any = null
         if (!!props.parseFunc) {
-          // 解析字符串函数
+          // parse the string as a function
           parse = new Function(`return ${props.parseFunc}`)()
         }
         return parse
       }
 
       function parseExpression(data: any, template: string) {
-        // 检测是否使用了表达式
+        // detect whether an expression is used
         if (template.indexOf('${') === -1) {
           return data[template]
         }
-        // 正则表达式匹配模板字符串中的 ${...}
+        // regex to match ${...} in the template string
         const pattern = /\$\{([^}]*)}/g
-        // 使用replace函数配合正则表达式和回调函数来进行替换
+        // use replace with the regex and a callback to substitute
         return template.replace(pattern, (_, expr) => {
-          // expr 是匹配到的 ${} 内的表达式（这里是属性名），从 data 中获取对应的值
-          const result = data[expr.trim()] // 去除前后空白，以防用户输入带空格的属性名
+          // expr is the expression matched inside ${} (a property name here); read it from data
+          const result = data[expr.trim()] // trim whitespace in case the user entered a property name with spaces
           if (!result) {
             console.warn(
-              `接口选择器选项模版[${template}][${expr.trim()}] 解析值失败结果为[${result}], 请检查属性名称是否存在于接口返回值中,存在则忽略此条！！！`
+              `API selector option template [${template}][${expr.trim()}] failed to resolve, result was [${result}]. Check whether this property exists in the API response — if it does, ignore this warning!`
             )
           }
           return result
@@ -266,8 +266,8 @@ export const useApiSelect = (option: ApiSelectProps) => {
       const buildCheckbox = () => {
         if (isEmpty(options.value)) {
           options.value = [
-            { label: '选项1', value: '选项1' },
-            { label: '选项2', value: '选项2' }
+            { label: 'Option 1', value: 'Option 1' },
+            { label: 'Option 2', value: 'Option 2' }
           ]
         }
         return (
@@ -281,8 +281,8 @@ export const useApiSelect = (option: ApiSelectProps) => {
       const buildRadio = () => {
         if (isEmpty(options.value)) {
           options.value = [
-            { label: '选项1', value: '选项1' },
-            { label: '选项2', value: '选项2' }
+            { label: 'Option 1', value: 'Option 1' },
+            { label: 'Option 2', value: 'Option 2' }
           ]
         }
         return (

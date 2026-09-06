@@ -2,7 +2,7 @@ import { generateUUID } from '@/utils'
 import { localeProps, makeRequiredRule } from '@/components/FormCreate/src/utils'
 
 export const useEditorRule = () => {
-  const label = '富文本'
+  const label = 'Rich Text'
   const name = 'Editor'
   return {
     icon: 'icon-editor',
@@ -23,9 +23,9 @@ export const useEditorRule = () => {
         {
           type: 'input',
           field: 'height',
-          title: '高度'
+          title: 'Height'
         },
-        { type: 'switch', field: 'readonly', title: '是否只读' }
+        { type: 'switch', field: 'readonly', title: 'Read Only' }
       ])
     }
   }

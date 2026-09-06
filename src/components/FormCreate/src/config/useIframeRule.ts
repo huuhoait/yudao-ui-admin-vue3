@@ -2,10 +2,10 @@ import { generateUUID } from '@/utils'
 import { localeProps, makeRequiredRule } from '@/components/FormCreate/src/utils'
 
 /**
- * iframe 组件规则
+ * iframe component rule
  */
 export const useIframeRule = () => {
-  const label = '网页 iframe'
+  const label = 'Web Page iframe'
   const name = 'IframeComponent'
 
   return {
@@ -27,46 +27,46 @@ export const useIframeRule = () => {
         {
           type: 'input',
           field: 'url',
-          title: 'URL 地址',
+          title: 'URL Address',
           value: '',
-          info: '请输入完整的 HTTP 或 HTTPS 地址'
+          info: 'Please enter a full HTTP or HTTPS address'
         },
         {
           type: 'input',
           field: 'height',
-          title: 'iframe 高度',
+          title: 'iframe Height',
           value: '500px',
-          info: '支持 px、%、vh 等单位'
+          info: 'Supports units such as px, %, vh'
         },
         {
           type: 'input',
           field: 'width',
-          title: 'iframe 宽度',
+          title: 'iframe Width',
           value: '100%',
-          info: '支持 px、%、vw 等单位'
+          info: 'Supports units such as px, %, vw'
         },
         {
           type: 'select',
           field: 'loading',
-          title: '加载方式',
+          title: 'Loading Method',
           value: 'lazy',
           options: [
-            { label: '懒加载', value: 'lazy' },
-            { label: '立即加载', value: 'eager' }
+            { label: 'Lazy Load', value: 'lazy' },
+            { label: 'Eager Load', value: 'eager' }
           ]
         },
         {
           type: 'switch',
           field: 'allowfullscreen',
-          title: '允许全屏',
+          title: 'Allow Fullscreen',
           value: true
         },
         {
           type: 'input',
           field: 'sandbox',
-          title: 'sandbox 属性',
+          title: 'sandbox Attribute',
           value: '',
-          info: '安全沙箱限制，如：allow-scripts allow-same-origin'
+          info: 'Security sandbox restriction, e.g. allow-scripts allow-same-origin'
         }
       ])
     }

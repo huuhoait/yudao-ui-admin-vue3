@@ -88,7 +88,13 @@ const designerConfig = ref({
   showFormConfig: true, // 是否显示表单配置
   showInputData: true, // 是否显示录入按钮
   showDevice: true, // 是否显示多端适配选项
-  appendConfigData: [] // 定义渲染规则所需的formData
+  appendConfigData: [], // 定义渲染规则所需的formData
+  // AI 表单助理：未配置 VITE_FORM_CREATE_AI_API 时隐藏按钮，避免调用官方默认地址（无 token 会失败）
+  showAi: !!import.meta.env.VITE_FORM_CREATE_AI_API,
+  ai: {
+    api: import.meta.env.VITE_FORM_CREATE_AI_API,
+    token: import.meta.env.VITE_FORM_CREATE_AI_TOKEN
+  }
 })
 const designer = ref() // 表单设计器
 useFormCreateDesigner(designer) // 表单设计器增强

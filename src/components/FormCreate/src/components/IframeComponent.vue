@@ -1,7 +1,7 @@
-<!-- 网页 iframe 组件 (Element Plus 版本 - Vue3) -->
+<!-- Web page iframe component (Element Plus version - Vue3) -->
 <template>
   <div class="iframe-component">
-    <!-- iframe 预览 -->
+    <!-- iframe preview -->
     <div v-if="showPreview" class="iframe-preview">
       <iframe
         :src="displayUrl"
@@ -15,9 +15,9 @@
       ></iframe>
     </div>
 
-    <!-- 无 URL 或无效 URL 提示 -->
+    <!-- shown when there is no URL or the URL is invalid -->
     <div v-else class="iframe-placeholder">
-      <el-empty description="请在右侧属性面板配置 URL 地址" />
+      <el-empty description="Please configure the URL address in the properties panel on the right" />
     </div>
   </div>
 </template>
@@ -51,10 +51,10 @@ const props = withDefaults(defineProps<Props>(), {
   sandbox: ''
 })
 
-const displayUrl = computed(() => props.url || props.modelValue || '') // 显示的 URL（优先使用 url prop，其次使用 modelValue）
+const displayUrl = computed(() => props.url || props.modelValue || '') // the URL to display (prefers the url prop, falls back to modelValue)
 const showPreview = computed(() => {
   return displayUrl.value && isUrl(displayUrl.value)
-}) // 是否显示预览
+}) // whether to show the preview
 </script>
 
 <style scoped>

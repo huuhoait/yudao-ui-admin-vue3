@@ -2,7 +2,7 @@ import { generateUUID } from '@/utils'
 import { localeProps, makeRequiredRule } from '@/components/FormCreate/src/utils'
 
 export const useUploadImgsRule = () => {
-  const label = '多图上传'
+  const label = 'Multiple Image Upload'
   const name = 'UploadImgs'
   return {
     icon: 'icon-upload',
@@ -23,13 +23,13 @@ export const useUploadImgsRule = () => {
         {
           type: 'switch',
           field: 'drag',
-          title: '拖拽上传',
+          title: 'Drag and Drop Upload',
           value: false
         },
         {
           type: 'select',
           field: 'fileType',
-          title: '图片类型限制',
+          title: 'Image Type Restriction',
           value: ['image/jpeg', 'image/png', 'image/gif'],
           options: [
             { label: 'image/apng', value: 'image/apng' },
@@ -49,33 +49,33 @@ export const useUploadImgsRule = () => {
         {
           type: 'inputNumber',
           field: 'fileSize',
-          title: '大小限制(MB)',
+          title: 'Size Limit (MB)',
           value: 5,
           props: { min: 0 }
         },
         {
           type: 'inputNumber',
           field: 'limit',
-          title: '数量限制',
+          title: 'Quantity Limit',
           value: 5,
           props: { min: 0 }
         },
         {
           type: 'input',
           field: 'height',
-          title: '组件高度',
+          title: 'Component Height',
           value: '150px'
         },
         {
           type: 'input',
           field: 'width',
-          title: '组件宽度',
+          title: 'Component Width',
           value: '150px'
         },
         {
           type: 'input',
           field: 'borderradius',
-          title: '组件边框圆角',
+          title: 'Component Border Radius',
           value: '8px'
         }
       ])

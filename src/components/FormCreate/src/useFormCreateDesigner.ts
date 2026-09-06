@@ -14,15 +14,15 @@ import { apiSelectRule } from '@/components/FormCreate/src/config/selectRule'
 import { generateUUID } from '@/utils'
 
 /**
- * 表单设计器增强 hook
- * 新增
- * - 文件上传
- * - 单图上传
- * - 多图上传
- * - 字典选择器
- * - 用户选择器
- * - 部门选择器
- * - 富文本
+ * Form designer enhancement hook
+ * Adds
+ * - File Upload
+ * - Single Image Upload
+ * - Multiple Image Upload
+ * - Dict Selector
+ * - User Selector
+ * - Department Selector
+ * - Rich Text
  */
 export const useFormCreateDesigner = async (designer: Ref) => {
   const editorRule = useEditorRule()
@@ -31,12 +31,12 @@ export const useFormCreateDesigner = async (designer: Ref) => {
   const uploadImgsRule = useUploadImgsRule()
 
   /**
-   * 构建表单组件
+   * Build form components
    */
   const buildFormComponents = () => {
-    // 移除自带的上传组件规则，使用 uploadFileRule、uploadImgRule、uploadImgsRule 替代
+    // remove the built-in upload component rules, use uploadFileRule/uploadImgRule/uploadImgsRule instead
     designer.value?.removeMenuItem('upload')
-    // 移除自带的富文本组件规则，使用 editorRule 替代
+    // remove the built-in rich-text component rule, use editorRule instead
     designer.value?.removeMenuItem('fcEditor')
     const iframeRule = useIframeRule()
     const areaSelectRule = useAreaSelectRule()
@@ -49,9 +49,9 @@ export const useFormCreateDesigner = async (designer: Ref) => {
       areaSelectRule
     ]
     components.forEach((component) => {
-      // 插入组件规则
+      // register the component rule
       designer.value?.addComponent(component)
-      // 插入拖拽按钮到 `main` 分类下
+      // insert the drag button under the `main` category
       designer.value?.appendMenuItem('main', {
         icon: component.icon,
         name: component.name,
@@ -62,36 +62,36 @@ export const useFormCreateDesigner = async (designer: Ref) => {
 
   const userSelectRule = useSelectRule({
     name: 'UserSelect',
-    label: '用户选择器',
+    label: 'User Selector',
     icon: 'icon-user-o',
     props: [
       {
         type: 'switch',
         field: 'defaultCurrentUser',
-        title: '默认选中当前用户',
+        title: 'Default to current user',
         value: false
       }
     ]
   })
   const deptSelectRule = useSelectRule({
     name: 'DeptSelect',
-    label: '部门选择器',
+    label: 'Department Selector',
     icon: 'icon-address-card-o',
     props: [
       {
         type: 'select',
         field: 'returnType',
-        title: '返回值类型',
+        title: 'Return Value Type',
         value: 'id',
         options: [
-          { label: '部门编号', value: 'id' },
-          { label: '部门名称', value: 'name' }
+          { label: 'Department ID', value: 'id' },
+          { label: 'Department Name', value: 'name' }
         ]
       },
       {
         type: 'switch',
         field: 'defaultCurrentDept',
-        title: '默认选中当前部门',
+        title: 'Default to current department',
         value: false
       }
     ]
@@ -99,28 +99,28 @@ export const useFormCreateDesigner = async (designer: Ref) => {
   const dictSelectRule = useDictSelectRule()
   const apiSelectRule0 = useSelectRule({
     name: 'ApiSelect',
-    label: '接口选择器',
+    label: 'API Selector',
     icon: 'icon-server',
     props: [...apiSelectRule],
     event: ['click', 'change', 'visibleChange', 'clear', 'blur', 'focus']
   })
 
   /**
-   * 构建系统字段菜单
+   * Build the system fields menu
    */
   const buildSystemMenu = () => {
-    // 移除自带的下拉选择器组件，使用 currencySelectRule 替代
+    // remove the built-in dropdown selector components, use currencySelectRule instead
     // designer.value?.removeMenuItem('select')
     // designer.value?.removeMenuItem('radio')
     // designer.value?.removeMenuItem('checkbox')
     const components = [userSelectRule, deptSelectRule, dictSelectRule, apiSelectRule0]
     const menu: Menu = {
       name: 'system',
-      title: '系统字段',
+      title: 'System Fields',
       list: components.map((component) => {
-        // 插入组件规则
+        // register the component rule
         designer.value?.addComponent(component)
-        // 插入拖拽按钮到 `system` 分类下
+        // insert the drag button under the `system` category
         return {
           icon: component.icon,
           name: component.name,
@@ -132,25 +132,25 @@ export const useFormCreateDesigner = async (designer: Ref) => {
   }
 
   /**
-   * 修复重复的字段 ID 问题
-   * 当复制组件时，自动为新组件生成新的字段 ID
+   * Fix duplicate field ID issue
+   * When a component is copied, automatically generate a new field ID for the new component
    *
-   * 对应 issue：https://gitee.com/yudaocode/yudao-ui-admin-vue3/issues/ICM22X
+   * See issue: https://gitee.com/yudaocode/yudao-ui-admin-vue3/issues/ICM22X
    */
   const fixDuplicateFields = () => {
-    // 获取当前所有规则
+    // get all current rules
     const rules = designer.value?.getRule() || []
     const fieldIds = new Set<string>()
     let hasChanges = false
 
-    // 遍历所有规则，检测并修复重复的字段 ID
+    // walk all rules, detect and fix duplicate field IDs
     rules.forEach((rule: any) => {
       if (rule.field) {
         if (fieldIds.has(rule.field)) {
-          // 发现重复，生成新的ID
+          // duplicate found, generate a new ID
           const oldField = rule.field
           const newField = generateUUID()
-          console.log(`[FormCreate] 检测到重复字段ID: ${oldField}, 已自动更新为: ${newField}`)
+          console.log(`[FormCreate] Duplicate field ID detected: ${oldField}, auto-updated to: ${newField}`)
           rule.field = newField
           hasChanges = true
         } else {
@@ -159,7 +159,7 @@ export const useFormCreateDesigner = async (designer: Ref) => {
       }
     })
 
-    // 如果有重复字段被修复，更新设计器
+    // update the designer if any duplicate fields were fixed
     if (hasChanges) {
       designer.value?.setRule(rules)
     }
@@ -172,8 +172,8 @@ export const useFormCreateDesigner = async (designer: Ref) => {
     buildFormComponents()
     buildSystemMenu()
 
-    // 监听设计器内容变化，自动修复重复字段ID
-    let isFixing = false // 防止无限循环
+    // watch designer content changes, auto-fix duplicate field IDs
+    let isFixing = false // prevent infinite loop
     watch(
       () => designer.value?.getRule(),
       async () => {

@@ -2,14 +2,14 @@ const selectRule = [
   {
     type: 'select',
     field: 'selectType',
-    title: '选择器类型',
+    title: 'Selector Type',
     value: 'select',
     options: [
-      { label: '下拉框', value: 'select' },
-      { label: '单选框', value: 'radio' },
-      { label: '多选框', value: 'checkbox' }
+      { label: 'Dropdown', value: 'select' },
+      { label: 'Radio', value: 'radio' },
+      { label: 'Checkbox', value: 'checkbox' }
     ],
-    // 参考 https://www.form-create.com/v3/guide/control 组件联动，单选框和多选框不需要多选属性
+    // See https://www.form-create.com/v3/guide/control component linkage — radio and checkbox don't need the multiple-select property
     control: [
       {
         value: 'select',
@@ -35,59 +35,59 @@ const selectRule = [
   {
     type: 'switch',
     field: 'filterable',
-    title: '是否可搜索'
+    title: 'Searchable'
   },
-  { type: 'switch', field: 'multiple', title: '是否多选' },
+  { type: 'switch', field: 'multiple', title: 'Multiple' },
   {
     type: 'switch',
     field: 'disabled',
-    title: '是否禁用'
+    title: 'Disabled'
   },
-  { type: 'switch', field: 'clearable', title: '是否可以清空选项' },
+  { type: 'switch', field: 'clearable', title: 'Clearable' },
   {
     type: 'switch',
     field: 'collapseTags',
-    title: '多选时是否将选中值按文字的形式展示'
+    title: 'Show selected values as text tags when multiple'
   },
   {
     type: 'inputNumber',
     field: 'multipleLimit',
-    title: '多选时用户最多可以选择的项目数，为 0 则不限制',
+    title: 'Max number of items selectable when multiple; 0 means unlimited',
     props: { min: 0 }
   },
   {
     type: 'input',
     field: 'autocomplete',
-    title: 'autocomplete 属性'
+    title: 'autocomplete Attribute'
   },
-  { type: 'input', field: 'placeholder', title: '占位符' },
-  { type: 'switch', field: 'allowCreate', title: '是否允许用户创建新条目' },
+  { type: 'input', field: 'placeholder', title: 'Placeholder' },
+  { type: 'switch', field: 'allowCreate', title: 'Allow creating new entries' },
   {
     type: 'input',
     field: 'noMatchText',
-    title: '搜索条件无匹配时显示的文字'
+    title: 'Text shown when no search results match'
   },
-  { type: 'input', field: 'noDataText', title: '选项为空时显示的文字' },
+  { type: 'input', field: 'noDataText', title: 'Text shown when options are empty' },
   {
     type: 'switch',
     field: 'reserveKeyword',
-    title: '多选且可搜索时，是否在选中一个选项后保留当前的搜索关键词'
+    title: 'When multiple and searchable, keep the current search keyword after selecting an option'
   },
   {
     type: 'switch',
     field: 'defaultFirstOption',
-    title: '在输入框按下回车，选择第一个匹配项'
+    title: 'Press Enter in the input to select the first matching item'
   },
   {
     type: 'switch',
     field: 'popperAppendToBody',
-    title: '是否将弹出框插入至 body 元素',
+    title: 'Append popup to the body element',
     value: true
   },
   {
     type: 'switch',
     field: 'automaticDropdown',
-    title: '对于不可搜索的 Select，是否在输入框获得焦点后自动弹出选项菜单'
+    title: 'For a non-searchable Select, auto-open the options menu when the input gains focus'
   }
 ]
 
@@ -95,7 +95,7 @@ const apiSelectRule = [
   {
     type: 'input',
     field: 'url',
-    title: 'url 地址',
+    title: 'URL Address',
     props: {
       placeholder: '/system/user/simple-list'
     }
@@ -103,7 +103,7 @@ const apiSelectRule = [
   {
     type: 'select',
     field: 'method',
-    title: '请求类型',
+    title: 'Request Method',
     value: 'GET',
     options: [
       { label: 'GET', value: 'GET' },
@@ -118,7 +118,7 @@ const apiSelectRule = [
           {
             type: 'input',
             field: 'data',
-            title: '请求参数 JSON 格式',
+            title: 'Request Params (JSON format)',
             props: {
               autosize: true,
               type: 'textarea',
@@ -132,8 +132,8 @@ const apiSelectRule = [
   {
     type: 'input',
     field: 'labelField',
-    title: 'label 属性',
-    info: '可以使用 el 表达式：${属性}，来实现复杂数据组合。如：${nickname}-${id}',
+    title: 'label Property',
+    info: 'You can use an el expression: ${property} to compose complex data, e.g. ${nickname}-${id}',
     props: {
       placeholder: 'nickname'
     }
@@ -141,8 +141,8 @@ const apiSelectRule = [
   {
     type: 'input',
     field: 'valueField',
-    title: 'value 属性',
-    info: '可以使用 el 表达式：${属性}，来实现复杂数据组合。如：${nickname}-${id}',
+    title: 'value Property',
+    info: 'You can use an el expression: ${property} to compose complex data, e.g. ${nickname}-${id}',
     props: {
       placeholder: 'id'
     }
@@ -150,8 +150,8 @@ const apiSelectRule = [
   {
     type: 'input',
     field: 'parseFunc',
-    title: '选项解析函数',
-    info: `data 为接口返回值,需要写一个匿名函数解析返回值为选择器 options 列表
+    title: 'Options Parser Function',
+    info: `The response data. Write an anonymous function that parses it into the selector's options list
     (data: any)=>{ label: string; value: any }[]`,
     props: {
       autosize: true,
@@ -167,14 +167,14 @@ const apiSelectRule = [
   {
     type: 'switch',
     field: 'remote',
-    info: '是否可搜索',
-    title: '其中的选项是否从服务器远程加载'
+    info: 'Whether it is searchable',
+    title: 'Whether the options are loaded remotely from the server'
   },
   {
     type: 'input',
     field: 'remoteField',
-    title: '请求参数',
-    info: '远程请求时请求携带的参数名称，如：name'
+    title: 'Request Parameter',
+    info: 'The parameter name carried in the remote request, e.g. name'
   }
 ]
 

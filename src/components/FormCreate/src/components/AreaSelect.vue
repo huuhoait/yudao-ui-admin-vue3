@@ -1,4 +1,4 @@
-<!-- 省市区选择器 (Element Plus 版本 - Vue3) -->
+<!-- Province/City/District selector (Element Plus version - Vue3) -->
 <template>
   <el-cascader
     v-model="selectedValue"
@@ -47,7 +47,7 @@ const props = withDefaults(defineProps<Props>(), {
   modelValue: undefined,
   level: AreaLevelEnum.DISTRICT,
   disabled: false,
-  placeholder: '请选择省市区',
+  placeholder: 'Please select province/city/district',
   clearable: true,
   showAllLevels: true,
   separator: '/'
@@ -61,48 +61,48 @@ const cascaderProps = {
   label: 'name',
   value: 'id',
   children: 'children',
-  checkStrictly: true, // 允许选择任意级别
-  emitPath: true // 返回完整路径
-} // Element Plus Cascader 的 props 配置
+  checkStrictly: true, // allow selecting any level
+  emitPath: true // return the full path
+} // Element Plus Cascader props config
 
-const areaTree = ref<AreaVO[]>([]) // 地区树形数据
-const selectedValue = ref<number[] | undefined>() // 当前选中值
-const loading = ref(false) // 加载状态
+const areaTree = ref<AreaVO[]>([]) // area tree data
+const selectedValue = ref<number[] | undefined>() // current selected value
+const loading = ref(false) // loading state
 
-/** 加载地区树形数据 */
+/** Load the area tree data */
 async function loadAreaTree(): Promise<void> {
   try {
     loading.value = true
     const data = await getAreaTree()
-    // 根据 level 限制层级
+    // restrict the level according to `level`
     areaTree.value = filterTreeByLevel(data || [], props.level)
   } catch (error) {
-    console.warn('[AreaSelect] 加载地区数据失败:', error)
+    console.warn('[AreaSelect] Failed to load area data:', error)
     areaTree.value = []
   } finally {
     loading.value = false
   }
 }
 
-/** 根据层级过滤树形数据 */
+/** Filter the tree data by level */
 function filterTreeByLevel(tree: AreaVO[], maxLevel: number): AreaVO[] {
   if (maxLevel <= 0) {
     return []
   }
   return tree.map((node) => {
     const newNode = { ...node }
-    // 如果当前是最后一层，移除 children
+    // remove children if this is the last level
     if (maxLevel === 1) {
       delete newNode.children
     } else if (node.children && node.children.length > 0) {
-      // 递归处理子节点
+      // recurse into child nodes
       newNode.children = filterTreeByLevel(node.children, maxLevel - 1)
     }
     return newNode
   })
 }
 
-/** 处理选中值变化 */
+/** Handle selected value change */
 function handleChange(value: number[] | undefined): void {
   if (value === undefined || value === null) {
     emit('update:modelValue', undefined)
@@ -111,7 +111,7 @@ function handleChange(value: number[] | undefined): void {
   emit('update:modelValue', value)
 }
 
-/** 同步 modelValue 到内部选中值 */
+/** Sync modelValue to the internal selected value */
 function syncSelectedValue(): void {
   const newValue = props.modelValue
   if (newValue === undefined || newValue === null) {
@@ -119,7 +119,7 @@ function syncSelectedValue(): void {
     return
   }
 
-  // 确保是数组格式
+  // ensure it's an array
   if (Array.isArray(newValue)) {
     selectedValue.value = newValue as number[]
   } else {
@@ -127,10 +127,10 @@ function syncSelectedValue(): void {
   }
 }
 
-/** 监听 modelValue 变化 */
+/** Watch modelValue changes */
 watch(() => props.modelValue, syncSelectedValue, { immediate: true })
 
-/** 组件挂载时加载数据 */
+/** Load data when the component is mounted */
 onMounted(async () => {
   await loadAreaTree()
 })

@@ -2,7 +2,7 @@ export function makeRequiredRule() {
   return {
     type: 'Required',
     field: 'formCreate$required',
-    title: '是否必填'
+    title: 'Required'
   }
 }
 
@@ -18,11 +18,11 @@ export const localeProps = (t, prefix, rules) => {
 }
 
 /**
- * 解析表单组件的  field, title 等字段（递归，如果组件包含子组件）
+ * Parse a form component's field/title etc. (recursive, for components with children)
  *
- * @param rule  组件的生成规则 https://www.form-create.com/v3/guide/rule
- * @param fields 解析后表单组件字段
- * @param parentTitle  如果是子表单，子表单的标题，默认为空
+ * @param rule  the component's generation rule https://www.form-create.com/v3/guide/rule
+ * @param fields  the parsed form component fields
+ * @param parentTitle  if this is a sub-form, its title; empty by default
  */
 export const parseFormFields = (
   rule: Record<string, any>,
@@ -45,9 +45,9 @@ export const parseFormFields = (
       type,
       required
     })
-    // TODO 子表单 需要处理子表单字段
+    // TODO sub-form: need to handle sub-form fields
     // if (type === 'group' && rule.props?.rule && Array.isArray(rule.props.rule)) {
-    //   // 解析子表单的字段
+    //   // parse sub-form fields
     //   rule.props.rule.forEach((item) => {
     //     parseFields(item, fieldsPermission, title)
     //   })

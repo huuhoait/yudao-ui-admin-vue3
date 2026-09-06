@@ -60,6 +60,8 @@ import {
   // ElOption
 } from 'element-plus'
 import FcDesigner from '@form-create/designer'
+// Bảng dịch tiếng Anh có sẵn của thư viện (thay cho mặc định tiếng Trung của @form-create/designer)
+import fcDesignerEnLocale from '@form-create/designer/locale/en.es.js'
 import formCreate from '@form-create/element-ui'
 import install from '@form-create/element-ui/auto-import'
 
@@ -130,5 +132,6 @@ export const setupFormCreate = (app: App<Element>) => {
   })
   formCreate.use(install)
   app.use(formCreate)
+  FcDesigner.useLocale(fcDesignerEnLocale) // dùng tiếng Anh có sẵn của thư viện, thay cho mặc định tiếng Trung
   app.use(FcDesigner)
 }

@@ -3,10 +3,10 @@ import { localeProps, makeRequiredRule } from '@/components/FormCreate/src/utils
 import { AreaLevelEnum } from '@/utils/constants'
 
 /**
- * 省市区选择器规则
+ * Province/City/District selector rule
  */
 export const useAreaSelectRule = () => {
-  const label = '省市区选择器'
+  const label = 'Province/City/District Selector'
   const name = 'AreaSelect'
 
   return {
@@ -28,45 +28,45 @@ export const useAreaSelectRule = () => {
         {
           type: 'select',
           field: 'level',
-          title: '选择层级',
+          title: 'Selection Level',
           value: AreaLevelEnum.DISTRICT,
           options: [
-            { label: '省', value: AreaLevelEnum.PROVINCE },
-            { label: '省/市', value: AreaLevelEnum.CITY },
-            { label: '省/市/区', value: AreaLevelEnum.DISTRICT }
+            { label: 'Province', value: AreaLevelEnum.PROVINCE },
+            { label: 'Province/City', value: AreaLevelEnum.CITY },
+            { label: 'Province/City/District', value: AreaLevelEnum.DISTRICT }
           ],
-          info: '限制可选择的地区层级'
+          info: 'Restrict the selectable region level'
         },
         {
           type: 'input',
           field: 'placeholder',
-          title: '占位符',
-          value: '请选择省市区'
+          title: 'Placeholder',
+          value: 'Please select province/city/district'
         },
         {
           type: 'switch',
           field: 'clearable',
-          title: '是否可清空',
+          title: 'Clearable',
           value: true
         },
         {
           type: 'switch',
           field: 'showAllLevels',
-          title: '显示完整路径',
+          title: 'Show Full Path',
           value: true,
-          info: '输入框中是否显示选中值的完整路径'
+          info: 'Whether to show the full path of the selected value in the input'
         },
         {
           type: 'input',
           field: 'separator',
-          title: '分隔符',
+          title: 'Separator',
           value: '/',
-          info: '选项分隔符'
+          info: 'Separator between options'
         },
         {
           type: 'switch',
           field: 'disabled',
-          title: '是否禁用',
+          title: 'Disabled',
           value: false
         }
       ])

@@ -36,7 +36,7 @@
     "@microsoft/fetch-event-source": "^2.0.1",
     "@videojs-player/vue": "^1.0.0",
     "@vueuse/core": "^14.3.0",
-    "@wangeditor-next/editor": "^5.7.0",
+    "@wangeditor-next/editor": "^5.7.16",
     "@wangeditor-next/editor-for-vue": "^5.1.14",
     "@wangeditor-next/plugin-mention": "^2.0.0",
     "@zxcvbn-ts/core": "^3.0.4",
