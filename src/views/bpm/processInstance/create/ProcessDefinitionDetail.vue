@@ -8,7 +8,7 @@
         <!-- 中间主要内容 tab 栏 -->
         <el-tabs v-model="activeTab">
           <!-- 表单信息 -->
-          <el-tab-pane label="表单填写" name="form">
+          <el-tab-pane :label="t('bpm.processInstance.create._todo179')" name="form">
             <div class="form-scroll-area" v-loading="processInstanceStartLoading">
               <el-scrollbar>
                 <el-row>
@@ -37,7 +37,7 @@
             </div>
           </el-tab-pane>
           <!-- 流程图 -->
-          <el-tab-pane label="流程图" name="diagram" lazy>
+          <el-tab-pane :label="t('bpm.processInstance.create._todo180')" name="diagram" lazy>
             <div class="form-scroll-area">
               <!-- BPMN 流程图预览 -->
               <ProcessInstanceBpmnViewer
@@ -92,6 +92,7 @@ import { ApprovalNodeInfo } from '@/api/bpm/processInstance'
 import formCreate from '@form-create/element-ui'
 
 defineOptions({ name: 'ProcessDefinitionDetail' })
+const { t } = useI18n() // 国际化
 const props = defineProps<{
   selectProcessDefinition: any
 }>()
@@ -193,7 +194,7 @@ const getApprovalDetail = async (row: any) => {
     })
 
     if (!data) {
-      message.error('查询不到审批详情信息！')
+      message.error(t('bpm.processInstance.create._todo181'))
       return
     }
     // 获取审批节点，显示 Timeline 的数据
@@ -249,7 +250,7 @@ const setFieldPermission = (field: string, permission: string) => {
         }
       }
     } catch (error) {
-      console.warn('修改字段验证规则失败:', error)
+      console.warn(t('bpm.processInstance.create._todo182'), error)
     }
   }
   if (permission === FieldPermissionType.WRITE) {
@@ -271,7 +272,7 @@ const submitForm = async () => {
     await fApi.value.validate()
   } catch (error) {
     // 如果验证失败，检查是否是只读字段的验证错误
-    console.warn('表单验证失败:', error)
+    console.warn(t('bpm.processInstance.create._todo183'), error)
     return
   }
   // 如果有指定审批人，需要校验
@@ -294,7 +295,7 @@ const submitForm = async () => {
       startUserSelectAssignees: startUserSelectAssignees.value
     })
     // 提示
-    message.success('发起流程成功')
+    message.success(t('bpm.processInstance.create._todo184'))
     // 跳转回去
     delView(unref(currentRoute))
     await push({

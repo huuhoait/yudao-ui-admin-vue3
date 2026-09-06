@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="工作流手册" url="https://doc.iocoder.cn/bpm/" />
+  <doc-alert :title="t('bpm.task.manager._todo270')" url="https://doc.iocoder.cn/bpm/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,22 +10,22 @@
       class="-mb-15px"
       label-width="68px"
     >
-      <el-form-item label="任务名称" prop="name">
+      <el-form-item :label="t('bpm.task.manager.taskName')" prop="name">
         <el-input
           v-model="queryParams.name"
           class="!w-240px"
           clearable
-          placeholder="请输入任务名称"
+          :placeholder="t('bpm.task.manager.inputTaskName')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="创建时间" prop="createTime">
+      <el-form-item :label="t('common.createTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
-          end-placeholder="结束日期"
-          start-placeholder="开始日期"
+          :end-placeholder="t('bpm.task.manager.endDate')"
+          :start-placeholder="t('bpm.task.manager.startDate')"
           type="daterange"
           value-format="YYYY-MM-DD HH:mm:ss"
         />
@@ -33,11 +33,11 @@
       <el-form-item>
         <el-button @click="handleQuery">
           <Icon class="mr-5px" icon="ep:search" />
-          搜索
+          {{ t('common.query') }}
         </el-button>
         <el-button @click="resetQuery">
           <Icon class="mr-5px" icon="ep:refresh" />
-          重置
+          {{ t('common.reset') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -46,43 +46,43 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column align="center" label="流程" prop="processInstance.name" width="180" />
+      <el-table-column align="center" :label="t('bpm.task.manager.process')" prop="processInstance.name" width="180" />
       <el-table-column
         align="center"
-        label="发起人"
+        :label="t('bpm.task.manager.starter')"
         prop="processInstance.startUser.nickname"
         width="100"
       />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        label="发起时间"
+        :label="t('bpm.task.manager.startTime')"
         prop="createTime"
         width="180"
       />
-      <el-table-column align="center" label="当前任务" prop="name" width="180" />
+      <el-table-column align="center" :label="t('bpm.task.manager.currentTask')" prop="name" width="180" />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        label="任务开始时间"
+        :label="t('bpm.task.manager._todo271')"
         prop="createTime"
         width="180"
       />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        label="任务结束时间"
+        :label="t('bpm.task.manager._todo272')"
         prop="endTime"
         width="180"
       />
-      <el-table-column align="center" label="审批人" prop="assigneeUser.nickname" width="100" />
-      <el-table-column align="center" label="审批状态" prop="status" width="120">
+      <el-table-column align="center" :label="t('bpm.task.manager._todo273')" prop="assigneeUser.nickname" width="100" />
+      <el-table-column align="center" :label="t('bpm.task.manager.approveStatus')" prop="status" width="120">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.BPM_TASK_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column align="center" label="审批建议" prop="reason" min-width="180" />
-      <el-table-column align="center" label="附件/签名" min-width="180">
+      <el-table-column align="center" :label="t('bpm.task.manager.approveSuggestion')" prop="reason" min-width="180" />
+      <el-table-column align="center" :label="t('bpm.task.manager._todo274')" min-width="180">
         <template #default="scope">
           <TaskEvidenceCell
             :attachments="scope.row.attachments"
@@ -90,21 +90,21 @@
           />
         </template>
       </el-table-column>
-      <el-table-column align="center" label="耗时" prop="durationInMillis" width="160">
+      <el-table-column align="center" :label="t('bpm.task.manager.duration')" prop="durationInMillis" width="160">
         <template #default="scope">
           {{ formatPast2(scope.row.durationInMillis) }}
         </template>
       </el-table-column>
       <el-table-column
         align="center"
-        label="流程编号"
+        :label="t('bpm.task.manager.processId')"
         prop="processInstanceId"
         :show-overflow-tooltip="true"
       />
-      <el-table-column align="center" label="任务编号" prop="id" :show-overflow-tooltip="true" />
-      <el-table-column align="center" label="操作" fixed="right" width="80">
+      <el-table-column align="center" :label="t('bpm.task.manager.taskId')" prop="id" :show-overflow-tooltip="true" />
+      <el-table-column align="center" :label="t('bpm.task.manager.action')" fixed="right" width="80">
         <template #default="scope">
-          <el-button link type="primary" @click="handleAudit(scope.row)">历史</el-button>
+          <el-button link type="primary" @click="handleAudit(scope.row)">{{ t('bpm.task.manager.history') }}</el-button>
         </template>
       </el-table-column>
     </el-table>

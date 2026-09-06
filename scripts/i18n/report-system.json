@@ -1,11 +1,11 @@
 {
   "mode": "apply",
   "target": "src/views/system",
-  "scannedAt": "2026-09-03T14:05:12.364Z",
-  "totalFiles": 66,
-  "toConvert": 1093,
-  "needReview": 39,
-  "todoKeys": 377,
+  "scannedAt": "2026-09-06T03:04:00.812Z",
+  "totalFiles": 68,
+  "toConvert": 1190,
+  "needReview": 44,
+  "todoKeys": 388,
   "files": [
     {
       "file": "src/views/system/area/AreaForm.vue",
@@ -73,6 +73,18 @@
         }
       ],
       "review": []
+    },
+    {
+      "file": "src/views/system/area/components/AreaSelect.vue",
+      "ns": "system.area.components",
+      "convert": [],
+      "review": [
+        {
+          "where": "script",
+          "kind": "defineProps-default",
+          "text": "请选择地区"
+        }
+      ]
     },
     {
       "file": "src/views/system/area/index.vue",
@@ -283,6 +295,18 @@
         }
       ],
       "review": []
+    },
+    {
+      "file": "src/views/system/dept/components/DeptSelect.vue",
+      "ns": "system.dept.components",
+      "convert": [],
+      "review": [
+        {
+          "where": "script",
+          "kind": "defineProps-default",
+          "text": "请选择部门"
+        }
+      ]
     },
     {
       "file": "src/views/system/dept/components/DeptTreeSelect.vue",
@@ -9003,9 +9027,349 @@
       "review": []
     },
     {
+      "file": "src/views/system/user/UserAssignRoleForm.vue",
+      "ns": "system.user",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "分配角色",
+          "key": "system.user.assignRole",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户名称",
+          "key": "system.user.username",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户昵称",
+          "key": "system.user.nickname",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "角色",
+          "key": "system.user.role",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择角色",
+          "key": "system.user.selectRole",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        }
+      ],
+      "review": []
+    },
+    {
+      "file": "src/views/system/user/UserForm.vue",
+      "ns": "system.user",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户昵称",
+          "key": "system.user.nickname",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入用户昵称",
+          "key": "system.user.inputNickname",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "归属部门",
+          "key": "system.user.belongDept",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择归属部门",
+          "key": "system.user.selectBelongDept",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "手机号码",
+          "key": "system.user.mobile",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入手机号码",
+          "key": "system.user.inputMobile",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "邮箱",
+          "key": "system.user.email",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入邮箱",
+          "key": "system.user.inputEmail",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户名称",
+          "key": "system.user.username",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入用户名称",
+          "key": "system.user.inputUsername",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户密码",
+          "key": "system.user.password",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入用户密码",
+          "key": "system.user.inputPassword",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户性别",
+          "key": "system.user.sex",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择",
+          "key": "common.selectText",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "岗位",
+          "key": "system.user.post",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择",
+          "key": "common.selectText",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "备注",
+          "key": "system.user.remark",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入内容",
+          "key": "system.user.inputContent",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "用户名称不能为空",
+          "key": "system.user.usernameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "用户昵称不能为空",
+          "key": "system.user.nicknameRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "用户密码不能为空",
+          "key": "system.user.passwordRequired",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请输入正确的邮箱地址",
+          "key": "system.user._todo1",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请输入正确的手机号码",
+          "key": "system.user._todo2",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": []
+    },
+    {
       "file": "src/views/system/user/UserImportForm.vue",
       "ns": "system.user",
-      "convert": [],
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "用户导入",
+          "key": "system.user.userImport",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "将文件拖到此处，或",
+          "key": "system.user._todo3",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "点击上传",
+          "key": "system.user.clickUpload",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "是否更新已经存在的用户数据",
+          "key": "system.user._todo4",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "仅允许导入 xls、xlsx 格式文件。",
+          "key": "system.user._todo5",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-text",
+          "text": "下载模板",
+          "key": "system.user.downloadTemplate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请上传文件",
+          "key": "system.user._todo6",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "上传失败，请您重新上传！",
+          "key": "system.user._todo7",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "最多只能上传一个文件！",
+          "key": "system.user._todo8",
+          "reuse": false,
+          "todo": true
+        }
+      ],
       "review": [
         {
           "where": "script",
@@ -9030,9 +9394,460 @@
       ]
     },
     {
+      "file": "src/views/system/user/components/UserSelect.vue",
+      "ns": "system.user.components",
+      "convert": [],
+      "review": [
+        {
+          "where": "script",
+          "kind": "defineProps-default",
+          "text": "请选择用户"
+        }
+      ]
+    },
+    {
+      "file": "src/views/system/user/components/UserSelectDialogV2.vue",
+      "ns": "system.user.components",
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户名称",
+          "key": "system.user.components.username",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入用户名称",
+          "key": "system.user.components.inputUsername",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户昵称",
+          "key": "system.user.components.nickname",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入用户昵称",
+          "key": "system.user.components.inputNickname",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "手机号码",
+          "key": "system.user.components.mobile",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入手机号码",
+          "key": "system.user.components.inputMobile",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择状态",
+          "key": "system.user.components.selectStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户编号",
+          "key": "system.user.components.userId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户名称",
+          "key": "system.user.components.username",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户昵称",
+          "key": "system.user.components.nickname",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "部门",
+          "key": "system.user.components.dept",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "手机号码",
+          "key": "system.user.components.mobile",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "确 定",
+          "key": "common.ok",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "取 消",
+          "key": "common.cancel",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "请至少选择一条数据",
+          "key": "system.user.components._todo9",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "script-string",
+          "text": "请选择一条数据",
+          "key": "system.user.components._todo10",
+          "reuse": false,
+          "todo": true
+        }
+      ],
+      "review": [
+        {
+          "where": "script",
+          "kind": "defineProps-default",
+          "text": "人员选择"
+        }
+      ]
+    },
+    {
+      "file": "src/views/system/user/components/UserSelectV2.vue",
+      "ns": "system.user.components",
+      "convert": [],
+      "review": [
+        {
+          "where": "script",
+          "kind": "defineProps-default",
+          "text": "请选择用户"
+        }
+      ]
+    },
+    {
       "file": "src/views/system/user/index.vue",
       "ns": "system.user",
-      "convert": [],
+      "convert": [
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "用户体系",
+          "key": "system.user.userSystem",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "三方登陆",
+          "key": "system.user.socialLogin",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "title",
+          "text": "Excel 导入导出",
+          "key": "system.user._todo11",
+          "reuse": false,
+          "todo": true
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户名称",
+          "key": "system.user.username",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入用户名称",
+          "key": "system.user.inputUsername",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "手机号码",
+          "key": "system.user.mobile",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请输入手机号码",
+          "key": "system.user.inputMobile",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "placeholder",
+          "text": "请选择用户状态",
+          "key": "system.user.selectUserStatus",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "start-placeholder",
+          "text": "开始日期",
+          "key": "system.user.startDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "end-placeholder",
+          "text": "结束日期",
+          "key": "system.user.endDate",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户编号",
+          "key": "system.user.userId",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户名称",
+          "key": "system.user.username",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "用户昵称",
+          "key": "system.user.nickname",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "部门",
+          "key": "system.user.dept",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "手机号码",
+          "key": "system.user.mobile",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "状态",
+          "key": "common.status",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "创建时间",
+          "key": "common.createTime",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-attr",
+          "attr": "label",
+          "text": "操作",
+          "key": "system.user.action",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "搜索",
+          "key": "common.query",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置",
+          "key": "common.reset",
+          "reuse": true,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "新增",
+          "key": "system.user.create",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导入",
+          "key": "system.user.import",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "导出",
+          "key": "system.user.export",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "批量删除",
+          "key": "system.user.deleteBatch",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "修改",
+          "key": "system.user.edit",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "更多",
+          "key": "system.user.more",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "删除",
+          "key": "system.user.delete",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "重置密码",
+          "key": "system.user.resetPassword",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "vue-text",
+          "text": "分配角色",
+          "key": "system.user.assignRole",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "启用",
+          "key": "system.user.enable",
+          "reuse": false,
+          "todo": false
+        },
+        {
+          "type": "script-string",
+          "text": "停用",
+          "key": "system.user.disable",
+          "reuse": false,
+          "todo": false
+        }
+      ],
       "review": [
         {
           "where": "script",
@@ -9066,5 +9881,6 @@
         }
       ]
     }
-  ]
+  ],
+  "reusedKeys": 763
 }

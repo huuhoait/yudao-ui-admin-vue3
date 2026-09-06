@@ -7,22 +7,22 @@
       :rules="formRules"
       label-width="160px"
     >
-      <el-form-item label="客户端编号" prop="secret">
-        <el-input v-model="formData.clientId" placeholder="请输入客户端编号" />
+      <el-form-item :label="t('system.oauth2.client.clientId')" prop="secret">
+        <el-input v-model="formData.clientId" :placeholder="t('system.oauth2.client.inputClientId')" />
       </el-form-item>
-      <el-form-item label="客户端密钥" prop="secret">
-        <el-input v-model="formData.secret" placeholder="请输入客户端密钥" />
+      <el-form-item :label="t('system.oauth2.client.clientSecret')" prop="secret">
+        <el-input v-model="formData.secret" :placeholder="t('system.oauth2.client.inputClientSecret')" />
       </el-form-item>
-      <el-form-item label="应用名" prop="name">
-        <el-input v-model="formData.name" placeholder="请输入应用名" />
+      <el-form-item :label="t('system.oauth2.client.appName')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('system.oauth2.client.inputAppName')" />
       </el-form-item>
-      <el-form-item label="应用图标">
+      <el-form-item :label="t('system.oauth2.client._todo158')">
         <UploadImg v-model="formData.logo" :limit="1" />
       </el-form-item>
-      <el-form-item label="应用描述">
-        <el-input v-model="formData.description" placeholder="请输入应用名" type="textarea" />
+      <el-form-item :label="t('system.oauth2.client._todo159')">
+        <el-input v-model="formData.description" :placeholder="t('system.oauth2.client.inputAppName')" type="textarea" />
       </el-form-item>
-      <el-form-item label="状态" prop="status">
+      <el-form-item :label="t('common.status')" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -33,18 +33,18 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="访问令牌的有效期" prop="accessTokenValiditySeconds">
-        <el-input-number v-model="formData.accessTokenValiditySeconds" placeholder="单位：秒" />
+      <el-form-item :label="t('system.oauth2.client._todo160')" prop="accessTokenValiditySeconds">
+        <el-input-number v-model="formData.accessTokenValiditySeconds" :placeholder="t('system.oauth2.client._todo161')" />
       </el-form-item>
-      <el-form-item label="刷新令牌的有效期" prop="refreshTokenValiditySeconds">
-        <el-input-number v-model="formData.refreshTokenValiditySeconds" placeholder="单位：秒" />
+      <el-form-item :label="t('system.oauth2.client._todo162')" prop="refreshTokenValiditySeconds">
+        <el-input-number v-model="formData.refreshTokenValiditySeconds" :placeholder="t('system.oauth2.client._todo161')" />
       </el-form-item>
-      <el-form-item label="授权类型" prop="authorizedGrantTypes">
+      <el-form-item :label="t('system.oauth2.client._todo163')" prop="authorizedGrantTypes">
         <el-select
           v-model="formData.authorizedGrantTypes"
           filterable
           multiple
-          placeholder="请输入授权类型"
+          :placeholder="t('system.oauth2.client._todo164')"
           style="width: 500px"
         >
           <el-option
@@ -55,36 +55,36 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="授权范围" prop="scopes">
+      <el-form-item :label="t('system.oauth2.client._todo165')" prop="scopes">
         <el-select
           v-model="formData.scopes"
           filterable
           multiple
           allow-create
-          placeholder="请输入授权范围"
+          :placeholder="t('system.oauth2.client._todo166')"
           style="width: 500px"
         >
           <el-option v-for="scope in formData.scopes" :key="scope" :label="scope" :value="scope" />
         </el-select>
       </el-form-item>
-      <el-form-item label="自动授权范围" prop="autoApproveScopes">
+      <el-form-item :label="t('system.oauth2.client._todo167')" prop="autoApproveScopes">
         <el-select
           v-model="formData.autoApproveScopes"
           filterable
           multiple
-          placeholder="请输入授权范围"
+          :placeholder="t('system.oauth2.client._todo166')"
           style="width: 500px"
         >
           <el-option v-for="scope in formData.scopes" :key="scope" :label="scope" :value="scope" />
         </el-select>
       </el-form-item>
-      <el-form-item label="可重定向的 URI 地址" prop="redirectUris">
+      <el-form-item :label="t('system.oauth2.client._todo168')" prop="redirectUris">
         <el-select
           v-model="formData.redirectUris"
           allow-create
           filterable
           multiple
-          placeholder="请输入可重定向的 URI 地址"
+          :placeholder="t('system.oauth2.client._todo169')"
           style="width: 500px"
         >
           <el-option
@@ -95,13 +95,13 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="权限" prop="authorities">
+      <el-form-item :label="t('system.oauth2.client._todo170')" prop="authorities">
         <el-select
           v-model="formData.authorities"
           allow-create
           filterable
           multiple
-          placeholder="请输入权限"
+          :placeholder="t('system.oauth2.client._todo171')"
           style="width: 500px"
         >
           <el-option
@@ -112,13 +112,13 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="资源" prop="resourceIds">
+      <el-form-item :label="t('system.oauth2.client.resource')" prop="resourceIds">
         <el-select
           v-model="formData.resourceIds"
           allow-create
           filterable
           multiple
-          placeholder="请输入资源"
+          :placeholder="t('system.oauth2.client.inputResource')"
           style="width: 500px"
         >
           <el-option
@@ -129,17 +129,17 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="附加信息" prop="additionalInformation">
+      <el-form-item :label="t('system.oauth2.client._todo172')" prop="additionalInformation">
         <el-input
           v-model="formData.additionalInformation"
-          placeholder="请输入附加信息，JSON 格式数据"
+          :placeholder="t('system.oauth2.client._todo173')"
           type="textarea"
         />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -176,19 +176,19 @@ const formData = ref({
   additionalInformation: undefined
 })
 const formRules = reactive({
-  clientId: [{ required: true, message: '客户端编号不能为空', trigger: 'blur' }],
-  secret: [{ required: true, message: '客户端密钥不能为空', trigger: 'blur' }],
-  name: [{ required: true, message: '应用名不能为空', trigger: 'blur' }],
-  logo: [{ required: true, message: '应用图标不能为空', trigger: 'blur' }],
-  status: [{ required: true, message: '状态不能为空', trigger: 'blur' }],
+  clientId: [{ required: true, message: t('system.oauth2.client.clientIdRequired'), trigger: 'blur' }],
+  secret: [{ required: true, message: t('system.oauth2.client.clientSecretRequired'), trigger: 'blur' }],
+  name: [{ required: true, message: t('system.oauth2.client.appNameRequired'), trigger: 'blur' }],
+  logo: [{ required: true, message: t('system.oauth2.client._todo174'), trigger: 'blur' }],
+  status: [{ required: true, message: t('system.oauth2.client.statusRequired'), trigger: 'blur' }],
   accessTokenValiditySeconds: [
-    { required: true, message: '访问令牌的有效期不能为空', trigger: 'blur' }
+    { required: true, message: t('system.oauth2.client._todo175'), trigger: 'blur' }
   ],
   refreshTokenValiditySeconds: [
-    { required: true, message: '刷新令牌的有效期不能为空', trigger: 'blur' }
+    { required: true, message: t('system.oauth2.client._todo176'), trigger: 'blur' }
   ],
-  redirectUris: [{ required: true, message: '可重定向的 URI 地址不能为空', trigger: 'blur' }],
-  authorizedGrantTypes: [{ required: true, message: '授权类型不能为空', trigger: 'blur' }]
+  redirectUris: [{ required: true, message: t('system.oauth2.client._todo177'), trigger: 'blur' }],
+  authorizedGrantTypes: [{ required: true, message: t('system.oauth2.client._todo178'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

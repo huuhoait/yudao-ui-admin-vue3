@@ -130,6 +130,17 @@ function cap(s) {
 }
 
 let todoCounter = 0
+
+// Tập TẤT CẢ namespace (và mọi prefix của chúng) sinh ra từ đường dẫn file.
+// Dùng để CẤM sinh key lá trùng tên một namespace: locale là object lồng nhau nên
+// `bpm.processInstance.detail = '详情'` và namespace `bpm.processInstance.detail.*`
+// không thể cùng tồn tại — cái sau sẽ đè cái trước và NUỐT TOÀN BỘ key con.
+const allNamespaces = new Set()
+
+function isTaken(key, usedKeys) {
+  return usedKeys.has(key) || allNamespaces.has(key)
+}
+
 function uniq(ns, name, usedKeys, isTodo = false) {
   if (isTodo || !name) {
     todoCounter++
@@ -137,9 +148,9 @@ function uniq(ns, name, usedKeys, isTodo = false) {
     return { key, todo: true }
   }
   let full = `${ns}.${name}`
-  if (usedKeys.has(full)) {
+  if (isTaken(full, usedKeys)) {
     let i = 2
-    while (usedKeys.has(`${ns}.${name}${i}`)) i++
+    while (isTaken(`${ns}.${name}${i}`, usedKeys)) i++
     full = `${ns}.${name}${i}`
   }
   usedKeys.add(full)
@@ -341,6 +352,13 @@ function ensureUseI18n(scriptContent) {
 const files = []
 walk(TARGET, files)
 
+// Nạp trước mọi namespace + prefix của chúng để uniq() tránh đụng (xem allNamespaces).
+for (const f of files) {
+  const ns = nsFromPath(relative(ROOT, f))
+  const parts = ns.split('.')
+  for (let i = 1; i <= parts.length; i++) allNamespaces.add(parts.slice(0, i).join('.'))
+}
+
 const report = {
   mode: APPLY ? (DRY ? 'apply-dry' : 'apply') : 'scan',
   target: targetArg,
@@ -358,12 +376,21 @@ const usedKeys = new Set()
 // Nạp <name>.zh-CN.ts cũ: mỗi (namespace, chuỗi Trung) giữ lại đúng key đã dùng trước đó.
 // Nhờ vậy bản dịch en/vi cũ vẫn khớp key, chỉ chuỗi MỚI mới sinh key mới.
 if (REUSE_NAME) {
-  const oldFlat = loadGeneratedLocale(
-    join(ROOT, 'src', 'locales', 'generated', `${REUSE_NAME}.zh-CN.ts`)
-  )
+  // Cho phép nhiều nguồn: `--reuse system,user` (module user từng được convert riêng
+  // nên key system.user.* nằm ở user.zh-CN.ts, không phải system.zh-CN.ts).
+  const oldFlat = {}
+  for (const nm of REUSE_NAME.split(',').map((s) => s.trim()).filter(Boolean)) {
+    Object.assign(
+      oldFlat,
+      loadGeneratedLocale(join(ROOT, 'src', 'locales', 'generated', `${nm}.zh-CN.ts`))
+    )
+  }
   let maxTodo = 0
   for (const [key, zh] of Object.entries(oldFlat)) {
     const [ns, name] = splitKey(key)
+    // Key cũ trùng tên namespace là key HỎNG (sinh ra bởi bản tool trước khi có
+    // allNamespaces) — bỏ qua để nó được đặt lại tên, tránh nuốt cây key con.
+    if (allNamespaces.has(key)) continue
     usedKeys.add(key)
     const m = /^_todo(\d+)$/.exec(name)
     if (m) maxTodo = Math.max(maxTodo, Number(m[1]))

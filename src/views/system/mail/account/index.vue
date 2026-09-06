@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="邮件配置" url="https://doc.iocoder.cn/mail" />
+  <doc-alert :title="t('system.mail.account.mailConfig')" url="https://doc.iocoder.cn/mail" />
 
   <ContentWrap>
     <el-form
@@ -9,45 +9,45 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item label="邮箱" prop="mail">
+      <el-form-item :label="t('system.mail.account.email')" prop="mail">
         <el-input
           v-model="queryParams.mail"
-          placeholder="请输入邮箱"
+          :placeholder="t('system.mail.account.inputEmail')"
           clearable
           class="!w-240px"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="用户名" prop="username">
+      <el-form-item :label="t('system.mail.account.username')" prop="username">
         <el-input
           v-model="queryParams.username"
-          placeholder="请输入用户名"
+          :placeholder="t('system.mail.account.inputUsername')"
           clearable
           class="!w-240px"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="创建时间" prop="createTime">
+      <el-form-item :label="t('common.createTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
+          :start-placeholder="t('system.mail.account.startDate')"
+          :end-placeholder="t('system.mail.account.endDate')"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
         <el-button
           type="primary"
           plain
           @click="openForm('create')"
           v-hasPermi="['system:mail-account:create']"
         >
-          <Icon icon="ep:plus" class="mr-5px" /> 新增
+          <Icon icon="ep:plus" class="mr-5px" /> {{ t('system.mail.account.create') }}
         </el-button>
         <el-button
           type="danger"
@@ -56,7 +56,7 @@
           @click="handleDeleteBatch"
           v-hasPermi="['system:mail-account:delete']"
         >
-          <Icon icon="ep:delete" class="mr-5px" /> 批量删除
+          <Icon icon="ep:delete" class="mr-5px" /> {{ t('system.mail.account.deleteBatch') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -66,29 +66,29 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column label="编号" align="center" prop="id" />
-      <el-table-column label="邮箱" align="center" prop="mail" />
-      <el-table-column label="用户名" align="center" prop="username" />
-      <el-table-column label="SMTP 服务器域名" align="center" prop="host" />
-      <el-table-column label="SMTP 服务器端口" align="center" prop="port" />
-      <el-table-column label="是否开启 SSL" align="center" prop="sslEnable">
+      <el-table-column :label="t('system.mail.account.id')" align="center" prop="id" />
+      <el-table-column :label="t('system.mail.account.email')" align="center" prop="mail" />
+      <el-table-column :label="t('system.mail.account.username')" align="center" prop="username" />
+      <el-table-column :label="t('system.mail.account._todo46')" align="center" prop="host" />
+      <el-table-column :label="t('system.mail.account._todo48')" align="center" prop="port" />
+      <el-table-column :label="t('system.mail.account._todo50')" align="center" prop="sslEnable">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_BOOLEAN_STRING" :value="scope.row.sslEnable" />
         </template>
       </el-table-column>
-      <el-table-column label="是否开启 STARTTLS" align="center" prop="starttlsEnable">
+      <el-table-column :label="t('system.mail.account._todo51')" align="center" prop="starttlsEnable">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_BOOLEAN_STRING" :value="scope.row.starttlsEnable" />
         </template>
       </el-table-column>
       <el-table-column
-        label="创建时间"
+        :label="t('common.createTime')"
         align="center"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column label="操作" align="center">
+      <el-table-column :label="t('system.mail.account.action')" align="center">
         <template #default="scope">
           <el-button
             link
@@ -96,7 +96,7 @@
             @click="openForm('update', scope.row.id)"
             v-hasPermi="['system:mail-account:update']"
           >
-            编辑
+            {{ t('system.mail.account.edit') }}
           </el-button>
           <el-button
             link
@@ -104,7 +104,7 @@
             @click="handleDelete(scope.row.id)"
             v-hasPermi="['system:mail-account:delete']"
           >
-            删除
+            {{ t('system.mail.account.delete') }}
           </el-button>
         </template>
       </el-table-column>

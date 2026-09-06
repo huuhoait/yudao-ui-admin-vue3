@@ -3,10 +3,10 @@
     <div
       class="flex items-center gap-12px pb-18px border-b border-b-[var(--el-border-color-lighter)]"
     >
-      <div class="text-18px font-bold text-[var(--el-text-color-primary)]">流程评论</div>
+      <div class="text-18px font-bold text-[var(--el-text-color-primary)]">{{ t('bpm.processInstance.detail._todo289') }}</div>
       <div class="text-13px text-[var(--el-text-color-secondary)]">共 {{ comments.length }} 条</div>
     </div>
-    <el-empty v-if="!comments.length" description="暂无评论" />
+    <el-empty v-if="!comments.length" :description="t('bpm.processInstance.detail._todo288')" />
     <el-timeline
       v-else
       class="mt-24px pl-8px [&_.el-timeline-item]:pl-42px [&_.el-timeline-item__tail]:left-16px [&_.el-timeline-item__dot]:left-0 [&_.el-timeline-item__wrapper]:top-0 [&_.el-timeline-item__wrapper]:pl-0"
@@ -44,7 +44,7 @@
                 class="inline-flex items-center gap-4px shrink-0 font-medium text-[var(--el-color-primary)]"
               >
                 <Icon icon="ep:connection" class="text-14px" />
-                任务
+                {{ t('bpm.processInstance.detail.task') }}
               </span>
               <span class="min-w-0 font-medium truncate text-[var(--el-text-color-primary)]">
                 {{ comment.task.name }}
@@ -71,6 +71,7 @@ import { DICT_TYPE, getDictObj } from '@/utils/dict'
 import * as CommentApi from '@/api/bpm/comment'
 
 defineOptions({ name: 'BpmProcessInstanceCommentList' })
+const { t } = useI18n() // 国际化
 
 const props = withDefaults(
   defineProps<{
@@ -95,7 +96,7 @@ const commentColorMap: Record<string, string> = {
 
 /** 获得评论类型简称 */
 const getCommentText = (type: string) => {
-  return (getDictObj(DICT_TYPE.BPM_COMMENT_TYPE, type)?.label || '评论').substring(0, 1)
+  return (getDictObj(DICT_TYPE.BPM_COMMENT_TYPE, type)?.label || t('bpm.processInstance.detail._todo290')).substring(0, 1)
 }
 
 /** 获得评论类型颜色 */

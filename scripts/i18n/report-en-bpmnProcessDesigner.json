@@ -1,8 +1,8 @@
 {
-  "mode": "apply",
+  "mode": "scan",
   "target": "src/components/bpmnProcessDesigner",
   "map": "scripts/i18n/bpmn-en-map.mjs",
-  "scannedAt": "2026-09-05T13:19:51.123Z",
+  "scannedAt": "2026-09-06T03:13:25.798Z",
   "totalFiles": 60,
   "replaced": 644,
   "missing": 132,

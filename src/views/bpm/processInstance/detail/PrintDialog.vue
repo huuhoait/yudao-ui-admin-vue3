@@ -15,6 +15,7 @@ import {
 } from '@/utils/dict'
 import { decodeFields } from '@/utils/formCreate'
 import { registerComponent } from '@/utils/routerHelper'
+const { t } = useI18n() // 国际化
 
 interface FormFieldItem {
   html: string
@@ -166,7 +167,7 @@ const formatPrimitiveValue = (value: unknown): string => {
       .join(', ')
   }
   if (typeof value === 'boolean') {
-    return value ? '是' : '否'
+    return value ? t('bpm.processInstance.detail._todo286') : t('bpm.processInstance.detail._todo287')
   }
   if (isPrintableRecord(value)) {
     const displayValue =
@@ -360,11 +361,11 @@ const formatPrintField = (rule: FormFieldRule, value: unknown, lookupMaps: Print
     case 'UploadImgs':
       return renderImageListHtml(value)
     case 'switch': {
-      if (isEmptyValue(value)) return '否'
+      if (isEmptyValue(value)) return t('bpm.processInstance.detail._todo287')
       const checkedVal = getRuleProp(rule, 'checkedValue') ?? getRuleProp(rule, 'activeValue')
       const isChecked =
         checkedVal !== undefined && checkedVal !== null ? value === checkedVal : Boolean(value)
-      return isChecked ? '是' : '否'
+      return isChecked ? t('bpm.processInstance.detail._todo286') : t('bpm.processInstance.detail._todo287')
     }
     case 'Editor':
     case 'Tinymce':
@@ -426,7 +427,7 @@ const getPrintTemplateHTML = () => {
     headTd.setAttribute('colspan', '2')
     headTd.setAttribute('width', 'auto')
     headTd.setAttribute('style', 'text-align: center;')
-    headTd.textContent = '流程节点'
+    headTd.textContent = t('bpm.processInstance.detail._todo284')
     headTr.appendChild(headTd)
     processRecordTable.appendChild(headTr)
     printData.value.tasks.forEach((item) => {
@@ -470,15 +471,15 @@ const printObj = ref({
         <table class="mt-20px w-100%" border="1" style="border-collapse: collapse">
           <tbody>
             <tr>
-              <td class="p-5px w-25%">发起人</td>
+              <td class="p-5px w-25%">{{ t('bpm.processInstance.detail.starter') }}</td>
               <td class="p-5px w-25%">{{ printData.processInstance.startUser.nickname }}</td>
-              <td class="p-5px w-25%">发起时间</td>
+              <td class="p-5px w-25%">{{ t('bpm.processInstance.detail.startTime') }}</td>
               <td class="p-5px w-25%">{{ formatDate(printData.processInstance.startTime) }}</td>
             </tr>
             <tr>
-              <td class="p-5px w-25%">所属部门</td>
+              <td class="p-5px w-25%">{{ t('bpm.processInstance.detail._todo282') }}</td>
               <td class="p-5px w-25%">{{ printData.processInstance.startUser.deptName }}</td>
-              <td class="p-5px w-25%">流程状态</td>
+              <td class="p-5px w-25%">{{ t('bpm.processInstance.detail.processStatus') }}</td>
               <td class="p-5px w-25%">
                 {{
                   getDictLabel(
@@ -490,7 +491,7 @@ const printObj = ref({
             </tr>
             <tr>
               <td class="p-5px w-100% text-center" colspan="4">
-                <h4>表单内容</h4>
+                <h4>{{ t('bpm.processInstance.detail._todo283') }}</h4>
               </td>
             </tr>
             <tr v-for="item in formFields" :key="item.id">
@@ -516,7 +517,7 @@ const printObj = ref({
           <tbody>
             <tr>
               <td class="p-5px w-100% text-center" colspan="4">
-                <h4>流程节点</h4>
+                <h4>{{ t('bpm.processInstance.detail._todo284') }}</h4>
               </td>
             </tr>
             <tr v-for="item in printData.tasks" :key="item.id">
@@ -536,8 +537,8 @@ const printObj = ref({
     </div>
     <template #footer>
       <div class="dialog-footer">
-        <el-button @click="visible = false">取 消</el-button>
-        <el-button type="primary" v-print="printObj"> 打 印</el-button>
+        <el-button @click="visible = false">{{ t('common.cancel') }}</el-button>
+        <el-button type="primary" v-print="printObj"> {{ t('bpm.processInstance.detail._todo285') }}</el-button>
       </div>
     </template>
   </el-dialog>

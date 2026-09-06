@@ -1,43 +1,43 @@
 <template>
-  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" title="详情" width="800">
+  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" :title="t('system.operatelog.detail')" width="800">
     <el-descriptions :column="1" border>
-      <el-descriptions-item label="日志主键" min-width="120">
+      <el-descriptions-item :label="t('system.operatelog.logId')" min-width="120">
         {{ detailData.id }}
       </el-descriptions-item>
-      <el-descriptions-item label="链路追踪" v-if="detailData.traceId">
+      <el-descriptions-item :label="t('system.operatelog._todo185')" v-if="detailData.traceId">
         {{ detailData.traceId }}
       </el-descriptions-item>
-      <el-descriptions-item label="操作人编号">
+      <el-descriptions-item :label="t('system.operatelog._todo186')">
         {{ detailData.userId }}
       </el-descriptions-item>
-      <el-descriptions-item label="操作人名字">
+      <el-descriptions-item :label="t('system.operatelog._todo187')">
         {{ detailData.userName }}
       </el-descriptions-item>
-      <el-descriptions-item label="操作人 IP">
+      <el-descriptions-item :label="t('system.operatelog._todo188')">
         {{ detailData.userIp }}
       </el-descriptions-item>
-      <el-descriptions-item label="操作人 UA">
+      <el-descriptions-item :label="t('system.operatelog._todo189')">
         {{ detailData.userAgent }}
       </el-descriptions-item>
-      <el-descriptions-item label="操作模块">
+      <el-descriptions-item :label="t('system.operatelog._todo190')">
         {{ detailData.type }}
       </el-descriptions-item>
-      <el-descriptions-item label="操作名">
+      <el-descriptions-item :label="t('system.operatelog._todo191')">
         {{ detailData.subType }}
       </el-descriptions-item>
-      <el-descriptions-item label="操作内容">
+      <el-descriptions-item :label="t('system.operatelog._todo192')">
         {{ detailData.action }}
       </el-descriptions-item>
-      <el-descriptions-item v-if="detailData.extra" label="操作拓展参数">
+      <el-descriptions-item v-if="detailData.extra" :label="t('system.operatelog._todo193')">
         {{ detailData.extra }}
       </el-descriptions-item>
-      <el-descriptions-item label="请求 URL">
+      <el-descriptions-item :label="t('system.operatelog._todo194')">
         {{ detailData.requestMethod }} {{ detailData.requestUrl }}
       </el-descriptions-item>
-      <el-descriptions-item label="操作时间">
+      <el-descriptions-item :label="t('system.operatelog._todo195')">
         {{ formatDate(detailData.createTime) }}
       </el-descriptions-item>
-      <el-descriptions-item label="业务编号">
+      <el-descriptions-item :label="t('system.operatelog._todo196')">
         {{ detailData.bizId }}
       </el-descriptions-item>
     </el-descriptions>

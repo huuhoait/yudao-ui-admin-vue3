@@ -25,37 +25,37 @@
       <el-col class="h-full overflow-auto" :span="19" :xs="24">
         <ContentWrap>
           <el-form class="-mb-[15px]" :inline="true" :model="queryParams" label-width="72px">
-            <el-form-item label="用户名称">
+            <el-form-item :label="t('system.user.components.username')">
               <el-input
                 v-model="queryParams.username"
-                placeholder="请输入用户名称"
+                :placeholder="t('system.user.components.inputUsername')"
                 clearable
                 @keyup.enter="handleQuery"
                 class="!w-240px"
               />
             </el-form-item>
-            <el-form-item label="用户昵称">
+            <el-form-item :label="t('system.user.components.nickname')">
               <el-input
                 v-model="queryParams.nickname"
-                placeholder="请输入用户昵称"
+                :placeholder="t('system.user.components.inputNickname')"
                 clearable
                 @keyup.enter="handleQuery"
                 class="!w-240px"
               />
             </el-form-item>
-            <el-form-item label="手机号码">
+            <el-form-item :label="t('system.user.components.mobile')">
               <el-input
                 v-model="queryParams.mobile"
-                placeholder="请输入手机号码"
+                :placeholder="t('system.user.components.inputMobile')"
                 clearable
                 @keyup.enter="handleQuery"
                 class="!w-240px"
               />
             </el-form-item>
-            <el-form-item label="状态">
+            <el-form-item :label="t('common.status')">
               <el-select
                 v-model="queryParams.status"
-                placeholder="请选择状态"
+                :placeholder="t('system.user.components.selectStatus')"
                 clearable
                 class="!w-240px"
               >
@@ -69,10 +69,10 @@
             </el-form-item>
             <el-form-item>
               <el-button @click="handleQuery">
-                <Icon icon="ep:search" class="mr-5px" /> 搜索
+                <Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}
               </el-button>
               <el-button @click="resetQuery">
-                <Icon icon="ep:refresh" class="mr-5px" /> 重置
+                <Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}
               </el-button>
             </el-form-item>
           </el-form>
@@ -116,18 +116,18 @@
                 />
               </template>
             </el-table-column>
-            <el-table-column label="用户编号" align="center" prop="id" width="150" />
-            <el-table-column label="用户名称" align="center" prop="username" width="150" />
-            <el-table-column label="用户昵称" align="left" prop="nickname" min-width="150" />
-            <el-table-column label="部门" align="center" prop="deptName" width="150" />
-            <el-table-column label="手机号码" align="center" prop="mobile" width="130" />
-            <el-table-column label="状态" align="center" prop="status" width="80">
+            <el-table-column :label="t('system.user.components.userId')" align="center" prop="id" width="150" />
+            <el-table-column :label="t('system.user.components.username')" align="center" prop="username" width="150" />
+            <el-table-column :label="t('system.user.components.nickname')" align="left" prop="nickname" min-width="150" />
+            <el-table-column :label="t('system.user.components.dept')" align="center" prop="deptName" width="150" />
+            <el-table-column :label="t('system.user.components.mobile')" align="center" prop="mobile" width="130" />
+            <el-table-column :label="t('common.status')" align="center" prop="status" width="80">
               <template #default="scope">
                 <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
               </template>
             </el-table-column>
             <el-table-column
-              label="创建时间"
+              :label="t('common.createTime')"
               align="center"
               prop="createTime"
               :formatter="dateFormatter"
@@ -144,8 +144,8 @@
       </el-col>
     </el-row>
     <template #footer>
-      <el-button type="primary" @click="confirmSelect">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button type="primary" @click="confirmSelect">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -158,6 +158,7 @@ import DeptTreeSelect from '@/views/system/dept/components/DeptTreeSelect.vue'
 import { dateFormatter } from '@/utils/formatTime'
 
 defineOptions({ name: 'UserSelectDialogV2' })
+const { t } = useI18n() // 国际化
 
 type UserSelectRow = UserApi.UserVO & {
   disabled?: boolean
@@ -319,13 +320,13 @@ const resetQuery = () => {
 const confirmSelect = () => {
   if (props.multiple) {
     if (selectedRows.value.length === 0) {
-      message.warning('请至少选择一条数据')
+      message.warning(t('system.user.components._todo9'))
       return
     }
     emit('selected', selectedRows.value, activityId.value)
   } else {
     if (!currentRadioRow.value) {
-      message.warning('请选择一条数据')
+      message.warning(t('system.user.components._todo10'))
       return
     }
     emit('selected', [currentRadioRow.value], activityId.value)

@@ -7,20 +7,20 @@
       label-width="140px"
       v-loading="formLoading"
     >
-      <el-form-item label="模版编码" prop="code">
-        <el-input v-model="formData.code" placeholder="请输入模版编码" />
+      <el-form-item :label="t('system.notify.template._todo144')" prop="code">
+        <el-input v-model="formData.code" :placeholder="t('system.notify.template._todo145')" />
       </el-form-item>
-      <el-form-item label="模板名称" prop="name">
-        <el-input v-model="formData.name" placeholder="请输入模版名称" />
+      <el-form-item :label="t('system.notify.template.templateName')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('system.notify.template._todo146')" />
       </el-form-item>
-      <el-form-item label="发件人名称" prop="nickname">
-        <el-input v-model="formData.nickname" placeholder="请输入发件人名称" />
+      <el-form-item :label="t('system.notify.template._todo147')" prop="nickname">
+        <el-input v-model="formData.nickname" :placeholder="t('system.notify.template._todo148')" />
       </el-form-item>
-      <el-form-item label="模板内容" prop="content">
-        <el-input type="textarea" v-model="formData.content" placeholder="请输入模板内容" />
+      <el-form-item :label="t('system.notify.template.templateContent')" prop="content">
+        <el-input type="textarea" v-model="formData.content" :placeholder="t('system.notify.template.inputTemplateContent')" />
       </el-form-item>
-      <el-form-item label="类型" prop="type">
-        <el-select v-model="formData.type" placeholder="请选择类型">
+      <el-form-item :label="t('system.notify.template.type')" prop="type">
+        <el-select v-model="formData.type" :placeholder="t('system.notify.template.selectType')">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_NOTIFY_TEMPLATE_TYPE)"
             :key="dict.value"
@@ -29,7 +29,7 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="开启状态" prop="status">
+      <el-form-item :label="t('system.notify.template.enableStatus')" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -40,13 +40,13 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="备注" prop="remark">
-        <el-input v-model="formData.remark" placeholder="请输入备注" />
+      <el-form-item :label="t('system.notify.template.remark')" prop="remark">
+        <el-input v-model="formData.remark" :placeholder="t('system.notify.template.inputRemark')" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="submitForm" type="primary" :disabled="formLoading">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button @click="submitForm" type="primary" :disabled="formLoading">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -54,6 +54,7 @@
 import { DICT_TYPE, getIntDictOptions } from '@/utils/dict'
 import * as NotifyTemplateApi from '@/api/system/notify/template'
 import { CommonStatusEnum } from '@/utils/constants'
+const { t } = useI18n() // 国际化
 const message = useMessage() // 消息弹窗
 
 const dialogVisible = ref(false) // 弹窗的是否展示
@@ -72,12 +73,12 @@ const formData = ref<NotifyTemplateApi.NotifyTemplateVO>({
   remark: ''
 })
 const formRules = reactive({
-  type: [{ required: true, message: '消息类型不能为空', trigger: 'change' }],
-  status: [{ required: true, message: '开启状态不能为空', trigger: 'blur' }],
-  code: [{ required: true, message: '模板编码不能为空', trigger: 'blur' }],
-  name: [{ required: true, message: '模板名称不能为空', trigger: 'blur' }],
-  nickname: [{ required: true, message: '发件人姓名不能为空', trigger: 'blur' }],
-  content: [{ required: true, message: '模板内容不能为空', trigger: 'blur' }]
+  type: [{ required: true, message: t('system.notify.template._todo149'), trigger: 'change' }],
+  status: [{ required: true, message: t('system.notify.template.enableStatusRequired'), trigger: 'blur' }],
+  code: [{ required: true, message: t('system.notify.template.templateCodeRequired'), trigger: 'blur' }],
+  name: [{ required: true, message: t('system.notify.template.templateNameRequired'), trigger: 'blur' }],
+  nickname: [{ required: true, message: t('system.notify.template._todo150'), trigger: 'blur' }],
+  content: [{ required: true, message: t('system.notify.template.templateContentRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 
@@ -111,10 +112,10 @@ const submitForm = async () => {
     const data = formData.value as unknown as NotifyTemplateApi.NotifyTemplateVO
     if (formType.value === 'create') {
       await NotifyTemplateApi.createNotifyTemplate(data)
-      message.success('新增成功')
+      message.success(t('system.notify.template._todo151'))
     } else {
       await NotifyTemplateApi.updateNotifyTemplate(data)
-      message.success('修改成功')
+      message.success(t('system.notify.template._todo152'))
     }
     dialogVisible.value = false
     // 发送操作成功的事件

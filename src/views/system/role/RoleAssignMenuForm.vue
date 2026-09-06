@@ -1,28 +1,28 @@
 <template>
-  <Dialog v-model="dialogVisible" title="菜单权限">
+  <Dialog v-model="dialogVisible" :title="t('system.role.menuPermission')">
     <el-form ref="formRef" v-loading="formLoading" :model="formData" label-width="80px">
-      <el-form-item label="角色名称">
+      <el-form-item :label="t('system.role.roleName')">
         <el-tag>{{ formData.name }}</el-tag>
       </el-form-item>
-      <el-form-item label="角色标识">
+      <el-form-item :label="t('system.role.roleKey')">
         <el-tag>{{ formData.code }}</el-tag>
       </el-form-item>
-      <el-form-item label="菜单权限">
+      <el-form-item :label="t('system.role.menuPermission')">
         <el-card class="w-full h-400px !overflow-y-scroll" shadow="never">
           <template #header>
-            全选/全不选:
+            {{ t('system.role._todo219') }}
             <el-switch
               v-model="treeNodeAll"
-              active-text="是"
-              inactive-text="否"
+              :active-text="t('system.role._todo214')"
+              :inactive-text="t('system.role._todo215')"
               inline-prompt
               @change="handleCheckedTreeNodeAll"
             />
-            全部展开/折叠:
+            {{ t('system.role._todo220') }}
             <el-switch
               v-model="menuExpand"
-              active-text="展开"
-              inactive-text="折叠"
+              :active-text="t('system.role._todo216')"
+              :inactive-text="t('system.role._todo217')"
               inline-prompt
               @change="handleCheckedTreeExpand"
             />
@@ -31,7 +31,7 @@
             ref="treeRef"
             :data="menuOptions"
             :props="defaultProps"
-            empty-text="加载中，请稍候"
+            :empty-text="t('system.role._todo218')"
             node-key="id"
             show-checkbox
           />
@@ -39,8 +39,8 @@
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>

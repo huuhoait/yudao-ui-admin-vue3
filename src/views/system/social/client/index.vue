@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="三方登录" url="https://doc.iocoder.cn/social-user/" />
+  <doc-alert :title="t('system.social.client._todo266')" url="https://doc.iocoder.cn/social-user/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,21 +10,21 @@
       class="-mb-15px"
       label-width="130px"
     >
-      <el-form-item label="应用名" prop="name">
+      <el-form-item :label="t('system.social.client.appName')" prop="name">
         <el-input
           v-model="queryParams.name"
           class="!w-240px"
           clearable
-          placeholder="请输入应用名"
+          :placeholder="t('system.social.client.inputAppName')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="社交平台" prop="socialType">
+      <el-form-item :label="t('system.social.client.socialPlatform')" prop="socialType">
         <el-select
           v-model="queryParams.socialType"
           class="!w-240px"
           clearable
-          placeholder="请选择社交平台"
+          :placeholder="t('system.social.client.selectSocialPlatform')"
         >
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_SOCIAL_TYPE)"
@@ -34,12 +34,12 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="用户类型" prop="userType">
+      <el-form-item :label="t('system.social.client.userType')" prop="userType">
         <el-select
           v-model="queryParams.userType"
           class="!w-240px"
           clearable
-          placeholder="请选择用户类型"
+          :placeholder="t('system.social.client.selectUserType')"
         >
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.USER_TYPE)"
@@ -49,17 +49,17 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="客户端编号" prop="clientId">
+      <el-form-item :label="t('system.social.client.clientId')" prop="clientId">
         <el-input
           v-model="queryParams.clientId"
           class="!w-240px"
           clearable
-          placeholder="请输入客户端编号"
+          :placeholder="t('system.social.client.inputClientId')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="状态" prop="status">
-        <el-select v-model="queryParams.status" class="!w-240px" clearable placeholder="请选择状态">
+      <el-form-item :label="t('common.status')" prop="status">
+        <el-select v-model="queryParams.status" class="!w-240px" clearable :placeholder="t('system.social.client.selectStatus')">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
             :key="dict.value"
@@ -71,11 +71,11 @@
       <el-form-item>
         <el-button @click="handleQuery">
           <Icon class="mr-5px" icon="ep:search" />
-          搜索
+          {{ t('common.query') }}
         </el-button>
         <el-button @click="resetQuery">
           <Icon class="mr-5px" icon="ep:refresh" />
-          重置
+          {{ t('common.reset') }}
         </el-button>
         <el-button
           v-hasPermi="['system:social-client:create']"
@@ -84,7 +84,7 @@
           @click="openForm('create')"
         >
           <Icon class="mr-5px" icon="ep:plus" />
-          新增
+          {{ t('system.social.client.create') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -93,20 +93,20 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list" :show-overflow-tooltip="true" :stripe="true">
-      <el-table-column align="center" label="编号" prop="id" />
-      <el-table-column align="center" label="应用名" prop="name" />
-      <el-table-column align="center" label="社交平台" prop="socialType">
+      <el-table-column align="center" :label="t('system.social.client.id')" prop="id" />
+      <el-table-column align="center" :label="t('system.social.client.appName')" prop="name" />
+      <el-table-column align="center" :label="t('system.social.client.socialPlatform')" prop="socialType">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_SOCIAL_TYPE" :value="scope.row.socialType" />
         </template>
       </el-table-column>
-      <el-table-column align="center" label="用户类型" prop="userType">
+      <el-table-column align="center" :label="t('system.social.client.userType')" prop="userType">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.USER_TYPE" :value="scope.row.userType" />
         </template>
       </el-table-column>
-      <el-table-column align="center" label="客户端编号" prop="clientId" width="180px" />
-      <el-table-column align="center" label="状态" prop="status">
+      <el-table-column align="center" :label="t('system.social.client.clientId')" prop="clientId" width="180px" />
+      <el-table-column align="center" :label="t('common.status')" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
@@ -114,11 +114,11 @@
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        label="创建时间"
+        :label="t('common.createTime')"
         prop="createTime"
         width="180px"
       />
-      <el-table-column align="center" label="操作">
+      <el-table-column align="center" :label="t('system.social.client.action')">
         <template #default="scope">
           <el-button
             v-hasPermi="['system:social-client:update']"
@@ -126,7 +126,7 @@
             type="primary"
             @click="openForm('update', scope.row.id)"
           >
-            编辑
+            {{ t('system.social.client.edit') }}
           </el-button>
           <el-button
             v-hasPermi="['system:social-client:delete']"
@@ -134,7 +134,7 @@
             type="danger"
             @click="handleDelete(scope.row.id)"
           >
-            删除
+            {{ t('system.social.client.delete') }}
           </el-button>
         </template>
       </el-table-column>

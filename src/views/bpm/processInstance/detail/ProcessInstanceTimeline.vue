@@ -29,7 +29,7 @@
         <!-- 第一行：节点名称、时间 -->
         <div class="flex w-full">
           <div class="font-bold">
-            {{ activity.name }} <span v-if="activity.status === TaskStatusEnum.SKIP">【跳过】</span>
+            {{ activity.name }} <span v-if="activity.status === TaskStatusEnum.SKIP">{{ t('bpm.processInstance.detail._todo325') }}</span>
           </div>
           <!-- 信息：时间 -->
           <div
@@ -47,7 +47,7 @@
             @click="handleChildProcess(activity)"
             :disabled="!activity.processInstanceId"
           >
-            查看子流程
+            {{ t('bpm.processInstance.detail._todo326') }}
           </el-button>
         </div>
         <!-- 需要自定义选择审批人 -->
@@ -62,7 +62,7 @@
           "
         >
           <!--  && activity.nodeType === NodeType.USER_TASK_NODE -->
-          <el-tooltip content="添加用户" placement="left">
+          <el-tooltip :content="t('bpm.processInstance.detail._todo324')" placement="left">
             <el-button
               class="!px-6px"
               @click="handleSelectUser(activity.id, customApproveUsers[activity.id])"
@@ -192,6 +192,7 @@ import transactorSvg from '@/assets/svgs/bpm/transactor.svg'
 import childProcessSvg from '@/assets/svgs/bpm/child-process.svg'
 
 defineOptions({ name: 'BpmProcessInstanceTimeline' })
+const { t } = useI18n() // 国际化
 const props = withDefaults(
   defineProps<{
     activityNodes: ProcessInstanceApi.ApprovalNodeInfo[] // 审批节点信息
@@ -328,7 +329,7 @@ const shouldShowTaskEvidence = (
 
 /** 获取任务留痕意见标题 */
 const getTaskEvidenceReasonLabel = (nodeType: NodeType) => {
-  return nodeType === NodeType.TRANSACTOR_NODE ? '办理意见' : '审批意见'
+  return nodeType === NodeType.TRANSACTOR_NODE ? t('bpm.processInstance.detail._todo327') : t('bpm.processInstance.detail.approveOpinion')
 }
 
 // 选择自定义审批人

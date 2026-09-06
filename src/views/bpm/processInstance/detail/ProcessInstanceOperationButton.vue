@@ -44,7 +44,7 @@
               :rows="4"
             />
           </el-form-item>
-          <el-form-item label="上传附件/图片" prop="attachments">
+          <el-form-item :label="t('bpm.processInstance.detail._todo291')" prop="attachments">
             <UploadFile
               v-model="approveReasonForm.attachments"
               :limit="10"
@@ -54,7 +54,7 @@
             />
           </el-form-item>
           <el-form-item
-            label="下一个节点的审批人"
+            :label="t('bpm.processInstance.detail._todo292')"
             prop="nextAssignees"
             v-if="nextAssigneesActivityNode.length > 0"
           >
@@ -70,11 +70,11 @@
           </el-form-item>
           <el-form-item
             v-if="runningTask.signEnable"
-            label="签名"
+            :label="t('bpm.processInstance.detail.signature')"
             prop="signPicUrl"
             ref="approveSignFormRef"
           >
-            <el-button @click="signRef.open()">点击签名</el-button>
+            <el-button @click="signRef.open()">{{ t('bpm.processInstance.detail._todo300') }}</el-button>
             <el-image
               class="w-90px h-40px ml-5px"
               v-if="approveReasonForm.signPicUrl"
@@ -90,7 +90,7 @@
             >
               {{ getButtonDisplayName(OperationButtonType.APPROVE) }}
             </el-button>
-            <el-button @click="closePopover('approve', approveFormRef)"> 取消 </el-button>
+            <el-button @click="closePopover('approve', approveFormRef)"> {{ t('common.cancel') }} </el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -119,15 +119,15 @@
           :rules="rejectReasonRule"
           label-width="100px"
         >
-          <el-form-item label="审批意见" prop="reason">
+          <el-form-item :label="t('bpm.processInstance.detail.approveOpinion')" prop="reason">
             <el-input
               v-model="rejectReasonForm.reason"
-              placeholder="请输入审批意见"
+              :placeholder="t('bpm.processInstance.detail.inputApproveOpinion')"
               type="textarea"
               :rows="4"
             />
           </el-form-item>
-          <el-form-item label="上传附件/图片" prop="attachments">
+          <el-form-item :label="t('bpm.processInstance.detail._todo291')" prop="attachments">
             <UploadFile
               v-model="rejectReasonForm.attachments"
               :limit="10"
@@ -144,7 +144,7 @@
             >
               {{ getButtonDisplayName(OperationButtonType.REJECT) }}
             </el-button>
-            <el-button @click="closePopover('reject', rejectFormRef)"> 取消 </el-button>
+            <el-button @click="closePopover('reject', rejectFormRef)"> {{ t('common.cancel') }} </el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -172,11 +172,11 @@
           :rules="commentFormRule"
           label-width="100px"
         >
-          <el-form-item label="评论内容" prop="message">
+          <el-form-item :label="t('bpm.processInstance.detail.commentContent')" prop="message">
             <el-input
               v-model="commentForm.message"
               clearable
-              placeholder="请输入评论内容"
+              :placeholder="t('bpm.processInstance.detail.inputCommentContent')"
               type="textarea"
               :rows="4"
               maxlength="500"
@@ -185,9 +185,9 @@
           </el-form-item>
           <el-form-item>
             <el-button :disabled="formLoading" type="primary" @click="handleComment">
-              提交
+              {{ t('bpm.processInstance.detail._todo301') }}
             </el-button>
-            <el-button @click="closePopover('comment', commentFormRef)"> 取消 </el-button>
+            <el-button @click="closePopover('comment', commentFormRef)"> {{ t('common.cancel') }} </el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -216,13 +216,13 @@
           :rules="copyFormRule"
           label-width="100px"
         >
-          <el-form-item label="抄送人" prop="copyUserIds">
+          <el-form-item :label="t('bpm.processInstance.detail.ccUser')" prop="copyUserIds">
             <el-select
               v-model="copyForm.copyUserIds"
               clearable
               style="width: 100%"
               multiple
-              placeholder="请选择抄送人"
+              :placeholder="t('bpm.processInstance.detail.selectCcUser')"
             >
               <el-option
                 v-for="item in userOptions"
@@ -232,11 +232,11 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item label="抄送意见" prop="copyReason">
+          <el-form-item :label="t('bpm.processInstance.detail.ccOpinion')" prop="copyReason">
             <el-input
               v-model="copyForm.copyReason"
               clearable
-              placeholder="请输入抄送意见"
+              :placeholder="t('bpm.processInstance.detail.inputCcOpinion')"
               type="textarea"
               :rows="3"
             />
@@ -245,7 +245,7 @@
             <el-button :disabled="formLoading" type="primary" @click="handleCopy">
               {{ getButtonDisplayName(OperationButtonType.COPY) }}
             </el-button>
-            <el-button @click="closePopover('copy', copyFormRef)"> 取消 </el-button>
+            <el-button @click="closePopover('copy', copyFormRef)"> {{ t('common.cancel') }} </el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -274,7 +274,7 @@
           :rules="transferFormRule"
           label-width="100px"
         >
-          <el-form-item label="新审批人" prop="assigneeUserId">
+          <el-form-item :label="t('bpm.processInstance.detail._todo293')" prop="assigneeUserId">
             <el-select v-model="transferForm.assigneeUserId" clearable style="width: 100%">
               <el-option
                 v-for="item in userOptions"
@@ -284,11 +284,11 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item label="审批意见" prop="reason">
+          <el-form-item :label="t('bpm.processInstance.detail.approveOpinion')" prop="reason">
             <el-input
               v-model="transferForm.reason"
               clearable
-              placeholder="请输入审批意见"
+              :placeholder="t('bpm.processInstance.detail.inputApproveOpinion')"
               type="textarea"
               :rows="3"
             />
@@ -297,7 +297,7 @@
             <el-button :disabled="formLoading" type="primary" @click="handleTransfer()">
               {{ getButtonDisplayName(OperationButtonType.TRANSFER) }}
             </el-button>
-            <el-button @click="closePopover('transfer', transferFormRef)"> 取消 </el-button>
+            <el-button @click="closePopover('transfer', transferFormRef)"> {{ t('common.cancel') }} </el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -326,7 +326,7 @@
           :rules="delegateFormRule"
           label-width="100px"
         >
-          <el-form-item label="接收人" prop="delegateUserId">
+          <el-form-item :label="t('bpm.processInstance.detail._todo294')" prop="delegateUserId">
             <el-select v-model="delegateForm.delegateUserId" clearable style="width: 100%">
               <el-option
                 v-for="item in userOptions"
@@ -336,11 +336,11 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item label="审批意见" prop="reason">
+          <el-form-item :label="t('bpm.processInstance.detail.approveOpinion')" prop="reason">
             <el-input
               v-model="delegateForm.reason"
               clearable
-              placeholder="请输入审批意见"
+              :placeholder="t('bpm.processInstance.detail.inputApproveOpinion')"
               type="textarea"
               :rows="3"
             />
@@ -349,7 +349,7 @@
             <el-button :disabled="formLoading" type="primary" @click="handleDelegate()">
               {{ getButtonDisplayName(OperationButtonType.DELEGATE) }}
             </el-button>
-            <el-button @click="closePopover('delegate', delegateFormRef)"> 取消 </el-button>
+            <el-button @click="closePopover('delegate', delegateFormRef)"> {{ t('common.cancel') }} </el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -378,7 +378,7 @@
           :rules="addSignFormRule"
           label-width="100px"
         >
-          <el-form-item label="加签处理人" prop="addSignUserIds">
+          <el-form-item :label="t('bpm.processInstance.detail._todo295')" prop="addSignUserIds">
             <el-select v-model="addSignForm.addSignUserIds" multiple clearable style="width: 100%">
               <el-option
                 v-for="item in userOptions"
@@ -388,11 +388,11 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item label="审批意见" prop="reason">
+          <el-form-item :label="t('bpm.processInstance.detail.approveOpinion')" prop="reason">
             <el-input
               v-model="addSignForm.reason"
               clearable
-              placeholder="请输入审批意见"
+              :placeholder="t('bpm.processInstance.detail.inputApproveOpinion')"
               type="textarea"
               :rows="3"
             />
@@ -404,7 +404,7 @@
             <el-button :disabled="formLoading" type="primary" @click="handlerAddSign('after')">
               向后{{ getButtonDisplayName(OperationButtonType.ADD_SIGN) }}
             </el-button>
-            <el-button @click="closePopover('addSign', addSignFormRef)"> 取消 </el-button>
+            <el-button @click="closePopover('addSign', addSignFormRef)"> {{ t('common.cancel') }} </el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -432,7 +432,7 @@
           :rules="deleteSignFormRule"
           label-width="100px"
         >
-          <el-form-item label="减签人员" prop="deleteSignTaskId">
+          <el-form-item :label="t('bpm.processInstance.detail._todo296')" prop="deleteSignTaskId">
             <el-select v-model="deleteSignForm.deleteSignTaskId" clearable style="width: 100%">
               <el-option
                 v-for="item in runningTask.children"
@@ -442,20 +442,20 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item label="审批意见" prop="reason">
+          <el-form-item :label="t('bpm.processInstance.detail.approveOpinion')" prop="reason">
             <el-input
               v-model="deleteSignForm.reason"
               clearable
-              placeholder="请输入审批意见"
+              :placeholder="t('bpm.processInstance.detail.inputApproveOpinion')"
               type="textarea"
               :rows="3"
             />
           </el-form-item>
           <el-form-item>
             <el-button :disabled="formLoading" type="primary" @click="handlerDeleteSign()">
-              减签
+              {{ t('bpm.processInstance.detail._todo302') }}
             </el-button>
-            <el-button @click="closePopover('deleteSign', deleteSignFormRef)"> 取消 </el-button>
+            <el-button @click="closePopover('deleteSign', deleteSignFormRef)"> {{ t('common.cancel') }} </el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -484,7 +484,7 @@
           :rules="returnFormRule"
           label-width="100px"
         >
-          <el-form-item label="退回节点" prop="targetTaskDefinitionKey">
+          <el-form-item :label="t('bpm.processInstance.detail._todo297')" prop="targetTaskDefinitionKey">
             <el-select v-model="returnForm.targetTaskDefinitionKey" clearable style="width: 100%">
               <el-option
                 v-for="item in returnList"
@@ -494,11 +494,11 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item label="退回理由" prop="returnReason">
+          <el-form-item :label="t('bpm.processInstance.detail.returnReason')" prop="returnReason">
             <el-input
               v-model="returnForm.returnReason"
               clearable
-              placeholder="请输入退回理由"
+              :placeholder="t('bpm.processInstance.detail.inputReturnReason')"
               type="textarea"
               :rows="3"
             />
@@ -507,7 +507,7 @@
             <el-button :disabled="formLoading" type="primary" @click="handleReturn()">
               {{ getButtonDisplayName(OperationButtonType.RETURN) }}
             </el-button>
-            <el-button @click="closePopover('return', returnFormRef)"> 取消 </el-button>
+            <el-button @click="closePopover('return', returnFormRef)"> {{ t('common.cancel') }} </el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -537,21 +537,21 @@
           :rules="cancelFormRule"
           label-width="100px"
         >
-          <el-form-item label="取消理由" prop="cancelReason">
+          <el-form-item :label="t('bpm.processInstance.detail._todo298')" prop="cancelReason">
             <span class="text-#878c93 text-12px">&nbsp; 取消后，该审批流程将自动结束</span>
             <el-input
               v-model="cancelForm.cancelReason"
               clearable
-              placeholder="请输入取消理由"
+              :placeholder="t('bpm.processInstance.detail._todo299')"
               type="textarea"
               :rows="3"
             />
           </el-form-item>
           <el-form-item>
             <el-button :disabled="formLoading" type="primary" @click="handleCancel()">
-              确认
+              {{ t('bpm.processInstance.detail.confirm') }}
             </el-button>
-            <el-button @click="closePopover('cancel', cancelFormRef)"> 取消 </el-button>
+            <el-button @click="closePopover('cancel', cancelFormRef)"> {{ t('common.cancel') }} </el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -595,6 +595,7 @@ import { isEmpty } from '@/utils/is'
 import { UploadFile } from '@/components/UploadFile'
 
 defineOptions({ name: 'ProcessInstanceBtnContainer' })
+const { t } = useI18n() // 国际化
 
 const router = useRouter() // 路由
 const message = useMessage() // 消息弹窗
@@ -647,7 +648,7 @@ const APPROVAL_ATTACHMENT_FILE_SIZE = 5
 const runningTask = ref<any>() // 运行中的任务
 const approveForm = ref<any>({}) // 审批通过时，额外的补充信息
 const approveFormFApi = ref<any>({}) // approveForms 的 fAPi
-const nodeTypeName = ref('审批') // 节点类型名称
+const nodeTypeName = ref(t('bpm.processInstance.detail._todo303')) // 节点类型名称
 
 // 审批通过意见表单
 const reasonRequire = ref()
@@ -673,8 +674,8 @@ const approveReasonRule = computed(() => {
         trigger: 'blur'
       }
     ],
-    signPicUrl: [{ required: true, message: '签名不能为空', trigger: 'change' }],
-    nextAssignees: [{ required: true, message: '审批人不能为空', trigger: 'blur' }]
+    signPicUrl: [{ required: true, message: t('bpm.processInstance.detail.signatureRequired'), trigger: 'change' }],
+    nextAssignees: [{ required: true, message: t('bpm.processInstance.detail._todo304'), trigger: 'blur' }]
   }
 })
 
@@ -686,7 +687,7 @@ const rejectReasonForm = reactive({
 })
 const rejectReasonRule = computed(() => {
   return {
-    reason: [{ required: reasonRequire.value, message: '审批意见不能为空', trigger: 'blur' }]
+    reason: [{ required: reasonRequire.value, message: t('bpm.processInstance.detail.approveOpinionRequired'), trigger: 'blur' }]
   }
 })
 
@@ -697,7 +698,7 @@ const copyForm = reactive({
   copyReason: ''
 })
 const copyFormRule = reactive<FormRules<typeof copyForm>>({
-  copyUserIds: [{ required: true, message: '抄送人不能为空', trigger: 'change' }]
+  copyUserIds: [{ required: true, message: t('bpm.processInstance.detail.ccUserRequired'), trigger: 'change' }]
 })
 
 // 评论表单
@@ -706,7 +707,7 @@ const commentForm = reactive({
   message: ''
 })
 const commentFormRule = reactive<FormRules<typeof commentForm>>({
-  message: [{ required: true, message: '评论内容不能为空', trigger: 'blur' }]
+  message: [{ required: true, message: t('bpm.processInstance.detail.commentContentRequired'), trigger: 'blur' }]
 })
 
 // 转办表单
@@ -716,8 +717,8 @@ const transferForm = reactive({
   reason: ''
 })
 const transferFormRule = reactive<FormRules<typeof transferForm>>({
-  assigneeUserId: [{ required: true, message: '新审批人不能为空', trigger: 'change' }],
-  reason: [{ required: true, message: '审批意见不能为空', trigger: 'blur' }]
+  assigneeUserId: [{ required: true, message: t('bpm.processInstance.detail._todo305'), trigger: 'change' }],
+  reason: [{ required: true, message: t('bpm.processInstance.detail.approveOpinionRequired'), trigger: 'blur' }]
 })
 
 // 委派表单
@@ -727,8 +728,8 @@ const delegateForm = reactive({
   reason: ''
 })
 const delegateFormRule = reactive<FormRules<typeof delegateForm>>({
-  delegateUserId: [{ required: true, message: '接收人不能为空', trigger: 'change' }],
-  reason: [{ required: true, message: '审批意见不能为空', trigger: 'blur' }]
+  delegateUserId: [{ required: true, message: t('bpm.processInstance.detail._todo306'), trigger: 'change' }],
+  reason: [{ required: true, message: t('bpm.processInstance.detail.approveOpinionRequired'), trigger: 'blur' }]
 })
 
 // 加签表单
@@ -738,8 +739,8 @@ const addSignForm = reactive({
   reason: ''
 })
 const addSignFormRule = reactive<FormRules<typeof addSignForm>>({
-  addSignUserIds: [{ required: true, message: '加签处理人不能为空', trigger: 'change' }],
-  reason: [{ required: true, message: '审批意见不能为空', trigger: 'blur' }]
+  addSignUserIds: [{ required: true, message: t('bpm.processInstance.detail._todo307'), trigger: 'change' }],
+  reason: [{ required: true, message: t('bpm.processInstance.detail.approveOpinionRequired'), trigger: 'blur' }]
 })
 
 // 减签表单
@@ -749,8 +750,8 @@ const deleteSignForm = reactive({
   reason: ''
 })
 const deleteSignFormRule = reactive<FormRules<typeof deleteSignForm>>({
-  deleteSignTaskId: [{ required: true, message: '减签人员不能为空', trigger: 'change' }],
-  reason: [{ required: true, message: '审批意见不能为空', trigger: 'blur' }]
+  deleteSignTaskId: [{ required: true, message: t('bpm.processInstance.detail._todo308'), trigger: 'change' }],
+  reason: [{ required: true, message: t('bpm.processInstance.detail.approveOpinionRequired'), trigger: 'blur' }]
 })
 
 // 退回表单
@@ -760,8 +761,8 @@ const returnForm = reactive({
   returnReason: ''
 })
 const returnFormRule = reactive<FormRules<typeof returnForm>>({
-  targetTaskDefinitionKey: [{ required: true, message: '退回节点不能为空', trigger: 'change' }],
-  returnReason: [{ required: true, message: '退回理由不能为空', trigger: 'blur' }]
+  targetTaskDefinitionKey: [{ required: true, message: t('bpm.processInstance.detail._todo309'), trigger: 'change' }],
+  returnReason: [{ required: true, message: t('bpm.processInstance.detail.returnReasonRequired'), trigger: 'blur' }]
 })
 
 // 取消表单
@@ -770,7 +771,7 @@ const cancelForm = reactive({
   cancelReason: ''
 })
 const cancelFormRule = reactive<FormRules<typeof cancelForm>>({
-  cancelReason: [{ required: true, message: '取消理由不能为空', trigger: 'blur' }]
+  cancelReason: [{ required: true, message: t('bpm.processInstance.detail._todo310'), trigger: 'blur' }]
 })
 
 /** 监听 approveFormFApis，实现它对应的 form-create 初始化后，隐藏掉对应的表单提交按钮 */
@@ -792,7 +793,7 @@ const openPopover = async (type: string) => {
     // 校验流程表单
     const valid = await validateNormalForm()
     if (!valid) {
-      message.warning('表单校验不通过，请先完善表单!!')
+      message.warning(t('bpm.processInstance.detail._todo311'))
       return
     }
   }
@@ -800,7 +801,7 @@ const openPopover = async (type: string) => {
     // 获取退回节点
     returnList.value = await TaskApi.getTaskListByReturn(runningTask.value.id)
     if (returnList.value.length === 0) {
-      message.warning('当前没有可退回的节点')
+      message.warning(t('bpm.processInstance.detail._todo312'))
       return
     }
   }
@@ -903,7 +904,7 @@ const validateNextAssignees = () => {
   // 如果需要自选审批人，则校验每个节点是否都已配置审批人
   for (const item of nextAssigneesActivityNode.value) {
     if (isEmpty(item.candidateUsers) && isEmpty(approveReasonForm.nextAssignees[item.id])) {
-      message.warning('下一个节点的审批人不能为空!')
+      message.warning(t('bpm.processInstance.detail._todo313'))
       return false
     }
   }
@@ -920,7 +921,7 @@ const handleAudit = async (pass: boolean, formRef: FormInstance | undefined) => 
     // 校验流程表单必填字段
     const valid = await validateNormalForm()
     if (!valid) {
-      message.warning('表单校验不通过，请先完善表单!!')
+      message.warning(t('bpm.processInstance.detail._todo311'))
       return
     }
 
@@ -956,7 +957,7 @@ const handleAudit = async (pass: boolean, formRef: FormInstance | undefined) => 
       if (nextAssigneesTimelineRef.value) {
         nextAssigneesTimelineRef.value.batchSetCustomApproveUsers({})
       }
-      message.success('审批通过成功')
+      message.success(t('bpm.processInstance.detail._todo314'))
     } else {
       // 审批不通过数据
       const data = {
@@ -966,7 +967,7 @@ const handleAudit = async (pass: boolean, formRef: FormInstance | undefined) => 
       }
       await TaskApi.rejectTask(data)
       popOverVisible.value.reject = false
-      message.success('审批不通过成功')
+      message.success(t('bpm.processInstance.detail._todo315'))
     }
     // 重置表单
     formRef.resetFields()
@@ -995,7 +996,7 @@ const handleCopy = async () => {
     await TaskApi.copyTask(data)
     copyFormRef.value.resetFields()
     popOverVisible.value.copy = false
-    message.success('操作成功')
+    message.success(t('bpm.processInstance.detail._todo316'))
   } finally {
     formLoading.value = false
   }
@@ -1010,14 +1011,14 @@ const handleComment = async () => {
     await commentFormRef.value.validate()
     const content = commentForm.message.trim()
     if (!content) {
-      message.warning('评论内容不能为空')
+      message.warning(t('bpm.processInstance.detail.commentContentRequired'))
       return
     }
     // 2. 提交评论
     await CommentApi.createComment(runningTask.value.id, content)
     commentFormRef.value.resetFields()
     popOverVisible.value.comment = false
-    message.success('评论成功')
+    message.success(t('bpm.processInstance.detail._todo317'))
     // 3. 加载最新数据
     reload()
   } finally {
@@ -1041,7 +1042,7 @@ const handleTransfer = async () => {
     await TaskApi.transferTask(data)
     transferFormRef.value.resetFields()
     popOverVisible.value.transfer = false
-    message.success('操作成功')
+    message.success(t('bpm.processInstance.detail._todo316'))
     // 2. 加载最新数据
     reload()
   } finally {
@@ -1066,7 +1067,7 @@ const handleDelegate = async () => {
     await TaskApi.delegateTask(data)
     popOverVisible.value.delegate = false
     delegateFormRef.value.resetFields()
-    message.success('操作成功')
+    message.success(t('bpm.processInstance.detail._todo316'))
     // 2. 加载最新数据
     reload()
   } finally {
@@ -1089,7 +1090,7 @@ const handlerAddSign = async (type: string) => {
       userIds: addSignForm.addSignUserIds
     }
     await TaskApi.signCreateTask(data)
-    message.success('操作成功')
+    message.success(t('bpm.processInstance.detail._todo316'))
     addSignFormRef.value.resetFields()
     popOverVisible.value.addSign = false
     // 2 加载最新数据
@@ -1116,7 +1117,7 @@ const handleReturn = async () => {
     await TaskApi.returnTask(data)
     popOverVisible.value.return = false
     returnFormRef.value.resetFields()
-    message.success('操作成功')
+    message.success(t('bpm.processInstance.detail._todo316'))
     // 2 重新加载数据
     reload()
   } finally {
@@ -1137,7 +1138,7 @@ const handleCancel = async () => {
       cancelForm.cancelReason
     )
     popOverVisible.value.return = false
-    message.success('操作成功')
+    message.success(t('bpm.processInstance.detail._todo316'))
     cancelFormRef.value.resetFields()
     // 2 重新加载数据
     reload()
@@ -1174,7 +1175,7 @@ const handlerDeleteSign = async () => {
       reason: deleteSignForm.reason
     }
     await TaskApi.signDeleteTask(data)
-    message.success('减签成功')
+    message.success(t('bpm.processInstance.detail._todo318'))
     deleteSignFormRef.value.resetFields()
     popOverVisible.value.deleteSign = false
     // 2 加载最新数据
@@ -1236,7 +1237,7 @@ const loadTodoTask = (task: any) => {
   nextApprovalRequestId += 1
   pendingNextNodesTask = null
   reasonRequire.value = task?.reasonRequire ?? false
-  nodeTypeName.value = task?.nodeType === NodeType.TRANSACTOR_NODE ? '办理' : '审批'
+  nodeTypeName.value = task?.nodeType === NodeType.TRANSACTOR_NODE ? t('bpm.processInstance.detail._todo319') : t('bpm.processInstance.detail._todo303')
   // 处理 approve 表单
   if (task && task.formId && task.formConf) {
     const tempApproveForm: { option?: any; rule?: any; value?: any } = {}

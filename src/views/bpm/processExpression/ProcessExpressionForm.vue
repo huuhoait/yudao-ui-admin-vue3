@@ -7,10 +7,10 @@
       label-width="100px"
       v-loading="formLoading"
     >
-      <el-form-item label="名字" prop="name">
-        <el-input v-model="formData.name" placeholder="请输入名字" />
+      <el-form-item :label="t('bpm.processExpression.name')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('bpm.processExpression.inputName')" />
       </el-form-item>
-      <el-form-item label="状态" prop="status">
+      <el-form-item :label="t('common.status')" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -21,13 +21,13 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="表达式" prop="expression">
-        <el-input type="textarea" v-model="formData.expression" placeholder="请输入表达式" />
+      <el-form-item :label="t('bpm.processExpression.expression')" prop="expression">
+        <el-input type="textarea" v-model="formData.expression" :placeholder="t('bpm.processExpression.inputExpression')" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="submitForm" type="primary" :disabled="formLoading">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button @click="submitForm" type="primary" :disabled="formLoading">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -53,9 +53,9 @@ const formData = ref({
   expression: undefined as string | undefined
 })
 const formRules = reactive({
-  name: [{ required: true, message: '名字不能为空', trigger: 'blur' }],
-  status: [{ required: true, message: '状态不能为空', trigger: 'blur' }],
-  expression: [{ required: true, message: '表达式不能为空', trigger: 'blur' }]
+  name: [{ required: true, message: t('bpm.processExpression.nameRequired'), trigger: 'blur' }],
+  status: [{ required: true, message: t('bpm.processExpression.statusRequired'), trigger: 'blur' }],
+  expression: [{ required: true, message: t('bpm.processExpression.expressionRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

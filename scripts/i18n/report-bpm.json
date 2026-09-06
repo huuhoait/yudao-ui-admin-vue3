@@ -1,7 +1,7 @@
 {
   "mode": "apply",
   "target": "src/views/bpm",
-  "scannedAt": "2026-09-03T13:47:04.453Z",
+  "scannedAt": "2026-09-06T03:12:48.107Z",
   "totalFiles": 53,
   "toConvert": 752,
   "needReview": 22,
@@ -1651,7 +1651,7 @@
           "type": "vue-attr",
           "attr": "content",
           "text": "输入字符 '{' 即可插入表单字段",
-          "key": "bpm.model.form._todo73",
+          "key": "bpm.model.form._todo280",
           "reuse": false,
           "todo": true
         },
@@ -1659,7 +1659,7 @@
           "type": "vue-attr",
           "attr": "placeholder",
           "text": "请插入表单字段（输入 '{' 可以选择表单字段）或输入文本",
-          "key": "bpm.model.form._todo74",
+          "key": "bpm.model.form._todo281",
           "reuse": false,
           "todo": true
         },
@@ -3290,7 +3290,7 @@
         {
           "type": "vue-text",
           "text": "所属部门",
-          "key": "bpm.processInstance.detail._todo188",
+          "key": "bpm.processInstance.detail._todo282",
           "reuse": false,
           "todo": true
         },
@@ -3304,14 +3304,14 @@
         {
           "type": "vue-text",
           "text": "表单内容",
-          "key": "bpm.processInstance.detail._todo189",
+          "key": "bpm.processInstance.detail._todo283",
           "reuse": false,
           "todo": true
         },
         {
           "type": "vue-text",
           "text": "流程节点",
-          "key": "bpm.processInstance.detail._todo190",
+          "key": "bpm.processInstance.detail._todo284",
           "reuse": false,
           "todo": true
         },
@@ -3325,49 +3325,49 @@
         {
           "type": "vue-text",
           "text": "打 印",
-          "key": "bpm.processInstance.detail._todo191",
+          "key": "bpm.processInstance.detail._todo285",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "是",
-          "key": "bpm.processInstance.detail._todo192",
+          "key": "bpm.processInstance.detail._todo286",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "否",
-          "key": "bpm.processInstance.detail._todo193",
+          "key": "bpm.processInstance.detail._todo287",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "否",
-          "key": "bpm.processInstance.detail._todo193",
+          "key": "bpm.processInstance.detail._todo287",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "是",
-          "key": "bpm.processInstance.detail._todo192",
+          "key": "bpm.processInstance.detail._todo286",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "否",
-          "key": "bpm.processInstance.detail._todo193",
+          "key": "bpm.processInstance.detail._todo287",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "流程节点",
-          "key": "bpm.processInstance.detail._todo190",
+          "key": "bpm.processInstance.detail._todo284",
           "reuse": false,
           "todo": true
         }
@@ -3382,14 +3382,14 @@
           "type": "vue-attr",
           "attr": "description",
           "text": "暂无评论",
-          "key": "bpm.processInstance.detail._todo194",
+          "key": "bpm.processInstance.detail._todo288",
           "reuse": false,
           "todo": true
         },
         {
           "type": "vue-text",
           "text": "流程评论",
-          "key": "bpm.processInstance.detail._todo195",
+          "key": "bpm.processInstance.detail._todo289",
           "reuse": false,
           "todo": true
         },
@@ -3403,7 +3403,7 @@
         {
           "type": "script-string",
           "text": "评论",
-          "key": "bpm.processInstance.detail._todo196",
+          "key": "bpm.processInstance.detail._todo290",
           "reuse": false,
           "todo": true
         }
@@ -3418,7 +3418,7 @@
           "type": "vue-attr",
           "attr": "label",
           "text": "上传附件/图片",
-          "key": "bpm.processInstance.detail._todo197",
+          "key": "bpm.processInstance.detail._todo291",
           "reuse": false,
           "todo": true
         },
@@ -3426,7 +3426,7 @@
           "type": "vue-attr",
           "attr": "label",
           "text": "下一个节点的审批人",
-          "key": "bpm.processInstance.detail._todo198",
+          "key": "bpm.processInstance.detail._todo292",
           "reuse": false,
           "todo": true
         },
@@ -3458,7 +3458,7 @@
           "type": "vue-attr",
           "attr": "label",
           "text": "上传附件/图片",
-          "key": "bpm.processInstance.detail._todo197",
+          "key": "bpm.processInstance.detail._todo291",
           "reuse": false,
           "todo": true
         },
@@ -3514,7 +3514,7 @@
           "type": "vue-attr",
           "attr": "label",
           "text": "新审批人",
-          "key": "bpm.processInstance.detail._todo199",
+          "key": "bpm.processInstance.detail._todo293",
           "reuse": false,
           "todo": true
         },
@@ -3538,7 +3538,7 @@
           "type": "vue-attr",
           "attr": "label",
           "text": "接收人",
-          "key": "bpm.processInstance.detail._todo200",
+          "key": "bpm.processInstance.detail._todo294",
           "reuse": false,
           "todo": true
         },
@@ -3562,7 +3562,7 @@
           "type": "vue-attr",
           "attr": "label",
           "text": "加签处理人",
-          "key": "bpm.processInstance.detail._todo201",
+          "key": "bpm.processInstance.detail._todo295",
           "reuse": false,
           "todo": true
         },
@@ -3586,7 +3586,7 @@
           "type": "vue-attr",
           "attr": "label",
           "text": "减签人员",
-          "key": "bpm.processInstance.detail._todo202",
+          "key": "bpm.processInstance.detail._todo296",
           "reuse": false,
           "todo": true
         },
@@ -3610,7 +3610,7 @@
           "type": "vue-attr",
           "attr": "label",
           "text": "退回节点",
-          "key": "bpm.processInstance.detail._todo203",
+          "key": "bpm.processInstance.detail._todo297",
           "reuse": false,
           "todo": true
         },
@@ -3634,7 +3634,7 @@
           "type": "vue-attr",
           "attr": "label",
           "text": "取消理由",
-          "key": "bpm.processInstance.detail._todo204",
+          "key": "bpm.processInstance.detail._todo298",
           "reuse": false,
           "todo": true
         },
@@ -3642,14 +3642,14 @@
           "type": "vue-attr",
           "attr": "placeholder",
           "text": "请输入取消理由",
-          "key": "bpm.processInstance.detail._todo205",
+          "key": "bpm.processInstance.detail._todo299",
           "reuse": false,
           "todo": true
         },
         {
           "type": "vue-text",
           "text": "点击签名",
-          "key": "bpm.processInstance.detail._todo206",
+          "key": "bpm.processInstance.detail._todo300",
           "reuse": false,
           "todo": true
         },
@@ -3670,7 +3670,7 @@
         {
           "type": "vue-text",
           "text": "提交",
-          "key": "bpm.processInstance.detail._todo207",
+          "key": "bpm.processInstance.detail._todo301",
           "reuse": false,
           "todo": true
         },
@@ -3712,7 +3712,7 @@
         {
           "type": "vue-text",
           "text": "减签",
-          "key": "bpm.processInstance.detail._todo208",
+          "key": "bpm.processInstance.detail._todo302",
           "reuse": false,
           "todo": true
         },
@@ -3747,7 +3747,7 @@
         {
           "type": "script-string",
           "text": "审批",
-          "key": "bpm.processInstance.detail._todo209",
+          "key": "bpm.processInstance.detail._todo303",
           "reuse": false,
           "todo": true
         },
@@ -3761,7 +3761,7 @@
         {
           "type": "script-string",
           "text": "审批人不能为空",
-          "key": "bpm.processInstance.detail._todo210",
+          "key": "bpm.processInstance.detail._todo304",
           "reuse": false,
           "todo": true
         },
@@ -3789,7 +3789,7 @@
         {
           "type": "script-string",
           "text": "新审批人不能为空",
-          "key": "bpm.processInstance.detail._todo211",
+          "key": "bpm.processInstance.detail._todo305",
           "reuse": false,
           "todo": true
         },
@@ -3803,7 +3803,7 @@
         {
           "type": "script-string",
           "text": "接收人不能为空",
-          "key": "bpm.processInstance.detail._todo212",
+          "key": "bpm.processInstance.detail._todo306",
           "reuse": false,
           "todo": true
         },
@@ -3817,7 +3817,7 @@
         {
           "type": "script-string",
           "text": "加签处理人不能为空",
-          "key": "bpm.processInstance.detail._todo213",
+          "key": "bpm.processInstance.detail._todo307",
           "reuse": false,
           "todo": true
         },
@@ -3831,7 +3831,7 @@
         {
           "type": "script-string",
           "text": "减签人员不能为空",
-          "key": "bpm.processInstance.detail._todo214",
+          "key": "bpm.processInstance.detail._todo308",
           "reuse": false,
           "todo": true
         },
@@ -3845,7 +3845,7 @@
         {
           "type": "script-string",
           "text": "退回节点不能为空",
-          "key": "bpm.processInstance.detail._todo215",
+          "key": "bpm.processInstance.detail._todo309",
           "reuse": false,
           "todo": true
         },
@@ -3859,56 +3859,56 @@
         {
           "type": "script-string",
           "text": "取消理由不能为空",
-          "key": "bpm.processInstance.detail._todo216",
+          "key": "bpm.processInstance.detail._todo310",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "表单校验不通过，请先完善表单!!",
-          "key": "bpm.processInstance.detail._todo217",
+          "key": "bpm.processInstance.detail._todo311",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "当前没有可退回的节点",
-          "key": "bpm.processInstance.detail._todo218",
+          "key": "bpm.processInstance.detail._todo312",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "下一个节点的审批人不能为空!",
-          "key": "bpm.processInstance.detail._todo219",
+          "key": "bpm.processInstance.detail._todo313",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "表单校验不通过，请先完善表单!!",
-          "key": "bpm.processInstance.detail._todo217",
+          "key": "bpm.processInstance.detail._todo311",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "审批通过成功",
-          "key": "bpm.processInstance.detail._todo220",
+          "key": "bpm.processInstance.detail._todo314",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "审批不通过成功",
-          "key": "bpm.processInstance.detail._todo221",
+          "key": "bpm.processInstance.detail._todo315",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "操作成功",
-          "key": "bpm.processInstance.detail._todo222",
+          "key": "bpm.processInstance.detail._todo316",
           "reuse": false,
           "todo": true
         },
@@ -3922,63 +3922,63 @@
         {
           "type": "script-string",
           "text": "评论成功",
-          "key": "bpm.processInstance.detail._todo223",
+          "key": "bpm.processInstance.detail._todo317",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "操作成功",
-          "key": "bpm.processInstance.detail._todo222",
+          "key": "bpm.processInstance.detail._todo316",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "操作成功",
-          "key": "bpm.processInstance.detail._todo222",
+          "key": "bpm.processInstance.detail._todo316",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "操作成功",
-          "key": "bpm.processInstance.detail._todo222",
+          "key": "bpm.processInstance.detail._todo316",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "操作成功",
-          "key": "bpm.processInstance.detail._todo222",
+          "key": "bpm.processInstance.detail._todo316",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "操作成功",
-          "key": "bpm.processInstance.detail._todo222",
+          "key": "bpm.processInstance.detail._todo316",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "减签成功",
-          "key": "bpm.processInstance.detail._todo224",
+          "key": "bpm.processInstance.detail._todo318",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "办理",
-          "key": "bpm.processInstance.detail._todo225",
+          "key": "bpm.processInstance.detail._todo319",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "审批",
-          "key": "bpm.processInstance.detail._todo209",
+          "key": "bpm.processInstance.detail._todo303",
           "reuse": false,
           "todo": true
         }
@@ -4029,7 +4029,7 @@
           "type": "vue-attr",
           "attr": "label",
           "text": "审批节点",
-          "key": "bpm.processInstance.detail._todo226",
+          "key": "bpm.processInstance.detail._todo320",
           "reuse": false,
           "todo": true
         },
@@ -4037,7 +4037,7 @@
           "type": "vue-attr",
           "attr": "label",
           "text": "审批人",
-          "key": "bpm.processInstance.detail._todo227",
+          "key": "bpm.processInstance.detail._todo321",
           "reuse": false,
           "todo": true
         },
@@ -4077,7 +4077,7 @@
           "type": "vue-attr",
           "attr": "label",
           "text": "附件/签名",
-          "key": "bpm.processInstance.detail._todo228",
+          "key": "bpm.processInstance.detail._todo322",
           "reuse": false,
           "todo": true
         },
@@ -4100,7 +4100,7 @@
         {
           "type": "vue-text",
           "text": "查看表单",
-          "key": "bpm.processInstance.detail._todo229",
+          "key": "bpm.processInstance.detail._todo323",
           "reuse": false,
           "todo": true
         }
@@ -4115,28 +4115,28 @@
           "type": "vue-attr",
           "attr": "content",
           "text": "添加用户",
-          "key": "bpm.processInstance.detail._todo230",
+          "key": "bpm.processInstance.detail._todo324",
           "reuse": false,
           "todo": true
         },
         {
           "type": "vue-text",
           "text": "【跳过】",
-          "key": "bpm.processInstance.detail._todo231",
+          "key": "bpm.processInstance.detail._todo325",
           "reuse": false,
           "todo": true
         },
         {
           "type": "vue-text",
           "text": "查看子流程",
-          "key": "bpm.processInstance.detail._todo232",
+          "key": "bpm.processInstance.detail._todo326",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "办理意见",
-          "key": "bpm.processInstance.detail._todo233",
+          "key": "bpm.processInstance.detail._todo327",
           "reuse": false,
           "todo": true
         },
@@ -4165,7 +4165,7 @@
         {
           "type": "vue-text",
           "text": "清除",
-          "key": "bpm.processInstance.detail._todo234",
+          "key": "bpm.processInstance.detail._todo328",
           "reuse": false,
           "todo": true
         },
@@ -4179,14 +4179,14 @@
         {
           "type": "vue-text",
           "text": "提交",
-          "key": "bpm.processInstance.detail._todo207",
+          "key": "bpm.processInstance.detail._todo301",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "签名上传中请稍等。。。",
-          "key": "bpm.processInstance.detail._todo235",
+          "key": "bpm.processInstance.detail._todo329",
           "reuse": false,
           "todo": true
         },
@@ -4208,7 +4208,7 @@
           "type": "vue-attr",
           "attr": "label",
           "text": "审批详情",
-          "key": "bpm.processInstance.detail._todo236",
+          "key": "bpm.processInstance.detail._todo330",
           "reuse": false,
           "todo": true
         },
@@ -4216,7 +4216,7 @@
           "type": "vue-attr",
           "attr": "label",
           "text": "流程图",
-          "key": "bpm.processInstance.detail._todo237",
+          "key": "bpm.processInstance.detail._todo331",
           "reuse": false,
           "todo": true
         },
@@ -4224,7 +4224,7 @@
           "type": "vue-attr",
           "attr": "label",
           "text": "流转记录",
-          "key": "bpm.processInstance.detail._todo238",
+          "key": "bpm.processInstance.detail._todo332",
           "reuse": false,
           "todo": true
         },
@@ -4232,21 +4232,21 @@
           "type": "vue-attr",
           "attr": "label",
           "text": "流程评论",
-          "key": "bpm.processInstance.detail._todo195",
+          "key": "bpm.processInstance.detail._todo289",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "查询不到审批详情信息！",
-          "key": "bpm.processInstance.detail._todo239",
+          "key": "bpm.processInstance.detail._todo333",
           "reuse": false,
           "todo": true
         },
         {
           "type": "script-string",
           "text": "查询不到流程信息！",
-          "key": "bpm.processInstance.detail._todo240",
+          "key": "bpm.processInstance.detail._todo334",
           "reuse": false,
           "todo": true
         }
@@ -4423,7 +4423,7 @@
         {
           "type": "vue-text",
           "text": "详情",
-          "key": "bpm.processInstance.detail",
+          "key": "bpm.processInstance.detail2",
           "reuse": false,
           "todo": false
         },
@@ -6100,5 +6100,6 @@
       ],
       "review": []
     }
-  ]
+  ],
+  "reusedKeys": 492
 }

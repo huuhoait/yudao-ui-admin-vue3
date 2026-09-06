@@ -7,10 +7,10 @@
       label-width="110px"
       v-loading="formLoading"
     >
-      <el-form-item label="名字" prop="name">
-        <el-input v-model="formData.name" placeholder="请输入名字" />
+      <el-form-item :label="t('bpm.processListener.name')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('bpm.processListener.inputName')" />
       </el-form-item>
-      <el-form-item label="状态" prop="status">
+      <el-form-item :label="t('common.status')" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -21,10 +21,10 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="类型" prop="type">
+      <el-form-item :label="t('bpm.processListener.type')" prop="type">
         <el-select
           v-model="formData.type"
-          placeholder="请选择类型"
+          :placeholder="t('bpm.processListener.selectType')"
           @change="formData.event = undefined"
         >
           <el-option
@@ -35,8 +35,8 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="事件" prop="event">
-        <el-select v-model="formData.event" placeholder="请选择事件">
+      <el-form-item :label="t('bpm.processListener._todo247')" prop="event">
+        <el-select v-model="formData.event" :placeholder="t('bpm.processListener._todo248')">
           <el-option
             v-for="event in formData.type == 'execution'
               ? ['开始', '结束']
@@ -47,8 +47,8 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="值类型" prop="valueType">
-        <el-select v-model="formData.valueType" placeholder="请选择值类型">
+      <el-form-item :label="t('bpm.processListener._todo249')" prop="valueType">
+        <el-select v-model="formData.valueType" :placeholder="t('bpm.processListener._todo250')">
           <el-option
             v-for="dict in getStrDictOptions(DICT_TYPE.BPM_PROCESS_LISTENER_VALUE_TYPE)"
             :key="dict.value"
@@ -57,16 +57,16 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="类路径" prop="value" v-if="formData.type == 'class'">
-        <el-input v-model="formData.value" placeholder="请输入类路径" />
+      <el-form-item :label="t('bpm.processListener._todo251')" prop="value" v-if="formData.type == 'class'">
+        <el-input v-model="formData.value" :placeholder="t('bpm.processListener._todo252')" />
       </el-form-item>
-      <el-form-item label="表达式" prop="value" v-else>
-        <el-input v-model="formData.value" placeholder="请输入表达式" />
+      <el-form-item :label="t('bpm.processListener.expression')" prop="value" v-else>
+        <el-input v-model="formData.value" :placeholder="t('bpm.processListener.inputExpression')" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="submitForm" type="primary" :disabled="formLoading">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button @click="submitForm" type="primary" :disabled="formLoading">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -95,12 +95,12 @@ const formData = ref({
   value: undefined as string | undefined
 })
 const formRules = reactive({
-  name: [{ required: true, message: '名字不能为空', trigger: 'blur' }],
-  type: [{ required: true, message: '类型不能为空', trigger: 'change' }],
-  status: [{ required: true, message: '状态不能为空', trigger: 'blur' }],
-  event: [{ required: true, message: '监听事件不能为空', trigger: 'blur' }],
-  valueType: [{ required: true, message: '值类型不能为空', trigger: 'change' }],
-  value: [{ required: true, message: '值不能为空', trigger: 'blur' }]
+  name: [{ required: true, message: t('bpm.processListener.nameRequired'), trigger: 'blur' }],
+  type: [{ required: true, message: t('bpm.processListener.typeRequired'), trigger: 'change' }],
+  status: [{ required: true, message: t('bpm.processListener.statusRequired'), trigger: 'blur' }],
+  event: [{ required: true, message: t('bpm.processListener._todo253'), trigger: 'blur' }],
+  valueType: [{ required: true, message: t('bpm.processListener._todo254'), trigger: 'change' }],
+  value: [{ required: true, message: t('bpm.processListener._todo255'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

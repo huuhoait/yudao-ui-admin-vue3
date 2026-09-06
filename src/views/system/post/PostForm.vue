@@ -7,17 +7,17 @@
       :rules="formRules"
       label-width="80px"
     >
-      <el-form-item label="岗位标题" prop="name">
-        <el-input v-model="formData.name" placeholder="请输入岗位标题" />
+      <el-form-item :label="t('system.post._todo204')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('system.post._todo205')" />
       </el-form-item>
-      <el-form-item label="岗位编码" prop="code">
-        <el-input v-model="formData.code" placeholder="请输入岗位编码" />
+      <el-form-item :label="t('system.post.postCode')" prop="code">
+        <el-input v-model="formData.code" :placeholder="t('system.post.inputPostCode')" />
       </el-form-item>
-      <el-form-item label="岗位顺序" prop="sort">
-        <el-input v-model="formData.sort" placeholder="请输入岗位顺序" />
+      <el-form-item :label="t('system.post._todo206')" prop="sort">
+        <el-input v-model="formData.sort" :placeholder="t('system.post._todo207')" />
       </el-form-item>
-      <el-form-item label="状态" prop="status">
-        <el-select v-model="formData.status" clearable placeholder="请选择状态">
+      <el-form-item :label="t('common.status')" prop="status">
+        <el-select v-model="formData.status" clearable :placeholder="t('system.post.selectStatus')">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
             :key="dict.value"
@@ -26,13 +26,13 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="备注" prop="remark">
-        <el-input v-model="formData.remark" placeholder="请输备注" type="textarea" />
+      <el-form-item :label="t('system.post.remark')" prop="remark">
+        <el-input v-model="formData.remark" :placeholder="t('system.post._todo208')" type="textarea" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -59,10 +59,10 @@ const formData = ref({
   remark: ''
 })
 const formRules = reactive({
-  name: [{ required: true, message: '岗位标题不能为空', trigger: 'blur' }],
-  code: [{ required: true, message: '岗位编码不能为空', trigger: 'change' }],
-  status: [{ required: true, message: '岗位状态不能为空', trigger: 'change' }],
-  remark: [{ required: false, message: '岗位内容不能为空', trigger: 'blur' }]
+  name: [{ required: true, message: t('system.post._todo209'), trigger: 'blur' }],
+  code: [{ required: true, message: t('system.post.postCodeRequired'), trigger: 'change' }],
+  status: [{ required: true, message: t('system.post._todo210'), trigger: 'change' }],
+  remark: [{ required: false, message: t('system.post._todo211'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 
