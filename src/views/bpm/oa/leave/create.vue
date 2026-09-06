@@ -1,7 +1,7 @@
 <template>
   <el-row :gutter="20">
     <el-col :span="16">
-      <ContentWrap :title="t('bpm.oa.leave._todo159')">
+      <ContentWrap title="申请信息">
         <el-form
           ref="formRef"
           v-loading="formLoading"
@@ -9,8 +9,8 @@
           :rules="formRules"
           label-width="80px"
         >
-          <el-form-item :label="t('bpm.oa.leave.leaveType')" prop="type">
-            <el-select v-model="formData.type" clearable :placeholder="t('bpm.oa.leave.selectLeaveType')">
+          <el-form-item label="请假类型" prop="type">
+            <el-select v-model="formData.type" clearable placeholder="请选择请假类型">
               <el-option
                 v-for="dict in getIntDictOptions(DICT_TYPE.BPM_OA_LEAVE_TYPE)"
                 :key="dict.value"
@@ -19,30 +19,30 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item :label="t('bpm.oa.leave.beginTime')" prop="startTime">
+          <el-form-item label="开始时间" prop="startTime">
             <el-date-picker
               v-model="formData.startTime"
               clearable
-              :placeholder="t('bpm.oa.leave.selectBeginTime')"
+              placeholder="请选择开始时间"
               type="datetime"
               value-format="x"
             />
           </el-form-item>
-          <el-form-item :label="t('bpm.oa.leave.endTime')" prop="endTime">
+          <el-form-item label="结束时间" prop="endTime">
             <el-date-picker
               v-model="formData.endTime"
               clearable
-              :placeholder="t('bpm.oa.leave.selectEndTime')"
+              placeholder="请选择结束时间"
               type="datetime"
               value-format="x"
             />
           </el-form-item>
-          <el-form-item :label="t('bpm.oa.leave._todo160')" prop="reason">
-            <el-input v-model="formData.reason" :placeholder="t('bpm.oa.leave._todo161')" type="textarea" />
+          <el-form-item label="原因" prop="reason">
+            <el-input v-model="formData.reason" placeholder="请输入请假原因" type="textarea" />
           </el-form-item>
           <el-form-item>
             <el-button :disabled="formLoading" type="primary" @click="submitForm">
-              {{ t('common.ok') }}
+              确 定
             </el-button>
           </el-form-item>
         </el-form>
@@ -51,7 +51,7 @@
 
     <!-- 审批相关：流程信息 -->
     <el-col :span="8">
-      <ContentWrap :title="t('bpm.oa.leave._todo162')" :bodyStyle="{ padding: '0 20px 0' }">
+      <ContentWrap title="审批流程" :bodyStyle="{ padding: '0 20px 0' }">
         <ProcessInstanceTimeline
           ref="timelineRef"
           :activity-nodes="activityNodes"
@@ -75,7 +75,6 @@ import { CandidateStrategy, NodeId } from '@/components/SimpleProcessDesignerV2/
 import { ApprovalNodeInfo } from '@/api/bpm/processInstance'
 
 defineOptions({ name: 'BpmOALeaveCreate' })
-const { t } = useI18n() // 国际化
 
 const message = useMessage() // 消息弹窗
 const { delView } = useTagsViewStore() // 视图操作
@@ -90,10 +89,10 @@ const formData = ref({
   endTime: undefined
 })
 const formRules = reactive({
-  type: [{ required: true, message: t('bpm.oa.leave.leaveTypeRequired'), trigger: 'blur' }],
-  reason: [{ required: true, message: t('bpm.oa.leave._todo163'), trigger: 'change' }],
-  startTime: [{ required: true, message: t('bpm.oa.leave._todo164'), trigger: 'change' }],
-  endTime: [{ required: true, message: t('bpm.oa.leave._todo165'), trigger: 'change' }]
+  type: [{ required: true, message: '请假类型不能为空', trigger: 'blur' }],
+  reason: [{ required: true, message: '请假原因不能为空', trigger: 'change' }],
+  startTime: [{ required: true, message: '请假开始时间不能为空', trigger: 'change' }],
+  endTime: [{ required: true, message: '请假结束时间不能为空', trigger: 'change' }]
 })
 const formRef = ref() // 表单 Ref
 
@@ -139,7 +138,7 @@ const submitForm = async () => {
       data.startUserSelectAssignees = startUserSelectAssignees.value
     }
     await LeaveApi.createLeave(data)
-    message.success(t('bpm.oa.leave._todo166'))
+    message.success('发起成功')
     // 关闭当前 Tab
     delView(unref(currentRoute))
     await push({ name: 'BpmOALeave' })
@@ -159,7 +158,7 @@ const getApprovalDetail = async () => {
     })
 
     if (!data) {
-      message.error(t('bpm.oa.leave._todo167'))
+      message.error('查询不到审批详情信息！')
       return
     }
     // 获取审批节点，显示 Timeline 的数据
@@ -205,7 +204,7 @@ const getDetail = async (id: number) => {
     formLoading.value = true
     const data = await LeaveApi.getLeave(id)
     if (!data) {
-      message.error(t('bpm.oa.leave._todo168'))
+      message.error('重新发起请假失败，原因：请假数据不存在')
       return
     }
     formData.value = {
@@ -228,7 +227,7 @@ onMounted(async () => {
   )
 
   if (!processDefinitionDetail) {
-    message.error(t('bpm.oa.leave._todo169'))
+    message.error('OA 请假的流程模型未配置，请检查！')
     return
   }
   processDefinitionId.value = processDefinitionDetail.id

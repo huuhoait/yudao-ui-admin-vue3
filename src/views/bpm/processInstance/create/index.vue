@@ -4,7 +4,7 @@
     <el-input
       v-model="searchName"
       class="!w-50% mb-15px"
-      :placeholder="t('bpm.processInstance.create.inputProcessName')"
+      placeholder="请输入流程名称"
       clearable
       @input="handleQuery"
       @clear="handleQuery"
@@ -78,7 +78,7 @@
           </el-scrollbar>
         </el-col>
       </el-row>
-      <el-empty class="!py-200px" :image-size="200" :description="t('bpm.processInstance.create._todo185')" v-else />
+      <el-empty class="!py-200px" :image-size="200" description="没有找到搜索结果" v-else />
     </ContentWrap>
   </template>
 
@@ -100,7 +100,6 @@ import { groupBy } from 'lodash-es'
 import { subString } from '@/utils/index'
 
 defineOptions({ name: 'BpmProcessInstanceCreate' })
-const { t } = useI18n() // 国际化
 
 const { proxy } = getCurrentInstance() as any
 const route = useRoute() // 路由
@@ -126,14 +125,14 @@ const getList = async () => {
     if (processInstanceId?.length > 0) {
       const processInstance = await ProcessInstanceApi.getProcessInstance(processInstanceId)
       if (!processInstance) {
-        message.error(t('bpm.processInstance.create._todo186'))
+        message.error('重新发起流程失败，原因：流程实例不存在')
         return
       }
       const processDefinition = processDefinitionList.value.find(
         (item: any) => item.key == processInstance.processDefinition?.key
       )
       if (!processDefinition) {
-        message.error(t('bpm.processInstance.create._todo187'))
+        message.error('重新发起流程失败，原因：流程定义不存在')
         return
       }
       await handleSelect(processDefinition, processInstance.formVariables)

@@ -1,6 +1,6 @@
 <template>
   <div class="process-viewer">
-    <div style="height: 100%" ref="processCanvas" v-show="!isLoading"> </div>
+    <div style="height: 100%" ref="processCanvas"> </div>
     <!-- 自定义箭头样式，用于已完成状态下流程连线箭头 -->
     <defs ref="customDefs">
       <marker
@@ -36,7 +36,7 @@
     </defs>
 
     <!-- 审批记录 -->
-    <el-dialog :title="dialogTitle || 'Approval Records'" v-model="dialogVisible" width="1000px">
+    <el-dialog :title="dialogTitle || '审批记录'" v-model="dialogVisible" width="1000px">
       <el-row>
         <el-table
           :data="selectTasks"
@@ -45,14 +45,14 @@
           header-cell-class-name="table-header-gray"
         >
           <el-table-column
-            label="No."
+            label="序号"
             header-align="center"
             align="center"
             type="index"
             width="50"
           />
           <el-table-column
-            label="Approver"
+            label="审批人"
             min-width="100"
             align="center"
             v-if="selectActivityType === 'bpmn:UserTask'"
@@ -62,13 +62,13 @@
             </template>
           </el-table-column>
           <el-table-column
-            label="Initiator"
+            label="发起人"
             prop="assigneeUser.nickname"
             min-width="100"
             align="center"
             v-else
           />
-          <el-table-column label="Department" min-width="100" align="center">
+          <el-table-column label="部门" min-width="100" align="center">
             <template #default="scope">
               {{ scope.row.assigneeUser?.deptName || scope.row.ownerUser?.deptName }}
             </template>
@@ -76,30 +76,30 @@
           <el-table-column
             :formatter="dateFormatter"
             align="center"
-            label="Start Time"
+            label="开始时间"
             prop="createTime"
             min-width="140"
           />
           <el-table-column
             :formatter="dateFormatter"
             align="center"
-            label="End Time"
+            label="结束时间"
             prop="endTime"
             min-width="140"
           />
-          <el-table-column align="center" label="Approval Status" prop="status" min-width="90">
+          <el-table-column align="center" label="审批状态" prop="status" min-width="90">
             <template #default="scope">
               <dict-tag :type="DICT_TYPE.BPM_TASK_STATUS" :value="scope.row.status" />
             </template>
           </el-table-column>
           <el-table-column
             align="center"
-            label="Approval Suggestion"
+            label="审批建议"
             prop="reason"
             min-width="120"
             v-if="selectActivityType === 'bpmn:UserTask'"
           />
-          <el-table-column align="center" label="Duration" prop="durationInMillis" width="100">
+          <el-table-column align="center" label="耗时" prop="durationInMillis" width="100">
             <template #default="scope">
               {{ formatPast2(scope.row.durationInMillis) }}
             </template>
@@ -149,11 +149,10 @@ import { BpmProcessInstanceStatus } from '@/utils/constants'
 
 const props = defineProps({
   xml: {
-    default: '',
     type: String,
+    required: true
   },
   view: {
-    default: () => ({}),
     type: Object,
     require: true
   }
@@ -282,7 +281,7 @@ const onSelectElement = (element: any) => {
     selectTasks.value = tasks.value.filter((item: any) => item?.taskDefinitionKey === element.id)
     dialogVisible.value = true
   } else if (activityType === 'bpmn:EndEvent' || activityType === 'bpmn:StartEvent') {
-    dialogTitle.value = 'Approval Info'
+    dialogTitle.value = '审批信息'
     selectTasks.value = [
       {
         assigneeUser: processInstance.value.startUser,
@@ -297,12 +296,12 @@ const onSelectElement = (element: any) => {
 }
 
 /** 初始化 BPMN 视图 */
-const importXML = async (xml?: string) => {
+const importXML = async (xml: string) => {
   // 清空流程图
   clearViewer()
 
   // 初始化流程图
-  if (xml) {
+  if (xml != null && xml !== '') {
     try {
       bpmnViewer.value = new BpmnViewer({
         additionalModules: [MoveCanvasModule],
@@ -409,9 +408,10 @@ const setProcessStatus = (view: any) => {
 watch(
   () => props.xml,
   (newXml) => {
-    importXML(newXml || '')
-  },
-  { immediate: true }
+    if (processCanvas.value) {
+      importXML(newXml || '')
+    }
+  }
 )
 
 watch(
@@ -424,7 +424,7 @@ watch(
 
 /** mounted：初始化 */
 onMounted(() => {
-  importXML(props.xml || '')
+  importXML(props.xml)
   setProcessStatus(props.view)
 })
 

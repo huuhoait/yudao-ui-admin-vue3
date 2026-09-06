@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('system.mail.template.test')">
+  <Dialog v-model="dialogVisible" title="测试">
     <el-form
       ref="formRef"
       v-loading="formLoading"
@@ -7,27 +7,27 @@
       :rules="formRules"
       label-width="140px"
     >
-      <el-form-item :label="t('system.mail.template.templateContent')" prop="content">
+      <el-form-item label="模板内容" prop="content">
         <Editor :model-value="formData.content" height="150px" readonly />
       </el-form-item>
-      <el-form-item :label="t('system.mail.template._todo76')" prop="toMails">
+      <el-form-item label="收件邮箱" prop="toMails">
         <el-input-tag
           v-model="formData.toMails"
-          :placeholder="t('system.mail.template._todo77')"
+          placeholder="请输入收件邮箱，多个邮箱用回车分隔"
           class="!w-full"
         />
       </el-form-item>
-      <el-form-item :label="t('system.mail.template._todo78')" prop="ccMails">
+      <el-form-item label="抄送邮箱" prop="ccMails">
         <el-input-tag
           v-model="formData.ccMails"
-          :placeholder="t('system.mail.template._todo79')"
+          placeholder="请输入抄送邮箱，多个邮箱用回车分隔"
           class="!w-full"
         />
       </el-form-item>
-      <el-form-item :label="t('system.mail.template._todo80')" prop="bccMails">
+      <el-form-item label="密送邮箱" prop="bccMails">
         <el-input-tag
           v-model="formData.bccMails"
-          :placeholder="t('system.mail.template._todo81')"
+          placeholder="请输入密送邮箱，多个邮箱用回车分隔"
           class="!w-full"
         />
       </el-form-item>
@@ -44,8 +44,8 @@
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
-      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
+      <el-button @click="dialogVisible = false">取 消</el-button>
     </template>
   </Dialog>
 </template>
@@ -53,7 +53,6 @@
 import * as MailTemplateApi from '@/api/system/mail/template'
 
 defineOptions({ name: 'SystemMailTemplateSendForm' })
-const { t } = useI18n() // 国际化
 
 const message = useMessage() // 消息弹窗
 
@@ -69,7 +68,7 @@ const formData = ref({
   templateParams: new Map()
 })
 const formRules = reactive({
-  templateCode: [{ required: true, message: t('system.mail.template._todo82'), trigger: 'blur' }],
+  templateCode: [{ required: true, message: '模版编号不能为空', trigger: 'blur' }],
   templateParams: {}
 })
 const formRef = ref() // 表单 Ref

@@ -1,16 +1,16 @@
 <!-- 执行器选择 -->
 <template>
-  <Dialog title="Please select listener" v-model="dialogVisible" width="1024px">
+  <Dialog title="请选择监听器" v-model="dialogVisible" width="1024px">
     <ContentWrap>
       <el-table v-loading="loading" :data="list" :stripe="true" :show-overflow-tooltip="true">
-        <el-table-column label="Name" align="center" prop="name" />
-        <el-table-column label="Type" align="center" prop="type">
+        <el-table-column label="名字" align="center" prop="name" />
+        <el-table-column label="类型" align="center" prop="type">
           <template #default="scope">
             <dict-tag :type="DICT_TYPE.BPM_PROCESS_LISTENER_TYPE" :value="scope.row.type" />
           </template>
         </el-table-column>
-        <el-table-column label="Event" align="center" prop="event" />
-        <el-table-column label="Value Type" align="center" prop="valueType">
+        <el-table-column label="事件" align="center" prop="event" />
+        <el-table-column label="值类型" align="center" prop="valueType">
           <template #default="scope">
             <dict-tag
               :type="DICT_TYPE.BPM_PROCESS_LISTENER_VALUE_TYPE"
@@ -18,10 +18,10 @@
             />
           </template>
         </el-table-column>
-        <el-table-column label="Value" align="center" prop="value" />
-        <el-table-column label="Action" align="center">
+        <el-table-column label="值" align="center" prop="value" />
+        <el-table-column label="操作" align="center">
           <template #default="scope">
-            <el-button link type="primary" @click="select(scope.row)"> Select </el-button>
+            <el-button link type="primary" @click="select(scope.row)"> 选择 </el-button>
           </template>
         </el-table-column>
       </el-table>

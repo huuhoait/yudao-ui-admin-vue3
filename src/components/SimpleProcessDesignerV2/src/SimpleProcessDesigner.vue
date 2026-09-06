@@ -7,8 +7,8 @@
       :readonly="false"
       @save="saveSimpleFlowModel"
     />
-    <Dialog v-model="errorDialogVisible" title="Save failed" width="400" :fullscreen="false">
-      <div class="mb-2">The following nodes are incomplete. Please fix them before saving.</div>
+    <Dialog v-model="errorDialogVisible" title="保存失败" width="400" :fullscreen="false">
+      <div class="mb-2">以下节点内容不完善，请修改后保存</div>
       <div
         class="mb-3 b-rounded-1 bg-gray-100 p-2 line-height-normal"
         v-for="(item, index) in errorNodes"
@@ -17,7 +17,7 @@
         {{ item.name }} : {{ NODE_DEFAULT_TEXT.get(item.type) }}
       </div>
       <template #footer>
-        <el-button type="primary" @click="errorDialogVisible = false">Got it</el-button>
+        <el-button type="primary" @click="errorDialogVisible = false">知道了</el-button>
       </template>
     </Dialog>
   </div>
@@ -127,12 +127,12 @@ let errorNodes: SimpleFlowNode[] = []
 const updateModel = () => {
   if (!processNodeTree.value) {
     processNodeTree.value = {
-      name: 'Initiator',
+      name: '发起人',
       type: NodeType.START_USER_NODE,
       id: NodeId.START_USER_NODE_ID,
       childNode: {
         id: NodeId.END_EVENT_NODE_ID,
-        name: 'End',
+        name: '结束',
         type: NodeType.END_EVENT_NODE
       }
     }
@@ -150,7 +150,7 @@ const saveSimpleFlowModel = async (simpleModelNode: SimpleFlowNode) => {
     processData.value = simpleModelNode
     emits('success', simpleModelNode)
   } catch (error) {
-    console.error('Save failed: ', error)
+    console.error('保存失败:', error)
   }
 }
 

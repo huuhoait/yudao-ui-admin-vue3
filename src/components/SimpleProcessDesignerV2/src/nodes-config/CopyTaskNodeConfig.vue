@@ -24,10 +24,10 @@
       </div>
     </template>
     <el-tabs type="border-card" v-model="activeTabName">
-      <el-tab-pane label="CC Recipient" name="user">
+      <el-tab-pane label="抄送人" name="user">
         <div>
           <el-form ref="formRef" :model="configForm" label-position="top" :rules="formRules">
-            <el-form-item label="CC Recipient Setting" prop="candidateStrategy">
+            <el-form-item label="抄送人设置" prop="candidateStrategy">
               <el-radio-group
                 v-model="configForm.candidateStrategy"
                 @change="changeCandidateStrategy"
@@ -45,7 +45,7 @@
 
             <el-form-item
               v-if="configForm.candidateStrategy == CandidateStrategy.ROLE"
-              label="Specified Roles"
+              label="指定角色"
               prop="roleIds"
             >
               <el-select v-model="configForm.roleIds" clearable multiple style="width: 100%">
@@ -63,7 +63,7 @@
                 configForm.candidateStrategy == CandidateStrategy.DEPT_LEADER ||
                 configForm.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER
               "
-              label="Specified Departments"
+              label="指定部门"
               prop="deptIds"
               span="24"
             >
@@ -72,7 +72,7 @@
                 v-model="configForm.deptIds"
                 :data="deptTreeOptions"
                 :props="defaultProps"
-                empty-text="Loading, please wait"
+                empty-text="加载中，请稍后"
                 multiple
                 node-key="id"
                 style="width: 100%"
@@ -81,7 +81,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy == CandidateStrategy.POST"
-              label="Specified Positions"
+              label="指定岗位"
               prop="postIds"
               span="24"
             >
@@ -96,7 +96,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy == CandidateStrategy.USER"
-              label="Specified Users"
+              label="指定用户"
               prop="userIds"
               span="24"
             >
@@ -111,7 +111,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy === CandidateStrategy.USER_GROUP"
-              label="Specified User Groups"
+              label="指定用户组"
               prop="userGroups"
             >
               <el-select v-model="configForm.userGroups" clearable multiple style="width: 100%">
@@ -125,7 +125,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy === CandidateStrategy.FORM_USER"
-              label="User Field in Form"
+              label="表单内用户字段"
               prop="formUser"
             >
               <el-select v-model="configForm.formUser" clearable style="width: 100%">
@@ -140,7 +140,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy === CandidateStrategy.FORM_DEPT_LEADER"
-              label="Department Field in Form"
+              label="表单内部门字段"
               prop="formDept"
             >
               <el-select v-model="configForm.formDept" clearable style="width: 100%">
@@ -176,7 +176,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy === CandidateStrategy.EXPRESSION"
-              label="Process Expression"
+              label="流程表达式"
               prop="expression"
             >
               <el-input
@@ -189,20 +189,20 @@
           </el-form>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="Form Field Permission" name="fields" v-if="formType === 10">
+      <el-tab-pane label="表单字段权限" name="fields" v-if="formType === 10">
         <div class="field-setting-pane">
-          <div class="field-setting-desc">Field Permission</div>
+          <div class="field-setting-desc">字段权限</div>
           <div class="field-permit-title">
-            <div class="setting-title-label first-title"> Field Name </div>
+            <div class="setting-title-label first-title"> 字段名称 </div>
             <div class="other-titles">
               <span class="setting-title-label cursor-pointer" @click="updatePermission('READ')">
-                Read-only
+                只读
               </span>
               <span class="setting-title-label cursor-pointer" @click="updatePermission('WRITE')">
-                Editable
+                可编辑
               </span>
               <span class="setting-title-label cursor-pointer" @click="updatePermission('NONE')">
-                Hidden
+                隐藏
               </span>
             </div>
           </div>
@@ -249,8 +249,8 @@
     <template #footer>
       <el-divider />
       <div>
-        <el-button type="primary" @click="saveConfig">OK</el-button>
-        <el-button @click="closeDrawer">Cancel</el-button>
+        <el-button type="primary" @click="saveConfig">确 定</el-button>
+        <el-button @click="closeDrawer">取 消</el-button>
       </div>
     </template>
   </el-drawer>
@@ -283,11 +283,11 @@ const props = defineProps({
   }
 })
 const deptLevelLabel = computed(() => {
-  let label = 'Department Leader Source'
+  let label = '部门负责人来源'
   if (configForm.value.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER) {
-    label = label + ' (from the specified department upwards)'
+    label = label + '(指定部门向上)'
   } else {
-    label = label + " (from the initiator's department upwards)"
+    label = label + '(发起人部门向上)'
   }
   return label
 })
@@ -314,15 +314,15 @@ const deptFieldOnFormOptions = computed(() => {
 const formRef = ref() // 表单 Ref
 // 表单校验规则
 const formRules = reactive({
-  candidateStrategy: [{ required: true, message: 'CC recipient setting is required', trigger: 'change' }],
-  userIds: [{ required: true, message: 'User is required', trigger: 'change' }],
-  roleIds: [{ required: true, message: 'Role is required', trigger: 'change' }],
-  deptIds: [{ required: true, message: 'Department is required', trigger: 'change' }],
-  userGroups: [{ required: true, message: 'User group is required', trigger: 'change' }],
-  postIds: [{ required: true, message: 'Position is required', trigger: 'change' }],
-  formUser: [{ required: true, message: 'User field in the form is required', trigger: 'change' }],
-  formDept: [{ required: true, message: 'Department field in the form is required', trigger: 'change' }],
-  expression: [{ required: true, message: 'Process expression is required', trigger: 'blur' }]
+  candidateStrategy: [{ required: true, message: '抄送人设置不能为空', trigger: 'change' }],
+  userIds: [{ required: true, message: '用户不能为空', trigger: 'change' }],
+  roleIds: [{ required: true, message: '角色不能为空', trigger: 'change' }],
+  deptIds: [{ required: true, message: '部门不能为空', trigger: 'change' }],
+  userGroups: [{ required: true, message: '用户组不能为空', trigger: 'change' }],
+  postIds: [{ required: true, message: '岗位不能为空', trigger: 'change' }],
+  formUser: [{ required: true, message: '表单内用户字段不能为空', trigger: 'change' }],
+  formDept: [{ required: true, message: '表单内部门字段不能为空', trigger: 'change' }],
+  expression: [{ required: true, message: '流程表达式不能为空', trigger: 'blur' }]
 })
 
 const {

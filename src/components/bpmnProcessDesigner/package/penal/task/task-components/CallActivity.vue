@@ -1,44 +1,44 @@
 <template>
   <div>
     <el-form label-width="100px">
-      <el-form-item label="Instance Name" prop="processInstanceName">
+      <el-form-item label="实例名称" prop="processInstanceName">
         <el-input
           v-model="formData.processInstanceName"
           clearable
-          placeholder="Please enter instance name"
+          placeholder="请输入实例名称"
           @change="updateCallActivityAttr('processInstanceName')"
         />
       </el-form-item>
 
       <!-- TODO 需要可选择已存在的流程 -->
-      <el-form-item label="Called Process" prop="calledElement">
+      <el-form-item label="被调用流程" prop="calledElement">
         <el-input
           v-model="formData.calledElement"
           clearable
-          placeholder="Please enter called process"
+          placeholder="请输入被调用流程"
           @change="updateCallActivityAttr('calledElement')"
         />
       </el-form-item>
 
-      <el-form-item label="Inherit Variables" prop="inheritVariables">
+      <el-form-item label="继承变量" prop="inheritVariables">
         <el-switch
           v-model="formData.inheritVariables"
           @change="updateCallActivityAttr('inheritVariables')"
         />
       </el-form-item>
 
-      <el-form-item label="Inherit Business Key" prop="inheritBusinessKey">
+      <el-form-item label="继承业务键" prop="inheritBusinessKey">
         <el-switch
           v-model="formData.inheritBusinessKey"
           @change="updateCallActivityAttr('inheritBusinessKey')"
         />
       </el-form-item>
 
-      <el-form-item v-if="!formData.inheritBusinessKey" label="Business Key Expression" prop="businessKey">
+      <el-form-item v-if="!formData.inheritBusinessKey" label="业务键表达式" prop="businessKey">
         <el-input
           v-model="formData.businessKey"
           clearable
-          placeholder="Please enter business key expression"
+          placeholder="请输入业务键表达式"
           @change="updateCallActivityAttr('businessKey')"
         />
       </el-form-item>
@@ -46,23 +46,23 @@
       <el-divider />
       <div>
         <div class="flex mb-10px">
-          <el-text>Input Parameter</el-text>
+          <el-text>输入参数</el-text>
           <el-button
             class="ml-auto"
             type="primary"
             size="small"
             @click="openVariableForm('in', null, -1)"
           >
-            <Icon icon="ep:plus" class="mr-1px" /> Add Parameter
+            <Icon icon="ep:plus" class="mr-1px" /> 添加参数
           </el-button>
         </div>
         <el-table :data="inVariableList" max-height="240" fit border>
-          <el-table-column label="Source" prop="source" min-width="100px" show-overflow-tooltip />
-          <el-table-column label="Target" prop="target" min-width="100px" show-overflow-tooltip />
-          <el-table-column label="Action" width="110px">
+          <el-table-column label="源" prop="source" min-width="100px" show-overflow-tooltip />
+          <el-table-column label="目标" prop="target" min-width="100px" show-overflow-tooltip />
+          <el-table-column label="操作" width="110px">
             <template #default="scope">
               <el-button link @click="openVariableForm('in', scope.row, scope.$index)" size="small">
-                Edit
+                编辑
               </el-button>
               <el-divider direction="vertical" />
               <el-button
@@ -71,7 +71,7 @@
                 style="color: #ff4d4f"
                 @click="removeVariable('in', scope.$index)"
               >
-                Remove
+                移除
               </el-button>
             </template>
           </el-table-column>
@@ -81,27 +81,27 @@
       <el-divider />
       <div>
         <div class="flex mb-10px">
-          <el-text>Output Parameter</el-text>
+          <el-text>输出参数</el-text>
           <el-button
             class="ml-auto"
             type="primary"
             size="small"
             @click="openVariableForm('out', null, -1)"
           >
-            <Icon icon="ep:plus" class="mr-1px" /> Add Parameter
+            <Icon icon="ep:plus" class="mr-1px" /> 添加参数
           </el-button>
         </div>
         <el-table :data="outVariableList" max-height="240" fit border>
-          <el-table-column label="Source" prop="source" min-width="100px" show-overflow-tooltip />
-          <el-table-column label="Target" prop="target" min-width="100px" show-overflow-tooltip />
-          <el-table-column label="Action" width="110px">
+          <el-table-column label="源" prop="source" min-width="100px" show-overflow-tooltip />
+          <el-table-column label="目标" prop="target" min-width="100px" show-overflow-tooltip />
+          <el-table-column label="操作" width="110px">
             <template #default="scope">
               <el-button
                 link
                 @click="openVariableForm('out', scope.row, scope.$index)"
                 size="small"
               >
-                Edit
+                编辑
               </el-button>
               <el-divider direction="vertical" />
               <el-button
@@ -110,7 +110,7 @@
                 style="color: #ff4d4f"
                 @click="removeVariable('out', scope.$index)"
               >
-                Remove
+                移除
               </el-button>
             </template>
           </el-table-column>
@@ -121,22 +121,22 @@
     <!-- 添加或修改参数 -->
     <el-dialog
       v-model="variableDialogVisible"
-      title="Parameter Config"
+      title="参数配置"
       width="600px"
       append-to-body
       destroy-on-close
     >
       <el-form :model="varialbeFormData" label-width="80px" ref="varialbeFormRef">
-        <el-form-item label="Source:" prop="source">
+        <el-form-item label="源：" prop="source">
           <el-input v-model="varialbeFormData.source" clearable />
         </el-form-item>
-        <el-form-item label="Target:" prop="target">
+        <el-form-item label="目标：" prop="target">
           <el-input v-model="varialbeFormData.target" clearable />
         </el-form-item>
       </el-form>
       <template #footer>
-        <el-button @click="variableDialogVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="saveVariable">Confirm</el-button>
+        <el-button @click="variableDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="saveVariable">确 定</el-button>
       </template>
     </el-dialog>
   </div>

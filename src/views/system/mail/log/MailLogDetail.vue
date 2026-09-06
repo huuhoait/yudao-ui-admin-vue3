@@ -1,69 +1,69 @@
 <template>
-  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" :title="t('system.mail.log.detail')" width="800">
+  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" title="详情" width="800">
     <el-descriptions :column="1" border>
-      <el-descriptions-item :label="t('system.mail.log.logId')" min-width="120">
+      <el-descriptions-item label="日志主键" min-width="120">
         {{ detailData.id }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log.emailAccount')">
+      <el-descriptions-item label="邮箱账号">
         {{ accountList.find((account) => account.id === detailData.accountId)?.mail }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo58')">
+      <el-descriptions-item label="邮件模板">
         {{ detailData.templateId }} | {{ detailData.templateCode }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo59')">
+      <el-descriptions-item label="模版发送人名称">
         {{ detailData.templateNickname }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo60')">
+      <el-descriptions-item label="接收用户">
         <span v-if="detailData.userType && detailData.userId">
           <dict-tag :type="DICT_TYPE.USER_TYPE" :value="detailData.userType" />
           ({{ detailData.userId }})
         </span>
-        <span v-else>{{ t('system.mail.log._todo67') }}</span>
+        <span v-else>无</span>
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo61')">
+      <el-descriptions-item label="接收信息">
         <div>
           <div v-if="detailData.toMails && detailData.toMails.length > 0">
-            {{ t('system.mail.log._todo68') }}
+            收件：
             <span v-for="(mail, index) in detailData.toMails" :key="mail">
               {{ mail }}<span v-if="Number(index) < detailData.toMails.length - 1">、</span>
             </span>
           </div>
           <div v-if="detailData.ccMails && detailData.ccMails.length > 0">
-            {{ t('system.mail.log._todo69') }}
+            抄送：
             <span v-for="(mail, index) in detailData.ccMails" :key="mail">
               {{ mail }}<span v-if="Number(index) < detailData.ccMails.length - 1">、</span>
             </span>
           </div>
           <div v-if="detailData.bccMails && detailData.bccMails.length > 0">
-            {{ t('system.mail.log._todo70') }}
+            密送：
             <span v-for="(mail, index) in detailData.bccMails" :key="mail">
               {{ mail }}<span v-if="Number(index) < detailData.bccMails.length - 1">、</span>
             </span>
           </div>
         </div>
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo62')">
+      <el-descriptions-item label="邮件标题">
         {{ detailData.templateTitle }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo63')">
+      <el-descriptions-item label="邮件内容">
         <div v-dompurify-html="detailData.templateContent"></div>
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo64')">
+      <el-descriptions-item label="邮件参数">
         {{ detailData.templateParams }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('common.createTime')">
+      <el-descriptions-item label="创建时间">
         {{ formatDate(detailData.createTime) }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log.sendStatus')">
+      <el-descriptions-item label="发送状态">
         <dict-tag :type="DICT_TYPE.SYSTEM_MAIL_SEND_STATUS" :value="detailData.sendStatus" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log.sendTime')">
+      <el-descriptions-item label="发送时间">
         {{ formatDate(detailData.sendTime) }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo65')">
+      <el-descriptions-item label="发送返回的消息编号">
         {{ detailData.sendMessageId }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo66')">
+      <el-descriptions-item label="发送异常">
         {{ detailData.sendException }}
       </el-descriptions-item>
     </el-descriptions>

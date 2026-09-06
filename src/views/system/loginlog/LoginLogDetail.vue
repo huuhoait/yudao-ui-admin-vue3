@@ -1,25 +1,25 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('system.loginlog.detail')" width="800">
+  <Dialog v-model="dialogVisible" title="详情" width="800">
     <el-descriptions :column="1" border>
-      <el-descriptions-item :label="t('system.loginlog._todo39')" min-width="120">
+      <el-descriptions-item label="日志编号" min-width="120">
         {{ detailData.id }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.loginlog._todo40')">
+      <el-descriptions-item label="登录类型">
         <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_TYPE" :value="detailData.logType" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.loginlog.username')">
+      <el-descriptions-item label="用户名称">
         {{ detailData.username }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.loginlog.loginAddress')">
+      <el-descriptions-item label="登录地址">
         {{ detailData.userIp }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.loginlog._todo41')">
+      <el-descriptions-item label="浏览器">
         {{ detailData.userAgent }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.loginlog._todo42')">
+      <el-descriptions-item label="登陆结果">
         <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_RESULT" :value="detailData.result" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.loginlog._todo43')">
+      <el-descriptions-item label="登录日期">
         {{ formatDate(detailData.createTime) }}
       </el-descriptions-item>
     </el-descriptions>

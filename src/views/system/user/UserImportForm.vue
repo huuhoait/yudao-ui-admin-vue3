@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('system.user.userImport')" width="400">
+  <Dialog v-model="dialogVisible" title="用户导入" width="400">
     <el-upload
       ref="uploadRef"
       v-model:file-list="fileList"
@@ -15,28 +15,28 @@
       drag
     >
       <Icon icon="ep:upload" />
-      <div class="el-upload__text">{{ t('system.user._todo3') }}<em>{{ t('system.user.clickUpload') }}</em></div>
+      <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
       <template #tip>
         <div class="el-upload__tip text-center">
           <div class="el-upload__tip">
             <el-checkbox v-model="updateSupport" />
-            {{ t('system.user._todo4') }}
+            是否更新已经存在的用户数据
           </div>
-          <span>{{ t('system.user._todo5') }}</span>
+          <span>仅允许导入 xls、xlsx 格式文件。</span>
           <el-link
             :underline="false"
             style="font-size: 12px; vertical-align: baseline"
             type="primary"
             @click="importTemplate"
           >
-            {{ t('system.user.downloadTemplate') }}
+            下载模板
           </el-link>
         </div>
       </template>
     </el-upload>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
-      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
+      <el-button @click="dialogVisible = false">取 消</el-button>
     </template>
   </Dialog>
 </template>
@@ -46,7 +46,6 @@ import { getAccessToken, getTenantId } from '@/utils/auth'
 import download from '@/utils/download'
 
 defineOptions({ name: 'SystemUserImportForm' })
-const { t } = useI18n() // 国际化
 
 const message = useMessage() // 消息弹窗
 
@@ -71,7 +70,7 @@ defineExpose({ open }) // 提供 open 方法，用于打开弹窗
 /** 提交表单 */
 const submitForm = async () => {
   if (fileList.value.length == 0) {
-    message.error(t('system.user._todo6'))
+    message.error('请上传文件')
     return
   }
   // 提交请求
@@ -114,7 +113,7 @@ const submitFormSuccess = (response: any) => {
 
 /** 上传错误提示 */
 const submitFormError = (): void => {
-  message.error(t('system.user._todo7'))
+  message.error('上传失败，请您重新上传！')
   formLoading.value = false
 }
 
@@ -128,7 +127,7 @@ const resetForm = async (): Promise<void> => {
 
 /** 文件数超出提示 */
 const handleExceed = (): void => {
-  message.error(t('system.user._todo8'))
+  message.error('最多只能上传一个文件！')
 }
 
 /** 下载模板操作 */

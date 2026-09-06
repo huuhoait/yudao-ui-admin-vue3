@@ -128,7 +128,7 @@ export function useFormFieldsAndStartUser() {
   // 添加发起人
   formFields.unshift({
     field: ProcessVariableEnum.START_USER_ID,
-    title: 'Initiator',
+    title: '发起人',
     required: true
   })
   return formFields
@@ -236,7 +236,7 @@ export function useNodeForm(nodeType: NodeType) {
             candidateNames.push(item.nickname)
           }
         })
-        showText = `Specified Members: ${candidateNames.join(',')}`
+        showText = `指定成员：${candidateNames.join(',')}`
       }
     }
     // 指定角色
@@ -248,7 +248,7 @@ export function useNodeForm(nodeType: NodeType) {
             candidateNames.push(item.name)
           }
         })
-        showText = `Specified Roles: ${candidateNames.join(',')}`
+        showText = `指定角色：${candidateNames.join(',')}`
       }
     }
     // 指定部门
@@ -265,11 +265,11 @@ export function useNodeForm(nodeType: NodeType) {
           }
         })
         if (configForm.value.candidateStrategy === CandidateStrategy.DEPT_MEMBER) {
-          showText = `Department Members: ${candidateNames.join(',')}`
+          showText = `部门成员：${candidateNames.join(',')}`
         } else if (configForm.value.candidateStrategy === CandidateStrategy.DEPT_LEADER) {
-          showText = `Department Leader: ${candidateNames.join(',')}`
+          showText = `部门的负责人：${candidateNames.join(',')}`
         } else {
-          showText = `Multi-level Department Leaders: ${candidateNames.join(',')}`
+          showText = `多级部门的负责人：${candidateNames.join(',')}`
         }
       }
     }
@@ -283,7 +283,7 @@ export function useNodeForm(nodeType: NodeType) {
             candidateNames.push(item.name)
           }
         })
-        showText = `Specified Positions: ${candidateNames.join(',')}`
+        showText = `指定岗位: ${candidateNames.join(',')}`
       }
     }
     // 指定用户组
@@ -295,7 +295,7 @@ export function useNodeForm(nodeType: NodeType) {
             candidateNames.push(item.name)
           }
         })
-        showText = `Specified User Groups: ${candidateNames.join(',')}`
+        showText = `指定用户组: ${candidateNames.join(',')}`
       }
     }
 
@@ -303,40 +303,40 @@ export function useNodeForm(nodeType: NodeType) {
     if (configForm.value?.candidateStrategy === CandidateStrategy.FORM_USER) {
       const formFieldOptions = parseFormCreateFields(unref(formFields))
       const item = formFieldOptions.find((item) => item.field === configForm.value?.formUser)
-      showText = `Form User: ${item?.title}`
+      showText = `表单用户：${item?.title}`
     }
 
     // 表单内部门负责人
     if (configForm.value?.candidateStrategy === CandidateStrategy.FORM_DEPT_LEADER) {
-      showText = `Department Leader from Form Field`
+      showText = `表单内部门负责人`
     }
 
     // 审批人自选
     if (configForm.value?.candidateStrategy === CandidateStrategy.APPROVE_USER_SELECT) {
-      showText = `Selected by Approver`
+      showText = `审批人自选`
     }
 
     // 发起人自选
     if (configForm.value?.candidateStrategy === CandidateStrategy.START_USER_SELECT) {
-      showText = `Selected by Initiator`
+      showText = `发起人自选`
     }
     // 发起人自己
     if (configForm.value?.candidateStrategy === CandidateStrategy.START_USER) {
-      showText = `The Initiator`
+      showText = `发起人自己`
     }
     // 发起人的部门负责人
     if (configForm.value?.candidateStrategy === CandidateStrategy.START_USER_DEPT_LEADER) {
-      showText = `Initiator's Department Leader`
+      showText = `发起人的部门负责人`
     }
     // 发起人的部门负责人
     if (
       configForm.value?.candidateStrategy === CandidateStrategy.START_USER_MULTI_LEVEL_DEPT_LEADER
     ) {
-      showText = `Initiator's Multi-level Department Leaders`
+      showText = `发起人连续部门负责人`
     }
     // 流程表达式
     if (configForm.value?.candidateStrategy === CandidateStrategy.EXPRESSION) {
-      showText = `Process Expression: ${configForm.value.expression}`
+      showText = `流程表达式：${configForm.value.expression}`
     }
     return showText
   }
@@ -565,7 +565,7 @@ export function getConditionShowText(
   let showText = ''
   if (conditionType === ConditionType.EXPRESSION) {
     if (conditionExpression) {
-      showText = `Expression: ${conditionExpression}`
+      showText = `表达式：${conditionExpression}`
     }
   }
   if (conditionType === ConditionType.RULE) {
@@ -587,18 +587,18 @@ export function getConditionShowText(
               )
             } else {
               // 有一条规则不完善。提示错误
-              warningMessage = 'Please complete the condition rule'
+              warningMessage = '请完善条件规则'
               return ''
             }
           })
-          .join(item.and ? ' And ' : ' Or ') +
+          .join(item.and ? ' 且 ' : ' 或 ') +
         ' ) '
       )
     })
     if (warningMessage) {
       showText = ''
     } else {
-      showText = conditionGroup!.join(groupAnd ? ' And ' : ' Or ')
+      showText = conditionGroup!.join(groupAnd ? ' 且 ' : ' 或 ')
     }
   }
   return showText

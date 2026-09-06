@@ -6,9 +6,9 @@ export const getDefaultConditionNodeName = (
   defaultFlow: boolean | undefined
 ): string => {
   if (defaultFlow) {
-    return 'Other Cases'
+    return '其它情况'
   }
-  return 'Condition ' + (index + 1)
+  return '条件' + (index + 1)
 }
 
 // 获取包容分支条件节点默认的名称
@@ -17,9 +17,9 @@ export const getDefaultInclusiveConditionNodeName = (
   defaultFlow: boolean | undefined
 ): string => {
   if (defaultFlow) {
-    return 'Other Cases'
+    return '其它情况'
   }
-  return 'Inclusive Condition ' + (index + 1)
+  return '包容条件' + (index + 1)
 }
 
 export const convertTimeUnit = (strTimeUnit: string) => {

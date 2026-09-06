@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('system.mail.template.mailConfig')" url="https://doc.iocoder.cn/mail" />
+  <doc-alert title="邮件配置" url="https://doc.iocoder.cn/mail" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,28 +10,28 @@
       :inline="true"
       label-width="150px"
     >
-      <el-form-item :label="t('system.mail.template.templateCode')" prop="code">
+      <el-form-item label="模板编码" prop="code">
         <el-input
           v-model="queryParams.code"
-          :placeholder="t('system.mail.template.inputTemplateCode')"
+          placeholder="请输入模板编码"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('system.mail.template.templateName')" prop="name">
+      <el-form-item label="模板名称" prop="name">
         <el-input
           v-model="queryParams.name"
-          :placeholder="t('system.mail.template.inputTemplateName')"
+          placeholder="请输入模板名称"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('system.mail.template.emailAccount')" prop="accountId">
+      <el-form-item label="邮箱账号" prop="accountId">
         <el-select
           v-model="queryParams.accountId"
-          :placeholder="t('system.mail.template.selectEmailAccount')"
+          placeholder="请选择邮箱账号"
           clearable
           class="!w-240px"
         >
@@ -43,10 +43,10 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('system.mail.template.enableStatus')" prop="status">
+      <el-form-item label="开启状态" prop="status">
         <el-select
           v-model="queryParams.status"
-          :placeholder="t('system.mail.template.selectEnableStatus')"
+          placeholder="请选择开启状态"
           clearable
           class="!w-240px"
         >
@@ -58,26 +58,26 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('common.createTime')" prop="createTime">
+      <el-form-item label="创建时间" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           type="daterange"
           value-format="YYYY-MM-DD HH:mm:ss"
-          :start-placeholder="t('system.mail.template.startDate')"
-          :end-placeholder="t('system.mail.template.endDate')"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
         <el-button
           type="primary"
           plain
           @click="openForm('create')"
           v-hasPermi="['system:mail-template:create']"
         >
-          <Icon icon="ep:plus" class="mr-5px" />{{ t('system.mail.template.create') }}
+          <Icon icon="ep:plus" class="mr-5px" />新增
         </el-button>
         <el-button
           type="danger"
@@ -86,7 +86,7 @@
           @click="handleDeleteBatch"
           v-hasPermi="['system:mail-template:delete']"
         >
-          <Icon icon="ep:delete" class="mr-5px" />{{ t('system.mail.template.deleteBatch') }}
+          <Icon icon="ep:delete" class="mr-5px" />批量删除
         </el-button>
       </el-form-item>
     </el-form>
@@ -97,58 +97,58 @@
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
       <el-table-column
-        :label="t('system.mail.template.templateCode')"
+        label="模板编码"
         align="center"
         prop="code"
         width="120"
         :show-overflow-tooltip="true"
       />
       <el-table-column
-        :label="t('system.mail.template.templateName')"
+        label="模板名称"
         align="center"
         prop="name"
         width="120"
         :show-overflow-tooltip="true"
       />
       <el-table-column
-        :label="t('system.mail.template._todo73')"
+        label="模板标题"
         align="center"
         prop="title"
         width="150"
         :show-overflow-tooltip="true"
       />
       <el-table-column
-        :label="t('system.mail.template.templateContent')"
+        label="模板内容"
         align="center"
         prop="content"
         min-width="200"
         :show-overflow-tooltip="true"
       />
-      <el-table-column :label="t('system.mail.template.emailAccount')" align="center" prop="accountId" width="200">
+      <el-table-column label="邮箱账号" align="center" prop="accountId" width="200">
         <template #default="scope">
           {{ getAccountMail(scope.row.accountId) }}
         </template>
       </el-table-column>
       <el-table-column
-        :label="t('system.mail.template.senderName')"
+        label="发送人名称"
         align="center"
         prop="nickname"
         width="120"
         :show-overflow-tooltip="true"
       />
-      <el-table-column :label="t('system.mail.template.enableStatus')" align="center" prop="status" width="80">
+      <el-table-column label="开启状态" align="center" prop="status" width="80">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
       <el-table-column
-        :label="t('common.createTime')"
+        label="创建时间"
         align="center"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('system.mail.template.action')" align="center" width="210" fixed="right">
+      <el-table-column label="操作" align="center" width="210" fixed="right">
         <template #default="scope">
           <el-button
             link
@@ -156,7 +156,7 @@
             @click="openForm('update', scope.row.id)"
             v-hasPermi="['system:mail-template:update']"
           >
-            {{ t('system.mail.template.edit') }}
+            修改
           </el-button>
           <el-button
             link
@@ -164,7 +164,7 @@
             @click="openSendForm(scope.row.id)"
             v-hasPermi="['system:mail-template:send-mail']"
           >
-            {{ t('system.mail.template.test') }}
+            测试
           </el-button>
           <el-button
             link
@@ -172,7 +172,7 @@
             @click="handleDelete(scope.row.id)"
             v-hasPermi="['system:mail-template:delete']"
           >
-            {{ t('system.mail.template.delete') }}
+            删除
           </el-button>
         </template>
       </el-table-column>

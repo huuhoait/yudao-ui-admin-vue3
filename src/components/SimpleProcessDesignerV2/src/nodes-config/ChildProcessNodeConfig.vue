@@ -24,13 +24,13 @@
       </div>
     </template>
     <el-tabs type="border-card" v-model="activeTabName">
-      <el-tab-pane label="Sub Process" name="child">
+      <el-tab-pane label="子流程" name="child">
         <div>
           <el-form ref="formRef" :model="configForm" label-position="top" :rules="formRules">
-            <el-form-item label="Asynchronous" prop="async">
-              <el-switch v-model="configForm.async" active-text="Asynchronous" inactive-text="Synchronous" />
+            <el-form-item label="是否异步" prop="async">
+              <el-switch v-model="configForm.async" active-text="异步" inactive-text="不异步" />
             </el-form-item>
-            <el-form-item label="Select Sub Process" prop="calledProcessDefinitionKey">
+            <el-form-item label="选择子流程" prop="calledProcessDefinitionKey">
               <el-select
                 v-model="configForm.calledProcessDefinitionKey"
                 clearable
@@ -44,21 +44,21 @@
                 />
               </el-select>
             </el-form-item>
-            <el-form-item label="Automatically skip the start node of the sub process" prop="skipStartUserNode">
+            <el-form-item label="是否自动跳过子流程发起节点" prop="skipStartUserNode">
               <el-switch
                 v-model="configForm.skipStartUserNode"
-                active-text="Skip"
-                inactive-text="Do not skip"
+                active-text="跳过"
+                inactive-text="不跳过"
               />
             </el-form-item>
-            <el-form-item label="Main → Sub Variable Mapping" prop="inVariables">
+            <el-form-item label="主→子变量传递" prop="inVariables">
               <div class="flex pt-2" v-for="(item, index) in configForm.inVariables" :key="index">
                 <div class="mr-2">
                   <el-form-item
                     :prop="`inVariables.${index}.source`"
                     :rules="{
                       required: true,
-                      message: 'Variable is required',
+                      message: '变量不能为空',
                       trigger: 'blur'
                     }"
                   >
@@ -77,7 +77,7 @@
                     :prop="`inVariables.${index}.target`"
                     :rules="{
                       required: true,
-                      message: 'Variable is required',
+                      message: '变量不能为空',
                       trigger: 'blur'
                     }"
                   >
@@ -100,12 +100,12 @@
                 </div>
               </div>
               <el-button type="primary" text @click="addVariable(configForm.inVariables)">
-                <Icon icon="ep:plus" class="mr-5px" />Add a Row
+                <Icon icon="ep:plus" class="mr-5px" />添加一行
               </el-button>
             </el-form-item>
             <el-form-item
               v-if="configForm.async === false"
-              label="Sub → Main Variable Mapping"
+              label="子→主变量传递"
               prop="outVariables"
             >
               <div class="flex pt-2" v-for="(item, index) in configForm.outVariables" :key="index">
@@ -114,7 +114,7 @@
                     :prop="`outVariables.${index}.source`"
                     :rules="{
                       required: true,
-                      message: 'Variable is required',
+                      message: '变量不能为空',
                       trigger: 'blur'
                     }"
                   >
@@ -133,7 +133,7 @@
                     :prop="`outVariables.${index}.target`"
                     :rules="{
                       required: true,
-                      message: 'Variable is required',
+                      message: '变量不能为空',
                       trigger: 'blur'
                     }"
                   >
@@ -156,10 +156,10 @@
                 </div>
               </div>
               <el-button type="primary" text @click="addVariable(configForm.outVariables)">
-                <Icon icon="ep:plus" class="mr-5px" />Add a Row
+                <Icon icon="ep:plus" class="mr-5px" />添加一行
               </el-button>
             </el-form-item>
-            <el-form-item label="Sub Process Initiator" prop="startUserType">
+            <el-form-item label="子流程发起人" prop="startUserType">
               <el-radio-group v-model="configForm.startUserType">
                 <el-radio
                   v-for="item in CHILD_PROCESS_START_USER_TYPE"
@@ -172,7 +172,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.startUserType === ChildProcessStartUserTypeEnum.FROM_FORM"
-              label="When the sub-process initiator is empty"
+              label="当子流程发起人为空时"
               prop="startUserType"
             >
               <el-radio-group v-model="configForm.startUserEmptyType">
@@ -187,7 +187,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.startUserType === 2"
-              label="Initiator Form"
+              label="发起人表单"
               prop="startUserFormField"
             >
               <el-select class="w-200px!" v-model="configForm.startUserFormField">
@@ -200,12 +200,12 @@
               </el-select>
             </el-form-item>
 
-            <el-divider content-position="left">Timeout Setting</el-divider>
-            <el-form-item label="Enable" prop="timeoutEnable">
+            <el-divider content-position="left">超时设置</el-divider>
+            <el-form-item label="启用开关" prop="timeoutEnable">
               <el-switch
                 v-model="configForm.timeoutEnable"
-                active-text="On"
-                inactive-text="Off"
+                active-text="开启"
+                inactive-text="关闭"
               />
             </el-form-item>
             <div v-if="configForm.timeoutEnable">
@@ -237,7 +237,7 @@
                     :value="item.value"
                   />
                 </el-select>
-                <el-text>then go to the next node</el-text>
+                <el-text>后进入下一节点</el-text>
               </el-form-item>
               <el-form-item
                 v-if="configForm.timeoutType === DelayTypeEnum.FIXED_DATE_TIME"
@@ -247,31 +247,31 @@
                   class="mr-2"
                   v-model="configForm.dateTime"
                   type="datetime"
-                  placeholder="Please select date and time"
+                  placeholder="请选择日期和时间"
                   value-format="YYYY-MM-DDTHH:mm:ss"
                 />
-                <el-text>then go to the next node</el-text>
+                <el-text>后进入下一节点</el-text>
               </el-form-item>
             </div>
 
-            <el-divider content-position="left">Multi-instance Setting</el-divider>
-            <el-form-item label="Enable" prop="multiInstanceEnable">
+            <el-divider content-position="left">多实例设置</el-divider>
+            <el-form-item label="启用开关" prop="multiInstanceEnable">
               <el-switch
                 v-model="configForm.multiInstanceEnable"
-                active-text="On"
-                inactive-text="Off"
+                active-text="开启"
+                inactive-text="关闭"
               />
             </el-form-item>
             <div v-if="configForm.multiInstanceEnable">
               <el-form-item prop="sequential">
                 <el-switch
                   v-model="configForm.sequential"
-                  active-text="Serial"
-                  inactive-text="Parallel"
+                  active-text="串行"
+                  inactive-text="并行"
                 />
               </el-form-item>
               <el-form-item prop="approveRatio">
-                <el-text>Completion Ratio (%)</el-text>
+                <el-text>完成比例(%)</el-text>
                 <el-input-number
                   class="ml-10px"
                   v-model="configForm.approveRatio"
@@ -281,7 +281,7 @@
                 />
               </el-form-item>
               <el-form-item prop="multiInstanceSourceType">
-                <el-text>Multi-instance Source</el-text>
+                <el-text>多实例来源</el-text>
                 <el-select
                   class="ml-10px w-200px!"
                   v-model="configForm.multiInstanceSourceType"
@@ -341,8 +341,8 @@
     <template #footer>
       <el-divider />
       <div>
-        <el-button type="primary" @click="saveConfig">OK</el-button>
-        <el-button @click="closeDrawer">Cancel</el-button>
+        <el-button type="primary" @click="saveConfig">确 定</el-button>
+        <el-button @click="closeDrawer">取 消</el-button>
       </div>
     </template>
   </el-drawer>
@@ -389,21 +389,21 @@ const activeTabName = ref('child')
 const formRef = ref() // 表单 Ref
 // 表单校验规则
 const formRules = reactive({
-  async: [{ required: true, message: 'Asynchronous is required', trigger: 'change' }],
-  calledProcessDefinitionKey: [{ required: true, message: 'Sub process is required', trigger: 'change' }],
+  async: [{ required: true, message: '是否异步不能为空', trigger: 'change' }],
+  calledProcessDefinitionKey: [{ required: true, message: '子流程不能为空', trigger: 'change' }],
   skipStartUserNode: [
-    { required: true, message: 'Skipping the sub-process start node is required', trigger: 'change' }
+    { required: true, message: '是否自动跳过子流程发起节点不能为空', trigger: 'change' }
   ],
-  startUserType: [{ required: true, message: 'Sub-process initiator is required', trigger: 'change' }],
+  startUserType: [{ required: true, message: '子流程发起人不能为空', trigger: 'change' }],
   startUserEmptyType: [
-    { required: true, message: 'The fallback for an empty sub-process initiator is required', trigger: 'change' }
+    { required: true, message: '当子流程发起人为空时不能为空', trigger: 'change' }
   ],
-  startUserFormField: [{ required: true, message: 'Initiator form is required', trigger: 'change' }],
-  timeoutEnable: [{ required: true, message: 'Enabling the timeout setting is required', trigger: 'change' }],
-  timeoutType: [{ required: true, message: 'Timeout duration is required', trigger: 'change' }],
-  timeDuration: [{ required: true, message: 'Timeout duration is required', trigger: 'change' }],
-  dateTime: [{ required: true, message: 'Timeout duration is required', trigger: 'change' }],
-  multiInstanceEnable: [{ required: true, message: 'Multi-instance setting is required', trigger: 'change' }]
+  startUserFormField: [{ required: true, message: '发起人表单不能为空', trigger: 'change' }],
+  timeoutEnable: [{ required: true, message: '超时设置是否开启不能为空', trigger: 'change' }],
+  timeoutType: [{ required: true, message: '超时设置时间不能为空', trigger: 'change' }],
+  timeDuration: [{ required: true, message: '超时设置时间不能为空', trigger: 'change' }],
+  dateTime: [{ required: true, message: '超时设置时间不能为空', trigger: 'change' }],
+  multiInstanceEnable: [{ required: true, message: '多实例设置不能为空', trigger: 'change' }]
 })
 type ChildProcessFormType = {
   async: boolean
@@ -519,7 +519,7 @@ const saveConfig = async () => {
     }
   }
 
-  currentNode.value.showText = `Call sub process: ${childInfo.name}`
+  currentNode.value.showText = `调用子流程：${childInfo.name}`
   settingVisible.value = false
   return true
 }

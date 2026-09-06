@@ -93,7 +93,7 @@ F.prototype.getPaletteEntries = function () {
     'hand-tool': {
       group: 'tools',
       className: 'bpmn-icon-hand-tool',
-      title: 'Activate the hand tool',
+      title: '激活抓手工具',
       // title: translate("Activate the hand tool"),
       action: {
         click: function (event) {

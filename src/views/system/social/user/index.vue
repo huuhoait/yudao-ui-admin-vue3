@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('system.social.user._todo273')" url="https://doc.iocoder.cn/social-user/" />
+  <doc-alert title="三方登录" url="https://doc.iocoder.cn/social-user/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,12 +10,12 @@
       class="-mb-15px"
       label-width="120px"
     >
-      <el-form-item :label="t('system.social.user.socialPlatform')" prop="type">
+      <el-form-item label="社交平台" prop="type">
         <el-select
           v-model="queryParams.type"
           class="!w-240px"
           clearable
-          :placeholder="t('system.social.user.selectSocialPlatform')"
+          placeholder="请选择社交平台"
         >
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_SOCIAL_TYPE)"
@@ -25,31 +25,31 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('system.social.user.nickname')" prop="nickname">
+      <el-form-item label="用户昵称" prop="nickname">
         <el-input
           v-model="queryParams.nickname"
           class="!w-240px"
           clearable
-          :placeholder="t('system.social.user.inputNickname')"
+          placeholder="请输入用户昵称"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item :label="t('system.social.user._todo274')" prop="openid">
+      <el-form-item label="社交 openid" prop="openid">
         <el-input
           v-model="queryParams.openid"
           class="!w-240px"
           clearable
-          :placeholder="t('system.social.user._todo275')"
+          placeholder="请输入社交 openid"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item :label="t('common.createTime')" prop="createTime">
+      <el-form-item label="创建时间" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
-          :end-placeholder="t('system.social.user.endDate')"
-          :start-placeholder="t('system.social.user.startDate')"
+          end-placeholder="结束日期"
+          start-placeholder="开始日期"
           type="daterange"
           value-format="YYYY-MM-DD HH:mm:ss"
         />
@@ -57,11 +57,11 @@
       <el-form-item>
         <el-button @click="handleQuery">
           <Icon class="mr-5px" icon="ep:search" />
-          {{ t('common.query') }}
+          搜索
         </el-button>
         <el-button @click="resetQuery">
           <Icon class="mr-5px" icon="ep:refresh" />
-          {{ t('common.reset') }}
+          重置
         </el-button>
       </el-form-item>
     </el-form>
@@ -70,14 +70,14 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list" :show-overflow-tooltip="true" :stripe="true">
-      <el-table-column align="center" :label="t('system.social.user.socialPlatform')" prop="type">
+      <el-table-column align="center" label="社交平台" prop="type">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_SOCIAL_TYPE" :value="scope.row.type" />
         </template>
       </el-table-column>
-      <el-table-column align="center" :label="t('system.social.user._todo274')" prop="openid" />
-      <el-table-column align="center" :label="t('system.social.user.nickname')" prop="nickname" />
-      <el-table-column align="center" :label="t('system.social.user._todo267')" prop="avatar">
+      <el-table-column align="center" label="社交 openid" prop="openid" />
+      <el-table-column align="center" label="用户昵称" prop="nickname" />
+      <el-table-column align="center" label="用户头像" prop="avatar">
         <template #default="{ row }">
           <el-image :src="row.avatar" class="h-30px w-30px" @click="imagePreview(row.avatar)" />
         </template>
@@ -85,18 +85,18 @@
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="t('common.createTime')"
+        label="创建时间"
         prop="createTime"
         width="180px"
       />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="t('common.updateTime')"
+        label="更新时间"
         prop="updateTime"
         width="180px"
       />
-      <el-table-column align="center" fixed="right" :label="t('system.social.user.action')">
+      <el-table-column align="center" fixed="right" label="操作">
         <template #default="scope">
           <el-button
             v-hasPermi="['system:social-user:query']"
@@ -104,7 +104,7 @@
             type="primary"
             @click="openDetail(scope.row.id)"
           >
-            {{ t('system.social.user.detail') }}
+            详情
           </el-button>
         </template>
       </el-table-column>

@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('bpm.oa.leave._todo170')" url="https://doc.iocoder.cn/bpm/use-business-form/" />
+  <doc-alert title="审批接入（业务表单）" url="https://doc.iocoder.cn/bpm/use-business-form/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,12 +10,12 @@
       class="-mb-15px"
       label-width="68px"
     >
-      <el-form-item :label="t('bpm.oa.leave.leaveType')" prop="type">
+      <el-form-item label="请假类型" prop="type">
         <el-select
           v-model="queryParams.type"
           class="!w-240px"
           clearable
-          :placeholder="t('bpm.oa.leave.selectLeaveType')"
+          placeholder="请选择请假类型"
         >
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.BPM_OA_LEAVE_TYPE)"
@@ -25,23 +25,23 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('bpm.oa.leave._todo171')" prop="createTime">
+      <el-form-item label="申请时间" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
-          :end-placeholder="t('bpm.oa.leave.endDate')"
-          :start-placeholder="t('bpm.oa.leave.startDate')"
+          end-placeholder="结束日期"
+          start-placeholder="开始日期"
           type="daterange"
           value-format="YYYY-MM-DD HH:mm:ss"
         />
       </el-form-item>
-      <el-form-item :label="t('bpm.oa.leave._todo172')" prop="status">
+      <el-form-item label="审批结果" prop="status">
         <el-select
           v-model="queryParams.status"
           class="!w-240px"
           clearable
-          :placeholder="t('bpm.oa.leave._todo173')"
+          placeholder="请选择审批结果"
         >
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.BPM_PROCESS_INSTANCE_STATUS)"
@@ -51,27 +51,27 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('bpm.oa.leave._todo160')" prop="reason">
+      <el-form-item label="原因" prop="reason">
         <el-input
           v-model="queryParams.reason"
           class="!w-240px"
           clearable
-          :placeholder="t('bpm.oa.leave._todo174')"
+          placeholder="请输入原因"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
       <el-form-item>
         <el-button @click="handleQuery">
           <Icon class="mr-5px" icon="ep:search" />
-          {{ t('common.query') }}
+          搜索
         </el-button>
         <el-button @click="resetQuery">
           <Icon class="mr-5px" icon="ep:refresh" />
-          {{ t('common.reset') }}
+          重置
         </el-button>
         <el-button plain type="primary" @click="handleCreate()">
           <Icon class="mr-5px" icon="ep:plus" />
-          {{ t('bpm.oa.leave._todo176') }}
+          发起请假
         </el-button>
       </el-form-item>
     </el-form>
@@ -80,8 +80,8 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column align="center" :label="t('bpm.oa.leave._todo175')" prop="id" />
-      <el-table-column align="center" :label="t('common.status')" prop="status">
+      <el-table-column align="center" label="申请编号" prop="id" />
+      <el-table-column align="center" label="状态" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.BPM_PROCESS_INSTANCE_STATUS" :value="scope.row.status" />
         </template>
@@ -89,31 +89,31 @@
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="t('bpm.oa.leave.beginTime')"
+        label="开始时间"
         prop="startTime"
         width="180"
       />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="t('bpm.oa.leave.endTime')"
+        label="结束时间"
         prop="endTime"
         width="180"
       />
-      <el-table-column align="center" :label="t('bpm.oa.leave.leaveType')" prop="type">
+      <el-table-column align="center" label="请假类型" prop="type">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.BPM_OA_LEAVE_TYPE" :value="scope.row.type" />
         </template>
       </el-table-column>
-      <el-table-column align="center" :label="t('bpm.oa.leave._todo160')" prop="reason" />
+      <el-table-column align="center" label="原因" prop="reason" />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="t('bpm.oa.leave._todo171')"
+        label="申请时间"
         prop="createTime"
         width="180"
       />
-      <el-table-column align="center" :label="t('bpm.oa.leave.action')" width="200">
+      <el-table-column align="center" label="操作" width="200">
         <template #default="scope">
           <el-button
             v-hasPermi="['bpm:oa-leave:query']"
@@ -121,7 +121,7 @@
             type="primary"
             @click="handleDetail(scope.row)"
           >
-            {{ t('bpm.oa.leave.detail') }}
+            详情
           </el-button>
           <el-button
             v-hasPermi="['bpm:oa-leave:query']"
@@ -129,7 +129,7 @@
             type="primary"
             @click="handleProcessDetail(scope.row)"
           >
-            {{ t('bpm.oa.leave._todo177') }}
+            进度
           </el-button>
           <el-button
             v-if="scope.row.result === 1"
@@ -138,7 +138,7 @@
             type="danger"
             @click="cancelLeave(scope.row)"
           >
-            {{ t('common.cancel') }}
+            取消
           </el-button>
           <el-button
             v-if="scope.row.status !== 1"
@@ -147,7 +147,7 @@
             type="primary"
             @click="handleReCreate(scope.row)"
           >
-            {{ t('bpm.oa.leave.restart') }}
+            重新发起
           </el-button>
         </template>
       </el-table-column>
@@ -238,15 +238,15 @@ const handleDetail = (row: LeaveApi.LeaveVO) => {
 /** 取消请假操作 */
 const cancelLeave = async (row) => {
   // 二次确认
-  const { value } = await ElMessageBox.prompt(t('bpm.oa.leave.inputCancelReason'), t('bpm.oa.leave.cancelProcess'), {
+  const { value } = await ElMessageBox.prompt('请输入取消原因', '取消流程', {
     confirmButtonText: t('common.ok'),
     cancelButtonText: t('common.cancel'),
     inputPattern: /^[\s\S]*.*\S[\s\S]*$/, // 判断非空，且非空格
-    inputErrorMessage: t('bpm.oa.leave.cancelReasonRequired')
+    inputErrorMessage: '取消原因不能为空'
   })
   // 发起取消
   await ProcessInstanceApi.cancelProcessInstanceByStartUser(row.id, value)
-  message.success(t('bpm.oa.leave.cancelSuccess'))
+  message.success('取消成功')
   // 刷新列表
   await getList()
 }

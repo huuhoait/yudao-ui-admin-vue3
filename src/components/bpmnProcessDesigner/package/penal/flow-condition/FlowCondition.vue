@@ -1,21 +1,21 @@
 <template>
   <div class="panel-tab__content">
     <el-form :model="flowConditionForm" label-width="90px" size="small">
-      <el-form-item label="Flow Type">
+      <el-form-item label="流转类型">
         <el-select v-model="flowConditionForm.type" @change="updateFlowType">
-          <el-option label="Normal Flow" value="normal" />
-          <el-option label="Default Flow" value="default" />
-          <el-option label="Conditional Flow" value="condition" />
+          <el-option label="普通流转路径" value="normal" />
+          <el-option label="默认流转路径" value="default" />
+          <el-option label="条件流转路径" value="condition" />
         </el-select>
       </el-form-item>
-      <el-form-item label="Condition Format" v-if="flowConditionForm.type === 'condition'" key="condition">
+      <el-form-item label="条件格式" v-if="flowConditionForm.type === 'condition'" key="condition">
         <el-select v-model="flowConditionForm.conditionType">
-          <el-option label="Expression" value="expression" />
-          <el-option label="Script" value="script" />
+          <el-option label="表达式" value="expression" />
+          <el-option label="脚本" value="script" />
         </el-select>
       </el-form-item>
       <el-form-item
-        label="Expression"
+        label="表达式"
         v-if="flowConditionForm.conditionType && flowConditionForm.conditionType === 'expression'"
         key="express"
       >
@@ -29,17 +29,17 @@
       <template
         v-if="flowConditionForm.conditionType && flowConditionForm.conditionType === 'script'"
       >
-        <el-form-item label="Script Language" key="language">
+        <el-form-item label="脚本语言" key="language">
           <el-input v-model="flowConditionForm.language" clearable @change="updateFlowCondition" />
         </el-form-item>
-        <el-form-item label="Script Type" key="scriptType">
+        <el-form-item label="脚本类型" key="scriptType">
           <el-select v-model="flowConditionForm.scriptType">
-            <el-option label="Inline Script" value="inlineScript" />
-            <el-option label="External Script" value="externalScript" />
+            <el-option label="内联脚本" value="inlineScript" />
+            <el-option label="外部脚本" value="externalScript" />
           </el-select>
         </el-form-item>
         <el-form-item
-          label="Script"
+          label="脚本"
           v-if="flowConditionForm.scriptType === 'inlineScript'"
           key="body"
         >
@@ -51,7 +51,7 @@
           />
         </el-form-item>
         <el-form-item
-          label="Resource Address"
+          label="资源地址"
           v-if="flowConditionForm.scriptType === 'externalScript'"
           key="resource"
         >

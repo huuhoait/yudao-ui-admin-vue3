@@ -1,6 +1,6 @@
 <template>
-  <doc-alert :title="t('system.menu._todo106')" url="https://doc.iocoder.cn/resource-permission" />
-  <doc-alert :title="t('system.menu._todo107')" url="https://doc.iocoder.cn/vue3/route/" />
+  <doc-alert title="功能权限" url="https://doc.iocoder.cn/resource-permission" />
+  <doc-alert title="菜单路由" url="https://doc.iocoder.cn/vue3/route/" />
 
   <!-- 搜索工作栏 -->
   <ContentWrap>
@@ -11,21 +11,21 @@
       class="-mb-15px"
       label-width="68px"
     >
-      <el-form-item :label="t('system.menu.menuName')" prop="name">
+      <el-form-item label="菜单名称" prop="name">
         <el-input
           v-model="queryParams.name"
           class="!w-240px"
           clearable
-          :placeholder="t('system.menu.inputMenuName')"
+          placeholder="请输入菜单名称"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item :label="t('common.status')" prop="status">
+      <el-form-item label="状态" prop="status">
         <el-select
           v-model="queryParams.status"
           class="!w-240px"
           clearable
-          :placeholder="t('system.menu.selectMenuStatus')"
+          placeholder="请选择菜单状态"
         >
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -38,11 +38,11 @@
       <el-form-item>
         <el-button @click="handleQuery">
           <Icon class="mr-5px" icon="ep:search" />
-          {{ t('common.query') }}
+          搜索
         </el-button>
         <el-button @click="resetQuery">
           <Icon class="mr-5px" icon="ep:refresh" />
-          {{ t('common.reset') }}
+          重置
         </el-button>
         <el-button
           v-hasPermi="['system:menu:create']"
@@ -51,15 +51,15 @@
           @click="openForm('create')"
         >
           <Icon class="mr-5px" icon="ep:plus" />
-          {{ t('system.menu.create') }}
+          新增
         </el-button>
         <el-button plain type="danger" @click="toggleExpandAll">
           <Icon class="mr-5px" icon="ep:sort" />
-          {{ t('system.menu._todo108') }}
+          展开/折叠
         </el-button>
         <el-button plain @click="refreshMenu">
           <Icon class="mr-5px" icon="ep:refresh" />
-          {{ t('system.menu._todo109') }}
+          刷新菜单缓存
         </el-button>
       </el-form-item>
     </el-form>
@@ -105,14 +105,14 @@ defineOptions({ name: 'SystemMenu' })
 const columns: Column<MenuVO>[] = [
   {
     key: 'name',
-    title: t('system.menu.menuName'),
+    title: '菜单名称',
     dataKey: 'name',
     width: 250,
     fixed: TableV2FixedDir.LEFT
   },
   {
     key: 'icon',
-    title: t('system.menu._todo110'),
+    title: '图标',
     dataKey: 'icon',
     width: 100,
     align: 'center',
@@ -120,31 +120,31 @@ const columns: Column<MenuVO>[] = [
   },
   {
     key: 'sort',
-    title: t('system.menu.sort'),
+    title: '排序',
     dataKey: 'sort',
     width: 60
   },
   {
     key: 'permission',
-    title: t('system.menu._todo90'),
+    title: '权限标识',
     dataKey: 'permission',
     width: 300
   },
   {
     key: 'component',
-    title: t('system.menu._todo111'),
+    title: '组件路径',
     dataKey: 'component',
     width: 500
   },
   {
     key: 'componentName',
-    title: t('system.menu._todo112'),
+    title: '组件名称',
     dataKey: 'componentName',
     width: 200
   },
   {
     key: 'status',
-    title: t('common.status'),
+    title: '状态',
     dataKey: 'status',
     width: 60,
     fixed: TableV2FixedDir.RIGHT,
@@ -169,7 +169,7 @@ const columns: Column<MenuVO>[] = [
   },
   {
     key: 'operations',
-    title: t('system.menu.action'),
+    title: '操作',
     align: 'center',
     width: 160,
     fixed: TableV2FixedDir.RIGHT,
@@ -273,7 +273,7 @@ const toggleExpandAll = () => {
 /** 刷新菜单缓存按钮操作 */
 const refreshMenu = async () => {
   try {
-    await message.confirm(t('system.menu._todo113'), t('system.menu._todo109'))
+    await message.confirm('即将更新缓存刷新浏览器！', '刷新菜单缓存')
     // 清空，从而触发刷新
     wsCache.delete(CACHE_KEY.USER)
     wsCache.delete(CACHE_KEY.ROLE_ROUTERS)

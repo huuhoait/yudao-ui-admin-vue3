@@ -1,11 +1,11 @@
 <!-- TODO @jason：有可能，它里面套 Condition 么？  -->
 <!-- TODO 怕影响其它节点功能，后面看看如何如何复用 Condtion -->
 <template>
-  <Dialog v-model="dialogVisible" title="Condition Configuration" width="600px" :fullscreen="false">
+  <Dialog v-model="dialogVisible" title="条件配置" width="600px" :fullscreen="false">
     <div class="h-410px">
       <el-scrollbar wrap-class="h-full">
         <el-form ref="formRef" :model="condition" :rules="formRules" label-position="top">
-          <el-form-item label="Configuration Mode" prop="conditionType">
+          <el-form-item label="配置方式" prop="conditionType">
             <el-radio-group v-model="condition.conditionType" @change="changeConditionType">
               <el-radio
                 v-for="(dict, indexConditionType) in conditionConfigTypes"
@@ -19,20 +19,20 @@
           </el-form-item>
           <el-form-item
             v-if="condition.conditionType === ConditionType.RULE && condition.conditionGroups"
-            label="Condition Rule"
+            label="条件规则"
           >
             <div class="condition-group-tool">
               <div class="flex items-center">
-                <div class="mr-4">Condition Group Relation</div>
+                <div class="mr-4">条件组关系</div>
                 <el-switch
                   v-model="condition.conditionGroups.and"
                   inline-prompt
-                  active-text="And"
-                  inactive-text="Or"
+                  active-text="且"
+                  inactive-text="或"
                 />
               </div>
             </div>
-            <el-space direction="vertical" :spacer="condition.conditionGroups.and ? 'And' : 'Or'">
+            <el-space direction="vertical" :spacer="condition.conditionGroups.and ? '且' : '或'">
               <el-card
                 class="condition-group"
                 style="width: 530px"
@@ -52,14 +52,14 @@
                 </div>
                 <template #header>
                   <div class="flex items-center justify-between">
-                    <div>Condition Group</div>
+                    <div>条件组</div>
                     <div class="flex">
-                      <div class="mr-4">Rule Relation</div>
+                      <div class="mr-4">规则关系</div>
                       <el-switch
                         v-model="equation.and"
                         inline-prompt
-                        active-text="And"
-                        inactive-text="Or"
+                        active-text="且"
+                        inactive-text="或"
                       />
                     </div>
                   </div>
@@ -71,7 +71,7 @@
                       :prop="`conditionGroups.conditions.${cIdx}.rules.${rIdx}.leftSide`"
                       :rules="{
                         required: true,
-                        message: 'Left value is required',
+                        message: '左值不能为空',
                         trigger: 'change'
                       }"
                     >
@@ -101,7 +101,7 @@
                       :prop="`conditionGroups.conditions.${cIdx}.rules.${rIdx}.rightSide`"
                       :rules="{
                         required: true,
-                        message: 'Right value is required',
+                        message: '右值不能为空',
                         trigger: 'blur'
                       }"
                     >
@@ -124,7 +124,7 @@
                 </div>
               </el-card>
             </el-space>
-            <div title="Add Condition Group" class="mt-4 cursor-pointer">
+            <div title="添加条件组" class="mt-4 cursor-pointer">
               <Icon
                 color="#0089ff"
                 icon="ep:plus"
@@ -135,7 +135,7 @@
           </el-form-item>
           <el-form-item
             v-if="condition.conditionType === ConditionType.EXPRESSION"
-            label="Condition Expression"
+            label="条件表达式"
             prop="conditionExpression"
           >
             <el-input
@@ -149,8 +149,8 @@
       </el-scrollbar>
     </div>
     <template #footer>
-      <el-button type="primary" @click="submitForm">OK</el-button>
-      <el-button @click="dialogVisible = false">Cancel</el-button>
+      <el-button type="primary" @click="submitForm">确 定</el-button>
+      <el-button @click="dialogVisible = false">取 消</el-button>
     </template>
   </Dialog>
 </template>
@@ -202,8 +202,8 @@ const fieldOptions = useFormFieldsAndStartUser()
 
 // 表单校验规则
 const formRules = reactive({
-  conditionType: [{ required: true, message: 'Configuration mode is required', trigger: 'blur' }],
-  conditionExpression: [{ required: true, message: 'Condition expression is required', trigger: 'blur' }]
+  conditionType: [{ required: true, message: '配置方式不能为空', trigger: 'blur' }],
+  conditionExpression: [{ required: true, message: '条件表达式不能为空', trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 
@@ -252,7 +252,7 @@ const submitForm = async () => {
   if (!formRef) return
   const valid = await formRef.value.validate()
   if (!valid) {
-    message.warning('Please complete the condition rule')
+    message.warning('请完善条件规则')
     return
   }
   dialogVisible.value = false

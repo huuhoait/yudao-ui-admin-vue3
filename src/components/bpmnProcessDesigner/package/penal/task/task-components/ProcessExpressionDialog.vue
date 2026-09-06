@@ -1,13 +1,13 @@
 <!-- 表达式选择 -->
 <template>
-  <Dialog title="Please select expression" v-model="dialogVisible" width="1024px">
+  <Dialog title="请选择表达式" v-model="dialogVisible" width="1024px">
     <ContentWrap>
       <el-table v-loading="loading" :data="list" :stripe="true" :show-overflow-tooltip="true">
-        <el-table-column label="Name" align="center" prop="name" />
-        <el-table-column label="Expression" align="center" prop="expression" />
-        <el-table-column label="Action" align="center">
+        <el-table-column label="名字" align="center" prop="name" />
+        <el-table-column label="表达式" align="center" prop="expression" />
+        <el-table-column label="操作" align="center">
           <template #default="scope">
-            <el-button link type="primary" @click="select(scope.row)"> Select </el-button>
+            <el-button link type="primary" @click="select(scope.row)"> 选择 </el-button>
           </template>
         </el-table-column>
       </el-table>

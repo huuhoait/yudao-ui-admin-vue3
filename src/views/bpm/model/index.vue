@@ -1,7 +1,7 @@
 <template>
   <ContentWrap>
     <div class="flex justify-between pl-20px items-center">
-      <h3 class="font-extrabold">{{ t('bpm.model._todo154') }}</h3>
+      <h3 class="font-extrabold">流程模型</h3>
       <!-- 搜索工作栏 -->
       <el-form
         v-if="!isCategorySorting"
@@ -15,7 +15,7 @@
         <el-form-item prop="name" class="ml-auto">
           <el-input
             v-model="queryParams.name"
-            :placeholder="t('bpm.model._todo153')"
+            placeholder="搜索流程"
             clearable
             @keyup.enter="handleQuery"
             class="!w-240px"
@@ -28,12 +28,12 @@
         <!-- 右上角：新建模型、更多操作 -->
         <el-form-item>
           <el-button type="primary" @click="openForm('create')" v-hasPermi="['bpm:model:create']">
-            <Icon icon="ep:plus" class="mr-5px" /> {{ t('bpm.model._todo155') }}
+            <Icon icon="ep:plus" class="mr-5px" /> 新建模型
           </el-button>
         </el-form-item>
         <el-form-item>
           <el-button @click="modelImportFormRef?.open()" v-hasPermi="['bpm:model:import']">
-            <Icon icon="ep:upload" class="mr-5px" /> {{ t('bpm.model._todo156') }}
+            <Icon icon="ep:upload" class="mr-5px" /> 导入模型
           </el-button>
         </el-form-item>
         <el-form-item>
@@ -45,11 +45,11 @@
               <el-dropdown-menu>
                 <el-dropdown-item command="handleCategoryAdd">
                   <Icon icon="ep:circle-plus" :size="13" class="mr-5px" />
-                  {{ t('bpm.model._todo157') }}
+                  新建分类
                 </el-dropdown-item>
                 <el-dropdown-item command="handleCategorySort">
                   <Icon icon="fa:sort-amount-desc" :size="13" class="mr-5px" />
-                  {{ t('bpm.model.categorySort') }}
+                  分类排序
                 </el-dropdown-item>
               </el-dropdown-menu>
             </template>
@@ -57,8 +57,8 @@
         </el-form-item>
       </el-form>
       <div class="mr-20px" v-else>
-        <el-button @click="handleCategorySortCancel"> {{ t('common.cancel') }} </el-button>
-        <el-button type="primary" @click="handleCategorySortSubmit"> {{ t('bpm.model._todo21') }} </el-button>
+        <el-button @click="handleCategorySortCancel"> 取 消 </el-button>
+        <el-button type="primary" @click="handleCategorySortSubmit"> 保存排序 </el-button>
       </div>
     </div>
 
@@ -94,7 +94,7 @@
   <CategoryForm ref="categoryFormRef" @success="getList" />
   <ModelImportForm ref="modelImportFormRef" @success="getList" />
   <!-- 弹窗：表单详情 -->
-  <Dialog :title="t('bpm.model.formDetail')" v-model="formDetailVisible" width="800">
+  <Dialog title="表单详情" v-model="formDetailVisible" width="800">
     <form-create :rule="formDetailPreview.rule" :option="formDetailPreview.option" />
   </Dialog>
 </template>
@@ -109,7 +109,6 @@ import CategoryDraggableModel from './CategoryDraggableModel.vue'
 import ModelImportForm from './ModelImportForm.vue'
 
 defineOptions({ name: 'BpmModel' })
-const { t } = useI18n() // 国际化
 
 const { push } = useRouter()
 const message = useMessage() // 消息弹窗
@@ -187,7 +186,7 @@ const handleCategorySortSubmit = async () => {
   await CategoryApi.updateCategorySortBatch(ids)
   // 刷新列表
   isCategorySorting.value = false
-  message.success(t('bpm.model._todo158'))
+  message.success('排序分类成功')
   await getList()
 }
 

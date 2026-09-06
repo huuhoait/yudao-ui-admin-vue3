@@ -1,20 +1,20 @@
 <template>
   <div class="panel-tab__content">
     <div class="panel-tab__content--title">
-      <span><Icon icon="ep:menu" style="margin-right: 8px; color: #555" />Message List</span>
+      <span><Icon icon="ep:menu" style="margin-right: 8px; color: #555" />消息列表</span>
       <el-button type="primary" @click="openModel('message')">
-        <Icon icon="ep:plus" class="mr-1px" /> Create New Message
+        <Icon icon="ep:plus" class="mr-1px" /> 创建新消息
       </el-button>
     </div>
     <el-table :data="messageList" border>
-      <el-table-column type="index" label="No." width="60px" />
-      <el-table-column label="Message ID" prop="id" min-width="120px" show-overflow-tooltip />
-      <el-table-column label="Message Name" prop="name" min-width="120px" show-overflow-tooltip />
-      <el-table-column label="Action" width="110px">
+      <el-table-column type="index" label="序号" width="60px" />
+      <el-table-column label="消息ID" prop="id" min-width="120px" show-overflow-tooltip />
+      <el-table-column label="消息名称" prop="name" min-width="120px" show-overflow-tooltip />
+      <el-table-column label="操作" width="110px">
         <!-- 补充“编辑”、“移除”功能。相关 issue：https://github.com/YunaiV/yudao-cloud/issues/270 -->
         <template #default="scope">
           <el-button link @click="openEditModel('message', scope.row, scope.$index)" size="small">
-            Edit
+            编辑
           </el-button>
           <el-divider direction="vertical" />
           <el-button
@@ -23,7 +23,7 @@
             style="color: #ff4d4f"
             @click="removeObject('message', scope.row)"
           >
-            Remove
+            移除
           </el-button>
         </template>
       </el-table-column>
@@ -32,19 +32,19 @@
       class="panel-tab__content--title"
       style="padding-top: 8px; margin-top: 8px; border-top: 1px solid #eee"
     >
-      <span><Icon icon="ep:menu" style="margin-right: 8px; color: #555" />Signal List</span>
+      <span><Icon icon="ep:menu" style="margin-right: 8px; color: #555" />信号列表</span>
       <el-button type="primary" @click="openModel('signal')">
-        <Icon icon="ep:plus" class="mr-1px" /> Create new signal
+        <Icon icon="ep:plus" class="mr-1px" /> 创建新信号
       </el-button>
     </div>
     <el-table :data="signalList" border>
-      <el-table-column type="index" label="No." width="60px" />
-      <el-table-column label="Signal ID" prop="id" min-width="120px" show-overflow-tooltip />
-      <el-table-column label="Signal Name" prop="name" min-width="120px" show-overflow-tooltip />
-      <el-table-column label="Action" width="110px">
+      <el-table-column type="index" label="序号" width="60px" />
+      <el-table-column label="信号ID" prop="id" min-width="120px" show-overflow-tooltip />
+      <el-table-column label="信号名称" prop="name" min-width="120px" show-overflow-tooltip />
+      <el-table-column label="操作" width="110px">
         <template #default="scope">
           <el-button link @click="openEditModel('signal', scope.row, scope.$index)" size="small">
-            Edit
+            编辑
           </el-button>
           <el-divider direction="vertical" />
           <el-button
@@ -53,7 +53,7 @@
             style="color: #ff4d4f"
             @click="removeObject('signal', scope.row)"
           >
-            Remove
+            移除
           </el-button>
         </template>
       </el-table-column>
@@ -76,8 +76,8 @@
         </el-form-item>
       </el-form>
       <template #footer>
-        <el-button @click="dialogVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="addNewObject">Save</el-button>
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="addNewObject">保 存</el-button>
       </template>
     </el-dialog>
   </div>
@@ -100,15 +100,15 @@ const modelConfig = computed(() => {
   const isEdit = editingIndex.value !== -1
   if (modelType.value === 'message') {
     return {
-      title: isEdit ? 'Edit Message' : 'Create message',
-      idLabel: 'Message ID',
-      nameLabel: 'Message Name'
+      title: isEdit ? '编辑消息' : '创建消息',
+      idLabel: '消息ID',
+      nameLabel: '消息名称'
     }
   } else {
     return {
-      title: isEdit ? 'Edit Signal' : 'Create signal',
-      idLabel: 'Signal ID',
-      nameLabel: 'Signal Name'
+      title: isEdit ? '编辑信号' : '创建信号',
+      idLabel: '信号ID',
+      nameLabel: '信号名称'
     }
   }
 })
@@ -172,7 +172,7 @@ const addNewObject = () => {
     } else {
       // 新建模式
       if (messageIdMap.value[modelObjectForm.value.id]) {
-        message.error('This message already exists, please change the id and save again')
+        message.error('该消息已存在，请修改id后重新保存')
         return
       }
       const messageRef = bpmnInstances().moddle.create('bpmn:Message', modelObjectForm.value)
@@ -193,7 +193,7 @@ const addNewObject = () => {
     } else {
       // 新建模式
       if (signalIdMap.value[modelObjectForm.value.id]) {
-        message.error('This signal already exists, please change the id and save again')
+        message.error('该信号已存在，请修改id后重新保存')
         return
       }
       const signalRef = bpmnInstances().moddle.create('bpmn:Signal', modelObjectForm.value)
@@ -207,9 +207,9 @@ const addNewObject = () => {
 }
 
 const removeObject = (type, row) => {
-  ElMessageBox.confirm(`Are you sure you want to remove this ${type === 'message' ? 'message' : 'signal'}?`, 'Tip', {
-    confirmButtonText: 'Confirm',
-    cancelButtonText: 'Cancel'
+  ElMessageBox.confirm(`确认移除该${type === 'message' ? '消息' : '信号'}吗？`, '提示', {
+    confirmButtonText: '确 认',
+    cancelButtonText: '取 消'
   })
     .then(() => {
       // 从 rootElements 中移除
@@ -224,9 +224,9 @@ const removeObject = (type, row) => {
       saveChanges()
       // 刷新列表
       initDataList()
-      message.success('Removed successfully')
+      message.success('移除成功')
     })
-    .catch(() => console.info('Operation cancelled'))
+    .catch(() => console.info('操作取消'))
 }
 
 // 触发建模器更新以保存更改
@@ -258,7 +258,7 @@ const saveChanges = () => {
       })
     }
   } catch (error) {
-    console.warn('Error while saving changes: ', error)
+    console.warn('保存更改时出错:', error)
   }
 }
 

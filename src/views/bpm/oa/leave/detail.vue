@@ -1,16 +1,16 @@
 <template>
   <ContentWrap>
     <el-descriptions :column="1" border>
-      <el-descriptions-item :label="t('bpm.oa.leave.leaveType')">
+      <el-descriptions-item label="请假类型">
         <dict-tag :type="DICT_TYPE.BPM_OA_LEAVE_TYPE" :value="detailData.type" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('bpm.oa.leave.beginTime')">
+      <el-descriptions-item label="开始时间">
         {{ formatDate(detailData.startTime, 'YYYY-MM-DD') }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('bpm.oa.leave.endTime')">
+      <el-descriptions-item label="结束时间">
         {{ formatDate(detailData.endTime, 'YYYY-MM-DD') }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('bpm.oa.leave._todo160')">
+      <el-descriptions-item label="原因">
         {{ detailData.reason }}
       </el-descriptions-item>
     </el-descriptions>

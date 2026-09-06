@@ -1,6 +1,6 @@
 <template>
   <el-form ref="formRef" :model="modelData" :rules="rules" label-width="120px" class="mt-20px">
-    <el-form-item :label="t('bpm.model.form._todo107')" prop="formType" class="mb-20px">
+    <el-form-item label="表单类型" prop="formType" class="mb-20px">
       <el-radio-group v-model="modelData.formType">
         <el-radio
           v-for="dict in getIntDictOptions(DICT_TYPE.BPM_MODEL_FORM_TYPE)"
@@ -13,7 +13,7 @@
     </el-form-item>
     <el-form-item
       v-if="modelData.formType === BpmModelFormType.NORMAL"
-      :label="t('bpm.model.form._todo108')"
+      label="流程表单"
       prop="formId"
     >
       <el-select v-model="modelData.formId" clearable style="width: 100%">
@@ -22,17 +22,17 @@
     </el-form-item>
     <el-form-item
       v-if="modelData.formType === BpmModelFormType.CUSTOM"
-      :label="t('bpm.model.form.formSubmitRoute')"
+      label="表单提交路由"
       prop="formCustomCreatePath"
     >
       <el-input
         v-model="modelData.formCustomCreatePath"
-        :placeholder="t('bpm.model.form.inputFormSubmitRoute')"
+        placeholder="请输入表单提交路由"
         style="width: 330px"
       />
       <el-tooltip
         class="item"
-        :content="t('bpm.model.form._todo109')"
+        content="自定义表单的提交路径，使用 Vue 的路由地址，例如说：bpm/oa/leave/create.vue"
         effect="light"
         placement="top"
       >
@@ -41,17 +41,17 @@
     </el-form-item>
     <el-form-item
       v-if="modelData.formType === BpmModelFormType.CUSTOM"
-      :label="t('bpm.model.form._todo110')"
+      label="表单查看地址"
       prop="formCustomViewPath"
     >
       <el-input
         v-model="modelData.formCustomViewPath"
-        :placeholder="t('bpm.model.form._todo111')"
+        placeholder="请输入表单查看的组件地址"
         style="width: 330px"
       />
       <el-tooltip
         class="item"
-        :content="t('bpm.model.form._todo112')"
+        content="自定义表单的查看组件地址，使用 Vue 的组件地址，例如说：bpm/oa/leave/detail.vue"
         effect="light"
         placement="top"
       >
@@ -69,7 +69,7 @@
     >
       <div class="flex items-center mb-15px">
         <div class="h-15px w-4px bg-[#1890ff] mr-10px"></div>
-        <span class="text-15px font-bold">{{ t('bpm.model.form._todo113') }}</span>
+        <span class="text-15px font-bold">表单预览</span>
       </div>
       <form-create
         v-model="formPreview.formData"
@@ -86,7 +86,6 @@ import * as FormApi from '@/api/bpm/form'
 import { setConfAndFields2 } from '@/utils/formCreate'
 import { BpmModelFormType } from '@/utils/constants'
 import type { Rule } from '@form-create/element-ui'
-const { t } = useI18n() // 国际化
 
 defineProps<{
   formList: FormApi.FormVO[]
@@ -127,10 +126,10 @@ watch(
 )
 
 const rules = {
-  formType: [{ required: true, message: t('bpm.model.form._todo114'), trigger: 'blur' }],
-  formId: [{ required: true, message: t('bpm.model.form._todo115'), trigger: 'blur' }],
-  formCustomCreatePath: [{ required: true, message: t('bpm.model.form.formSubmitRouteRequired'), trigger: 'blur' }],
-  formCustomViewPath: [{ required: true, message: t('bpm.model.form._todo116'), trigger: 'blur' }]
+  formType: [{ required: true, message: '表单类型不能为空', trigger: 'blur' }],
+  formId: [{ required: true, message: '流程表单不能为空', trigger: 'blur' }],
+  formCustomCreatePath: [{ required: true, message: '表单提交路由不能为空', trigger: 'blur' }],
+  formCustomViewPath: [{ required: true, message: '表单查看地址不能为空', trigger: 'blur' }]
 }
 
 /** 表单校验 */

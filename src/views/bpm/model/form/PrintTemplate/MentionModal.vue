@@ -1,5 +1,4 @@
-<script setup lang="ts">const { t } = useI18n() // 国际化
-
+<script setup lang="ts">
 const emit = defineEmits(['hideMentionModal', 'insertMention'])
 
 const inputRef = ref()
@@ -7,15 +6,15 @@ const top = ref('')
 const left = ref('')
 const searchVal = ref('')
 const list = ref([
-  { id: 'startUser', name: t('bpm.model.form.PrintTemplate.starter') },
-  { id: 'startUserDept', name: t('bpm.model.form.PrintTemplate._todo120') },
-  { id: 'processName', name: t('bpm.model.form.PrintTemplate.processName') },
-  { id: 'processNum', name: t('bpm.model.form.PrintTemplate.processId') },
-  { id: 'startTime', name: t('bpm.model.form.PrintTemplate.startTime') },
-  { id: 'endTime', name: t('bpm.model.form.PrintTemplate.endTime') },
-  { id: 'processStatus', name: t('bpm.model.form.PrintTemplate.processStatus') },
-  { id: 'printUser', name: t('bpm.model.form.PrintTemplate._todo121') },
-  { id: 'printTime', name: t('bpm.model.form.PrintTemplate._todo122') }
+  { id: 'startUser', name: '发起人' },
+  { id: 'startUserDept', name: '发起人部门' },
+  { id: 'processName', name: '流程名称' },
+  { id: 'processNum', name: '流程编号' },
+  { id: 'startTime', name: '发起时间' },
+  { id: 'endTime', name: '结束时间' },
+  { id: 'processStatus', name: '流程状态' },
+  { id: 'printUser', name: '打印人' },
+  { id: 'printTime', name: '打印时间' }
 ])
 const searchedList = computed(() => {
   const searchValStr = searchVal.value.trim().toLowerCase()

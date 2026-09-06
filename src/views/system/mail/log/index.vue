@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('system.mail.log.mailConfig')" url="https://doc.iocoder.cn/mail" />
+  <doc-alert title="邮件配置" url="https://doc.iocoder.cn/mail" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,19 +10,19 @@
       :inline="true"
       label-width="100px"
     >
-      <el-form-item :label="t('system.mail.log._todo71')" prop="toMail">
+      <el-form-item label="接收邮箱" prop="toMail">
         <el-input
           v-model="queryParams.toMail"
-          :placeholder="t('system.mail.log._todo72')"
+          placeholder="请输入接收邮箱"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('system.mail.log.emailAccount')" prop="accountId">
+      <el-form-item label="邮箱账号" prop="accountId">
         <el-select
           v-model="queryParams.accountId"
-          :placeholder="t('system.mail.log.selectEmailAccount')"
+          placeholder="请选择邮箱账号"
           clearable
           class="!w-240px"
         >
@@ -34,19 +34,19 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('system.mail.log.templateId')" prop="templateId">
+      <el-form-item label="模板编号" prop="templateId">
         <el-input
           v-model="queryParams.templateId"
-          :placeholder="t('system.mail.log.inputTemplateId')"
+          placeholder="请输入模板编号"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('system.mail.log.sendStatus')" prop="sendStatus">
+      <el-form-item label="发送状态" prop="sendStatus">
         <el-select
           v-model="queryParams.sendStatus"
-          :placeholder="t('system.mail.log.selectSendStatus')"
+          placeholder="请选择发送状态"
           clearable
           class="!w-240px"
         >
@@ -58,19 +58,19 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('system.mail.log.userId')" prop="userId">
+      <el-form-item label="用户编号" prop="userId">
         <el-input
           v-model="queryParams.userId"
-          :placeholder="t('system.mail.log.inputUserId')"
+          placeholder="请输入用户编号"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('system.mail.log.userType')" prop="userType">
+      <el-form-item label="用户类型" prop="userType">
         <el-select
           v-model="queryParams.userType"
-          :placeholder="t('system.mail.log.selectUserType')"
+          placeholder="请选择用户类型"
           clearable
           class="!w-240px"
         >
@@ -82,19 +82,19 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('system.mail.log.sendTime')" prop="sendTime">
+      <el-form-item label="发送时间" prop="sendTime">
         <el-date-picker
           v-model="queryParams.sendTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          :start-placeholder="t('system.mail.log.startDate')"
-          :end-placeholder="t('system.mail.log.endDate')"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
         <el-button
           type="success"
           plain
@@ -102,7 +102,7 @@
           :loading="exportLoading"
           v-hasPermi="['system:mail-log:export']"
         >
-          <Icon icon="ep:download" class="mr-5px" /> {{ t('system.mail.log.export') }}
+          <Icon icon="ep:download" class="mr-5px" /> 导出
         </el-button>
       </el-form-item>
     </el-form>
@@ -111,15 +111,15 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column :label="t('system.mail.log.id')" align="center" prop="id" />
+      <el-table-column label="编号" align="center" prop="id" />
       <el-table-column
-        :label="t('system.mail.log.sendTime')"
+        label="发送时间"
         align="center"
         prop="sendTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('system.mail.log._todo60')" align="center" width="150">
+      <el-table-column label="接收用户" align="center" width="150">
         <template #default="scope">
           <div v-if="scope.row.userType && scope.row.userId">
             <dict-tag :type="DICT_TYPE.USER_TYPE" :value="scope.row.userType" />
@@ -128,23 +128,23 @@
           <div v-else>-</div>
         </template>
       </el-table-column>
-      <el-table-column :label="t('system.mail.log._todo61')" align="center" width="300">
+      <el-table-column label="接收信息" align="center" width="300">
         <template #default="scope">
           <div class="text-left">
             <div v-if="scope.row.toMails && scope.row.toMails.length > 0">
-              {{ t('system.mail.log._todo68') }}
+              收件：
               <span v-for="(mail, index) in scope.row.toMails" :key="mail">
                 {{ mail }}<span v-if="Number(index) < scope.row.toMails.length - 1">、</span>
               </span>
             </div>
             <div v-if="scope.row.ccMails && scope.row.ccMails.length > 0">
-              {{ t('system.mail.log._todo69') }}
+              抄送：
               <span v-for="(mail, index) in scope.row.ccMails" :key="mail">
                 {{ mail }}<span v-if="Number(index) < scope.row.ccMails.length - 1">、</span>
               </span>
             </div>
             <div v-if="scope.row.bccMails && scope.row.bccMails.length > 0">
-              {{ t('system.mail.log._todo70') }}
+              密送：
               <span v-for="(mail, index) in scope.row.bccMails" :key="mail">
                 {{ mail }}<span v-if="Number(index) < scope.row.bccMails.length - 1">、</span>
               </span>
@@ -152,19 +152,19 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column :label="t('system.mail.log._todo62')" align="center" prop="templateTitle" width="200" />
-      <el-table-column :label="t('system.mail.log.sendStatus')" align="center" width="120">
+      <el-table-column label="邮件标题" align="center" prop="templateTitle" width="200" />
+      <el-table-column label="发送状态" align="center" width="120">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_MAIL_SEND_STATUS" :value="scope.row.sendStatus" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('system.mail.log.emailAccount')" align="center" width="200">
+      <el-table-column label="邮箱账号" align="center" width="200">
         <template #default="scope">
           {{ getAccountMail(scope.row.accountId) }}
         </template>
       </el-table-column>
-      <el-table-column :label="t('system.mail.log.templateId')" align="center" prop="templateId" />
-      <el-table-column :label="t('system.mail.log.action')" align="center" fixed="right" class-name="fixed-width">
+      <el-table-column label="模板编号" align="center" prop="templateId" />
+      <el-table-column label="操作" align="center" fixed="right" class-name="fixed-width">
         <template #default="scope">
           <el-button
             link
@@ -172,7 +172,7 @@
             @click="openDetail(scope.row)"
             v-hasPermi="['system:mail-log:query']"
           >
-            {{ t('system.mail.log.detail') }}
+            详情
           </el-button>
         </template>
       </el-table-column>

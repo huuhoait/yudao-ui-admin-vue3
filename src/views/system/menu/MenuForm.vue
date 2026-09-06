@@ -7,7 +7,7 @@
       :rules="formRules"
       label-width="100px"
     >
-      <el-form-item :label="t('system.menu._todo83')">
+      <el-form-item label="上级菜单">
         <el-tree-select
           v-model="formData.parentId"
           :data="menuTree"
@@ -17,10 +17,10 @@
           node-key="id"
         />
       </el-form-item>
-      <el-form-item :label="t('system.menu.menuName')" prop="name">
-        <el-input v-model="formData.name" clearable :placeholder="t('system.menu.inputMenuName')" />
+      <el-form-item label="菜单名称" prop="name">
+        <el-input v-model="formData.name" clearable placeholder="请输入菜单名称" />
       </el-form-item>
-      <el-form-item :label="t('system.menu._todo84')" prop="type">
+      <el-form-item label="菜单类型" prop="type">
         <el-radio-group v-model="formData.type">
           <el-radio-button
             v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_MENU_TYPE)"
@@ -31,37 +31,37 @@
           </el-radio-button>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="formData.type !== 3" :label="t('system.menu._todo85')">
+      <el-form-item v-if="formData.type !== 3" label="菜单图标">
         <IconSelect v-model="formData.icon" clearable />
       </el-form-item>
-      <el-form-item v-if="formData.type !== 3" :label="t('system.menu.routePath')" prop="path">
+      <el-form-item v-if="formData.type !== 3" label="路由地址" prop="path">
         <template #label>
           <Tooltip
             message="访问的路由地址，如：`user`。如需外网地址时，则以 `http(s)://` 开头"
-            :title="t('system.menu.routePath')"
+            title="路由地址"
           />
         </template>
-        <el-input v-model="formData.path" clearable :placeholder="t('system.menu.inputRoutePath')" />
+        <el-input v-model="formData.path" clearable placeholder="请输入路由地址" />
       </el-form-item>
-      <el-form-item v-if="formData.type === 2" :label="t('system.menu._todo86')" prop="component">
-        <el-input v-model="formData.component" clearable :placeholder="t('system.menu._todo87')" />
+      <el-form-item v-if="formData.type === 2" label="组件地址" prop="component">
+        <el-input v-model="formData.component" clearable placeholder="例如说：system/user/index" />
       </el-form-item>
-      <el-form-item v-if="formData.type === 2" :label="t('system.menu._todo88')" prop="componentName">
-        <el-input v-model="formData.componentName" clearable :placeholder="t('system.menu._todo89')" />
+      <el-form-item v-if="formData.type === 2" label="组件名字" prop="componentName">
+        <el-input v-model="formData.componentName" clearable placeholder="例如说：SystemUser" />
       </el-form-item>
-      <el-form-item v-if="formData.type !== 1" :label="t('system.menu._todo90')" prop="permission">
+      <el-form-item v-if="formData.type !== 1" label="权限标识" prop="permission">
         <template #label>
           <Tooltip
             message="Controller 方法上的权限字符，如：@PreAuthorize(`@ss.hasPermission('system:user:list')`)"
-            :title="t('system.menu._todo90')"
+            title="权限标识"
           />
         </template>
-        <el-input v-model="formData.permission" clearable :placeholder="t('system.menu._todo91')" />
+        <el-input v-model="formData.permission" clearable placeholder="请输入权限标识" />
       </el-form-item>
-      <el-form-item :label="t('system.menu.displaySort')" prop="sort">
+      <el-form-item label="显示排序" prop="sort">
         <el-input-number v-model="formData.sort" :min="0" clearable controls-position="right" />
       </el-form-item>
-      <el-form-item :label="t('system.menu.menuStatus')" prop="status">
+      <el-form-item label="菜单状态" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -72,43 +72,43 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="formData.type !== 3" :label="t('system.menu._todo92')" prop="visible">
+      <el-form-item v-if="formData.type !== 3" label="显示状态" prop="visible">
         <template #label>
-          <Tooltip message="选择隐藏时，路由将不会出现在侧边栏，但仍然可以访问" :title="t('system.menu._todo92')" />
+          <Tooltip message="选择隐藏时，路由将不会出现在侧边栏，但仍然可以访问" title="显示状态" />
         </template>
         <el-radio-group v-model="formData.visible">
-          <el-radio key="true" :value="true" border>{{ t('system.menu._todo95') }}</el-radio>
-          <el-radio key="false" :value="false" border>{{ t('system.menu._todo96') }}</el-radio>
+          <el-radio key="true" :value="true" border>显示</el-radio>
+          <el-radio key="false" :value="false" border>隐藏</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="formData.type !== 3" :label="t('system.menu._todo93')" prop="alwaysShow">
+      <el-form-item v-if="formData.type !== 3" label="总是显示" prop="alwaysShow">
         <template #label>
           <Tooltip
             message="选择不是时，当该菜单只有一个子菜单时，不展示自己，直接展示子菜单"
-            :title="t('system.menu._todo93')"
+            title="总是显示"
           />
         </template>
         <el-radio-group v-model="formData.alwaysShow">
-          <el-radio key="true" :value="true" border>{{ t('system.menu._todo97') }}</el-radio>
-          <el-radio key="false" :value="false" border>{{ t('system.menu._todo98') }}</el-radio>
+          <el-radio key="true" :value="true" border>总是</el-radio>
+          <el-radio key="false" :value="false" border>不是</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="formData.type === 2" :label="t('system.menu._todo94')" prop="keepAlive">
+      <el-form-item v-if="formData.type === 2" label="缓存状态" prop="keepAlive">
         <template #label>
           <Tooltip
             message="选择缓存时，则会被 `keep-alive` 缓存，必须填写「组件名称」字段"
-            :title="t('system.menu._todo94')"
+            title="缓存状态"
           />
         </template>
         <el-radio-group v-model="formData.keepAlive">
-          <el-radio key="true" :value="true" border>{{ t('system.menu._todo99') }}</el-radio>
-          <el-radio key="false" :value="false" border>{{ t('system.menu._todo100') }}</el-radio>
+          <el-radio key="true" :value="true" border>缓存</el-radio>
+          <el-radio key="false" :value="false" border>不缓存</el-radio>
         </el-radio-group>
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
-      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
+      <el-button @click="dialogVisible = false">取 消</el-button>
     </template>
   </Dialog>
 </template>
@@ -146,11 +146,11 @@ const formData = ref({
   alwaysShow: true
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('system.menu.menuNameRequired'), trigger: 'blur' }],
-  type: [{ required: true, message: t('system.menu._todo101'), trigger: 'blur' }],
-  sort: [{ required: true, message: t('system.menu._todo102'), trigger: 'blur' }],
-  path: [{ required: true, message: t('system.menu.routePathRequired'), trigger: 'blur' }],
-  status: [{ required: true, message: t('system.menu.statusRequired'), trigger: 'blur' }]
+  name: [{ required: true, message: '菜单名称不能为空', trigger: 'blur' }],
+  type: [{ required: true, message: '菜单类型不能为空', trigger: 'blur' }],
+  sort: [{ required: true, message: '菜单顺序不能为空', trigger: 'blur' }],
+  path: [{ required: true, message: '路由地址不能为空', trigger: 'blur' }],
+  status: [{ required: true, message: '状态不能为空', trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 
@@ -193,10 +193,10 @@ const submitForm = async () => {
     ) {
       if (!isExternal(formData.value.path)) {
         if (formData.value.parentId === 0 && formData.value.path.charAt(0) !== '/') {
-          message.error(t('system.menu._todo103'))
+          message.error('路径必须以 / 开头')
           return
         } else if (formData.value.parentId !== 0 && formData.value.path.charAt(0) === '/') {
-          message.error(t('system.menu._todo104'))
+          message.error('路径不能以 / 开头')
           return
         }
       }
@@ -224,7 +224,7 @@ const menuTree = ref<Tree[]>([]) // 树形结构
 const getTree = async () => {
   menuTree.value = []
   const res = await MenuApi.getSimpleMenusList()
-  let menu: Tree = { id: 0, name: t('system.menu._todo105'), children: [] }
+  let menu: Tree = { id: 0, name: '主类目', children: [] }
   menu.children = handleTree(res)
   menuTree.value.push(menu)
 }

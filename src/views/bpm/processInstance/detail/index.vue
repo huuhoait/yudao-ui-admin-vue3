@@ -41,7 +41,7 @@
 
         <el-tabs v-model="activeTab">
           <!-- 表单信息 -->
-          <el-tab-pane :label="t('bpm.processInstance.detail._todo236')" name="form">
+          <el-tab-pane label="审批详情" name="form">
             <div class="form-scroll-area">
               <el-scrollbar>
                 <el-row :gutter="40">
@@ -76,7 +76,7 @@
           </el-tab-pane>
 
           <!-- 流程图 -->
-          <el-tab-pane :label="t('bpm.processInstance.detail._todo237')" name="diagram">
+          <el-tab-pane label="流程图" name="diagram" lazy>
             <div class="form-scroll-area">
               <ProcessInstanceSimpleViewer
                 v-show="
@@ -96,7 +96,7 @@
           </el-tab-pane>
 
           <!-- 流转记录 -->
-          <el-tab-pane :label="t('bpm.processInstance.detail._todo238')" name="record">
+          <el-tab-pane label="流转记录" name="record">
             <div class="form-scroll-area">
               <el-scrollbar>
                 <ProcessInstanceTaskList :loading="processInstanceLoading" :id="id" />
@@ -105,7 +105,7 @@
           </el-tab-pane>
 
           <!-- 流程评论 -->
-          <el-tab-pane :label="t('bpm.processInstance.detail._todo195')" name="comment">
+          <el-tab-pane label="流程评论" name="comment">
             <div class="form-scroll-area">
               <el-scrollbar>
                 <ProcessInstanceCommentList
@@ -162,7 +162,6 @@ import cancelSvg from '@/assets/svgs/bpm/cancel.svg'
 import PrintDialog from './PrintDialog.vue'
 
 defineOptions({ name: 'BpmProcessInstanceDetail' })
-const { t } = useI18n() // 国际化
 const props = defineProps<{
   id: string // 流程实例的编号
   taskId?: string // 任务编号
@@ -214,11 +213,11 @@ const getApprovalDetail = async () => {
     }
     const data = await ProcessInstanceApi.getApprovalDetail(param)
     if (!data) {
-      message.error(t('bpm.processInstance.detail._todo239'))
+      message.error('查询不到审批详情信息！')
       return
     }
     if (!data.processDefinition || !data.processInstance) {
-      message.error(t('bpm.processInstance.detail._todo240'))
+      message.error('查询不到流程信息！')
       return
     }
     processInstance.value = data.processInstance

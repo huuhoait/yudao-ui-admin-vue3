@@ -7,23 +7,23 @@
       :rules="formRules"
       label-width="80px"
     >
-      <el-form-item :label="t('system.dict.data.dictType')" prop="type">
+      <el-form-item label="字典类型" prop="type">
         <el-input
           v-model="formData.dictType"
           :disabled="typeof formData.id !== 'undefined'"
-          :placeholder="t('system.dict.data._todo17')"
+          placeholder="请输入参数名称"
         />
       </el-form-item>
-      <el-form-item :label="t('system.dict.data._todo18')" prop="label">
-        <el-input v-model="formData.label" :placeholder="t('system.dict.data._todo19')" />
+      <el-form-item label="数据标签" prop="label">
+        <el-input v-model="formData.label" placeholder="请输入数据标签" />
       </el-form-item>
-      <el-form-item :label="t('system.dict.data._todo20')" prop="value">
-        <el-input v-model="formData.value" :placeholder="t('system.dict.data._todo21')" />
+      <el-form-item label="数据键值" prop="value">
+        <el-input v-model="formData.value" placeholder="请输入数据键值" />
       </el-form-item>
-      <el-form-item :label="t('system.dict.data.displaySort')" prop="sort">
+      <el-form-item label="显示排序" prop="sort">
         <el-input-number v-model="formData.sort" :min="0" controls-position="right" />
       </el-form-item>
-      <el-form-item :label="t('common.status')" prop="status">
+      <el-form-item label="状态" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -34,7 +34,7 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :label="t('system.dict.data._todo22')" prop="colorType">
+      <el-form-item label="颜色类型" prop="colorType">
         <el-select v-model="formData.colorType">
           <el-option
             v-for="item in colorTypeOptions"
@@ -45,15 +45,15 @@
         </el-select>
       </el-form-item>
       <el-form-item label="CSS Class" prop="cssClass">
-        <el-input v-model="formData.cssClass" :placeholder="t('system.dict.data._todo23')" />
+        <el-input v-model="formData.cssClass" placeholder="请输入 CSS Class" />
       </el-form-item>
-      <el-form-item :label="t('system.dict.data.remark')" prop="remark">
-        <el-input v-model="formData.remark" :placeholder="t('system.dict.data.inputContent')" type="textarea" />
+      <el-form-item label="备注" prop="remark">
+        <el-input v-model="formData.remark" placeholder="请输入内容" type="textarea" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
-      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
+      <el-button @click="dialogVisible = false">取 消</el-button>
     </template>
   </Dialog>
 </template>
@@ -83,10 +83,10 @@ const formData = ref<DictDataApi.DictDataVO>({
   remark: ''
 })
 const formRules = reactive({
-  label: [{ required: true, message: t('system.dict.data._todo24'), trigger: 'blur' }],
-  value: [{ required: true, message: t('system.dict.data._todo25'), trigger: 'blur' }],
-  sort: [{ required: true, message: t('system.dict.data._todo26'), trigger: 'blur' }],
-  status: [{ required: true, message: t('system.dict.data.statusRequired'), trigger: 'change' }]
+  label: [{ required: true, message: '数据标签不能为空', trigger: 'blur' }],
+  value: [{ required: true, message: '数据键值不能为空', trigger: 'blur' }],
+  sort: [{ required: true, message: '数据顺序不能为空', trigger: 'blur' }],
+  status: [{ required: true, message: '状态不能为空', trigger: 'change' }]
 })
 const formRef = ref() // 表单 Ref
 
@@ -94,27 +94,27 @@ const formRef = ref() // 表单 Ref
 const colorTypeOptions = readonly([
   {
     value: 'default',
-    label: t('system.dict.data._todo27')
+    label: '默认'
   },
   {
     value: 'primary',
-    label: t('system.dict.data._todo28')
+    label: '主要'
   },
   {
     value: 'success',
-    label: t('system.dict.data._todo29')
+    label: '成功'
   },
   {
     value: 'info',
-    label: t('system.dict.data._todo30')
+    label: '信息'
   },
   {
     value: 'warning',
-    label: t('system.dict.data._todo31')
+    label: '警告'
   },
   {
     value: 'danger',
-    label: t('system.dict.data._todo32')
+    label: '危险'
   }
 ])
 

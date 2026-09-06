@@ -38,7 +38,6 @@ import { BpmModelFormType } from '@/utils/constants'
 import * as FormApi from '@/api/bpm/form'
 
 defineOptions({ name: 'BpmModelEditor' })
-const { t } = useI18n() // 国际化
 
 defineProps<{
   modelId?: string
@@ -86,8 +85,8 @@ const save = async (bpmnXml: string) => {
     xmlString.value = bpmnXml
     emit('success', bpmnXml)
   } catch (error) {
-    console.error(t('bpm.model.form.editor._todo127'), error)
-    message.error(t('bpm.model.form.editor._todo128'))
+    console.error('保存失败:', error)
+    message.error('保存失败')
   }
 }
 

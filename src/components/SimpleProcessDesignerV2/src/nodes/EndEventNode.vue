@@ -5,10 +5,10 @@
       :class="`${useTaskStatusClass(currentNode?.activityStatus)}`"
       @click="nodeClick"
     >
-      <span class="node-fixed-name" title="End">End</span>
+      <span class="node-fixed-name" title="结束">结束</span>
     </div>
   </div>
-  <el-dialog title="Approval Info" v-model="dialogVisible" width="1000px" append-to-body>
+  <el-dialog title="审批信息" v-model="dialogVisible" width="1000px" append-to-body>
     <el-row>
       <el-table
         :data="processInstanceInfos"
@@ -17,19 +17,19 @@
         header-cell-class-name="table-header-gray"
       >
         <el-table-column
-          label="No."
+          label="序号"
           header-align="center"
           align="center"
           type="index"
           width="50"
         />
         <el-table-column
-          label="Initiator"
+          label="发起人"
           prop="assigneeUser.nickname"
           min-width="100"
           align="center"
         />
-        <el-table-column label="Department" min-width="100" align="center">
+        <el-table-column label="部门" min-width="100" align="center">
           <template #default="scope">
             {{ scope.row.assigneeUser?.deptName || scope.row.ownerUser?.deptName }}
           </template>
@@ -37,24 +37,24 @@
         <el-table-column
           :formatter="dateFormatter"
           align="center"
-          label="Start Time"
+          label="开始时间"
           prop="createTime"
           min-width="140"
         />
         <el-table-column
           :formatter="dateFormatter"
           align="center"
-          label="End Time"
+          label="结束时间"
           prop="endTime"
           min-width="140"
         />
-        <el-table-column align="center" label="Approval Status" prop="status" min-width="90">
+        <el-table-column align="center" label="审批状态" prop="status" min-width="90">
           <template #default="scope">
             <dict-tag :type="DICT_TYPE.BPM_PROCESS_INSTANCE_STATUS" :value="scope.row.status" />
           </template>
         </el-table-column>
 
-        <el-table-column align="center" label="Duration" prop="durationInMillis" width="100">
+        <el-table-column align="center" label="耗时" prop="durationInMillis" width="100">
           <template #default="scope">
             {{ formatPast2(scope.row.durationInMillis) }}
           </template>

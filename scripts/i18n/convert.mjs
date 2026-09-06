@@ -21,17 +21,26 @@ import { parse as parseSFC } from '@vue/compiler-sfc'
 import { parse as babelParse } from '@babel/parser'
 import _traverse from '@babel/traverse'
 import { REUSE, PHRASE, PREFIX, NOUN, REQUIRED_SUFFIX } from './dict.mjs'
+import { loadGeneratedLocale, splitKey } from './locale-io.mjs'
 
 const traverse = _traverse.default || _traverse
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 const ROOT = join(__dirname, '..', '..')
 
 const args = process.argv.slice(2)
-const targetArg = args.find((a) => !a.startsWith('--'))
+// bỏ qua giá trị đứng sau --reuse khi dò targetDir
+const targetArg = args.find((a, i) => !a.startsWith('--') && args[i - 1] !== '--reuse')
 const APPLY = args.includes('--apply')
 const DRY = args.includes('--dry')
+// --reuse <name>: nạp lại key từ src/locales/generated/<name>.zh-CN.ts để giữ key CŨ
+// cho các chuỗi Trung đã từng convert. Cần thiết khi source đổi (nâng cấp upstream):
+// không có nó, key _todoN bị đánh số lại và toàn bộ bản dịch en/vi cũ lệch key.
+const reuseIdx = args.indexOf('--reuse')
+const REUSE_NAME = reuseIdx >= 0 ? args[reuseIdx + 1] : null
 if (!targetArg) {
-  console.error('Usage: node scripts/i18n/convert.mjs <targetDir> [--apply] [--dry]')
+  console.error(
+    'Usage: node scripts/i18n/convert.mjs <targetDir> [--apply] [--dry] [--reuse <localeName>]'
+  )
   process.exit(1)
 }
 const TARGET = join(ROOT, targetArg)
@@ -344,6 +353,28 @@ const report = {
 }
 const localeEntries = {} // key -> chuỗi Trung (chỉ cho key mới, không phải REUSE)
 const usedKeys = new Set()
+
+// ---------- seed key cũ (giữ key ổn định qua các lần nâng cấp upstream) ----------
+// Nạp <name>.zh-CN.ts cũ: mỗi (namespace, chuỗi Trung) giữ lại đúng key đã dùng trước đó.
+// Nhờ vậy bản dịch en/vi cũ vẫn khớp key, chỉ chuỗi MỚI mới sinh key mới.
+if (REUSE_NAME) {
+  const oldFlat = loadGeneratedLocale(
+    join(ROOT, 'src', 'locales', 'generated', `${REUSE_NAME}.zh-CN.ts`)
+  )
+  let maxTodo = 0
+  for (const [key, zh] of Object.entries(oldFlat)) {
+    const [ns, name] = splitKey(key)
+    usedKeys.add(key)
+    const m = /^_todo(\d+)$/.exec(name)
+    if (m) maxTodo = Math.max(maxTodo, Number(m[1]))
+    const cacheId = `${ns}::${zh}`
+    if (!textKeyCache.has(cacheId)) textKeyCache.set(cacheId, { key, todo: !!m })
+  }
+  // key _todo mới phải bắt đầu sau số lớn nhất đang dùng, tránh đụng key cũ
+  todoCounter = maxTodo
+  report.reusedKeys = Object.keys(oldFlat).length
+  console.log(`Reuse: ${report.reusedKeys} key cũ từ ${REUSE_NAME}.zh-CN.ts (_todo tiếp tục từ ${maxTodo + 1})`)
+}
 
 for (const file of files) {
   const rel = relative(ROOT, file)

@@ -45,11 +45,11 @@
         <!-- 右侧按钮 -->
         <div class="w-200px flex items-center justify-end gap-2">
           <el-button v-if="actionType === 'update'" type="success" @click="handleDeploy">
-            {{ t('bpm.model.form._todo129') }}
+            发 布
           </el-button>
           <el-button type="primary" :loading="saveLoading" @click="handleSave">
-            <span v-if="actionType === 'definition'">{{ t('bpm.model.form._todo130') }}</span>
-            <span v-else>{{ t('bpm.model.form._todo131') }}</span>
+            <span v-if="actionType === 'definition'">恢 复</span>
+            <span v-else>保 存</span>
           </el-button>
         </div>
       </div>
@@ -101,7 +101,6 @@ import FormDesign from './FormDesign.vue'
 import ProcessDesign from './ProcessDesign.vue'
 import ExtraSettings from './ExtraSettings.vue'
 import { useTagsView } from '@/hooks/web/useTagsView'
-const { t } = useI18n() // 国际化
 
 const router = useRouter()
 const { delView } = useTagsViewStore() // 视图操作
@@ -133,10 +132,10 @@ const validateProcess = async () => {
 const currentStep = ref(-1) // 步骤控制。-1 用于，一开始全部不展示等当前页面数据初始化完成
 
 const steps = [
-  { title: t('bpm.model.form._todo132'), validator: validateBasic },
-  { title: t('bpm.model.form._todo133'), validator: validateForm },
-  { title: t('bpm.model.form._todo134'), validator: validateProcess },
-  { title: t('bpm.model.form._todo135'), validator: null }
+  { title: '基本信息', validator: validateBasic },
+  { title: '表单设计', validator: validateForm },
+  { title: '流程设计', validator: validateProcess },
+  { title: '更多设置', validator: null }
 ]
 
 // 表单数据
@@ -230,9 +229,9 @@ const initData = async () => {
           formData.value.key + '_copy'
         )
       }
-      formData.value.name += t('bpm.model.form._todo136')
+      formData.value.name += '副本'
       formData.value.key += '_copy'
-      tagsView.setTitle(t('bpm.model.form._todo137'))
+      tagsView.setTitle('复制流程')
     }
   } else {
     // 情况三：新增场景
@@ -265,7 +264,7 @@ watch(
     } else if (formData.value.type === BpmModelType.SIMPLE) {
       processData.value = formData.value.simpleModel
     }
-    console.log(t('bpm.model.form._todo138'), processData.value)
+    console.log('加载流程数据', processData.value)
   },
   {
     immediate: true
@@ -280,7 +279,7 @@ const validateAllSteps = async () => {
       await validateBasic()
     } catch (error) {
       currentStep.value = 0
-      throw new Error(t('bpm.model.form._todo139'))
+      throw new Error('请完善基本信息')
     }
 
     // 表单设计校验
@@ -288,7 +287,7 @@ const validateAllSteps = async () => {
       await validateForm()
     } catch (error) {
       currentStep.value = 1
-      throw new Error(t('bpm.model.form._todo140'))
+      throw new Error('请完善自定义表单信息')
     }
 
     // 流程设计校验
@@ -298,7 +297,7 @@ const validateAllSteps = async () => {
       await validateProcess()
     } catch (error) {
       currentStep.value = 2
-      throw new Error(t('bpm.model.form._todo126'))
+      throw new Error('请设计流程')
     }
 
     return true
@@ -325,22 +324,22 @@ const handleSave = async () => {
       // 情况一：流程定义场景（恢复）
       await ModelApi.updateModel(modelData)
       // 提示成功
-      message.success(t('bpm.model.form._todo141'))
+      message.success('恢复成功，可点击【发布】按钮，进行发布模型')
     } else if (actionType === 'update') {
       // 修改场景
       await ModelApi.updateModel(modelData)
       // 提示成功
-      message.success(t('bpm.model.form._todo142'))
+      message.success('修改成功，可点击【发布】按钮，进行发布模型')
     } else if (actionType === 'copy') {
       // 情况三：复制场景
       formData.value.id = await ModelApi.createModel(modelData)
       // 提示成功
-      message.success(t('bpm.model.form._todo143'))
+      message.success('复制成功，可点击【发布】按钮，进行发布模型')
     } else {
       // 情况四：新增场景
       formData.value.id = await ModelApi.createModel(modelData)
       // 提示成功
-      message.success(t('bpm.model.form._todo144'))
+      message.success('新建成功，可点击【发布】按钮，进行发布模型')
     }
 
     // 返回列表页（排除更新的情况）
@@ -348,8 +347,8 @@ const handleSave = async () => {
       await router.push({ name: 'BpmModel' })
     }
   } catch (error: any) {
-    console.error(t('bpm.model.form._todo145'), error)
-    message.warning(error.message || t('bpm.model.form._todo146'))
+    console.error('保存失败:', error)
+    message.warning(error.message || '请完善所有步骤的必填信息')
   } finally {
     saveLoading.value = false
   }
@@ -360,7 +359,7 @@ const handleDeploy = async () => {
   try {
     // 修改场景下直接发布，新增场景下需要先确认
     if (!formData.value.id) {
-      await message.confirm(t('bpm.model.form._todo147'))
+      await message.confirm('是否确认发布该流程？')
     }
     // 校验所有步骤
     await validateAllSteps()
@@ -380,12 +379,12 @@ const handleDeploy = async () => {
 
     // 发布
     await ModelApi.deployModel(formData.value.id)
-    message.success(t('bpm.model.form._todo148'))
+    message.success('发布成功')
     // 返回列表页
     await router.push({ name: 'BpmModel' })
   } catch (error: any) {
-    console.error(t('bpm.model.form._todo149'), error)
-    message.warning(error.message || t('bpm.model.form._todo150'))
+    console.error('发布失败:', error)
+    message.warning(error.message || '发布失败')
   }
 }
 
@@ -415,8 +414,8 @@ const handleStepClick = async (index: number) => {
       }
     }
   } catch (error) {
-    console.error(t('bpm.model.form._todo151'), error)
-    message.warning(t('bpm.model.form._todo152'))
+    console.error('步骤切换失败:', error)
+    message.warning('请先完善当前步骤必填信息')
   }
 }
 

@@ -28,7 +28,6 @@
 import { BpmModelType } from '@/utils/constants'
 import BpmModelEditor from './editor/index.vue'
 import SimpleModelDesign from '../../simple/SimpleModelDesign.vue'
-const { t } = useI18n() // 国际化
 
 // 创建本地数据副本
 const modelData = defineModel<any>()
@@ -40,7 +39,7 @@ const validate = async () => {
   try {
     // 获取最新的流程数据
     if (!processData.value) {
-      throw new Error(t('bpm.model.form._todo126'))
+      throw new Error('请设计流程')
     }
     return true
   } catch (error) {

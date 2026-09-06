@@ -9,7 +9,7 @@
         <span class="iconfont icon-inclusive icon-size inclusive"></span>
       </div>
       <el-button v-else class="branch-node-add" color="#345da2" @click="addCondition" plain>
-        Add Condition
+        添加条件
       </el-button>
       <div
         class="branch-node-item"
@@ -185,7 +185,7 @@ const addCondition = () => {
     let lastIndex = len - 1
     const conditionData: SimpleFlowNode = {
       id: 'Flow_' + generateUUID(),
-      name: 'Inclusive Condition ' + len,
+      name: '包容条件' + len,
       showText: '',
       type: NodeType.CONDITION_NODE,
       childNode: undefined,

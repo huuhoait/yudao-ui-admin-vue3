@@ -1,40 +1,40 @@
 <template>
-  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" :title="t('system.notify.message.detail')">
+  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" title="详情">
     <el-descriptions :column="1" border>
-      <el-descriptions-item :label="t('system.notify.message.id')" min-width="120">
+      <el-descriptions-item label="编号" min-width="120">
         {{ detailData.id }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.notify.message.userType')">
+      <el-descriptions-item label="用户类型">
         <dict-tag :type="DICT_TYPE.USER_TYPE" :value="detailData.userType" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.notify.message.userId')">
+      <el-descriptions-item label="用户编号">
         {{ detailData.userId }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.notify.message._todo128')">
+      <el-descriptions-item label="模版编号">
         {{ detailData.templateId }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.notify.message.templateCode')">
+      <el-descriptions-item label="模板编码">
         {{ detailData.templateCode }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.notify.message.senderName')">
+      <el-descriptions-item label="发送人名称">
         {{ detailData.templateNickname }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.notify.message._todo129')">
+      <el-descriptions-item label="模版内容">
         {{ detailData.templateContent }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.notify.message._todo130')">
+      <el-descriptions-item label="模版参数">
         {{ detailData.templateParams }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.notify.message._todo131')">
+      <el-descriptions-item label="模版类型">
         <dict-tag :type="DICT_TYPE.SYSTEM_NOTIFY_TEMPLATE_TYPE" :value="detailData.templateType" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.notify.message._todo132')">
+      <el-descriptions-item label="是否已读">
         <dict-tag :type="DICT_TYPE.INFRA_BOOLEAN_STRING" :value="detailData.readStatus" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.notify.message.readTime')">
+      <el-descriptions-item label="阅读时间">
         {{ formatDate(detailData.readTime) }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('common.createTime')">
+      <el-descriptions-item label="创建时间">
         {{ formatDate(detailData.createTime) }}
       </el-descriptions-item>
     </el-descriptions>

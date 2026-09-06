@@ -1,29 +1,29 @@
 <!-- 工作流 - 抄送我的流程 -->
 <template>
   <doc-alert
-    :title="t('bpm.task.copy._todo258')"
+    title="审批转办、委派、抄送"
     url="https://doc.iocoder.cn/bpm/task-delegation-and-cc/"
   />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
     <el-form ref="queryFormRef" :inline="true" class="-mb-15px" label-width="68px">
-      <el-form-item :label="t('bpm.task.copy.processName')" prop="name">
+      <el-form-item label="流程名称" prop="name">
         <el-input
           v-model="queryParams.processInstanceName"
           @keyup.enter="handleQuery"
           class="!w-240px"
           clearable
-          :placeholder="t('bpm.task.copy.inputProcessName')"
+          placeholder="请输入流程名称"
         />
       </el-form-item>
-      <el-form-item :label="t('bpm.task.copy._todo259')" prop="createTime">
+      <el-form-item label="抄送时间" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
-          :end-placeholder="t('bpm.task.copy.endDate')"
-          :start-placeholder="t('bpm.task.copy.startDate')"
+          end-placeholder="结束日期"
+          start-placeholder="开始日期"
           type="daterange"
           value-format="YYYY-MM-DD HH:mm:ss"
         />
@@ -31,11 +31,11 @@
       <el-form-item>
         <el-button @click="handleQuery">
           <Icon class="mr-5px" icon="ep:search" />
-          {{ t('common.query') }}
+          搜索
         </el-button>
         <el-button @click="resetQuery">
           <Icon class="mr-5px" icon="ep:refresh" />
-          {{ t('common.reset') }}
+          重置
         </el-button>
       </el-form-item>
     </el-form>
@@ -45,8 +45,8 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
       <!-- TODO 芋艿：增加摘要 -->
-      <el-table-column align="center" :label="t('bpm.task.copy._todo260')" prop="processInstanceName" min-width="180" />
-      <el-table-column :label="t('bpm.task.copy.summary')" prop="summary" min-width="180">
+      <el-table-column align="center" label="流程名" prop="processInstanceName" min-width="180" />
+      <el-table-column label="摘要" prop="summary" min-width="180">
         <template #default="scope">
           <div class="flex flex-col" v-if="scope.row.summary && scope.row.summary.length > 0">
             <div v-for="(item, index) in scope.row.summary" :key="index">
@@ -57,32 +57,32 @@
       </el-table-column>
       <el-table-column
         align="center"
-        :label="t('bpm.task.copy.processStarter')"
+        label="流程发起人"
         prop="startUser.nickname"
         min-width="100"
       />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="t('bpm.task.copy._todo261')"
+        label="流程发起时间"
         prop="processInstanceStartTime"
         width="180"
       />
-      <el-table-column align="center" :label="t('bpm.task.copy._todo262')" prop="activityName" min-width="180" />
-      <el-table-column align="center" :label="t('bpm.task.copy.ccUser')" min-width="100">
+      <el-table-column align="center" label="抄送节点" prop="activityName" min-width="180" />
+      <el-table-column align="center" label="抄送人" min-width="100">
         <template #default="scope"> {{ scope.row.createUser?.nickname || '系统' }} </template>
       </el-table-column>
-      <el-table-column align="center" :label="t('bpm.task.copy.ccOpinion')" prop="reason" width="150" />
+      <el-table-column align="center" label="抄送意见" prop="reason" width="150" />
       <el-table-column
         align="center"
-        :label="t('bpm.task.copy._todo259')"
+        label="抄送时间"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column align="center" :label="t('bpm.task.copy.action')" fixed="right" width="80">
+      <el-table-column align="center" label="操作" fixed="right" width="80">
         <template #default="scope">
-          <el-button link type="primary" @click="handleAudit(scope.row)">{{ t('bpm.task.copy.detail') }}</el-button>
+          <el-button link type="primary" @click="handleAudit(scope.row)">详情</el-button>
         </template>
       </el-table-column>
     </el-table>

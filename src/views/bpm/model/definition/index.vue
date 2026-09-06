@@ -1,18 +1,18 @@
 <template>
-  <doc-alert :title="t('bpm.model.definition._todo46')" url="https://doc.iocoder.cn/bpm/" />
+  <doc-alert title="工作流手册" url="https://doc.iocoder.cn/bpm/" />
 
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column :label="t('bpm.model.definition._todo47')" align="center" prop="id" min-width="250" />
-      <el-table-column :label="t('bpm.model.definition.processName')" align="center" prop="name" min-width="150" />
-      <el-table-column :label="t('bpm.model.definition._todo48')" align="center" min-width="50">
+      <el-table-column label="定义编号" align="center" prop="id" min-width="250" />
+      <el-table-column label="流程名称" align="center" prop="name" min-width="150" />
+      <el-table-column label="流程图标" align="center" min-width="50">
         <template #default="{ row }">
           <el-image v-if="row.icon" :src="row.icon" class="h-24px w-24pxrounded" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('bpm.model.definition._todo49')" prop="startUserIds" min-width="100">
+      <el-table-column label="可见范围" prop="startUserIds" min-width="100">
         <template #default="{ row }">
-          <el-text v-if="!row.startUsers?.length"> {{ t('bpm.model.definition._todo52') }} </el-text>
+          <el-text v-if="!row.startUsers?.length"> 全部可见 </el-text>
           <el-text v-else-if="row.startUsers.length === 1">
             {{ row.startUsers[0].nickname }}
           </el-text>
@@ -28,12 +28,12 @@
           </el-text>
         </template>
       </el-table-column>
-      <el-table-column :label="t('bpm.model.definition.processType')" prop="modelType" min-width="120">
+      <el-table-column label="流程类型" prop="modelType" min-width="120">
         <template #default="{ row }">
           <dict-tag :value="row.modelType" :type="DICT_TYPE.BPM_MODEL_TYPE" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('bpm.model.definition.formInfo')" prop="formType" min-width="150">
+      <el-table-column label="表单信息" prop="formType" min-width="150">
         <template #default="scope">
           <el-button
             v-if="scope.row.formType === BpmModelFormType.NORMAL"
@@ -51,22 +51,22 @@
           >
             <span>{{ scope.row.formCustomCreatePath }}</span>
           </el-button>
-          <label v-else>{{ t('bpm.model.definition._todo53') }}</label>
+          <label v-else>暂无表单</label>
         </template>
       </el-table-column>
-      <el-table-column :label="t('bpm.model.definition._todo50')" align="center" min-width="80">
+      <el-table-column label="流程版本" align="center" min-width="80">
         <template #default="scope">
           <el-tag>v{{ scope.row.version }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column
-        :label="t('bpm.model.definition._todo51')"
+        label="部署时间"
         align="center"
         prop="deploymentTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('bpm.model.definition.action')" align="center">
+      <el-table-column label="操作" align="center">
         <template #default="scope">
           <el-button
             link
@@ -74,7 +74,7 @@
             @click="openModelForm(scope.row.id)"
             v-hasPermi="['bpm:model:update']"
           >
-            {{ t('bpm.model.definition._todo54') }}
+            恢复
           </el-button>
         </template>
       </el-table-column>
@@ -89,7 +89,7 @@
   </ContentWrap>
 
   <!-- 弹窗：表单详情 -->
-  <Dialog :title="t('bpm.model.definition.formDetail')" v-model="formDetailVisible" width="800">
+  <Dialog title="表单详情" v-model="formDetailVisible" width="800">
     <form-create :rule="formDetailPreview.rule" :option="formDetailPreview.option" />
   </Dialog>
 </template>

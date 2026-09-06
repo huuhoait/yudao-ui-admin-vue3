@@ -1,7 +1,7 @@
 <template>
-  <doc-alert :title="t('system.user.userSystem')" url="https://doc.iocoder.cn/user-center/" />
-  <doc-alert :title="t('system.user.socialLogin')" url="https://doc.iocoder.cn/social-user/" />
-  <doc-alert :title="t('system.user._todo11')" url="https://doc.iocoder.cn/excel-import-and-export/" />
+  <doc-alert title="用户体系" url="https://doc.iocoder.cn/user-center/" />
+  <doc-alert title="三方登陆" url="https://doc.iocoder.cn/social-user/" />
+  <doc-alert title="Excel 导入导出" url="https://doc.iocoder.cn/excel-import-and-export/" />
 
   <el-row :gutter="20">
     <!-- 左侧部门树 -->
@@ -20,28 +20,28 @@
           :inline="true"
           label-width="68px"
         >
-          <el-form-item :label="t('system.user.username')" prop="username">
+          <el-form-item label="用户名称" prop="username">
             <el-input
               v-model="queryParams.username"
-              :placeholder="t('system.user.inputUsername')"
+              placeholder="请输入用户名称"
               clearable
               @keyup.enter="handleQuery"
               class="!w-240px"
             />
           </el-form-item>
-          <el-form-item :label="t('system.user.mobile')" prop="mobile">
+          <el-form-item label="手机号码" prop="mobile">
             <el-input
               v-model="queryParams.mobile"
-              :placeholder="t('system.user.inputMobile')"
+              placeholder="请输入手机号码"
               clearable
               @keyup.enter="handleQuery"
               class="!w-240px"
             />
           </el-form-item>
-          <el-form-item :label="t('common.status')" prop="status">
+          <el-form-item label="状态" prop="status">
             <el-select
               v-model="queryParams.status"
-              :placeholder="t('system.user.selectUserStatus')"
+              placeholder="请选择用户状态"
               clearable
               class="!w-240px"
             >
@@ -53,26 +53,26 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item :label="t('common.createTime')" prop="createTime">
+          <el-form-item label="创建时间" prop="createTime">
             <el-date-picker
               v-model="queryParams.createTime"
               value-format="YYYY-MM-DD HH:mm:ss"
               type="datetimerange"
-              :start-placeholder="t('system.user.startDate')"
-              :end-placeholder="t('system.user.endDate')"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期"
               class="!w-240px"
             />
           </el-form-item>
           <el-form-item>
-            <el-button @click="handleQuery"><Icon icon="ep:search" />{{ t('common.query') }}</el-button>
-            <el-button @click="resetQuery"><Icon icon="ep:refresh" />{{ t('common.reset') }}</el-button>
+            <el-button @click="handleQuery"><Icon icon="ep:search" />搜索</el-button>
+            <el-button @click="resetQuery"><Icon icon="ep:refresh" />重置</el-button>
             <el-button
               type="primary"
               plain
               @click="openForm('create')"
               v-hasPermi="['system:user:create']"
             >
-              <Icon icon="ep:plus" /> {{ t('system.user.create') }}
+              <Icon icon="ep:plus" /> 新增
             </el-button>
             <el-button
               type="warning"
@@ -80,7 +80,7 @@
               @click="handleImport"
               v-hasPermi="['system:user:import']"
             >
-              <Icon icon="ep:upload" /> {{ t('system.user.import') }}
+              <Icon icon="ep:upload" /> 导入
             </el-button>
             <el-button
               type="success"
@@ -89,7 +89,7 @@
               :loading="exportLoading"
               v-hasPermi="['system:user:export']"
             >
-              <Icon icon="ep:download" />{{ t('system.user.export') }}
+              <Icon icon="ep:download" />导出
             </el-button>
             <el-button
               type="danger"
@@ -98,7 +98,7 @@
               @click="handleDeleteBatch"
               v-hasPermi="['system:user:delete']"
             >
-              <Icon icon="ep:delete" />{{ t('system.user.deleteBatch') }}
+              <Icon icon="ep:delete" />批量删除
             </el-button>
           </el-form-item>
         </el-form>
@@ -106,28 +106,28 @@
       <ContentWrap>
         <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
           <el-table-column type="selection" width="55" />
-          <el-table-column :label="t('system.user.userId')" align="center" key="id" prop="id" />
+          <el-table-column label="用户编号" align="center" key="id" prop="id" />
           <el-table-column
-            :label="t('system.user.username')"
+            label="用户名称"
             align="center"
             prop="username"
             :show-overflow-tooltip="true"
           />
           <el-table-column
-            :label="t('system.user.nickname')"
+            label="用户昵称"
             align="center"
             prop="nickname"
             :show-overflow-tooltip="true"
           />
           <el-table-column
-            :label="t('system.user.dept')"
+            label="部门"
             align="center"
             key="deptName"
             prop="deptName"
             :show-overflow-tooltip="true"
           />
-          <el-table-column :label="t('system.user.mobile')" align="center" prop="mobile" width="120" />
-          <el-table-column :label="t('common.status')" key="status">
+          <el-table-column label="手机号码" align="center" prop="mobile" width="120" />
+          <el-table-column label="状态" key="status">
             <template #default="scope">
               <el-switch
                 v-model="scope.row.status"
@@ -139,13 +139,13 @@
             </template>
           </el-table-column>
           <el-table-column
-            :label="t('common.createTime')"
+            label="创建时间"
             align="center"
             prop="createTime"
             :formatter="dateFormatter"
             width="180"
           />
-          <el-table-column :label="t('system.user.action')" align="center" width="160">
+          <el-table-column label="操作" align="center" width="160">
             <template #default="scope">
               <div class="flex items-center justify-center">
                 <el-button
@@ -154,7 +154,7 @@
                   @click="openForm('update', scope.row.id)"
                   v-hasPermi="['system:user:update']"
                 >
-                  <Icon icon="ep:edit" />{{ t('system.user.edit') }}
+                  <Icon icon="ep:edit" />修改
                 </el-button>
                 <el-dropdown
                   @command="(command) => handleCommand(command, scope.row)"
@@ -164,26 +164,26 @@
                     'system:permission:assign-user-role'
                   ]"
                 >
-                  <el-button type="primary" link><Icon icon="ep:d-arrow-right" /> {{ t('system.user.more') }}</el-button>
+                  <el-button type="primary" link><Icon icon="ep:d-arrow-right" /> 更多</el-button>
                   <template #dropdown>
                     <el-dropdown-menu>
                       <el-dropdown-item
                         command="handleDelete"
                         v-if="checkPermi(['system:user:delete'])"
                       >
-                        <Icon icon="ep:delete" />{{ t('system.user.delete') }}
+                        <Icon icon="ep:delete" />删除
                       </el-dropdown-item>
                       <el-dropdown-item
                         command="handleResetPwd"
                         v-if="checkPermi(['system:user:update-password'])"
                       >
-                        <Icon icon="ep:key" />{{ t('system.user.resetPassword') }}
+                        <Icon icon="ep:key" />重置密码
                       </el-dropdown-item>
                       <el-dropdown-item
                         command="handleRole"
                         v-if="checkPermi(['system:permission:assign-user-role'])"
                       >
-                        <Icon icon="ep:circle-check" />{{ t('system.user.assignRole') }}
+                        <Icon icon="ep:circle-check" />分配角色
                       </el-dropdown-item>
                     </el-dropdown-menu>
                   </template>
@@ -286,7 +286,7 @@ const handleImport = () => {
 const handleStatusChange = async (row: UserApi.UserVO) => {
   try {
     // 修改状态的二次确认
-    const text = row.status === CommonStatusEnum.ENABLE ? t('system.user.enable') : t('system.user.disable')
+    const text = row.status === CommonStatusEnum.ENABLE ? '启用' : '停用'
     await message.confirm('确认要"' + text + '""' + row.username + '"用户吗?')
     // 发起修改状态
     await UserApi.updateUserStatus(row.id, row.status)

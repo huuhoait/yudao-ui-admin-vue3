@@ -9,7 +9,7 @@
 -->
 <template>
   <div>
-    <el-divider content-position="left">Approval Type</el-divider>
+    <el-divider content-position="left">审批类型</el-divider>
     <el-form-item prop="approveType">
       <el-radio-group v-model="approveType.value">
         <el-radio
@@ -23,7 +23,7 @@
       </el-radio-group>
     </el-form-item>
 
-    <el-divider content-position="left">When approver rejects</el-divider>
+    <el-divider content-position="left">审批人拒绝时</el-divider>
     <el-form-item prop="rejectHandlerType">
       <el-radio-group
         v-model="rejectHandlerType"
@@ -39,7 +39,7 @@
     </el-form-item>
     <el-form-item
       v-if="rejectHandlerType == RejectHandlerType.RETURN_USER_TASK"
-      label="Reject Node"
+      label="驳回节点"
       prop="returnNodeId"
     >
       <el-select v-model="returnNodeId" clearable style="width: 100%" @change="updateReturnNodeId">
@@ -52,7 +52,7 @@
       </el-select>
     </el-form-item>
 
-    <el-divider content-position="left">When approver is empty</el-divider>
+    <el-divider content-position="left">审批人为空时</el-divider>
     <el-form-item prop="assignEmptyHandlerType">
       <el-radio-group v-model="assignEmptyHandlerType" @change="updateAssignEmptyHandlerType">
         <div class="flex-col">
@@ -64,7 +64,7 @@
     </el-form-item>
     <el-form-item
       v-if="assignEmptyHandlerType == AssignEmptyHandlerType.ASSIGN_USER"
-      label="Specified User"
+      label="指定用户"
       prop="assignEmptyHandlerUserIds"
       span="24"
     >
@@ -84,7 +84,7 @@
       </el-select>
     </el-form-item>
 
-    <el-divider content-position="left">When approver is the same as submitter</el-divider>
+    <el-divider content-position="left">审批人与提交人为同一人时</el-divider>
     <el-radio-group v-model="assignStartUserHandlerType" @change="updateAssignStartUserHandlerType">
       <div class="flex-col">
         <div v-for="(item, index) in ASSIGN_START_USER_HANDLER_TYPES" :key="index">
@@ -93,12 +93,12 @@
       </div>
     </el-radio-group>
 
-    <el-divider content-position="left">Action Button</el-divider>
+    <el-divider content-position="left">操作按钮</el-divider>
     <div class="button-setting-pane">
       <div class="button-setting-title">
-        <div class="button-title-label">Action Button</div>
-        <div class="pl-4 button-title-label">Display Name</div>
-        <div class="button-title-label">Enable</div>
+        <div class="button-title-label">操作按钮</div>
+        <div class="pl-4 button-title-label">显示名称</div>
+        <div class="button-title-label">启用</div>
       </div>
       <div class="button-setting-item" v-for="(item, index) in buttonsSettingEl" :key="index">
         <div class="button-setting-item-label"> {{ OPERATION_BUTTON_NAME.get(item.id) }} </div>
@@ -122,19 +122,19 @@
       </div>
     </div>
 
-    <el-divider content-position="left">Field Permission</el-divider>
+    <el-divider content-position="left">字段权限</el-divider>
     <div class="field-setting-pane" v-if="formType === BpmModelFormType.NORMAL">
       <div class="field-permit-title">
-        <div class="setting-title-label first-title"> Field Name </div>
+        <div class="setting-title-label first-title"> 字段名称 </div>
         <div class="other-titles">
           <span class="setting-title-label cursor-pointer" @click="updatePermission('READ')">
-            Read-only
+            只读
           </span>
           <span class="setting-title-label cursor-pointer" @click="updatePermission('WRITE')">
-            Editable
+            可编辑
           </span>
           <span class="setting-title-label cursor-pointer" @click="updatePermission('NONE')">
-            Hide
+            隐藏
           </span>
         </div>
       </div>
@@ -175,22 +175,22 @@
       </div>
     </div>
 
-    <el-divider content-position="left">Signature Required</el-divider>
+    <el-divider content-position="left">是否需要签名</el-divider>
     <el-form-item prop="signEnable">
       <el-switch
         v-model="signEnable.value"
-        active-text="Yes"
-        inactive-text="No"
+        active-text="是"
+        inactive-text="否"
         @change="updateElementExtensions"
       />
     </el-form-item>
 
-    <el-divider content-position="left">Approval Comment</el-divider>
+    <el-divider content-position="left">审批意见</el-divider>
     <el-form-item prop="reasonRequire">
       <el-switch
         v-model="reasonRequire.value"
-        active-text="Required"
-        inactive-text="Optional"
+        active-text="必填"
+        inactive-text="非必填"
         @change="updateElementExtensions"
       />
     </el-form-item>

@@ -1,6 +1,6 @@
 <template>
   <div style="margin-top: 16px">
-    <el-form-item label="Script Format">
+    <el-form-item label="脚本格式">
       <el-input
         v-model="scriptTaskForm.scriptFormat"
         clearable
@@ -8,13 +8,13 @@
         @change="updateElementTask()"
       />
     </el-form-item>
-    <el-form-item label="Script Type">
+    <el-form-item label="脚本类型">
       <el-select v-model="scriptTaskForm.scriptType">
-        <el-option label="Inline Script" value="inline" />
-        <el-option label="External Resource" value="external" />
+        <el-option label="内联脚本" value="inline" />
+        <el-option label="外部资源" value="external" />
       </el-select>
     </el-form-item>
-    <el-form-item label="Script" v-show="scriptTaskForm.scriptType === 'inline'">
+    <el-form-item label="脚本" v-show="scriptTaskForm.scriptType === 'inline'">
       <el-input
         v-model="scriptTaskForm.script"
         type="textarea"
@@ -25,7 +25,7 @@
         @change="updateElementTask()"
       />
     </el-form-item>
-    <el-form-item label="Resource Address" v-show="scriptTaskForm.scriptType === 'external'">
+    <el-form-item label="资源地址" v-show="scriptTaskForm.scriptType === 'external'">
       <el-input
         v-model="scriptTaskForm.resource"
         clearable
@@ -33,7 +33,7 @@
         @change="updateElementTask()"
       />
     </el-form-item>
-    <el-form-item label="Result Variable">
+    <el-form-item label="结果变量">
       <el-input
         v-model="scriptTaskForm.resultVariable"
         clearable

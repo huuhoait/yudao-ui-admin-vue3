@@ -42,7 +42,7 @@
       </div>
     </el-popover>
     <div v-if="signPicUrl" class="inline-flex items-center gap-6px">
-      <span class="text-12px text-[var(--el-text-color-secondary)]">{{ t('bpm.task.components.signature') }}</span>
+      <span class="text-12px text-[var(--el-text-color-secondary)]">签名</span>
       <el-image
         class="h-32px w-72px rounded-4px border border-[var(--el-border-color)] bg-white"
         :src="signPicUrl"

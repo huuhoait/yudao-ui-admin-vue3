@@ -1,19 +1,19 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('system.social.user.detail')" width="800">
+  <Dialog v-model="dialogVisible" title="详情" width="800">
     <el-descriptions :column="1" border>
-      <el-descriptions-item :label="t('system.social.user.socialPlatform')" min-width="160">
+      <el-descriptions-item label="社交平台" min-width="160">
         <dict-tag :type="DICT_TYPE.SYSTEM_SOCIAL_TYPE" :value="detailData.type" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.social.user.nickname')" min-width="120">
+      <el-descriptions-item label="用户昵称" min-width="120">
         {{ detailData.nickname }}
       </el-descriptions-item>
-      <el-descriptions :label="t('system.social.user._todo267')" min-width="120">
+      <el-descriptions label="用户头像" min-width="120">
         <el-image :src="detailData.avatar" class="h-30px w-30px" />
       </el-descriptions>
-      <el-descriptions-item :label="t('system.social.user._todo268')" min-width="120">
+      <el-descriptions-item label="社交 token" min-width="120">
         {{ detailData.token }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.social.user._todo269')" min-width="120">
+      <el-descriptions-item label="原始 Token 数据" min-width="120">
         <el-input
           v-model="detailData.rawTokenInfo"
           :autosize="{ maxRows: 20 }"
@@ -21,7 +21,7 @@
           type="textarea"
         />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.social.user._todo270')" min-width="120">
+      <el-descriptions-item label="原始 User 数据" min-width="120">
         <el-input
           v-model="detailData.rawUserInfo"
           :autosize="{ maxRows: 20 }"
@@ -29,10 +29,10 @@
           type="textarea"
         />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.social.user._todo271')" min-width="120">
+      <el-descriptions-item label="最后一次的认证 code" min-width="120">
         {{ detailData.code }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.social.user._todo272')" min-width="120">
+      <el-descriptions-item label="最后一次的认证 state" min-width="120">
         {{ detailData.state }}
       </el-descriptions-item>
     </el-descriptions>

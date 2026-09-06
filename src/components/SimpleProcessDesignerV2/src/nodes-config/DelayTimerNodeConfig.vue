@@ -25,7 +25,7 @@
     </template>
     <div>
       <el-form ref="formRef" :model="configForm" label-position="top" :rules="formRules">
-        <el-form-item label="Delay Time" prop="delayType">
+        <el-form-item label="延迟时间" prop="delayType">
           <el-radio-group v-model="configForm.delayType">
             <el-radio-button
               v-for="item in DELAY_TYPE"
@@ -53,25 +53,25 @@
               :value="item.value"
             />
           </el-select>
-          <el-text>then go to the next node</el-text>
+          <el-text>后进入下一节点</el-text>
         </el-form-item>
         <el-form-item v-if="configForm.delayType === DelayTypeEnum.FIXED_DATE_TIME" prop="dateTime">
           <el-date-picker
             class="mr-2"
             v-model="configForm.dateTime"
             type="datetime"
-            placeholder="Please select date and time"
+            placeholder="请选择日期和时间"
             value-format="YYYY-MM-DDTHH:mm:ss"
           />
-          <el-text>then go to the next node</el-text>
+          <el-text>后进入下一节点</el-text>
         </el-form-item>
       </el-form>
     </div>
     <template #footer>
       <el-divider />
       <div>
-        <el-button type="primary" @click="saveConfig">OK</el-button>
-        <el-button @click="closeDrawer">Cancel</el-button>
+        <el-button type="primary" @click="saveConfig">确 定</el-button>
+        <el-button @click="closeDrawer">取 消</el-button>
       </div>
     </template>
   </el-drawer>
@@ -106,9 +106,9 @@ const { nodeName, showInput, clickIcon, blurEvent } = useNodeName(NodeType.DELAY
 const formRef = ref() // 表单 Ref
 // 表单校验规则
 const formRules = reactive({
-  delayType: [{ required: true, message: 'Delay time is required', trigger: 'change' }],
-  timeDuration: [{ required: true, message: 'Delay time is required', trigger: 'change' }],
-  dateTime: [{ required: true, message: 'Delay time is required', trigger: 'change' }]
+  delayType: [{ required: true, message: '延迟时间不能为空', trigger: 'change' }],
+  timeDuration: [{ required: true, message: '延迟时间不能为空', trigger: 'change' }],
+  dateTime: [{ required: true, message: '延迟时间不能为空', trigger: 'change' }]
 })
 // 配置表单数据
 const configForm = ref({
@@ -144,10 +144,10 @@ const saveConfig = async () => {
 const getShowText = (): string => {
   let showText = ''
   if (configForm.value.delayType === DelayTypeEnum.FIXED_TIME_DURATION) {
-    showText = `Delay ${configForm.value.timeDuration} ${TIME_UNIT_TYPES.find((item) => item.value === configForm.value.timeUnit).label}`
+    showText = `延迟${configForm.value.timeDuration}${TIME_UNIT_TYPES.find((item) => item.value === configForm.value.timeUnit).label}`
   }
   if (configForm.value.delayType === DelayTypeEnum.FIXED_DATE_TIME) {
-    showText = `Delay until ${configForm.value.dateTime.replace('T', ' ')}`
+    showText = `延迟至${configForm.value.dateTime.replace('T', ' ')}`
   }
   return showText
 }

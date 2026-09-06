@@ -13,61 +13,61 @@
             <div class="approve handler-item-icon">
               <span class="iconfont icon-approve icon-size"></span>
             </div>
-            <div class="handler-item-text">Approver</div>
+            <div class="handler-item-text">审批人</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.TRANSACTOR_NODE)">
             <div class="transactor handler-item-icon">
               <span class="iconfont icon-transactor icon-size"></span>
             </div>
-            <div class="handler-item-text">Assignee</div>
+            <div class="handler-item-text">办理人</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.COPY_TASK_NODE)">
             <div class="handler-item-icon copy">
               <span class="iconfont icon-size icon-copy"></span>
             </div>
-            <div class="handler-item-text">CC</div>
+            <div class="handler-item-text">抄送</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.CONDITION_BRANCH_NODE)">
             <div class="handler-item-icon condition">
               <span class="iconfont icon-size icon-exclusive"></span>
             </div>
-            <div class="handler-item-text">Conditional Branch</div>
+            <div class="handler-item-text">条件分支</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.PARALLEL_BRANCH_NODE)">
             <div class="handler-item-icon parallel">
               <span class="iconfont icon-size icon-parallel"></span>
             </div>
-            <div class="handler-item-text">Parallel Branch</div>
+            <div class="handler-item-text">并行分支</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.INCLUSIVE_BRANCH_NODE)">
             <div class="handler-item-icon inclusive">
               <span class="iconfont icon-size icon-inclusive"></span>
             </div>
-            <div class="handler-item-text">Inclusive Branch</div>
+            <div class="handler-item-text">包容分支</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.DELAY_TIMER_NODE)">
             <div class="handler-item-icon delay">
               <span class="iconfont icon-size icon-delay"></span>
             </div>
-            <div class="handler-item-text">Delay Timer</div>
+            <div class="handler-item-text">延迟器</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.ROUTER_BRANCH_NODE)">
             <div class="handler-item-icon router">
               <span class="iconfont icon-size icon-router"></span>
             </div>
-            <div class="handler-item-text">Router Branch</div>
+            <div class="handler-item-text">路由分支</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.TRIGGER_NODE)">
             <div class="handler-item-icon trigger">
               <span class="iconfont icon-size icon-trigger"></span>
             </div>
-            <div class="handler-item-text">Trigger</div>
+            <div class="handler-item-text">触发器</div>
           </div>
           <div class="handler-item" @click="addNode(NodeType.CHILD_PROCESS_NODE)">
             <div class="handler-item-icon child-process">
               <span class="iconfont icon-size icon-child-process"></span>
             </div>
-            <div class="handler-item-text">Sub Process</div>
+            <div class="handler-item-text">子流程</div>
           </div>
         </div>
         <template #reference>
@@ -158,14 +158,14 @@ const addNode = (type: number) => {
   }
   if (type === NodeType.CONDITION_BRANCH_NODE) {
     const data: SimpleFlowNode = {
-      name: 'Conditional Branch',
+      name: '条件分支',
       type: NodeType.CONDITION_BRANCH_NODE,
       id: 'GateWay_' + generateUUID(),
       childNode: props.childNode,
       conditionNodes: [
         {
           id: 'Flow_' + generateUUID(),
-          name: 'Condition 1',
+          name: '条件1',
           showText: '',
           type: NodeType.CONDITION_NODE,
           childNode: undefined,
@@ -177,8 +177,8 @@ const addNode = (type: number) => {
         },
         {
           id: 'Flow_' + generateUUID(),
-          name: 'Other Cases',
-          showText: 'Taken when none of the other conditions are met',
+          name: '其它情况',
+          showText: '未满足其它条件时，将进入此分支',
           type: NodeType.CONDITION_NODE,
           childNode: undefined,
           conditionSetting: {
@@ -191,22 +191,22 @@ const addNode = (type: number) => {
   }
   if (type === NodeType.PARALLEL_BRANCH_NODE) {
     const data: SimpleFlowNode = {
-      name: 'Parallel Branch',
+      name: '并行分支',
       type: NodeType.PARALLEL_BRANCH_NODE,
       id: 'GateWay_' + generateUUID(),
       childNode: props.childNode,
       conditionNodes: [
         {
           id: 'Flow_' + generateUUID(),
-          name: 'Parallel 1',
-          showText: 'Runs at the same time, no condition required',
+          name: '并行1',
+          showText: '无需配置条件同时执行',
           type: NodeType.CONDITION_NODE,
           childNode: undefined
         },
         {
           id: 'Flow_' + generateUUID(),
-          name: 'Parallel 2',
-          showText: 'Runs at the same time, no condition required',
+          name: '并行2',
+          showText: '无需配置条件同时执行',
           type: NodeType.CONDITION_NODE,
           childNode: undefined
         }
@@ -216,14 +216,14 @@ const addNode = (type: number) => {
   }
   if (type === NodeType.INCLUSIVE_BRANCH_NODE) {
     const data: SimpleFlowNode = {
-      name: 'Inclusive Branch',
+      name: '包容分支',
       type: NodeType.INCLUSIVE_BRANCH_NODE,
       id: 'GateWay_' + generateUUID(),
       childNode: props.childNode,
       conditionNodes: [
         {
           id: 'Flow_' + generateUUID(),
-          name: 'Inclusive Condition 1',
+          name: '包容条件1',
           showText: '',
           type: NodeType.CONDITION_NODE,
           childNode: undefined,
@@ -235,8 +235,8 @@ const addNode = (type: number) => {
         },
         {
           id: 'Flow_' + generateUUID(),
-          name: 'Other Cases',
-          showText: 'Taken when none of the other conditions are met',
+          name: '其它情况',
+          showText: '未满足其它条件时，将进入此分支',
           type: NodeType.CONDITION_NODE,
           childNode: undefined,
           conditionSetting: {

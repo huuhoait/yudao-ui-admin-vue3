@@ -7,11 +7,11 @@
       :rules="formRules"
       label-width="80px"
     >
-      <el-form-item :label="t('system.tenant.tenantName')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('system.tenant.inputTenantName')" />
+      <el-form-item label="租户名" prop="name">
+        <el-input v-model="formData.name" placeholder="请输入租户名" />
       </el-form-item>
-      <el-form-item :label="t('system.tenant.tenantPackage')" prop="packageId">
-        <el-select v-model="formData.packageId" clearable :placeholder="t('system.tenant.selectTenantPackage')">
+      <el-form-item label="租户套餐" prop="packageId">
+        <el-select v-model="formData.packageId" clearable placeholder="请选择租户套餐">
           <el-option
             v-for="item in packageList"
             :key="item.id"
@@ -20,48 +20,48 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('system.tenant.contact')" prop="contactName">
-        <el-input v-model="formData.contactName" :placeholder="t('system.tenant.inputContact')" />
+      <el-form-item label="联系人" prop="contactName">
+        <el-input v-model="formData.contactName" placeholder="请输入联系人" />
       </el-form-item>
-      <el-form-item :label="t('system.tenant.contactMobile')" prop="contactMobile">
-        <el-input v-model="formData.contactMobile" :placeholder="t('system.tenant.inputContactMobile')" />
+      <el-form-item label="联系手机" prop="contactMobile">
+        <el-input v-model="formData.contactMobile" placeholder="请输入联系手机" />
       </el-form-item>
-      <el-form-item v-if="formData.id === undefined" :label="t('system.tenant.username')" prop="username">
-        <el-input v-model="formData.username" :placeholder="t('system.tenant.inputUsername')" />
+      <el-form-item v-if="formData.id === undefined" label="用户名称" prop="username">
+        <el-input v-model="formData.username" placeholder="请输入用户名称" />
       </el-form-item>
-      <el-form-item v-if="formData.id === undefined" :label="t('system.tenant.password')" prop="password">
+      <el-form-item v-if="formData.id === undefined" label="用户密码" prop="password">
         <el-input
           v-model="formData.password"
-          :placeholder="t('system.tenant.inputPassword')"
+          placeholder="请输入用户密码"
           show-password
           type="password"
         />
       </el-form-item>
-      <el-form-item :label="t('system.tenant.accountQuota')" prop="accountCount">
+      <el-form-item label="账号额度" prop="accountCount">
         <el-input-number
           v-model="formData.accountCount"
           :min="0"
           controls-position="right"
-          :placeholder="t('system.tenant.inputAccountQuota')"
+          placeholder="请输入账号额度"
         />
       </el-form-item>
-      <el-form-item :label="t('system.tenant.expireTime')" prop="expireTime">
+      <el-form-item label="过期时间" prop="expireTime">
         <el-date-picker
           v-model="formData.expireTime"
           clearable
-          :placeholder="t('system.tenant.selectExpireTime')"
+          placeholder="请选择过期时间"
           type="date"
           value-format="x"
         />
       </el-form-item>
-      <el-form-item :label="t('system.tenant._todo276')" prop="websites">
+      <el-form-item label="绑定域名" prop="websites">
         <el-input-tag
           v-model="formData.websites"
-          :placeholder="t('system.tenant._todo277')"
+          placeholder="请输入绑定域名，按回车添加"
           class="w-full"
         />
       </el-form-item>
-      <el-form-item :label="t('system.tenant.tenantStatus')" prop="status">
+      <el-form-item label="租户状态" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -74,8 +74,8 @@
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
-      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
+      <el-button @click="dialogVisible = false">取 消</el-button>
     </template>
   </Dialog>
 </template>
@@ -108,14 +108,14 @@ const formData = ref({
   password: undefined
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('system.tenant.tenantNameRequired'), trigger: 'blur' }],
-  packageId: [{ required: true, message: t('system.tenant.tenantPackageRequired'), trigger: 'blur' }],
-  contactName: [{ required: true, message: t('system.tenant.contactRequired'), trigger: 'blur' }],
-  status: [{ required: true, message: t('system.tenant.tenantStatusRequired'), trigger: 'blur' }],
-  accountCount: [{ required: true, message: t('system.tenant.accountQuotaRequired'), trigger: 'blur' }],
-  expireTime: [{ required: true, message: t('system.tenant.expireTimeRequired'), trigger: 'blur' }],
-  username: [{ required: true, message: t('system.tenant.usernameRequired'), trigger: 'blur' }],
-  password: [{ required: true, message: t('system.tenant.passwordRequired'), trigger: 'blur' }]
+  name: [{ required: true, message: '租户名不能为空', trigger: 'blur' }],
+  packageId: [{ required: true, message: '租户套餐不能为空', trigger: 'blur' }],
+  contactName: [{ required: true, message: '联系人不能为空', trigger: 'blur' }],
+  status: [{ required: true, message: '租户状态不能为空', trigger: 'blur' }],
+  accountCount: [{ required: true, message: '账号额度不能为空', trigger: 'blur' }],
+  expireTime: [{ required: true, message: '过期时间不能为空', trigger: 'blur' }],
+  username: [{ required: true, message: '用户名称不能为空', trigger: 'blur' }],
+  password: [{ required: true, message: '用户密码不能为空', trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 const packageList = ref([] as TenantPackageApi.TenantPackageVO[]) // 租户套餐

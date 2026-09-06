@@ -1,26 +1,26 @@
 <template>
   <div class="panel-tab__content">
     <div style="margin-top: 10px">
-      <span>Type:</span>
+      <span>类型：</span>
       <el-button-group>
         <el-button size="small" :type="type === 'time' ? 'primary' : ''" @click="setType('time')">
-          Date
+          时间
         </el-button>
         <el-button
           size="small"
           :type="type === 'duration' ? 'primary' : ''"
           @click="setType('duration')"
         >
-          Duration
+          持续
         </el-button>
         <el-button size="small" :type="type === 'cycle' ? 'primary' : ''" @click="setType('cycle')">
-          Loop
+          循环
         </el-button>
       </el-button-group>
       <el-icon v-if="valid" color="green" style="margin-left: 8px"><CircleCheckFilled /></el-icon>
     </div>
     <div style="display: flex; margin-top: 10px; align-items: center">
-      <span>Condition:</span>
+      <span>条件：</span>
       <el-input
         v-model="condition"
         :placeholder="placeholder"
@@ -30,7 +30,7 @@
         @blur="updateNode"
       >
         <template #suffix>
-          <el-tooltip v-if="!valid" content="Format Error" placement="top">
+          <el-tooltip v-if="!valid" content="格式错误" placement="top">
             <el-icon color="orange"><WarningFilled /></el-icon>
           </el-tooltip>
           <el-tooltip :content="helpText" placement="top">
@@ -71,53 +71,53 @@
     <!-- 时间选择器 -->
     <el-dialog
       v-model="showDatePicker"
-      title="Select Time"
+      title="选择时间"
       width="400px"
       @close="showDatePicker = false"
     >
       <el-date-picker
         v-model="dateValue"
         type="datetime"
-        placeholder="Select Date Time"
+        placeholder="选择日期时间"
         style="width: 100%"
         @change="onDateChange"
       />
       <template #footer>
-        <el-button @click="showDatePicker = false">Cancel</el-button>
-        <el-button type="primary" @click="onDateConfirm">Confirm</el-button>
+        <el-button @click="showDatePicker = false">取消</el-button>
+        <el-button type="primary" @click="onDateConfirm">确定</el-button>
       </template>
     </el-dialog>
     <!-- 持续时长选择器 -->
     <el-dialog
       v-model="showDurationDialog"
-      title="Timer Config"
+      title="时间配置"
       width="600px"
       @close="showDurationDialog = false"
     >
       <DurationConfig :value="condition" @change="onDurationChange" />
       <template #footer>
-        <el-button @click="showDurationDialog = false">Cancel</el-button>
-        <el-button type="primary" @click="onDurationConfirm">Confirm</el-button>
+        <el-button @click="showDurationDialog = false">取消</el-button>
+        <el-button type="primary" @click="onDurationConfirm">确定</el-button>
       </template>
     </el-dialog>
     <!-- 循环配置器 -->
     <el-dialog
       v-model="showCycleDialog"
-      title="Timer Config"
+      title="时间配置"
       width="800px"
       @close="showCycleDialog = false"
     >
       <CycleConfig :value="condition" @change="onCycleChange" />
       <template #footer>
-        <el-button @click="showCycleDialog = false">Cancel</el-button>
-        <el-button type="primary" @click="onCycleConfirm">Confirm</el-button>
+        <el-button @click="showCycleDialog = false">取消</el-button>
+        <el-button type="primary" @click="onCycleConfirm">确定</el-button>
       </template>
     </el-dialog>
     <!-- 帮助说明 -->
-    <el-dialog v-model="showHelp" title="Format Description" width="600px" @close="showHelp = false">
+    <el-dialog v-model="showHelp" title="格式说明" width="600px" @close="showHelp = false">
       <div v-html="helpHtml"></div>
       <template #footer>
-        <el-button @click="showHelp = false">Close</el-button>
+        <el-button @click="showHelp = false">关闭</el-button>
       </template>
     </el-dialog>
   </div>
@@ -140,25 +140,25 @@ const showHelp = ref(false)
 const dateValue = ref(null)
 
 const placeholder = computed(() => {
-  if (type.value === 'time') return 'Please enter time'
-  if (type.value === 'duration') return 'Please enter duration'
-  if (type.value === 'cycle') return 'Please enter loop expression'
+  if (type.value === 'time') return '请输入时间'
+  if (type.value === 'duration') return '请输入持续时长'
+  if (type.value === 'cycle') return '请输入循环表达式'
   return ''
 })
 const helpText = computed(() => {
-  if (type.value === 'time') return 'Select Specific Time'
-  if (type.value === 'duration') return 'ISO 8601 format, e.g. PT1H'
-  if (type.value === 'cycle') return 'CRON expression or ISO 8601 cycle'
+  if (type.value === 'time') return '选择具体时间'
+  if (type.value === 'duration') return 'ISO 8601格式，如PT1H'
+  if (type.value === 'cycle') return 'CRON表达式或ISO 8601周期'
   return ''
 })
 const helpHtml = computed(() => {
   if (type.value === 'duration') {
-    return `How long to wait before the timer fires. S means seconds, M means minutes, D means days; P marks a period and T marks a period given down to the time of day.<br>
-    The format is ISO 8601: one year, two months, three days, four hours, five minutes and six seconds is written as P1Y2M3DT4H5M6S.<br>
-    P is the leading marker and T separates the date part from the time part. T cannot be omitted when only a time is given — "once per hour" is written as PT1H.`
+    return `指定定时器之前要等待多长时间。S表示秒，M表示分，D表示天；P表示时间段，T表示精确到时间的时间段。<br>
+    时间格式依然为ISO 8601格式，一年两个月三天四小时五分六秒内，可以写成P1Y2M3DT4H5M6S。<br>
+    P是开始标记，T是时间和日期分割标记，没有日期只有时间T是不能省去的，比如1小时执行一次应写成PT1H。`
   }
   if (type.value === 'cycle') {
-    return `Supports a CRON expression (e.g. 0 0/30 * * * ?) or an ISO 8601 cycle (e.g. R3/PT10M).`
+    return `支持CRON表达式（如0 0/30 * * * ?）或ISO 8601周期（如R3/PT10M）。`
   }
   return ''
 })

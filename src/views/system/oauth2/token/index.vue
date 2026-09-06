@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('system.oauth2.token._todo180')" url="https://doc.iocoder.cn/oauth2/" />
+  <doc-alert title="OAuth 2.0（SSO 单点登录)" url="https://doc.iocoder.cn/oauth2/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,19 +10,19 @@
       :inline="true"
       label-width="90px"
     >
-      <el-form-item :label="t('system.oauth2.token.userId')" prop="userId">
+      <el-form-item label="用户编号" prop="userId">
         <el-input
           v-model="queryParams.userId"
-          :placeholder="t('system.oauth2.token.inputUserId')"
+          placeholder="请输入用户编号"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('system.oauth2.token.userType')" prop="userType">
+      <el-form-item label="用户类型" prop="userType">
         <el-select
           v-model="queryParams.userType"
-          :placeholder="t('system.oauth2.token.selectUserType')"
+          placeholder="请选择用户类型"
           clearable
           class="!w-240px"
         >
@@ -34,18 +34,18 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('system.oauth2.token.clientId')" prop="clientId">
+      <el-form-item label="客户端编号" prop="clientId">
         <el-input
           v-model="queryParams.clientId"
-          :placeholder="t('system.oauth2.token.inputClientId')"
+          placeholder="请输入客户端编号"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
       </el-form-item>
     </el-form>
   </ContentWrap>
@@ -53,29 +53,29 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column :label="t('system.oauth2.token._todo181')" align="center" prop="accessToken" width="300" />
-      <el-table-column :label="t('system.oauth2.token._todo182')" align="center" prop="refreshToken" width="300" />
-      <el-table-column :label="t('system.oauth2.token.userId')" align="center" prop="userId" />
-      <el-table-column :label="t('system.oauth2.token.userType')" align="center" prop="userType">
+      <el-table-column label="访问令牌" align="center" prop="accessToken" width="300" />
+      <el-table-column label="刷新令牌" align="center" prop="refreshToken" width="300" />
+      <el-table-column label="用户编号" align="center" prop="userId" />
+      <el-table-column label="用户类型" align="center" prop="userType">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.USER_TYPE" :value="scope.row.userType" />
         </template>
       </el-table-column>
       <el-table-column
-        :label="t('system.oauth2.token.expireTime')"
+        label="过期时间"
         align="center"
         prop="expiresTime"
         :formatter="dateFormatter"
         width="180"
       />
       <el-table-column
-        :label="t('common.createTime')"
+        label="创建时间"
         align="center"
         prop="createTime"
         :formatter="dateFormatter"
         width="180"
       />
-      <el-table-column :label="t('system.oauth2.token.action')" align="center">
+      <el-table-column label="操作" align="center">
         <template #default="scope">
           <el-button
             link
@@ -83,7 +83,7 @@
             @click="handleForceLogout(scope.row.accessToken)"
             v-hasPermi="['system:oauth2-token:delete']"
           >
-            {{ t('system.oauth2.token._todo183') }}
+            强退
           </el-button>
         </template>
       </el-table-column>
@@ -148,7 +148,7 @@ const resetQuery = () => {
 const handleForceLogout = async (accessToken: string) => {
   try {
     // 删除的二次确认
-    await message.confirm(t('system.oauth2.token._todo184'))
+    await message.confirm('是否要强制退出用户')
     // 发起删除
     await OAuth2AccessTokenApi.deleteAccessToken(accessToken)
     message.success(t('common.success'))

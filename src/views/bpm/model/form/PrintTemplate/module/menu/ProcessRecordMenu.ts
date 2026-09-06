@@ -5,7 +5,7 @@ class ProcessRecordMenu implements IButtonMenu {
   readonly title: string
 
   constructor() {
-    this.title = t('bpm.model.form.PrintTemplate.module.menu._todo123')
+    this.title = '流程记录'
     this.tag = 'button'
   }
 

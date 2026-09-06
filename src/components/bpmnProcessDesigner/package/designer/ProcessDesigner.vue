@@ -5,47 +5,47 @@
       <template v-if="!$slots['control-header']">
         <ElButtonGroup key="file-control">
           <el-button @click="refFile.click()">
-            <Icon icon="ep:folder-opened" class="mr-1px" /> Open file
+            <Icon icon="ep:folder-opened" class="mr-1px" /> 打开文件
           </el-button>
           <el-tooltip effect="light" placement="bottom">
             <template #content>
               <div style="color: #409eff">
-                <!-- <el-button link @click="downloadProcessAsXml()">Download as XML</el-button> -->
-                <el-button link @click="downloadProcessAsXml()">Download as XML</el-button>
+                <!-- <el-button link @click="downloadProcessAsXml()">下载为XML文件</el-button> -->
+                <el-button link @click="downloadProcessAsXml()">下载为XML文件</el-button>
                 <br />
 
-                <!-- <el-button link @click="downloadProcessAsSvg()">Download as SVG</el-button> -->
-                <el-button link @click="downloadProcessAsSvg()">Download as SVG</el-button>
+                <!-- <el-button link @click="downloadProcessAsSvg()">下载为SVG文件</el-button> -->
+                <el-button link @click="downloadProcessAsSvg()">下载为SVG文件</el-button>
                 <br />
 
-                <!-- <el-button link @click="downloadProcessAsBpmn()">Download as BPMN</el-button> -->
-                <el-button link @click="downloadProcessAsBpmn()">Download as BPMN</el-button>
+                <!-- <el-button link @click="downloadProcessAsBpmn()">下载为BPMN文件</el-button> -->
+                <el-button link @click="downloadProcessAsBpmn()">下载为BPMN文件</el-button>
               </div>
             </template>
-            <el-button> <Icon icon="ep:download" class="mr-1px" /> Download file </el-button>
+            <el-button> <Icon icon="ep:download" class="mr-1px" /> 下载文件 </el-button>
           </el-tooltip>
           <el-tooltip effect="light">
-            <el-button> <Icon icon="ep:view" class="mr-1px" /> Browse </el-button>
+            <el-button> <Icon icon="ep:view" class="mr-1px" /> 浏览 </el-button>
             <template #content>
-              <!-- <el-button link @click="previewProcessXML">Preview XML</el-button> -->
-              <el-button link @click="previewProcessXML">Preview XML</el-button>
+              <!-- <el-button link @click="previewProcessXML">预览XML</el-button> -->
+              <el-button link @click="previewProcessXML">预览XML</el-button>
               <br />
-              <!-- <el-button link @click="previewProcessJson">Preview JSON</el-button> -->
-              <el-button link @click="previewProcessJson">Preview JSON</el-button>
+              <!-- <el-button link @click="previewProcessJson">预览JSON</el-button> -->
+              <el-button link @click="previewProcessJson">预览JSON</el-button>
             </template>
           </el-tooltip>
           <el-tooltip
             v-if="props.simulation"
             effect="light"
-            :content="simulationStatus ? 'Exit simulation' : 'Start simulation'"
+            :content="simulationStatus ? '退出模拟' : '开启模拟'"
           >
             <el-button @click="processSimulation">
-              <Icon icon="ep:cpu" class="mr-1px" /> Simulate
+              <Icon icon="ep:cpu" class="mr-1px" /> 模拟
             </el-button>
           </el-tooltip>
         </ElButtonGroup>
         <ElButtonGroup key="align-control">
-          <el-tooltip effect="light" content="Align left">
+          <el-tooltip effect="light" content="向左对齐">
             <!-- <el-button
               class="align align-left"
               icon="el-icon-s-data"
@@ -55,7 +55,7 @@
               <Icon icon="fa:align-left" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="Align right">
+          <el-tooltip effect="light" content="向右对齐">
             <!-- <el-button
               class="align align-right"
               icon="el-icon-s-data"
@@ -65,7 +65,7 @@
               <Icon icon="fa:align-left" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="Align top">
+          <el-tooltip effect="light" content="向上对齐">
             <!-- <el-button
               class="align align-top"
               icon="el-icon-s-data"
@@ -75,7 +75,7 @@
               <Icon icon="fa:align-left" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="Align bottom">
+          <el-tooltip effect="light" content="向下对齐">
             <!-- <el-button
               class="align align-bottom"
               icon="el-icon-s-data"
@@ -85,7 +85,7 @@
               <Icon icon="fa:align-left" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="Center Horizontally">
+          <el-tooltip effect="light" content="水平居中">
             <!-- <el-button
               class="align align-center"
               icon="el-icon-s-data"
@@ -96,7 +96,7 @@
               <Icon icon="fa:align-left" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="Align center vertically">
+          <el-tooltip effect="light" content="垂直居中">
             <!-- <el-button
               class="align align-middle"
               icon="el-icon-s-data"
@@ -108,7 +108,7 @@
           </el-tooltip>
         </ElButtonGroup>
         <ElButtonGroup key="scale-control">
-          <el-tooltip effect="light" content="Zoom Out">
+          <el-tooltip effect="light" content="缩小视图">
             <!-- <el-button
               :disabled="defaultZoom < 0.2"
               icon="el-icon-zoom-out"
@@ -119,7 +119,7 @@
             </el-button>
           </el-tooltip>
           <el-button>{{ Math.floor(defaultZoom * 10 * 10) + '%' }}</el-button>
-          <el-tooltip effect="light" content="Zoom view">
+          <el-tooltip effect="light" content="放大视图">
             <!-- <el-button
               :disabled="defaultZoom > 4"
               icon="el-icon-zoom-in"
@@ -129,7 +129,7 @@
               <Icon icon="ep:zoom-in" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="Reset & Center View">
+          <el-tooltip effect="light" content="重置视图并居中">
             <!-- <el-button icon="el-icon-c-scale-to-original" @click="processReZoom()" /> -->
             <el-button @click="processReZoom()">
               <Icon icon="ep:scale-to-original" class="mr-1px" />
@@ -137,13 +137,13 @@
           </el-tooltip>
         </ElButtonGroup>
         <ElButtonGroup key="stack-control">
-          <el-tooltip effect="light" content="Undo">
+          <el-tooltip effect="light" content="撤销">
             <!-- <el-button :disabled="!revocable" icon="el-icon-refresh-left" @click="processUndo()" /> -->
             <el-button @click="processUndo()" :disabled="!revocable">
               <Icon icon="ep:refresh-left" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="Redo">
+          <el-tooltip effect="light" content="恢复">
             <!-- <el-button
               :disabled="!recoverable"
               icon="el-icon-refresh-right"
@@ -153,7 +153,7 @@
               <Icon icon="ep:refresh-right" class="mr-1px" />
             </el-button>
           </el-tooltip>
-          <el-tooltip effect="light" content="Redraw">
+          <el-tooltip effect="light" content="重新绘制">
             <!-- <el-button icon="el-icon-refresh" @click="processRestart" /> -->
             <el-button @click="processRestart()">
               <Icon icon="ep:refresh" class="mr-1px" />
@@ -182,7 +182,7 @@
       <!-- <div class="my-process-designer__canvas" ref="bpmn-canvas"></div> -->
     </div>
     <Dialog
-      title="Preview"
+      title="预览"
       v-model="previewModelVisible"
       width="80%"
       :scroll="true"
@@ -206,6 +206,7 @@ import BpmnModeler from 'bpmn-js/lib/Modeler'
 import DefaultEmptyXML from './plugins/defaultEmpty'
 // 翻译方法
 import customTranslate from './plugins/translate/customTranslate'
+import translationsCN from './plugins/translate/zh'
 // 模拟流转流程
 import tokenSimulation from 'bpmn-js-token-simulation'
 // 标签解析构建器
@@ -257,9 +258,9 @@ const props = defineProps({
   processName: String, // 流程 name 名字
   formId: Number, // 流程 form 表单编号
   translations: {
-    // 自定义的翻译文件. Mặc định rỗng -> dùng tiếng Anh gốc của bpmn-js.
+    // 自定义的翻译文件
     type: Object,
-    default: () => ({})
+    default: () => {}
   },
   additionalModel: [Object, Array], // 自定义model
   moddleExtension: {
@@ -345,7 +346,7 @@ const additionalModules = computed(() => {
 
   // 翻译模块
   const TranslateModule = {
-    translate: ['value', customTranslate(props.translations || {})]
+    translate: ['value', customTranslate(props.translations || translationsCN)]
   }
   Modules.push(TranslateModule)
 
@@ -486,7 +487,7 @@ const createNewDiagram = async (xml) => {
   console.log(xml, 'xml')
   // 将字符串转换成图显示出来
   let newId = props.processId || `Process_${new Date().getTime()}`
-  let newName = props.processName || `Business Process_${new Date().getTime()}`
+  let newName = props.processName || `业务流程_${new Date().getTime()}`
   let xmlString = xml || DefaultEmptyXML(newId, newName, props.prefix)
   try {
     // console.log(xmlString, 'xmlString')
@@ -612,13 +613,13 @@ const elementsAlign = (align) => {
   const Selection = bpmnModeler.get('selection')
   const SelectedElements = Selection.get()
   if (!SelectedElements || SelectedElements.length <= 1) {
-    ElMessage.warning('Hold Shift to select multiple elements to align')
+    ElMessage.warning('请按住 Shift 键选择多个元素对齐')
     // alert('请按住 Ctrl 键选择多个元素对齐
     return
   }
-  ElMessageBox.confirm('Auto-align may distort the diagram. Continue?', 'Warning', {
-    confirmButtonText: 'Confirm',
-    cancelButtonText: 'Cancel',
+  ElMessageBox.confirm('自动对齐可能造成图形变形，是否继续？', '警告', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
     type: 'warning'
   }).then(() => {
     Align.trigger(SelectedElements, align)

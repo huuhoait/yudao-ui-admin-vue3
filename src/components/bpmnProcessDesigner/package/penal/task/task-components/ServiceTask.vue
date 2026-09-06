@@ -1,16 +1,16 @@
 <template>
   <div>
-    <el-form-item label="Execution Type" key="executeType">
+    <el-form-item label="执行类型" key="executeType">
       <el-select v-model="serviceTaskForm.executeType" @change="handleExecuteTypeChange">
-        <el-option label="Java Class" value="class" />
-        <el-option label="Expression" value="expression" />
-        <el-option label="Delegate Expression" value="delegateExpression" />
-        <el-option label="HTTP Call" value="http" />
+        <el-option label="Java类" value="class" />
+        <el-option label="表达式" value="expression" />
+        <el-option label="代理表达式" value="delegateExpression" />
+        <el-option label="HTTP 调用" value="http" />
       </el-select>
     </el-form-item>
     <el-form-item
       v-if="serviceTaskForm.executeType === 'class'"
-      label="Java Class"
+      label="Java类"
       prop="class"
       key="execute-class"
     >
@@ -18,7 +18,7 @@
     </el-form-item>
     <el-form-item
       v-if="serviceTaskForm.executeType === 'expression'"
-      label="Expression"
+      label="表达式"
       prop="expression"
       key="execute-expression"
     >
@@ -26,7 +26,7 @@
     </el-form-item>
     <el-form-item
       v-if="serviceTaskForm.executeType === 'delegateExpression'"
-      label="Delegate Expression"
+      label="代理表达式"
       prop="delegateExpression"
       key="execute-delegate"
     >
@@ -37,7 +37,7 @@
       />
     </el-form-item>
     <template v-if="serviceTaskForm.executeType === 'http'">
-      <el-form-item label="Request Method" key="http-method">
+      <el-form-item label="请求方法" key="http-method">
         <el-radio-group v-model="httpTaskForm.requestMethod">
           <el-radio-button label="GET" value="GET" />
           <el-radio-button label="POST" value="POST" />
@@ -45,10 +45,10 @@
           <el-radio-button label="DELETE" value="DELETE" />
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="Request URL" key="http-url" prop="requestUrl">
+      <el-form-item label="请求地址" key="http-url" prop="requestUrl">
         <el-input v-model="httpTaskForm.requestUrl" clearable />
       </el-form-item>
-      <el-form-item label="Request Header" key="http-headers">
+      <el-form-item label="请求头" key="http-headers">
         <div style="display: flex; gap: 8px; align-items: flex-start; width: 100%">
           <el-input
             v-model="httpTaskForm.requestHeaders"
@@ -56,7 +56,7 @@
             resize="vertical"
             :autosize="{ minRows: 4, maxRows: 8 }"
             readonly
-            placeholder="Click the edit button on the right to add a header"
+            placeholder="点击右侧编辑按钮添加请求头"
             style="flex: 1; min-width: 0"
           />
           <el-button
@@ -65,26 +65,26 @@
             @click="showHeaderEditor = true"
             style="flex-shrink: 0"
           >
-            Edit
+            编辑
           </el-button>
         </div>
       </el-form-item>
-      <el-form-item label="Disable Redirect" key="http-disallow-redirects">
+      <el-form-item label="禁止重定向" key="http-disallow-redirects">
         <el-switch v-model="httpTaskForm.disallowRedirects" />
       </el-form-item>
-      <el-form-item label="Ignore Exception" key="http-ignore-exception">
+      <el-form-item label="忽略异常" key="http-ignore-exception">
         <el-switch v-model="httpTaskForm.ignoreException" />
       </el-form-item>
-      <el-form-item label="Save Return Variable" key="http-save-response">
+      <el-form-item label="保存返回变量" key="http-save-response">
         <el-switch v-model="httpTaskForm.saveResponseParameters" />
       </el-form-item>
-      <el-form-item label="Is Transient Variable" key="http-save-transient">
+      <el-form-item label="是否瞬间变量" key="http-save-transient">
         <el-switch v-model="httpTaskForm.saveResponseParametersTransient" />
       </el-form-item>
-      <el-form-item label="Return Variable Prefix" key="http-result-variable-prefix">
+      <el-form-item label="返回变量前缀" key="http-result-variable-prefix">
         <el-input v-model="httpTaskForm.resultVariablePrefix" />
       </el-form-item>
-      <el-form-item label="Format return as JSON" key="http-save-json">
+      <el-form-item label="格式化返回为JSON" key="http-save-json">
         <el-switch v-model="httpTaskForm.saveResponseVariableAsJson" />
       </el-form-item>
     </template>

@@ -7,14 +7,14 @@
       :rules="formRules"
       label-width="100px"
     >
-      <el-form-item :label="t('bpm.group._todo6')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('bpm.group._todo7')" />
+      <el-form-item label="组名" prop="name">
+        <el-input v-model="formData.name" placeholder="请输入组名" />
       </el-form-item>
-      <el-form-item :label="t('bpm.group.description')">
-        <el-input v-model="formData.description" :placeholder="t('bpm.group.inputDescription')" type="textarea" />
+      <el-form-item label="描述">
+        <el-input v-model="formData.description" placeholder="请输入描述" type="textarea" />
       </el-form-item>
-      <el-form-item :label="t('bpm.group._todo8')" prop="userIds">
-        <el-select v-model="formData.userIds" multiple :placeholder="t('bpm.group._todo9')">
+      <el-form-item label="成员" prop="userIds">
+        <el-select v-model="formData.userIds" multiple placeholder="请选择成员">
           <el-option
             v-for="user in userList"
             :key="user.id"
@@ -23,7 +23,7 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('common.status')" prop="status">
+      <el-form-item label="状态" prop="status">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -36,8 +36,8 @@
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitForm">{{ t('common.ok') }}</el-button>
-      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
+      <el-button @click="dialogVisible = false">取 消</el-button>
     </template>
   </Dialog>
 </template>
@@ -64,10 +64,10 @@ const formData = ref({
   status: CommonStatusEnum.ENABLE
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('bpm.group._todo10'), trigger: 'blur' }],
-  description: [{ required: true, message: t('bpm.group.descriptionRequired'), trigger: 'blur' }],
-  userIds: [{ required: true, message: t('bpm.group._todo11'), trigger: 'blur' }],
-  status: [{ required: true, message: t('bpm.group.statusRequired'), trigger: 'blur' }]
+  name: [{ required: true, message: '组名不能为空', trigger: 'blur' }],
+  description: [{ required: true, message: '描述不能为空', trigger: 'blur' }],
+  userIds: [{ required: true, message: '成员不能为空', trigger: 'blur' }],
+  status: [{ required: true, message: '状态不能为空', trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 const userList = ref<any[]>([]) // 用户列表

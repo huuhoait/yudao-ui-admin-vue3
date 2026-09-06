@@ -2,7 +2,6 @@
 import { Editor, Toolbar } from '@wangeditor-next/editor-for-vue'
 import { IDomEditor } from '@wangeditor-next/editor'
 import MentionModal from './MentionModal.vue'
-const { t } = useI18n() // 国际化
 
 const emit = defineEmits(['confirm'])
 
@@ -53,7 +52,7 @@ const toolbarConfig = {
   }
 }
 const editorConfig = {
-  placeholder: t('bpm.model.form.PrintTemplate._todo119'),
+  placeholder: '请输入内容...',
   EXTEND_CONF: {
     mentionConfig: {
       showModal,
@@ -77,10 +76,10 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <el-dialog v-model="dialogVisible" :title="t('bpm.model.form.PrintTemplate._todo117')" fullscreen>
+  <el-dialog v-model="dialogVisible" title="自定义模板" fullscreen>
     <div style="margin: 0 10px">
       <el-alert
-        :title="t('bpm.model.form.PrintTemplate._todo118')"
+        title="输入 @ 可选择插入流程表单选项和默认选项"
         type="info"
         show-icon
         :closable="false"
@@ -108,8 +107,8 @@ onBeforeUnmount(() => {
       />
     </div>
     <div style="float: right; margin-right: 10px">
-      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
-      <el-button type="primary" @click="handleConfirm">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button type="primary" @click="handleConfirm">确 定</el-button>
     </div>
   </el-dialog>
 </template>

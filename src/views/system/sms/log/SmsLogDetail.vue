@@ -1,56 +1,56 @@
 <template>
-  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" :title="t('system.sms.log.detail')" width="800">
+  <Dialog v-model="dialogVisible" :max-height="500" :scroll="true" title="详情" width="800">
     <el-descriptions :column="1" border>
-      <el-descriptions-item :label="t('system.sms.log.logId')" min-width="120">
+      <el-descriptions-item label="日志主键" min-width="120">
         {{ detailData.id }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log.smsChannel')">
+      <el-descriptions-item label="短信渠道">
         {{ channelList.find((channel) => channel.id === detailData.channelId)?.signature }}
         <dict-tag :type="DICT_TYPE.SYSTEM_SMS_CHANNEL_CODE" :value="detailData.channelCode" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo243')">
+      <el-descriptions-item label="短信模板">
         {{ detailData.templateId }} | {{ detailData.templateCode }}
         <dict-tag :type="DICT_TYPE.SYSTEM_SMS_TEMPLATE_TYPE" :value="detailData.templateType!" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo244')">
+      <el-descriptions-item label="API 的模板编号">
         {{ detailData.apiTemplateId }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo245')">
+      <el-descriptions-item label="用户信息">
         {{ detailData.mobile }}
         <span v-if="detailData.userType && detailData.userId">
           <dict-tag :type="DICT_TYPE.USER_TYPE" :value="detailData.userType" />
           ({{ detailData.userId }})
         </span>
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo246')">
+      <el-descriptions-item label="短信内容">
         {{ detailData.templateContent }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo247')">
+      <el-descriptions-item label="短信参数">
         {{ detailData.templateParams }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('common.createTime')">
+      <el-descriptions-item label="创建时间">
         {{ formatDate(detailData.createTime) }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log.sendStatus')">
+      <el-descriptions-item label="发送状态">
         <dict-tag :type="DICT_TYPE.SYSTEM_SMS_SEND_STATUS" :value="detailData.sendStatus!" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log.sendTime')">
+      <el-descriptions-item label="发送时间">
         {{ formatDate(detailData.sendTime) }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo248')">
+      <el-descriptions-item label="API 发送结果">
         {{ detailData.apiSendCode }} | {{ detailData.apiSendMsg }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo249')">
+      <el-descriptions-item label="API 短信编号">
         {{ detailData.apiSerialNo }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo250')">
+      <el-descriptions-item label="API 请求编号">
         {{ detailData.apiRequestId }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo251')">
+      <el-descriptions-item label="API 接收状态">
         <dict-tag :type="DICT_TYPE.SYSTEM_SMS_RECEIVE_STATUS" :value="detailData.receiveStatus!" />
         {{ formatDate(detailData.receiveTime) }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo252')">
+      <el-descriptions-item label="API 接收结果">
         {{ detailData.apiReceiveCode }} | {{ detailData.apiReceiveMsg }}
       </el-descriptions-item>
     </el-descriptions>

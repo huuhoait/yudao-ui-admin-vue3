@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('bpm.processExpression._todo178')" url="https://doc.iocoder.cn/bpm/expression/" />
+  <doc-alert title="流程表达式" url="https://doc.iocoder.cn/bpm/expression/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,17 +10,17 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="t('bpm.processExpression.name')" prop="name">
+      <el-form-item label="名字" prop="name">
         <el-input
           v-model="queryParams.name"
-          :placeholder="t('bpm.processExpression.inputName')"
+          placeholder="请输入名字"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('common.status')" prop="status">
-        <el-select v-model="queryParams.status" :placeholder="t('bpm.processExpression.selectStatus')" clearable class="!w-240px">
+      <el-form-item label="状态" prop="status">
+        <el-select v-model="queryParams.status" placeholder="请选择状态" clearable class="!w-240px">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
             :key="dict.value"
@@ -29,27 +29,27 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('common.createTime')" prop="createTime">
+      <el-form-item label="创建时间" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          :start-placeholder="t('bpm.processExpression.startDate')"
-          :end-placeholder="t('bpm.processExpression.endDate')"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
         <el-button
           type="primary"
           plain
           @click="openForm('create')"
           v-hasPermi="['bpm:process-expression:create']"
         >
-          <Icon icon="ep:plus" class="mr-5px" /> {{ t('bpm.processExpression.create') }}
+          <Icon icon="ep:plus" class="mr-5px" /> 新增
         </el-button>
       </el-form-item>
     </el-form>
@@ -58,22 +58,22 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list" :stripe="true" :show-overflow-tooltip="true">
-      <el-table-column :label="t('bpm.processExpression.id')" align="center" prop="id" />
-      <el-table-column :label="t('bpm.processExpression.name')" align="center" prop="name" />
-      <el-table-column :label="t('common.status')" align="center" prop="status">
+      <el-table-column label="编号" align="center" prop="id" />
+      <el-table-column label="名字" align="center" prop="name" />
+      <el-table-column label="状态" align="center" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('bpm.processExpression.expression')" align="center" prop="expression" />
+      <el-table-column label="表达式" align="center" prop="expression" />
       <el-table-column
-        :label="t('common.createTime')"
+        label="创建时间"
         align="center"
         prop="createTime"
         :formatter="dateFormatter"
         width="180px"
       />
-      <el-table-column :label="t('bpm.processExpression.action')" align="center">
+      <el-table-column label="操作" align="center">
         <template #default="scope">
           <el-button
             link
@@ -81,7 +81,7 @@
             @click="openForm('update', scope.row.id)"
             v-hasPermi="['bpm:process-expression:update']"
           >
-            {{ t('bpm.processExpression.edit') }}
+            编辑
           </el-button>
           <el-button
             link
@@ -89,7 +89,7 @@
             @click="handleDelete(scope.row.id)"
             v-hasPermi="['bpm:process-expression:delete']"
           >
-            {{ t('bpm.processExpression.delete') }}
+            删除
           </el-button>
         </template>
       </el-table-column>
