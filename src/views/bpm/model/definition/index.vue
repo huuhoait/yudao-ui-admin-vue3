@@ -103,6 +103,8 @@ import { BpmModelFormType } from '@/utils/constants'
 
 defineOptions({ name: 'BpmProcessDefinition' })
 
+const { t } = useI18n() // 国际化
+
 const { push } = useRouter() // 路由
 const { query } = useRoute() // 查询参数
 

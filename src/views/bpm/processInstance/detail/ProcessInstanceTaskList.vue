@@ -74,6 +74,8 @@ import TaskEvidenceCell from '@/views/bpm/task/components/TaskEvidenceCell.vue'
 
 defineOptions({ name: 'BpmProcessInstanceTaskList' })
 
+const { t } = useI18n() // 国际化
+
 const props = defineProps({
   loading: propTypes.bool.def(false), // 是否加载中
   id: propTypes.string // 流程实例的编号

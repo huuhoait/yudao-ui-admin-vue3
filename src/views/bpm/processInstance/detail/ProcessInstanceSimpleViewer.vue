@@ -8,6 +8,8 @@
   </div>
 </template>
 <script lang="ts" setup>
+const { t } = useI18n() // 国际化
+
 import { propTypes } from '@/utils/propTypes'
 import { TaskStatusEnum } from '@/api/bpm/task'
 import { SimpleFlowNode, NodeType } from '@/components/SimpleProcessDesignerV2/src/consts'

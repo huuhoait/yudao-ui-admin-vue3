@@ -7,6 +7,7 @@ function renderProcessRecord(
   editor: IDomEditor
 ): VNode {
   const selected = DomEditor.isNodeSelected(editor, elem)
+  const { t } = useI18n()
 
   return h(
     'table',

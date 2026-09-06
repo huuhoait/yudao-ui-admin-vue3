@@ -126,6 +126,8 @@ import TaskEvidenceCell from '@/views/bpm/task/components/TaskEvidenceCell.vue'
 // 它和【待办任务】【已办任务】的差异是，该菜单可以看全部的流程任务
 defineOptions({ name: 'BpmManagerTask' })
 
+const { t } = useI18n() // 国际化
+
 const { push } = useRouter() // 路由
 
 const loading = ref(true) // 列表的加载中

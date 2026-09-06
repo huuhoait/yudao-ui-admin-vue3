@@ -199,6 +199,8 @@ import MailLogDetail from './MailLogDetail.vue'
 
 defineOptions({ name: 'SystemMailLog' })
 
+const { t } = useI18n() // 国际化
+
 const message = useMessage() // 消息弹窗
 
 const loading = ref(false) // 列表的加载中

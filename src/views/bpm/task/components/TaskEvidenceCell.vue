@@ -60,6 +60,8 @@ import { getFileNameFromUrl, isImage } from '@/utils/file'
 
 defineOptions({ name: 'BpmTaskEvidenceCell' })
 
+const { t } = useI18n() // 国际化
+
 withDefaults(
   defineProps<{
     attachments?: string[]

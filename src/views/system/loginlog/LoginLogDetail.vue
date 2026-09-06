@@ -32,6 +32,8 @@ import * as LoginLogApi from '@/api/system/loginLog'
 
 defineOptions({ name: 'SystemLoginLogDetail' })
 
+const { t } = useI18n() // 国际化
+
 const dialogVisible = ref(false) // 弹窗的是否展示
 const detailLoading = ref(false) // 表单的加载中
 const detailData = ref({} as LoginLogApi.LoginLogVO) // 详情数据

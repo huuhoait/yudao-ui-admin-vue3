@@ -173,6 +173,7 @@ import * as DefinitionApi from '@/api/bpm/definition'
 
 defineOptions({ name: 'BpmTodoTask' })
 
+const { t } = useI18n() // 国际化
 const { push } = useRouter() // 路由
 
 const loading = ref(true) // 列表的加载中

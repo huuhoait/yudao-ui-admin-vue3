@@ -64,6 +64,8 @@ import * as SmsChannelApi from '@/api/system/sms/smsChannel'
 
 defineOptions({ name: 'SystemSmsLogDetail' })
 
+const { t } = useI18n() // 国际化
+
 const dialogVisible = ref(false) // 弹窗的是否展示
 const detailLoading = ref(false) // 表单的加载中
 const detailData = ref<SmsLogApi.SmsLogVO>({} as SmsLogApi.SmsLogVO) // 详情数据

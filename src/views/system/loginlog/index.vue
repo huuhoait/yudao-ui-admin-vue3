@@ -113,6 +113,8 @@ import LoginLogDetail from './LoginLogDetail.vue'
 
 defineOptions({ name: 'SystemLoginLog' })
 
+const { t } = useI18n() // 国际化
+
 const message = useMessage() // 消息弹窗
 
 const loading = ref(true) // 列表的加载中

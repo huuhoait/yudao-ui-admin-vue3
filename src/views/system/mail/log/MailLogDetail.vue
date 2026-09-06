@@ -77,6 +77,8 @@ import * as MailAccountApi from '@/api/system/mail/account'
 
 defineOptions({ name: 'SystemMailLogDetail' })
 
+const { t } = useI18n() // 国际化
+
 const dialogVisible = ref(false) // 弹窗的是否展示
 const detailLoading = ref(false) // 表单的加载中
 const detailData = ref() // 详情数据

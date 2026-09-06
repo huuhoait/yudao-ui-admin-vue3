@@ -24,6 +24,8 @@ import * as LeaveApi from '@/api/bpm/leave'
 
 defineOptions({ name: 'BpmOALeaveDetail' })
 
+const { t } = useI18n() // 国际化
+
 const { query } = useRoute() // 查询参数
 
 const props = defineProps({

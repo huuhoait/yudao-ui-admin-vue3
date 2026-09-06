@@ -101,6 +101,8 @@ import * as ProcessInstanceApi from '@/api/bpm/processInstance'
 
 defineOptions({ name: 'BpmProcessInstanceCopy' })
 
+const { t } = useI18n() // 国际化
+
 const { push } = useRouter() // 路由
 
 const loading = ref(false) // 列表的加载中
