@@ -17,6 +17,7 @@ Công cụ dùng **AST** (`@vue/compiler-sfc` + `@babel/parser`) để hiểu đ
 | `to-en.mjs` | Thay chuỗi hiển thị Trung → Anh tại chỗ (không qua i18n key) — dùng cho bpmnProcessDesigner / SimpleProcessDesignerV2. |
 | `check-zh.mjs` | Dò chuỗi Trung còn sót ở vị trí hiển thị sau khi convert/to-en (bắt được điểm mù text-node lẫn interpolation). |
 | `check-tdz.mjs` | Dò lỗi runtime TDZ: `t()` bị gọi ở top-level trước dòng khai báo `const { t } = useI18n()`. |
+| `check-missing-i18n.mjs` | Dò file gọi `t(...)` mà KHÔNG hề có `useI18n()` ở đâu cả — khác TDZ (thứ tự), đây là THIẾU HẲN. Quét cả `.vue` lẫn `.ts`/`.tsx`/`.js`/`.jsx` thường (file không phải component). |
 | `check-keys.mjs` | Đối chiếu mọi `t('key')` trong mã nguồn với key locale thực tế, báo key thiếu. |
 | `compile-check.mjs` | Parse lại toàn bộ file đã sửa bằng `@vue/compiler-sfc`/`@babel/parser` để chắc chắn còn biên dịch được, không cần chạy dev server. |
 
@@ -111,6 +112,27 @@ Tool đưa các chuỗi sau vào danh sách **review** (không tự convert), li
 
 3. **Menu title từ backend**
    Tool chỉ xử lý chuỗi trong mã nguồn frontend. Tên menu lưu ở database (bảng `system_menu`) không nằm trong phạm vi — cần xử lý ở backend hoặc bảng dịch riêng.
+
+4. **Thiếu hẳn `const { t } = useI18n()`** (khác lỗi TDZ ở mục 2 — đây là THIẾU, không phải SAI THỨ TỰ)
+   Dự án auto-import `useI18n` qua unplugin-auto-import (`build/vite/index.ts`), nhưng
+   KHÔNG auto-import `t` — luôn phải tự `const { t } = useI18n()` rồi mới có `t`. Convert.mjs
+   tự chèn dòng này vào `<script setup>` khi apply, nhưng gặp đúng dòng này bị mất trong các
+   trường hợp:
+   - File `.vue` bị sửa tay sau khi convert (thêm `t()` mới vào template mà quên thêm khai
+     báo), hoặc merge conflict lúc nâng cấp upstream làm rụng mất dòng khai báo.
+   - File `.ts`/`.tsx` THƯỜNG — không phải `.vue`, không có `<script setup>` — gọi `t()` trực
+     tiếp trong một hàm/class (vd hàm `renderElem` cho `snabbdom`, factory cho menu plugin
+     `wangEditor`). `convert.mjs`/`to-en.mjs` chỉ tự chèn `useI18n()` vào `<script setup>` của
+     `.vue`, không đụng tới `.ts` thường — nếu chuỗi trong các file này được convert, phải tự
+     thêm `const { t } = useI18n()` vào đúng hàm/constructor dùng `t()`.
+
+   Biểu hiện: KHÔNG throw lúc build/dev, KHÔNG log cảnh báo lúc khởi động — chỉ lộ khi người
+   dùng bấm vào đúng màn hình đó. Với `.vue`: Vue ném `TypeError: _ctx.t is not a function`
+   (crash render) hoặc warning "Property t was accessed during render but is not defined".
+   Với `.ts` thường: `ReferenceError: t is not defined` ngay khi hàm/constructor đó chạy.
+   Cách sửa: thêm `const { t } = useI18n() // 国际化` — trong `.vue` đặt ngay sau
+   `defineOptions(...)`; trong `.ts` đặt ở đầu hàm/constructor dùng `t()`. Dò tự động bằng
+   `check-missing-i18n.mjs` (xem mục "Bộ kiểm chứng").
 
 ## Bổ sung từ vựng (giảm `_todo`)
 
@@ -320,10 +342,14 @@ node scripts/i18n/check-keys.mjs src/views/system src/views/bpm
 #    khi upstream đã tự khai báo useI18n() nhưng ở CUỐI file, còn convert.mjs chèn t() vào
 #    một hằng số top-level đầu file, vd mảng `columns` cấu hình bảng)
 node scripts/i18n/check-tdz.mjs src
+
+# 5. t() có được gọi ở file/hàm KHÔNG HỀ có `useI18n()` không (thiếu hẳn, không phải TDZ —
+#    check-tdz.mjs CHỦ Ý bỏ qua case này. Quét cả .vue lẫn .ts/.tsx/.js/.jsx thường)
+node scripts/i18n/check-missing-i18n.mjs src
 ```
 
-Chạy đủ cả 4 lệnh sau mỗi lần `--apply`, KHÔNG chỉ nhìn output của `convert.mjs`/`to-en.mjs`.
-Cả 4 lỗi trên đều **im lặng lúc runtime** (không throw, không log) — chỉ lộ ra khi người
+Chạy đủ cả 5 lệnh sau mỗi lần `--apply`, KHÔNG chỉ nhìn output của `convert.mjs`/`to-en.mjs`.
+Cả 5 lỗi trên đều **im lặng lúc runtime** (không throw, không log) — chỉ lộ ra khi người
 dùng bấm vào đúng màn hình đó.
 
 ## Môi trường: parser AST không cần `node_modules` đầy đủ

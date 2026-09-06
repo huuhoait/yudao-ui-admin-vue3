@@ -4,10 +4,10 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
       <el-table-column :label="t('bpm.model.definition._todo47')" align="center" prop="id" min-width="250" />
-      <el-table-column :label="t('bpm.model.definition.processName')" align="center" prop="name" min-width="150" />
+      <el-table-column :label="t('bpm.model.definition.processName')" align="center" prop="name" min-width="250" />
       <el-table-column :label="t('bpm.model.definition._todo48')" align="center" min-width="50">
         <template #default="{ row }">
-          <el-image v-if="row.icon" :src="row.icon" class="h-24px w-24pxrounded" />
+          <el-image v-if="row.icon" :src="row.icon" class="h-32px w-32pxrounded" />
         </template>
       </el-table-column>
       <el-table-column :label="t('bpm.model.definition._todo49')" prop="startUserIds" min-width="100">

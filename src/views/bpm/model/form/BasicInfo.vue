@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="formRef" :model="modelData" :rules="rules" label-width="120px" class="mt-20px">
+  <el-form ref="formRef" :model="modelData" :rules="rules" label-width="180px" class="mt-20px">
     <el-form-item :label="t('bpm.model.form.processKey')" prop="key" class="mb-20px">
       <div class="flex items-center">
         <el-input
@@ -26,7 +26,7 @@
         :placeholder="t('bpm.model.form.inputProcessName')"
       />
     </el-form-item>
-    <el-form-item :label="t('bpm.model.form.processCategory')" prop="category" class="mb-20px">
+    <el-form-item :label="t('bpm.model.form.processCategory')" prop="category" class="mb-30px">
       <el-select
         class="!w-full"
         v-model="modelData.category"
@@ -42,7 +42,7 @@
       </el-select>
     </el-form-item>
     <el-form-item :label="t('bpm.model.form._todo56')" class="mb-20px">
-      <UploadImg v-model="modelData.icon" :limit="1" height="64px" width="64px" />
+      <UploadImg v-model="modelData.icon" :limit="1" height="128px" width="128px" />
     </el-form-item>
     <el-form-item :label="t('bpm.model.form._todo57')" prop="description" class="mb-20px">
       <el-input v-model="modelData.description" clearable type="textarea" />
