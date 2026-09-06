@@ -7,7 +7,7 @@
     :disabled="disabled"
     :clearable="clearable"
     :filterable="filterable"
-    :placeholder="placeholder"
+    :placeholder="placeholder || t('system.area.selectArea')"
     :show-all-levels="showAllLevels"
     @update:model-value="handleChange"
   />
@@ -20,6 +20,7 @@ import * as AreaApi from '@/api/system/area'
 import { defaultProps } from '@/utils/tree'
 
 defineOptions({ name: 'AreaSelect' })
+const { t } = useI18n() // 国际化
 
 const props = withDefaults(
   defineProps<{
@@ -38,7 +39,7 @@ const props = withDefaults(
     filterable: true,
     checkStrictly: false,
     showAllLevels: true,
-    placeholder: '请选择地区'
+    placeholder: ''
   }
 )
 

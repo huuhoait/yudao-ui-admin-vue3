@@ -11,7 +11,7 @@
 -->
 <template>
   <div class="h-full">
-    <el-input v-model="filterText" class="p-[15px]" clearable :placeholder="filterPlaceholder">
+    <el-input v-model="filterText" class="p-[15px]" clearable :placeholder="filterPlaceholder || t('system.dept.inputDeptName')">
       <template #prefix>
         <Icon icon="ep:search" />
       </template>
@@ -38,13 +38,14 @@ import * as DeptApi from '@/api/system/dept'
 import { defaultProps, handleTree } from '@/utils/tree'
 
 defineOptions({ name: 'DeptTreeSelect' })
+const { t } = useI18n() // 国际化
 
 withDefaults(
   defineProps<{
     filterPlaceholder?: string // 搜索输入框占位文字
   }>(),
   {
-    filterPlaceholder: '请输入部门名称'
+    filterPlaceholder: ''
   }
 )
 

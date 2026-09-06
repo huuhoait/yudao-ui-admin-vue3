@@ -483,7 +483,7 @@ const handleDeploy = async (row: any) => {
     await message.confirm(t('bpm.model._todo32'))
     // 发起部署
     await ModelApi.deployModel(row.id)
-    message.success(t('发布成功'))
+    message.success(t('bpm.model.publishSuccess'))
     // 刷新列表
     emit('success')
   } catch {}

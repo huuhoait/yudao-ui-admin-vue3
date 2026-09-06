@@ -24,18 +24,18 @@
       </div>
     </template>
     <el-tabs type="border-card" v-model="activeTabName">
-      <el-tab-pane label="权限" name="user">
+      <el-tab-pane label="Permission" name="user">
         <el-text
           v-if="
             (!startUserIds || startUserIds.length === 0) &&
             (!startDeptIds || startDeptIds.length === 0)
           "
         >
-          全部成员可以发起流程
+          All members can start this process
         </el-text>
         <div v-else-if="startUserIds && startUserIds.length > 0">
           <el-text v-if="startUserIds.length == 1">
-            {{ getUserNicknames(startUserIds) }} 可发起流程
+            {{ getUserNicknames(startUserIds) }} can start this process
           </el-text>
           <el-text v-else>
             <el-tooltip
@@ -44,14 +44,14 @@
               placement="top"
               :content="getUserNicknames(startUserIds)"
             >
-              {{ getUserNicknames(startUserIds.slice(0, 2)) }} 等
-              {{ startUserIds.length }} 人可发起流程
+              {{ getUserNicknames(startUserIds.slice(0, 2)) }} and
+              {{ startUserIds.length }} users in total can start this process
             </el-tooltip>
           </el-text>
         </div>
         <div v-else-if="startDeptIds && startDeptIds.length > 0">
           <el-text v-if="startDeptIds.length == 1">
-            {{ getDeptNames(startDeptIds) }} 可发起流程
+            {{ getDeptNames(startDeptIds) }} can start this process
           </el-text>
           <el-text v-else>
             <el-tooltip
@@ -60,26 +60,26 @@
               placement="top"
               :content="getDeptNames(startDeptIds)"
             >
-              {{ getDeptNames(startDeptIds.slice(0, 2)) }} 等
-              {{ startDeptIds.length }} 个部门可发起流程
+              {{ getDeptNames(startDeptIds.slice(0, 2)) }} and
+              {{ startDeptIds.length }} departments in total can start this process
             </el-tooltip>
           </el-text>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="表单字段权限" name="fields" v-if="formType === 10">
+      <el-tab-pane label="Form Field Permission" name="fields" v-if="formType === 10">
         <div class="field-setting-pane">
-          <div class="field-setting-desc">字段权限</div>
+          <div class="field-setting-desc">Field Permission</div>
           <div class="field-permit-title">
-            <div class="setting-title-label first-title"> 字段名称 </div>
+            <div class="setting-title-label first-title"> Field Name </div>
             <div class="other-titles">
               <span class="setting-title-label cursor-pointer" @click="updatePermission('READ')">
-                只读
+                Read-only
               </span>
               <span class="setting-title-label cursor-pointer" @click="updatePermission('WRITE')">
-                可编辑
+                Editable
               </span>
               <span class="setting-title-label cursor-pointer" @click="updatePermission('NONE')">
-                隐藏
+                Hidden
               </span>
             </div>
           </div>
@@ -125,8 +125,8 @@
     <template #footer>
       <el-divider />
       <div>
-        <el-button type="primary" @click="saveConfig">确 定</el-button>
-        <el-button @click="closeDrawer">取 消</el-button>
+        <el-button type="primary" @click="saveConfig">OK</el-button>
+        <el-button @click="closeDrawer">Cancel</el-button>
       </div>
     </template>
   </el-drawer>
@@ -195,7 +195,7 @@ const getDeptNames = (deptIds: number[]): string => {
 const saveConfig = async () => {
   activeTabName.value = 'user'
   currentNode.value.name = nodeName.value!
-  currentNode.value.showText = '已设置'
+  currentNode.value.showText = 'Configured'
   // 设置表单权限
   currentNode.value.fieldsPermission = fieldsPermissionConfig.value
   // 设置发起人的按钮权限

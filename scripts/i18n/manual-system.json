@@ -1,0 +1,50 @@
+{
+  "_note": "Key thêm tay cho module system. Dùng cho placeholder mặc định trong defineProps/withDefaults — giá trị đó bị hoist ra ngoài setup() nên KHÔNG gọi được t(); component để default rỗng rồi fallback t() ở template. Áp dụng: node scripts/i18n/apply-translations.mjs system scripts/i18n/manual-system.json",
+  "extra": {
+    "system.area.selectArea": {
+      "zh-CN": "请选择地区",
+      "en": "Please select area",
+      "vi": "Vui lòng chọn khu vực"
+    },
+    "system.dept.selectDept": {
+      "zh-CN": "请选择部门",
+      "en": "Please select department",
+      "vi": "Vui lòng chọn phòng ban"
+    },
+    "system.mail.template.selectTemplate": {
+      "zh-CN": "请选择邮件模板",
+      "en": "Please select mail template",
+      "vi": "Vui lòng chọn mẫu email"
+    },
+    "system.notify.template.selectTemplate": {
+      "zh-CN": "请选择站内信模板",
+      "en": "Please select internal message template",
+      "vi": "Vui lòng chọn mẫu tin nội bộ"
+    },
+    "system.role.selectRole": {
+      "zh-CN": "请选择角色",
+      "en": "Please select role",
+      "vi": "Vui lòng chọn vai trò"
+    },
+    "system.sms.template.selectTemplate": {
+      "zh-CN": "请选择短信模板",
+      "en": "Please select SMS template",
+      "vi": "Vui lòng chọn mẫu SMS"
+    },
+    "system.user.selectUser": {
+      "zh-CN": "请选择用户",
+      "en": "Please select user",
+      "vi": "Vui lòng chọn người dùng"
+    },
+    "system.user.selectUserTitle": {
+      "zh-CN": "人员选择",
+      "en": "Select Personnel",
+      "vi": "Chọn nhân sự"
+    },
+    "system.notice.pushSuccess": {
+      "zh-CN": "推送成功",
+      "en": "Pushed successfully",
+      "vi": "Đẩy thông báo thành công"
+    }
+  }
+}

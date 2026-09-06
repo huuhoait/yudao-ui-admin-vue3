@@ -7,25 +7,25 @@
       <el-form-item>
         <el-switch
           v-model="configForm[`task${listener.type}ListenerEnable`]"
-          active-text="开启"
-          inactive-text="关闭"
+          active-text="On"
+          inactive-text="Off"
         />
       </el-form-item>
       <div v-if="configForm[`task${listener.type}ListenerEnable`]">
         <el-form-item>
           <el-alert
-            title="仅支持 POST 请求，以请求体方式接收参数"
+            title="Only POST requests are supported; parameters are read from the request body"
             type="warning"
             show-icon
             :closable="false"
           />
         </el-form-item>
         <el-form-item
-          label="请求地址"
+          label="Request URL"
           :prop="`task${listener.type}ListenerPath`"
           :rules="{
             required: true,
-            message: '请求地址不能为空',
+            message: 'Request URL is required',
             trigger: 'blur'
           }"
         >
@@ -66,15 +66,15 @@ const configForm = computed({
 })
 const taskListener = ref([
   {
-    name: '创建任务',
+    name: 'Create Task',
     type: 'Create'
   },
   {
-    name: '指派任务执行人员',
+    name: 'Assign Task Handler',
     type: 'Assign'
   },
   {
-    name: '完成任务',
+    name: 'Complete Task',
     type: 'Complete'
   }
 ])

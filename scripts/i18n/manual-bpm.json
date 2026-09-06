@@ -1,5 +1,12 @@
 {
   "_note": "Bản dịch tay cho các chuỗi bpm mới xuất hiện sau khi nâng cấp upstream 2026.08. Áp dụng bằng: node scripts/i18n/apply-translations.mjs bpm scripts/i18n/manual-bpm.json",
+  "extra": {
+    "bpm.model.publishSuccess": {
+      "zh-CN": "发布成功",
+      "en": "Published successfully",
+      "vi": "Phát hành thành công"
+    }
+  },
   "en": {
     "bpm.model.form._todo280": "Type '{' to insert a form field",
     "bpm.model.form._todo281": "Please insert a form field (type '{' to choose one) or enter text",

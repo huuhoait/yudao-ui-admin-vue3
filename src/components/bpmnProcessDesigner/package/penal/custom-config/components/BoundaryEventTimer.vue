@@ -1,15 +1,15 @@
 <template>
   <div>
-    <el-divider content-position="left">审批人超时未处理时</el-divider>
-    <el-form-item label="启用开关" prop="timeoutHandlerEnable">
+    <el-divider content-position="left">When approver times out</el-divider>
+    <el-form-item label="Enable Switch" prop="timeoutHandlerEnable">
       <el-switch
         v-model="timeoutHandlerEnable"
-        active-text="开启"
-        inactive-text="关闭"
+        active-text="On"
+        inactive-text="Close"
         @change="timeoutHandlerChange"
       />
     </el-form-item>
-    <el-form-item label="执行动作" prop="timeoutHandlerType" v-if="timeoutHandlerEnable">
+    <el-form-item label="Execution Action" prop="timeoutHandlerType" v-if="timeoutHandlerEnable">
       <el-radio-group v-model="timeoutHandlerType.value" @change="onTimeoutHandlerTypeChanged">
         <el-radio-button
           v-for="item in TIMEOUT_HANDLER_TYPES"
@@ -19,8 +19,8 @@
         />
       </el-radio-group>
     </el-form-item>
-    <el-form-item label="超时时间设置" v-if="timeoutHandlerEnable">
-      <span class="mr-2">当超过</span>
+    <el-form-item label="Timeout Setting" v-if="timeoutHandlerEnable">
+      <span class="mr-2">When exceeds</span>
       <el-form-item prop="timeDuration">
         <el-input-number
           class="mr-2"
@@ -49,10 +49,10 @@
           :value="item.value"
         />
       </el-select>
-      未处理
+      Not handled
     </el-form-item>
     <el-form-item
-      label="最大提醒次数"
+      label="Max Reminder Count"
       prop="maxRemindCount"
       v-if="timeoutHandlerEnable && timeoutHandlerType.value === 1"
     >

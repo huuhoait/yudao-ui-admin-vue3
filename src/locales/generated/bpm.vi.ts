@@ -273,7 +273,8 @@ export default {
       _todo156: "Nhập mô hình",
       _todo157: "Tạo phân loại",
       categorySort: "Thứ tự phân loại",
-      _todo158: "Sắp xếp phân loại thành công"
+      _todo158: "Sắp xếp phân loại thành công",
+      publishSuccess: "Phát hành thành công"
     },
     oa: {
       leave: {

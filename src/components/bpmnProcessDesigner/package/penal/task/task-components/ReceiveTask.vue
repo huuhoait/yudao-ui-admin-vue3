@@ -1,6 +1,6 @@
 <template>
   <div style="margin-top: 16px">
-    <el-form-item label="消息实例">
+    <el-form-item label="Message Instance">
       <div
         style="
           display: flex;
@@ -25,21 +25,21 @@
     <el-dialog
       v-model="messageModelVisible"
       :close-on-click-modal="false"
-      title="创建新消息"
+      title="Create New Message"
       width="400px"
       append-to-body
       destroy-on-close
     >
       <el-form :model="newMessageForm" size="small" label-width="90px">
-        <el-form-item label="消息ID">
+        <el-form-item label="Message ID">
           <el-input v-model="newMessageForm.id" clearable />
         </el-form-item>
-        <el-form-item label="消息名称">
+        <el-form-item label="Message Name">
           <el-input v-model="newMessageForm.name" clearable />
         </el-form-item>
       </el-form>
       <template #footer>
-        <el-button size="small" type="primary" @click="createNewMessage">确 认</el-button>
+        <el-button size="small" type="primary" @click="createNewMessage">Confirm</el-button>
       </template>
     </el-dialog>
   </div>
@@ -73,7 +73,7 @@ const openMessageModel = () => {
 }
 const createNewMessage = () => {
   if (messageMap.value[newMessageForm.value.id]) {
-    message.error('该消息已存在，请修改id后重新保存')
+    message.error('This message already exists, please change the id and save again')
     return
   }
   const newMessage = bpmnInstances().moddle.create('bpmn:Message', newMessageForm.value)
@@ -103,7 +103,7 @@ onMounted(() => {
       bpmnMessageRefsMap.value[m.id] = m
       messageMap.value[m.id] = m.name
     })
-  messageMap.value['-1'] = '无'
+  messageMap.value['-1'] = 'None'
 })
 
 onBeforeUnmount(() => {

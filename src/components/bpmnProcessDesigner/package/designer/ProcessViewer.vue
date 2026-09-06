@@ -35,8 +35,8 @@
       </marker>
     </defs>
 
-    <!-- 审批记录 -->
-    <el-dialog :title="dialogTitle || '审批记录'" v-model="dialogVisible" width="1000px">
+    <!-- Approval records -->
+    <el-dialog :title="dialogTitle || 'Approval Records'" v-model="dialogVisible" width="1000px">
       <el-row>
         <el-table
           :data="selectTasks"
@@ -45,14 +45,14 @@
           header-cell-class-name="table-header-gray"
         >
           <el-table-column
-            label="序号"
+            label="No."
             header-align="center"
             align="center"
             type="index"
             width="50"
           />
           <el-table-column
-            label="审批人"
+            label="Approver"
             min-width="100"
             align="center"
             v-if="selectActivityType === 'bpmn:UserTask'"
@@ -62,13 +62,13 @@
             </template>
           </el-table-column>
           <el-table-column
-            label="发起人"
+            label="Initiator"
             prop="assigneeUser.nickname"
             min-width="100"
             align="center"
             v-else
           />
-          <el-table-column label="部门" min-width="100" align="center">
+          <el-table-column label="Department" min-width="100" align="center">
             <template #default="scope">
               {{ scope.row.assigneeUser?.deptName || scope.row.ownerUser?.deptName }}
             </template>
@@ -76,30 +76,30 @@
           <el-table-column
             :formatter="dateFormatter"
             align="center"
-            label="开始时间"
+            label="Start Time"
             prop="createTime"
             min-width="140"
           />
           <el-table-column
             :formatter="dateFormatter"
             align="center"
-            label="结束时间"
+            label="End Time"
             prop="endTime"
             min-width="140"
           />
-          <el-table-column align="center" label="审批状态" prop="status" min-width="90">
+          <el-table-column align="center" label="Approval Status" prop="status" min-width="90">
             <template #default="scope">
               <dict-tag :type="DICT_TYPE.BPM_TASK_STATUS" :value="scope.row.status" />
             </template>
           </el-table-column>
           <el-table-column
             align="center"
-            label="审批建议"
+            label="Approval Suggestion"
             prop="reason"
             min-width="120"
             v-if="selectActivityType === 'bpmn:UserTask'"
           />
-          <el-table-column align="center" label="耗时" prop="durationInMillis" width="100">
+          <el-table-column align="center" label="Duration" prop="durationInMillis" width="100">
             <template #default="scope">
               {{ formatPast2(scope.row.durationInMillis) }}
             </template>
@@ -281,7 +281,7 @@ const onSelectElement = (element: any) => {
     selectTasks.value = tasks.value.filter((item: any) => item?.taskDefinitionKey === element.id)
     dialogVisible.value = true
   } else if (activityType === 'bpmn:EndEvent' || activityType === 'bpmn:StartEvent') {
-    dialogTitle.value = '审批信息'
+    dialogTitle.value = 'Approval Info'
     selectTasks.value = [
       {
         assigneeUser: processInstance.value.startUser,

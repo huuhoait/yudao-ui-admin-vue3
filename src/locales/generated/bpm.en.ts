@@ -273,7 +273,8 @@ export default {
       _todo156: "Import Model",
       _todo157: "Create Category",
       categorySort: "Category Sort",
-      _todo158: "Category sorted successfully"
+      _todo158: "Category sorted successfully",
+      publishSuccess: "Published successfully"
     },
     oa: {
       leave: {

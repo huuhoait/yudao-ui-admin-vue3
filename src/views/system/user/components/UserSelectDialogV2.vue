@@ -13,7 +13,7 @@
     open(selectedIds?: number[]) — 打开弹窗，可传入已选 ID 用于预选高亮
 -->
 <template>
-  <Dialog :title="title" v-model="dialogVisible" width="80%" align-center append-to-body>
+  <Dialog :title="title || t('system.user.selectUserTitle')" v-model="dialogVisible" width="80%" align-center append-to-body>
     <el-row class="h-[calc(100vh-196px)]" :gutter="15">
       <!-- 左侧部门树 -->
       <el-col class="h-full" :span="5" :xs="24">
@@ -171,7 +171,7 @@ const props = withDefaults(
     deptId?: number // 部门 ID
   }>(),
   {
-    title: '人员选择',
+    title: '',
     multiple: true
   }
 )

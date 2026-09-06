@@ -2,7 +2,7 @@
 <template>
   <el-select
     v-model="selectValue"
-    :placeholder="placeholder"
+    :placeholder="placeholder || t('system.role.selectRole')"
     :disabled="disabled"
     :clearable="clearable"
     filterable
@@ -25,6 +25,7 @@
 import { getSimpleRoleList, RoleVO } from '@/api/system/role'
 
 defineOptions({ name: 'RoleSelect' })
+const { t } = useI18n() // 国际化
 
 const props = withDefaults(
   defineProps<{
@@ -36,7 +37,7 @@ const props = withDefaults(
   {
     disabled: false,
     clearable: true,
-    placeholder: '请选择角色'
+    placeholder: ''
   }
 )
 

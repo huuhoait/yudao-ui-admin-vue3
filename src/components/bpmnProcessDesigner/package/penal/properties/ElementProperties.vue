@@ -1,13 +1,13 @@
 <template>
   <div class="panel-tab__content">
     <el-table :data="elementPropertyList" max-height="240" fit border>
-      <el-table-column label="序号" width="50px" type="index" />
-      <el-table-column label="属性名" prop="name" min-width="100px" show-overflow-tooltip />
-      <el-table-column label="属性值" prop="value" min-width="100px" show-overflow-tooltip />
-      <el-table-column label="操作" width="110px">
+      <el-table-column label="No." width="50px" type="index" />
+      <el-table-column label="Property Name" prop="name" min-width="100px" show-overflow-tooltip />
+      <el-table-column label="Property Value" prop="value" min-width="100px" show-overflow-tooltip />
+      <el-table-column label="Action" width="110px">
         <template #default="scope">
           <el-button link @click="openAttributesForm(scope.row, scope.$index)" size="small">
-            编辑
+            Edit
           </el-button>
           <el-divider direction="vertical" />
           <el-button
@@ -16,35 +16,35 @@
             style="color: #ff4d4f"
             @click="removeAttributes(scope.row, scope.$index)"
           >
-            移除
+            Remove
           </el-button>
         </template>
       </el-table-column>
     </el-table>
     <div class="element-drawer__button">
       <el-button type="primary" @click="openAttributesForm(null, -1)">
-        <Icon icon="ep:plus" class="mr-1px" /> 添加属性
+        <Icon icon="ep:plus" class="mr-1px" /> Add Property
       </el-button>
     </div>
 
     <el-dialog
       v-model="propertyFormModelVisible"
-      title="属性配置"
+      title="Property Config"
       width="600px"
       append-to-body
       destroy-on-close
     >
       <el-form :model="propertyForm" label-width="80px" ref="attributeFormRef">
-        <el-form-item label="属性名：" prop="name">
+        <el-form-item label="Property Name:" prop="name">
           <el-input v-model="propertyForm.name" clearable />
         </el-form-item>
-        <el-form-item label="属性值：" prop="value">
+        <el-form-item label="Property Value:" prop="value">
           <el-input v-model="propertyForm.value" clearable />
         </el-form-item>
       </el-form>
       <template #footer>
-        <el-button @click="propertyFormModelVisible = false">取 消</el-button>
-        <el-button type="primary" @click="saveAttribute">确 定</el-button>
+        <el-button @click="propertyFormModelVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="saveAttribute">Confirm</el-button>
       </template>
     </el-dialog>
   </div>
@@ -105,9 +105,9 @@ const openAttributesForm = (attr, index) => {
 }
 const removeAttributes = (attr, index) => {
   console.log(attr, 'attr')
-  ElMessageBox.confirm('确认移除该属性吗？', '提示', {
-    confirmButtonText: '确 认',
-    cancelButtonText: '取 消'
+  ElMessageBox.confirm('Confirm removing this property?', 'Tip', {
+    confirmButtonText: 'Confirm',
+    cancelButtonText: 'Cancel'
   })
     .then(() => {
       elementPropertyList.value.splice(index, 1)
@@ -119,7 +119,7 @@ const removeAttributes = (attr, index) => {
       updateElementExtensions(propertiesObject)
       resetAttributesList()
     })
-    .catch(() => console.info('操作取消'))
+    .catch(() => console.info('Operation cancelled'))
 }
 const saveAttribute = () => {
   console.log(propertyForm.value, 'propertyForm.value')

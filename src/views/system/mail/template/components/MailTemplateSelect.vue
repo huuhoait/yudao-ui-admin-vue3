@@ -1,7 +1,7 @@
 <template>
   <el-select
     :model-value="modelValue"
-    :placeholder="placeholder"
+    :placeholder="placeholder || t('system.mail.template.selectTemplate')"
     :disabled="disabled"
     :loading="loading"
     class="w-full"
@@ -23,6 +23,7 @@ import { getSimpleMailTemplateList, type MailTemplateSimpleVO } from '@/api/syst
 
 /** 邮件模板下拉选择器 */
 defineOptions({ name: 'MailTemplateSelect' })
+const { t } = useI18n() // 国际化
 
 withDefaults(
   defineProps<{
@@ -33,7 +34,7 @@ withDefaults(
   {
     disabled: false,
     modelValue: undefined,
-    placeholder: '请选择邮件模板'
+    placeholder: ''
   }
 )
 

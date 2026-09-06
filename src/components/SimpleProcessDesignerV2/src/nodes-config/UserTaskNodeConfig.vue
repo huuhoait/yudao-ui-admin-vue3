@@ -26,7 +26,7 @@
       </div>
     </template>
     <div v-if="currentNode.type === NodeType.USER_TASK_NODE" class="flex flex-items-center mb-3">
-      <span class="font-size-16px mr-3">审批类型 :</span>
+      <span class="font-size-16px mr-3">Approval Type :</span>
       <el-radio-group v-model="approveType">
         <el-radio
           v-for="(item, index) in APPROVE_TYPE"
@@ -39,10 +39,10 @@
       </el-radio-group>
     </div>
     <el-tabs type="border-card" v-model="activeTabName" v-if="approveType === ApproveType.USER">
-      <el-tab-pane :label="`${nodeTypeName}人`" name="user">
+      <el-tab-pane :label="`${nodeTypeName} User`" name="user">
         <div>
           <el-form ref="formRef" :model="configForm" label-position="top" :rules="formRules">
-            <el-form-item :label="`${nodeTypeName}人设置`" prop="candidateStrategy">
+            <el-form-item :label="`${nodeTypeName} User Settings`" prop="candidateStrategy">
               <el-radio-group
                 v-model="configForm.candidateStrategy"
                 @change="changeCandidateStrategy"
@@ -58,7 +58,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy == CandidateStrategy.ROLE"
-              label="指定角色"
+              label="Specified Roles"
               prop="roleIds"
             >
               <el-select
@@ -82,7 +82,7 @@
                 configForm.candidateStrategy == CandidateStrategy.DEPT_LEADER ||
                 configForm.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER
               "
-              label="指定部门"
+              label="Specified Departments"
               prop="deptIds"
               span="24"
             >
@@ -91,7 +91,7 @@
                 v-model="configForm.deptIds"
                 :data="deptTreeOptions"
                 :props="defaultProps"
-                empty-text="加载中，请稍后"
+                empty-text="Loading, please wait"
                 multiple
                 node-key="id"
                 :check-strictly="true"
@@ -101,7 +101,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy == CandidateStrategy.POST"
-              label="指定岗位"
+              label="Specified Positions"
               prop="postIds"
               span="24"
             >
@@ -122,7 +122,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy == CandidateStrategy.USER"
-              label="指定用户"
+              label="Specified Users"
               prop="userIds"
               span="24"
             >
@@ -143,7 +143,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy === CandidateStrategy.USER_GROUP"
-              label="指定用户组"
+              label="Specified User Groups"
               prop="userGroups"
             >
               <el-select
@@ -163,7 +163,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy === CandidateStrategy.FORM_USER"
-              label="表单内用户字段"
+              label="User Field in Form"
               prop="formUser"
             >
               <el-select filterable v-model="configForm.formUser" clearable style="width: 100%">
@@ -178,7 +178,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.candidateStrategy === CandidateStrategy.FORM_DEPT_LEADER"
-              label="表单内部门字段"
+              label="Department Field in Form"
               prop="formDept"
             >
               <el-select filterable v-model="configForm.formDept" clearable style="width: 100%">
@@ -215,7 +215,7 @@
             <!-- TODO @jason：后续要支持选择已经存好的表达式 -->
             <el-form-item
               v-if="configForm.candidateStrategy === CandidateStrategy.EXPRESSION"
-              label="流程表达式"
+              label="Process Expression"
               prop="expression"
             >
               <el-input
@@ -225,7 +225,7 @@
                 style="width: 100%"
               />
             </el-form-item>
-            <el-form-item :label="`多人${nodeTypeName}方式`" prop="approveMethod">
+            <el-form-item :label="`Multi-user ${nodeTypeName} Mode`" prop="approveMethod">
               <el-radio-group v-model="configForm.approveMethod" @change="approveMethodChanged">
                 <div class="flex-col">
                   <div
@@ -255,7 +255,7 @@
             </el-form-item>
 
             <div v-if="currentNode.type === NodeType.USER_TASK_NODE">
-              <el-divider content-position="left">审批人拒绝时</el-divider>
+              <el-divider content-position="left">When the approver rejects</el-divider>
               <el-form-item prop="rejectHandlerType">
                 <el-radio-group v-model="configForm.rejectHandlerType">
                   <div class="flex-col">
@@ -267,7 +267,7 @@
               </el-form-item>
               <el-form-item
                 v-if="configForm.rejectHandlerType == RejectHandlerType.RETURN_USER_TASK"
-                label="驳回节点"
+                label="Reject Node"
                 prop="returnNodeId"
               >
                 <el-select
@@ -287,17 +287,17 @@
             </div>
 
             <div v-if="currentNode.type === NodeType.USER_TASK_NODE">
-              <el-divider content-position="left">审批人超时未处理时</el-divider>
-              <el-form-item label="启用开关" prop="timeoutHandlerEnable">
+              <el-divider content-position="left">When the approver does not respond in time</el-divider>
+              <el-form-item label="Enable" prop="timeoutHandlerEnable">
                 <el-switch
                   v-model="configForm.timeoutHandlerEnable"
-                  active-text="开启"
-                  inactive-text="关闭"
+                  active-text="On"
+                  inactive-text="Off"
                   @change="timeoutHandlerChange"
                 />
               </el-form-item>
               <el-form-item
-                label="执行动作"
+                label="Action"
                 prop="timeoutHandlerType"
                 v-if="configForm.timeoutHandlerEnable"
               >
@@ -313,8 +313,8 @@
                   />
                 </el-radio-group>
               </el-form-item>
-              <el-form-item label="超时时间设置" v-if="configForm.timeoutHandlerEnable">
-                <span class="mr-2">当超过</span>
+              <el-form-item label="Timeout Duration Setting" v-if="configForm.timeoutHandlerEnable">
+                <span class="mr-2">When more than</span>
                 <el-form-item prop="timeDuration">
                   <el-input-number
                     class="mr-2"
@@ -338,10 +338,10 @@
                     :value="item.value"
                   />
                 </el-select>
-                未处理
+                without action
               </el-form-item>
               <el-form-item
-                label="最大提醒次数"
+                label="Max Reminder Count"
                 prop="maxRemindCount"
                 v-if="configForm.timeoutHandlerEnable && configForm.timeoutHandlerType === 1"
               >
@@ -349,7 +349,7 @@
               </el-form-item>
             </div>
 
-            <el-divider content-position="left">{{ nodeTypeName }}人为空时</el-divider>
+            <el-divider content-position="left">When the {{ nodeTypeName }} user is empty</el-divider>
             <el-form-item prop="assignEmptyHandlerType">
               <el-radio-group v-model="configForm.assignEmptyHandlerType">
                 <div class="flex-col">
@@ -361,7 +361,7 @@
             </el-form-item>
             <el-form-item
               v-if="configForm.assignEmptyHandlerType == AssignEmptyHandlerType.ASSIGN_USER"
-              label="指定用户"
+              label="Specified Users"
               prop="assignEmptyHandlerUserIds"
               span="24"
             >
@@ -382,7 +382,7 @@
             </el-form-item>
 
             <div v-if="currentNode.type === NodeType.USER_TASK_NODE">
-              <el-divider content-position="left">审批人与提交人为同一人时</el-divider>
+              <el-divider content-position="left">When the approver and the submitter are the same person</el-divider>
               <el-form-item prop="assignStartUserHandlerType">
                 <el-radio-group v-model="configForm.assignStartUserHandlerType">
                   <div class="flex-col">
@@ -395,24 +395,24 @@
             </div>
 
             <div v-if="currentNode.type === NodeType.USER_TASK_NODE">
-              <el-divider content-position="left">是否需要签名</el-divider>
+              <el-divider content-position="left">Signature Required</el-divider>
               <el-form-item prop="signEnable">
-                <el-switch v-model="configForm.signEnable" active-text="是" inactive-text="否" />
+                <el-switch v-model="configForm.signEnable" active-text="Yes" inactive-text="No" />
               </el-form-item>
             </div>
 
             <div v-if="currentNode.type === NodeType.USER_TASK_NODE">
-              <el-divider content-position="left">审批意见</el-divider>
+              <el-divider content-position="left">Approval Comment</el-divider>
               <el-form-item prop="reasonRequire">
                 <el-switch
                   v-model="configForm.reasonRequire"
-                  active-text="必填"
-                  inactive-text="非必填"
+                  active-text="Required"
+                  inactive-text="Optional"
                 />
               </el-form-item>
             </div>
             <div>
-              <el-divider content-position="left">跳过表达式</el-divider>
+              <el-divider content-position="left">Skip Expression</el-divider>
               <el-form-item prop="skipExpression">
                 <el-input v-model="configForm.skipExpression" type="textarea" />
               </el-form-item>
@@ -421,16 +421,16 @@
         </div>
       </el-tab-pane>
       <el-tab-pane
-        label="操作按钮设置"
+        label="Action Button Setting"
         v-if="currentNode.type === NodeType.USER_TASK_NODE"
         name="buttons"
       >
         <div class="button-setting-pane">
-          <div class="button-setting-desc">操作按钮</div>
+          <div class="button-setting-desc">Action Buttons</div>
           <div class="button-setting-title">
-            <div class="button-title-label">操作按钮</div>
-            <div class="pl-4 button-title-label">显示名称</div>
-            <div class="button-title-label">启用</div>
+            <div class="button-title-label">Action Buttons</div>
+            <div class="pl-4 button-title-label">Display Name</div>
+            <div class="button-title-label">Enable</div>
           </div>
           <div class="button-setting-item" v-for="(item, index) in buttonsSetting" :key="index">
             <div class="button-setting-item-label"> {{ OPERATION_BUTTON_NAME.get(item.id) }} </div>
@@ -454,20 +454,20 @@
           </div>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="表单字段权限" name="fields" v-if="formType === 10">
+      <el-tab-pane label="Form Field Permission" name="fields" v-if="formType === 10">
         <div class="field-setting-pane">
-          <div class="field-setting-desc">字段权限</div>
+          <div class="field-setting-desc">Field Permission</div>
           <div class="field-permit-title">
-            <div class="setting-title-label first-title"> 字段名称 </div>
+            <div class="setting-title-label first-title"> Field Name </div>
             <div class="other-titles">
               <span class="setting-title-label cursor-pointer" @click="updatePermission('READ')">
-                只读
+                Read-only
               </span>
               <span class="setting-title-label cursor-pointer" @click="updatePermission('WRITE')">
-                可编辑
+                Editable
               </span>
               <span class="setting-title-label cursor-pointer" @click="updatePermission('NONE')">
-                隐藏
+                Hidden
               </span>
             </div>
           </div>
@@ -509,7 +509,7 @@
           </div>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="监听器" name="listener">
+      <el-tab-pane label="Listener" name="listener">
         <UserTaskListener
           ref="userTaskListenerRef"
           v-model="configForm"
@@ -520,8 +520,8 @@
     <template #footer>
       <el-divider />
       <div>
-        <el-button type="primary" @click="saveConfig">确 定</el-button>
-        <el-button @click="closeDrawer">取 消</el-button>
+        <el-button type="primary" @click="saveConfig">OK</el-button>
+        <el-button @click="closeDrawer">Cancel</el-button>
       </div>
     </template>
   </el-drawer>
@@ -580,13 +580,13 @@ const emits = defineEmits<{
   'find:returnTaskNodes': [nodeList: SimpleFlowNode[]]
 }>()
 const deptLevelLabel = computed(() => {
-  let label = '部门负责人来源'
+  let label = 'Department Leader Source'
   if (configForm.value.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER) {
-    label = label + '(指定部门向上)'
+    label = label + ' (upward from the specified department)'
   } else if (configForm.value.candidateStrategy == CandidateStrategy.FORM_DEPT_LEADER) {
-    label = label + '(表单内部门向上)'
+    label = label + ' (upward from the department in the form)'
   } else {
-    label = label + '(发起人部门向上)'
+    label = label + ' (upward from the starter department)'
   }
   return label
 })
@@ -606,7 +606,7 @@ const userFieldOnFormOptions = computed(() => {
   // 固定添加发起人 ID 字段
   formFieldOptions.unshift({
     field: ProcessVariableEnum.START_USER_ID,
-    title: '发起人',
+    title: 'Initiator',
     type: 'UserSelect',
     required: true
   })
@@ -624,24 +624,24 @@ const approveType = ref(ApproveType.USER)
 const formRef = ref() // 表单 Ref
 // 表单校验规则
 const formRules = reactive({
-  candidateStrategy: [{ required: true, message: '审批人设置不能为空', trigger: 'change' }],
-  userIds: [{ required: true, message: '用户不能为空', trigger: 'change' }],
-  roleIds: [{ required: true, message: '角色不能为空', trigger: 'change' }],
-  deptIds: [{ required: true, message: '部门不能为空', trigger: 'change' }],
-  userGroups: [{ required: true, message: '用户组不能为空', trigger: 'change' }],
-  formUser: [{ required: true, message: '表单内用户字段不能为空', trigger: 'change' }],
-  formDept: [{ required: true, message: '表单内部门字段不能为空', trigger: 'change' }],
-  postIds: [{ required: true, message: '岗位不能为空', trigger: 'change' }],
-  expression: [{ required: true, message: '流程表达式不能为空', trigger: 'blur' }],
-  approveMethod: [{ required: true, message: '多人审批方式不能为空', trigger: 'change' }],
-  approveRatio: [{ required: true, message: '通过比例不能为空', trigger: 'blur' }],
-  returnNodeId: [{ required: true, message: '驳回节点不能为空', trigger: 'change' }],
+  candidateStrategy: [{ required: true, message: 'Approver setting is required', trigger: 'change' }],
+  userIds: [{ required: true, message: 'User is required', trigger: 'change' }],
+  roleIds: [{ required: true, message: 'Role is required', trigger: 'change' }],
+  deptIds: [{ required: true, message: 'Department is required', trigger: 'change' }],
+  userGroups: [{ required: true, message: 'User group is required', trigger: 'change' }],
+  formUser: [{ required: true, message: 'User field in the form is required', trigger: 'change' }],
+  formDept: [{ required: true, message: 'Department field in the form is required', trigger: 'change' }],
+  postIds: [{ required: true, message: 'Position is required', trigger: 'change' }],
+  expression: [{ required: true, message: 'Process expression is required', trigger: 'blur' }],
+  approveMethod: [{ required: true, message: 'Multi-approver method is required', trigger: 'change' }],
+  approveRatio: [{ required: true, message: 'Approval ratio is required', trigger: 'blur' }],
+  returnNodeId: [{ required: true, message: 'Reject node is required', trigger: 'change' }],
   timeoutHandlerEnable: [{ required: true }],
   timeoutHandlerType: [{ required: true }],
-  timeDuration: [{ required: true, message: '超时时间不能为空', trigger: 'blur' }],
-  maxRemindCount: [{ required: true, message: '提醒次数不能为空', trigger: 'blur' }],
+  timeDuration: [{ required: true, message: 'Timeout is required', trigger: 'blur' }],
+  maxRemindCount: [{ required: true, message: 'Reminder count is required', trigger: 'blur' }],
   assignEmptyHandlerType: [{ required: true }],
-  assignEmptyHandlerUserIds: [{ required: true, message: '用户不能为空', trigger: 'change' }],
+  assignEmptyHandlerUserIds: [{ required: true, message: 'User is required', trigger: 'change' }],
   assignStartUserHandlerType: [{ required: true }]
 })
 
@@ -696,7 +696,7 @@ const userTaskListenerRef = ref()
 
 /** 节点类型名称 */
 const nodeTypeName = computed(() => {
-  return currentNode.value.type === NodeType.TRANSACTOR_NODE ? '办理' : '审批'
+  return currentNode.value.type === NodeType.TRANSACTOR_NODE ? 'Handle' : 'Approval'
 })
 
 /** 保存配置 */

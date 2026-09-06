@@ -207,7 +207,7 @@ const handlePush = async (id: number) => {
     await message.confirm(t('system.notice._todo127'))
     // 发起推送
     await NoticeApi.pushNotice(id)
-    message.success(t('推送成功'))
+    message.success(t('system.notice.pushSuccess'))
   } catch {}
 }
 

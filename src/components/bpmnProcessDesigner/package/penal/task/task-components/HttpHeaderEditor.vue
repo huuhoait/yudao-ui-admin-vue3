@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     v-model="dialogVisible"
-    title="编辑请求头"
+    title="Edit Header"
     width="600px"
     :close-on-click-modal="false"
     @close="handleClose"
@@ -9,11 +9,11 @@
     <div class="header-editor">
       <div class="header-list">
         <div v-for="(item, index) in headerList" :key="index" class="header-item">
-          <el-input v-model="item.key" placeholder="请输入参数名" class="header-key" clearable />
+          <el-input v-model="item.key" placeholder="Please enter parameter name" class="header-key" clearable />
           <span class="separator">:</span>
           <el-input
             v-model="item.value"
-            placeholder="请输入参数值 (支持表达式 ${变量名})"
+            placeholder="Please enter parameter value (supports expression ${var})"
             class="header-value"
             clearable
           />
@@ -27,13 +27,13 @@
         </div>
       </div>
       <el-button type="primary" :icon="Plus" class="add-btn" @click="addHeader">
-        添加请求头
+        Add Header
       </el-button>
     </div>
     <template #footer>
       <span class="dialog-footer">
-        <el-button @click="handleClose">取消</el-button>
-        <el-button type="primary" @click="handleSave">保存</el-button>
+        <el-button @click="handleClose">Cancel</el-button>
+        <el-button type="primary" @click="handleSave">Save</el-button>
       </span>
     </template>
   </el-dialog>

@@ -1,6 +1,6 @@
 <template>
   <el-form ref="formRef" :model="condition" :rules="formRules" label-position="top">
-    <el-form-item label="配置方式" prop="conditionType">
+    <el-form-item label="Configuration Mode" prop="conditionType">
       <el-radio-group v-model="condition.conditionType" @change="changeConditionType">
         <el-radio
           v-for="(dict, indexConditionType) in conditionConfigTypes"
@@ -14,20 +14,20 @@
     </el-form-item>
     <el-form-item
       v-if="condition.conditionType === ConditionType.RULE && condition.conditionGroups"
-      label="条件规则"
+      label="Condition Rule"
     >
       <div class="condition-group-tool">
         <div class="flex items-center">
-          <div class="mr-4">条件组关系</div>
+          <div class="mr-4">Condition Group Relation</div>
           <el-switch
             v-model="condition.conditionGroups.and"
             inline-prompt
-            active-text="且"
-            inactive-text="或"
+            active-text="And"
+            inactive-text="Or"
           />
         </div>
       </div>
-      <el-space direction="vertical" :spacer="condition.conditionGroups.and ? '且' : '或'">
+      <el-space direction="vertical" :spacer="condition.conditionGroups.and ? 'AND' : 'OR'">
         <el-card
           class="condition-group"
           style="width: 530px"
@@ -47,14 +47,14 @@
           </div>
           <template #header>
             <div class="flex items-center justify-between">
-              <div>条件组</div>
+              <div>Condition Group</div>
               <div class="flex">
-                <div class="mr-4">规则关系</div>
+                <div class="mr-4">Rule Relation</div>
                 <el-switch
                   v-model="equation.and"
                   inline-prompt
-                  active-text="且"
-                  inactive-text="或"
+                  active-text="And"
+                  inactive-text="Or"
                 />
               </div>
             </div>
@@ -66,7 +66,7 @@
                 :prop="`conditionGroups.conditions.${cIdx}.rules.${rIdx}.leftSide`"
                 :rules="{
                   required: true,
-                  message: '左值不能为空',
+                  message: 'Left value is required',
                   trigger: 'change'
                 }"
               >
@@ -79,7 +79,7 @@
                     :disabled="!field.required"
                   >
                     <el-tooltip
-                      content="表单字段非必填时不能作为流程分支条件"
+                      content="An optional form field cannot be used as a branch condition"
                       effect="dark"
                       placement="right-start"
                       v-if="!field.required"
@@ -105,7 +105,7 @@
                 :prop="`conditionGroups.conditions.${cIdx}.rules.${rIdx}.rightSide`"
                 :rules="{
                   required: true,
-                  message: '右值不能为空',
+                  message: 'Right value is required',
                   trigger: 'blur'
                 }"
               >
@@ -121,7 +121,7 @@
           </div>
         </el-card>
       </el-space>
-      <div title="添加条件组" class="mt-4 cursor-pointer">
+      <div title="Add Condition Group" class="mt-4 cursor-pointer">
         <Icon
           color="#0089ff"
           icon="ep:plus"
@@ -132,7 +132,7 @@
     </el-form-item>
     <el-form-item
       v-if="condition.conditionType === ConditionType.EXPRESSION"
-      label="条件表达式"
+      label="Condition Expression"
       prop="conditionExpression"
     >
       <el-input
@@ -188,8 +188,8 @@ const fieldOptions = useFormFieldsAndStartUser()
 
 // 表单校验规则
 const formRules = reactive({
-  conditionType: [{ required: true, message: '配置方式不能为空', trigger: 'blur' }],
-  conditionExpression: [{ required: true, message: '条件表达式不能为空', trigger: 'blur' }]
+  conditionType: [{ required: true, message: 'Configuration mode is required', trigger: 'blur' }],
+  conditionExpression: [{ required: true, message: 'Condition expression is required', trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

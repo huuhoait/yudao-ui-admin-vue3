@@ -1,6 +1,6 @@
 <template>
   <el-tabs v-model="tab">
-    <el-tab-pane label="CRON表达式" name="cron">
+    <el-tab-pane label="CRON Expression" name="cron">
       <div style="margin-bottom: 10px">
         <el-input
           v-model="cronStr"
@@ -10,21 +10,21 @@
         />
       </div>
       <div style="display: flex; gap: 8px; margin-bottom: 8px">
-        <el-input v-model="fields.second" placeholder="秒" style="width: 80px" :key="'second'" />
-        <el-input v-model="fields.minute" placeholder="分" style="width: 80px" :key="'minute'" />
-        <el-input v-model="fields.hour" placeholder="时" style="width: 80px" :key="'hour'" />
-        <el-input v-model="fields.day" placeholder="天" style="width: 80px" :key="'day'" />
-        <el-input v-model="fields.month" placeholder="月" style="width: 80px" :key="'month'" />
-        <el-input v-model="fields.week" placeholder="周" style="width: 80px" :key="'week'" />
-        <el-input v-model="fields.year" placeholder="年" style="width: 80px" :key="'year'" />
+        <el-input v-model="fields.second" placeholder="Second" style="width: 80px" :key="'second'" />
+        <el-input v-model="fields.minute" placeholder="Minute" style="width: 80px" :key="'minute'" />
+        <el-input v-model="fields.hour" placeholder="Hour" style="width: 80px" :key="'hour'" />
+        <el-input v-model="fields.day" placeholder="Day" style="width: 80px" :key="'day'" />
+        <el-input v-model="fields.month" placeholder="Month" style="width: 80px" :key="'month'" />
+        <el-input v-model="fields.week" placeholder="Week" style="width: 80px" :key="'week'" />
+        <el-input v-model="fields.year" placeholder="Year" style="width: 80px" :key="'year'" />
       </div>
       <el-tabs v-model="activeField" type="card" style="margin-bottom: 8px">
         <el-tab-pane v-for="f in cronFieldList" :label="f.label" :name="f.key" :key="f.key">
           <div style="margin-bottom: 8px">
             <el-radio-group v-model="cronMode[f.key]" :key="'radio-' + f.key">
-              <el-radio label="every" :key="'every-' + f.key">每{{ f.label }}</el-radio>
+              <el-radio label="every" :key="'every-' + f.key">Every {{ f.label }}</el-radio>
               <el-radio label="range" :key="'range-' + f.key">
-                从
+                From
                 <el-input-number
                   v-model="cronRange[f.key][0]"
                   :min="f.min"
@@ -33,7 +33,7 @@
                   style="width: 60px"
                   :key="'range0-' + f.key"
                 />
-                到
+                To
                 <el-input-number
                   v-model="cronRange[f.key][1]"
                   :min="f.min"
@@ -42,10 +42,10 @@
                   style="width: 60px"
                   :key="'range1-' + f.key"
                 />
-                之间每{{ f.label }}
+                , every {{ f.label }}
               </el-radio>
               <el-radio label="step" :key="'step-' + f.key">
-                从第
+                Starting at
                 <el-input-number
                   v-model="cronStep[f.key][0]"
                   :min="f.min"
@@ -54,7 +54,7 @@
                   style="width: 60px"
                   :key="'step0-' + f.key"
                 />
-                开始每
+                then every
                 <el-input-number
                   v-model="cronStep[f.key][1]"
                   :min="1"
@@ -65,7 +65,7 @@
                 />
                 {{ f.label }}
               </el-radio>
-              <el-radio label="appoint" :key="'appoint-' + f.key">指定</el-radio>
+              <el-radio label="appoint" :key="'appoint-' + f.key">Specified</el-radio>
             </el-radio-group>
           </div>
           <div v-if="cronMode[f.key] === 'appoint'">
@@ -82,87 +82,87 @@
         </el-tab-pane>
       </el-tabs>
     </el-tab-pane>
-    <el-tab-pane label="标准格式" name="iso" :key="'iso-tab'">
+    <el-tab-pane label="Standard Format" name="iso" :key="'iso-tab'">
       <div style="margin-bottom: 10px">
         <el-input
           v-model="isoStr"
-          placeholder="如R1/2025-05-21T21:59:54/P3DT30M30S"
+          placeholder="e.g. R1/2025-05-21T21:59:54/P3DT30M30S"
           style="width: 400px; font-weight: bold"
           :key="'isoStr'"
         />
       </div>
       <div style="margin-bottom: 10px">
-        循环次数：<el-input-number v-model="repeat" :min="1" style="width: 100px" :key="'repeat'" />
+        Repetitions:<el-input-number v-model="repeat" :min="1" style="width: 100px" :key="'repeat'" />
       </div>
       <div style="margin-bottom: 10px">
-        日期时间：<el-date-picker
+        Date & time:<el-date-picker
           v-model="isoDate"
           type="datetime"
-          placeholder="选择日期时间"
+          placeholder="Select Date Time"
           style="width: 200px"
           :key="'isoDate'"
         />
       </div>
       <div style="margin-bottom: 10px">
-        当前时长：<el-input
+        Current duration:<el-input
           v-model="isoDuration"
-          placeholder="如P3DT30M30S"
+          placeholder="e.g. P3DT30M30S"
           style="width: 200px"
           :key="'isoDuration'"
         />
       </div>
       <div>
         <div>
-          秒：<el-button
+          Second:<el-button
             v-for="s in [5, 10, 30, 50]"
             @click="setDuration('S', s)"
             :key="'sec-' + s"
           >
             {{ s }}
           </el-button>
-          自定义
+          Custom
         </div>
         <div>
-          分：<el-button
+          Min:<el-button
             v-for="m in [5, 10, 30, 50]"
             @click="setDuration('M', m)"
             :key="'min-' + m"
           >
             {{ m }}
           </el-button>
-          自定义
+          Custom
         </div>
         <div>
-          小时：<el-button
+          Hour:<el-button
             v-for="h in [4, 8, 12, 24]"
             @click="setDuration('H', h)"
             :key="'hour-' + h"
           >
             {{ h }}
           </el-button>
-          自定义
+          Custom
         </div>
         <div>
-          天：<el-button v-for="d in [1, 2, 3, 4]" @click="setDuration('D', d)" :key="'day-' + d">
+          Day:<el-button v-for="d in [1, 2, 3, 4]" @click="setDuration('D', d)" :key="'day-' + d">
             {{ d }}
           </el-button>
-          自定义
+          Custom
         </div>
         <div>
-          月：<el-button
+          Month:<el-button
             v-for="mo in [1, 2, 3, 4]"
             @click="setDuration('M', mo)"
             :key="'mon-' + mo"
           >
             {{ mo }}
           </el-button>
-          自定义
+          Custom
         </div>
         <div>
-          年：<el-button v-for="y in [1, 2, 3, 4]" @click="setDuration('Y', y)" :key="'year-' + y">
+          Year:<el-button v-for="y in [1, 2, 3, 4]" @click="setDuration('Y', y)" :key="'year-' + y">
             {{ y }}
           </el-button>
-          自定义
+          Custom
         </div>
       </div>
     </el-tab-pane>
@@ -185,13 +185,13 @@ const fields = ref({
   year: ''
 })
 const cronFieldList = [
-  { key: 'second', label: '秒', min: 0, max: 59 },
-  { key: 'minute', label: '分', min: 0, max: 59 },
-  { key: 'hour', label: '时', min: 0, max: 23 },
-  { key: 'day', label: '天', min: 1, max: 31 },
-  { key: 'month', label: '月', min: 1, max: 12 },
-  { key: 'week', label: '周', min: 1, max: 7 },
-  { key: 'year', label: '年', min: 1970, max: 2099 }
+  { key: 'second', label: 'Second', min: 0, max: 59 },
+  { key: 'minute', label: 'Minute', min: 0, max: 59 },
+  { key: 'hour', label: 'Hour', min: 0, max: 23 },
+  { key: 'day', label: 'Day', min: 1, max: 31 },
+  { key: 'month', label: 'Month', min: 1, max: 12 },
+  { key: 'week', label: 'Week', min: 1, max: 7 },
+  { key: 'year', label: 'Year', min: 1970, max: 2099 }
 ]
 const activeField = ref('second')
 const cronMode = ref({

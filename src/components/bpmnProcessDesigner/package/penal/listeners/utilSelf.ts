@@ -64,26 +64,26 @@ export function initListenerForm2(processListener) {
       fields: []
     }
   }
-  throw new Error('未知的监听器类型')
+  throw new Error('Unknown listener type')
 }
 
 export const listenerType = {
-  classListener: 'Java 类',
-  expressionListener: '表达式',
-  delegateExpressionListener: '代理表达式',
-  scriptListener: '脚本'
+  classListener: 'Java Class',
+  expressionListener: 'Expression',
+  delegateExpressionListener: 'Delegate Expression',
+  scriptListener: 'Script'
 }
 
 export const eventType = {
-  create: '创建',
-  assignment: '指派',
-  complete: '完成',
-  delete: '删除',
-  update: '更新',
-  timeout: '超时'
+  create: 'Create',
+  assignment: 'Assign',
+  complete: 'Complete',
+  delete: 'Delete',
+  update: 'Update',
+  timeout: 'Timeout'
 }
 
 export const fieldType = {
-  string: '字符串',
-  expression: '表达式'
+  string: 'String',
+  expression: 'Expression'
 }

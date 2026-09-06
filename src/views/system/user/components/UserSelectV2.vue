@@ -39,7 +39,7 @@
       </template>
       <el-input
         :model-value="displayLabel"
-        :placeholder="placeholder"
+        :placeholder="placeholder || t('system.user.selectUser')"
         :disabled="disabled"
         readonly
         :suffix-icon="suffixIcon"
@@ -68,6 +68,7 @@ import { useUserStoreWithOut } from '@/store/modules/user'
 const attrs = useAttrs()
 
 defineOptions({ name: 'UserSelectV2', inheritAttrs: false })
+const { t } = useI18n() // 国际化
 
 const props = withDefaults(
   defineProps<{
@@ -84,7 +85,7 @@ const props = withDefaults(
     defaultCurrentUser: false,
     disabled: false,
     clearable: true,
-    placeholder: '请选择用户'
+    placeholder: ''
   }
 )
 

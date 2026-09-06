@@ -5,7 +5,7 @@
         <!-- class="panel-tab__title" -->
         <template #title>
           <Icon icon="ep:info-filled" />
-          常规</template
+          General</template
         >
         <ElementBaseInfo
           :id-edit-disabled="idEditDisabled"
@@ -15,15 +15,15 @@
         />
       </el-collapse-item>
       <el-collapse-item name="condition" v-if="elementType === 'Process'" key="message">
-        <template #title><Icon icon="ep:comment" />消息与信号</template>
+        <template #title><Icon icon="ep:comment" />Message & Signal</template>
         <signal-and-massage />
       </el-collapse-item>
       <el-collapse-item name="condition" v-if="conditionFormVisible" key="condition">
-        <template #title><Icon icon="ep:promotion" />流转条件</template>
+        <template #title><Icon icon="ep:promotion" />Flow Condition</template>
         <flow-condition :business-object="elementBusinessObject" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="condition" v-if="formVisible" key="form">
-        <template #title><Icon icon="ep:list" />表单</template>
+        <template #title><Icon icon="ep:list" />Form</template>
         <element-form :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="task" v-if="isTaskCollapseItemShow(elementType)" key="task">
@@ -37,7 +37,7 @@
         v-if="elementType.indexOf('Task') !== -1"
         key="multiInstance"
       >
-        <template #title><Icon icon="ep:help-filled" />多人审批方式</template>
+        <template #title><Icon icon="ep:help-filled" />Multi-approval Method</template>
         <element-multi-instance
           :id="elementId"
           :business-object="elementBusinessObject"
@@ -45,23 +45,23 @@
         />
       </el-collapse-item>
       <el-collapse-item name="listeners" key="listeners">
-        <template #title><Icon icon="ep:bell-filled" />执行监听器</template>
+        <template #title><Icon icon="ep:bell-filled" />Execution Listener</template>
         <element-listeners :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="taskListeners" v-if="elementType === 'UserTask'" key="taskListeners">
-        <template #title><Icon icon="ep:bell-filled" />任务监听器</template>
+        <template #title><Icon icon="ep:bell-filled" />Task Listener</template>
         <user-task-listeners :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="extensions" key="extensions">
-        <template #title><Icon icon="ep:circle-plus-filled" />扩展属性</template>
+        <template #title><Icon icon="ep:circle-plus-filled" />Extension Properties</template>
         <element-properties :id="elementId" :type="elementType" />
       </el-collapse-item>
       <el-collapse-item name="other" key="other">
-        <template #title><Icon icon="ep:promotion" />其他</template>
+        <template #title><Icon icon="ep:promotion" />Others</template>
         <element-other-config :id="elementId" />
       </el-collapse-item>
       <el-collapse-item name="customConfig" key="customConfig">
-        <template #title><Icon icon="ep:tools" />自定义配置</template>
+        <template #title><Icon icon="ep:tools" />Custom Config</template>
         <element-custom-config
           :id="elementId"
           :type="elementType"
@@ -70,7 +70,7 @@
       </el-collapse-item>
       <!-- 新增的时间事件配置项 -->
       <el-collapse-item v-if="elementType === 'IntermediateCatchEvent'" name="timeEvent">
-        <template #title><Icon icon="ep:timer" />时间事件</template>
+        <template #title><Icon icon="ep:timer" />Timer Event</template>
         <!-- 相关 issue：https://gitee.com/yudaocode/yudao-ui-admin-vue3/issues/ICNRW2 -->
         <TimeEventConfig :businessObject="elementBusinessObject" :key="elementId" />
       </el-collapse-item>
@@ -157,7 +157,7 @@ const initBpmnInstances = () => {
     }
     return false
   } catch (error) {
-    console.error('初始化 bpmnInstances 失败:', error)
+    console.error('Failed to init bpmnInstances:', error)
     return false
   }
 }
@@ -170,7 +170,7 @@ watch(
   async () => {
     // 避免加载时 流程图 并未加载完成
     if (!props.bpmnModeler) {
-      console.log('缺少props.bpmnModeler')
+      console.log('Missing props.bpmnModeler')
       return
     }
 
@@ -182,10 +182,10 @@ watch(
         await nextTick()
         getActiveElement()
       } else {
-        console.error('modeler 实例未完全初始化')
+        console.error('modeler instance not fully initialized')
       }
     } catch (error) {
-      console.error('初始化失败:', error)
+      console.error('Init failed:', error)
     }
   },
   {
@@ -247,7 +247,7 @@ const initFormOnChanged = (element) => {
     )
     formVisible.value = elementType.value === 'UserTask' || elementType.value === 'StartEvent'
   } catch (error) {
-    console.error('初始化表单数据失败:', error)
+    console.error('Failed to init form data:', error)
   }
 }
 

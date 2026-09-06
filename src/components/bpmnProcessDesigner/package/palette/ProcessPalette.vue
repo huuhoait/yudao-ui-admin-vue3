@@ -1,6 +1,6 @@
 <template>
   <div class="my-process-palette">
-    <div class="test-button" @click="addTask" @mousedown="addTask">测试任务</div>
+    <div class="test-button" @click="addTask" @mousedown="addTask">Test task</div>
     <div class="test-container" id="palette-container">1</div>
   </div>
 </template>

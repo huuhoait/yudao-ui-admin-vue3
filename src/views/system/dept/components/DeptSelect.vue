@@ -8,7 +8,7 @@
     :clearable="clearable"
     :filterable="filterable"
     :loading="loading"
-    :placeholder="placeholder"
+    :placeholder="placeholder || t('system.dept.selectDept')"
     check-strictly
     node-key="id"
     :render-after-expand="false"
@@ -21,6 +21,7 @@ import * as DeptApi from '@/api/system/dept'
 import { defaultProps, handleTree } from '@/utils/tree'
 
 defineOptions({ name: 'DeptSelect' })
+const { t } = useI18n() // 国际化
 
 withDefaults(
   defineProps<{
@@ -36,7 +37,7 @@ withDefaults(
     disabled: false,
     clearable: true,
     filterable: true,
-    placeholder: '请选择部门'
+    placeholder: ''
   }
 )
 

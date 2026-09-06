@@ -2,7 +2,7 @@
 <template>
   <el-select
     v-model="selectValue"
-    :placeholder="placeholder"
+    :placeholder="placeholder || t('system.user.selectUser')"
     :disabled="disabled"
     :clearable="clearable"
     filterable
@@ -25,6 +25,7 @@
 import * as UserApi from '@/api/system/user'
 
 defineOptions({ name: 'UserSelect' })
+const { t } = useI18n() // 国际化
 
 const props = withDefaults(
   defineProps<{
@@ -36,7 +37,7 @@ const props = withDefaults(
   {
     disabled: false,
     clearable: true,
-    placeholder: '请选择用户'
+    placeholder: ''
   }
 )
 

@@ -2,7 +2,7 @@
   "mode": "apply",
   "target": "src/components/SimpleProcessDesignerV2",
   "map": "scripts/i18n/en-map-simple.mjs",
-  "scannedAt": "2026-09-05T13:16:05.926Z",
+  "scannedAt": "2026-09-06T03:17:05.493Z",
   "totalFiles": 33,
   "replaced": 435,
   "missing": 0,

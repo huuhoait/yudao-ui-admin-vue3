@@ -1,7 +1,7 @@
 <template>
   <el-select
     :model-value="modelValue"
-    :placeholder="placeholder"
+    :placeholder="placeholder || t('system.notify.template.selectTemplate')"
     :disabled="disabled"
     :loading="loading"
     class="w-full"
@@ -26,6 +26,7 @@ import {
 
 /** 站内信模板下拉选择器 */
 defineOptions({ name: 'NotifyTemplateSelect' })
+const { t } = useI18n() // 国际化
 
 withDefaults(
   defineProps<{
@@ -36,7 +37,7 @@ withDefaults(
   {
     disabled: false,
     modelValue: undefined,
-    placeholder: '请选择站内信模板'
+    placeholder: ''
   }
 )
 

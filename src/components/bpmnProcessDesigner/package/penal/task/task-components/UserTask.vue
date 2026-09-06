@@ -1,6 +1,6 @@
 <template>
   <el-form label-width="120px">
-    <el-form-item label="规则类型" prop="candidateStrategy">
+    <el-form-item label="Rule Type" prop="candidateStrategy">
       <el-select
         v-model="userTaskForm.candidateStrategy"
         clearable
@@ -17,7 +17,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy == CandidateStrategy.ROLE"
-      label="指定角色"
+      label="Specified Role"
       prop="candidateParam"
     >
       <el-select
@@ -36,7 +36,7 @@
         userTaskForm.candidateStrategy == CandidateStrategy.DEPT_LEADER ||
         userTaskForm.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER
       "
-      label="指定部门"
+      label="Specified Department"
       prop="candidateParam"
       span="24"
     >
@@ -45,7 +45,7 @@
         v-model="userTaskForm.candidateParam"
         :data="deptTreeOptions"
         :props="defaultProps"
-        empty-text="加载中，请稍后"
+        empty-text="Loading, please wait"
         multiple
         node-key="id"
         show-checkbox
@@ -54,7 +54,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy == CandidateStrategy.POST"
-      label="指定岗位"
+      label="Specified Position"
       prop="candidateParam"
       span="24"
     >
@@ -75,7 +75,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy == CandidateStrategy.USER"
-      label="指定用户"
+      label="Specified User"
       prop="candidateParam"
       span="24"
     >
@@ -96,7 +96,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy === CandidateStrategy.USER_GROUP"
-      label="指定用户组"
+      label="Specified User Group"
       prop="candidateParam"
     >
       <el-select
@@ -116,7 +116,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy === CandidateStrategy.FORM_USER"
-      label="表单内用户字段"
+      label="User Field in Form"
       prop="formUser"
     >
       <el-select
@@ -136,7 +136,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy === CandidateStrategy.FORM_DEPT_LEADER"
-      label="表单内部门字段"
+      label="Department Field in Form"
       prop="formDept"
     >
       <el-select
@@ -176,7 +176,7 @@
     </el-form-item>
     <el-form-item
       v-if="userTaskForm.candidateStrategy === CandidateStrategy.EXPRESSION"
-      label="流程表达式"
+      label="Process Expression"
       prop="candidateParam"
     >
       <el-input
@@ -192,13 +192,13 @@
         size="small"
         @click="openProcessExpressionDialog"
       >
-        <Icon icon="ep:select" class="mr-1px" /> 选择表达式
+        <Icon icon="ep:select" class="mr-1px" /> Select Expression
       </el-button>
       <!-- 选择弹窗 -->
       <ProcessExpressionDialog ref="processExpressionDialogRef" @select="selectProcessExpression" />
     </el-form-item>
 
-    <el-form-item label="跳过表达式" prop="skipExpression">
+    <el-form-item label="Skip Expression" prop="skipExpression">
       <el-input
         type="textarea"
         v-model="userTaskForm.skipExpression"
@@ -265,13 +265,13 @@ const deptFieldOnFormOptions = computed(() => {
 
 const deptLevel = ref(1)
 const deptLevelLabel = computed(() => {
-  let label = '部门负责人来源'
+  let label = 'Department Leader Source'
   if (userTaskForm.value.candidateStrategy == CandidateStrategy.MULTI_LEVEL_DEPT_LEADER) {
-    label = label + '(指定部门向上)'
+    label = label + ' (upward from the specified department)'
   } else if (userTaskForm.value.candidateStrategy == CandidateStrategy.FORM_DEPT_LEADER) {
-    label = label + '(表单内部门向上)'
+    label = label + ' (upward from the department in the form)'
   } else {
-    label = label + '(发起人部门向上)'
+    label = label + ' (upward from the starter department)'
   }
   return label
 })
