@@ -229,7 +229,7 @@ const handleExport = async () => {
     // 发起导出
     exportLoading.value = true
     const data = await DictDataApi.exportDictData(queryParams)
-    download.excel(data, '字典数据.xls')
+    download.excel(data, t('system.dict.data.exportFileName'))
   } catch {
   } finally {
     exportLoading.value = false

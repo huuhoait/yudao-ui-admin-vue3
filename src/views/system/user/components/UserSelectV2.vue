@@ -30,10 +30,10 @@
       <template #content>
         <div v-if="selectedItems.length > 0" class="flex gap-[10px]">
           <div v-for="selectedItem in selectedItems" :key="selectedItem.id" class="leading-6">
-            <div>用户名称：{{ selectedItem.username }}</div>
-            <div>用户昵称：{{ selectedItem.nickname }}</div>
-            <div>部门：{{ (selectedItem as any).deptName || '-' }}</div>
-            <div>手机号码：{{ selectedItem.mobile || '-' }}</div>
+            <div>{{ t('system.user.username') }}: {{ selectedItem.username }}</div>
+            <div>{{ t('system.user.nickname') }}: {{ selectedItem.nickname }}</div>
+            <div>{{ t('system.user.dept') }}: {{ (selectedItem as any).deptName || '-' }}</div>
+            <div>{{ t('system.user.mobile') }}: {{ selectedItem.mobile || '-' }}</div>
           </div>
         </div>
       </template>

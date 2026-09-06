@@ -251,7 +251,7 @@ const handleExport = async () => {
     // 发起导出
     exportLoading.value = true
     const data = await MailLogApi.exportMailLog(queryParams)
-    download.excel(data, '邮件日志.xls')
+    download.excel(data, t('system.mail.log.exportFileName'))
   } catch {
   } finally {
     exportLoading.value = false

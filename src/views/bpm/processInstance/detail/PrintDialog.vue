@@ -463,10 +463,10 @@ const printObj = ref({
       <div v-if="printData.printTemplateEnable" v-html="getPrintTemplateHTML()"></div>
       <div v-else>
         <h2 class="text-center">{{ printData.processInstance.name }}</h2>
-        <div class="text-right text-15px">{{ '打印人员: ' + userName }}</div>
+        <div class="text-right text-15px">{{ t('bpm.processInstance.detail.printUserLabel', { userName }) }}</div>
         <div class="flex justify-between">
-          <div class="text-15px">{{ '流程编号: ' + printData.processInstance.id }}</div>
-          <div class="text-15px">{{ '打印时间: ' + printTime }}</div>
+          <div class="text-15px">{{ t('bpm.processInstance.detail.printProcessIdLabel', { id: printData.processInstance.id }) }}</div>
+          <div class="text-15px">{{ t('bpm.processInstance.detail.printTimeLabel', { printTime }) }}</div>
         </div>
         <table class="mt-20px w-100%" border="1" style="border-collapse: collapse">
           <tbody>

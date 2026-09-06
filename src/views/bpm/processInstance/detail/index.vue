@@ -9,7 +9,7 @@
           alt=""
         />
         <div class="flex">
-          <div class="text-#878c93 h-15px">编号：{{ id }}</div>
+          <div class="text-#878c93 h-15px">{{ t('bpm.processInstance.detail.idLabel', { id }) }}</div>
           <Icon icon="ep:printer" class="ml-15px cursor-pointer" @click="handlePrint" />
         </div>
         <el-divider class="!my-8px" />
@@ -36,7 +36,7 @@
             </el-avatar>
             {{ processInstance?.startUser?.nickname }}
           </div>
-          <div class="text-#878c93"> {{ formatDate(processInstance.startTime) }} 提交 </div>
+          <div class="text-#878c93"> {{ t('bpm.processInstance.detail.submittedAt', { time: formatDate(processInstance.startTime) }) }} </div>
         </div>
 
         <el-tabs v-model="activeTab">

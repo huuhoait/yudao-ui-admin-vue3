@@ -8,8 +8,8 @@
         <!-- 左侧标题 -->
         <div class="w-200px flex items-center overflow-hidden">
           <Icon icon="ep:arrow-left" class="cursor-pointer flex-shrink-0" @click="handleBack" />
-          <span class="ml-10px text-16px truncate" :title="formData.name || '创建流程'">
-            {{ formData.name || '创建流程' }}
+          <span class="ml-10px text-16px truncate" :title="formData.name || t('bpm.model.form.createProcess')">
+            {{ formData.name || t('bpm.model.form.createProcess') }}
           </span>
         </div>
 
@@ -223,7 +223,7 @@ const initData = async () => {
       if (formData.value.bpmnXml) {
         formData.value.bpmnXml = formData.value.bpmnXml.replaceAll(
           formData.value.name,
-          formData.value.name + '副本'
+          formData.value.name + t('bpm.model.form.copySuffix')
         )
         formData.value.bpmnXml = formData.value.bpmnXml.replaceAll(
           formData.value.key,

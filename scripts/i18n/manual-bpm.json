@@ -5,6 +5,211 @@
       "zh-CN": "发布成功",
       "en": "Published successfully",
       "vi": "Phát hành thành công"
+    },
+    "bpm.model.form.exampleLabel": {
+      "zh-CN": "编码示例：{example}",
+      "en": "Example: {example}",
+      "vi": "Ví dụ: {example}"
+    },
+    "bpm.model.form.copySuffix": {
+      "zh-CN": "副本",
+      "en": " Copy",
+      "vi": " Bản sao"
+    },
+    "bpm.model.form.createProcess": {
+      "zh-CN": "创建流程",
+      "en": "Create Process",
+      "vi": "Tạo quy trình"
+    },
+    "bpm.model.form.printTemplateFormPrefix": {
+      "zh-CN": "[表单]",
+      "en": "[Form]",
+      "vi": "[Biểu mẫu]"
+    },
+    "bpm.model.form.printRecordLabel": {
+      "zh-CN": "流程记录",
+      "en": "Process Record",
+      "vi": "Lịch sử quy trình"
+    },
+    "bpm.oa.leave.selectApprover": {
+      "zh-CN": "请选择{name}的审批人",
+      "en": "Please select the approver for {name}",
+      "vi": "Vui lòng chọn người phê duyệt cho {name}"
+    },
+    "bpm.processInstance.create.selectCandidate": {
+      "zh-CN": "请选择{name}的候选人",
+      "en": "Please select the candidate for {name}",
+      "vi": "Vui lòng chọn ứng viên cho {name}"
+    },
+    "bpm.processInstance.create.start": {
+      "zh-CN": "发起",
+      "en": "Start",
+      "vi": "Khởi tạo"
+    },
+    "bpm.processInstance.create.cancel": {
+      "zh-CN": "取消",
+      "en": "Cancel",
+      "vi": "Hủy"
+    },
+    "bpm.processInstance.create.processLabel": {
+      "zh-CN": "流程：{name}",
+      "en": "Process: {name}",
+      "vi": "Quy trình: {name}"
+    },
+    "bpm.processInstance.report.inputField": {
+      "zh-CN": "请输入{title}",
+      "en": "Please enter {title}",
+      "vi": "Vui lòng nhập {title}"
+    },
+    "bpm.processInstance.detail.opinionLabel": {
+      "zh-CN": "{nodeTypeName}意见",
+      "en": "{nodeTypeName} Opinion",
+      "vi": "Ý kiến {nodeTypeName}"
+    },
+    "bpm.processInstance.detail.inputOpinion": {
+      "zh-CN": "请输入{nodeTypeName}意见",
+      "en": "Please enter {nodeTypeName} opinion",
+      "vi": "Vui lòng nhập ý kiến {nodeTypeName}"
+    },
+    "bpm.processInstance.detail.opinionRequired": {
+      "zh-CN": "{nodeTypeName}意见不能为空",
+      "en": "{nodeTypeName} opinion is required",
+      "vi": "Ý kiến {nodeTypeName} không được để trống"
+    },
+    "bpm.processInstance.detail.fillForm": {
+      "zh-CN": "填写表单【{formName}】",
+      "en": "Fill in the form [{formName}]",
+      "vi": "Điền biểu mẫu [{formName}]"
+    },
+    "bpm.processInstance.detail.comment": {
+      "zh-CN": "评论",
+      "en": "Comment",
+      "vi": "Bình luận"
+    },
+    "bpm.processInstance.detail.addSignBefore": {
+      "zh-CN": "向前{action}",
+      "en": "{action} Before",
+      "vi": "{action} phía trước"
+    },
+    "bpm.processInstance.detail.addSignAfter": {
+      "zh-CN": "向后{action}",
+      "en": "{action} After",
+      "vi": "{action} phía sau"
+    },
+    "bpm.processInstance.detail.removeSign": {
+      "zh-CN": "减签",
+      "en": "Remove Sign",
+      "vi": "Giảm ký"
+    },
+    "bpm.processInstance.detail.cancel": {
+      "zh-CN": "取消",
+      "en": "Cancel",
+      "vi": "Hủy"
+    },
+    "bpm.processInstance.detail.cancelHint": {
+      "zh-CN": "取消后，该审批流程将自动结束",
+      "en": "Once cancelled, this approval process will end automatically",
+      "vi": "Sau khi hủy, quy trình phê duyệt này sẽ tự động kết thúc"
+    },
+    "bpm.processInstance.detail.resubmit": {
+      "zh-CN": "再次提交",
+      "en": "Resubmit",
+      "vi": "Gửi lại"
+    },
+    "bpm.processInstance.detail.idLabel": {
+      "zh-CN": "编号：{id}",
+      "en": "ID: {id}",
+      "vi": "Mã: {id}"
+    },
+    "bpm.processInstance.detail.submittedAt": {
+      "zh-CN": "{time} 提交",
+      "en": "Submitted at {time}",
+      "vi": "Đã gửi lúc {time}"
+    },
+    "bpm.processInstance.detail.commentCount": {
+      "zh-CN": "共 {n} 条",
+      "en": "{n} in total",
+      "vi": "Tổng {n}"
+    },
+    "bpm.processInstance.detail.system": {
+      "zh-CN": "系统",
+      "en": "System",
+      "vi": "Hệ thống"
+    },
+    "bpm.processInstance.detail.deptLabel": {
+      "zh-CN": "{nickname} ( 所属部门：{deptName} )",
+      "en": "{nickname} ( Department: {deptName} )",
+      "vi": "{nickname} ( Phòng ban: {deptName} )"
+    },
+    "bpm.processInstance.approvingWithNode": {
+      "zh-CN": "( {name} ) 审批中",
+      "en": "( {name} ) In approval",
+      "vi": "( {name} ) Đang phê duyệt"
+    },
+    "bpm.processInstance.approvingWithNodeAndCount": {
+      "zh-CN": "等 {n} 人 ( {name} ) 审批中",
+      "en": "and {n} others ( {name} ) In approval",
+      "vi": "và {n} người khác ( {name} ) Đang phê duyệt"
+    },
+    "bpm.task.attachmentCount": {
+      "zh-CN": "{n} 个附件",
+      "en": "{n} attachments",
+      "vi": "{n} tệp đính kèm"
+    },
+    "bpm.task.copy.system": {
+      "zh-CN": "系统",
+      "en": "System",
+      "vi": "Hệ thống"
+    },
+    "bpm.processInstance.detail.printUserLabel": {
+      "zh-CN": "打印人员: {userName}",
+      "en": "Printed by: {userName}",
+      "vi": "Người in: {userName}"
+    },
+    "bpm.processInstance.detail.printProcessIdLabel": {
+      "zh-CN": "流程编号: {id}",
+      "en": "Process No.: {id}",
+      "vi": "Mã quy trình: {id}"
+    },
+    "bpm.processInstance.detail.printTimeLabel": {
+      "zh-CN": "打印时间: {printTime}",
+      "en": "Printed at: {printTime}",
+      "vi": "Thời gian in: {printTime}"
+    },
+    "bpm.model.visibleDepts": {
+      "zh-CN": "{name}等 {n} 个部门可见",
+      "en": "Visible to {name} and {n} departments",
+      "vi": "Hiển thị cho {name} và {n} phòng ban"
+    },
+    "bpm.model.visibleUsers": {
+      "zh-CN": "{name}等 {n} 人可见",
+      "en": "Visible to {name} and {n} users",
+      "vi": "Hiển thị cho {name} và {n} người dùng"
+    },
+    "bpm.model.confirmClean": {
+      "zh-CN": "是否确认清理流程名字为\"{name}\"的数据项?",
+      "en": "Are you sure you want to clean up the data for the process named \"{name}\"?",
+      "vi": "Bạn có chắc muốn dọn dẹp dữ liệu của quy trình có tên \"{name}\" không?"
+    },
+    "bpm.model.confirmChangeState": {
+      "zh-CN": "是否确认{statusState}流程名字为\"{name}\"的数据项?",
+      "en": "Are you sure you want to {statusState} the data for the process named \"{name}\"?",
+      "vi": "Bạn có chắc muốn {statusState} dữ liệu của quy trình có tên \"{name}\" không?"
+    },
+    "bpm.model.changeStateSuccess": {
+      "zh-CN": "{statusState}成功",
+      "en": "{statusState} succeeded",
+      "vi": "{statusState} thành công"
+    },
+    "bpm.model.form.processKeyImmutableTip": {
+      "zh-CN": "流程标识不可修改！",
+      "en": "The process key cannot be modified!",
+      "vi": "Không thể sửa mã định danh quy trình!"
+    },
+    "bpm.model.form.processKeyImmutableTipNew": {
+      "zh-CN": "新建后，流程标识不可修改！",
+      "en": "Once created, the process key cannot be modified!",
+      "vi": "Sau khi tạo, không thể sửa mã định danh quy trình!"
     }
   },
   "en": {

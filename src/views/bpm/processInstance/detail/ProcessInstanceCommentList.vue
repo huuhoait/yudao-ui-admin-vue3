@@ -4,7 +4,7 @@
       class="flex items-center gap-12px pb-18px border-b border-b-[var(--el-border-color-lighter)]"
     >
       <div class="text-18px font-bold text-[var(--el-text-color-primary)]">{{ t('bpm.processInstance.detail._todo289') }}</div>
-      <div class="text-13px text-[var(--el-text-color-secondary)]">共 {{ comments.length }} 条</div>
+      <div class="text-13px text-[var(--el-text-color-secondary)]">{{ t('bpm.processInstance.detail.commentCount', { n: comments.length }) }}</div>
     </div>
     <el-empty v-if="!comments.length" :description="t('bpm.processInstance.detail._todo288')" />
     <el-timeline
@@ -33,7 +33,7 @@
               <el-avatar v-else :size="28">
                 {{ comment.user?.nickname?.substring(0, 1) || '?' }}
               </el-avatar>
-              <span>{{ comment.user?.nickname || '系统' }}</span>
+              <span>{{ comment.user?.nickname || t('bpm.processInstance.detail.system') }}</span>
             </div>
             <dict-tag class="shrink-0" :type="DICT_TYPE.BPM_COMMENT_TYPE" :value="comment.type" />
             <div

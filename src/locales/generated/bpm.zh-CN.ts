@@ -265,7 +265,14 @@ export default {
         _todo149: "发布失败:",
         _todo150: "发布失败",
         _todo151: "步骤切换失败:",
-        _todo152: "请先完善当前步骤必填信息"
+        _todo152: "请先完善当前步骤必填信息",
+        exampleLabel: "编码示例：{example}",
+        copySuffix: "副本",
+        createProcess: "创建流程",
+        printTemplateFormPrefix: "[表单]",
+        printRecordLabel: "流程记录",
+        processKeyImmutableTip: "流程标识不可修改！",
+        processKeyImmutableTipNew: "新建后，流程标识不可修改！"
       },
       _todo153: "搜索流程",
       _todo154: "流程模型",
@@ -274,7 +281,12 @@ export default {
       _todo157: "新建分类",
       categorySort: "分类排序",
       _todo158: "排序分类成功",
-      publishSuccess: "发布成功"
+      publishSuccess: "发布成功",
+      visibleDepts: "{name}等 {n} 个部门可见",
+      visibleUsers: "{name}等 {n} 人可见",
+      confirmClean: "是否确认清理流程名字为\"{name}\"的数据项?",
+      confirmChangeState: "是否确认{statusState}流程名字为\"{name}\"的数据项?",
+      changeStateSuccess: "{statusState}成功"
     },
     oa: {
       leave: {
@@ -312,7 +324,8 @@ export default {
         inputCancelReason: "请输入取消原因",
         cancelProcess: "取消流程",
         cancelReasonRequired: "取消原因不能为空",
-        cancelSuccess: "取消成功"
+        cancelSuccess: "取消成功",
+        selectApprover: "请选择{name}的审批人"
       }
     },
     processExpression: {
@@ -344,7 +357,11 @@ export default {
         inputProcessName: "请输入流程名称",
         _todo185: "没有找到搜索结果",
         _todo186: "重新发起流程失败，原因：流程实例不存在",
-        _todo187: "重新发起流程失败，原因：流程定义不存在"
+        _todo187: "重新发起流程失败，原因：流程定义不存在",
+        selectCandidate: "请选择{name}的候选人",
+        start: "发起",
+        cancel: "取消",
+        processLabel: "流程：{name}"
       },
       detail: {
         starter: "发起人",
@@ -426,7 +443,26 @@ export default {
         _todo331: "流程图",
         _todo332: "流转记录",
         _todo333: "查询不到审批详情信息！",
-        _todo334: "查询不到流程信息！"
+        _todo334: "查询不到流程信息！",
+        opinionLabel: "{nodeTypeName}意见",
+        inputOpinion: "请输入{nodeTypeName}意见",
+        opinionRequired: "{nodeTypeName}意见不能为空",
+        fillForm: "填写表单【{formName}】",
+        comment: "评论",
+        addSignBefore: "向前{action}",
+        addSignAfter: "向后{action}",
+        removeSign: "减签",
+        cancel: "取消",
+        cancelHint: "取消后，该审批流程将自动结束",
+        resubmit: "再次提交",
+        idLabel: "编号：{id}",
+        submittedAt: "{time} 提交",
+        commentCount: "共 {n} 条",
+        system: "系统",
+        deptLabel: "{nickname} ( 所属部门：{deptName} )",
+        printUserLabel: "打印人员: {userName}",
+        printProcessIdLabel: "流程编号: {id}",
+        printTimeLabel: "打印时间: {printTime}"
       },
       _todo241: "流程发起、取消、重新发起",
       inputProcessName: "请输入流程名称",
@@ -498,8 +534,11 @@ export default {
         inputCancelReason: "请输入取消原因",
         cancelProcess: "取消流程",
         cancelReasonRequired: "取消原因不能为空",
-        cancelSuccess: "取消成功"
-      }
+        cancelSuccess: "取消成功",
+        inputField: "请输入{title}"
+      },
+      approvingWithNode: "( {name} ) 审批中",
+      approvingWithNodeAndCount: "等 {n} 人 ( {name} ) 审批中"
     },
     processListener: {
       name: "名字",
@@ -526,7 +565,9 @@ export default {
       action: "操作",
       create: "新增",
       edit: "编辑",
-      delete: "删除"
+      delete: "删除",
+      executionEvents: "开始,结束",
+      taskEvents: "创建,指派,完成,删除,更新,超时"
     },
     task: {
       components: {
@@ -547,7 +588,8 @@ export default {
         ccUser: "抄送人",
         ccOpinion: "抄送意见",
         action: "操作",
-        detail: "详情"
+        detail: "详情",
+        system: "系统"
       },
       done: {
         _todo263: "审批通过、不通过、驳回",
@@ -625,7 +667,8 @@ export default {
         clear: "清空",
         confirm: "确认",
         _todo279: "办理"
-      }
+      },
+      attachmentCount: "{n} 个附件"
     }
   }
 }

@@ -111,7 +111,7 @@
                 placement="top"
                 :content="row.startDepts.map((dept: any) => dept.name).join('、')"
               >
-                {{ row.startDepts[0].name }}等 {{ row.startDepts.length }} 个部门可见
+                {{ t('bpm.model.visibleDepts', { name: row.startDepts[0].name, n: row.startDepts.length }) }}
               </el-tooltip>
             </el-text>
             <el-text v-else>
@@ -121,7 +121,7 @@
                 placement="top"
                 :content="row.startUsers.map((user: any) => user.nickname).join('、')"
               >
-                {{ row.startUsers[0].nickname }}等 {{ row.startUsers.length }} 人可见
+                {{ t('bpm.model.visibleUsers', { name: row.startUsers[0].nickname, n: row.startUsers.length }) }}
               </el-tooltip>
             </el-text>
           </template>
@@ -228,7 +228,7 @@
                     v-if="hasPermiUpdate && scope.row.processDefinition"
                     :disabled="!isManagerUser(scope.row)"
                   >
-                    {{ scope.row.processDefinition.suspensionState === 1 ? '停用' : '启用' }}
+                    {{ scope.row.processDefinition.suspensionState === 1 ? t('bpm.model.disable') : t('bpm.model.enable') }}
                   </el-dropdown-item>
                   <el-dropdown-item
                     type="danger"
@@ -450,7 +450,7 @@ const handleDelete = async (row: any) => {
 const handleClean = async (row: any) => {
   try {
     // 清理的二次确认
-    await message.confirm('是否确认清理流程名字为"' + row.name + '"的数据项?')
+    await message.confirm(t('bpm.model.confirmClean', { name: row.name }))
     // 发起清理
     await ModelApi.cleanModel(row.id)
     message.success(t('bpm.model._todo31'))
@@ -467,11 +467,11 @@ const handleChangeState = async (row: any) => {
     // 修改状态的二次确认
     const id = row.id
     const statusState = state === 1 ? t('bpm.model.disable') : t('bpm.model.enable')
-    const content = '是否确认' + statusState + '流程名字为"' + row.name + '"的数据项?'
+    const content = t('bpm.model.confirmChangeState', { statusState, name: row.name })
     await message.confirm(content)
     // 发起修改状态
     await ModelApi.updateModelState(id, newState)
-    message.success(statusState + '成功')
+    message.success(t('bpm.model.changeStateSuccess', { statusState }))
     // 刷新列表
     emit('success')
   } catch {}

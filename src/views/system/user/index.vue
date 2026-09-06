@@ -287,7 +287,7 @@ const handleStatusChange = async (row: UserApi.UserVO) => {
   try {
     // 修改状态的二次确认
     const text = row.status === CommonStatusEnum.ENABLE ? t('system.user.enable') : t('system.user.disable')
-    await message.confirm('确认要"' + text + '""' + row.username + '"用户吗?')
+    await message.confirm(t('system.user.confirmToggleStatus', { action: text, username: row.username }))
     // 发起修改状态
     await UserApi.updateUserStatus(row.id, row.status)
     // 刷新列表
@@ -308,7 +308,7 @@ const handleExport = async () => {
     // 发起导出
     exportLoading.value = true
     const data = await UserApi.exportUser(queryParams)
-    download.excel(data, '用户数据.xls')
+    download.excel(data, t('system.user.exportFileName'))
   } catch {
   } finally {
     exportLoading.value = false
@@ -369,13 +369,13 @@ const handleResetPwd = async (row: UserApi.UserVO) => {
   try {
     // 重置的二次确认
     const result = await message.prompt(
-      '请输入"' + row.username + '"的新密码',
+      t('system.user.inputNewPassword', { username: row.username }),
       t('common.reminder')
     )
     const password = result.value
     // 发起重置
     await UserApi.resetUserPassword(row.id, password)
-    message.success('修改成功，新密码是：' + password)
+    message.success(t('system.user.resetPasswordSuccess', { password }))
   } catch {}
 }
 

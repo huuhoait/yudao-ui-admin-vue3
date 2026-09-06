@@ -27,7 +27,7 @@
         >
           <el-card v-if="runningTask?.formId > 0" class="mb-15px !-mt-10px">
             <template #header>
-              <span class="el-icon-picture-outline"> 填写表单【{{ runningTask?.formName }}】 </span>
+              <span class="el-icon-picture-outline"> {{ t('bpm.processInstance.detail.fillForm', { formName: runningTask?.formName }) }} </span>
             </template>
             <form-create
               v-model="approveForm.value"
@@ -36,10 +36,10 @@
               :rule="approveForm.rule"
             />
           </el-card>
-          <el-form-item :label="`${nodeTypeName}意见`" prop="reason">
+          <el-form-item :label="t('bpm.processInstance.detail.opinionLabel', { nodeTypeName })" prop="reason">
             <el-input
               v-model="approveReasonForm.reason"
-              :placeholder="`请输入${nodeTypeName}意见`"
+              :placeholder="t('bpm.processInstance.detail.inputOpinion', { nodeTypeName })"
               type="textarea"
               :rows="4"
             />
@@ -160,7 +160,7 @@
     >
       <template #reference>
         <el-button plain type="primary" @click="openPopover('comment')">
-          <Icon icon="ep:chat-line-round" />&nbsp; 评论
+          <Icon icon="ep:chat-line-round" />&nbsp; {{ t('bpm.processInstance.detail.comment') }}
         </el-button>
       </template>
       <div class="flex flex-col flex-1 pt-20px px-20px" v-loading="formLoading">
@@ -399,10 +399,10 @@
           </el-form-item>
           <el-form-item>
             <el-button :disabled="formLoading" type="primary" @click="handlerAddSign('before')">
-              向前{{ getButtonDisplayName(OperationButtonType.ADD_SIGN) }}
+              {{ t('bpm.processInstance.detail.addSignBefore', { action: getButtonDisplayName(OperationButtonType.ADD_SIGN) }) }}
             </el-button>
             <el-button :disabled="formLoading" type="primary" @click="handlerAddSign('after')">
-              向后{{ getButtonDisplayName(OperationButtonType.ADD_SIGN) }}
+              {{ t('bpm.processInstance.detail.addSignAfter', { action: getButtonDisplayName(OperationButtonType.ADD_SIGN) }) }}
             </el-button>
             <el-button @click="closePopover('addSign', addSignFormRef)"> {{ t('common.cancel') }} </el-button>
           </el-form-item>
@@ -420,7 +420,7 @@
     >
       <template #reference>
         <div @click="openPopover('deleteSign')" class="hover-bg-gray-100 rounded-xl p-6px">
-          <Icon :size="14" icon="ep:semi-select" />&nbsp; 减签
+          <Icon :size="14" icon="ep:semi-select" />&nbsp; {{ t('bpm.processInstance.detail.removeSign') }}
         </div>
       </template>
       <div class="flex flex-col flex-1 pt-20px px-20px" v-loading="formLoading">
@@ -525,7 +525,7 @@
     >
       <template #reference>
         <div @click="openPopover('cancel')" class="hover-bg-gray-100 rounded-xl p-6px">
-          <Icon :size="14" icon="fa:mail-reply" />&nbsp; 取消
+          <Icon :size="14" icon="fa:mail-reply" />&nbsp; {{ t('bpm.processInstance.detail.cancel') }}
         </div>
       </template>
       <div class="flex flex-col flex-1 pt-20px px-20px" v-loading="formLoading">
@@ -538,7 +538,7 @@
           label-width="100px"
         >
           <el-form-item :label="t('bpm.processInstance.detail._todo298')" prop="cancelReason">
-            <span class="text-#878c93 text-12px">&nbsp; 取消后，该审批流程将自动结束</span>
+            <span class="text-#878c93 text-12px">&nbsp; {{ t('bpm.processInstance.detail.cancelHint') }}</span>
             <el-input
               v-model="cancelForm.cancelReason"
               clearable
@@ -566,7 +566,7 @@
         processDefinition?.formType === 10
       "
     >
-      <Icon :size="14" icon="ep:refresh" />&nbsp; 再次提交
+      <Icon :size="14" icon="ep:refresh" />&nbsp; {{ t('bpm.processInstance.detail.resubmit') }}
     </div>
   </div>
 
@@ -670,7 +670,7 @@ const approveReasonRule = computed(() => {
     reason: [
       {
         required: reasonRequire.value,
-        message: nodeTypeName.value + '意见不能为空',
+        message: t('bpm.processInstance.detail.opinionRequired', { nodeTypeName: nodeTypeName.value }),
         trigger: 'blur'
       }
     ],
@@ -1160,7 +1160,7 @@ const handleReCreate = async () => {
 const getDeleteSignUserLabel = (task: any): string => {
   const deptName = task?.assigneeUser?.deptName || task?.ownerUser?.deptName
   const nickname = task?.assigneeUser?.nickname || task?.ownerUser?.nickname
-  return `${nickname} ( 所属部门：${deptName} )`
+  return t('bpm.processInstance.detail.deptLabel', { nickname, deptName })
 }
 /** 处理减签 */
 const handlerDeleteSign = async () => {

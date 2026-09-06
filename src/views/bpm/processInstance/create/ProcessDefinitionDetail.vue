@@ -2,7 +2,7 @@
   <ContentWrap :bodyStyle="{ padding: '10px 20px 0' }">
     <div class="processInstance-wrap-main">
       <el-scrollbar>
-        <div class="text-#878c93 h-15px">流程：{{ selectProcessDefinition.name }}</div>
+        <div class="text-#878c93 h-15px">{{ t('bpm.processInstance.create.processLabel', { name: selectProcessDefinition.name }) }}</div>
         <el-divider class="!my-8px" />
 
         <!-- 中间主要内容 tab 栏 -->
@@ -62,10 +62,10 @@
             class="h-50px bottom-10 text-14px flex items-center color-#32373c dark:color-#fff font-bold btn-container"
           >
             <el-button plain type="success" @click="submitForm">
-              <Icon icon="ep:select" />&nbsp; 发起
+              <Icon icon="ep:select" />&nbsp; {{ t('bpm.processInstance.create.start') }}
             </el-button>
             <el-button plain type="danger" @click="handleCancel">
-              <Icon icon="ep:close" />&nbsp; 取消
+              <Icon icon="ep:close" />&nbsp; {{ t('bpm.processInstance.create.cancel') }}
             </el-button>
           </div>
         </div>
@@ -282,7 +282,7 @@ const submitForm = async () => {
         Array.isArray(startUserSelectAssignees.value[userTask.id]) &&
         startUserSelectAssignees.value[userTask.id].length === 0
       )
-        return message.warning(`请选择${userTask.name}的候选人`)
+        return message.warning(t('bpm.processInstance.create.selectCandidate', { name: userTask.name }))
     }
   }
 

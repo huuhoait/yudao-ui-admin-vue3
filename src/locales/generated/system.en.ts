@@ -230,7 +230,10 @@ export default {
         edit: "Edit",
         delete: "Delete",
         selectTemplate: "Please select mail template",
-        sendSuccessLog: "Submitted successfully. See send log ID: {logId}"
+        sendSuccessLog: "Submitted successfully. See send log ID: {logId}",
+        paramLabel: "Parameter {'{'}{param}{'}'}",
+        inputParam: "Please enter parameter {param}",
+        paramRequired: "Parameter {param} is required"
       }
     },
     menu: {

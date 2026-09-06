@@ -93,15 +93,15 @@ const submitFormSuccess = (response: any) => {
   }
   // 拼接提示语
   const data = response.data
-  let text = '上传成功数量：' + data.createUsernames.length + ';'
+  let text = t('system.user.importCreateCount', { n: data.createUsernames.length })
   for (let username of data.createUsernames) {
     text += '< ' + username + ' >'
   }
-  text += '更新成功数量：' + data.updateUsernames.length + ';'
+  text += t('system.user.importUpdateCount', { n: data.updateUsernames.length })
   for (const username of data.updateUsernames) {
     text += '< ' + username + ' >'
   }
-  text += '更新失败数量：' + Object.keys(data.failureUsernames).length + ';'
+  text += t('system.user.importFailureCount', { n: Object.keys(data.failureUsernames).length })
   for (const username in data.failureUsernames) {
     text += '< ' + username + ': ' + data.failureUsernames[username] + ' >'
   }
@@ -134,6 +134,6 @@ const handleExceed = (): void => {
 /** 下载模板操作 */
 const importTemplate = async () => {
   const res = await UserApi.importUserTemplate()
-  download.excel(res, '用户导入模版.xls')
+  download.excel(res, t('system.user.importTemplateFileName'))
 }
 </script>

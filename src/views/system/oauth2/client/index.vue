@@ -71,10 +71,10 @@
         </template>
       </el-table-column>
       <el-table-column :label="t('system.oauth2.client._todo160')" align="center" prop="accessTokenValiditySeconds">
-        <template #default="scope">{{ scope.row.accessTokenValiditySeconds }} 秒</template>
+        <template #default="scope">{{ t('system.oauth2.client.seconds', { n: scope.row.accessTokenValiditySeconds }) }}</template>
       </el-table-column>
       <el-table-column :label="t('system.oauth2.client._todo162')" align="center" prop="refreshTokenValiditySeconds">
-        <template #default="scope">{{ scope.row.refreshTokenValiditySeconds }} 秒</template>
+        <template #default="scope">{{ t('system.oauth2.client.seconds', { n: scope.row.refreshTokenValiditySeconds }) }}</template>
       </el-table-column>
       <el-table-column :label="t('system.oauth2.client._todo163')" align="center" prop="authorizedGrantTypes">
         <template #default="scope">

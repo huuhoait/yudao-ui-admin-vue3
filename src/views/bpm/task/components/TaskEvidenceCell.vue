@@ -7,7 +7,7 @@
       <template #reference>
         <el-button link type="primary">
           <Icon icon="ep:paperclip" class="mr-4px" />
-          {{ attachments.length }} 个附件
+          {{ t('bpm.task.attachmentCount', { n: attachments.length }) }}
         </el-button>
       </template>
       <div class="max-h-260px overflow-auto">

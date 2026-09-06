@@ -23,7 +23,7 @@
               placement="top"
               :content="row.startUsers.map((user: any) => user.nickname).join('、')"
             >
-              {{ row.startUsers[0].nickname }}等 {{ row.startUsers.length }} 人可见
+              {{ t('bpm.model.visibleUsers', { name: row.startUsers[0].nickname, n: row.startUsers.length }) }}
             </el-tooltip>
           </el-text>
         </template>

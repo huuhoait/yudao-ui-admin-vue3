@@ -218,7 +218,7 @@ const handleExport = async () => {
     // 发起导出
     exportLoading.value = true
     const data = await PostApi.exportPost(queryParams)
-    download.excel(data, '岗位列表.xls')
+    download.excel(data, t('system.post.exportFileName'))
   } catch {
   } finally {
     exportLoading.value = false

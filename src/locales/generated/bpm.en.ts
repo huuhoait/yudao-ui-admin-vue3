@@ -265,7 +265,14 @@ export default {
         _todo149: "Publish failed:",
         _todo150: "Publish failed",
         _todo151: "Step switch failed:",
-        _todo152: "Please complete required info of the current step"
+        _todo152: "Please complete required info of the current step",
+        exampleLabel: "Example: {example}",
+        copySuffix: " Copy",
+        createProcess: "Create Process",
+        printTemplateFormPrefix: "[Form]",
+        printRecordLabel: "Process Record",
+        processKeyImmutableTip: "The process key cannot be modified!",
+        processKeyImmutableTipNew: "Once created, the process key cannot be modified!"
       },
       _todo153: "Search Process",
       _todo154: "Process Model",
@@ -274,7 +281,12 @@ export default {
       _todo157: "Create Category",
       categorySort: "Category Sort",
       _todo158: "Category sorted successfully",
-      publishSuccess: "Published successfully"
+      publishSuccess: "Published successfully",
+      visibleDepts: "Visible to {name} and {n} departments",
+      visibleUsers: "Visible to {name} and {n} users",
+      confirmClean: "Are you sure you want to clean up the data for the process named \"{name}\"?",
+      confirmChangeState: "Are you sure you want to {statusState} the data for the process named \"{name}\"?",
+      changeStateSuccess: "{statusState} succeeded"
     },
     oa: {
       leave: {
@@ -312,7 +324,8 @@ export default {
         inputCancelReason: "Please enter cancel reason",
         cancelProcess: "Cancel Process",
         cancelReasonRequired: "Cancel reason is required",
-        cancelSuccess: "Canceled successfully"
+        cancelSuccess: "Canceled successfully",
+        selectApprover: "Please select the approver for {name}"
       }
     },
     processExpression: {
@@ -344,7 +357,11 @@ export default {
         inputProcessName: "Please enter process name",
         _todo185: "No results found",
         _todo186: "Failed to restart process: process instance does not exist",
-        _todo187: "Failed to restart process: process definition does not exist"
+        _todo187: "Failed to restart process: process definition does not exist",
+        selectCandidate: "Please select the candidate for {name}",
+        start: "Start",
+        cancel: "Cancel",
+        processLabel: "Process: {name}"
       },
       detail: {
         starter: "Starter",
@@ -426,7 +443,26 @@ export default {
         _todo331: "Process Diagram",
         _todo332: "Flow Records",
         _todo333: "Approval detail not found!",
-        _todo334: "Process information not found!"
+        _todo334: "Process information not found!",
+        opinionLabel: "{nodeTypeName} Opinion",
+        inputOpinion: "Please enter {nodeTypeName} opinion",
+        opinionRequired: "{nodeTypeName} opinion is required",
+        fillForm: "Fill in the form [{formName}]",
+        comment: "Comment",
+        addSignBefore: "{action} Before",
+        addSignAfter: "{action} After",
+        removeSign: "Remove Sign",
+        cancel: "Cancel",
+        cancelHint: "Once cancelled, this approval process will end automatically",
+        resubmit: "Resubmit",
+        idLabel: "ID: {id}",
+        submittedAt: "Submitted at {time}",
+        commentCount: "{n} in total",
+        system: "System",
+        deptLabel: "{nickname} ( Department: {deptName} )",
+        printUserLabel: "Printed by: {userName}",
+        printProcessIdLabel: "Process No.: {id}",
+        printTimeLabel: "Printed at: {printTime}"
       },
       _todo241: "Start, cancel, restart process",
       inputProcessName: "Please enter process name",
@@ -498,8 +534,11 @@ export default {
         inputCancelReason: "Please enter cancel reason",
         cancelProcess: "Cancel Process",
         cancelReasonRequired: "Cancel reason is required",
-        cancelSuccess: "Canceled successfully"
-      }
+        cancelSuccess: "Canceled successfully",
+        inputField: "Please enter {title}"
+      },
+      approvingWithNode: "( {name} ) In approval",
+      approvingWithNodeAndCount: "and {n} others ( {name} ) In approval"
     },
     processListener: {
       name: "Name",
@@ -526,7 +565,9 @@ export default {
       action: "Action",
       create: "Add",
       edit: "Edit",
-      delete: "Delete"
+      delete: "Delete",
+      executionEvents: "Start,End",
+      taskEvents: "Create,Assign,Complete,Delete,Update,Timeout"
     },
     task: {
       components: {
@@ -547,7 +588,8 @@ export default {
         ccUser: "CC User",
         ccOpinion: "CC Opinion",
         action: "Action",
-        detail: "Detail"
+        detail: "Detail",
+        system: "System"
       },
       done: {
         _todo263: "Approval: approve, reject, return",
@@ -625,7 +667,8 @@ export default {
         clear: "Clear",
         confirm: "Confirm",
         _todo279: "Handle"
-      }
+      },
+      attachmentCount: "{n} attachments"
     }
   }
 }

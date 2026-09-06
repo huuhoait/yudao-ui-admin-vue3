@@ -63,6 +63,21 @@
       "vi": "Gửi thành công. Xem mã nhật ký gửi: {logId}"
     },
 
+    "system.mail.template.paramLabel": {
+      "zh-CN": "参数 {'{'}{param}{'}'}",
+      "en": "Parameter {'{'}{param}{'}'}",
+      "vi": "Tham số {'{'}{param}{'}'}"
+    },
+    "system.mail.template.inputParam": {
+      "zh-CN": "请输入 {param} 参数",
+      "en": "Please enter parameter {param}",
+      "vi": "Vui lòng nhập tham số {param}"
+    },
+    "system.mail.template.paramRequired": {
+      "zh-CN": "参数 {param} 不能为空",
+      "en": "Parameter {param} is required",
+      "vi": "Tham số {param} không được để trống"
+    },
     "system.notify.template.paramLabel": {
       "zh-CN": "参数 {'{'}{param}{'}'}",
       "en": "Parameter {'{'}{param}{'}'}",

@@ -125,7 +125,7 @@ const submitForm = async () => {
         Array.isArray(startUserSelectAssignees.value[userTask.id]) &&
         startUserSelectAssignees.value[userTask.id].length === 0
       ) {
-        return message.warning(`请选择${userTask.name}的审批人`)
+        return message.warning(t('bpm.oa.leave.selectApprover', { name: userTask.name }))
       }
     }
   }

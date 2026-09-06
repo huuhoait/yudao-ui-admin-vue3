@@ -230,7 +230,10 @@ export default {
         edit: "Sửa",
         delete: "Xóa",
         selectTemplate: "Vui lòng chọn mẫu email",
-        sendSuccessLog: "Gửi thành công. Xem mã nhật ký gửi: {logId}"
+        sendSuccessLog: "Gửi thành công. Xem mã nhật ký gửi: {logId}",
+        paramLabel: "Tham số {'{'}{param}{'}'}",
+        inputParam: "Vui lòng nhập tham số {param}",
+        paramRequired: "Tham số {param} không được để trống"
       }
     },
     menu: {

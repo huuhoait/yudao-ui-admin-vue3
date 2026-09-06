@@ -149,7 +149,7 @@
                 <el-button link type="primary" @click="handleDetail(scope.row)">
                   {{ scope.row.tasks[0].assigneeUser?.nickname }}
                 </el-button>
-                ({{ scope.row.tasks[0].name }}) 审批中
+                {{ t('bpm.processInstance.approvingWithNode', { name: scope.row.tasks[0].name }) }}
               </span>
             </template>
             <!-- 多人审批 -->
@@ -158,7 +158,7 @@
                 <el-button link type="primary" @click="handleDetail(scope.row)">
                   {{ scope.row.tasks[0].assigneeUser?.nickname }}
                 </el-button>
-                等 {{ scope.row.tasks.length }} 人 ({{ scope.row.tasks[0].name }})审批中
+                {{ t('bpm.processInstance.approvingWithNodeAndCount', { n: scope.row.tasks.length, name: scope.row.tasks[0].name }) }}
               </span>
             </template>
           </template>

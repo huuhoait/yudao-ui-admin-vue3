@@ -70,7 +70,7 @@
       />
       <el-table-column align="center" :label="t('bpm.task.copy._todo262')" prop="activityName" min-width="180" />
       <el-table-column align="center" :label="t('bpm.task.copy.ccUser')" min-width="100">
-        <template #default="scope"> {{ scope.row.createUser?.nickname || '系统' }} </template>
+        <template #default="scope"> {{ scope.row.createUser?.nickname || t('bpm.task.copy.system') }} </template>
       </el-table-column>
       <el-table-column align="center" :label="t('bpm.task.copy.ccOpinion')" prop="reason" width="150" />
       <el-table-column

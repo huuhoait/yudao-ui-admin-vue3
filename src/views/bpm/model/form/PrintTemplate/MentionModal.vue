@@ -46,7 +46,7 @@ onMounted(() => {
   if (formFields.value && formFields.value.length > 0) {
     const cloneFormField = formFields.value.map((item) => {
       return {
-        name: '[表单]' + item.title,
+        name: t('bpm.model.form.printTemplateFormPrefix') + item.title,
         id: item.field
       }
     })

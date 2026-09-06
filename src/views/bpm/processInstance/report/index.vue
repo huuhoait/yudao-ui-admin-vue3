@@ -76,7 +76,7 @@
         <el-input
           :disabled="item.type !== 'input'"
           v-model="queryParams.formFieldsParams[item.field]"
-          :placeholder="`请输入${item.title}`"
+          :placeholder="t('bpm.processInstance.report.inputField', { title: item.title })"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"

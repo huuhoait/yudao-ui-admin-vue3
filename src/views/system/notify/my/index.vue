@@ -97,7 +97,7 @@
             :type="scope.row.readStatus ? 'primary' : 'warning'"
             @click="openDetail(scope.row)"
           >
-            {{ scope.row.readStatus ? '详情' : '已读' }}
+            {{ scope.row.readStatus ? t('action.detail') : t('system.notify.my.markRead') }}
           </el-button>
         </template>
       </el-table-column>

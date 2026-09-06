@@ -42,12 +42,12 @@
       <el-form-item
         v-for="param in formData.params"
         :key="param"
-        :label="'参数 {' + param + '}'"
+        :label="t('system.notify.template.paramLabel', { param })"
         :prop="'templateParams.' + param"
       >
         <el-input
           v-model="formData.templateParams[param]"
-          :placeholder="'请输入 ' + param + ' 参数'"
+          :placeholder="t('system.notify.template.inputParam', { param })"
         />
       </el-form-item>
     </el-form>
@@ -101,7 +101,7 @@ const open = async (id: number) => {
       return obj
     }, {})
     formRules.templateParams = data.params.reduce((obj, item) => {
-      obj[item] = { required: true, message: '参数 ' + item + ' 不能为空', trigger: 'blur' }
+      obj[item] = { required: true, message: t('system.notify.template.paramRequired', { param: item }), trigger: 'blur' }
       return obj
     }, {})
   } finally {
@@ -124,7 +124,7 @@ const submitForm = async () => {
     const data = formData.value as unknown as NotifyTemplateApi.NotifySendReqVO
     const logId = await NotifyTemplateApi.sendNotify(data)
     if (logId) {
-      message.success('提交发送成功！发送结果，见发送日志编号：' + logId)
+      message.success(t('system.notify.template.sendSuccessLog', { logId }))
     }
     dialogVisible.value = false
   } finally {

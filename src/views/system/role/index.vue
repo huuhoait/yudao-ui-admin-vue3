@@ -285,7 +285,7 @@ const handleExport = async () => {
     // 发起导出
     exportLoading.value = true
     const data = await RoleApi.exportRole(queryParams)
-    download.excel(data, '角色数据.xls')
+    download.excel(data, t('system.role.exportFileName'))
   } catch {
   } finally {
     exportLoading.value = false

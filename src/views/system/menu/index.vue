@@ -100,6 +100,7 @@ import { CommonStatusEnum } from '@/utils/constants'
 import { CACHE_KEY, useCache } from '@/hooks/web/useCache'
 
 defineOptions({ name: 'SystemMenu' })
+const { t } = useI18n() // 国际化
 
 // 虚拟列表表格
 const columns: Column<MenuVO>[] = [
@@ -181,7 +182,7 @@ const columns: Column<MenuVO>[] = [
       if (checkPermi(['system:menu:update'])) {
         buttons.push(
           <ElButton key="edit" link type="primary" onClick={() => openForm('update', rowData.id)}>
-            修改
+            {t('action.edit')}
           </ElButton>
         )
       }
@@ -193,14 +194,14 @@ const columns: Column<MenuVO>[] = [
             type="primary"
             onClick={() => openForm('create', undefined, rowData.id)}
           >
-            新增
+            {t('action.create')}
           </ElButton>
         )
       }
       if (checkPermi(['system:menu:delete'])) {
         buttons.push(
           <ElButton key="delete" link type="danger" onClick={() => handleDelete(rowData.id)}>
-            删除
+            {t('action.del')}
           </ElButton>
         )
       }
@@ -215,7 +216,6 @@ const columns: Column<MenuVO>[] = [
 ]
 
 const { wsCache } = useCache()
-const { t } = useI18n() // 国际化
 const message = useMessage() // 消息弹窗
 
 const loading = ref(true) // 列表的加载中

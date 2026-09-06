@@ -37,7 +37,7 @@
       <el-form-item v-if="formData.type !== 3" :label="t('system.menu.routePath')" prop="path">
         <template #label>
           <Tooltip
-            message="访问的路由地址，如：`user`。如需外网地址时，则以 `http(s)://` 开头"
+            :message="t('system.menu.routePathTip')"
             :title="t('system.menu.routePath')"
           />
         </template>
@@ -52,7 +52,7 @@
       <el-form-item v-if="formData.type !== 1" :label="t('system.menu._todo90')" prop="permission">
         <template #label>
           <Tooltip
-            message="Controller 方法上的权限字符，如：@PreAuthorize(`@ss.hasPermission('system:user:list')`)"
+            :message="t('system.menu.permissionTip')"
             :title="t('system.menu._todo90')"
           />
         </template>
@@ -74,7 +74,7 @@
       </el-form-item>
       <el-form-item v-if="formData.type !== 3" :label="t('system.menu._todo92')" prop="visible">
         <template #label>
-          <Tooltip message="选择隐藏时，路由将不会出现在侧边栏，但仍然可以访问" :title="t('system.menu._todo92')" />
+          <Tooltip :message="t('system.menu.visibleTip')" :title="t('system.menu._todo92')" />
         </template>
         <el-radio-group v-model="formData.visible">
           <el-radio key="true" :value="true" border>{{ t('system.menu._todo95') }}</el-radio>
@@ -84,7 +84,7 @@
       <el-form-item v-if="formData.type !== 3" :label="t('system.menu._todo93')" prop="alwaysShow">
         <template #label>
           <Tooltip
-            message="选择不是时，当该菜单只有一个子菜单时，不展示自己，直接展示子菜单"
+            :message="t('system.menu.alwaysShowTip')"
             :title="t('system.menu._todo93')"
           />
         </template>
@@ -96,7 +96,7 @@
       <el-form-item v-if="formData.type === 2" :label="t('system.menu._todo94')" prop="keepAlive">
         <template #label>
           <Tooltip
-            message="选择缓存时，则会被 `keep-alive` 缓存，必须填写「组件名称」字段"
+            :message="t('system.menu.keepAliveTip')"
             :title="t('system.menu._todo94')"
           />
         </template>

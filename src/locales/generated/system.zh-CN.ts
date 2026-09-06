@@ -230,7 +230,10 @@ export default {
         edit: "修改",
         delete: "删除",
         selectTemplate: "请选择邮件模板",
-        sendSuccessLog: "提交发送成功！发送结果，见发送日志编号：{logId}"
+        sendSuccessLog: "提交发送成功！发送结果，见发送日志编号：{logId}",
+        paramLabel: "参数 {'{'}{param}{'}'}",
+        inputParam: "请输入 {param} 参数",
+        paramRequired: "参数 {param} 不能为空"
       }
     },
     menu: {

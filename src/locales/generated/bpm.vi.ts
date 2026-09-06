@@ -265,7 +265,14 @@ export default {
         _todo149: "Phát hành thất bại:",
         _todo150: "Phát hành thất bại",
         _todo151: "Chuyển bước thất bại:",
-        _todo152: "Vui lòng hoàn thiện thông tin bắt buộc của bước hiện tại"
+        _todo152: "Vui lòng hoàn thiện thông tin bắt buộc của bước hiện tại",
+        exampleLabel: "Ví dụ: {example}",
+        copySuffix: " Bản sao",
+        createProcess: "Tạo quy trình",
+        printTemplateFormPrefix: "[Biểu mẫu]",
+        printRecordLabel: "Lịch sử quy trình",
+        processKeyImmutableTip: "Không thể sửa mã định danh quy trình!",
+        processKeyImmutableTipNew: "Sau khi tạo, không thể sửa mã định danh quy trình!"
       },
       _todo153: "Tìm kiếm quy trình",
       _todo154: "Mô hình quy trình",
@@ -274,7 +281,12 @@ export default {
       _todo157: "Tạo phân loại",
       categorySort: "Thứ tự phân loại",
       _todo158: "Sắp xếp phân loại thành công",
-      publishSuccess: "Phát hành thành công"
+      publishSuccess: "Phát hành thành công",
+      visibleDepts: "Hiển thị cho {name} và {n} phòng ban",
+      visibleUsers: "Hiển thị cho {name} và {n} người dùng",
+      confirmClean: "Bạn có chắc muốn dọn dẹp dữ liệu của quy trình có tên \"{name}\" không?",
+      confirmChangeState: "Bạn có chắc muốn {statusState} dữ liệu của quy trình có tên \"{name}\" không?",
+      changeStateSuccess: "{statusState} thành công"
     },
     oa: {
       leave: {
@@ -312,7 +324,8 @@ export default {
         inputCancelReason: "Vui lòng nhập lý do hủy",
         cancelProcess: "Hủy quy trình",
         cancelReasonRequired: "Lý do hủy không được để trống",
-        cancelSuccess: "Hủy thành công"
+        cancelSuccess: "Hủy thành công",
+        selectApprover: "Vui lòng chọn người phê duyệt cho {name}"
       }
     },
     processExpression: {
@@ -344,7 +357,11 @@ export default {
         inputProcessName: "Vui lòng nhập tên quy trình",
         _todo185: "Không tìm thấy kết quả",
         _todo186: "Khởi tạo lại quy trình thất bại, lý do: thực thể quy trình không tồn tại",
-        _todo187: "Khởi tạo lại quy trình thất bại, lý do: định nghĩa quy trình không tồn tại"
+        _todo187: "Khởi tạo lại quy trình thất bại, lý do: định nghĩa quy trình không tồn tại",
+        selectCandidate: "Vui lòng chọn ứng viên cho {name}",
+        start: "Khởi tạo",
+        cancel: "Hủy",
+        processLabel: "Quy trình: {name}"
       },
       detail: {
         starter: "Người khởi tạo",
@@ -426,7 +443,26 @@ export default {
         _todo331: "Sơ đồ quy trình",
         _todo332: "Lịch sử luân chuyển",
         _todo333: "Không tìm thấy thông tin chi tiết phê duyệt!",
-        _todo334: "Không tìm thấy thông tin quy trình!"
+        _todo334: "Không tìm thấy thông tin quy trình!",
+        opinionLabel: "Ý kiến {nodeTypeName}",
+        inputOpinion: "Vui lòng nhập ý kiến {nodeTypeName}",
+        opinionRequired: "Ý kiến {nodeTypeName} không được để trống",
+        fillForm: "Điền biểu mẫu [{formName}]",
+        comment: "Bình luận",
+        addSignBefore: "{action} phía trước",
+        addSignAfter: "{action} phía sau",
+        removeSign: "Giảm ký",
+        cancel: "Hủy",
+        cancelHint: "Sau khi hủy, quy trình phê duyệt này sẽ tự động kết thúc",
+        resubmit: "Gửi lại",
+        idLabel: "Mã: {id}",
+        submittedAt: "Đã gửi lúc {time}",
+        commentCount: "Tổng {n}",
+        system: "Hệ thống",
+        deptLabel: "{nickname} ( Phòng ban: {deptName} )",
+        printUserLabel: "Người in: {userName}",
+        printProcessIdLabel: "Mã quy trình: {id}",
+        printTimeLabel: "Thời gian in: {printTime}"
       },
       _todo241: "Khởi tạo, hủy, khởi tạo lại quy trình",
       inputProcessName: "Vui lòng nhập tên quy trình",
@@ -498,8 +534,11 @@ export default {
         inputCancelReason: "Vui lòng nhập lý do hủy",
         cancelProcess: "Hủy quy trình",
         cancelReasonRequired: "Lý do hủy không được để trống",
-        cancelSuccess: "Hủy thành công"
-      }
+        cancelSuccess: "Hủy thành công",
+        inputField: "Vui lòng nhập {title}"
+      },
+      approvingWithNode: "( {name} ) Đang phê duyệt",
+      approvingWithNodeAndCount: "và {n} người khác ( {name} ) Đang phê duyệt"
     },
     processListener: {
       name: "Tên",
@@ -526,7 +565,9 @@ export default {
       action: "Thao tác",
       create: "Thêm mới",
       edit: "Chỉnh sửa",
-      delete: "Xóa"
+      delete: "Xóa",
+      executionEvents: "Bắt đầu,Kết thúc",
+      taskEvents: "Tạo,Chỉ định,Hoàn thành,Xóa,Cập nhật,Hết hạn"
     },
     task: {
       components: {
@@ -547,7 +588,8 @@ export default {
         ccUser: "Người nhận sao gửi",
         ccOpinion: "Ý kiến sao gửi",
         action: "Thao tác",
-        detail: "Chi tiết"
+        detail: "Chi tiết",
+        system: "Hệ thống"
       },
       done: {
         _todo263: "Phê duyệt: thông qua, không thông qua, từ chối",
@@ -625,7 +667,8 @@ export default {
         clear: "Xóa trắng",
         confirm: "Xác nhận",
         _todo279: "Xử lý"
-      }
+      },
+      attachmentCount: "{n} tệp đính kèm"
     }
   }
 }

@@ -288,7 +288,7 @@ const handleExport = async () => {
     // 发起导出
     exportLoading.value = true
     const data = await TenantApi.exportTenant(queryParams)
-    download.excel(data, '租户列表.xls')
+    download.excel(data, t('system.tenant.exportFileName'))
   } catch {
   } finally {
     exportLoading.value = false

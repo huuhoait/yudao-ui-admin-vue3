@@ -246,7 +246,7 @@ const handleExport = async () => {
     // 发起导出
     exportLoading.value = true
     const data = await SmsLogApi.exportSmsLog(queryParams)
-    download.excel(data, '短信日志.xls')
+    download.excel(data, t('system.sms.log.exportFileName'))
   } catch {
   } finally {
     exportLoading.value = false

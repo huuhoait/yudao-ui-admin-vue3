@@ -33,6 +33,22 @@ export function escapeI18n(s) {
  * @returns {Record<string,string>} map key phẳng ("system.user.nickname") -> giá trị
  */
 export function loadGeneratedLocale(file) {
+  return loadGeneratedLocaleImpl(file, true)
+}
+
+/**
+ * Như loadGeneratedLocale nhưng KHÔNG unescape — trả về đúng chuỗi đã ghi trên đĩa.
+ *
+ * Dùng khi cần GHI LẠI giá trị y nguyên (translation memory): unescape rồi escape lại
+ * không phải phép biến đổi 1-1 khi chuỗi trộn lẫn placeholder thật (`{param}`) với dấu
+ * ngoặc nhọn literal đã escape (`{'{'}`) — escape lại sẽ escape luôn cả `{param}`,
+ * biến placeholder thành text hiển thị nguyên văn thay vì được thay giá trị.
+ */
+export function loadGeneratedLocaleRaw(file) {
+  return loadGeneratedLocaleImpl(file, false)
+}
+
+function loadGeneratedLocaleImpl(file, unescape) {
   if (!existsSync(file)) return {}
   const code = readFileSync(file, 'utf8')
   const ast = babelParse(code, { sourceType: 'module', plugins: ['typescript'] })
@@ -47,7 +63,9 @@ export function loadGeneratedLocale(file) {
       const name = prop.key.type === 'Identifier' ? prop.key.name : prop.key.value
       const path = prefix ? `${prefix}.${name}` : String(name)
       if (prop.value.type === 'ObjectExpression') walkObject(prop.value, path)
-      else if (prop.value.type === 'StringLiteral') flat[path] = unescapeI18n(prop.value.value)
+      else if (prop.value.type === 'StringLiteral') {
+        flat[path] = unescape ? unescapeI18n(prop.value.value) : prop.value.value
+      }
     }
   }
   walkObject(exportDefault.declaration, '')

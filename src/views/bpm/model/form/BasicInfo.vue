@@ -10,7 +10,7 @@
         />
         <el-tooltip
           class="item"
-          :content="modelData.id ? '流程标识不可修改！' : '新建后，流程标识不可修改！'"
+          :content="modelData.id ? t('bpm.model.form.processKeyImmutableTip') : t('bpm.model.form.processKeyImmutableTipNew')"
           effect="light"
           placement="top"
         >
