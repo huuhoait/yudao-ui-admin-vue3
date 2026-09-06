@@ -89,7 +89,8 @@ export default {
         export: "Export",
         deleteBatch: "Batch Delete",
         edit: "Edit",
-        delete: "Delete"
+        delete: "Delete",
+        exportFileName: "DictData.xls"
       },
       inputDictType: "Please enter dict type",
       _todo36: "Please select dict status",
@@ -102,7 +103,8 @@ export default {
       deleteBatch: "Batch Delete",
       edit: "Edit",
       _todo38: "Data",
-      delete: "Delete"
+      delete: "Delete",
+      exportFileName: "DictTypes.xls"
     },
     loginlog: {
       detail: "Detail",
@@ -119,7 +121,8 @@ export default {
       startDate: "Start Date",
       endDate: "End Date",
       action: "Action",
-      export: "Export"
+      export: "Export",
+      exportFileName: "LoginLogs.xls"
     },
     mail: {
       account: {
@@ -187,7 +190,8 @@ export default {
         endDate: "End Date",
         id: "ID",
         action: "Action",
-        export: "Export"
+        export: "Export",
+        exportFileName: "MailLogs.xls"
       },
       template: {
         emailAccount: "Email Account",
@@ -225,7 +229,8 @@ export default {
         deleteBatch: "Batch Delete",
         edit: "Edit",
         delete: "Delete",
-        selectTemplate: "Please select mail template"
+        selectTemplate: "Please select mail template",
+        sendSuccessLog: "Submitted successfully. See send log ID: {logId}"
       }
     },
     menu: {
@@ -272,7 +277,12 @@ export default {
       _todo111: "Component Path",
       _todo112: "Component Name",
       action: "Action",
-      _todo113: "Cache is about to update, refreshing browser!"
+      _todo113: "Cache is about to update, refreshing browser!",
+      routePathTip: "Route path to visit, e.g. `user`. For an external address, start with `http(s)://`",
+      permissionTip: "Permission string on the Controller method, e.g. @PreAuthorize(`@ss.hasPermission('system:user:list')`)",
+      visibleTip: "When set to hidden, the route will not appear in the sidebar but can still be accessed",
+      alwaysShowTip: "When set to no, a menu with only one child is not shown itself — the child is shown directly",
+      keepAliveTip: "When caching is enabled the page is cached by `keep-alive`; the \"Component Name\" field is required"
     },
     notice: {
       _todo114: "Notice Title",
@@ -340,7 +350,8 @@ export default {
         _todo140: "Mark as Read",
         _todo141: "Mark All Read",
         _todo142: "All marked as read!",
-        _todo143: "Batch marked as read!"
+        _todo143: "Batch marked as read!",
+        markRead: "Mark as read"
       },
       template: {
         _todo144: "Template Code",
@@ -385,7 +396,11 @@ export default {
         edit: "Edit",
         test: "Test",
         delete: "Delete",
-        selectTemplate: "Please select internal message template"
+        selectTemplate: "Please select internal message template",
+        sendSuccessLog: "Submitted successfully. See send log ID: {logId}",
+        paramLabel: "Parameter {'{'}{param}{'}'}",
+        inputParam: "Please enter parameter {param}",
+        paramRequired: "Parameter {param} is required"
       }
     },
     oauth2: {
@@ -429,7 +444,8 @@ export default {
         create: "Add",
         deleteBatch: "Batch Delete",
         edit: "Edit",
-        delete: "Delete"
+        delete: "Delete",
+        seconds: "{n} s"
       },
       token: {
         _todo180: "OAuth 2.0 (SSO Single Sign-On)",
@@ -473,7 +489,8 @@ export default {
       _todo202: "Log ID",
       _todo203: "Operation IP",
       action: "Action",
-      export: "Export"
+      export: "Export",
+      exportFileName: "OperationLogs.xls"
     },
     post: {
       _todo204: "Post Title",
@@ -498,7 +515,8 @@ export default {
       export: "Export",
       deleteBatch: "Batch Delete",
       edit: "Edit",
-      delete: "Delete"
+      delete: "Delete",
+      exportFileName: "Posts.xls"
     },
     role: {
       menuPermission: "Menu Permission",
@@ -539,7 +557,8 @@ export default {
       deleteBatch: "Batch Delete",
       edit: "Edit",
       delete: "Delete",
-      selectRole: "Please select role"
+      selectRole: "Please select role",
+      exportFileName: "Roles.xls"
     },
     sms: {
       channel: {
@@ -602,7 +621,8 @@ export default {
         id: "ID",
         smsType: "SMS Type",
         action: "Action",
-        export: "Export"
+        export: "Export",
+        exportFileName: "SmsLogs.xls"
       },
       template: {
         smsChannelId: "SMS Channel ID",
@@ -647,7 +667,12 @@ export default {
         export: "Export",
         edit: "Edit",
         delete: "Delete",
-        selectTemplate: "Please select SMS template"
+        selectTemplate: "Please select SMS template",
+        sendSuccessLog: "Submitted successfully. See send log ID: {logId}",
+        paramLabel: "Parameter {'{'}{param}{'}'}",
+        inputParam: "Please enter parameter {param}",
+        paramRequired: "Parameter {param} is required",
+        exportFileName: "SmsTemplates.xls"
       }
     },
     social: {
@@ -738,7 +763,8 @@ export default {
       deleteBatch: "Batch Delete",
       _todo280: "System Tenant",
       edit: "Edit",
-      delete: "Delete"
+      delete: "Delete",
+      exportFileName: "Tenants.xls"
     },
     tenantPackage: {
       _todo281: "Package Name",
@@ -834,7 +860,15 @@ export default {
       enable: "Enable",
       disable: "Disable",
       selectUser: "Please select user",
-      selectUserTitle: "Select Personnel"
+      selectUserTitle: "Select Personnel",
+      confirmToggleStatus: "Are you sure you want to {action} user \"{username}\"?",
+      inputNewPassword: "Please enter the new password for \"{username}\"",
+      resetPasswordSuccess: "Changed successfully. The new password is: {password}",
+      importCreateCount: "Created successfully: {n};",
+      importUpdateCount: "Updated successfully: {n};",
+      importFailureCount: "Failed: {n};",
+      exportFileName: "Users.xls",
+      importTemplateFileName: "UserImportTemplate.xls"
     }
   }
 }

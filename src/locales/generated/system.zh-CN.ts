@@ -89,7 +89,8 @@ export default {
         export: "导出",
         deleteBatch: "批量删除",
         edit: "修改",
-        delete: "删除"
+        delete: "删除",
+        exportFileName: "字典数据.xls"
       },
       inputDictType: "请输入字典类型",
       _todo36: "请选择字典状态",
@@ -102,7 +103,8 @@ export default {
       deleteBatch: "批量删除",
       edit: "修改",
       _todo38: "数据",
-      delete: "删除"
+      delete: "删除",
+      exportFileName: "字典类型.xls"
     },
     loginlog: {
       detail: "详情",
@@ -119,7 +121,8 @@ export default {
       startDate: "开始日期",
       endDate: "结束日期",
       action: "操作",
-      export: "导出"
+      export: "导出",
+      exportFileName: "登录日志.xls"
     },
     mail: {
       account: {
@@ -187,7 +190,8 @@ export default {
         endDate: "结束日期",
         id: "编号",
         action: "操作",
-        export: "导出"
+        export: "导出",
+        exportFileName: "邮件日志.xls"
       },
       template: {
         emailAccount: "邮箱账号",
@@ -225,7 +229,8 @@ export default {
         deleteBatch: "批量删除",
         edit: "修改",
         delete: "删除",
-        selectTemplate: "请选择邮件模板"
+        selectTemplate: "请选择邮件模板",
+        sendSuccessLog: "提交发送成功！发送结果，见发送日志编号：{logId}"
       }
     },
     menu: {
@@ -272,7 +277,12 @@ export default {
       _todo111: "组件路径",
       _todo112: "组件名称",
       action: "操作",
-      _todo113: "即将更新缓存刷新浏览器！"
+      _todo113: "即将更新缓存刷新浏览器！",
+      routePathTip: "访问的路由地址，如：`user`。如需外网地址时，则以 `http(s)://` 开头",
+      permissionTip: "Controller 方法上的权限字符，如：@PreAuthorize(`@ss.hasPermission('system:user:list')`)",
+      visibleTip: "选择隐藏时，路由将不会出现在侧边栏，但仍然可以访问",
+      alwaysShowTip: "选择不是时，当该菜单只有一个子菜单时，不展示自己，直接展示子菜单",
+      keepAliveTip: "选择缓存时，则会被 `keep-alive` 缓存，必须填写「组件名称」字段"
     },
     notice: {
       _todo114: "公告标题",
@@ -340,7 +350,8 @@ export default {
         _todo140: "标记已读",
         _todo141: "全部已读",
         _todo142: "全部已读成功！",
-        _todo143: "批量已读成功！"
+        _todo143: "批量已读成功！",
+        markRead: "已读"
       },
       template: {
         _todo144: "模版编码",
@@ -385,7 +396,11 @@ export default {
         edit: "修改",
         test: "测试",
         delete: "删除",
-        selectTemplate: "请选择站内信模板"
+        selectTemplate: "请选择站内信模板",
+        sendSuccessLog: "提交发送成功！发送结果，见发送日志编号：{logId}",
+        paramLabel: "参数 {'{'}{param}{'}'}",
+        inputParam: "请输入 {param} 参数",
+        paramRequired: "参数 {param} 不能为空"
       }
     },
     oauth2: {
@@ -429,7 +444,8 @@ export default {
         create: "新增",
         deleteBatch: "批量删除",
         edit: "编辑",
-        delete: "删除"
+        delete: "删除",
+        seconds: "{n} 秒"
       },
       token: {
         _todo180: "OAuth 2.0（SSO 单点登录)",
@@ -473,7 +489,8 @@ export default {
       _todo202: "日志编号",
       _todo203: "操作 IP",
       action: "操作",
-      export: "导出"
+      export: "导出",
+      exportFileName: "操作日志.xls"
     },
     post: {
       _todo204: "岗位标题",
@@ -498,7 +515,8 @@ export default {
       export: "导出",
       deleteBatch: "批量删除",
       edit: "编辑",
-      delete: "删除"
+      delete: "删除",
+      exportFileName: "岗位列表.xls"
     },
     role: {
       menuPermission: "菜单权限",
@@ -539,7 +557,8 @@ export default {
       deleteBatch: "批量删除",
       edit: "编辑",
       delete: "删除",
-      selectRole: "请选择角色"
+      selectRole: "请选择角色",
+      exportFileName: "角色数据.xls"
     },
     sms: {
       channel: {
@@ -602,7 +621,8 @@ export default {
         id: "编号",
         smsType: "短信类型",
         action: "操作",
-        export: "导出"
+        export: "导出",
+        exportFileName: "短信日志.xls"
       },
       template: {
         smsChannelId: "短信渠道编号",
@@ -647,7 +667,12 @@ export default {
         export: "导出",
         edit: "修改",
         delete: "删除",
-        selectTemplate: "请选择短信模板"
+        selectTemplate: "请选择短信模板",
+        sendSuccessLog: "提交发送成功！发送结果，见发送日志编号：{logId}",
+        paramLabel: "参数 {'{'}{param}{'}'}",
+        inputParam: "请输入 {param} 参数",
+        paramRequired: "参数 {param} 不能为空",
+        exportFileName: "短信模板.xls"
       }
     },
     social: {
@@ -738,7 +763,8 @@ export default {
       deleteBatch: "批量删除",
       _todo280: "系统租户",
       edit: "编辑",
-      delete: "删除"
+      delete: "删除",
+      exportFileName: "租户列表.xls"
     },
     tenantPackage: {
       _todo281: "套餐名",
@@ -834,7 +860,15 @@ export default {
       enable: "启用",
       disable: "停用",
       selectUser: "请选择用户",
-      selectUserTitle: "人员选择"
+      selectUserTitle: "人员选择",
+      confirmToggleStatus: "确认要{action}\"{username}\"用户吗?",
+      inputNewPassword: "请输入\"{username}\"的新密码",
+      resetPasswordSuccess: "修改成功，新密码是：{password}",
+      importCreateCount: "上传成功数量：{n};",
+      importUpdateCount: "更新成功数量：{n};",
+      importFailureCount: "更新失败数量：{n};",
+      exportFileName: "用户数据.xls",
+      importTemplateFileName: "用户导入模版.xls"
     }
   }
 }

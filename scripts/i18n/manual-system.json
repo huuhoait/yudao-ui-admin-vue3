@@ -1,5 +1,5 @@
 {
-  "_note": "Key thêm tay cho module system. Dùng cho placeholder mặc định trong defineProps/withDefaults — giá trị đó bị hoist ra ngoài setup() nên KHÔNG gọi được t(); component để default rỗng rồi fallback t() ở template. Áp dụng: node scripts/i18n/apply-translations.mjs system scripts/i18n/manual-system.json",
+  "_note": "Key thêm tay cho module system: (a) default của defineProps/withDefaults — bị hoist ra ngoài setup() nên không gọi được t(); (b) chuỗi ghép/nội suy mà convert.mjs cố ý không tự đụng (dùng placeholder vue-i18n). Giá trị ở đây là message vue-i18n THÔ: {name} là placeholder, {'{'} là dấu ngoặc nhọn literal. Áp dụng: node scripts/i18n/apply-translations.mjs system scripts/i18n/manual-system.json",
   "extra": {
     "system.area.selectArea": {
       "zh-CN": "请选择地区",
@@ -45,6 +45,187 @@
       "zh-CN": "推送成功",
       "en": "Pushed successfully",
       "vi": "Đẩy thông báo thành công"
+    },
+
+    "system.mail.template.sendSuccessLog": {
+      "zh-CN": "提交发送成功！发送结果，见发送日志编号：{logId}",
+      "en": "Submitted successfully. See send log ID: {logId}",
+      "vi": "Gửi thành công. Xem mã nhật ký gửi: {logId}"
+    },
+    "system.notify.template.sendSuccessLog": {
+      "zh-CN": "提交发送成功！发送结果，见发送日志编号：{logId}",
+      "en": "Submitted successfully. See send log ID: {logId}",
+      "vi": "Gửi thành công. Xem mã nhật ký gửi: {logId}"
+    },
+    "system.sms.template.sendSuccessLog": {
+      "zh-CN": "提交发送成功！发送结果，见发送日志编号：{logId}",
+      "en": "Submitted successfully. See send log ID: {logId}",
+      "vi": "Gửi thành công. Xem mã nhật ký gửi: {logId}"
+    },
+
+    "system.notify.template.paramLabel": {
+      "zh-CN": "参数 {'{'}{param}{'}'}",
+      "en": "Parameter {'{'}{param}{'}'}",
+      "vi": "Tham số {'{'}{param}{'}'}"
+    },
+    "system.notify.template.inputParam": {
+      "zh-CN": "请输入 {param} 参数",
+      "en": "Please enter parameter {param}",
+      "vi": "Vui lòng nhập tham số {param}"
+    },
+    "system.notify.template.paramRequired": {
+      "zh-CN": "参数 {param} 不能为空",
+      "en": "Parameter {param} is required",
+      "vi": "Tham số {param} không được để trống"
+    },
+    "system.sms.template.paramLabel": {
+      "zh-CN": "参数 {'{'}{param}{'}'}",
+      "en": "Parameter {'{'}{param}{'}'}",
+      "vi": "Tham số {'{'}{param}{'}'}"
+    },
+    "system.sms.template.inputParam": {
+      "zh-CN": "请输入 {param} 参数",
+      "en": "Please enter parameter {param}",
+      "vi": "Vui lòng nhập tham số {param}"
+    },
+    "system.sms.template.paramRequired": {
+      "zh-CN": "参数 {param} 不能为空",
+      "en": "Parameter {param} is required",
+      "vi": "Tham số {param} không được để trống"
+    },
+
+    "system.menu.routePathTip": {
+      "zh-CN": "访问的路由地址，如：`user`。如需外网地址时，则以 `http(s)://` 开头",
+      "en": "Route path to visit, e.g. `user`. For an external address, start with `http(s)://`",
+      "vi": "Đường dẫn route, ví dụ `user`. Nếu là địa chỉ ngoài, hãy bắt đầu bằng `http(s)://`"
+    },
+    "system.menu.permissionTip": {
+      "zh-CN": "Controller 方法上的权限字符，如：@PreAuthorize(`@ss.hasPermission('system:user:list')`)",
+      "en": "Permission string on the Controller method, e.g. @PreAuthorize(`@ss.hasPermission('system:user:list')`)",
+      "vi": "Chuỗi quyền trên phương thức Controller, ví dụ: @PreAuthorize(`@ss.hasPermission('system:user:list')`)"
+    },
+    "system.menu.visibleTip": {
+      "zh-CN": "选择隐藏时，路由将不会出现在侧边栏，但仍然可以访问",
+      "en": "When set to hidden, the route will not appear in the sidebar but can still be accessed",
+      "vi": "Khi chọn ẩn, route sẽ không hiện ở thanh bên nhưng vẫn truy cập được"
+    },
+    "system.menu.alwaysShowTip": {
+      "zh-CN": "选择不是时，当该菜单只有一个子菜单时，不展示自己，直接展示子菜单",
+      "en": "When set to no, a menu with only one child is not shown itself — the child is shown directly",
+      "vi": "Khi chọn không, nếu menu chỉ có một menu con thì không hiện chính nó mà hiện thẳng menu con"
+    },
+    "system.menu.keepAliveTip": {
+      "zh-CN": "选择缓存时，则会被 `keep-alive` 缓存，必须填写「组件名称」字段",
+      "en": "When caching is enabled the page is cached by `keep-alive`; the \"Component Name\" field is required",
+      "vi": "Khi bật cache, trang sẽ được `keep-alive` lưu lại; bắt buộc điền trường \"Tên component\""
+    },
+
+    "system.notify.my.markRead": {
+      "zh-CN": "已读",
+      "en": "Mark as read",
+      "vi": "Đánh dấu đã đọc"
+    },
+    "system.oauth2.client.seconds": {
+      "zh-CN": "{n} 秒",
+      "en": "{n} s",
+      "vi": "{n} giây"
+    },
+
+    "system.user.dept": {
+      "zh-CN": "部门",
+      "en": "Department",
+      "vi": "Phòng ban"
+    },
+    "system.user.confirmToggleStatus": {
+      "zh-CN": "确认要{action}\"{username}\"用户吗?",
+      "en": "Are you sure you want to {action} user \"{username}\"?",
+      "vi": "Bạn có chắc muốn {action} người dùng \"{username}\" không?"
+    },
+    "system.user.inputNewPassword": {
+      "zh-CN": "请输入\"{username}\"的新密码",
+      "en": "Please enter the new password for \"{username}\"",
+      "vi": "Vui lòng nhập mật khẩu mới cho \"{username}\""
+    },
+    "system.user.resetPasswordSuccess": {
+      "zh-CN": "修改成功，新密码是：{password}",
+      "en": "Changed successfully. The new password is: {password}",
+      "vi": "Đổi thành công. Mật khẩu mới là: {password}"
+    },
+    "system.user.importCreateCount": {
+      "zh-CN": "上传成功数量：{n};",
+      "en": "Created successfully: {n};",
+      "vi": "Số tạo thành công: {n};"
+    },
+    "system.user.importUpdateCount": {
+      "zh-CN": "更新成功数量：{n};",
+      "en": "Updated successfully: {n};",
+      "vi": "Số cập nhật thành công: {n};"
+    },
+    "system.user.importFailureCount": {
+      "zh-CN": "更新失败数量：{n};",
+      "en": "Failed: {n};",
+      "vi": "Số thất bại: {n};"
+    },
+
+    "system.user.exportFileName": {
+      "zh-CN": "用户数据.xls",
+      "en": "Users.xls",
+      "vi": "NguoiDung.xls"
+    },
+    "system.user.importTemplateFileName": {
+      "zh-CN": "用户导入模版.xls",
+      "en": "UserImportTemplate.xls",
+      "vi": "MauNhapNguoiDung.xls"
+    },
+    "system.role.exportFileName": {
+      "zh-CN": "角色数据.xls",
+      "en": "Roles.xls",
+      "vi": "VaiTro.xls"
+    },
+    "system.post.exportFileName": {
+      "zh-CN": "岗位列表.xls",
+      "en": "Posts.xls",
+      "vi": "ChucVu.xls"
+    },
+    "system.tenant.exportFileName": {
+      "zh-CN": "租户列表.xls",
+      "en": "Tenants.xls",
+      "vi": "ToChuc.xls"
+    },
+    "system.dict.exportFileName": {
+      "zh-CN": "字典类型.xls",
+      "en": "DictTypes.xls",
+      "vi": "LoaiTuDien.xls"
+    },
+    "system.dict.data.exportFileName": {
+      "zh-CN": "字典数据.xls",
+      "en": "DictData.xls",
+      "vi": "DuLieuTuDien.xls"
+    },
+    "system.loginlog.exportFileName": {
+      "zh-CN": "登录日志.xls",
+      "en": "LoginLogs.xls",
+      "vi": "NhatKyDangNhap.xls"
+    },
+    "system.operatelog.exportFileName": {
+      "zh-CN": "操作日志.xls",
+      "en": "OperationLogs.xls",
+      "vi": "NhatKyThaoTac.xls"
+    },
+    "system.sms.log.exportFileName": {
+      "zh-CN": "短信日志.xls",
+      "en": "SmsLogs.xls",
+      "vi": "NhatKySms.xls"
+    },
+    "system.sms.template.exportFileName": {
+      "zh-CN": "短信模板.xls",
+      "en": "SmsTemplates.xls",
+      "vi": "MauSms.xls"
+    },
+    "system.mail.log.exportFileName": {
+      "zh-CN": "邮件日志.xls",
+      "en": "MailLogs.xls",
+      "vi": "NhatKyEmail.xls"
     }
   }
 }

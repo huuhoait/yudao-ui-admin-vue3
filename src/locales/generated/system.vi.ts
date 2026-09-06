@@ -89,7 +89,8 @@ export default {
         export: "Xuất",
         deleteBatch: "Xóa hàng loạt",
         edit: "Sửa",
-        delete: "Xóa"
+        delete: "Xóa",
+        exportFileName: "DuLieuTuDien.xls"
       },
       inputDictType: "Vui lòng nhập loại từ điển",
       _todo36: "Vui lòng chọn trạng thái từ điển",
@@ -102,7 +103,8 @@ export default {
       deleteBatch: "Xóa hàng loạt",
       edit: "Sửa",
       _todo38: "Dữ liệu",
-      delete: "Xóa"
+      delete: "Xóa",
+      exportFileName: "LoaiTuDien.xls"
     },
     loginlog: {
       detail: "Chi tiết",
@@ -119,7 +121,8 @@ export default {
       startDate: "Ngày bắt đầu",
       endDate: "Ngày kết thúc",
       action: "Thao tác",
-      export: "Xuất"
+      export: "Xuất",
+      exportFileName: "NhatKyDangNhap.xls"
     },
     mail: {
       account: {
@@ -187,7 +190,8 @@ export default {
         endDate: "Ngày kết thúc",
         id: "Mã",
         action: "Thao tác",
-        export: "Xuất"
+        export: "Xuất",
+        exportFileName: "NhatKyEmail.xls"
       },
       template: {
         emailAccount: "Tài khoản email",
@@ -225,7 +229,8 @@ export default {
         deleteBatch: "Xóa hàng loạt",
         edit: "Sửa",
         delete: "Xóa",
-        selectTemplate: "Vui lòng chọn mẫu email"
+        selectTemplate: "Vui lòng chọn mẫu email",
+        sendSuccessLog: "Gửi thành công. Xem mã nhật ký gửi: {logId}"
       }
     },
     menu: {
@@ -272,7 +277,12 @@ export default {
       _todo111: "Đường dẫn component",
       _todo112: "Tên component",
       action: "Thao tác",
-      _todo113: "Sắp cập nhật cache, làm mới trình duyệt!"
+      _todo113: "Sắp cập nhật cache, làm mới trình duyệt!",
+      routePathTip: "Đường dẫn route, ví dụ `user`. Nếu là địa chỉ ngoài, hãy bắt đầu bằng `http(s)://`",
+      permissionTip: "Chuỗi quyền trên phương thức Controller, ví dụ: @PreAuthorize(`@ss.hasPermission('system:user:list')`)",
+      visibleTip: "Khi chọn ẩn, route sẽ không hiện ở thanh bên nhưng vẫn truy cập được",
+      alwaysShowTip: "Khi chọn không, nếu menu chỉ có một menu con thì không hiện chính nó mà hiện thẳng menu con",
+      keepAliveTip: "Khi bật cache, trang sẽ được `keep-alive` lưu lại; bắt buộc điền trường \"Tên component\""
     },
     notice: {
       _todo114: "Tiêu đề thông báo",
@@ -340,7 +350,8 @@ export default {
         _todo140: "Đánh dấu đã đọc",
         _todo141: "Đọc tất cả",
         _todo142: "Đã đánh dấu đọc tất cả!",
-        _todo143: "Đã đánh dấu đọc hàng loạt!"
+        _todo143: "Đã đánh dấu đọc hàng loạt!",
+        markRead: "Đánh dấu đã đọc"
       },
       template: {
         _todo144: "Mã mẫu",
@@ -385,7 +396,11 @@ export default {
         edit: "Sửa",
         test: "Kiểm thử",
         delete: "Xóa",
-        selectTemplate: "Vui lòng chọn mẫu tin nội bộ"
+        selectTemplate: "Vui lòng chọn mẫu tin nội bộ",
+        sendSuccessLog: "Gửi thành công. Xem mã nhật ký gửi: {logId}",
+        paramLabel: "Tham số {'{'}{param}{'}'}",
+        inputParam: "Vui lòng nhập tham số {param}",
+        paramRequired: "Tham số {param} không được để trống"
       }
     },
     oauth2: {
@@ -429,7 +444,8 @@ export default {
         create: "Thêm mới",
         deleteBatch: "Xóa hàng loạt",
         edit: "Chỉnh sửa",
-        delete: "Xóa"
+        delete: "Xóa",
+        seconds: "{n} giây"
       },
       token: {
         _todo180: "OAuth 2.0 (Đăng nhập một lần SSO)",
@@ -473,7 +489,8 @@ export default {
       _todo202: "Mã nhật ký",
       _todo203: "IP thao tác",
       action: "Thao tác",
-      export: "Xuất"
+      export: "Xuất",
+      exportFileName: "NhatKyThaoTac.xls"
     },
     post: {
       _todo204: "Tiêu đề chức vụ",
@@ -498,7 +515,8 @@ export default {
       export: "Xuất",
       deleteBatch: "Xóa hàng loạt",
       edit: "Chỉnh sửa",
-      delete: "Xóa"
+      delete: "Xóa",
+      exportFileName: "ChucVu.xls"
     },
     role: {
       menuPermission: "Quyền menu",
@@ -539,7 +557,8 @@ export default {
       deleteBatch: "Xóa hàng loạt",
       edit: "Chỉnh sửa",
       delete: "Xóa",
-      selectRole: "Vui lòng chọn vai trò"
+      selectRole: "Vui lòng chọn vai trò",
+      exportFileName: "VaiTro.xls"
     },
     sms: {
       channel: {
@@ -602,7 +621,8 @@ export default {
         id: "Mã",
         smsType: "Loại SMS",
         action: "Thao tác",
-        export: "Xuất"
+        export: "Xuất",
+        exportFileName: "NhatKySms.xls"
       },
       template: {
         smsChannelId: "Mã kênh SMS",
@@ -647,7 +667,12 @@ export default {
         export: "Xuất",
         edit: "Sửa",
         delete: "Xóa",
-        selectTemplate: "Vui lòng chọn mẫu SMS"
+        selectTemplate: "Vui lòng chọn mẫu SMS",
+        sendSuccessLog: "Gửi thành công. Xem mã nhật ký gửi: {logId}",
+        paramLabel: "Tham số {'{'}{param}{'}'}",
+        inputParam: "Vui lòng nhập tham số {param}",
+        paramRequired: "Tham số {param} không được để trống",
+        exportFileName: "MauSms.xls"
       }
     },
     social: {
@@ -738,7 +763,8 @@ export default {
       deleteBatch: "Xóa hàng loạt",
       _todo280: "Tổ chức hệ thống",
       edit: "Chỉnh sửa",
-      delete: "Xóa"
+      delete: "Xóa",
+      exportFileName: "ToChuc.xls"
     },
     tenantPackage: {
       _todo281: "Tên gói",
@@ -834,7 +860,15 @@ export default {
       enable: "Kích hoạt",
       disable: "Vô hiệu hóa",
       selectUser: "Vui lòng chọn người dùng",
-      selectUserTitle: "Chọn nhân sự"
+      selectUserTitle: "Chọn nhân sự",
+      confirmToggleStatus: "Bạn có chắc muốn {action} người dùng \"{username}\" không?",
+      inputNewPassword: "Vui lòng nhập mật khẩu mới cho \"{username}\"",
+      resetPasswordSuccess: "Đổi thành công. Mật khẩu mới là: {password}",
+      importCreateCount: "Số tạo thành công: {n};",
+      importUpdateCount: "Số cập nhật thành công: {n};",
+      importFailureCount: "Số thất bại: {n};",
+      exportFileName: "NguoiDung.xls",
+      importTemplateFileName: "MauNhapNguoiDung.xls"
     }
   }
 }
