@@ -565,9 +565,7 @@ export default {
       action: "Action",
       create: "Add",
       edit: "Edit",
-      delete: "Delete",
-      executionEvents: "Start,End",
-      taskEvents: "Create,Assign,Complete,Delete,Update,Timeout"
+      delete: "Delete"
     },
     task: {
       components: {

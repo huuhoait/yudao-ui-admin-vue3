@@ -565,9 +565,7 @@ export default {
       action: "Thao tác",
       create: "Thêm mới",
       edit: "Chỉnh sửa",
-      delete: "Xóa",
-      executionEvents: "Bắt đầu,Kết thúc",
-      taskEvents: "Tạo,Chỉ định,Hoàn thành,Xóa,Cập nhật,Hết hạn"
+      delete: "Xóa"
     },
     task: {
       components: {

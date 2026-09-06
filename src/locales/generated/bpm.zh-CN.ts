@@ -565,9 +565,7 @@ export default {
       action: "操作",
       create: "新增",
       edit: "编辑",
-      delete: "删除",
-      executionEvents: "开始,结束",
-      taskEvents: "创建,指派,完成,删除,更新,超时"
+      delete: "删除"
     },
     task: {
       components: {

@@ -8,14 +8,23 @@ Công cụ dùng **AST** (`@vue/compiler-sfc` + `@babel/parser`) để hiểu đ
 
 | File | Vai trò |
 |---|---|
-| `convert.mjs` | Bộ não. Scan / apply: tìm chuỗi Trung, phân loại bằng AST, chèn `t()`. |
+| `convert.mjs` | Bộ não. Scan / apply: tìm chuỗi Trung, phân loại bằng AST, chèn `t()`. Hỗ trợ `--reuse` (xem mục nâng cấp upstream). |
 | `dict.mjs` | Từ điển ánh xạ chuỗi Trung → key tiếng Anh ngữ nghĩa (phương án đặt key kiểu B). |
-| `gen-locale.mjs` | Sinh file locale `generated/<name>.{zh-CN,en,vi}.ts` từ dữ liệu convert. |
+| `gen-locale.mjs` | Sinh file locale `generated/<name>.{zh-CN,en,vi}.ts` từ dữ liệu convert, có translation memory. |
+| `locale-io.mjs` | Thư viện dùng chung: đọc/ghi file locale generated (parse AST, escape/unescape placeholder, nest/serialize object, chặn key đụng namespace). |
+| `apply-translations.mjs` | Ghi bản dịch tay (và key thêm tay ngoài delta) vào file locale generated đã sinh. |
 | `scan.mjs` | Bản scan thô (regex) để ước lượng khối lượng nhanh. |
+| `to-en.mjs` | Thay chuỗi hiển thị Trung → Anh tại chỗ (không qua i18n key) — dùng cho bpmnProcessDesigner / SimpleProcessDesignerV2. |
+| `check-zh.mjs` | Dò chuỗi Trung còn sót ở vị trí hiển thị sau khi convert/to-en (bắt được điểm mù text-node lẫn interpolation). |
+| `check-tdz.mjs` | Dò lỗi runtime TDZ: `t()` bị gọi ở top-level trước dòng khai báo `const { t } = useI18n()`. |
+| `check-keys.mjs` | Đối chiếu mọi `t('key')` trong mã nguồn với key locale thực tế, báo key thiếu. |
+| `compile-check.mjs` | Parse lại toàn bộ file đã sửa bằng `@vue/compiler-sfc`/`@babel/parser` để chắc chắn còn biên dịch được, không cần chạy dev server. |
 
 Các file dữ liệu tạm sinh ra khi chạy (có thể xóa):
 - `report-<name>.json` — chi tiết từng chuỗi + phân loại convert/review.
 - `locale-delta-<name>.json` — danh sách key mới + chuỗi Trung.
+- `report-en-<name>.json` — báo cáo của `to-en.mjs` (replaced/missing/review).
+- `untranslated-<name>.json` — key mà `gen-locale.mjs` không tìm được bản dịch cũ, cần dịch tay rồi áp bằng `apply-translations.mjs`.
 
 ## Quy trình 4 bước
 
@@ -188,3 +197,150 @@ grep -rnP "(['\"\`])[^'\"\`]*[\x{4e00}-\x{9fa5}][^'\"\`]*[A-Za-z]{3,}[^'\"\`]*\1
   đây là giá trị được lưu vào BPMN XML, đổi sẽ vỡ dữ liệu cũ. Chỉ `label` được dịch.
 - `penal/listeners/template.js` là mã chết (cú pháp Vue 2, không nơi nào import),
   vẫn dịch để đồng bộ.
+
+---
+
+## Nâng cấp upstream: giữ key ổn định qua `--reuse`
+
+Khi kéo bản mới của `yudao-ui-admin-vue3`, thư mục nguồn bị **ghi đè bằng bản tiếng Trung
+gốc** (upstream không biết gì về i18n của mình) — mọi `t('key')` đã chèn trước đó biến mất,
+nhưng `src/locales/generated/*.zh-CN.ts` (đã commit) vẫn còn nguyên, tức là **key + bản dịch
+en/vi cũ vẫn còn**, chỉ mất phần "chèn t() vào source".
+
+Chạy lại `convert.mjs` bình thường (không `--reuse`) sẽ đánh số `_todoN` lại từ đầu và
+sinh `locale-delta-<name>.json` MỚI — làm lệch hoàn toàn khỏi bản dịch en/vi cũ (762 dòng
+dịch tay có thể mất trắng). `--reuse` khắc phục việc này:
+
+```bash
+node scripts/i18n/convert.mjs src/views/system --reuse system,user --apply
+```
+
+- Nạp `src/locales/generated/<name>.zh-CN.ts` (có thể liệt kê nhiều nguồn, phân tách bởi
+  dấu phẩy — cần khi một số key nằm ở locale của module khác, vd `system.user.*` từng được
+  convert riêng dưới tên `user`).
+- Với mỗi (namespace, chuỗi Trung) đã có trong nguồn đó, **giữ nguyên key cũ** — kể cả key
+  `_todoN`. Số đếm `_todo` cho key MỚI tiếp tục từ số lớn nhất đang dùng, không đụng key cũ.
+- Chuỗi hoàn toàn mới (do upstream thêm tính năng) vẫn được sinh key mới bình thường.
+
+Sau khi apply, chạy `gen-locale.mjs <name>` như thường — nó tự nối bản dịch cũ vào key
+được giữ nguyên (xem mục Translation memory bên dưới), chỉ những chuỗi thật sự mới mới
+cần dịch tay.
+
+**Quy trình đầy đủ khi nâng cấp:**
+1. `node scripts/i18n/convert.mjs <dir> --reuse <name>[,<name>...]` — scan, xem log
+   `Reuse: N key cũ...`. Nếu N thấp bất thường so với số key cũ đang có, dừng lại kiểm tra
+   (có thể chưa từng convert module này, hoặc namespace tính sai).
+2. So sánh `locale-delta-<name>.json` mới với key cũ (script nhanh):
+   ```js
+   import { loadGeneratedLocale } from './scripts/i18n/locale-io.mjs'
+   const old = loadGeneratedLocale('src/locales/generated/<name>.zh-CN.ts')
+   const delta = JSON.parse(readFileSync('scripts/i18n/locale-delta-<name>.json'))
+   // fresh = key trong delta nhưng không có trong old -> chuỗi THẬT SỰ mới
+   ```
+3. Apply thật: `--apply` (bỏ `--reuse` sẽ KHÔNG giữ key, đừng quên cờ này).
+4. `node scripts/i18n/gen-locale.mjs <name>` — sinh lại 3 file locale, tự mang theo bản
+   dịch cũ qua translation memory.
+5. Dịch các key thật sự mới trong `untranslated-<name>.json` (dùng `apply-translations.mjs`).
+6. Chạy bộ kiểm chứng (mục bên dưới).
+
+## Translation memory (trong `gen-locale.mjs`)
+
+Khi sinh lại `en`/`vi`, thay vì để trắng, tool tra bản dịch cũ theo 3 mức ưu tiên giảm dần:
+1. đúng key, và chuỗi Trung của key đó KHÔNG đổi (an toàn nhất — key rename thì bị bỏ qua
+   ở mức này, rơi xuống mức 2).
+2. cùng namespace + cùng chuỗi Trung (bắt được trường hợp `_todoN` đổi số nhưng vẫn cùng chỗ).
+3. cùng chuỗi Trung ở bất kỳ namespace nào (bắt được trường hợp string dùng chung nhiều nơi).
+
+Nguồn tra cứu là **toàn bộ** `generated/*.zh-CN.ts` + `generated/*.<lang>.ts` hiện có, không
+chỉ module đang sinh — nên một chuỗi từng dịch ở module `bpm` có thể tự động áp dụng lại
+cho module `system` nếu trùng namespace hoặc trùng nguyên văn.
+
+Giá trị nhớ được lấy ở dạng **RAW** (`loadGeneratedLocaleRaw`, không unescape) và ghi lại
+y nguyên (`rawKeys` trong `renderLocaleFile`), KHÔNG escape lần 2. Lý do: bản dịch tay có
+thể trộn dấu ngoặc nhọn literal đã escape (`{'{'}`) với placeholder thật vue-i18n (`{name}`)
+— unescape rồi escape lại không phải phép biến đổi 1-1, sẽ escape nhầm luôn `{name}` thành
+text hiển thị "{name}" thay vì được vue-i18n thay giá trị thật. (Bug này từng xảy ra và đã
+sửa — xem lịch sử git file `gen-locale.mjs` nếu cần đối chiếu.)
+
+**Giới hạn quan trọng**: `gen-locale.mjs` ghi đè TOÀN BỘ file dựa trên đúng tập key trong
+`locale-delta-<name>.json` — key nào KHÔNG nằm trong delta (vd thêm tay qua
+`apply-translations.mjs --extra`, xem mục dưới) sẽ **bị xóa** nếu `gen-locale.mjs` chạy lại
+sau đó. Thứ tự chuẩn luôn là: `convert.mjs` → `gen-locale.mjs` → `apply-translations.mjs`
+(key thêm tay áp SAU CÙNG, và phải áp lại mỗi lần `gen-locale.mjs` chạy lại).
+
+## Key thêm tay ngoài phạm vi convert.mjs (`apply-translations.mjs`)
+
+Một số chuỗi không đi qua được `convert.mjs` (chuỗi ghép, `defineProps` default, chuỗi
+Trung truyền thẳng vào `t('...')` do lỗi gõ ở upstream...). Dùng file JSON riêng:
+
+```jsonc
+// scripts/i18n/manual-<name>.json
+{
+  "en": { "<key có sẵn>": "bản dịch mới" },       // ghi đè key ĐÃ CÓ trong delta
+  "vi": { "...": "..." },
+  "extra": {                                        // THÊM key MỚI, ngoài phạm vi delta
+    "system.area.selectArea": {
+      "zh-CN": "请选择地区", "en": "Please select area", "vi": "Vui lòng chọn khu vực"
+    }
+  }
+}
+```
+```bash
+node scripts/i18n/apply-translations.mjs <name> scripts/i18n/manual-<name>.json
+```
+Giá trị trong `extra` là message vue-i18n THÔ — viết `{name}` cho placeholder thật,
+`{'{'}`/`{'}'}` nếu cần hiển thị dấu ngoặc nhọn literal. `apply-translations.mjs` tự đánh
+dấu các key này là "raw" nên không bị escape lần 2.
+
+Dùng `extra` chủ yếu cho 2 trường hợp:
+- **`defineProps`/`withDefaults` default bị hoist** — không gọi được `t()` (xem mục "Các
+  bẫy đã gặp"). Sửa: default rỗng (`''`) + template `:placeholder="placeholder || t('key')"`,
+  key đó không nằm trong report của `convert.mjs` nên phải thêm tay qua `extra`.
+- **Chuỗi ghép/nội suy** (`'A' + b + 'C'`, `` `${x} 意见` ``) mà `convert.mjs` cố ý để
+  review — thêm key có placeholder rồi sửa source gọi `t('key', { x })`.
+
+## Bộ kiểm chứng (không cần chạy dev server)
+
+Repo có thể tạm thời không có `node_modules` hợp lệ (xem mục môi trường bên dưới) nên các
+script này tự parse lại bằng AST thay vì dựa vào Vite biên dịch:
+
+```bash
+# 1. Còn chuỗi Trung ở vị trí hiển thị không (bắt cả điểm mù text-node lẫn interpolation,
+#    vd `{{ x }}人为空时` mà to-en.mjs/convert.mjs không thấy)
+node scripts/i18n/check-zh.mjs src/views/system --ignore "some/dir,other/file.js"
+
+# 2. File còn parse/biên dịch được không (SFC + babel, không cần vite)
+node scripts/i18n/compile-check.mjs src/views/system src/views/bpm
+
+# 3. Mọi t('key') có key locale tương ứng không (key gõ sai/mất sẽ hiện thẳng lên UI vì
+#    vue-i18n cấu hình silentTranslationWarn: true, không log lỗi)
+node scripts/i18n/check-keys.mjs src/views/system src/views/bpm
+
+# 4. t() có bị gọi TRƯỚC dòng `const { t } = useI18n()` không (TDZ runtime crash — xảy ra
+#    khi upstream đã tự khai báo useI18n() nhưng ở CUỐI file, còn convert.mjs chèn t() vào
+#    một hằng số top-level đầu file, vd mảng `columns` cấu hình bảng)
+node scripts/i18n/check-tdz.mjs src
+```
+
+Chạy đủ cả 4 lệnh sau mỗi lần `--apply`, KHÔNG chỉ nhìn output của `convert.mjs`/`to-en.mjs`.
+Cả 4 lỗi trên đều **im lặng lúc runtime** (không throw, không log) — chỉ lộ ra khi người
+dùng bấm vào đúng màn hình đó.
+
+## Môi trường: parser AST không cần `node_modules` đầy đủ
+
+Nếu `node_modules` bị thiếu/hỏng (vd `pnpm install` bị supply-chain policy chặn vì
+`pnpm-lock.yaml` trỏ tarball về `registry.npmmirror.com` trong khi policy chỉ chấp nhận
+`registry.npmjs.org`), 3 tool sau vẫn chạy được — chúng chỉ cần `@vue/compiler-sfc`,
+`@babel/parser`, `@babel/traverse`:
+
+```bash
+mkdir -p /tmp/i18n-deps && cd /tmp/i18n-deps
+npm install --registry=https://registry.npmjs.org @vue/compiler-sfc @babel/parser @babel/traverse
+cd -
+mkdir -p node_modules/@vue node_modules/@babel
+ln -sfn /tmp/i18n-deps/node_modules/@vue/compiler-sfc node_modules/@vue/compiler-sfc
+ln -sfn /tmp/i18n-deps/node_modules/@babel/parser     node_modules/@babel/parser
+ln -sfn /tmp/i18n-deps/node_modules/@babel/traverse    node_modules/@babel/traverse
+```
+Symlink nằm trong `node_modules` (đã gitignore) nên không ảnh hưởng gì tới commit. Sau khi
+`pnpm install` chạy thành công trở lại, các symlink này bị ghi đè bình thường, không cần dọn.
