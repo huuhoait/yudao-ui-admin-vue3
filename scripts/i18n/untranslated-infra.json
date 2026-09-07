@@ -1,0 +1,2814 @@
+{
+  "en": [
+    {
+      "key": "infra.apiAccessLog._todo3",
+      "zh": "用户 IP"
+    },
+    {
+      "key": "infra.apiAccessLog._todo4",
+      "zh": "用户 UA"
+    },
+    {
+      "key": "infra.apiAccessLog._todo5",
+      "zh": "请求信息"
+    },
+    {
+      "key": "infra.apiAccessLog._todo6",
+      "zh": "请求参数"
+    },
+    {
+      "key": "infra.apiAccessLog._todo7",
+      "zh": "请求结果"
+    },
+    {
+      "key": "infra.apiAccessLog._todo8",
+      "zh": "请求时间"
+    },
+    {
+      "key": "infra.apiAccessLog._todo9",
+      "zh": "请求耗时"
+    },
+    {
+      "key": "infra.apiAccessLog._todo10",
+      "zh": "操作结果"
+    },
+    {
+      "key": "infra.apiAccessLog._todo13",
+      "zh": "正常"
+    },
+    {
+      "key": "infra.apiAccessLog._todo14",
+      "zh": "执行时长"
+    },
+    {
+      "key": "infra.apiAccessLog._todo15",
+      "zh": "请输入执行时长"
+    },
+    {
+      "key": "infra.apiAccessLog._todo16",
+      "zh": "结果码"
+    },
+    {
+      "key": "infra.apiAccessLog._todo17",
+      "zh": "请输入结果码"
+    },
+    {
+      "key": "infra.apiAccessLog._todo19",
+      "zh": "请求方法"
+    },
+    {
+      "key": "infra.apiAccessLog._todo20",
+      "zh": "请求地址"
+    },
+    {
+      "key": "infra.apiAccessLog._todo21",
+      "zh": "操作类型"
+    },
+    {
+      "key": "infra.apiAccessLog._todo22",
+      "zh": "详细"
+    },
+    {
+      "key": "infra.apiErrorLog._todo24",
+      "zh": "用户 IP"
+    },
+    {
+      "key": "infra.apiErrorLog._todo25",
+      "zh": "用户 UA"
+    },
+    {
+      "key": "infra.apiErrorLog._todo26",
+      "zh": "请求信息"
+    },
+    {
+      "key": "infra.apiErrorLog._todo27",
+      "zh": "请求参数"
+    },
+    {
+      "key": "infra.apiErrorLog._todo28",
+      "zh": "异常时间"
+    },
+    {
+      "key": "infra.apiErrorLog._todo29",
+      "zh": "异常名"
+    },
+    {
+      "key": "infra.apiErrorLog._todo30",
+      "zh": "异常堆栈"
+    },
+    {
+      "key": "infra.apiErrorLog._todo31",
+      "zh": "处理状态"
+    },
+    {
+      "key": "infra.apiErrorLog._todo32",
+      "zh": "处理人"
+    },
+    {
+      "key": "infra.apiErrorLog._todo33",
+      "zh": "处理时间"
+    },
+    {
+      "key": "infra.apiErrorLog._todo34",
+      "zh": "请选择处理状态"
+    },
+    {
+      "key": "infra.apiErrorLog._todo36",
+      "zh": "请求方法"
+    },
+    {
+      "key": "infra.apiErrorLog._todo37",
+      "zh": "请求地址"
+    },
+    {
+      "key": "infra.apiErrorLog._todo38",
+      "zh": "异常发生时间"
+    },
+    {
+      "key": "infra.apiErrorLog._todo39",
+      "zh": "详细"
+    },
+    {
+      "key": "infra.apiErrorLog._todo40",
+      "zh": "已处理"
+    },
+    {
+      "key": "infra.apiErrorLog._todo41",
+      "zh": "已忽略"
+    },
+    {
+      "key": "infra.build._todo42",
+      "zh": "生成JSON"
+    },
+    {
+      "key": "infra.build._todo43",
+      "zh": "生成Options"
+    },
+    {
+      "key": "infra.build._todo44",
+      "zh": "生成组件"
+    },
+    {
+      "key": "infra.build._todo45",
+      "zh": "生成 JSON"
+    },
+    {
+      "key": "infra.build._todo46",
+      "zh": "生成 Options"
+    },
+    {
+      "key": "infra.codegen._todo48",
+      "zh": "字段信息"
+    },
+    {
+      "key": "infra.codegen._todo49",
+      "zh": "生成信息"
+    },
+    {
+      "key": "infra.codegen._todo50",
+      "zh": "导入表"
+    },
+    {
+      "key": "infra.codegen._todo51",
+      "zh": "数据源"
+    },
+    {
+      "key": "infra.codegen._todo52",
+      "zh": "请选择数据源"
+    },
+    {
+      "key": "infra.codegen._todo53",
+      "zh": "表名称"
+    },
+    {
+      "key": "infra.codegen._todo54",
+      "zh": "请输入表名称"
+    },
+    {
+      "key": "infra.codegen._todo55",
+      "zh": "表描述"
+    },
+    {
+      "key": "infra.codegen._todo56",
+      "zh": "请输入表描述"
+    },
+    {
+      "key": "infra.codegen._todo58",
+      "zh": "代码预览"
+    },
+    {
+      "key": "infra.codegen.components._todo59",
+      "zh": "表名称"
+    },
+    {
+      "key": "infra.codegen.components._todo60",
+      "zh": "请输入仓库名称"
+    },
+    {
+      "key": "infra.codegen.components._todo61",
+      "zh": "表描述"
+    },
+    {
+      "key": "infra.codegen.components._todo62",
+      "zh": "默认去除表名的前缀。如果存在重复，则需要手动添加前缀，避免 MyBatis 报 Alias 重复的问题。"
+    },
+    {
+      "key": "infra.codegen.components._todo63",
+      "zh": "作者"
+    },
+    {
+      "key": "infra.codegen.components._todo64",
+      "zh": "实体类名称"
+    },
+    {
+      "key": "infra.codegen.components._todo65",
+      "zh": "字段列名"
+    },
+    {
+      "key": "infra.codegen.components._todo66",
+      "zh": "字段描述"
+    },
+    {
+      "key": "infra.codegen.components._todo67",
+      "zh": "物理类型"
+    },
+    {
+      "key": "infra.codegen.components._todo68",
+      "zh": "Java类型"
+    },
+    {
+      "key": "infra.codegen.components._todo69",
+      "zh": "java属性"
+    },
+    {
+      "key": "infra.codegen.components._todo70",
+      "zh": "插入"
+    },
+    {
+      "key": "infra.codegen.components._todo71",
+      "zh": "列表"
+    },
+    {
+      "key": "infra.codegen.components._todo72",
+      "zh": "查询方式"
+    },
+    {
+      "key": "infra.codegen.components._todo73",
+      "zh": "允许空"
+    },
+    {
+      "key": "infra.codegen.components._todo74",
+      "zh": "显示类型"
+    },
+    {
+      "key": "infra.codegen.components._todo75",
+      "zh": "文本框"
+    },
+    {
+      "key": "infra.codegen.components._todo76",
+      "zh": "文本域"
+    },
+    {
+      "key": "infra.codegen.components._todo77",
+      "zh": "下拉框"
+    },
+    {
+      "key": "infra.codegen.components._todo78",
+      "zh": "单选框"
+    },
+    {
+      "key": "infra.codegen.components._todo79",
+      "zh": "复选框"
+    },
+    {
+      "key": "infra.codegen.components._todo80",
+      "zh": "日期控件"
+    },
+    {
+      "key": "infra.codegen.components._todo81",
+      "zh": "图片上传"
+    },
+    {
+      "key": "infra.codegen.components._todo82",
+      "zh": "文件上传"
+    },
+    {
+      "key": "infra.codegen.components._todo83",
+      "zh": "富文本控件"
+    },
+    {
+      "key": "infra.codegen.components._todo84",
+      "zh": "加载最新字典"
+    },
+    {
+      "key": "infra.codegen.components._todo85",
+      "zh": "示例"
+    },
+    {
+      "key": "infra.codegen.components._todo86",
+      "zh": "生成模板"
+    },
+    {
+      "key": "infra.codegen.components._todo87",
+      "zh": "前端类型"
+    },
+    {
+      "key": "infra.codegen.components._todo88",
+      "zh": "生成场景"
+    },
+    {
+      "key": "infra.codegen.components._todo89",
+      "zh": "分配到指定菜单下，例如 系统管理"
+    },
+    {
+      "key": "infra.codegen.components._todo90",
+      "zh": "请选择系统菜单"
+    },
+    {
+      "key": "infra.codegen.components._todo91",
+      "zh": "生成在哪个java包下，例如 com.ruoyi.system"
+    },
+    {
+      "key": "infra.codegen.components._todo92",
+      "zh": "模块名，即一级目录，例如 system、infra、tool 等等"
+    },
+    {
+      "key": "infra.codegen.components._todo93",
+      "zh": "业务名，即二级目录，例如 user、permission、dict 等等"
+    },
+    {
+      "key": "infra.codegen.components._todo94",
+      "zh": "业务包，自定义二级目录。例如说，我们希望将 dictType 和 dictData 归类成 dict 业务"
+    },
+    {
+      "key": "infra.codegen.components._todo95",
+      "zh": "类名称（首字母大写），例如SysUser、SysMenu、SysDictData 等等"
+    },
+    {
+      "key": "infra.codegen.components._todo96",
+      "zh": "用作类描述，例如 用户"
+    },
+    {
+      "key": "infra.codegen.components._todo97",
+      "zh": "填写磁盘绝对路径，若不填写，则生成到当前Web项目下"
+    },
+    {
+      "key": "infra.codegen.components._todo98",
+      "zh": "树显示的父编码字段名， 如：parent_Id"
+    },
+    {
+      "key": "infra.codegen.components._todo99",
+      "zh": "树节点的显示名称字段名， 如：dept_name"
+    },
+    {
+      "key": "infra.codegen.components._todo100",
+      "zh": "关联主表（父表）的表名， 如：system_user"
+    },
+    {
+      "key": "infra.codegen.components._todo101",
+      "zh": "子表关联的字段， 如：user_id"
+    },
+    {
+      "key": "infra.codegen.components._todo102",
+      "zh": "主表与子表的关联关系"
+    },
+    {
+      "key": "infra.codegen.components._todo104",
+      "zh": "模块名"
+    },
+    {
+      "key": "infra.codegen.components._todo105",
+      "zh": "业务名"
+    },
+    {
+      "key": "infra.codegen.components._todo106",
+      "zh": "类名称"
+    },
+    {
+      "key": "infra.codegen.components._todo107",
+      "zh": "类描述"
+    },
+    {
+      "key": "infra.codegen.components._todo108",
+      "zh": "自定义路径"
+    },
+    {
+      "key": "infra.codegen.components._todo109",
+      "zh": "最近路径快速选择"
+    },
+    {
+      "key": "infra.codegen.components._todo110",
+      "zh": "恢复默认的生成基础路径"
+    },
+    {
+      "key": "infra.codegen.components._todo111",
+      "zh": "树表信息"
+    },
+    {
+      "key": "infra.codegen.components._todo112",
+      "zh": "父编号字段"
+    },
+    {
+      "key": "infra.codegen.components._todo113",
+      "zh": "树名称字段"
+    },
+    {
+      "key": "infra.codegen.components._todo114",
+      "zh": "主表信息"
+    },
+    {
+      "key": "infra.codegen.components._todo115",
+      "zh": "关联的主表"
+    },
+    {
+      "key": "infra.codegen.components._todo116",
+      "zh": "子表关联的字段"
+    },
+    {
+      "key": "infra.codegen.components._todo117",
+      "zh": "关联关系"
+    },
+    {
+      "key": "infra.codegen.components._todo118",
+      "zh": "一对多"
+    },
+    {
+      "key": "infra.codegen.components._todo119",
+      "zh": "一对一"
+    },
+    {
+      "key": "infra.codegen._todo120",
+      "zh": "代码生成（单表）"
+    },
+    {
+      "key": "infra.codegen._todo121",
+      "zh": "代码生成（树表）"
+    },
+    {
+      "key": "infra.codegen._todo122",
+      "zh": "代码生成（主子表）"
+    },
+    {
+      "key": "infra.codegen._todo123",
+      "zh": "单元测试"
+    },
+    {
+      "key": "infra.codegen._todo124",
+      "zh": "实体"
+    },
+    {
+      "key": "infra.codegen._todo125",
+      "zh": "预览"
+    },
+    {
+      "key": "infra.codegen._todo126",
+      "zh": "同步"
+    },
+    {
+      "key": "infra.codegen._todo127",
+      "zh": "生成代码"
+    },
+    {
+      "key": "infra.codegen._todo128",
+      "zh": "同步成功"
+    },
+    {
+      "key": "infra.config._todo129",
+      "zh": "参数分类"
+    },
+    {
+      "key": "infra.config._todo130",
+      "zh": "请输入参数分类"
+    },
+    {
+      "key": "infra.config._todo131",
+      "zh": "参数名称"
+    },
+    {
+      "key": "infra.config._todo133",
+      "zh": "参数键名"
+    },
+    {
+      "key": "infra.config._todo134",
+      "zh": "请输入参数键名"
+    },
+    {
+      "key": "infra.config._todo135",
+      "zh": "参数键值"
+    },
+    {
+      "key": "infra.config._todo136",
+      "zh": "请输入参数键值"
+    },
+    {
+      "key": "infra.config._todo138",
+      "zh": "参数分类不能为空"
+    },
+    {
+      "key": "infra.config._todo139",
+      "zh": "参数名称不能为空"
+    },
+    {
+      "key": "infra.config._todo140",
+      "zh": "参数键名不能为空"
+    },
+    {
+      "key": "infra.config._todo141",
+      "zh": "参数键值不能为空"
+    },
+    {
+      "key": "infra.config._todo143",
+      "zh": "配置中心"
+    },
+    {
+      "key": "infra.config._todo144",
+      "zh": "系统内置"
+    },
+    {
+      "key": "infra.config._todo145",
+      "zh": "请选择系统内置"
+    },
+    {
+      "key": "infra.config._todo146",
+      "zh": "参数主键"
+    },
+    {
+      "key": "infra.dataSourceConfig._todo147",
+      "zh": "数据源名称"
+    },
+    {
+      "key": "infra.dataSourceConfig._todo149",
+      "zh": "数据源连接"
+    },
+    {
+      "key": "infra.dataSourceConfig._todo150",
+      "zh": "请输入数据源连接"
+    },
+    {
+      "key": "infra.dataSourceConfig._todo153",
+      "zh": "数据源名称不能为空"
+    },
+    {
+      "key": "infra.dataSourceConfig._todo154",
+      "zh": "数据源连接不能为空"
+    },
+    {
+      "key": "infra.dataSourceConfig._todo156",
+      "zh": "主键编号"
+    },
+    {
+      "key": "infra.demo.demo01._todo157",
+      "zh": "性别"
+    },
+    {
+      "key": "infra.demo.demo01._todo158",
+      "zh": "出生年"
+    },
+    {
+      "key": "infra.demo.demo01._todo159",
+      "zh": "选择出生年"
+    },
+    {
+      "key": "infra.demo.demo01._todo160",
+      "zh": "简介"
+    },
+    {
+      "key": "infra.demo.demo01._todo161",
+      "zh": "头像"
+    },
+    {
+      "key": "infra.demo.demo01._todo162",
+      "zh": "性别不能为空"
+    },
+    {
+      "key": "infra.demo.demo01._todo163",
+      "zh": "出生年不能为空"
+    },
+    {
+      "key": "infra.demo.demo01._todo164",
+      "zh": "简介不能为空"
+    },
+    {
+      "key": "infra.demo.demo01._todo165",
+      "zh": "请选择性别"
+    },
+    {
+      "key": "infra.demo.demo02._todo166",
+      "zh": "父级编号"
+    },
+    {
+      "key": "infra.demo.demo02._todo167",
+      "zh": "请选择父级编号"
+    },
+    {
+      "key": "infra.demo.demo02._todo168",
+      "zh": "父级编号不能为空"
+    },
+    {
+      "key": "infra.demo.demo02._todo169",
+      "zh": "顶级示例分类"
+    },
+    {
+      "key": "infra.demo.demo02._todo170",
+      "zh": "代码生成（树表）"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo172",
+      "zh": "性别"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo173",
+      "zh": "出生日期"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo174",
+      "zh": "选择出生日期"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo175",
+      "zh": "简介"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo176",
+      "zh": "性别不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo177",
+      "zh": "出生日期不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo178",
+      "zh": "简介不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.erp.components._todo179",
+      "zh": "分数"
+    },
+    {
+      "key": "infra.demo.demo03.erp.components._todo180",
+      "zh": "请输入分数"
+    },
+    {
+      "key": "infra.demo.demo03.erp.components._todo181",
+      "zh": "学生编号不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.erp.components._todo182",
+      "zh": "分数不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.erp.components._todo183",
+      "zh": "请选择一个学生"
+    },
+    {
+      "key": "infra.demo.demo03.erp.components._todo184",
+      "zh": "班主任"
+    },
+    {
+      "key": "infra.demo.demo03.erp.components._todo185",
+      "zh": "请输入班主任"
+    },
+    {
+      "key": "infra.demo.demo03.erp.components._todo186",
+      "zh": "班主任不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo187",
+      "zh": "请选择性别"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo188",
+      "zh": "学生课程"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo189",
+      "zh": "学生班级"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo190",
+      "zh": "性别"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo191",
+      "zh": "出生日期"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo192",
+      "zh": "选择出生日期"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo193",
+      "zh": "简介"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo194",
+      "zh": "学生课程"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo195",
+      "zh": "学生班级"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo196",
+      "zh": "性别不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo197",
+      "zh": "出生日期不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo198",
+      "zh": "简介不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.inner.components._todo199",
+      "zh": "分数"
+    },
+    {
+      "key": "infra.demo.demo03.inner.components._todo200",
+      "zh": "请输入分数"
+    },
+    {
+      "key": "infra.demo.demo03.inner.components._todo201",
+      "zh": "+ 添加学生课程"
+    },
+    {
+      "key": "infra.demo.demo03.inner.components._todo202",
+      "zh": "学生编号不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.inner.components._todo203",
+      "zh": "分数不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.inner.components._todo204",
+      "zh": "班主任"
+    },
+    {
+      "key": "infra.demo.demo03.inner.components._todo205",
+      "zh": "请输入班主任"
+    },
+    {
+      "key": "infra.demo.demo03.inner.components._todo206",
+      "zh": "班主任不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo207",
+      "zh": "请选择性别"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo208",
+      "zh": "性别"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo209",
+      "zh": "出生日期"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo210",
+      "zh": "选择出生日期"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo211",
+      "zh": "简介"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo212",
+      "zh": "学生课程"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo213",
+      "zh": "学生班级"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo214",
+      "zh": "性别不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo215",
+      "zh": "出生日期不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo216",
+      "zh": "简介不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.normal.components._todo217",
+      "zh": "分数"
+    },
+    {
+      "key": "infra.demo.demo03.normal.components._todo218",
+      "zh": "请输入分数"
+    },
+    {
+      "key": "infra.demo.demo03.normal.components._todo219",
+      "zh": "+ 添加学生课程"
+    },
+    {
+      "key": "infra.demo.demo03.normal.components._todo220",
+      "zh": "学生编号不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.normal.components._todo221",
+      "zh": "分数不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.normal.components._todo222",
+      "zh": "班主任"
+    },
+    {
+      "key": "infra.demo.demo03.normal.components._todo223",
+      "zh": "请输入班主任"
+    },
+    {
+      "key": "infra.demo.demo03.normal.components._todo224",
+      "zh": "班主任不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo225",
+      "zh": "请选择性别"
+    },
+    {
+      "key": "infra.druid._todo226",
+      "zh": "数据库 MyBatis"
+    },
+    {
+      "key": "infra.druid._todo227",
+      "zh": "多数据源（读写分离）"
+    },
+    {
+      "key": "infra.file._todo228",
+      "zh": "上传文件"
+    },
+    {
+      "key": "infra.file._todo230",
+      "zh": "提示：仅允许导入 jpg、png、gif 格式文件！"
+    },
+    {
+      "key": "infra.file._todo234",
+      "zh": "上传下载"
+    },
+    {
+      "key": "infra.file._todo235",
+      "zh": "文件路径"
+    },
+    {
+      "key": "infra.file._todo236",
+      "zh": "请输入文件路径"
+    },
+    {
+      "key": "infra.file._todo237",
+      "zh": "文件类型"
+    },
+    {
+      "key": "infra.file._todo238",
+      "zh": "请输入文件类型"
+    },
+    {
+      "key": "infra.file._todo239",
+      "zh": "文件名"
+    },
+    {
+      "key": "infra.file._todo240",
+      "zh": "文件大小"
+    },
+    {
+      "key": "infra.file._todo241",
+      "zh": "文件内容"
+    },
+    {
+      "key": "infra.file._todo242",
+      "zh": "上传时间"
+    },
+    {
+      "key": "infra.file._todo243",
+      "zh": "预览"
+    },
+    {
+      "key": "infra.file._todo244",
+      "zh": "下载"
+    },
+    {
+      "key": "infra.file._todo245",
+      "zh": "复制链接"
+    },
+    {
+      "key": "infra.fileConfig._todo246",
+      "zh": "配置名"
+    },
+    {
+      "key": "infra.fileConfig._todo247",
+      "zh": "请输入配置名"
+    },
+    {
+      "key": "infra.fileConfig._todo248",
+      "zh": "存储器"
+    },
+    {
+      "key": "infra.fileConfig._todo249",
+      "zh": "请选择存储器"
+    },
+    {
+      "key": "infra.fileConfig._todo250",
+      "zh": "基础路径"
+    },
+    {
+      "key": "infra.fileConfig._todo251",
+      "zh": "请输入基础路径"
+    },
+    {
+      "key": "infra.fileConfig._todo252",
+      "zh": "主机地址"
+    },
+    {
+      "key": "infra.fileConfig._todo253",
+      "zh": "请输入主机地址"
+    },
+    {
+      "key": "infra.fileConfig._todo254",
+      "zh": "主机端口"
+    },
+    {
+      "key": "infra.fileConfig._todo255",
+      "zh": "请输入主机端口"
+    },
+    {
+      "key": "infra.fileConfig._todo258",
+      "zh": "连接模式"
+    },
+    {
+      "key": "infra.fileConfig._todo259",
+      "zh": "节点地址"
+    },
+    {
+      "key": "infra.fileConfig._todo260",
+      "zh": "请输入节点地址"
+    },
+    {
+      "key": "infra.fileConfig._todo261",
+      "zh": "存储 bucket"
+    },
+    {
+      "key": "infra.fileConfig._todo262",
+      "zh": "请输入 bucket"
+    },
+    {
+      "key": "infra.fileConfig._todo263",
+      "zh": "请输入 accessKey"
+    },
+    {
+      "key": "infra.fileConfig._todo264",
+      "zh": "请输入 accessSecret"
+    },
+    {
+      "key": "infra.fileConfig._todo265",
+      "zh": "是否 Path Style"
+    },
+    {
+      "key": "infra.fileConfig._todo266",
+      "zh": "公开访问"
+    },
+    {
+      "key": "infra.fileConfig._todo267",
+      "zh": "区域"
+    },
+    {
+      "key": "infra.fileConfig._todo268",
+      "zh": "请填写区域，一般仅 AWS 需要填写"
+    },
+    {
+      "key": "infra.fileConfig._todo269",
+      "zh": "自定义域名"
+    },
+    {
+      "key": "infra.fileConfig._todo270",
+      "zh": "请输入自定义域名"
+    },
+    {
+      "key": "infra.fileConfig._todo271",
+      "zh": "主动模式"
+    },
+    {
+      "key": "infra.fileConfig._todo272",
+      "zh": "被动模式"
+    },
+    {
+      "key": "infra.fileConfig._todo273",
+      "zh": "禁用"
+    },
+    {
+      "key": "infra.fileConfig._todo274",
+      "zh": "公开"
+    },
+    {
+      "key": "infra.fileConfig._todo275",
+      "zh": "私有"
+    },
+    {
+      "key": "infra.fileConfig._todo276",
+      "zh": "配置名不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo277",
+      "zh": "存储器不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo278",
+      "zh": "基础路径不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo279",
+      "zh": "主机地址不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo280",
+      "zh": "主机端口不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo282",
+      "zh": "连接模式不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo283",
+      "zh": "节点地址不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo284",
+      "zh": "存储 bucket 不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo285",
+      "zh": "accessKey 不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo286",
+      "zh": "accessSecret 不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo287",
+      "zh": "是否 PathStyle 访问不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo288",
+      "zh": "公开访问设置不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo289",
+      "zh": "自定义域名不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo290",
+      "zh": "上传下载"
+    },
+    {
+      "key": "infra.fileConfig._todo291",
+      "zh": "主配置"
+    },
+    {
+      "key": "infra.fileConfig._todo292",
+      "zh": "是否要访问该文件？"
+    },
+    {
+      "key": "infra.fileConfig._todo293",
+      "zh": "测试上传成功"
+    },
+    {
+      "key": "infra.job._todo294",
+      "zh": "任务详细"
+    },
+    {
+      "key": "infra.job._todo295",
+      "zh": "任务状态"
+    },
+    {
+      "key": "infra.job._todo296",
+      "zh": "处理器的名字"
+    },
+    {
+      "key": "infra.job._todo297",
+      "zh": "处理器的参数"
+    },
+    {
+      "key": "infra.job._todo298",
+      "zh": "Cron 表达式"
+    },
+    {
+      "key": "infra.job._todo299",
+      "zh": "重试次数"
+    },
+    {
+      "key": "infra.job._todo300",
+      "zh": "重试间隔"
+    },
+    {
+      "key": "infra.job._todo301",
+      "zh": "监控超时时间"
+    },
+    {
+      "key": "infra.job._todo302",
+      "zh": "后续执行时间"
+    },
+    {
+      "key": "infra.job._todo303",
+      "zh": "请输入处理器的名字"
+    },
+    {
+      "key": "infra.job._todo304",
+      "zh": "请输入处理器的参数"
+    },
+    {
+      "key": "infra.job._todo305",
+      "zh": "CRON 表达式"
+    },
+    {
+      "key": "infra.job._todo306",
+      "zh": "请输入重试次数。设置为 0 时，不进行重试"
+    },
+    {
+      "key": "infra.job._todo307",
+      "zh": "请输入重试间隔，单位：毫秒。设置为 0 时，无需间隔"
+    },
+    {
+      "key": "infra.job._todo308",
+      "zh": "请输入监控超时时间，单位：毫秒"
+    },
+    {
+      "key": "infra.job.taskNameRequired",
+      "zh": "任务名称不能为空"
+    },
+    {
+      "key": "infra.job._todo309",
+      "zh": "处理器的名字不能为空"
+    },
+    {
+      "key": "infra.job._todo310",
+      "zh": "CRON 表达式不能为空"
+    },
+    {
+      "key": "infra.job._todo311",
+      "zh": "重试次数不能为空"
+    },
+    {
+      "key": "infra.job._todo312",
+      "zh": "重试间隔不能为空"
+    },
+    {
+      "key": "infra.job._todo313",
+      "zh": "定时任务"
+    },
+    {
+      "key": "infra.job._todo314",
+      "zh": "异步任务"
+    },
+    {
+      "key": "infra.job._todo315",
+      "zh": "消息队列"
+    },
+    {
+      "key": "infra.job._todo316",
+      "zh": "请选择任务状态"
+    },
+    {
+      "key": "infra.job._todo317",
+      "zh": "执行日志"
+    },
+    {
+      "key": "infra.job._todo318",
+      "zh": "同步任务"
+    },
+    {
+      "key": "infra.job._todo319",
+      "zh": "执行一次"
+    },
+    {
+      "key": "infra.job._todo320",
+      "zh": "调度日志"
+    },
+    {
+      "key": "infra.job._todo321",
+      "zh": "确认要同步所有任务到调度器?"
+    },
+    {
+      "key": "infra.job._todo322",
+      "zh": "同步成功"
+    },
+    {
+      "key": "infra.job._todo323",
+      "zh": "开启"
+    },
+    {
+      "key": "infra.job._todo324",
+      "zh": "执行成功"
+    },
+    {
+      "key": "infra.job.logger._todo325",
+      "zh": "任务详细"
+    },
+    {
+      "key": "infra.job.logger._todo327",
+      "zh": "处理器的名字"
+    },
+    {
+      "key": "infra.job.logger._todo328",
+      "zh": "处理器的参数"
+    },
+    {
+      "key": "infra.job.logger._todo329",
+      "zh": "第几次执行"
+    },
+    {
+      "key": "infra.job.logger._todo330",
+      "zh": "执行时间"
+    },
+    {
+      "key": "infra.job.logger._todo331",
+      "zh": "执行时长"
+    },
+    {
+      "key": "infra.job.logger._todo332",
+      "zh": "任务状态"
+    },
+    {
+      "key": "infra.job.logger._todo333",
+      "zh": "执行结果"
+    },
+    {
+      "key": "infra.job.logger._todo334",
+      "zh": "定时任务"
+    },
+    {
+      "key": "infra.job.logger._todo335",
+      "zh": "异步任务"
+    },
+    {
+      "key": "infra.job.logger._todo336",
+      "zh": "消息队列"
+    },
+    {
+      "key": "infra.job.logger._todo337",
+      "zh": "请输入处理器的名字"
+    },
+    {
+      "key": "infra.job.logger._todo338",
+      "zh": "开始执行时间"
+    },
+    {
+      "key": "infra.job.logger._todo339",
+      "zh": "选择开始执行时间"
+    },
+    {
+      "key": "infra.job.logger._todo340",
+      "zh": "结束执行时间"
+    },
+    {
+      "key": "infra.job.logger._todo341",
+      "zh": "选择结束执行时间"
+    },
+    {
+      "key": "infra.job.logger._todo342",
+      "zh": "请选择任务状态"
+    },
+    {
+      "key": "infra.job.logger._todo343",
+      "zh": "详细"
+    },
+    {
+      "key": "infra.redis._todo344",
+      "zh": "Redis 缓存"
+    },
+    {
+      "key": "infra.redis._todo345",
+      "zh": "本地缓存"
+    },
+    {
+      "key": "infra.redis._todo347",
+      "zh": "Redis版本 :"
+    },
+    {
+      "key": "infra.redis._todo348",
+      "zh": "运行模式 :"
+    },
+    {
+      "key": "infra.redis._todo349",
+      "zh": "端口 :"
+    },
+    {
+      "key": "infra.redis._todo350",
+      "zh": "客户端数 :"
+    },
+    {
+      "key": "infra.redis._todo351",
+      "zh": "运行时间(天) :"
+    },
+    {
+      "key": "infra.redis._todo352",
+      "zh": "使用内存 :"
+    },
+    {
+      "key": "infra.redis._todo353",
+      "zh": "使用CPU :"
+    },
+    {
+      "key": "infra.redis._todo354",
+      "zh": "内存配置 :"
+    },
+    {
+      "key": "infra.redis._todo355",
+      "zh": "AOF是否开启 :"
+    },
+    {
+      "key": "infra.redis._todo356",
+      "zh": "RDB是否成功 :"
+    },
+    {
+      "key": "infra.redis._todo357",
+      "zh": "Key数量 :"
+    },
+    {
+      "key": "infra.redis._todo358",
+      "zh": "网络入口/出口 :"
+    },
+    {
+      "key": "infra.redis._todo359",
+      "zh": "内存使用情况"
+    },
+    {
+      "key": "infra.redis._todo360",
+      "zh": "峰值"
+    },
+    {
+      "key": "infra.redis._todo361",
+      "zh": "命令统计"
+    },
+    {
+      "key": "infra.redis._todo362",
+      "zh": "命令"
+    },
+    {
+      "key": "infra.redis._todo363",
+      "zh": "内存消耗"
+    },
+    {
+      "key": "infra.server._todo364",
+      "zh": "服务监控"
+    },
+    {
+      "key": "infra.skywalking._todo365",
+      "zh": "服务监控"
+    },
+    {
+      "key": "infra.swagger._todo366",
+      "zh": "接口文档"
+    },
+    {
+      "key": "infra.webSocket._todo367",
+      "zh": "WebSocket 实时通信"
+    },
+    {
+      "key": "infra.webSocket._todo368",
+      "zh": "请输入你要发送的消息"
+    },
+    {
+      "key": "infra.webSocket._todo369",
+      "zh": "请选择发送人"
+    },
+    {
+      "key": "infra.webSocket._todo370",
+      "zh": "所有人"
+    },
+    {
+      "key": "infra.webSocket._todo371",
+      "zh": "连接"
+    },
+    {
+      "key": "infra.webSocket._todo372",
+      "zh": "连接状态:"
+    },
+    {
+      "key": "infra.webSocket._todo373",
+      "zh": "服务地址"
+    },
+    {
+      "key": "infra.webSocket._todo374",
+      "zh": "消息输入框"
+    },
+    {
+      "key": "infra.webSocket._todo375",
+      "zh": "发送"
+    },
+    {
+      "key": "infra.webSocket._todo376",
+      "zh": "消息记录"
+    },
+    {
+      "key": "infra.webSocket._todo377",
+      "zh": "收到消息:"
+    }
+  ],
+  "vi": [
+    {
+      "key": "infra.apiAccessLog._todo3",
+      "zh": "用户 IP"
+    },
+    {
+      "key": "infra.apiAccessLog._todo4",
+      "zh": "用户 UA"
+    },
+    {
+      "key": "infra.apiAccessLog._todo5",
+      "zh": "请求信息"
+    },
+    {
+      "key": "infra.apiAccessLog._todo6",
+      "zh": "请求参数"
+    },
+    {
+      "key": "infra.apiAccessLog._todo7",
+      "zh": "请求结果"
+    },
+    {
+      "key": "infra.apiAccessLog._todo8",
+      "zh": "请求时间"
+    },
+    {
+      "key": "infra.apiAccessLog._todo9",
+      "zh": "请求耗时"
+    },
+    {
+      "key": "infra.apiAccessLog._todo10",
+      "zh": "操作结果"
+    },
+    {
+      "key": "infra.apiAccessLog._todo13",
+      "zh": "正常"
+    },
+    {
+      "key": "infra.apiAccessLog._todo14",
+      "zh": "执行时长"
+    },
+    {
+      "key": "infra.apiAccessLog._todo15",
+      "zh": "请输入执行时长"
+    },
+    {
+      "key": "infra.apiAccessLog._todo16",
+      "zh": "结果码"
+    },
+    {
+      "key": "infra.apiAccessLog._todo17",
+      "zh": "请输入结果码"
+    },
+    {
+      "key": "infra.apiAccessLog._todo19",
+      "zh": "请求方法"
+    },
+    {
+      "key": "infra.apiAccessLog._todo20",
+      "zh": "请求地址"
+    },
+    {
+      "key": "infra.apiAccessLog._todo21",
+      "zh": "操作类型"
+    },
+    {
+      "key": "infra.apiAccessLog._todo22",
+      "zh": "详细"
+    },
+    {
+      "key": "infra.apiErrorLog._todo24",
+      "zh": "用户 IP"
+    },
+    {
+      "key": "infra.apiErrorLog._todo25",
+      "zh": "用户 UA"
+    },
+    {
+      "key": "infra.apiErrorLog._todo26",
+      "zh": "请求信息"
+    },
+    {
+      "key": "infra.apiErrorLog._todo27",
+      "zh": "请求参数"
+    },
+    {
+      "key": "infra.apiErrorLog._todo28",
+      "zh": "异常时间"
+    },
+    {
+      "key": "infra.apiErrorLog._todo29",
+      "zh": "异常名"
+    },
+    {
+      "key": "infra.apiErrorLog._todo30",
+      "zh": "异常堆栈"
+    },
+    {
+      "key": "infra.apiErrorLog._todo31",
+      "zh": "处理状态"
+    },
+    {
+      "key": "infra.apiErrorLog._todo32",
+      "zh": "处理人"
+    },
+    {
+      "key": "infra.apiErrorLog._todo33",
+      "zh": "处理时间"
+    },
+    {
+      "key": "infra.apiErrorLog._todo34",
+      "zh": "请选择处理状态"
+    },
+    {
+      "key": "infra.apiErrorLog._todo36",
+      "zh": "请求方法"
+    },
+    {
+      "key": "infra.apiErrorLog._todo37",
+      "zh": "请求地址"
+    },
+    {
+      "key": "infra.apiErrorLog._todo38",
+      "zh": "异常发生时间"
+    },
+    {
+      "key": "infra.apiErrorLog._todo39",
+      "zh": "详细"
+    },
+    {
+      "key": "infra.apiErrorLog._todo40",
+      "zh": "已处理"
+    },
+    {
+      "key": "infra.apiErrorLog._todo41",
+      "zh": "已忽略"
+    },
+    {
+      "key": "infra.build._todo42",
+      "zh": "生成JSON"
+    },
+    {
+      "key": "infra.build._todo43",
+      "zh": "生成Options"
+    },
+    {
+      "key": "infra.build._todo44",
+      "zh": "生成组件"
+    },
+    {
+      "key": "infra.build._todo45",
+      "zh": "生成 JSON"
+    },
+    {
+      "key": "infra.build._todo46",
+      "zh": "生成 Options"
+    },
+    {
+      "key": "infra.codegen._todo48",
+      "zh": "字段信息"
+    },
+    {
+      "key": "infra.codegen._todo49",
+      "zh": "生成信息"
+    },
+    {
+      "key": "infra.codegen._todo50",
+      "zh": "导入表"
+    },
+    {
+      "key": "infra.codegen._todo51",
+      "zh": "数据源"
+    },
+    {
+      "key": "infra.codegen._todo52",
+      "zh": "请选择数据源"
+    },
+    {
+      "key": "infra.codegen._todo53",
+      "zh": "表名称"
+    },
+    {
+      "key": "infra.codegen._todo54",
+      "zh": "请输入表名称"
+    },
+    {
+      "key": "infra.codegen._todo55",
+      "zh": "表描述"
+    },
+    {
+      "key": "infra.codegen._todo56",
+      "zh": "请输入表描述"
+    },
+    {
+      "key": "infra.codegen._todo58",
+      "zh": "代码预览"
+    },
+    {
+      "key": "infra.codegen.components._todo59",
+      "zh": "表名称"
+    },
+    {
+      "key": "infra.codegen.components._todo60",
+      "zh": "请输入仓库名称"
+    },
+    {
+      "key": "infra.codegen.components._todo61",
+      "zh": "表描述"
+    },
+    {
+      "key": "infra.codegen.components._todo62",
+      "zh": "默认去除表名的前缀。如果存在重复，则需要手动添加前缀，避免 MyBatis 报 Alias 重复的问题。"
+    },
+    {
+      "key": "infra.codegen.components._todo63",
+      "zh": "作者"
+    },
+    {
+      "key": "infra.codegen.components._todo64",
+      "zh": "实体类名称"
+    },
+    {
+      "key": "infra.codegen.components._todo65",
+      "zh": "字段列名"
+    },
+    {
+      "key": "infra.codegen.components._todo66",
+      "zh": "字段描述"
+    },
+    {
+      "key": "infra.codegen.components._todo67",
+      "zh": "物理类型"
+    },
+    {
+      "key": "infra.codegen.components._todo68",
+      "zh": "Java类型"
+    },
+    {
+      "key": "infra.codegen.components._todo69",
+      "zh": "java属性"
+    },
+    {
+      "key": "infra.codegen.components._todo70",
+      "zh": "插入"
+    },
+    {
+      "key": "infra.codegen.components._todo71",
+      "zh": "列表"
+    },
+    {
+      "key": "infra.codegen.components._todo72",
+      "zh": "查询方式"
+    },
+    {
+      "key": "infra.codegen.components._todo73",
+      "zh": "允许空"
+    },
+    {
+      "key": "infra.codegen.components._todo74",
+      "zh": "显示类型"
+    },
+    {
+      "key": "infra.codegen.components._todo75",
+      "zh": "文本框"
+    },
+    {
+      "key": "infra.codegen.components._todo76",
+      "zh": "文本域"
+    },
+    {
+      "key": "infra.codegen.components._todo77",
+      "zh": "下拉框"
+    },
+    {
+      "key": "infra.codegen.components._todo78",
+      "zh": "单选框"
+    },
+    {
+      "key": "infra.codegen.components._todo79",
+      "zh": "复选框"
+    },
+    {
+      "key": "infra.codegen.components._todo80",
+      "zh": "日期控件"
+    },
+    {
+      "key": "infra.codegen.components._todo81",
+      "zh": "图片上传"
+    },
+    {
+      "key": "infra.codegen.components._todo82",
+      "zh": "文件上传"
+    },
+    {
+      "key": "infra.codegen.components._todo83",
+      "zh": "富文本控件"
+    },
+    {
+      "key": "infra.codegen.components._todo84",
+      "zh": "加载最新字典"
+    },
+    {
+      "key": "infra.codegen.components._todo85",
+      "zh": "示例"
+    },
+    {
+      "key": "infra.codegen.components._todo86",
+      "zh": "生成模板"
+    },
+    {
+      "key": "infra.codegen.components._todo87",
+      "zh": "前端类型"
+    },
+    {
+      "key": "infra.codegen.components._todo88",
+      "zh": "生成场景"
+    },
+    {
+      "key": "infra.codegen.components._todo89",
+      "zh": "分配到指定菜单下，例如 系统管理"
+    },
+    {
+      "key": "infra.codegen.components._todo90",
+      "zh": "请选择系统菜单"
+    },
+    {
+      "key": "infra.codegen.components._todo91",
+      "zh": "生成在哪个java包下，例如 com.ruoyi.system"
+    },
+    {
+      "key": "infra.codegen.components._todo92",
+      "zh": "模块名，即一级目录，例如 system、infra、tool 等等"
+    },
+    {
+      "key": "infra.codegen.components._todo93",
+      "zh": "业务名，即二级目录，例如 user、permission、dict 等等"
+    },
+    {
+      "key": "infra.codegen.components._todo94",
+      "zh": "业务包，自定义二级目录。例如说，我们希望将 dictType 和 dictData 归类成 dict 业务"
+    },
+    {
+      "key": "infra.codegen.components._todo95",
+      "zh": "类名称（首字母大写），例如SysUser、SysMenu、SysDictData 等等"
+    },
+    {
+      "key": "infra.codegen.components._todo96",
+      "zh": "用作类描述，例如 用户"
+    },
+    {
+      "key": "infra.codegen.components._todo97",
+      "zh": "填写磁盘绝对路径，若不填写，则生成到当前Web项目下"
+    },
+    {
+      "key": "infra.codegen.components._todo98",
+      "zh": "树显示的父编码字段名， 如：parent_Id"
+    },
+    {
+      "key": "infra.codegen.components._todo99",
+      "zh": "树节点的显示名称字段名， 如：dept_name"
+    },
+    {
+      "key": "infra.codegen.components._todo100",
+      "zh": "关联主表（父表）的表名， 如：system_user"
+    },
+    {
+      "key": "infra.codegen.components._todo101",
+      "zh": "子表关联的字段， 如：user_id"
+    },
+    {
+      "key": "infra.codegen.components._todo102",
+      "zh": "主表与子表的关联关系"
+    },
+    {
+      "key": "infra.codegen.components._todo104",
+      "zh": "模块名"
+    },
+    {
+      "key": "infra.codegen.components._todo105",
+      "zh": "业务名"
+    },
+    {
+      "key": "infra.codegen.components._todo106",
+      "zh": "类名称"
+    },
+    {
+      "key": "infra.codegen.components._todo107",
+      "zh": "类描述"
+    },
+    {
+      "key": "infra.codegen.components._todo108",
+      "zh": "自定义路径"
+    },
+    {
+      "key": "infra.codegen.components._todo109",
+      "zh": "最近路径快速选择"
+    },
+    {
+      "key": "infra.codegen.components._todo110",
+      "zh": "恢复默认的生成基础路径"
+    },
+    {
+      "key": "infra.codegen.components._todo111",
+      "zh": "树表信息"
+    },
+    {
+      "key": "infra.codegen.components._todo112",
+      "zh": "父编号字段"
+    },
+    {
+      "key": "infra.codegen.components._todo113",
+      "zh": "树名称字段"
+    },
+    {
+      "key": "infra.codegen.components._todo114",
+      "zh": "主表信息"
+    },
+    {
+      "key": "infra.codegen.components._todo115",
+      "zh": "关联的主表"
+    },
+    {
+      "key": "infra.codegen.components._todo116",
+      "zh": "子表关联的字段"
+    },
+    {
+      "key": "infra.codegen.components._todo117",
+      "zh": "关联关系"
+    },
+    {
+      "key": "infra.codegen.components._todo118",
+      "zh": "一对多"
+    },
+    {
+      "key": "infra.codegen.components._todo119",
+      "zh": "一对一"
+    },
+    {
+      "key": "infra.codegen._todo120",
+      "zh": "代码生成（单表）"
+    },
+    {
+      "key": "infra.codegen._todo121",
+      "zh": "代码生成（树表）"
+    },
+    {
+      "key": "infra.codegen._todo122",
+      "zh": "代码生成（主子表）"
+    },
+    {
+      "key": "infra.codegen._todo123",
+      "zh": "单元测试"
+    },
+    {
+      "key": "infra.codegen._todo124",
+      "zh": "实体"
+    },
+    {
+      "key": "infra.codegen._todo125",
+      "zh": "预览"
+    },
+    {
+      "key": "infra.codegen._todo126",
+      "zh": "同步"
+    },
+    {
+      "key": "infra.codegen._todo127",
+      "zh": "生成代码"
+    },
+    {
+      "key": "infra.codegen._todo128",
+      "zh": "同步成功"
+    },
+    {
+      "key": "infra.config._todo129",
+      "zh": "参数分类"
+    },
+    {
+      "key": "infra.config._todo130",
+      "zh": "请输入参数分类"
+    },
+    {
+      "key": "infra.config._todo131",
+      "zh": "参数名称"
+    },
+    {
+      "key": "infra.config._todo133",
+      "zh": "参数键名"
+    },
+    {
+      "key": "infra.config._todo134",
+      "zh": "请输入参数键名"
+    },
+    {
+      "key": "infra.config._todo135",
+      "zh": "参数键值"
+    },
+    {
+      "key": "infra.config._todo136",
+      "zh": "请输入参数键值"
+    },
+    {
+      "key": "infra.config._todo138",
+      "zh": "参数分类不能为空"
+    },
+    {
+      "key": "infra.config._todo139",
+      "zh": "参数名称不能为空"
+    },
+    {
+      "key": "infra.config._todo140",
+      "zh": "参数键名不能为空"
+    },
+    {
+      "key": "infra.config._todo141",
+      "zh": "参数键值不能为空"
+    },
+    {
+      "key": "infra.config._todo143",
+      "zh": "配置中心"
+    },
+    {
+      "key": "infra.config._todo144",
+      "zh": "系统内置"
+    },
+    {
+      "key": "infra.config._todo145",
+      "zh": "请选择系统内置"
+    },
+    {
+      "key": "infra.config._todo146",
+      "zh": "参数主键"
+    },
+    {
+      "key": "infra.dataSourceConfig._todo147",
+      "zh": "数据源名称"
+    },
+    {
+      "key": "infra.dataSourceConfig._todo149",
+      "zh": "数据源连接"
+    },
+    {
+      "key": "infra.dataSourceConfig._todo150",
+      "zh": "请输入数据源连接"
+    },
+    {
+      "key": "infra.dataSourceConfig._todo153",
+      "zh": "数据源名称不能为空"
+    },
+    {
+      "key": "infra.dataSourceConfig._todo154",
+      "zh": "数据源连接不能为空"
+    },
+    {
+      "key": "infra.dataSourceConfig._todo156",
+      "zh": "主键编号"
+    },
+    {
+      "key": "infra.demo.demo01._todo157",
+      "zh": "性别"
+    },
+    {
+      "key": "infra.demo.demo01._todo158",
+      "zh": "出生年"
+    },
+    {
+      "key": "infra.demo.demo01._todo159",
+      "zh": "选择出生年"
+    },
+    {
+      "key": "infra.demo.demo01._todo160",
+      "zh": "简介"
+    },
+    {
+      "key": "infra.demo.demo01._todo161",
+      "zh": "头像"
+    },
+    {
+      "key": "infra.demo.demo01._todo162",
+      "zh": "性别不能为空"
+    },
+    {
+      "key": "infra.demo.demo01._todo163",
+      "zh": "出生年不能为空"
+    },
+    {
+      "key": "infra.demo.demo01._todo164",
+      "zh": "简介不能为空"
+    },
+    {
+      "key": "infra.demo.demo01._todo165",
+      "zh": "请选择性别"
+    },
+    {
+      "key": "infra.demo.demo02._todo166",
+      "zh": "父级编号"
+    },
+    {
+      "key": "infra.demo.demo02._todo167",
+      "zh": "请选择父级编号"
+    },
+    {
+      "key": "infra.demo.demo02._todo168",
+      "zh": "父级编号不能为空"
+    },
+    {
+      "key": "infra.demo.demo02._todo169",
+      "zh": "顶级示例分类"
+    },
+    {
+      "key": "infra.demo.demo02._todo170",
+      "zh": "代码生成（树表）"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo172",
+      "zh": "性别"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo173",
+      "zh": "出生日期"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo174",
+      "zh": "选择出生日期"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo175",
+      "zh": "简介"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo176",
+      "zh": "性别不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo177",
+      "zh": "出生日期不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo178",
+      "zh": "简介不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.erp.components._todo179",
+      "zh": "分数"
+    },
+    {
+      "key": "infra.demo.demo03.erp.components._todo180",
+      "zh": "请输入分数"
+    },
+    {
+      "key": "infra.demo.demo03.erp.components._todo181",
+      "zh": "学生编号不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.erp.components._todo182",
+      "zh": "分数不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.erp.components._todo183",
+      "zh": "请选择一个学生"
+    },
+    {
+      "key": "infra.demo.demo03.erp.components._todo184",
+      "zh": "班主任"
+    },
+    {
+      "key": "infra.demo.demo03.erp.components._todo185",
+      "zh": "请输入班主任"
+    },
+    {
+      "key": "infra.demo.demo03.erp.components._todo186",
+      "zh": "班主任不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo187",
+      "zh": "请选择性别"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo188",
+      "zh": "学生课程"
+    },
+    {
+      "key": "infra.demo.demo03.erp._todo189",
+      "zh": "学生班级"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo190",
+      "zh": "性别"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo191",
+      "zh": "出生日期"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo192",
+      "zh": "选择出生日期"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo193",
+      "zh": "简介"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo194",
+      "zh": "学生课程"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo195",
+      "zh": "学生班级"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo196",
+      "zh": "性别不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo197",
+      "zh": "出生日期不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo198",
+      "zh": "简介不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.inner.components._todo199",
+      "zh": "分数"
+    },
+    {
+      "key": "infra.demo.demo03.inner.components._todo200",
+      "zh": "请输入分数"
+    },
+    {
+      "key": "infra.demo.demo03.inner.components._todo201",
+      "zh": "+ 添加学生课程"
+    },
+    {
+      "key": "infra.demo.demo03.inner.components._todo202",
+      "zh": "学生编号不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.inner.components._todo203",
+      "zh": "分数不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.inner.components._todo204",
+      "zh": "班主任"
+    },
+    {
+      "key": "infra.demo.demo03.inner.components._todo205",
+      "zh": "请输入班主任"
+    },
+    {
+      "key": "infra.demo.demo03.inner.components._todo206",
+      "zh": "班主任不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.inner._todo207",
+      "zh": "请选择性别"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo208",
+      "zh": "性别"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo209",
+      "zh": "出生日期"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo210",
+      "zh": "选择出生日期"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo211",
+      "zh": "简介"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo212",
+      "zh": "学生课程"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo213",
+      "zh": "学生班级"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo214",
+      "zh": "性别不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo215",
+      "zh": "出生日期不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo216",
+      "zh": "简介不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.normal.components._todo217",
+      "zh": "分数"
+    },
+    {
+      "key": "infra.demo.demo03.normal.components._todo218",
+      "zh": "请输入分数"
+    },
+    {
+      "key": "infra.demo.demo03.normal.components._todo219",
+      "zh": "+ 添加学生课程"
+    },
+    {
+      "key": "infra.demo.demo03.normal.components._todo220",
+      "zh": "学生编号不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.normal.components._todo221",
+      "zh": "分数不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.normal.components._todo222",
+      "zh": "班主任"
+    },
+    {
+      "key": "infra.demo.demo03.normal.components._todo223",
+      "zh": "请输入班主任"
+    },
+    {
+      "key": "infra.demo.demo03.normal.components._todo224",
+      "zh": "班主任不能为空"
+    },
+    {
+      "key": "infra.demo.demo03.normal._todo225",
+      "zh": "请选择性别"
+    },
+    {
+      "key": "infra.druid._todo226",
+      "zh": "数据库 MyBatis"
+    },
+    {
+      "key": "infra.druid._todo227",
+      "zh": "多数据源（读写分离）"
+    },
+    {
+      "key": "infra.file._todo228",
+      "zh": "上传文件"
+    },
+    {
+      "key": "infra.file._todo230",
+      "zh": "提示：仅允许导入 jpg、png、gif 格式文件！"
+    },
+    {
+      "key": "infra.file._todo234",
+      "zh": "上传下载"
+    },
+    {
+      "key": "infra.file._todo235",
+      "zh": "文件路径"
+    },
+    {
+      "key": "infra.file._todo236",
+      "zh": "请输入文件路径"
+    },
+    {
+      "key": "infra.file._todo237",
+      "zh": "文件类型"
+    },
+    {
+      "key": "infra.file._todo238",
+      "zh": "请输入文件类型"
+    },
+    {
+      "key": "infra.file._todo239",
+      "zh": "文件名"
+    },
+    {
+      "key": "infra.file._todo240",
+      "zh": "文件大小"
+    },
+    {
+      "key": "infra.file._todo241",
+      "zh": "文件内容"
+    },
+    {
+      "key": "infra.file._todo242",
+      "zh": "上传时间"
+    },
+    {
+      "key": "infra.file._todo243",
+      "zh": "预览"
+    },
+    {
+      "key": "infra.file._todo244",
+      "zh": "下载"
+    },
+    {
+      "key": "infra.file._todo245",
+      "zh": "复制链接"
+    },
+    {
+      "key": "infra.fileConfig._todo246",
+      "zh": "配置名"
+    },
+    {
+      "key": "infra.fileConfig._todo247",
+      "zh": "请输入配置名"
+    },
+    {
+      "key": "infra.fileConfig._todo248",
+      "zh": "存储器"
+    },
+    {
+      "key": "infra.fileConfig._todo249",
+      "zh": "请选择存储器"
+    },
+    {
+      "key": "infra.fileConfig._todo250",
+      "zh": "基础路径"
+    },
+    {
+      "key": "infra.fileConfig._todo251",
+      "zh": "请输入基础路径"
+    },
+    {
+      "key": "infra.fileConfig._todo252",
+      "zh": "主机地址"
+    },
+    {
+      "key": "infra.fileConfig._todo253",
+      "zh": "请输入主机地址"
+    },
+    {
+      "key": "infra.fileConfig._todo254",
+      "zh": "主机端口"
+    },
+    {
+      "key": "infra.fileConfig._todo255",
+      "zh": "请输入主机端口"
+    },
+    {
+      "key": "infra.fileConfig._todo258",
+      "zh": "连接模式"
+    },
+    {
+      "key": "infra.fileConfig._todo259",
+      "zh": "节点地址"
+    },
+    {
+      "key": "infra.fileConfig._todo260",
+      "zh": "请输入节点地址"
+    },
+    {
+      "key": "infra.fileConfig._todo261",
+      "zh": "存储 bucket"
+    },
+    {
+      "key": "infra.fileConfig._todo262",
+      "zh": "请输入 bucket"
+    },
+    {
+      "key": "infra.fileConfig._todo263",
+      "zh": "请输入 accessKey"
+    },
+    {
+      "key": "infra.fileConfig._todo264",
+      "zh": "请输入 accessSecret"
+    },
+    {
+      "key": "infra.fileConfig._todo265",
+      "zh": "是否 Path Style"
+    },
+    {
+      "key": "infra.fileConfig._todo266",
+      "zh": "公开访问"
+    },
+    {
+      "key": "infra.fileConfig._todo267",
+      "zh": "区域"
+    },
+    {
+      "key": "infra.fileConfig._todo268",
+      "zh": "请填写区域，一般仅 AWS 需要填写"
+    },
+    {
+      "key": "infra.fileConfig._todo269",
+      "zh": "自定义域名"
+    },
+    {
+      "key": "infra.fileConfig._todo270",
+      "zh": "请输入自定义域名"
+    },
+    {
+      "key": "infra.fileConfig._todo271",
+      "zh": "主动模式"
+    },
+    {
+      "key": "infra.fileConfig._todo272",
+      "zh": "被动模式"
+    },
+    {
+      "key": "infra.fileConfig._todo273",
+      "zh": "禁用"
+    },
+    {
+      "key": "infra.fileConfig._todo274",
+      "zh": "公开"
+    },
+    {
+      "key": "infra.fileConfig._todo275",
+      "zh": "私有"
+    },
+    {
+      "key": "infra.fileConfig._todo276",
+      "zh": "配置名不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo277",
+      "zh": "存储器不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo278",
+      "zh": "基础路径不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo279",
+      "zh": "主机地址不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo280",
+      "zh": "主机端口不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo282",
+      "zh": "连接模式不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo283",
+      "zh": "节点地址不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo284",
+      "zh": "存储 bucket 不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo285",
+      "zh": "accessKey 不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo286",
+      "zh": "accessSecret 不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo287",
+      "zh": "是否 PathStyle 访问不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo288",
+      "zh": "公开访问设置不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo289",
+      "zh": "自定义域名不能为空"
+    },
+    {
+      "key": "infra.fileConfig._todo290",
+      "zh": "上传下载"
+    },
+    {
+      "key": "infra.fileConfig._todo291",
+      "zh": "主配置"
+    },
+    {
+      "key": "infra.fileConfig._todo292",
+      "zh": "是否要访问该文件？"
+    },
+    {
+      "key": "infra.fileConfig._todo293",
+      "zh": "测试上传成功"
+    },
+    {
+      "key": "infra.job._todo294",
+      "zh": "任务详细"
+    },
+    {
+      "key": "infra.job._todo295",
+      "zh": "任务状态"
+    },
+    {
+      "key": "infra.job._todo296",
+      "zh": "处理器的名字"
+    },
+    {
+      "key": "infra.job._todo297",
+      "zh": "处理器的参数"
+    },
+    {
+      "key": "infra.job._todo298",
+      "zh": "Cron 表达式"
+    },
+    {
+      "key": "infra.job._todo299",
+      "zh": "重试次数"
+    },
+    {
+      "key": "infra.job._todo300",
+      "zh": "重试间隔"
+    },
+    {
+      "key": "infra.job._todo301",
+      "zh": "监控超时时间"
+    },
+    {
+      "key": "infra.job._todo302",
+      "zh": "后续执行时间"
+    },
+    {
+      "key": "infra.job._todo303",
+      "zh": "请输入处理器的名字"
+    },
+    {
+      "key": "infra.job._todo304",
+      "zh": "请输入处理器的参数"
+    },
+    {
+      "key": "infra.job._todo305",
+      "zh": "CRON 表达式"
+    },
+    {
+      "key": "infra.job._todo306",
+      "zh": "请输入重试次数。设置为 0 时，不进行重试"
+    },
+    {
+      "key": "infra.job._todo307",
+      "zh": "请输入重试间隔，单位：毫秒。设置为 0 时，无需间隔"
+    },
+    {
+      "key": "infra.job._todo308",
+      "zh": "请输入监控超时时间，单位：毫秒"
+    },
+    {
+      "key": "infra.job.taskNameRequired",
+      "zh": "任务名称不能为空"
+    },
+    {
+      "key": "infra.job._todo309",
+      "zh": "处理器的名字不能为空"
+    },
+    {
+      "key": "infra.job._todo310",
+      "zh": "CRON 表达式不能为空"
+    },
+    {
+      "key": "infra.job._todo311",
+      "zh": "重试次数不能为空"
+    },
+    {
+      "key": "infra.job._todo312",
+      "zh": "重试间隔不能为空"
+    },
+    {
+      "key": "infra.job._todo313",
+      "zh": "定时任务"
+    },
+    {
+      "key": "infra.job._todo314",
+      "zh": "异步任务"
+    },
+    {
+      "key": "infra.job._todo315",
+      "zh": "消息队列"
+    },
+    {
+      "key": "infra.job._todo316",
+      "zh": "请选择任务状态"
+    },
+    {
+      "key": "infra.job._todo317",
+      "zh": "执行日志"
+    },
+    {
+      "key": "infra.job._todo318",
+      "zh": "同步任务"
+    },
+    {
+      "key": "infra.job._todo319",
+      "zh": "执行一次"
+    },
+    {
+      "key": "infra.job._todo320",
+      "zh": "调度日志"
+    },
+    {
+      "key": "infra.job._todo321",
+      "zh": "确认要同步所有任务到调度器?"
+    },
+    {
+      "key": "infra.job._todo322",
+      "zh": "同步成功"
+    },
+    {
+      "key": "infra.job._todo323",
+      "zh": "开启"
+    },
+    {
+      "key": "infra.job._todo324",
+      "zh": "执行成功"
+    },
+    {
+      "key": "infra.job.logger._todo325",
+      "zh": "任务详细"
+    },
+    {
+      "key": "infra.job.logger._todo327",
+      "zh": "处理器的名字"
+    },
+    {
+      "key": "infra.job.logger._todo328",
+      "zh": "处理器的参数"
+    },
+    {
+      "key": "infra.job.logger._todo329",
+      "zh": "第几次执行"
+    },
+    {
+      "key": "infra.job.logger._todo330",
+      "zh": "执行时间"
+    },
+    {
+      "key": "infra.job.logger._todo331",
+      "zh": "执行时长"
+    },
+    {
+      "key": "infra.job.logger._todo332",
+      "zh": "任务状态"
+    },
+    {
+      "key": "infra.job.logger._todo333",
+      "zh": "执行结果"
+    },
+    {
+      "key": "infra.job.logger._todo334",
+      "zh": "定时任务"
+    },
+    {
+      "key": "infra.job.logger._todo335",
+      "zh": "异步任务"
+    },
+    {
+      "key": "infra.job.logger._todo336",
+      "zh": "消息队列"
+    },
+    {
+      "key": "infra.job.logger._todo337",
+      "zh": "请输入处理器的名字"
+    },
+    {
+      "key": "infra.job.logger._todo338",
+      "zh": "开始执行时间"
+    },
+    {
+      "key": "infra.job.logger._todo339",
+      "zh": "选择开始执行时间"
+    },
+    {
+      "key": "infra.job.logger._todo340",
+      "zh": "结束执行时间"
+    },
+    {
+      "key": "infra.job.logger._todo341",
+      "zh": "选择结束执行时间"
+    },
+    {
+      "key": "infra.job.logger._todo342",
+      "zh": "请选择任务状态"
+    },
+    {
+      "key": "infra.job.logger._todo343",
+      "zh": "详细"
+    },
+    {
+      "key": "infra.redis._todo344",
+      "zh": "Redis 缓存"
+    },
+    {
+      "key": "infra.redis._todo345",
+      "zh": "本地缓存"
+    },
+    {
+      "key": "infra.redis._todo347",
+      "zh": "Redis版本 :"
+    },
+    {
+      "key": "infra.redis._todo348",
+      "zh": "运行模式 :"
+    },
+    {
+      "key": "infra.redis._todo349",
+      "zh": "端口 :"
+    },
+    {
+      "key": "infra.redis._todo350",
+      "zh": "客户端数 :"
+    },
+    {
+      "key": "infra.redis._todo351",
+      "zh": "运行时间(天) :"
+    },
+    {
+      "key": "infra.redis._todo352",
+      "zh": "使用内存 :"
+    },
+    {
+      "key": "infra.redis._todo353",
+      "zh": "使用CPU :"
+    },
+    {
+      "key": "infra.redis._todo354",
+      "zh": "内存配置 :"
+    },
+    {
+      "key": "infra.redis._todo355",
+      "zh": "AOF是否开启 :"
+    },
+    {
+      "key": "infra.redis._todo356",
+      "zh": "RDB是否成功 :"
+    },
+    {
+      "key": "infra.redis._todo357",
+      "zh": "Key数量 :"
+    },
+    {
+      "key": "infra.redis._todo358",
+      "zh": "网络入口/出口 :"
+    },
+    {
+      "key": "infra.redis._todo359",
+      "zh": "内存使用情况"
+    },
+    {
+      "key": "infra.redis._todo360",
+      "zh": "峰值"
+    },
+    {
+      "key": "infra.redis._todo361",
+      "zh": "命令统计"
+    },
+    {
+      "key": "infra.redis._todo362",
+      "zh": "命令"
+    },
+    {
+      "key": "infra.redis._todo363",
+      "zh": "内存消耗"
+    },
+    {
+      "key": "infra.server._todo364",
+      "zh": "服务监控"
+    },
+    {
+      "key": "infra.skywalking._todo365",
+      "zh": "服务监控"
+    },
+    {
+      "key": "infra.swagger._todo366",
+      "zh": "接口文档"
+    },
+    {
+      "key": "infra.webSocket._todo367",
+      "zh": "WebSocket 实时通信"
+    },
+    {
+      "key": "infra.webSocket._todo368",
+      "zh": "请输入你要发送的消息"
+    },
+    {
+      "key": "infra.webSocket._todo369",
+      "zh": "请选择发送人"
+    },
+    {
+      "key": "infra.webSocket._todo370",
+      "zh": "所有人"
+    },
+    {
+      "key": "infra.webSocket._todo371",
+      "zh": "连接"
+    },
+    {
+      "key": "infra.webSocket._todo372",
+      "zh": "连接状态:"
+    },
+    {
+      "key": "infra.webSocket._todo373",
+      "zh": "服务地址"
+    },
+    {
+      "key": "infra.webSocket._todo374",
+      "zh": "消息输入框"
+    },
+    {
+      "key": "infra.webSocket._todo375",
+      "zh": "发送"
+    },
+    {
+      "key": "infra.webSocket._todo376",
+      "zh": "消息记录"
+    },
+    {
+      "key": "infra.webSocket._todo377",
+      "zh": "收到消息:"
+    }
+  ]
+}
