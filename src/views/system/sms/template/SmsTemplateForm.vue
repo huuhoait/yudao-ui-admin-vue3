@@ -50,8 +50,8 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :label="t('system.sms.template._todo256')" prop="apiTemplateId">
-        <el-input v-model="formData.apiTemplateId" :placeholder="t('system.sms.template._todo257')" />
+      <el-form-item :label="t('system.sms.template.smsApiTemplateId')" prop="apiTemplateId">
+        <el-input v-model="formData.apiTemplateId" :placeholder="t('system.sms.template.inputSmsApiTemplateId')" />
       </el-form-item>
       <el-form-item :label="t('system.sms.template.remark')" prop="remark">
         <el-input v-model="formData.remark" :placeholder="t('system.sms.template.inputRemark')" />

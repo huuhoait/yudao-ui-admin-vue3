@@ -27,7 +27,7 @@
         />
       </el-form-item>
       <el-form-item :label="t('common.status')" prop="status">
-        <el-select v-model="queryParams.status" :placeholder="t('system.dict.data._todo33')" clearable class="!w-240px">
+        <el-select v-model="queryParams.status" :placeholder="t('system.dict.data.dataStatus')" clearable class="!w-240px">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
             :key="dict.value"
@@ -73,16 +73,16 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column :label="t('system.dict.data._todo34')" align="center" prop="id" />
+      <el-table-column :label="t('system.dict.data.dictCode')" align="center" prop="id" />
       <el-table-column :label="t('system.dict.data.dictLabel')" align="center" prop="label" />
       <el-table-column :label="t('system.dict.data.dictValue')" align="center" prop="value" />
-      <el-table-column :label="t('system.dict.data._todo35')" align="center" prop="sort" />
+      <el-table-column :label="t('system.dict.data.dictSort')" align="center" prop="sort" />
       <el-table-column :label="t('common.status')" align="center" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('system.dict.data._todo22')" align="center" prop="colorType" />
+      <el-table-column :label="t('system.dict.data.colorType')" align="center" prop="colorType" />
       <el-table-column label="CSS Class" align="center" prop="cssClass" />
       <el-table-column :label="t('system.dict.data.remark')" align="center" prop="remark" show-overflow-tooltip />
       <el-table-column

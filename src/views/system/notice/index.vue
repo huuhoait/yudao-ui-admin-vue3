@@ -8,19 +8,19 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="t('system.notice._todo114')" prop="title">
+      <el-form-item :label="t('system.notice.noticeTitle')" prop="title">
         <el-input
           v-model="queryParams.title"
-          :placeholder="t('system.notice._todo115')"
+          :placeholder="t('system.notice.inputNoticeTitle')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('system.notice._todo123')" prop="status">
+      <el-form-item :label="t('system.notice.noticeStatus')" prop="status">
         <el-select
           v-model="queryParams.status"
-          :placeholder="t('system.notice._todo124')"
+          :placeholder="t('system.notice.selectNoticeStatus')"
           clearable
           class="!w-240px"
         >
@@ -60,9 +60,9 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column :label="t('system.notice._todo125')" align="center" prop="id" />
-      <el-table-column :label="t('system.notice._todo114')" align="center" prop="title" />
-      <el-table-column :label="t('system.notice._todo117')" align="center" prop="type">
+      <el-table-column :label="t('system.notice.noticeId')" align="center" prop="id" />
+      <el-table-column :label="t('system.notice.noticeTitle')" align="center" prop="title" />
+      <el-table-column :label="t('system.notice.noticeType')" align="center" prop="type">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_NOTICE_TYPE" :value="scope.row.type" />
         </template>
@@ -98,7 +98,7 @@
             {{ t('system.notice.delete') }}
           </el-button>
           <el-button link @click="handlePush(scope.row.id)" v-hasPermi="['system:notice:update']">
-            {{ t('system.notice._todo126') }}
+            {{ t('system.notice.push') }}
           </el-button>
         </template>
       </el-table-column>
@@ -204,7 +204,7 @@ const handleDeleteBatch = async () => {
 const handlePush = async (id: number) => {
   try {
     // 推送的二次确认
-    await message.confirm(t('system.notice._todo127'))
+    await message.confirm(t('system.notice.pushSelectedNotices'))
     // 发起推送
     await NoticeApi.pushNotice(id)
     message.success(t('system.notice.pushSuccess'))

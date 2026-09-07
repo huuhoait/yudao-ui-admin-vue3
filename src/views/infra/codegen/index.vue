@@ -1,8 +1,8 @@
 <template>
-  <doc-alert :title="t('infra.codegen._todo120')" url="https://doc.iocoder.cn/new-feature/" />
-  <doc-alert :title="t('infra.codegen._todo121')" url="https://doc.iocoder.cn/new-feature/tree/" />
+  <doc-alert :title="t('infra.codegen.codeGenerationSingleTable')" url="https://doc.iocoder.cn/new-feature/" />
+  <doc-alert :title="t('infra.codegen.codeGenerationTreeTable')" url="https://doc.iocoder.cn/new-feature/tree/" />
   <doc-alert :title="t('infra.codegen._todo122')" url="https://doc.iocoder.cn/new-feature/master-sub/" />
-  <doc-alert :title="t('infra.codegen._todo123')" url="https://doc.iocoder.cn/unit-test/" />
+  <doc-alert :title="t('infra.codegen.unitTest')" url="https://doc.iocoder.cn/unit-test/" />
 
   <!-- 搜索 -->
   <ContentWrap>
@@ -13,21 +13,21 @@
       class="-mb-15px"
       label-width="68px"
     >
-      <el-form-item :label="t('infra.codegen._todo53')" prop="tableName">
+      <el-form-item :label="t('infra.codegen.tableName')" prop="tableName">
         <el-input
           v-model="queryParams.tableName"
           class="!w-240px"
           clearable
-          :placeholder="t('infra.codegen._todo54')"
+          :placeholder="t('infra.codegen.inputTableName')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.codegen._todo55')" prop="tableComment">
+      <el-form-item :label="t('infra.codegen.tableDescription')" prop="tableComment">
         <el-input
           v-model="queryParams.tableComment"
           class="!w-240px"
           clearable
-          :placeholder="t('infra.codegen._todo56')"
+          :placeholder="t('infra.codegen.inputTableDescription')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
@@ -72,22 +72,22 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column align="center" :label="t('infra.codegen._todo51')">
+      <el-table-column align="center" :label="t('infra.codegen.dataSource')">
         <template #default="scope">
           {{
             dataSourceConfigList.find((config) => config.id === scope.row.dataSourceConfigId)?.name
           }}
         </template>
       </el-table-column>
-      <el-table-column align="center" :label="t('infra.codegen._todo53')" prop="tableName" width="200" />
+      <el-table-column align="center" :label="t('infra.codegen.tableName')" prop="tableName" width="200" />
       <el-table-column
         :show-overflow-tooltip="true"
         align="center"
-        :label="t('infra.codegen._todo55')"
+        :label="t('infra.codegen.tableDescription')"
         prop="tableComment"
         width="200"
       />
-      <el-table-column align="center" :label="t('infra.codegen._todo124')" prop="className" width="200" />
+      <el-table-column align="center" :label="t('infra.codegen.entity')" prop="className" width="200" />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
@@ -110,7 +110,7 @@
             type="primary"
             @click="handlePreview(scope.row)"
           >
-            {{ t('infra.codegen._todo125') }}
+            {{ t('infra.codegen.preview') }}
           </el-button>
           <el-button
             v-hasPermi="['infra:codegen:update']"
@@ -134,7 +134,7 @@
             type="primary"
             @click="handleSyncDB(scope.row)"
           >
-            {{ t('infra.codegen._todo126') }}
+            {{ t('infra.codegen.sync') }}
           </el-button>
           <el-button
             v-hasPermi="['infra:codegen:download']"
@@ -142,7 +142,7 @@
             type="primary"
             @click="handleGenTable(scope.row)"
           >
-            {{ t('infra.codegen._todo127') }}
+            {{ t('infra.codegen.generateCode') }}
           </el-button>
         </template>
       </el-table-column>
@@ -268,7 +268,7 @@ const handleSyncDB = async (row: CodegenApi.CodegenTableVO) => {
   try {
     await message.confirm(t('infra.codegen.confirmForceSync', { tableName }), t('common.reminder'))
     await CodegenApi.syncCodegenFromDB(row.id)
-    message.success(t('infra.codegen._todo128'))
+    message.success(t('infra.codegen.syncedSuccessfully'))
   } catch {}
 }
 

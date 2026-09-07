@@ -45,7 +45,7 @@
         <el-input v-model="formData.agentId" :placeholder="t('system.social.client._todo264')" />
       </el-form-item>
       <el-form-item label="publicKey" prop="publicKey" v-if="formData!.socialType === 40">
-        <el-input v-model="formData.publicKey" :placeholder="t('system.social.client._todo265')" />
+        <el-input v-model="formData.publicKey" :placeholder="t('system.social.client.inputPublickey')" />
       </el-form-item>
       <el-form-item :label="t('common.status')" prop="status">
         <el-radio-group v-model="formData.status">

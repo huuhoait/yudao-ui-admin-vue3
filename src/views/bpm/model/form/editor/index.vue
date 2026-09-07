@@ -86,7 +86,7 @@ const save = async (bpmnXml: string) => {
     xmlString.value = bpmnXml
     emit('success', bpmnXml)
   } catch (error) {
-    console.error(t('bpm.model.form.editor._todo127'), error)
+    console.error(t('bpm.model.form.editor.saveFailed'), error)
     message.error(t('bpm.model.form.editor._todo128'))
   }
 }

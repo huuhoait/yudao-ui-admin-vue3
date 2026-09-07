@@ -10,7 +10,7 @@
     >
       <el-table-column :label="t('infra.demo.demo03.inner.components.id')" align="center" prop="id" />
       <el-table-column :label="t('infra.demo.demo03.inner.components.name')" align="center" prop="name" />
-      <el-table-column :label="t('infra.demo.demo03.inner.components._todo199')" align="center" prop="score" />
+      <el-table-column :label="t('infra.demo.demo03.inner.components.score')" align="center" prop="score" />
       <el-table-column
         :label="t('common.createTime')"
         align="center"

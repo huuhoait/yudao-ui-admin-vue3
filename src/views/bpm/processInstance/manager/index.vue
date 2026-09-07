@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('bpm.processInstance.manager._todo242')" url="https://doc.iocoder.cn/bpm/" />
+  <doc-alert :title="t('bpm.processInstance.manager.workflowManual')" url="https://doc.iocoder.cn/bpm/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -32,7 +32,7 @@
       <el-form-item :label="t('bpm.processInstance.manager.belongProcess')" prop="processDefinitionId">
         <el-input
           v-model="queryParams.processDefinitionId"
-          :placeholder="t('bpm.processInstance.manager._todo243')"
+          :placeholder="t('bpm.processInstance.manager.inputProcessDefinitionId')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
@@ -98,7 +98,7 @@
         fixed="left"
       />
       <el-table-column :label="t('bpm.processInstance.manager.processStarter')" align="center" prop="startUser.nickname" width="120" />
-      <el-table-column :label="t('bpm.processInstance.manager._todo244')" align="center" prop="startUser.deptName" width="120" />
+      <el-table-column :label="t('bpm.processInstance.manager.startingDepartment')" align="center" prop="startUser.deptName" width="120" />
       <el-table-column :label="t('bpm.processInstance.manager.processStatus')" prop="status" width="120">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.BPM_PROCESS_INSTANCE_STATUS" :value="scope.row.status" />
@@ -123,7 +123,7 @@
           {{ scope.row.durationInMillis > 0 ? formatPast2(scope.row.durationInMillis) : '-' }}
         </template>
       </el-table-column>
-      <el-table-column :label="t('bpm.processInstance.manager._todo245')" align="center" prop="tasks" min-width="120px">
+      <el-table-column :label="t('bpm.processInstance.manager.currentApprovalTask')" align="center" prop="tasks" min-width="120px">
         <template #default="scope">
           <el-button type="primary" v-for="task in scope.row.tasks" :key="task.id" link>
             <span>{{ task.name }}</span>

@@ -8,14 +8,14 @@ const left = ref('')
 const searchVal = ref('')
 const list = ref([
   { id: 'startUser', name: t('bpm.model.form.PrintTemplate.starter') },
-  { id: 'startUserDept', name: t('bpm.model.form.PrintTemplate._todo120') },
+  { id: 'startUserDept', name: t('bpm.model.form.PrintTemplate.starterDepartment') },
   { id: 'processName', name: t('bpm.model.form.PrintTemplate.processName') },
   { id: 'processNum', name: t('bpm.model.form.PrintTemplate.processId') },
   { id: 'startTime', name: t('bpm.model.form.PrintTemplate.startTime') },
   { id: 'endTime', name: t('bpm.model.form.PrintTemplate.endTime') },
   { id: 'processStatus', name: t('bpm.model.form.PrintTemplate.processStatus') },
-  { id: 'printUser', name: t('bpm.model.form.PrintTemplate._todo121') },
-  { id: 'printTime', name: t('bpm.model.form.PrintTemplate._todo122') }
+  { id: 'printUser', name: t('bpm.model.form.PrintTemplate.printer') },
+  { id: 'printTime', name: t('bpm.model.form.PrintTemplate.printTime') }
 ])
 const searchedList = computed(() => {
   const searchValStr = searchVal.value.trim().toLowerCase()

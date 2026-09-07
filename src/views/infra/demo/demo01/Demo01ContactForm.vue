@@ -10,7 +10,7 @@
       <el-form-item :label="t('infra.demo.demo01.name')" prop="name">
         <el-input v-model="formData.name" :placeholder="t('infra.demo.demo01.inputName')" />
       </el-form-item>
-      <el-form-item :label="t('infra.demo.demo01._todo157')" prop="sex">
+      <el-form-item :label="t('infra.demo.demo01.gender')" prop="sex">
         <el-radio-group v-model="formData.sex">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_USER_SEX)"
@@ -21,18 +21,18 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :label="t('infra.demo.demo01._todo158')" prop="birthday">
+      <el-form-item :label="t('infra.demo.demo01.birthYear')" prop="birthday">
         <el-date-picker
           v-model="formData.birthday"
           type="date"
           value-format="x"
-          :placeholder="t('infra.demo.demo01._todo159')"
+          :placeholder="t('infra.demo.demo01.selectBirthYear')"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.demo.demo01._todo160')" prop="description">
+      <el-form-item :label="t('infra.demo.demo01.bio')" prop="description">
         <Editor v-model="formData.description" height="150px" />
       </el-form-item>
-      <el-form-item :label="t('infra.demo.demo01._todo161')" prop="avatar">
+      <el-form-item :label="t('infra.demo.demo01.avatar')" prop="avatar">
         <UploadImg v-model="formData.avatar" />
       </el-form-item>
     </el-form>
@@ -66,9 +66,9 @@ const formData = ref({
 })
 const formRules = reactive({
   name: [{ required: true, message: t('infra.demo.demo01.nameRequired'), trigger: 'blur' }],
-  sex: [{ required: true, message: t('infra.demo.demo01._todo162'), trigger: 'blur' }],
-  birthday: [{ required: true, message: t('infra.demo.demo01._todo163'), trigger: 'blur' }],
-  description: [{ required: true, message: t('infra.demo.demo01._todo164'), trigger: 'blur' }]
+  sex: [{ required: true, message: t('infra.demo.demo01.genderCannotBeEmpty'), trigger: 'blur' }],
+  birthday: [{ required: true, message: t('infra.demo.demo01.birthYearCannotBeEmpty'), trigger: 'blur' }],
+  description: [{ required: true, message: t('infra.demo.demo01.bioCannotBeEmpty'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

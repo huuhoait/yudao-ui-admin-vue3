@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('bpm.group._todo12')" url="https://doc.iocoder.cn/bpm/" />
+  <doc-alert :title="t('bpm.group.workflowManual')" url="https://doc.iocoder.cn/bpm/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,10 +10,10 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="t('bpm.group._todo6')" prop="name">
+      <el-form-item :label="t('bpm.group.groupName')" prop="name">
         <el-input
           v-model="queryParams.name"
-          :placeholder="t('bpm.group._todo7')"
+          :placeholder="t('bpm.group.inputGroupName')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
@@ -59,9 +59,9 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
       <el-table-column :label="t('bpm.group.id')" align="center" prop="id" />
-      <el-table-column :label="t('bpm.group._todo6')" align="center" prop="name" />
+      <el-table-column :label="t('bpm.group.groupName')" align="center" prop="name" />
       <el-table-column :label="t('bpm.group.description')" align="center" prop="description" />
-      <el-table-column :label="t('bpm.group._todo8')" align="center">
+      <el-table-column :label="t('bpm.group.members')" align="center">
         <template #default="scope">
           <span v-for="userId in scope.row.userIds" :key="userId" class="pr-5px">
             {{ userList.find((user) => user.id === userId)?.nickname }}

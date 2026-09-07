@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('infra.demo.demo02._todo170')" url="https://doc.iocoder.cn/new-feature/tree/" />
+  <doc-alert :title="t('infra.demo.demo02.codeGenerationTreeTable')" url="https://doc.iocoder.cn/new-feature/tree/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -51,7 +51,7 @@
           <Icon icon="ep:download" class="mr-5px" /> {{ t('infra.demo.demo02.export') }}
         </el-button>
         <el-button type="danger" plain @click="toggleExpandAll">
-          <Icon icon="ep:sort" class="mr-5px" /> {{ t('infra.demo.demo02._todo171') }}
+          <Icon icon="ep:sort" class="mr-5px" /> {{ t('infra.demo.demo02.expandCollapse') }}
         </el-button>
       </el-form-item>
     </el-form>

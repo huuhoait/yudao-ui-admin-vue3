@@ -59,8 +59,8 @@
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('bpm.processListener._todo247')" align="center" prop="event" />
-      <el-table-column :label="t('bpm.processListener._todo249')" align="center" prop="valueType">
+      <el-table-column :label="t('bpm.processListener.event')" align="center" prop="event" />
+      <el-table-column :label="t('bpm.processListener.valueType')" align="center" prop="valueType">
         <template #default="scope">
           <dict-tag
             :type="DICT_TYPE.BPM_PROCESS_LISTENER_VALUE_TYPE"
@@ -68,7 +68,7 @@
           />
         </template>
       </el-table-column>
-      <el-table-column :label="t('bpm.processListener._todo257')" align="center" prop="value" />
+      <el-table-column :label="t('bpm.processListener.value')" align="center" prop="value" />
       <el-table-column
         :label="t('common.createTime')"
         align="center"

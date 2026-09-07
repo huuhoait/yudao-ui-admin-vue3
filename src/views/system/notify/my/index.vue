@@ -10,7 +10,7 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="t('system.notify.my._todo137')" prop="readStatus">
+      <el-form-item :label="t('system.notify.my.read')" prop="readStatus">
         <el-select
           v-model="queryParams.readStatus"
           :placeholder="t('system.notify.my.selectStatus')"
@@ -40,10 +40,10 @@
         <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
         <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
         <el-button @click="handleUpdateList">
-          <Icon icon="ep:reading" class="mr-5px" /> {{ t('system.notify.my._todo140') }}
+          <Icon icon="ep:reading" class="mr-5px" /> {{ t('system.notify.my.markAsRead') }}
         </el-button>
         <el-button @click="handleUpdateAll">
-          <Icon icon="ep:reading" class="mr-5px" /> {{ t('system.notify.my._todo141') }}
+          <Icon icon="ep:reading" class="mr-5px" /> {{ t('system.notify.my.markAllRead') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -59,7 +59,7 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" :selectable="selectable" :reserve-selection="true" />
-      <el-table-column :label="t('system.notify.my._todo135')" align="center" prop="templateNickname" width="180" />
+      <el-table-column :label="t('system.notify.my.sender')" align="center" prop="templateNickname" width="180" />
       <el-table-column
         :label="t('system.notify.my.sendTime')"
         align="center"
@@ -73,12 +73,12 @@
         </template>
       </el-table-column>
       <el-table-column
-        :label="t('system.notify.my._todo139')"
+        :label="t('system.notify.my.messageContent')"
         align="center"
         prop="templateContent"
         show-overflow-tooltip
       />
-      <el-table-column :label="t('system.notify.my._todo137')" align="center" prop="readStatus" width="160">
+      <el-table-column :label="t('system.notify.my.read')" align="center" prop="readStatus" width="160">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_BOOLEAN_STRING" :value="scope.row.readStatus" />
         </template>
@@ -182,7 +182,7 @@ const handleReadOne = async (id) => {
 /** 标记全部站内信已读 **/
 const handleUpdateAll = async () => {
   await NotifyMessageApi.updateAllNotifyMessageRead()
-  message.success(t('system.notify.my._todo142'))
+  message.success(t('system.notify.my.allMarkedAsRead'))
   tableRef.value.clearSelection()
   await getList()
 }
@@ -193,7 +193,7 @@ const handleUpdateList = async () => {
     return
   }
   await NotifyMessageApi.updateNotifyMessageRead(selectedIds.value)
-  message.success(t('system.notify.my._todo143'))
+  message.success(t('system.notify.my.batchMarkedAsRead'))
   tableRef.value.clearSelection()
   await getList()
 }

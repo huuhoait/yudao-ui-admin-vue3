@@ -10,33 +10,33 @@
       <el-form-item :label="t('infra.job.taskName')" prop="name">
         <el-input v-model="formData.name" :placeholder="t('infra.job.inputTaskName')" />
       </el-form-item>
-      <el-form-item :label="t('infra.job._todo296')" prop="handlerName">
+      <el-form-item :label="t('infra.job.handlerName')" prop="handlerName">
         <el-input
           :readonly="formData.id !== undefined"
           v-model="formData.handlerName"
-          :placeholder="t('infra.job._todo303')"
+          :placeholder="t('infra.job.inputHandlerName')"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.job._todo297')" prop="handlerParam">
-        <el-input v-model="formData.handlerParam" :placeholder="t('infra.job._todo304')" />
+      <el-form-item :label="t('infra.job.handlerParameters')" prop="handlerParam">
+        <el-input v-model="formData.handlerParam" :placeholder="t('infra.job.inputHandlerParameters')" />
       </el-form-item>
       <el-form-item :label="t('infra.job._todo305')" prop="cronExpression">
         <crontab v-model="formData.cronExpression" />
       </el-form-item>
-      <el-form-item :label="t('infra.job._todo299')" prop="retryCount">
+      <el-form-item :label="t('infra.job.retryCount')" prop="retryCount">
         <el-input
           v-model="formData.retryCount"
           :placeholder="t('infra.job._todo306')"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.job._todo300')" prop="retryInterval">
+      <el-form-item :label="t('infra.job.retryInterval')" prop="retryInterval">
         <el-input
           v-model="formData.retryInterval"
           :placeholder="t('infra.job._todo307')"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.job._todo301')" prop="monitorTimeout">
-        <el-input v-model="formData.monitorTimeout" :placeholder="t('infra.job._todo308')" />
+      <el-form-item :label="t('infra.job.monitorTimeout')" prop="monitorTimeout">
+        <el-input v-model="formData.monitorTimeout" :placeholder="t('infra.job.inputMonitorTimeoutMilliseconds')" />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -69,10 +69,10 @@ const formData = ref({
 })
 const formRules = reactive({
   name: [{ required: true, message: t('infra.job.taskNameRequired'), trigger: 'blur' }],
-  handlerName: [{ required: true, message: t('infra.job._todo309'), trigger: 'blur' }],
-  cronExpression: [{ required: true, message: t('infra.job._todo310'), trigger: 'blur' }],
-  retryCount: [{ required: true, message: t('infra.job._todo311'), trigger: 'blur' }],
-  retryInterval: [{ required: true, message: t('infra.job._todo312'), trigger: 'blur' }]
+  handlerName: [{ required: true, message: t('infra.job.handlerNameCannotBeEmpty'), trigger: 'blur' }],
+  cronExpression: [{ required: true, message: t('infra.job.cronExpressionCannotBeEmpty'), trigger: 'blur' }],
+  retryCount: [{ required: true, message: t('infra.job.retryCountCannotBeEmpty'), trigger: 'blur' }],
+  retryInterval: [{ required: true, message: t('infra.job.retryIntervalCannotBeEmpty'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

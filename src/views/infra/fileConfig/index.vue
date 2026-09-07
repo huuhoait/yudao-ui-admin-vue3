@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('infra.fileConfig._todo290')" url="https://doc.iocoder.cn/file/" />
+  <doc-alert :title="t('infra.fileConfig.uploadDownload')" url="https://doc.iocoder.cn/file/" />
 
   <!-- 搜索 -->
   <ContentWrap>
@@ -10,19 +10,19 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="t('infra.fileConfig._todo246')" prop="name">
+      <el-form-item :label="t('infra.fileConfig.configName')" prop="name">
         <el-input
           v-model="queryParams.name"
-          :placeholder="t('infra.fileConfig._todo247')"
+          :placeholder="t('infra.fileConfig.inputConfigName')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.fileConfig._todo248')" prop="storage">
+      <el-form-item :label="t('infra.fileConfig.storage')" prop="storage">
         <el-select
           v-model="queryParams.storage"
-          :placeholder="t('infra.fileConfig._todo249')"
+          :placeholder="t('infra.fileConfig.selectStorage')"
           clearable
           class="!w-240px"
         >
@@ -74,14 +74,14 @@
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
       <el-table-column :label="t('infra.fileConfig.id')" align="center" prop="id" />
-      <el-table-column :label="t('infra.fileConfig._todo246')" align="center" prop="name" />
-      <el-table-column :label="t('infra.fileConfig._todo248')" align="center" prop="storage">
+      <el-table-column :label="t('infra.fileConfig.configName')" align="center" prop="name" />
+      <el-table-column :label="t('infra.fileConfig.storage')" align="center" prop="storage">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_FILE_STORAGE" :value="scope.row.storage" />
         </template>
       </el-table-column>
       <el-table-column :label="t('infra.fileConfig.remark')" align="center" prop="remark" />
-      <el-table-column :label="t('infra.fileConfig._todo291')" align="center" prop="primary">
+      <el-table-column :label="t('infra.fileConfig.primaryConfig')" align="center" prop="primary">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_BOOLEAN_STRING" :value="scope.row.master" />
         </template>
@@ -110,7 +110,7 @@
             @click="handleMaster(scope.row.id)"
             v-hasPermi="['infra:file-config:update']"
           >
-            {{ t('infra.fileConfig._todo291') }}
+            {{ t('infra.fileConfig.primaryConfig') }}
           </el-button>
           <el-button link type="primary" @click="handleTest(scope.row.id)"> {{ t('infra.fileConfig.test') }} </el-button>
           <el-button
@@ -235,7 +235,7 @@ const handleMaster = async (id) => {
 const handleTest = async (id) => {
   try {
     const response = await FileConfigApi.testFileConfig(id)
-    await message.confirm(t('infra.fileConfig._todo292'), t('infra.fileConfig._todo293'))
+    await message.confirm(t('infra.fileConfig._todo292'), t('infra.fileConfig.testUploadSucceeded'))
     window.open(response, '_blank')
   } catch {}
 }

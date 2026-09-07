@@ -8,13 +8,13 @@
       v-loading="formLoading"
     >
       <el-form-item :label="t('system.notify.template._todo144')" prop="code">
-        <el-input v-model="formData.code" :placeholder="t('system.notify.template._todo145')" />
+        <el-input v-model="formData.code" :placeholder="t('system.notify.template.inputTemplateCode')" />
       </el-form-item>
       <el-form-item :label="t('system.notify.template.templateName')" prop="name">
         <el-input v-model="formData.name" :placeholder="t('system.notify.template._todo146')" />
       </el-form-item>
       <el-form-item :label="t('system.notify.template._todo147')" prop="nickname">
-        <el-input v-model="formData.nickname" :placeholder="t('system.notify.template._todo148')" />
+        <el-input v-model="formData.nickname" :placeholder="t('system.notify.template.inputSenderName')" />
       </el-form-item>
       <el-form-item :label="t('system.notify.template.templateContent')" prop="content">
         <el-input type="textarea" v-model="formData.content" :placeholder="t('system.notify.template.inputTemplateContent')" />
@@ -73,11 +73,11 @@ const formData = ref<NotifyTemplateApi.NotifyTemplateVO>({
   remark: ''
 })
 const formRules = reactive({
-  type: [{ required: true, message: t('system.notify.template._todo149'), trigger: 'change' }],
+  type: [{ required: true, message: t('system.notify.template.messageTypeRequired'), trigger: 'change' }],
   status: [{ required: true, message: t('system.notify.template.enableStatusRequired'), trigger: 'blur' }],
   code: [{ required: true, message: t('system.notify.template.templateCodeRequired'), trigger: 'blur' }],
   name: [{ required: true, message: t('system.notify.template.templateNameRequired'), trigger: 'blur' }],
-  nickname: [{ required: true, message: t('system.notify.template._todo150'), trigger: 'blur' }],
+  nickname: [{ required: true, message: t('system.notify.template.senderNameRequired'), trigger: 'blur' }],
   content: [{ required: true, message: t('system.notify.template.templateContentRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
@@ -112,10 +112,10 @@ const submitForm = async () => {
     const data = formData.value as unknown as NotifyTemplateApi.NotifyTemplateVO
     if (formType.value === 'create') {
       await NotifyTemplateApi.createNotifyTemplate(data)
-      message.success(t('system.notify.template._todo151'))
+      message.success(t('system.notify.template.addedSuccessfully'))
     } else {
       await NotifyTemplateApi.updateNotifyTemplate(data)
-      message.success(t('system.notify.template._todo152'))
+      message.success(t('system.notify.template.updatedSuccessfully'))
     }
     dialogVisible.value = false
     // 发送操作成功的事件

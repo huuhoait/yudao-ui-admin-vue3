@@ -53,8 +53,8 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column :label="t('system.oauth2.token._todo181')" align="center" prop="accessToken" width="300" />
-      <el-table-column :label="t('system.oauth2.token._todo182')" align="center" prop="refreshToken" width="300" />
+      <el-table-column :label="t('system.oauth2.token.accessToken')" align="center" prop="accessToken" width="300" />
+      <el-table-column :label="t('system.oauth2.token.refreshToken')" align="center" prop="refreshToken" width="300" />
       <el-table-column :label="t('system.oauth2.token.userId')" align="center" prop="userId" />
       <el-table-column :label="t('system.oauth2.token.userType')" align="center" prop="userType">
         <template #default="scope">
@@ -83,7 +83,7 @@
             @click="handleForceLogout(scope.row.accessToken)"
             v-hasPermi="['system:oauth2-token:delete']"
           >
-            {{ t('system.oauth2.token._todo183') }}
+            {{ t('system.oauth2.token.forceLogout') }}
           </el-button>
         </template>
       </el-table-column>
@@ -148,7 +148,7 @@ const resetQuery = () => {
 const handleForceLogout = async (accessToken: string) => {
   try {
     // 删除的二次确认
-    await message.confirm(t('system.oauth2.token._todo184'))
+    await message.confirm(t('system.oauth2.token.forceLogoutUser'))
     // 发起删除
     await OAuth2AccessTokenApi.deleteAccessToken(accessToken)
     message.success(t('common.success'))

@@ -13,8 +13,8 @@
       <el-form-item :label="t('system.role.roleKey')" prop="code">
         <el-input v-model="formData.code" :placeholder="t('system.role.inputRoleKey')" />
       </el-form-item>
-      <el-form-item :label="t('system.role._todo226')" prop="sort">
-        <el-input v-model="formData.sort" :placeholder="t('system.role._todo227')" />
+      <el-form-item :label="t('system.role.displayOrder')" prop="sort">
+        <el-input v-model="formData.sort" :placeholder="t('system.role.inputDisplayOrder')" />
       </el-form-item>
       <el-form-item :label="t('common.status')" prop="status">
         <el-select v-model="formData.status" clearable :placeholder="t('system.role.selectStatus')">
@@ -27,7 +27,7 @@
         </el-select>
       </el-form-item>
       <el-form-item :label="t('system.role.remark')" prop="remark">
-        <el-input v-model="formData.remark" :placeholder="t('system.role._todo228')" type="textarea" />
+        <el-input v-model="formData.remark" :placeholder="t('system.role.inputRemark')" type="textarea" />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -61,7 +61,7 @@ const formData = ref({
 const formRules = reactive({
   name: [{ required: true, message: t('system.role.roleNameRequired'), trigger: 'blur' }],
   code: [{ required: true, message: t('system.role.roleKeyRequired'), trigger: 'change' }],
-  sort: [{ required: true, message: t('system.role._todo229'), trigger: 'change' }],
+  sort: [{ required: true, message: t('system.role.displayOrderRequired'), trigger: 'change' }],
   status: [{ required: true, message: t('system.role.statusRequired'), trigger: 'change' }],
   remark: [{ required: false, message: t('system.role.remarkRequired'), trigger: 'blur' }]
 })

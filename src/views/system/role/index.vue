@@ -1,6 +1,6 @@
 <template>
-  <doc-alert :title="t('system.role._todo230')" url="https://doc.iocoder.cn/resource-permission" />
-  <doc-alert :title="t('system.role._todo221')" url="https://doc.iocoder.cn/data-permission" />
+  <doc-alert :title="t('system.role.featurePermission')" url="https://doc.iocoder.cn/resource-permission" />
+  <doc-alert :title="t('system.role.dataPermission')" url="https://doc.iocoder.cn/data-permission" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -96,15 +96,15 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column align="center" :label="t('system.role._todo231')" prop="id" />
+      <el-table-column align="center" :label="t('system.role.roleId')" prop="id" />
       <el-table-column align="center" :label="t('system.role.roleName')" prop="name" />
-      <el-table-column :label="t('system.role._todo232')" align="center" prop="type">
+      <el-table-column :label="t('system.role.roleType')" align="center" prop="type">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_ROLE_TYPE" :value="scope.row.type" />
         </template>
       </el-table-column>
       <el-table-column align="center" :label="t('system.role.roleKey')" prop="code" />
-      <el-table-column align="center" :label="t('system.role._todo226')" prop="sort" />
+      <el-table-column align="center" :label="t('system.role.displayOrder')" prop="sort" />
       <el-table-column align="center" :label="t('system.role.remark')" prop="remark" />
       <el-table-column align="center" :label="t('common.status')" prop="status">
         <template #default="scope">
@@ -142,11 +142,11 @@
             v-hasPermi="['system:permission:assign-role-data-scope']"
             link
             preIcon="ep:coin"
-            :title="t('system.role._todo221')"
+            :title="t('system.role.dataPermission')"
             type="primary"
             @click="openDataPermissionForm(scope.row)"
           >
-            {{ t('system.role._todo221') }}
+            {{ t('system.role.dataPermission') }}
           </el-button>
           <el-button
             v-hasPermi="['system:role:delete']"

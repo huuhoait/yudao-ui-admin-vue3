@@ -43,10 +43,10 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('system.notify.message._todo131')" prop="templateType">
+      <el-form-item :label="t('system.notify.message.templateType')" prop="templateType">
         <el-select
           v-model="queryParams.templateType"
-          :placeholder="t('system.notify.message._todo133')"
+          :placeholder="t('system.notify.message.selectTemplateType')"
           clearable
           class="!w-240px"
         >
@@ -89,14 +89,14 @@
       <el-table-column :label="t('system.notify.message.templateCode')" align="center" prop="templateCode" width="80" />
       <el-table-column :label="t('system.notify.message.senderName')" align="center" prop="templateNickname" width="180" />
       <el-table-column
-        :label="t('system.notify.message._todo129')"
+        :label="t('system.notify.message.templateContent')"
         align="center"
         prop="templateContent"
         width="200"
         show-overflow-tooltip
       />
       <el-table-column
-        :label="t('system.notify.message._todo130')"
+        :label="t('system.notify.message.templateParams')"
         align="center"
         prop="templateParams"
         width="180"
@@ -104,12 +104,12 @@
       >
         <template #default="scope"> {{ scope.row.templateParams }}</template>
       </el-table-column>
-      <el-table-column :label="t('system.notify.message._todo131')" align="center" prop="templateType" width="120">
+      <el-table-column :label="t('system.notify.message.templateType')" align="center" prop="templateType" width="120">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_NOTIFY_TEMPLATE_TYPE" :value="scope.row.templateType" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('system.notify.message._todo132')" align="center" prop="readStatus" width="100">
+      <el-table-column :label="t('system.notify.message.read')" align="center" prop="readStatus" width="100">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_BOOLEAN_STRING" :value="scope.row.readStatus" />
         </template>

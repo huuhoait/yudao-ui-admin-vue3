@@ -41,7 +41,7 @@
 
         <el-tabs v-model="activeTab">
           <!-- 表单信息 -->
-          <el-tab-pane :label="t('bpm.processInstance.detail._todo330')" name="form">
+          <el-tab-pane :label="t('bpm.processInstance.detail.approvalDetail')" name="form">
             <div class="form-scroll-area">
               <el-scrollbar>
                 <el-row :gutter="40">
@@ -76,7 +76,7 @@
           </el-tab-pane>
 
           <!-- 流程图 -->
-          <el-tab-pane :label="t('bpm.processInstance.detail._todo331')" name="diagram" lazy>
+          <el-tab-pane :label="t('bpm.processInstance.detail.processDiagram')" name="diagram" lazy>
             <div class="form-scroll-area">
               <ProcessInstanceSimpleViewer
                 v-show="
@@ -96,7 +96,7 @@
           </el-tab-pane>
 
           <!-- 流转记录 -->
-          <el-tab-pane :label="t('bpm.processInstance.detail._todo332')" name="record">
+          <el-tab-pane :label="t('bpm.processInstance.detail.flowRecords')" name="record">
             <div class="form-scroll-area">
               <el-scrollbar>
                 <ProcessInstanceTaskList :loading="processInstanceLoading" :id="id" />
@@ -105,7 +105,7 @@
           </el-tab-pane>
 
           <!-- 流程评论 -->
-          <el-tab-pane :label="t('bpm.processInstance.detail._todo289')" name="comment">
+          <el-tab-pane :label="t('bpm.processInstance.detail.processComments')" name="comment">
             <div class="form-scroll-area">
               <el-scrollbar>
                 <ProcessInstanceCommentList
@@ -214,11 +214,11 @@ const getApprovalDetail = async () => {
     }
     const data = await ProcessInstanceApi.getApprovalDetail(param)
     if (!data) {
-      message.error(t('bpm.processInstance.detail._todo333'))
+      message.error(t('bpm.processInstance.detail.approvalDetailNotFound'))
       return
     }
     if (!data.processDefinition || !data.processInstance) {
-      message.error(t('bpm.processInstance.detail._todo334'))
+      message.error(t('bpm.processInstance.detail.processInformationNotFound'))
       return
     }
     processInstance.value = data.processInstance

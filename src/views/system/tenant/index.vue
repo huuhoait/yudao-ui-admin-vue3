@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('system.tenant._todo278')" url="https://doc.iocoder.cn/saas-tenant/" />
+  <doc-alert :title="t('system.tenant.saasMultiTenant')" url="https://doc.iocoder.cn/saas-tenant/" />
 
   <!-- 搜索 -->
   <ContentWrap>
@@ -110,11 +110,11 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column :label="t('system.tenant._todo279')" align="center" prop="id" />
+      <el-table-column :label="t('system.tenant.tenantId')" align="center" prop="id" />
       <el-table-column :label="t('system.tenant.tenantName')" align="center" prop="name" />
       <el-table-column :label="t('system.tenant.tenantPackage')" align="center" prop="packageId">
         <template #default="scope">
-          <el-tag v-if="scope.row.packageId === 0" type="danger">{{ t('system.tenant._todo280') }}</el-tag>
+          <el-tag v-if="scope.row.packageId === 0" type="danger">{{ t('system.tenant.systemTenant') }}</el-tag>
           <template v-else v-for="item in packageList">
             <el-tag type="success" :key="item.id" v-if="item.id === scope.row.packageId">
               {{ item.name }}
@@ -136,7 +136,7 @@
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('system.tenant._todo276')" align="center" prop="websites" width="180">
+      <el-table-column :label="t('system.tenant.bindDomain')" align="center" prop="websites" width="180">
         <template #default="scope">
           <el-tag v-for="website in scope.row.websites || []" :key="website" class="mr-1 mb-1">
             {{ website }}

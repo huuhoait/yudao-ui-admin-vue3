@@ -7,7 +7,7 @@
       :rules="formRules"
       label-width="100px"
     >
-      <el-form-item :label="t('system.menu._todo83')">
+      <el-form-item :label="t('system.menu.parentMenu')">
         <el-tree-select
           v-model="formData.parentId"
           :data="menuTree"
@@ -20,7 +20,7 @@
       <el-form-item :label="t('system.menu.menuName')" prop="name">
         <el-input v-model="formData.name" clearable :placeholder="t('system.menu.inputMenuName')" />
       </el-form-item>
-      <el-form-item :label="t('system.menu._todo84')" prop="type">
+      <el-form-item :label="t('system.menu.menuType')" prop="type">
         <el-radio-group v-model="formData.type">
           <el-radio-button
             v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_MENU_TYPE)"
@@ -31,7 +31,7 @@
           </el-radio-button>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="formData.type !== 3" :label="t('system.menu._todo85')">
+      <el-form-item v-if="formData.type !== 3" :label="t('system.menu.menuIcon')">
         <IconSelect v-model="formData.icon" clearable />
       </el-form-item>
       <el-form-item v-if="formData.type !== 3" :label="t('system.menu.routePath')" prop="path">
@@ -43,20 +43,20 @@
         </template>
         <el-input v-model="formData.path" clearable :placeholder="t('system.menu.inputRoutePath')" />
       </el-form-item>
-      <el-form-item v-if="formData.type === 2" :label="t('system.menu._todo86')" prop="component">
-        <el-input v-model="formData.component" clearable :placeholder="t('system.menu._todo87')" />
+      <el-form-item v-if="formData.type === 2" :label="t('system.menu.componentPath')" prop="component">
+        <el-input v-model="formData.component" clearable :placeholder="t('system.menu.egSystemUserIndex')" />
       </el-form-item>
-      <el-form-item v-if="formData.type === 2" :label="t('system.menu._todo88')" prop="componentName">
-        <el-input v-model="formData.componentName" clearable :placeholder="t('system.menu._todo89')" />
+      <el-form-item v-if="formData.type === 2" :label="t('system.menu.componentName')" prop="componentName">
+        <el-input v-model="formData.componentName" clearable :placeholder="t('system.menu.egSystemuser')" />
       </el-form-item>
-      <el-form-item v-if="formData.type !== 1" :label="t('system.menu._todo90')" prop="permission">
+      <el-form-item v-if="formData.type !== 1" :label="t('system.menu.permission')" prop="permission">
         <template #label>
           <Tooltip
             :message="t('system.menu.permissionTip')"
-            :title="t('system.menu._todo90')"
+            :title="t('system.menu.permission')"
           />
         </template>
-        <el-input v-model="formData.permission" clearable :placeholder="t('system.menu._todo91')" />
+        <el-input v-model="formData.permission" clearable :placeholder="t('system.menu.inputPermission')" />
       </el-form-item>
       <el-form-item :label="t('system.menu.displaySort')" prop="sort">
         <el-input-number v-model="formData.sort" :min="0" clearable controls-position="right" />
@@ -72,37 +72,37 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="formData.type !== 3" :label="t('system.menu._todo92')" prop="visible">
+      <el-form-item v-if="formData.type !== 3" :label="t('system.menu.displayStatus')" prop="visible">
         <template #label>
-          <Tooltip :message="t('system.menu.visibleTip')" :title="t('system.menu._todo92')" />
+          <Tooltip :message="t('system.menu.visibleTip')" :title="t('system.menu.displayStatus')" />
         </template>
         <el-radio-group v-model="formData.visible">
-          <el-radio key="true" :value="true" border>{{ t('system.menu._todo95') }}</el-radio>
-          <el-radio key="false" :value="false" border>{{ t('system.menu._todo96') }}</el-radio>
+          <el-radio key="true" :value="true" border>{{ t('system.menu.show') }}</el-radio>
+          <el-radio key="false" :value="false" border>{{ t('system.menu.hide') }}</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="formData.type !== 3" :label="t('system.menu._todo93')" prop="alwaysShow">
+      <el-form-item v-if="formData.type !== 3" :label="t('system.menu.alwaysShow')" prop="alwaysShow">
         <template #label>
           <Tooltip
             :message="t('system.menu.alwaysShowTip')"
-            :title="t('system.menu._todo93')"
+            :title="t('system.menu.alwaysShow')"
           />
         </template>
         <el-radio-group v-model="formData.alwaysShow">
-          <el-radio key="true" :value="true" border>{{ t('system.menu._todo97') }}</el-radio>
-          <el-radio key="false" :value="false" border>{{ t('system.menu._todo98') }}</el-radio>
+          <el-radio key="true" :value="true" border>{{ t('system.menu.always') }}</el-radio>
+          <el-radio key="false" :value="false" border>{{ t('system.menu.no') }}</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="formData.type === 2" :label="t('system.menu._todo94')" prop="keepAlive">
+      <el-form-item v-if="formData.type === 2" :label="t('system.menu.cacheStatus')" prop="keepAlive">
         <template #label>
           <Tooltip
             :message="t('system.menu.keepAliveTip')"
-            :title="t('system.menu._todo94')"
+            :title="t('system.menu.cacheStatus')"
           />
         </template>
         <el-radio-group v-model="formData.keepAlive">
-          <el-radio key="true" :value="true" border>{{ t('system.menu._todo99') }}</el-radio>
-          <el-radio key="false" :value="false" border>{{ t('system.menu._todo100') }}</el-radio>
+          <el-radio key="true" :value="true" border>{{ t('system.menu.cache') }}</el-radio>
+          <el-radio key="false" :value="false" border>{{ t('system.menu.noCache') }}</el-radio>
         </el-radio-group>
       </el-form-item>
     </el-form>
@@ -147,8 +147,8 @@ const formData = ref({
 })
 const formRules = reactive({
   name: [{ required: true, message: t('system.menu.menuNameRequired'), trigger: 'blur' }],
-  type: [{ required: true, message: t('system.menu._todo101'), trigger: 'blur' }],
-  sort: [{ required: true, message: t('system.menu._todo102'), trigger: 'blur' }],
+  type: [{ required: true, message: t('system.menu.menuTypeRequired'), trigger: 'blur' }],
+  sort: [{ required: true, message: t('system.menu.menuOrderRequired'), trigger: 'blur' }],
   path: [{ required: true, message: t('system.menu.routePathRequired'), trigger: 'blur' }],
   status: [{ required: true, message: t('system.menu.statusRequired'), trigger: 'blur' }]
 })
@@ -193,10 +193,10 @@ const submitForm = async () => {
     ) {
       if (!isExternal(formData.value.path)) {
         if (formData.value.parentId === 0 && formData.value.path.charAt(0) !== '/') {
-          message.error(t('system.menu._todo103'))
+          message.error(t('system.menu.pathMustStart'))
           return
         } else if (formData.value.parentId !== 0 && formData.value.path.charAt(0) === '/') {
-          message.error(t('system.menu._todo104'))
+          message.error(t('system.menu.pathMustNotStart'))
           return
         }
       }
@@ -224,7 +224,7 @@ const menuTree = ref<Tree[]>([]) // 树形结构
 const getTree = async () => {
   menuTree.value = []
   const res = await MenuApi.getSimpleMenusList()
-  let menu: Tree = { id: 0, name: t('system.menu._todo105'), children: [] }
+  let menu: Tree = { id: 0, name: t('system.menu.mainCategory'), children: [] }
   menu.children = handleTree(res)
   menuTree.value.push(menu)
 }

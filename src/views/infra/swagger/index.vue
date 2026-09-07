@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('infra.swagger._todo366')" url="https://doc.iocoder.cn/api-doc/" />
+  <doc-alert :title="t('infra.swagger.apiDocumentation')" url="https://doc.iocoder.cn/api-doc/" />
 
   <ContentWrap :bodyStyle="{ padding: '0px' }" class="!mb-0">
     <IFrame v-if="!loading" v-loading="loading" :src="src" />

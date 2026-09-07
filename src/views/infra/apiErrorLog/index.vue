@@ -43,7 +43,7 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.apiErrorLog._todo28')" prop="exceptionTime">
+      <el-form-item :label="t('infra.apiErrorLog.exceptionTime')" prop="exceptionTime">
         <el-date-picker
           v-model="queryParams.exceptionTime"
           value-format="YYYY-MM-DD HH:mm:ss"
@@ -54,10 +54,10 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.apiErrorLog._todo31')" prop="processStatus">
+      <el-form-item :label="t('infra.apiErrorLog.processingStatus')" prop="processStatus">
         <el-select
           v-model="queryParams.processStatus"
-          :placeholder="t('infra.apiErrorLog._todo34')"
+          :placeholder="t('infra.apiErrorLog.selectProcessingStatus')"
           clearable
           class="!w-240px"
         >
@@ -96,17 +96,17 @@
         </template>
       </el-table-column>
       <el-table-column :label="t('infra.apiErrorLog.appName')" align="center" prop="applicationName" width="200" />
-      <el-table-column :label="t('infra.apiErrorLog._todo36')" align="center" prop="requestMethod" width="80" />
-      <el-table-column :label="t('infra.apiErrorLog._todo37')" align="center" prop="requestUrl" width="180" />
+      <el-table-column :label="t('infra.apiErrorLog.requestMethod')" align="center" prop="requestMethod" width="80" />
+      <el-table-column :label="t('infra.apiErrorLog.requestUrl')" align="center" prop="requestUrl" width="180" />
       <el-table-column
-        :label="t('infra.apiErrorLog._todo38')"
+        :label="t('infra.apiErrorLog.exceptionOccurrenceTime')"
         align="center"
         prop="exceptionTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('infra.apiErrorLog._todo29')" align="center" prop="exceptionName" width="180" />
-      <el-table-column :label="t('infra.apiErrorLog._todo31')" align="center" prop="processStatus">
+      <el-table-column :label="t('infra.apiErrorLog.exceptionName')" align="center" prop="exceptionName" width="180" />
+      <el-table-column :label="t('infra.apiErrorLog.processingStatus')" align="center" prop="processStatus">
         <template #default="scope">
           <dict-tag
             :type="DICT_TYPE.INFRA_API_ERROR_LOG_PROCESS_STATUS"
@@ -122,7 +122,7 @@
             @click="openDetail(scope.row)"
             v-hasPermi="['infra:api-error-log:query']"
           >
-            {{ t('infra.apiErrorLog._todo39') }}
+            {{ t('infra.apiErrorLog.details') }}
           </el-button>
           <el-button
             link
@@ -131,7 +131,7 @@
             @click="handleProcess(scope.row.id, InfraApiErrorLogProcessStatusEnum.DONE)"
             v-hasPermi="['infra:api-error-log:update-status']"
           >
-            {{ t('infra.apiErrorLog._todo40') }}
+            {{ t('infra.apiErrorLog.processed') }}
           </el-button>
           <el-button
             link
@@ -140,7 +140,7 @@
             @click="handleProcess(scope.row.id, InfraApiErrorLogProcessStatusEnum.IGNORE)"
             v-hasPermi="['infra:api-error-log:update-status']"
           >
-            {{ t('infra.apiErrorLog._todo41') }}
+            {{ t('infra.apiErrorLog.ignored') }}
           </el-button>
         </template>
       </el-table-column>
@@ -221,7 +221,7 @@ const openDetail = (data: ApiErrorLogApi.ApiErrorLogVO) => {
 const handleProcess = async (id: number, processStatus: number) => {
   try {
     // 操作的二次确认
-    const type = processStatus === InfraApiErrorLogProcessStatusEnum.DONE ? t('infra.apiErrorLog._todo40') : t('infra.apiErrorLog._todo41')
+    const type = processStatus === InfraApiErrorLogProcessStatusEnum.DONE ? t('infra.apiErrorLog.processed') : t('infra.apiErrorLog.ignored')
     await message.confirm(t('infra.apiErrorLog.confirmMarkAs', { type }))
     // 执行操作
     await ApiErrorLogApi.updateApiErrorLogPage(id, processStatus)

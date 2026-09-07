@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('system.tenantPackage._todo292')" url="https://doc.iocoder.cn/saas-tenant/" />
+  <doc-alert :title="t('system.tenantPackage.saasMultiTenant')" url="https://doc.iocoder.cn/saas-tenant/" />
 
   <!-- 搜索 -->
   <ContentWrap>
@@ -10,10 +10,10 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="t('system.tenantPackage._todo281')" prop="name">
+      <el-form-item :label="t('system.tenantPackage.packageName')" prop="name">
         <el-input
           v-model="queryParams.name"
-          :placeholder="t('system.tenantPackage._todo282')"
+          :placeholder="t('system.tenantPackage.inputPackageName')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
@@ -69,8 +69,8 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column :label="t('system.tenantPackage._todo293')" align="center" prop="id" width="120" />
-      <el-table-column :label="t('system.tenantPackage._todo281')" align="center" prop="name" />
+      <el-table-column :label="t('system.tenantPackage.packageId')" align="center" prop="id" width="120" />
+      <el-table-column :label="t('system.tenantPackage.packageName')" align="center" prop="name" />
       <el-table-column :label="t('common.status')" align="center" prop="status" width="100">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />

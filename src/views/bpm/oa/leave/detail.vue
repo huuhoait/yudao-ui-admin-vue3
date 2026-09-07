@@ -10,7 +10,7 @@
       <el-descriptions-item :label="t('bpm.oa.leave.endTime')">
         {{ formatDate(detailData.endTime, 'YYYY-MM-DD') }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('bpm.oa.leave._todo160')">
+      <el-descriptions-item :label="t('bpm.oa.leave.reason')">
         {{ detailData.reason }}
       </el-descriptions-item>
     </el-descriptions>

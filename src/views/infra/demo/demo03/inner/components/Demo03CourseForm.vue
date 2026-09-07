@@ -16,10 +16,10 @@
           </el-form-item>
         </template>
       </el-table-column>
-      <el-table-column :label="t('infra.demo.demo03.inner.components._todo199')" min-width="150">
+      <el-table-column :label="t('infra.demo.demo03.inner.components.score')" min-width="150">
         <template #default="{ row, $index }">
           <el-form-item :prop="`${$index}.score`" :rules="formRules.score" class="mb-0px!">
-            <el-input v-model="row.score" :placeholder="t('infra.demo.demo03.inner.components._todo200')" />
+            <el-input v-model="row.score" :placeholder="t('infra.demo.demo03.inner.components.inputScore')" />
           </el-form-item>
         </template>
       </el-table-column>
@@ -31,7 +31,7 @@
     </el-table>
   </el-form>
   <el-row justify="center" class="mt-3">
-    <el-button @click="handleAdd" round>{{ t('infra.demo.demo03.inner.components._todo201') }}</el-button>
+    <el-button @click="handleAdd" round>{{ t('infra.demo.demo03.inner.components.addStudentCourse') }}</el-button>
   </el-row>
 </template>
 <script setup lang="ts">
@@ -44,9 +44,9 @@ const props = defineProps<{
 const formLoading = ref(false) // 表单的加载中
 const formData = ref<any[]>([])
 const formRules = reactive({
-  studentId: [{ required: true, message: t('infra.demo.demo03.inner.components._todo202'), trigger: 'blur' }],
+  studentId: [{ required: true, message: t('infra.demo.demo03.inner.components.studentIdCannotBeEmpty'), trigger: 'blur' }],
   name: [{ required: true, message: t('infra.demo.demo03.inner.components.nameRequired'), trigger: 'blur' }],
-  score: [{ required: true, message: t('infra.demo.demo03.inner.components._todo203'), trigger: 'blur' }]
+  score: [{ required: true, message: t('infra.demo.demo03.inner.components.scoreCannotBeEmpty'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

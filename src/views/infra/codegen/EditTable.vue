@@ -1,13 +1,13 @@
 <template>
   <ContentWrap v-loading="formLoading">
     <el-tabs v-model="activeName">
-      <el-tab-pane :label="t('infra.codegen._todo47')" name="basicInfo">
+      <el-tab-pane :label="t('infra.codegen.basicInfo')" name="basicInfo">
         <basic-info-form ref="basicInfoRef" :table="formData.table" />
       </el-tab-pane>
-      <el-tab-pane :label="t('infra.codegen._todo48')" name="colum">
+      <el-tab-pane :label="t('infra.codegen.fieldInfo')" name="colum">
         <colum-info-form ref="columInfoRef" :columns="formData.columns" />
       </el-tab-pane>
-      <el-tab-pane :label="t('infra.codegen._todo49')" name="generateInfo">
+      <el-tab-pane :label="t('infra.codegen.generationInfo')" name="generateInfo">
         <generate-info-form
           ref="generateInfoRef"
           :table="formData.table"

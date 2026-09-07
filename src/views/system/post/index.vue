@@ -73,11 +73,11 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column :label="t('system.post._todo212')" align="center" prop="id" />
+      <el-table-column :label="t('system.post.postId')" align="center" prop="id" />
       <el-table-column :label="t('system.post.postName')" align="center" prop="name" />
       <el-table-column :label="t('system.post.postCode')" align="center" prop="code" />
-      <el-table-column :label="t('system.post._todo206')" align="center" prop="sort" />
-      <el-table-column :label="t('system.post._todo213')" align="center" prop="remark" />
+      <el-table-column :label="t('system.post.postOrder')" align="center" prop="sort" />
+      <el-table-column :label="t('system.post.postRemark')" align="center" prop="remark" />
       <el-table-column :label="t('common.status')" align="center" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />

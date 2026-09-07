@@ -29,7 +29,7 @@
       <el-table-column type="selection" width="55" />
       <el-table-column :label="t('infra.demo.demo03.erp.components.id')" align="center" prop="id" />
       <el-table-column :label="t('infra.demo.demo03.erp.components.name')" align="center" prop="name" />
-      <el-table-column :label="t('infra.demo.demo03.erp.components._todo179')" align="center" prop="score" />
+      <el-table-column :label="t('infra.demo.demo03.erp.components.score')" align="center" prop="score" />
       <el-table-column
         :label="t('common.createTime')"
         align="center"
@@ -125,7 +125,7 @@ const handleQuery = () => {
 const formRef = ref()
 const openForm = (type: string, id?: number) => {
   if (!props.studentId) {
-    message.error(t('infra.demo.demo03.erp.components._todo183'))
+    message.error(t('infra.demo.demo03.erp.components.selectStudent'))
     return
   }
   formRef.value.open(type, id, props.studentId)

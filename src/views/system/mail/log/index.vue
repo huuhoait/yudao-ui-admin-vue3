@@ -10,10 +10,10 @@
       :inline="true"
       label-width="100px"
     >
-      <el-form-item :label="t('system.mail.log._todo71')" prop="toMail">
+      <el-form-item :label="t('system.mail.log.recipientEmail')" prop="toMail">
         <el-input
           v-model="queryParams.toMail"
-          :placeholder="t('system.mail.log._todo72')"
+          :placeholder="t('system.mail.log.inputRecipientEmail')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
@@ -119,7 +119,7 @@
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('system.mail.log._todo60')" align="center" width="150">
+      <el-table-column :label="t('system.mail.log.recipientUser')" align="center" width="150">
         <template #default="scope">
           <div v-if="scope.row.userType && scope.row.userId">
             <dict-tag :type="DICT_TYPE.USER_TYPE" :value="scope.row.userType" />
@@ -128,23 +128,23 @@
           <div v-else>-</div>
         </template>
       </el-table-column>
-      <el-table-column :label="t('system.mail.log._todo61')" align="center" width="300">
+      <el-table-column :label="t('system.mail.log.recipientInfo')" align="center" width="300">
         <template #default="scope">
           <div class="text-left">
             <div v-if="scope.row.toMails && scope.row.toMails.length > 0">
-              {{ t('system.mail.log._todo68') }}
+              {{ t('system.mail.log.to') }}
               <span v-for="(mail, index) in scope.row.toMails" :key="mail">
                 {{ mail }}<span v-if="Number(index) < scope.row.toMails.length - 1">、</span>
               </span>
             </div>
             <div v-if="scope.row.ccMails && scope.row.ccMails.length > 0">
-              {{ t('system.mail.log._todo69') }}
+              {{ t('system.mail.log.cc') }}
               <span v-for="(mail, index) in scope.row.ccMails" :key="mail">
                 {{ mail }}<span v-if="Number(index) < scope.row.ccMails.length - 1">、</span>
               </span>
             </div>
             <div v-if="scope.row.bccMails && scope.row.bccMails.length > 0">
-              {{ t('system.mail.log._todo70') }}
+              {{ t('system.mail.log.bcc') }}
               <span v-for="(mail, index) in scope.row.bccMails" :key="mail">
                 {{ mail }}<span v-if="Number(index) < scope.row.bccMails.length - 1">、</span>
               </span>
@@ -152,7 +152,7 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column :label="t('system.mail.log._todo62')" align="center" prop="templateTitle" width="200" />
+      <el-table-column :label="t('system.mail.log.mailSubject')" align="center" prop="templateTitle" width="200" />
       <el-table-column :label="t('system.mail.log.sendStatus')" align="center" width="120">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_MAIL_SEND_STATUS" :value="scope.row.sendStatus" />

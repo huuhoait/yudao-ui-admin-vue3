@@ -1,7 +1,7 @@
 <template>
   <el-table :data="tasks" border header-cell-class-name="table-header-gray">
-    <el-table-column :label="t('bpm.processInstance.detail._todo320')" prop="name" min-width="120" align="center" />
-    <el-table-column :label="t('bpm.processInstance.detail._todo321')" min-width="100" align="center">
+    <el-table-column :label="t('bpm.processInstance.detail.approvalNode')" prop="name" min-width="120" align="center" />
+    <el-table-column :label="t('bpm.processInstance.detail.approver')" min-width="100" align="center">
       <template #default="scope">
         {{ scope.row.assigneeUser?.nickname || scope.row.ownerUser?.nickname }}
       </template>
@@ -34,11 +34,11 @@
           v-if="scope.row.formId > 0"
           @click="handleFormDetail(scope.row)"
         >
-          <Icon icon="ep:document" /> {{ t('bpm.processInstance.detail._todo323') }}
+          <Icon icon="ep:document" /> {{ t('bpm.processInstance.detail.viewForm') }}
         </el-button>
       </template>
     </el-table-column>
-    <el-table-column align="center" :label="t('bpm.processInstance.detail._todo322')" min-width="180">
+    <el-table-column align="center" :label="t('bpm.processInstance.detail.attachmentSignature')" min-width="180">
       <template #default="scope">
         <TaskEvidenceCell
           :attachments="scope.row.attachments"

@@ -43,7 +43,7 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.apiAccessLog._todo8')" prop="beginTime">
+      <el-form-item :label="t('infra.apiAccessLog.requestTime')" prop="beginTime">
         <el-date-picker
           v-model="queryParams.beginTime"
           value-format="YYYY-MM-DD HH:mm:ss"
@@ -54,19 +54,19 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.apiAccessLog._todo14')" prop="duration">
+      <el-form-item :label="t('infra.apiAccessLog.executionDuration')" prop="duration">
         <el-input
           v-model="queryParams.duration"
-          :placeholder="t('infra.apiAccessLog._todo15')"
+          :placeholder="t('infra.apiAccessLog.inputExecutionDuration')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.apiAccessLog._todo16')" prop="resultCode">
+      <el-form-item :label="t('infra.apiAccessLog.resultCode')" prop="resultCode">
         <el-input
           v-model="queryParams.resultCode"
-          :placeholder="t('infra.apiAccessLog._todo17')"
+          :placeholder="t('infra.apiAccessLog.inputResultCode')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
@@ -99,17 +99,17 @@
         </template>
       </el-table-column>
       <el-table-column :label="t('infra.apiAccessLog.appName')" align="center" prop="applicationName" width="150" />
-      <el-table-column :label="t('infra.apiAccessLog._todo19')" align="center" prop="requestMethod" width="80" />
-      <el-table-column :label="t('infra.apiAccessLog._todo20')" align="center" prop="requestUrl" width="500" />
-      <el-table-column :label="t('infra.apiAccessLog._todo8')" align="center" prop="beginTime" width="180">
+      <el-table-column :label="t('infra.apiAccessLog.requestMethod')" align="center" prop="requestMethod" width="80" />
+      <el-table-column :label="t('infra.apiAccessLog.requestUrl')" align="center" prop="requestUrl" width="500" />
+      <el-table-column :label="t('infra.apiAccessLog.requestTime')" align="center" prop="beginTime" width="180">
         <template #default="scope">
           <span>{{ formatDate(scope.row.beginTime) }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="t('infra.apiAccessLog._todo14')" align="center" prop="duration" width="180">
+      <el-table-column :label="t('infra.apiAccessLog.executionDuration')" align="center" prop="duration" width="180">
         <template #default="scope"> {{ scope.row.duration }} ms </template>
       </el-table-column>
-      <el-table-column :label="t('infra.apiAccessLog._todo10')" align="center" prop="status">
+      <el-table-column :label="t('infra.apiAccessLog.operationResult')" align="center" prop="status">
         <template #default="scope">
           {{
             scope.row.resultCode === 0
@@ -118,9 +118,9 @@
           }}
         </template>
       </el-table-column>
-      <el-table-column :label="t('infra.apiAccessLog._todo11')" align="center" prop="operateModule" width="180" />
-      <el-table-column :label="t('infra.apiAccessLog._todo12')" align="center" prop="operateName" width="180" />
-      <el-table-column :label="t('infra.apiAccessLog._todo21')" align="center" prop="operateType">
+      <el-table-column :label="t('infra.apiAccessLog.operationModule')" align="center" prop="operateModule" width="180" />
+      <el-table-column :label="t('infra.apiAccessLog.operationName')" align="center" prop="operateName" width="180" />
+      <el-table-column :label="t('infra.apiAccessLog.operationType')" align="center" prop="operateType">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_OPERATE_TYPE" :value="scope.row.operateType" />
         </template>
@@ -133,7 +133,7 @@
             @click="openDetail(scope.row)"
             v-hasPermi="['infra:api-access-log:query']"
           >
-            {{ t('infra.apiAccessLog._todo22') }}
+            {{ t('infra.apiAccessLog.details') }}
           </el-button>
         </template>
       </el-table-column>

@@ -1,7 +1,7 @@
 <template>
-  <doc-alert :title="t('infra.job.logger._todo334')" url="https://doc.iocoder.cn/job/" />
-  <doc-alert :title="t('infra.job.logger._todo335')" url="https://doc.iocoder.cn/async-task/" />
-  <doc-alert :title="t('infra.job.logger._todo336')" url="https://doc.iocoder.cn/message-queue/" />
+  <doc-alert :title="t('infra.job.logger.scheduledTask')" url="https://doc.iocoder.cn/job/" />
+  <doc-alert :title="t('infra.job.logger.asyncTask')" url="https://doc.iocoder.cn/async-task/" />
+  <doc-alert :title="t('infra.job.logger.messageQueue')" url="https://doc.iocoder.cn/message-queue/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -12,40 +12,40 @@
       :inline="true"
       label-width="120px"
     >
-      <el-form-item :label="t('infra.job.logger._todo327')" prop="handlerName">
+      <el-form-item :label="t('infra.job.logger.handlerName')" prop="handlerName">
         <el-input
           v-model="queryParams.handlerName"
-          :placeholder="t('infra.job.logger._todo337')"
+          :placeholder="t('infra.job.logger.inputHandlerName')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.job.logger._todo338')" prop="beginTime">
+      <el-form-item :label="t('infra.job.logger.startExecutionTime')" prop="beginTime">
         <el-date-picker
           v-model="queryParams.beginTime"
           type="date"
           value-format="YYYY-MM-DD HH:mm:ss"
-          :placeholder="t('infra.job.logger._todo339')"
+          :placeholder="t('infra.job.logger.selectStartExecutionTime')"
           clearable
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.job.logger._todo340')" prop="endTime">
+      <el-form-item :label="t('infra.job.logger.endExecutionTime')" prop="endTime">
         <el-date-picker
           v-model="queryParams.endTime"
           type="date"
           value-format="YYYY-MM-DD HH:mm:ss"
-          :placeholder="t('infra.job.logger._todo341')"
+          :placeholder="t('infra.job.logger.selectEndExecutionTime')"
           clearable
           :default-time="new Date('1 23:59:59')"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.job.logger._todo332')" prop="status">
+      <el-form-item :label="t('infra.job.logger.taskStatus')" prop="status">
         <el-select
           v-model="queryParams.status"
-          :placeholder="t('infra.job.logger._todo342')"
+          :placeholder="t('infra.job.logger.selectTaskStatus')"
           clearable
           class="!w-240px"
         >
@@ -76,22 +76,22 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column :label="t('infra.job.logger._todo326')" align="center" prop="id" />
+      <el-table-column :label="t('infra.job.logger.logId')" align="center" prop="id" />
       <el-table-column :label="t('infra.job.logger.taskId')" align="center" prop="jobId" />
-      <el-table-column :label="t('infra.job.logger._todo327')" align="center" prop="handlerName" />
-      <el-table-column :label="t('infra.job.logger._todo328')" align="center" prop="handlerParam" />
-      <el-table-column :label="t('infra.job.logger._todo329')" align="center" prop="executeIndex" />
-      <el-table-column :label="t('infra.job.logger._todo330')" align="center" width="170s">
+      <el-table-column :label="t('infra.job.logger.handlerName')" align="center" prop="handlerName" />
+      <el-table-column :label="t('infra.job.logger.handlerParameters')" align="center" prop="handlerParam" />
+      <el-table-column :label="t('infra.job.logger.executionNumber')" align="center" prop="executeIndex" />
+      <el-table-column :label="t('infra.job.logger.executionTime')" align="center" width="170s">
         <template #default="scope">
           <span>{{ formatDate(scope.row.beginTime) + ' ~ ' + formatDate(scope.row.endTime) }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="t('infra.job.logger._todo331')" align="center" prop="duration">
+      <el-table-column :label="t('infra.job.logger.executionDuration')" align="center" prop="duration">
         <template #default="scope">
           <span>{{ scope.row.duration }} {{ t('common.milliseconds') }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="t('infra.job.logger._todo332')" align="center" prop="status">
+      <el-table-column :label="t('infra.job.logger.taskStatus')" align="center" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_JOB_LOG_STATUS" :value="scope.row.status" />
         </template>
@@ -104,7 +104,7 @@
             @click="openDetail(scope.row.id)"
             v-hasPermi="['infra:job:query']"
           >
-            {{ t('infra.job.logger._todo343') }}
+            {{ t('infra.job.logger.details') }}
           </el-button>
         </template>
       </el-table-column>

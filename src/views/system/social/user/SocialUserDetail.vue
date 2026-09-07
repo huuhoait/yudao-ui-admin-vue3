@@ -7,13 +7,13 @@
       <el-descriptions-item :label="t('system.social.user.nickname')" min-width="120">
         {{ detailData.nickname }}
       </el-descriptions-item>
-      <el-descriptions :label="t('system.social.user._todo267')" min-width="120">
+      <el-descriptions :label="t('system.social.user.avatar')" min-width="120">
         <el-image :src="detailData.avatar" class="h-30px w-30px" />
       </el-descriptions>
-      <el-descriptions-item :label="t('system.social.user._todo268')" min-width="120">
+      <el-descriptions-item :label="t('system.social.user.socialToken')" min-width="120">
         {{ detailData.token }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.social.user._todo269')" min-width="120">
+      <el-descriptions-item :label="t('system.social.user.rawTokenData')" min-width="120">
         <el-input
           v-model="detailData.rawTokenInfo"
           :autosize="{ maxRows: 20 }"
@@ -21,7 +21,7 @@
           type="textarea"
         />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.social.user._todo270')" min-width="120">
+      <el-descriptions-item :label="t('system.social.user.rawUserData')" min-width="120">
         <el-input
           v-model="detailData.rawUserInfo"
           :autosize="{ maxRows: 20 }"
@@ -29,10 +29,10 @@
           type="textarea"
         />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.social.user._todo271')" min-width="120">
+      <el-descriptions-item :label="t('system.social.user.lastAuthCode')" min-width="120">
         {{ detailData.code }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.social.user._todo272')" min-width="120">
+      <el-descriptions-item :label="t('system.social.user.lastAuthState')" min-width="120">
         {{ detailData.state }}
       </el-descriptions-item>
     </el-descriptions>

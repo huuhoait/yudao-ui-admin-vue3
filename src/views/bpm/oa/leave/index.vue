@@ -25,7 +25,7 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('bpm.oa.leave._todo171')" prop="createTime">
+      <el-form-item :label="t('bpm.oa.leave.applicationTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
@@ -36,12 +36,12 @@
           value-format="YYYY-MM-DD HH:mm:ss"
         />
       </el-form-item>
-      <el-form-item :label="t('bpm.oa.leave._todo172')" prop="status">
+      <el-form-item :label="t('bpm.oa.leave.approvalResult')" prop="status">
         <el-select
           v-model="queryParams.status"
           class="!w-240px"
           clearable
-          :placeholder="t('bpm.oa.leave._todo173')"
+          :placeholder="t('bpm.oa.leave.selectApprovalResult')"
         >
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.BPM_PROCESS_INSTANCE_STATUS)"
@@ -51,12 +51,12 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('bpm.oa.leave._todo160')" prop="reason">
+      <el-form-item :label="t('bpm.oa.leave.reason')" prop="reason">
         <el-input
           v-model="queryParams.reason"
           class="!w-240px"
           clearable
-          :placeholder="t('bpm.oa.leave._todo174')"
+          :placeholder="t('bpm.oa.leave.inputReason')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
@@ -71,7 +71,7 @@
         </el-button>
         <el-button plain type="primary" @click="handleCreate()">
           <Icon class="mr-5px" icon="ep:plus" />
-          {{ t('bpm.oa.leave._todo176') }}
+          {{ t('bpm.oa.leave.createLeave') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -80,7 +80,7 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column align="center" :label="t('bpm.oa.leave._todo175')" prop="id" />
+      <el-table-column align="center" :label="t('bpm.oa.leave.applicationId')" prop="id" />
       <el-table-column align="center" :label="t('common.status')" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.BPM_PROCESS_INSTANCE_STATUS" :value="scope.row.status" />
@@ -105,11 +105,11 @@
           <dict-tag :type="DICT_TYPE.BPM_OA_LEAVE_TYPE" :value="scope.row.type" />
         </template>
       </el-table-column>
-      <el-table-column align="center" :label="t('bpm.oa.leave._todo160')" prop="reason" />
+      <el-table-column align="center" :label="t('bpm.oa.leave.reason')" prop="reason" />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="t('bpm.oa.leave._todo171')"
+        :label="t('bpm.oa.leave.applicationTime')"
         prop="createTime"
         width="180"
       />
@@ -129,7 +129,7 @@
             type="primary"
             @click="handleProcessDetail(scope.row)"
           >
-            {{ t('bpm.oa.leave._todo177') }}
+            {{ t('bpm.oa.leave.progress') }}
           </el-button>
           <el-button
             v-if="scope.row.result === 1"

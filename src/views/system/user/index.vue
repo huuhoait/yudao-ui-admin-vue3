@@ -1,7 +1,7 @@
 <template>
   <doc-alert :title="t('system.user.userSystem')" url="https://doc.iocoder.cn/user-center/" />
   <doc-alert :title="t('system.user.socialLogin')" url="https://doc.iocoder.cn/social-user/" />
-  <doc-alert :title="t('system.user._todo11')" url="https://doc.iocoder.cn/excel-import-and-export/" />
+  <doc-alert :title="t('system.user.excelImportExport')" url="https://doc.iocoder.cn/excel-import-and-export/" />
 
   <el-row :gutter="20">
     <!-- 左侧部门树 -->

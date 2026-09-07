@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('infra.file._todo234')" url="https://doc.iocoder.cn/file/" />
+  <doc-alert :title="t('infra.file.uploadDownload')" url="https://doc.iocoder.cn/file/" />
   <!-- 搜索 -->
   <ContentWrap>
     <el-form
@@ -9,19 +9,19 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="t('infra.file._todo235')" prop="path">
+      <el-form-item :label="t('infra.file.filePath')" prop="path">
         <el-input
           v-model="queryParams.path"
-          :placeholder="t('infra.file._todo236')"
+          :placeholder="t('infra.file.inputFilePath')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.file._todo237')" prop="type" width="80">
+      <el-form-item :label="t('infra.file.fileType')" prop="type" width="80">
         <el-input
           v-model="queryParams.type"
-          :placeholder="t('infra.file._todo238')"
+          :placeholder="t('infra.file.inputFileType')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
@@ -42,7 +42,7 @@
         <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
         <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
         <el-button type="primary" plain @click="openForm">
-          <Icon icon="ep:upload" class="mr-5px" /> {{ t('infra.file._todo228') }}
+          <Icon icon="ep:upload" class="mr-5px" /> {{ t('infra.file.uploadFile') }}
         </el-button>
         <el-button
           type="danger"
@@ -61,18 +61,18 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column :label="t('infra.file._todo239')" align="center" prop="name" :show-overflow-tooltip="true" />
-      <el-table-column :label="t('infra.file._todo235')" align="center" prop="path" :show-overflow-tooltip="true" />
+      <el-table-column :label="t('infra.file.fileName')" align="center" prop="name" :show-overflow-tooltip="true" />
+      <el-table-column :label="t('infra.file.filePath')" align="center" prop="path" :show-overflow-tooltip="true" />
       <el-table-column label="URL" align="center" prop="url" :show-overflow-tooltip="true" />
       <el-table-column
-        :label="t('infra.file._todo240')"
+        :label="t('infra.file.fileSize')"
         align="center"
         prop="size"
         width="120"
         :formatter="fileSizeFormatter"
       />
-      <el-table-column :label="t('infra.file._todo237')" align="center" prop="type" width="180px" />
-      <el-table-column :label="t('infra.file._todo241')" align="center" prop="url" width="110px">
+      <el-table-column :label="t('infra.file.fileType')" align="center" prop="type" width="180px" />
+      <el-table-column :label="t('infra.file.fileContent')" align="center" prop="url" width="110px">
         <template #default="{ row }">
           <el-image
             v-if="row.type.includes('image')"
@@ -90,7 +90,7 @@
             :underline="false"
             target="_blank"
           >
-            {{ t('infra.file._todo243') }}
+            {{ t('infra.file.preview') }}
           </el-link>
           <el-link
             v-else
@@ -100,12 +100,12 @@
             :underline="false"
             target="_blank"
           >
-            {{ t('infra.file._todo244') }}
+            {{ t('infra.file.download') }}
           </el-link>
         </template>
       </el-table-column>
       <el-table-column
-        :label="t('infra.file._todo242')"
+        :label="t('infra.file.uploadTime')"
         align="center"
         prop="createTime"
         width="180"
@@ -114,7 +114,7 @@
       <el-table-column :label="t('infra.file.action')" align="center">
         <template #default="scope">
           <el-button link type="primary" @click="copyToClipboard(scope.row.url)">
-            {{ t('infra.file._todo245') }}
+            {{ t('infra.file.copyLink') }}
           </el-button>
           <el-button
             link

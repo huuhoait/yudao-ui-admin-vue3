@@ -2,7 +2,7 @@
   <el-form ref="formRef" :model="modelData" label-width="180px" class="mt-20px">
     <el-form-item class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form._todo76') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form.submitterPermission') }}</el-text>
       </template>
       <div class="flex flex-col">
         <el-checkbox v-model="modelData.allowCancelRunningProcess" :label="t('bpm.model.form._todo68')" />
@@ -10,7 +10,7 @@
     </el-form-item>
     <el-form-item class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form._todo77') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form.approverPermission') }}</el-text>
       </template>
       <div class="flex flex-col">
         <el-checkbox v-model="modelData.allowWithdrawTask" :label="t('bpm.model.form._todo69')" />
@@ -21,14 +21,14 @@
     </el-form-item>
     <el-form-item v-if="modelData.processIdRule" class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form._todo79') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form.processCode') }}</el-text>
       </template>
       <div class="flex flex-col">
         <div>
           <el-input
             v-model="modelData.processIdRule.prefix"
             class="w-130px!"
-            :placeholder="t('bpm.model.form._todo70')"
+            :placeholder="t('bpm.model.form.prefix')"
             :disabled="!modelData.processIdRule.enable"
           >
             <template #prepend>
@@ -38,7 +38,7 @@
           <el-select
             v-model="modelData.processIdRule.infix"
             class="w-130px! ml-5px"
-            :placeholder="t('bpm.model.form._todo71')"
+            :placeholder="t('bpm.model.form.infix')"
             :disabled="!modelData.processIdRule.enable"
           >
             <el-option
@@ -51,7 +51,7 @@
           <el-input
             v-model="modelData.processIdRule.postfix"
             class="w-80px! ml-5px"
-            :placeholder="t('bpm.model.form._todo72')"
+            :placeholder="t('bpm.model.form.suffix')"
             :disabled="!modelData.processIdRule.enable"
           />
           <el-input-number
@@ -68,7 +68,7 @@
     </el-form-item>
     <el-form-item class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form._todo80') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form.autoDeduplicate') }}</el-text>
       </template>
       <div class="flex flex-col">
         <div>
@@ -76,7 +76,7 @@
         </div>
         <el-radio-group v-model="modelData.autoApprovalType">
           <div class="flex flex-col">
-            <el-radio :value="0">{{ t('bpm.model.form._todo82') }}</el-radio>
+            <el-radio :value="0">{{ t('bpm.model.form.doNotAutoApprove') }}</el-radio>
             <el-radio :value="1">{{ t('bpm.model.form._todo83') }}</el-radio>
             <el-radio :value="2">{{ t('bpm.model.form._todo84') }}</el-radio>
           </div>
@@ -85,16 +85,16 @@
     </el-form-item>
     <el-form-item v-if="modelData.titleSetting" class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form._todo85') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form.titleSettings') }}</el-text>
       </template>
       <div class="flex flex-col">
         <el-radio-group v-model="modelData.titleSetting.enable">
           <div class="flex flex-col">
             <el-radio :value="false">
-              {{ t('bpm.model.form._todo86') }} <el-text type="info"> {{ t('bpm.model.form._todo87') }} </el-text>
+              {{ t('bpm.model.form.systemDefault') }} <el-text type="info"> {{ t('bpm.model.form.showProcessName') }} </el-text>
             </el-radio>
             <el-radio :value="true">
-              {{ t('bpm.model.form._todo88') }}
+              {{ t('bpm.model.form.customTitle') }}
               <el-text>
                 <el-tooltip :content="t('bpm.model.form._todo280')" effect="light" placement="top">
                   <Icon icon="ep:question-filled" class="ml-5px" />
@@ -121,15 +121,15 @@
       class="mb-20px"
     >
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form._todo89') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form.summarySettings') }}</el-text>
       </template>
       <div class="flex flex-col">
         <el-radio-group v-model="modelData.summarySetting.enable">
           <div class="flex flex-col">
             <el-radio :value="false">
-              {{ t('bpm.model.form._todo86') }} <el-text type="info"> {{ t('bpm.model.form._todo90') }} </el-text>
+              {{ t('bpm.model.form.systemDefault') }} <el-text type="info"> {{ t('bpm.model.form._todo90') }} </el-text>
             </el-radio>
-            <el-radio :value="true"> {{ t('bpm.model.form._todo91') }} </el-radio>
+            <el-radio :value="true"> {{ t('bpm.model.form.customSummary') }} </el-radio>
           </div>
         </el-radio-group>
         <el-select
@@ -137,7 +137,7 @@
           v-if="modelData.summarySetting.enable"
           v-model="modelData.summarySetting.summary"
           multiple
-          :placeholder="t('bpm.model.form._todo75')"
+          :placeholder="t('bpm.model.form.selectFormFieldsDisplay')"
         >
           <el-option
             v-for="item in formFieldOptions4Summary"
@@ -150,7 +150,7 @@
     </el-form-item>
     <el-form-item class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form._todo92') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form.processPreNotification') }}</el-text>
       </template>
       <div class="flex flex-col w-100%">
         <div class="flex">
@@ -158,7 +158,7 @@
             v-model="processBeforeTriggerEnable"
             @change="handleProcessBeforeTriggerEnableChange"
           />
-          <div class="ml-80px">{{ t('bpm.model.form._todo93') }}</div>
+          <div class="ml-80px">{{ t('bpm.model.form.notifyAfterProcessStarts') }}</div>
         </div>
         <HttpRequestSetting
           v-if="processBeforeTriggerEnable"
@@ -170,7 +170,7 @@
     </el-form-item>
     <el-form-item class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form._todo94') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form.processPostNotification') }}</el-text>
       </template>
       <div class="flex flex-col w-100%">
         <div class="flex">
@@ -178,7 +178,7 @@
             v-model="processAfterTriggerEnable"
             @change="handleProcessAfterTriggerEnableChange"
           />
-          <div class="ml-80px">{{ t('bpm.model.form._todo95') }}</div>
+          <div class="ml-80px">{{ t('bpm.model.form.notifyAfterProcessEnds') }}</div>
         </div>
         <HttpRequestSetting
           v-if="processAfterTriggerEnable"
@@ -190,7 +190,7 @@
     </el-form-item>
     <el-form-item class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form._todo96') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form.taskPreNotification') }}</el-text>
       </template>
       <div class="flex flex-col w-100%">
         <div class="flex">
@@ -198,7 +198,7 @@
             v-model="taskBeforeTriggerEnable"
             @change="handleTaskBeforeTriggerEnableChange"
           />
-          <div class="ml-80px">{{ t('bpm.model.form._todo97') }}</div>
+          <div class="ml-80px">{{ t('bpm.model.form.notifyWhenTaskExecutes') }}</div>
         </div>
         <HttpRequestSetting
           v-if="taskBeforeTriggerEnable"
@@ -210,7 +210,7 @@
     </el-form-item>
     <el-form-item class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form._todo98') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form.taskPostNotification') }}</el-text>
       </template>
       <div class="flex flex-col w-100%">
         <div class="flex">
@@ -218,7 +218,7 @@
             v-model="taskAfterTriggerEnable"
             @change="handleTaskAfterTriggerEnableChange"
           />
-          <div class="ml-80px">{{ t('bpm.model.form._todo99') }}</div>
+          <div class="ml-80px">{{ t('bpm.model.form.notifyAfterTaskEnds') }}</div>
         </div>
         <HttpRequestSetting
           v-if="taskAfterTriggerEnable"
@@ -230,7 +230,7 @@
     </el-form-item>
     <el-form-item v-if="modelData.printTemplateSetting" class="mb-20px">
       <template #label>
-        <el-text size="large" tag="b">{{ t('bpm.model.form._todo100') }}</el-text>
+        <el-text size="large" tag="b">{{ t('bpm.model.form.customPrintTemplate') }}</el-text>
       </template>
       <div class="flex flex-col w-100%">
         <div class="flex">
@@ -245,7 +245,7 @@
             link
             @click="handleEditPrintTemplate"
           >
-            {{ t('bpm.model.form._todo101') }}
+            {{ t('bpm.model.form.editTemplate') }}
           </el-button>
         </div>
       </div>
@@ -270,23 +270,23 @@ const modelData = defineModel<any>()
 const timeOptions = ref([
   {
     value: '',
-    label: t('bpm.model.form._todo102')
+    label: t('bpm.model.form.none')
   },
   {
     value: 'DAY',
-    label: t('bpm.model.form._todo103')
+    label: t('bpm.model.form.day')
   },
   {
     value: 'HOUR',
-    label: t('bpm.model.form._todo104')
+    label: t('bpm.model.form.hour')
   },
   {
     value: 'MINUTE',
-    label: t('bpm.model.form._todo105')
+    label: t('bpm.model.form.minute')
   },
   {
     value: 'SECOND',
-    label: t('bpm.model.form._todo106')
+    label: t('bpm.model.form.second')
   }
 ])
 const numberExample = computed(() => {

@@ -60,7 +60,7 @@
       <el-table-column :label="t('system.oauth2.client.clientId')" align="center" prop="clientId" />
       <el-table-column :label="t('system.oauth2.client.clientSecret')" align="center" prop="secret" />
       <el-table-column :label="t('system.oauth2.client.appName')" align="center" prop="name" />
-      <el-table-column :label="t('system.oauth2.client._todo158')" align="center" prop="logo">
+      <el-table-column :label="t('system.oauth2.client.appIcon')" align="center" prop="logo">
         <template #default="scope">
           <img width="40px" height="40px" :src="scope.row.logo" />
         </template>
@@ -70,13 +70,13 @@
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('system.oauth2.client._todo160')" align="center" prop="accessTokenValiditySeconds">
+      <el-table-column :label="t('system.oauth2.client.accessTokenValidity')" align="center" prop="accessTokenValiditySeconds">
         <template #default="scope">{{ t('system.oauth2.client.seconds', { n: scope.row.accessTokenValiditySeconds }) }}</template>
       </el-table-column>
-      <el-table-column :label="t('system.oauth2.client._todo162')" align="center" prop="refreshTokenValiditySeconds">
+      <el-table-column :label="t('system.oauth2.client.refreshTokenValidity')" align="center" prop="refreshTokenValiditySeconds">
         <template #default="scope">{{ t('system.oauth2.client.seconds', { n: scope.row.refreshTokenValiditySeconds }) }}</template>
       </el-table-column>
-      <el-table-column :label="t('system.oauth2.client._todo163')" align="center" prop="authorizedGrantTypes">
+      <el-table-column :label="t('system.oauth2.client.grantType')" align="center" prop="authorizedGrantTypes">
         <template #default="scope">
           <el-tag
             :disable-transitions="true"

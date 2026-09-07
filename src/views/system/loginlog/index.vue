@@ -28,7 +28,7 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('system.loginlog._todo43')" prop="createTime">
+      <el-form-item :label="t('system.loginlog.loginDate')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
@@ -58,22 +58,22 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column :label="t('system.loginlog._todo39')" align="center" prop="id" />
-      <el-table-column :label="t('system.loginlog._todo40')" align="center" prop="logType">
+      <el-table-column :label="t('system.loginlog.logId')" align="center" prop="id" />
+      <el-table-column :label="t('system.loginlog.loginType')" align="center" prop="logType">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_TYPE" :value="scope.row.logType" />
         </template>
       </el-table-column>
       <el-table-column :label="t('system.loginlog.username')" align="center" prop="username" width="180" />
       <el-table-column :label="t('system.loginlog.loginAddress')" align="center" prop="userIp" width="180" />
-      <el-table-column :label="t('system.loginlog._todo41')" align="center" prop="userAgent" />
-      <el-table-column :label="t('system.loginlog._todo42')" align="center" prop="result">
+      <el-table-column :label="t('system.loginlog.browser')" align="center" prop="userAgent" />
+      <el-table-column :label="t('system.loginlog.loginResult')" align="center" prop="result">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_RESULT" :value="scope.row.result" />
         </template>
       </el-table-column>
       <el-table-column
-        :label="t('system.loginlog._todo43')"
+        :label="t('system.loginlog.loginDate')"
         align="center"
         prop="createTime"
         width="180"

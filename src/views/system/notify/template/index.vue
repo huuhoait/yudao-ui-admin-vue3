@@ -22,7 +22,7 @@
       <el-form-item :label="t('system.notify.template.templateId')" prop="code">
         <el-input
           v-model="queryParams.code"
-          :placeholder="t('system.notify.template._todo145')"
+          :placeholder="t('system.notify.template.inputTemplateCode')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"

@@ -111,7 +111,7 @@
         :show-overflow-tooltip="true"
       />
       <el-table-column
-        :label="t('system.mail.template._todo73')"
+        :label="t('system.mail.template.templateTitle')"
         align="center"
         prop="title"
         width="150"

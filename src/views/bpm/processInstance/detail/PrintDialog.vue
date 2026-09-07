@@ -167,7 +167,7 @@ const formatPrimitiveValue = (value: unknown): string => {
       .join(', ')
   }
   if (typeof value === 'boolean') {
-    return value ? t('bpm.processInstance.detail._todo286') : t('bpm.processInstance.detail._todo287')
+    return value ? t('bpm.processInstance.detail.yes') : t('bpm.processInstance.detail.no')
   }
   if (isPrintableRecord(value)) {
     const displayValue =
@@ -361,11 +361,11 @@ const formatPrintField = (rule: FormFieldRule, value: unknown, lookupMaps: Print
     case 'UploadImgs':
       return renderImageListHtml(value)
     case 'switch': {
-      if (isEmptyValue(value)) return t('bpm.processInstance.detail._todo287')
+      if (isEmptyValue(value)) return t('bpm.processInstance.detail.no')
       const checkedVal = getRuleProp(rule, 'checkedValue') ?? getRuleProp(rule, 'activeValue')
       const isChecked =
         checkedVal !== undefined && checkedVal !== null ? value === checkedVal : Boolean(value)
-      return isChecked ? t('bpm.processInstance.detail._todo286') : t('bpm.processInstance.detail._todo287')
+      return isChecked ? t('bpm.processInstance.detail.yes') : t('bpm.processInstance.detail.no')
     }
     case 'Editor':
     case 'Tinymce':
@@ -427,7 +427,7 @@ const getPrintTemplateHTML = () => {
     headTd.setAttribute('colspan', '2')
     headTd.setAttribute('width', 'auto')
     headTd.setAttribute('style', 'text-align: center;')
-    headTd.textContent = t('bpm.processInstance.detail._todo284')
+    headTd.textContent = t('bpm.processInstance.detail.processNode')
     headTr.appendChild(headTd)
     processRecordTable.appendChild(headTr)
     printData.value.tasks.forEach((item) => {
@@ -477,7 +477,7 @@ const printObj = ref({
               <td class="p-5px w-25%">{{ formatDate(printData.processInstance.startTime) }}</td>
             </tr>
             <tr>
-              <td class="p-5px w-25%">{{ t('bpm.processInstance.detail._todo282') }}</td>
+              <td class="p-5px w-25%">{{ t('bpm.processInstance.detail.department') }}</td>
               <td class="p-5px w-25%">{{ printData.processInstance.startUser.deptName }}</td>
               <td class="p-5px w-25%">{{ t('bpm.processInstance.detail.processStatus') }}</td>
               <td class="p-5px w-25%">
@@ -491,7 +491,7 @@ const printObj = ref({
             </tr>
             <tr>
               <td class="p-5px w-100% text-center" colspan="4">
-                <h4>{{ t('bpm.processInstance.detail._todo283') }}</h4>
+                <h4>{{ t('bpm.processInstance.detail.formContent') }}</h4>
               </td>
             </tr>
             <tr v-for="item in formFields" :key="item.id">
@@ -517,7 +517,7 @@ const printObj = ref({
           <tbody>
             <tr>
               <td class="p-5px w-100% text-center" colspan="4">
-                <h4>{{ t('bpm.processInstance.detail._todo284') }}</h4>
+                <h4>{{ t('bpm.processInstance.detail.processNode') }}</h4>
               </td>
             </tr>
             <tr v-for="item in printData.tasks" :key="item.id">
@@ -538,7 +538,7 @@ const printObj = ref({
     <template #footer>
       <div class="dialog-footer">
         <el-button @click="visible = false">{{ t('common.cancel') }}</el-button>
-        <el-button type="primary" v-print="printObj"> {{ t('bpm.processInstance.detail._todo285') }}</el-button>
+        <el-button type="primary" v-print="printObj"> {{ t('bpm.processInstance.detail.print') }}</el-button>
       </div>
     </template>
   </el-dialog>

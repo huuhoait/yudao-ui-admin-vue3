@@ -45,11 +45,11 @@
         <!-- 右侧按钮 -->
         <div class="w-200px flex items-center justify-end gap-2">
           <el-button v-if="actionType === 'update'" type="success" @click="handleDeploy">
-            {{ t('bpm.model.form._todo129') }}
+            {{ t('bpm.model.form.publish') }}
           </el-button>
           <el-button type="primary" :loading="saveLoading" @click="handleSave">
-            <span v-if="actionType === 'definition'">{{ t('bpm.model.form._todo130') }}</span>
-            <span v-else>{{ t('bpm.model.form._todo131') }}</span>
+            <span v-if="actionType === 'definition'">{{ t('bpm.model.form.restore') }}</span>
+            <span v-else>{{ t('bpm.model.form.save') }}</span>
           </el-button>
         </div>
       </div>
@@ -133,10 +133,10 @@ const validateProcess = async () => {
 const currentStep = ref(-1) // 步骤控制。-1 用于，一开始全部不展示等当前页面数据初始化完成
 
 const steps = [
-  { title: t('bpm.model.form._todo132'), validator: validateBasic },
-  { title: t('bpm.model.form._todo133'), validator: validateForm },
-  { title: t('bpm.model.form._todo134'), validator: validateProcess },
-  { title: t('bpm.model.form._todo135'), validator: null }
+  { title: t('bpm.model.form.basicInfo'), validator: validateBasic },
+  { title: t('bpm.model.form.formDesign'), validator: validateForm },
+  { title: t('bpm.model.form.processDesign'), validator: validateProcess },
+  { title: t('bpm.model.form.moreSettings'), validator: null }
 ]
 
 // 表单数据
@@ -230,9 +230,9 @@ const initData = async () => {
           formData.value.key + '_copy'
         )
       }
-      formData.value.name += t('bpm.model.form._todo136')
+      formData.value.name += t('bpm.model.form.copy')
       formData.value.key += '_copy'
-      tagsView.setTitle(t('bpm.model.form._todo137'))
+      tagsView.setTitle(t('bpm.model.form.copyProcess'))
     }
   } else {
     // 情况三：新增场景
@@ -265,7 +265,7 @@ watch(
     } else if (formData.value.type === BpmModelType.SIMPLE) {
       processData.value = formData.value.simpleModel
     }
-    console.log(t('bpm.model.form._todo138'), processData.value)
+    console.log(t('bpm.model.form.loadingProcessData'), processData.value)
   },
   {
     immediate: true
@@ -280,7 +280,7 @@ const validateAllSteps = async () => {
       await validateBasic()
     } catch (error) {
       currentStep.value = 0
-      throw new Error(t('bpm.model.form._todo139'))
+      throw new Error(t('bpm.model.form.pleaseCompleteBasicInfo'))
     }
 
     // 表单设计校验
@@ -288,7 +288,7 @@ const validateAllSteps = async () => {
       await validateForm()
     } catch (error) {
       currentStep.value = 1
-      throw new Error(t('bpm.model.form._todo140'))
+      throw new Error(t('bpm.model.form.pleaseCompleteCustomFormInfo'))
     }
 
     // 流程设计校验
@@ -298,7 +298,7 @@ const validateAllSteps = async () => {
       await validateProcess()
     } catch (error) {
       currentStep.value = 2
-      throw new Error(t('bpm.model.form._todo126'))
+      throw new Error(t('bpm.model.form.pleaseDesignProcess'))
     }
 
     return true
@@ -348,7 +348,7 @@ const handleSave = async () => {
       await router.push({ name: 'BpmModel' })
     }
   } catch (error: any) {
-    console.error(t('bpm.model.form._todo145'), error)
+    console.error(t('bpm.model.form.saveFailed'), error)
     message.warning(error.message || t('bpm.model.form._todo146'))
   } finally {
     saveLoading.value = false
@@ -360,7 +360,7 @@ const handleDeploy = async () => {
   try {
     // 修改场景下直接发布，新增场景下需要先确认
     if (!formData.value.id) {
-      await message.confirm(t('bpm.model.form._todo147'))
+      await message.confirm(t('bpm.model.form.confirmPublishingProcess'))
     }
     // 校验所有步骤
     await validateAllSteps()
@@ -380,11 +380,11 @@ const handleDeploy = async () => {
 
     // 发布
     await ModelApi.deployModel(formData.value.id)
-    message.success(t('bpm.model.form._todo148'))
+    message.success(t('bpm.model.form.publishedSuccessfully'))
     // 返回列表页
     await router.push({ name: 'BpmModel' })
   } catch (error: any) {
-    console.error(t('bpm.model.form._todo149'), error)
+    console.error(t('bpm.model.form.publishFailed'), error)
     message.warning(error.message || t('bpm.model.form._todo150'))
   }
 }
@@ -415,7 +415,7 @@ const handleStepClick = async (index: number) => {
       }
     }
   } catch (error) {
-    console.error(t('bpm.model.form._todo151'), error)
+    console.error(t('bpm.model.form.stepSwitchFailed'), error)
     message.warning(t('bpm.model.form._todo152'))
   }
 }

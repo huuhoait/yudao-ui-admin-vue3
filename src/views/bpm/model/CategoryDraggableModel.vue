@@ -2,7 +2,7 @@
   <div class="flex items-center h-50px" v-memo="[categoryInfo.name, isCategorySorting]">
     <!-- 头部：分类名 -->
     <div class="flex items-center">
-      <el-tooltip :content="t('bpm.model._todo13')" v-if="isCategorySorting">
+      <el-tooltip :content="t('bpm.model.dragSort')" v-if="isCategorySorting">
         <Icon
           :size="22"
           icon="ic:round-drag-indicator"
@@ -39,7 +39,7 @@
           </el-button>
           <el-button v-else link type="info" class="mr-20px" @click.stop="openModelForm('create')">
             <Icon icon="fa:plus" class="mr-5px" />
-            {{ t('bpm.model._todo17') }}
+            {{ t('bpm.model.new') }}
           </el-button>
           <el-dropdown
             @command="(command) => handleCategoryCommand(command, categoryInfo)"
@@ -47,19 +47,19 @@
           >
             <el-button link type="info">
               <Icon icon="ep:setting" class="mr-5px" />
-              {{ t('bpm.model._todo18') }}
+              {{ t('bpm.model.category') }}
             </el-button>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item command="handleRename"> {{ t('bpm.model._todo19') }} </el-dropdown-item>
-                <el-dropdown-item command="handleDeleteCategory"> {{ t('bpm.model._todo20') }} </el-dropdown-item>
+                <el-dropdown-item command="handleRename"> {{ t('bpm.model.rename') }} </el-dropdown-item>
+                <el-dropdown-item command="handleDeleteCategory"> {{ t('bpm.model.deleteCategory') }} </el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
         </template>
         <template v-else>
           <el-button @click.stop="handleModelSortCancel"> {{ t('common.cancel') }} </el-button>
-          <el-button type="primary" @click.stop="handleModelSortSubmit"> {{ t('bpm.model._todo21') }} </el-button>
+          <el-button type="primary" @click.stop="handleModelSortSubmit"> {{ t('bpm.model.saveSort') }} </el-button>
         </template>
       </div>
     </div>
@@ -81,7 +81,7 @@
         <el-table-column :label="t('bpm.model._todo14')" prop="name" min-width="150">
           <template #default="{ row }">
             <div class="flex items-center">
-              <el-tooltip :content="t('bpm.model._todo13')" v-if="isModelSorting">
+              <el-tooltip :content="t('bpm.model.dragSort')" v-if="isModelSorting">
                 <Icon
                   icon="ic:round-drag-indicator"
                   class="drag-icon cursor-move text-#8a909c mr-10px"
@@ -95,9 +95,9 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column :label="t('bpm.model._todo15')" prop="startUserIds" min-width="150">
+        <el-table-column :label="t('bpm.model.visibleScope')" prop="startUserIds" min-width="150">
           <template #default="{ row }">
-            <el-text v-if="!row.startUsers?.length && !row.startDepts?.length"> {{ t('bpm.model._todo22') }} </el-text>
+            <el-text v-if="!row.startUsers?.length && !row.startDepts?.length"> {{ t('bpm.model.visibleAll') }} </el-text>
             <el-text v-else-if="row.startUsers.length === 1">
               {{ row.startUsers[0].nickname }}
             </el-text>
@@ -149,10 +149,10 @@
             >
               <span>{{ scope.row.formCustomCreatePath }}</span>
             </el-button>
-            <label v-else>{{ t('bpm.model._todo23') }}</label>
+            <label v-else>{{ t('bpm.model.noFormYet') }}</label>
           </template>
         </el-table-column>
-        <el-table-column :label="t('bpm.model._todo16')" prop="deploymentTime" min-width="250">
+        <el-table-column :label="t('bpm.model.lastPublished')" prop="deploymentTime" min-width="250">
           <template #default="scope">
             <div class="flex items-center">
               <span v-if="scope.row.processDefinition" class="w-150px">
@@ -161,13 +161,13 @@
               <el-tag v-if="scope.row.processDefinition">
                 v{{ scope.row.processDefinition.version }}
               </el-tag>
-              <el-tag v-else type="warning">{{ t('bpm.model._todo24') }}</el-tag>
+              <el-tag v-else type="warning">{{ t('bpm.model.notDeployed') }}</el-tag>
               <el-tag
                 v-if="scope.row.processDefinition?.suspensionState === 2"
                 type="warning"
                 class="ml-10px"
               >
-                {{ t('bpm.model._todo25') }}
+                {{ t('bpm.model.disabled') }}
               </el-tag>
             </div>
           </template>
@@ -197,7 +197,7 @@
               @click="handleDeploy(scope.row)"
               :disabled="!isManagerUser(scope.row) && !hasPermiDeploy"
             >
-              {{ t('bpm.model._todo26') }}
+              {{ t('bpm.model.publish') }}
             </el-button>
             <el-dropdown
               class="!align-middle ml-5px"
@@ -221,7 +221,7 @@
                     "
                     :disabled="!isManagerUser(scope.row)"
                   >
-                    {{ t('bpm.model._todo27') }}
+                    {{ t('bpm.model.report') }}
                   </el-dropdown-item>
                   <el-dropdown-item
                     command="handleChangeState"
@@ -236,7 +236,7 @@
                     v-if="checkPermi(['bpm:model:clean'])"
                     :disabled="!isManagerUser(scope.row)"
                   >
-                    {{ t('bpm.model._todo28') }}
+                    {{ t('bpm.model.cleanUp') }}
                   </el-dropdown-item>
                   <el-dropdown-item
                     type="danger"
@@ -258,7 +258,7 @@
   <!-- 弹窗：重命名分类 -->
   <Dialog :fullscreen="false" class="rename-dialog" v-model="renameCategoryVisible" width="400">
     <template #title>
-      <div class="pl-10px font-bold text-18px"> {{ t('bpm.model._todo29') }} </div>
+      <div class="pl-10px font-bold text-18px"> {{ t('bpm.model.renameCategory') }} </div>
     </template>
     <div class="px-30px">
       <el-input v-model="renameCategoryForm.name" />
@@ -415,7 +415,7 @@ const handleModelCommand = (command: string, row: any) => {
 const handleExport = async (row: any) => {
   const data = await ModelApi.exportModel(row.id)
   download.json(new Blob([JSON.stringify(data, null, 2)]), `${row.key || row.name || 'model'}.json`)
-  message.success(t('bpm.model._todo30'))
+  message.success(t('bpm.model.exportSucceeded'))
 }
 
 /** '分类'操作按钮 */
@@ -453,7 +453,7 @@ const handleClean = async (row: any) => {
     await message.confirm(t('bpm.model.confirmClean', { name: row.name }))
     // 发起清理
     await ModelApi.cleanModel(row.id)
-    message.success(t('bpm.model._todo31'))
+    message.success(t('bpm.model.cleanupSucceeded'))
     // 刷新列表
     emit('success')
   } catch {}
@@ -480,7 +480,7 @@ const handleChangeState = async (row: any) => {
 /** 发布流程 */
 const handleDeploy = async (row: any) => {
   try {
-    await message.confirm(t('bpm.model._todo32'))
+    await message.confirm(t('bpm.model.confirmPublishingProcess'))
     // 发起部署
     await ModelApi.deployModel(row.id)
     message.success(t('bpm.model.publishSuccess'))
@@ -545,7 +545,7 @@ const handleModelSortSubmit = async () => {
   await ModelApi.updateModelSortBatch(ids)
   // 刷新列表
   isModelSorting.value = false
-  message.success(t('bpm.model._todo33'))
+  message.success(t('bpm.model.modelSortedSuccessfully'))
   emit('success')
 }
 
@@ -600,7 +600,7 @@ const handleRenameConfirm = async () => {
   }
   // 发起修改
   await CategoryApi.updateCategory(renameCategoryForm.value as CategoryVO)
-  message.success(t('bpm.model._todo34'))
+  message.success(t('bpm.model.renamedSuccessfully'))
   // 刷新列表
   renameCategoryVisible.value = false
   emit('success')
@@ -612,7 +612,7 @@ const handleDeleteCategory = async () => {
     if (props.categoryInfo.modelList.length > 0) {
       return message.warning(t('bpm.model._todo35'))
     }
-    await message.confirm(t('bpm.model._todo36'))
+    await message.confirm(t('bpm.model.confirmDeletingCategory'))
     // 发起删除
     await CategoryApi.deleteCategory(props.categoryInfo.id)
     message.success(t('common.delSuccess'))

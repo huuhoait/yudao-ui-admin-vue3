@@ -1,11 +1,11 @@
 <template>
   <doc-alert :title="t('bpm.task.todo._todo275')" url="https://doc.iocoder.cn/bpm/task-todo-done/" />
-  <doc-alert :title="t('bpm.task.todo._todo276')" url="https://doc.iocoder.cn/bpm/sign/" />
+  <doc-alert :title="t('bpm.task.todo.approvalAddRemoveSigner')" url="https://doc.iocoder.cn/bpm/sign/" />
   <doc-alert
     :title="t('bpm.task.todo._todo277')"
     url="https://doc.iocoder.cn/bpm/task-delegation-and-cc/"
   />
-  <doc-alert :title="t('bpm.task.todo._todo276')" url="https://doc.iocoder.cn/bpm/sign/" />
+  <doc-alert :title="t('bpm.task.todo.approvalAddRemoveSigner')" url="https://doc.iocoder.cn/bpm/sign/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -138,7 +138,7 @@
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="t('bpm.task.todo._todo278')"
+        :label="t('bpm.task.todo.taskTime')"
         prop="createTime"
         width="180"
       />
@@ -151,7 +151,7 @@
       <el-table-column align="center" :label="t('bpm.task.todo.taskId')" prop="id" :show-overflow-tooltip="true" />
       <el-table-column align="center" :label="t('bpm.task.todo.action')" fixed="right" width="80">
         <template #default="scope">
-          <el-button link type="primary" @click="handleAudit(scope.row)">{{ t('bpm.task.todo._todo279') }}</el-button>
+          <el-button link type="primary" @click="handleAudit(scope.row)">{{ t('bpm.task.todo.handle') }}</el-button>
         </template>
       </el-table-column>
     </el-table>

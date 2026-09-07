@@ -56,7 +56,7 @@ const formData = ref({
   templateParams: new Map()
 })
 const formRules = reactive({
-  mobile: [{ required: true, message: t('system.sms.template._todo259'), trigger: 'blur' }],
+  mobile: [{ required: true, message: t('system.sms.template.mobileRequired'), trigger: 'blur' }],
   templateCode: [{ required: true, message: t('system.sms.template._todo260'), trigger: 'blur' }],
   templateParams: {}
 })

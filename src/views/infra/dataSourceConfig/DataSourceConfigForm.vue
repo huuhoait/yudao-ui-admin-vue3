@@ -7,17 +7,17 @@
       :rules="formRules"
       label-width="100px"
     >
-      <el-form-item :label="t('infra.dataSourceConfig._todo147')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('infra.dataSourceConfig._todo148')" />
+      <el-form-item :label="t('infra.dataSourceConfig.dataSourceName')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('infra.dataSourceConfig.inputParameterName')" />
       </el-form-item>
-      <el-form-item :label="t('infra.dataSourceConfig._todo149')" prop="url">
-        <el-input v-model="formData.url" :placeholder="t('infra.dataSourceConfig._todo150')" />
+      <el-form-item :label="t('infra.dataSourceConfig.dataSourceConnection')" prop="url">
+        <el-input v-model="formData.url" :placeholder="t('infra.dataSourceConfig.inputDataSourceConnection')" />
       </el-form-item>
       <el-form-item :label="t('infra.dataSourceConfig.username')" prop="username">
         <el-input v-model="formData.username" :placeholder="t('infra.dataSourceConfig.inputUsername')" />
       </el-form-item>
-      <el-form-item :label="t('infra.dataSourceConfig._todo151')" prop="password">
-        <el-input v-model="formData.password" :placeholder="t('infra.dataSourceConfig._todo152')" />
+      <el-form-item :label="t('infra.dataSourceConfig.password')" prop="password">
+        <el-input v-model="formData.password" :placeholder="t('infra.dataSourceConfig.inputPassword')" />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -49,7 +49,7 @@ const formRules = reactive({
   name: [{ required: true, message: t('infra.dataSourceConfig._todo153'), trigger: 'blur' }],
   url: [{ required: true, message: t('infra.dataSourceConfig._todo154'), trigger: 'blur' }],
   username: [{ required: true, message: t('infra.dataSourceConfig.usernameRequired'), trigger: 'blur' }],
-  password: [{ required: true, message: t('infra.dataSourceConfig._todo155'), trigger: 'blur' }]
+  password: [{ required: true, message: t('infra.dataSourceConfig.passwordRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

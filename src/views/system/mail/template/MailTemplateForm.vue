@@ -26,8 +26,8 @@
       <el-form-item :label="t('system.mail.template.senderName')" prop="nickname">
         <el-input v-model="formData.nickname" :placeholder="t('system.mail.template.inputSenderName')" />
       </el-form-item>
-      <el-form-item :label="t('system.mail.template._todo73')" prop="title">
-        <el-input v-model="formData.title" :placeholder="t('system.mail.template._todo74')" />
+      <el-form-item :label="t('system.mail.template.templateTitle')" prop="title">
+        <el-input v-model="formData.title" :placeholder="t('system.mail.template.inputTemplateTitle')" />
       </el-form-item>
       <el-form-item :label="t('system.mail.template.templateContent')" prop="content">
         <Editor v-model="formData.content" height="200px" />
@@ -79,7 +79,7 @@ const formRules = reactive({
   accountId: [{ required: true, message: t('system.mail.template.emailAccountRequired'), trigger: 'change' }],
   code: [{ required: true, message: t('system.mail.template.templateCodeRequired'), trigger: 'blur' }],
   name: [{ required: true, message: t('system.mail.template.templateNameRequired'), trigger: 'blur' }],
-  title: [{ required: true, message: t('system.mail.template._todo75'), trigger: 'blur' }],
+  title: [{ required: true, message: t('system.mail.template.templateTitleRequired'), trigger: 'blur' }],
   content: [{ required: true, message: t('system.mail.template.templateContentRequired'), trigger: 'blur' }],
   status: [{ required: true, message: t('system.mail.template.enableStatusRequired'), trigger: 'blur' }]
 })

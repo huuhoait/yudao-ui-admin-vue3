@@ -10,7 +10,7 @@
       <el-form-item :label="t('infra.demo.demo03.normal.name')" prop="name">
         <el-input v-model="formData.name" :placeholder="t('infra.demo.demo03.normal.inputName')" />
       </el-form-item>
-      <el-form-item :label="t('infra.demo.demo03.normal._todo208')" prop="sex">
+      <el-form-item :label="t('infra.demo.demo03.normal.gender')" prop="sex">
         <el-radio-group v-model="formData.sex">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_USER_SEX)"
@@ -21,24 +21,24 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :label="t('infra.demo.demo03.normal._todo209')" prop="birthday">
+      <el-form-item :label="t('infra.demo.demo03.normal.dateBirth')" prop="birthday">
         <el-date-picker
           v-model="formData.birthday"
           type="date"
           value-format="x"
-          :placeholder="t('infra.demo.demo03.normal._todo210')"
+          :placeholder="t('infra.demo.demo03.normal.selectDateBirth')"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.demo.demo03.normal._todo211')" prop="description">
+      <el-form-item :label="t('infra.demo.demo03.normal.bio')" prop="description">
         <Editor v-model="formData.description" height="150px" />
       </el-form-item>
     </el-form>
     <!-- 子表的表单 -->
     <el-tabs v-model="subTabsName">
-      <el-tab-pane :label="t('infra.demo.demo03.normal._todo212')" name="demo03Course">
+      <el-tab-pane :label="t('infra.demo.demo03.normal.studentCourses')" name="demo03Course">
         <Demo03CourseForm ref="demo03CourseFormRef" :student-id="formData.id" />
       </el-tab-pane>
-      <el-tab-pane :label="t('infra.demo.demo03.normal._todo213')" name="demo03Grade">
+      <el-tab-pane :label="t('infra.demo.demo03.normal.studentClass')" name="demo03Grade">
         <Demo03GradeForm ref="demo03GradeFormRef" :student-id="formData.id" />
       </el-tab-pane>
     </el-tabs>
@@ -73,9 +73,9 @@ const formData = ref<Demo03Student>({
 })
 const formRules = reactive({
   name: [{ required: true, message: t('infra.demo.demo03.normal.nameRequired'), trigger: 'blur' }],
-  sex: [{ required: true, message: t('infra.demo.demo03.normal._todo214'), trigger: 'blur' }],
+  sex: [{ required: true, message: t('infra.demo.demo03.normal.genderCannotBeEmpty'), trigger: 'blur' }],
   birthday: [{ required: true, message: t('infra.demo.demo03.normal._todo215'), trigger: 'blur' }],
-  description: [{ required: true, message: t('infra.demo.demo03.normal._todo216'), trigger: 'blur' }]
+  description: [{ required: true, message: t('infra.demo.demo03.normal.bioCannotBeEmpty'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

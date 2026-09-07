@@ -1,51 +1,51 @@
 <template>
-  <doc-alert :title="t('infra.redis._todo344')" url="https://doc.iocoder.cn/redis-cache/" />
-  <doc-alert :title="t('infra.redis._todo345')" url="https://doc.iocoder.cn/local-cache/" />
+  <doc-alert :title="t('infra.redis.redisCache')" url="https://doc.iocoder.cn/redis-cache/" />
+  <doc-alert :title="t('infra.redis.localCache')" url="https://doc.iocoder.cn/local-cache/" />
 
   <el-scrollbar height="calc(100vh - 88px - 40px - 50px)">
     <el-row>
       <!-- 基本信息 -->
       <el-col :span="24" class="card-box" shadow="hover">
         <el-card>
-          <el-descriptions :title="t('infra.redis._todo346')" :column="6" border>
-            <el-descriptions-item :label="t('infra.redis._todo347')">
+          <el-descriptions :title="t('infra.redis.basicInfo')" :column="6" border>
+            <el-descriptions-item :label="t('infra.redis.redisVersion')">
               {{ cache?.info?.redis_version }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis._todo348')">
+            <el-descriptions-item :label="t('infra.redis.runningMode')">
               {{
                 cache?.info?.redis_mode == 'standalone'
                   ? t('infra.redis.standalone')
                   : t('infra.redis.cluster')
               }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis._todo349')">
+            <el-descriptions-item :label="t('infra.redis.port')">
               {{ cache?.info?.tcp_port }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis._todo350')">
+            <el-descriptions-item :label="t('infra.redis.clientCount')">
               {{ cache?.info?.connected_clients }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis._todo351')">
+            <el-descriptions-item :label="t('infra.redis.uptimeDays')">
               {{ cache?.info?.uptime_in_days }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis._todo352')">
+            <el-descriptions-item :label="t('infra.redis.memoryUsed')">
               {{ cache?.info?.used_memory_human }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis._todo353')">
+            <el-descriptions-item :label="t('infra.redis.cpuUsed')">
               {{ cache?.info ? parseFloat(cache?.info?.used_cpu_user_children).toFixed(2) : '' }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis._todo354')">
+            <el-descriptions-item :label="t('infra.redis.memoryConfig')">
               {{ cache?.info?.maxmemory_human }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis._todo355')">
+            <el-descriptions-item :label="t('infra.redis.aofEnabled')">
               {{ cache?.info?.aof_enabled == '0' ? t('common.no') : t('common.yes') }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis._todo356')">
+            <el-descriptions-item :label="t('infra.redis.rdbSuccess')">
               {{ cache?.info?.rdb_last_bgsave_status }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis._todo357')">
+            <el-descriptions-item :label="t('infra.redis.keyCount')">
               {{ cache?.dbSize }}
             </el-descriptions-item>
-            <el-descriptions-item :label="t('infra.redis._todo358')">
+            <el-descriptions-item :label="t('infra.redis.networkInputOutput')">
               {{ cache?.info?.instantaneous_input_kbps }}kps/
               {{ cache?.info?.instantaneous_output_kbps }}kps
             </el-descriptions-item>
@@ -84,7 +84,7 @@ const readRedisInfo = async () => {
 const usedmemoryEchartChika = reactive<EChartsOption>({
   title: {
     // 仪表盘标题。
-    text: t('infra.redis._todo359'),
+    text: t('infra.redis.memoryUsage'),
     left: 'center',
     show: true, // 是否显示标题,默认 true。
     textStyle: {
@@ -101,7 +101,7 @@ const usedmemoryEchartChika = reactive<EChartsOption>({
   },
   series: [
     {
-      name: t('infra.redis._todo360'),
+      name: t('infra.redis.peak'),
       type: 'gauge',
       min: 0,
       max: 50,
@@ -169,7 +169,7 @@ const usedmemoryEchartChika = reactive<EChartsOption>({
 // 指令使用情况
 const commandStatsRefChika = reactive<EChartsOption>({
   title: {
-    text: t('infra.redis._todo361'),
+    text: t('infra.redis.commandStatistics'),
     left: 'center'
   },
   tooltip: {
@@ -189,7 +189,7 @@ const commandStatsRefChika = reactive<EChartsOption>({
   },
   series: [
     {
-      name: t('infra.redis._todo362'),
+      name: t('infra.redis.command'),
       type: 'pie',
       radius: [20, 120],
       center: ['40%', '60%'],
@@ -257,7 +257,7 @@ const usedMemoryInstance = async () => {
 
     usedMemorySeries.data[0] = {
       value: cache.value!.info.used_memory_human,
-      name: t('infra.redis._todo363')
+      name: t('infra.redis.memoryConsumption')
     }
     console.log(cache.value!.info)
     ;(usedmemoryEchartChika as any).tooltip = {

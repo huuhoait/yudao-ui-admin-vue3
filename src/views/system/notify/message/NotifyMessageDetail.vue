@@ -10,7 +10,7 @@
       <el-descriptions-item :label="t('system.notify.message.userId')">
         {{ detailData.userId }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.notify.message._todo128')">
+      <el-descriptions-item :label="t('system.notify.message.templateId')">
         {{ detailData.templateId }}
       </el-descriptions-item>
       <el-descriptions-item :label="t('system.notify.message.templateCode')">
@@ -19,16 +19,16 @@
       <el-descriptions-item :label="t('system.notify.message.senderName')">
         {{ detailData.templateNickname }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.notify.message._todo129')">
+      <el-descriptions-item :label="t('system.notify.message.templateContent')">
         {{ detailData.templateContent }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.notify.message._todo130')">
+      <el-descriptions-item :label="t('system.notify.message.templateParams')">
         {{ detailData.templateParams }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.notify.message._todo131')">
+      <el-descriptions-item :label="t('system.notify.message.templateType')">
         <dict-tag :type="DICT_TYPE.SYSTEM_NOTIFY_TEMPLATE_TYPE" :value="detailData.templateType" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.notify.message._todo132')">
+      <el-descriptions-item :label="t('system.notify.message.read')">
         <dict-tag :type="DICT_TYPE.INFRA_BOOLEAN_STRING" :value="detailData.readStatus" />
       </el-descriptions-item>
       <el-descriptions-item :label="t('system.notify.message.readTime')">

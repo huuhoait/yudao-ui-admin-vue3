@@ -320,13 +320,13 @@ const resetQuery = () => {
 const confirmSelect = () => {
   if (props.multiple) {
     if (selectedRows.value.length === 0) {
-      message.warning(t('system.user.components._todo9'))
+      message.warning(t('system.user.components.selectLeastOneRow'))
       return
     }
     emit('selected', selectedRows.value, activityId.value)
   } else {
     if (!currentRadioRow.value) {
-      message.warning(t('system.user.components._todo10'))
+      message.warning(t('system.user.components.selectOneRow'))
       return
     }
     emit('selected', [currentRadioRow.value], activityId.value)

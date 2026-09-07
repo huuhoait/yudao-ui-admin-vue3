@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('system.social.user._todo273')" url="https://doc.iocoder.cn/social-user/" />
+  <doc-alert :title="t('system.social.user.socialLogin')" url="https://doc.iocoder.cn/social-user/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -34,12 +34,12 @@
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item :label="t('system.social.user._todo274')" prop="openid">
+      <el-form-item :label="t('system.social.user.socialOpenid')" prop="openid">
         <el-input
           v-model="queryParams.openid"
           class="!w-240px"
           clearable
-          :placeholder="t('system.social.user._todo275')"
+          :placeholder="t('system.social.user.inputSocialOpenid')"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
@@ -75,9 +75,9 @@
           <dict-tag :type="DICT_TYPE.SYSTEM_SOCIAL_TYPE" :value="scope.row.type" />
         </template>
       </el-table-column>
-      <el-table-column align="center" :label="t('system.social.user._todo274')" prop="openid" />
+      <el-table-column align="center" :label="t('system.social.user.socialOpenid')" prop="openid" />
       <el-table-column align="center" :label="t('system.social.user.nickname')" prop="nickname" />
-      <el-table-column align="center" :label="t('system.social.user._todo267')" prop="avatar">
+      <el-table-column align="center" :label="t('system.social.user.avatar')" prop="avatar">
         <template #default="{ row }">
           <el-image :src="row.avatar" class="h-30px w-30px" @click="imagePreview(row.avatar)" />
         </template>

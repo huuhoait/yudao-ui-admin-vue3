@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('bpm.category._todo1')" url="https://doc.iocoder.cn/bpm/" />
+  <doc-alert :title="t('bpm.category.workflowManual')" url="https://doc.iocoder.cn/bpm/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -72,7 +72,7 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list" :stripe="true" :show-overflow-tooltip="true">
-      <el-table-column :label="t('bpm.category._todo2')" align="center" prop="id" />
+      <el-table-column :label="t('bpm.category.categoryId')" align="center" prop="id" />
       <el-table-column :label="t('bpm.category.categoryName')" align="center" prop="name" />
       <el-table-column :label="t('bpm.category.categoryFlag')" align="center" prop="code" />
       <el-table-column :label="t('bpm.category.categoryDesc')" align="center" prop="description" />

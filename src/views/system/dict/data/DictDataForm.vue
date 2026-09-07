@@ -11,14 +11,14 @@
         <el-input
           v-model="formData.dictType"
           :disabled="typeof formData.id !== 'undefined'"
-          :placeholder="t('system.dict.data._todo17')"
+          :placeholder="t('system.dict.data.inputParameterName')"
         />
       </el-form-item>
-      <el-form-item :label="t('system.dict.data._todo18')" prop="label">
-        <el-input v-model="formData.label" :placeholder="t('system.dict.data._todo19')" />
+      <el-form-item :label="t('system.dict.data.dataLabel')" prop="label">
+        <el-input v-model="formData.label" :placeholder="t('system.dict.data.inputDataLabel')" />
       </el-form-item>
-      <el-form-item :label="t('system.dict.data._todo20')" prop="value">
-        <el-input v-model="formData.value" :placeholder="t('system.dict.data._todo21')" />
+      <el-form-item :label="t('system.dict.data.dataValue')" prop="value">
+        <el-input v-model="formData.value" :placeholder="t('system.dict.data.inputDataValue')" />
       </el-form-item>
       <el-form-item :label="t('system.dict.data.displaySort')" prop="sort">
         <el-input-number v-model="formData.sort" :min="0" controls-position="right" />
@@ -34,7 +34,7 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :label="t('system.dict.data._todo22')" prop="colorType">
+      <el-form-item :label="t('system.dict.data.colorType')" prop="colorType">
         <el-select v-model="formData.colorType">
           <el-option
             v-for="item in colorTypeOptions"
@@ -45,7 +45,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="CSS Class" prop="cssClass">
-        <el-input v-model="formData.cssClass" :placeholder="t('system.dict.data._todo23')" />
+        <el-input v-model="formData.cssClass" :placeholder="t('system.dict.data.inputCssClass')" />
       </el-form-item>
       <el-form-item :label="t('system.dict.data.remark')" prop="remark">
         <el-input v-model="formData.remark" :placeholder="t('system.dict.data.inputContent')" type="textarea" />
@@ -83,9 +83,9 @@ const formData = ref<DictDataApi.DictDataVO>({
   remark: ''
 })
 const formRules = reactive({
-  label: [{ required: true, message: t('system.dict.data._todo24'), trigger: 'blur' }],
-  value: [{ required: true, message: t('system.dict.data._todo25'), trigger: 'blur' }],
-  sort: [{ required: true, message: t('system.dict.data._todo26'), trigger: 'blur' }],
+  label: [{ required: true, message: t('system.dict.data.dataLabelRequired'), trigger: 'blur' }],
+  value: [{ required: true, message: t('system.dict.data.dataValueRequired'), trigger: 'blur' }],
+  sort: [{ required: true, message: t('system.dict.data.dataOrderRequired'), trigger: 'blur' }],
   status: [{ required: true, message: t('system.dict.data.statusRequired'), trigger: 'change' }]
 })
 const formRef = ref() // 表单 Ref
@@ -94,27 +94,27 @@ const formRef = ref() // 表单 Ref
 const colorTypeOptions = readonly([
   {
     value: 'default',
-    label: t('system.dict.data._todo27')
+    label: t('system.dict.data.default')
   },
   {
     value: 'primary',
-    label: t('system.dict.data._todo28')
+    label: t('system.dict.data.primary')
   },
   {
     value: 'success',
-    label: t('system.dict.data._todo29')
+    label: t('system.dict.data.success')
   },
   {
     value: 'info',
-    label: t('system.dict.data._todo30')
+    label: t('system.dict.data.info')
   },
   {
     value: 'warning',
-    label: t('system.dict.data._todo31')
+    label: t('system.dict.data.warning')
   },
   {
     value: 'danger',
-    label: t('system.dict.data._todo32')
+    label: t('system.dict.data.danger')
   }
 ])
 

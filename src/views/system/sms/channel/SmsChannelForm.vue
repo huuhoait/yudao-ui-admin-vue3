@@ -20,7 +20,7 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('system.sms.channel._todo233')">
+      <el-form-item :label="t('system.sms.channel.enableStatus')">
         <el-radio-group v-model="formData.status">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -34,14 +34,14 @@
       <el-form-item :label="t('system.sms.channel.remark')" prop="remark">
         <el-input v-model="formData.remark" :placeholder="t('system.sms.channel.inputRemark')" />
       </el-form-item>
-      <el-form-item :label="t('system.sms.channel._todo234')" prop="apiKey">
-        <el-input v-model="formData.apiKey" :placeholder="t('system.sms.channel._todo235')" />
+      <el-form-item :label="t('system.sms.channel.smsApiAccount')" prop="apiKey">
+        <el-input v-model="formData.apiKey" :placeholder="t('system.sms.channel.inputSmsApiAccount')" />
       </el-form-item>
-      <el-form-item :label="t('system.sms.channel._todo236')" prop="apiSecret">
-        <el-input v-model="formData.apiSecret" :placeholder="t('system.sms.channel._todo237')" />
+      <el-form-item :label="t('system.sms.channel.smsApiSecret')" prop="apiSecret">
+        <el-input v-model="formData.apiSecret" :placeholder="t('system.sms.channel.inputSmsApiSecret')" />
       </el-form-item>
-      <el-form-item :label="t('system.sms.channel._todo238')" prop="callbackUrl">
-        <el-input v-model="formData.callbackUrl" :placeholder="t('system.sms.channel._todo239')" />
+      <el-form-item :label="t('system.sms.channel.smsSendCallbackUrl')" prop="callbackUrl">
+        <el-input v-model="formData.callbackUrl" :placeholder="t('system.sms.channel.inputSmsSendCallbackUrl')" />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -77,8 +77,8 @@ const formData = ref({
 const formRules = reactive({
   signature: [{ required: true, message: t('system.sms.channel.smsSignatureRequired'), trigger: 'blur' }],
   code: [{ required: true, message: t('system.sms.channel.channelCodeRequired'), trigger: 'blur' }],
-  status: [{ required: true, message: t('system.sms.channel._todo240'), trigger: 'blur' }],
-  apiKey: [{ required: true, message: t('system.sms.channel._todo241'), trigger: 'blur' }]
+  status: [{ required: true, message: t('system.sms.channel.enableStatusRequired'), trigger: 'blur' }],
+  apiKey: [{ required: true, message: t('system.sms.channel.smsApiAccountRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

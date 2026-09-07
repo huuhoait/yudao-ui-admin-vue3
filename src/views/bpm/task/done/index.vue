@@ -1,11 +1,11 @@
 <template>
   <doc-alert :title="t('bpm.task.done._todo263')" url="https://doc.iocoder.cn/bpm/task-todo-done/" />
-  <doc-alert :title="t('bpm.task.done._todo264')" url="https://doc.iocoder.cn/bpm/sign/" />
+  <doc-alert :title="t('bpm.task.done.approvalAddRemoveSigner')" url="https://doc.iocoder.cn/bpm/sign/" />
   <doc-alert
     :title="t('bpm.task.done._todo265')"
     url="https://doc.iocoder.cn/bpm/task-delegation-and-cc/"
   />
-  <doc-alert :title="t('bpm.task.done._todo264')" url="https://doc.iocoder.cn/bpm/sign/" />
+  <doc-alert :title="t('bpm.task.done.approvalAddRemoveSigner')" url="https://doc.iocoder.cn/bpm/sign/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -155,14 +155,14 @@
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="t('bpm.task.done._todo266')"
+        :label="t('bpm.task.done.taskStartTime')"
         prop="createTime"
         width="180"
       />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="t('bpm.task.done._todo267')"
+        :label="t('bpm.task.done.taskEndTime')"
         prop="endTime"
         width="180"
       />
@@ -186,7 +186,7 @@
       <el-table-column align="center" :label="t('bpm.task.done.taskId')" prop="id" :show-overflow-tooltip="true" />
       <el-table-column align="center" :label="t('bpm.task.done.action')" fixed="right" width="130">
         <template #default="scope">
-          <el-button link type="warning" @click="handleWithdraw(scope.row)">{{ t('bpm.task.done._todo268') }}</el-button>
+          <el-button link type="warning" @click="handleWithdraw(scope.row)">{{ t('bpm.task.done.withdraw') }}</el-button>
           <el-button link type="primary" @click="handleAudit(scope.row)">{{ t('bpm.task.done.history') }}</el-button>
         </template>
       </el-table-column>
@@ -268,7 +268,7 @@ const handleAudit = (row: any) => {
 /** 测回按钮 */
 const handleWithdraw = (row: any) => {
   TaskApi.withdrawTask(row.id).then(() => {
-    message.success(t('bpm.task.done._todo269'))
+    message.success(t('bpm.task.done.withdrawnSuccessfully'))
     getList()
   })
 }

@@ -3,7 +3,7 @@
     v-model="dialogVisible"
     align-center
     class="app-infra-codegen-preview-container"
-    :title="t('infra.codegen._todo58')"
+    :title="t('infra.codegen.codePreview')"
     width="80%"
   >
     <div class="flex">

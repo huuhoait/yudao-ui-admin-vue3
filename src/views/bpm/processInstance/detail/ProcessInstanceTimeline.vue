@@ -29,7 +29,7 @@
         <!-- 第一行：节点名称、时间 -->
         <div class="flex w-full">
           <div class="font-bold">
-            {{ activity.name }} <span v-if="activity.status === TaskStatusEnum.SKIP">{{ t('bpm.processInstance.detail._todo325') }}</span>
+            {{ activity.name }} <span v-if="activity.status === TaskStatusEnum.SKIP">{{ t('bpm.processInstance.detail.skipped') }}</span>
           </div>
           <!-- 信息：时间 -->
           <div
@@ -47,7 +47,7 @@
             @click="handleChildProcess(activity)"
             :disabled="!activity.processInstanceId"
           >
-            {{ t('bpm.processInstance.detail._todo326') }}
+            {{ t('bpm.processInstance.detail.viewSubProcess') }}
           </el-button>
         </div>
         <!-- 需要自定义选择审批人 -->
@@ -62,7 +62,7 @@
           "
         >
           <!--  && activity.nodeType === NodeType.USER_TASK_NODE -->
-          <el-tooltip :content="t('bpm.processInstance.detail._todo324')" placement="left">
+          <el-tooltip :content="t('bpm.processInstance.detail.addUser')" placement="left">
             <el-button
               class="!px-6px"
               @click="handleSelectUser(activity.id, customApproveUsers[activity.id])"
@@ -329,7 +329,7 @@ const shouldShowTaskEvidence = (
 
 /** 获取任务留痕意见标题 */
 const getTaskEvidenceReasonLabel = (nodeType: NodeType) => {
-  return nodeType === NodeType.TRANSACTOR_NODE ? t('bpm.processInstance.detail._todo327') : t('bpm.processInstance.detail.approveOpinion')
+  return nodeType === NodeType.TRANSACTOR_NODE ? t('bpm.processInstance.detail.handlingOpinion') : t('bpm.processInstance.detail.approveOpinion')
 }
 
 // 选择自定义审批人

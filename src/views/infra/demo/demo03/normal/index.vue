@@ -17,8 +17,8 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.demo.demo03.normal._todo208')" prop="sex">
-        <el-select v-model="queryParams.sex" :placeholder="t('infra.demo.demo03.normal._todo225')" clearable class="!w-240px">
+      <el-form-item :label="t('infra.demo.demo03.normal.gender')" prop="sex">
+        <el-select v-model="queryParams.sex" :placeholder="t('infra.demo.demo03.normal.selectGender')" clearable class="!w-240px">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_USER_SEX)"
             :key="dict.value"
@@ -84,19 +84,19 @@
       <el-table-column type="selection" width="55" />
       <el-table-column :label="t('infra.demo.demo03.normal.id')" align="center" prop="id" />
       <el-table-column :label="t('infra.demo.demo03.normal.name')" align="center" prop="name" />
-      <el-table-column :label="t('infra.demo.demo03.normal._todo208')" align="center" prop="sex">
+      <el-table-column :label="t('infra.demo.demo03.normal.gender')" align="center" prop="sex">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_USER_SEX" :value="scope.row.sex" />
         </template>
       </el-table-column>
       <el-table-column
-        :label="t('infra.demo.demo03.normal._todo209')"
+        :label="t('infra.demo.demo03.normal.dateBirth')"
         align="center"
         prop="birthday"
         :formatter="dateFormatter"
         width="180px"
       />
-      <el-table-column :label="t('infra.demo.demo03.normal._todo211')" align="center" prop="description" />
+      <el-table-column :label="t('infra.demo.demo03.normal.bio')" align="center" prop="description" />
       <el-table-column
         :label="t('common.createTime')"
         align="center"

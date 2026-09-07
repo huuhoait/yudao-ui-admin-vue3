@@ -6,9 +6,9 @@
     >
       <fc-designer class="my-designer" ref="designer" :config="designerConfig">
         <template #handle>
-          <el-button size="small" type="primary" plain @click="showJson">{{ t('infra.build._todo42') }}</el-button>
-          <el-button size="small" type="success" plain @click="showOption">{{ t('infra.build._todo43') }}</el-button>
-          <el-button size="small" type="danger" plain @click="showTemplate">{{ t('infra.build._todo44') }}</el-button>
+          <el-button size="small" type="primary" plain @click="showJson">{{ t('infra.build.generateJson') }}</el-button>
+          <el-button size="small" type="success" plain @click="showOption">{{ t('infra.build.generateOptions') }}</el-button>
+          <el-button size="small" type="danger" plain @click="showTemplate">{{ t('infra.build.generateComponent') }}</el-button>
         </template>
       </fc-designer>
     </div>
@@ -102,7 +102,7 @@ const showOption = () => {
 
 /** 生成组件 */
 const showTemplate = () => {
-  openModel(t('infra.build._todo44'))
+  openModel(t('infra.build.generateComponent'))
   formType.value = 2
   formData.value = makeTemplate()
 }

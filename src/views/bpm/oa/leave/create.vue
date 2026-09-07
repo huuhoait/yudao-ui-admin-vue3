@@ -1,7 +1,7 @@
 <template>
   <el-row :gutter="20">
     <el-col :span="16">
-      <ContentWrap :title="t('bpm.oa.leave._todo159')">
+      <ContentWrap :title="t('bpm.oa.leave.applicationInfo')">
         <el-form
           ref="formRef"
           v-loading="formLoading"
@@ -37,8 +37,8 @@
               value-format="x"
             />
           </el-form-item>
-          <el-form-item :label="t('bpm.oa.leave._todo160')" prop="reason">
-            <el-input v-model="formData.reason" :placeholder="t('bpm.oa.leave._todo161')" type="textarea" />
+          <el-form-item :label="t('bpm.oa.leave.reason')" prop="reason">
+            <el-input v-model="formData.reason" :placeholder="t('bpm.oa.leave.inputLeaveReason')" type="textarea" />
           </el-form-item>
           <el-form-item>
             <el-button :disabled="formLoading" type="primary" @click="submitForm">
@@ -51,7 +51,7 @@
 
     <!-- 审批相关：流程信息 -->
     <el-col :span="8">
-      <ContentWrap :title="t('bpm.oa.leave._todo162')" :bodyStyle="{ padding: '0 20px 0' }">
+      <ContentWrap :title="t('bpm.oa.leave.approvalProcess')" :bodyStyle="{ padding: '0 20px 0' }">
         <ProcessInstanceTimeline
           ref="timelineRef"
           :activity-nodes="activityNodes"
@@ -91,9 +91,9 @@ const formData = ref({
 })
 const formRules = reactive({
   type: [{ required: true, message: t('bpm.oa.leave.leaveTypeRequired'), trigger: 'blur' }],
-  reason: [{ required: true, message: t('bpm.oa.leave._todo163'), trigger: 'change' }],
-  startTime: [{ required: true, message: t('bpm.oa.leave._todo164'), trigger: 'change' }],
-  endTime: [{ required: true, message: t('bpm.oa.leave._todo165'), trigger: 'change' }]
+  reason: [{ required: true, message: t('bpm.oa.leave.leaveReasonRequired'), trigger: 'change' }],
+  startTime: [{ required: true, message: t('bpm.oa.leave.leaveBeginTimeRequired'), trigger: 'change' }],
+  endTime: [{ required: true, message: t('bpm.oa.leave.leaveEndTimeRequired'), trigger: 'change' }]
 })
 const formRef = ref() // 表单 Ref
 
@@ -139,7 +139,7 @@ const submitForm = async () => {
       data.startUserSelectAssignees = startUserSelectAssignees.value
     }
     await LeaveApi.createLeave(data)
-    message.success(t('bpm.oa.leave._todo166'))
+    message.success(t('bpm.oa.leave.startedSuccessfully'))
     // 关闭当前 Tab
     delView(unref(currentRoute))
     await push({ name: 'BpmOALeave' })
@@ -159,7 +159,7 @@ const getApprovalDetail = async () => {
     })
 
     if (!data) {
-      message.error(t('bpm.oa.leave._todo167'))
+      message.error(t('bpm.oa.leave.approvalDetailNotFound'))
       return
     }
     // 获取审批节点，显示 Timeline 的数据

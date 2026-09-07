@@ -1,10 +1,10 @@
 <template>
   <Dialog v-model="dialogVisible" :title="t('system.loginlog.detail')" width="800">
     <el-descriptions :column="1" border>
-      <el-descriptions-item :label="t('system.loginlog._todo39')" min-width="120">
+      <el-descriptions-item :label="t('system.loginlog.logId')" min-width="120">
         {{ detailData.id }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.loginlog._todo40')">
+      <el-descriptions-item :label="t('system.loginlog.loginType')">
         <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_TYPE" :value="detailData.logType" />
       </el-descriptions-item>
       <el-descriptions-item :label="t('system.loginlog.username')">
@@ -13,13 +13,13 @@
       <el-descriptions-item :label="t('system.loginlog.loginAddress')">
         {{ detailData.userIp }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.loginlog._todo41')">
+      <el-descriptions-item :label="t('system.loginlog.browser')">
         {{ detailData.userAgent }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.loginlog._todo42')">
+      <el-descriptions-item :label="t('system.loginlog.loginResult')">
         <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_RESULT" :value="detailData.result" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.loginlog._todo43')">
+      <el-descriptions-item :label="t('system.loginlog.loginDate')">
         {{ formatDate(detailData.createTime) }}
       </el-descriptions-item>
     </el-descriptions>

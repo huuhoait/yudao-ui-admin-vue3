@@ -1,14 +1,14 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('bpm.model._todo37')" width="640">
+  <Dialog v-model="dialogVisible" :title="t('bpm.model.importProcessModel')" width="640">
     <el-alert
       class="mb-15px"
       :description="t('bpm.model._todo38')"
       show-icon
-      :title="t('bpm.model._todo39')"
+      :title="t('bpm.model.importInstructions')"
       type="info"
     />
     <el-form ref="formRef" :model="formData" label-width="100px">
-      <el-form-item :label="t('bpm.model._todo40')">
+      <el-form-item :label="t('bpm.model.processModelFile')">
         <el-upload
           v-model:file-list="fileList"
           :auto-upload="false"
@@ -77,7 +77,7 @@ const handleChange = async (uploadFile: UploadFile) => {
     formData.name = data.name || ''
   } catch {
     resetFile()
-    message.error(t('bpm.model._todo43'))
+    message.error(t('bpm.model.invalidJsonFileFormat'))
   }
 }
 
@@ -87,7 +87,7 @@ const submitForm = async () => {
   formLoading.value = true
   try {
     await ModelApi.importModel(file.value, formData.key, formData.name)
-    message.success(t('bpm.model._todo45'))
+    message.success(t('bpm.model.importSucceeded'))
     dialogVisible.value = false
     emit('success')
   } finally {

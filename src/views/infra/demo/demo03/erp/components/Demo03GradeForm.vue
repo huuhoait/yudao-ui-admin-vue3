@@ -10,8 +10,8 @@
       <el-form-item :label="t('infra.demo.demo03.erp.components.name')" prop="name">
         <el-input v-model="formData.name" :placeholder="t('infra.demo.demo03.erp.components.inputName')" />
       </el-form-item>
-      <el-form-item :label="t('infra.demo.demo03.erp.components._todo184')" prop="teacher">
-        <el-input v-model="formData.teacher" :placeholder="t('infra.demo.demo03.erp.components._todo185')" />
+      <el-form-item :label="t('infra.demo.demo03.erp.components.homeroomTeacher')" prop="teacher">
+        <el-input v-model="formData.teacher" :placeholder="t('infra.demo.demo03.erp.components.inputHomeroomTeacher')" />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -37,9 +37,9 @@ const formData = ref<Demo03Grade>({
   teacher: undefined
 })
 const formRules = reactive({
-  studentId: [{ required: true, message: t('infra.demo.demo03.erp.components._todo181'), trigger: 'blur' }],
+  studentId: [{ required: true, message: t('infra.demo.demo03.erp.components.studentIdCannotBeEmpty'), trigger: 'blur' }],
   name: [{ required: true, message: t('infra.demo.demo03.erp.components.nameRequired'), trigger: 'blur' }],
-  teacher: [{ required: true, message: t('infra.demo.demo03.erp.components._todo186'), trigger: 'blur' }]
+  teacher: [{ required: true, message: t('infra.demo.demo03.erp.components.homeroomTeacherCannotBeEmpty'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

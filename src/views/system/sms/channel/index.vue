@@ -18,10 +18,10 @@
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item :label="t('system.sms.channel._todo233')" prop="status">
+      <el-form-item :label="t('system.sms.channel.enableStatus')" prop="status">
         <el-select
           v-model="queryParams.status"
-          :placeholder="t('system.sms.channel._todo242')"
+          :placeholder="t('system.sms.channel.selectEnableStatus')"
           class="!w-240px"
           clearable
         >
@@ -79,28 +79,28 @@
           <dict-tag :type="DICT_TYPE.SYSTEM_SMS_CHANNEL_CODE" :value="scope.row.code" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('system.sms.channel._todo233')" align="center" prop="status">
+      <el-table-column :label="t('system.sms.channel.enableStatus')" align="center" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
       <el-table-column :label="t('system.sms.channel.remark')" align="center" prop="remark" :show-overflow-tooltip="true" />
       <el-table-column
-        :label="t('system.sms.channel._todo234')"
+        :label="t('system.sms.channel.smsApiAccount')"
         align="center"
         prop="apiKey"
         :show-overflow-tooltip="true"
         width="180"
       />
       <el-table-column
-        :label="t('system.sms.channel._todo236')"
+        :label="t('system.sms.channel.smsApiSecret')"
         align="center"
         prop="apiSecret"
         :show-overflow-tooltip="true"
         width="180"
       />
       <el-table-column
-        :label="t('system.sms.channel._todo238')"
+        :label="t('system.sms.channel.smsSendCallbackUrl')"
         align="center"
         prop="callbackUrl"
         :show-overflow-tooltip="true"

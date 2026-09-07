@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('bpm.processInstance.report._todo246')" url="https://doc.iocoder.cn/bpm/" />
+  <doc-alert :title="t('bpm.processInstance.report.workflowManual')" url="https://doc.iocoder.cn/bpm/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->

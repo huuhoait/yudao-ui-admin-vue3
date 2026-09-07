@@ -1,7 +1,7 @@
 <template>
-  <doc-alert :title="t('infra.job._todo313')" url="https://doc.iocoder.cn/job/" />
-  <doc-alert :title="t('infra.job._todo314')" url="https://doc.iocoder.cn/async-task/" />
-  <doc-alert :title="t('infra.job._todo315')" url="https://doc.iocoder.cn/message-queue/" />
+  <doc-alert :title="t('infra.job.scheduledTask')" url="https://doc.iocoder.cn/job/" />
+  <doc-alert :title="t('infra.job.asyncTask')" url="https://doc.iocoder.cn/async-task/" />
+  <doc-alert :title="t('infra.job.messageQueue')" url="https://doc.iocoder.cn/message-queue/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -21,10 +21,10 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.job._todo295')" prop="status">
+      <el-form-item :label="t('infra.job.taskStatus')" prop="status">
         <el-select
           v-model="queryParams.status"
-          :placeholder="t('infra.job._todo316')"
+          :placeholder="t('infra.job.selectTaskStatus')"
           clearable
           class="!w-240px"
         >
@@ -36,10 +36,10 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('infra.job._todo296')" prop="handlerName">
+      <el-form-item :label="t('infra.job.handlerName')" prop="handlerName">
         <el-input
           v-model="queryParams.handlerName"
-          :placeholder="t('infra.job._todo303')"
+          :placeholder="t('infra.job.inputHandlerName')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
@@ -75,7 +75,7 @@
           <Icon icon="ep:download" class="mr-5px" /> {{ t('infra.job.export') }}
         </el-button>
         <el-button type="info" plain @click="handleJobLog()" v-hasPermi="['infra:job:query']">
-          <Icon icon="ep:zoom-in" class="mr-5px" /> {{ t('infra.job._todo317') }}
+          <Icon icon="ep:zoom-in" class="mr-5px" /> {{ t('infra.job.executionLog') }}
         </el-button>
         <el-button
           type="warning"
@@ -84,7 +84,7 @@
           :loading="syncLoading"
           v-hasPermi="['infra:job:create']"
         >
-          <Icon icon="ep:refresh" class="mr-5px" /> {{ t('infra.job._todo318') }}
+          <Icon icon="ep:refresh" class="mr-5px" /> {{ t('infra.job.syncTask') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -96,13 +96,13 @@
       <el-table-column type="selection" width="55" />
       <el-table-column :label="t('infra.job.taskId')" align="center" prop="id" />
       <el-table-column :label="t('infra.job.taskName')" align="center" prop="name" />
-      <el-table-column :label="t('infra.job._todo295')" align="center" prop="status">
+      <el-table-column :label="t('infra.job.taskStatus')" align="center" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_JOB_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('infra.job._todo296')" align="center" prop="handlerName" />
-      <el-table-column :label="t('infra.job._todo297')" align="center" prop="handlerParam" />
+      <el-table-column :label="t('infra.job.handlerName')" align="center" prop="handlerName" />
+      <el-table-column :label="t('infra.job.handlerParameters')" align="center" prop="handlerParam" />
       <el-table-column :label="t('infra.job._todo305')" align="center" prop="cronExpression" />
       <el-table-column :label="t('infra.job.action')" align="center" width="200">
         <template #default="scope">
@@ -120,7 +120,7 @@
             @click="handleChangeStatus(scope.row)"
             v-hasPermi="['infra:job:update']"
           >
-            {{ scope.row.status === InfraJobStatusEnum.STOP ? t('infra.job._todo323') : t('infra.job.pause') }}
+            {{ scope.row.status === InfraJobStatusEnum.STOP ? t('infra.job.enabled') : t('infra.job.pause') }}
           </el-button>
           <el-button
             type="danger"
@@ -138,13 +138,13 @@
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item command="handleRun" v-if="checkPermi(['infra:job:trigger'])">
-                  {{ t('infra.job._todo319') }}
+                  {{ t('infra.job.executeOnce') }}
                 </el-dropdown-item>
                 <el-dropdown-item command="openDetail" v-if="checkPermi(['infra:job:query'])">
-                  {{ t('infra.job._todo294') }}
+                  {{ t('infra.job.taskDetails') }}
                 </el-dropdown-item>
                 <el-dropdown-item command="handleJobLog" v-if="checkPermi(['infra:job:query'])">
-                  {{ t('infra.job._todo320') }}
+                  {{ t('infra.job.scheduleLog') }}
                 </el-dropdown-item>
               </el-dropdown-menu>
             </template>
@@ -240,7 +240,7 @@ const handleSyncJob = async () => {
     await message.confirm(t('infra.job._todo321'), t('common.reminder'))
     syncLoading.value = true
     await JobApi.syncJob()
-    message.success(t('infra.job._todo322'))
+    message.success(t('infra.job.syncedSuccessfully'))
     await getList()
   } catch {
   } finally {
@@ -258,7 +258,7 @@ const openForm = (type: string, id?: number) => {
 const handleChangeStatus = async (row: JobApi.JobVO) => {
   try {
     // 修改状态的二次确认
-    const text = row.status === InfraJobStatusEnum.STOP ? t('infra.job._todo323') : t('common.close')
+    const text = row.status === InfraJobStatusEnum.STOP ? t('infra.job.enabled') : t('common.close')
     await message.confirm(
       t('infra.job.confirmChangeStatus', { action: text, id: row.id }),
       t('common.reminder')
@@ -328,7 +328,7 @@ const handleRun = async (row: JobApi.JobVO) => {
     await message.confirm(t('infra.job.confirmRunOnce', { name: row.name }), t('common.reminder'))
     // 提交执行
     await JobApi.runJob(row.id)
-    message.success(t('infra.job._todo324'))
+    message.success(t('infra.job.executionSucceeded'))
     // 刷新列表
     await getList()
   } catch {}

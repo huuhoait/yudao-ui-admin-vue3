@@ -1,12 +1,12 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('infra.codegen._todo50')" width="800px">
+  <Dialog v-model="dialogVisible" :title="t('infra.codegen.importTable')" width="800px">
     <!-- 搜索栏 -->
     <el-form ref="queryFormRef" :inline="true" :model="queryParams" label-width="68px">
-      <el-form-item :label="t('infra.codegen._todo51')" prop="dataSourceConfigId">
+      <el-form-item :label="t('infra.codegen.dataSource')" prop="dataSourceConfigId">
         <el-select
           v-model="queryParams.dataSourceConfigId"
           class="!w-240px"
-          :placeholder="t('infra.codegen._todo52')"
+          :placeholder="t('infra.codegen.selectDataSource')"
         >
           <el-option
             v-for="config in dataSourceConfigList"
@@ -16,21 +16,21 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('infra.codegen._todo53')" prop="name">
+      <el-form-item :label="t('infra.codegen.tableName')" prop="name">
         <el-input
           v-model="queryParams.name"
           class="!w-240px"
           clearable
-          :placeholder="t('infra.codegen._todo54')"
+          :placeholder="t('infra.codegen.inputTableName')"
           @keyup.enter="getList"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.codegen._todo55')" prop="comment">
+      <el-form-item :label="t('infra.codegen.tableDescription')" prop="comment">
         <el-input
           v-model="queryParams.comment"
           class="!w-240px"
           clearable
-          :placeholder="t('infra.codegen._todo56')"
+          :placeholder="t('infra.codegen.inputTableDescription')"
           @keyup.enter="getList"
         />
       </el-form-item>
@@ -56,8 +56,8 @@
         @selection-change="handleSelectionChange"
       >
         <el-table-column type="selection" width="55" />
-        <el-table-column :show-overflow-tooltip="true" :label="t('infra.codegen._todo53')" prop="name" />
-        <el-table-column :show-overflow-tooltip="true" :label="t('infra.codegen._todo55')" prop="comment" />
+        <el-table-column :show-overflow-tooltip="true" :label="t('infra.codegen.tableName')" prop="name" />
+        <el-table-column :show-overflow-tooltip="true" :label="t('infra.codegen.tableDescription')" prop="comment" />
       </el-table>
     </el-row>
     <!-- 操作 -->
@@ -149,7 +149,7 @@ const handleImportTable = async () => {
       dataSourceConfigId: queryParams.dataSourceConfigId,
       tableNames: tableList.value
     })
-    message.success(t('infra.codegen._todo57'))
+    message.success(t('infra.codegen.importSucceeded'))
     emit('success')
     close()
   } finally {

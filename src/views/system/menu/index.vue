@@ -1,6 +1,6 @@
 <template>
-  <doc-alert :title="t('system.menu._todo106')" url="https://doc.iocoder.cn/resource-permission" />
-  <doc-alert :title="t('system.menu._todo107')" url="https://doc.iocoder.cn/vue3/route/" />
+  <doc-alert :title="t('system.menu.featurePermission')" url="https://doc.iocoder.cn/resource-permission" />
+  <doc-alert :title="t('system.menu.menuRoute')" url="https://doc.iocoder.cn/vue3/route/" />
 
   <!-- 搜索工作栏 -->
   <ContentWrap>
@@ -55,11 +55,11 @@
         </el-button>
         <el-button plain type="danger" @click="toggleExpandAll">
           <Icon class="mr-5px" icon="ep:sort" />
-          {{ t('system.menu._todo108') }}
+          {{ t('system.menu.expandCollapse') }}
         </el-button>
         <el-button plain @click="refreshMenu">
           <Icon class="mr-5px" icon="ep:refresh" />
-          {{ t('system.menu._todo109') }}
+          {{ t('system.menu.refreshMenuCache') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -113,7 +113,7 @@ const columns: Column<MenuVO>[] = [
   },
   {
     key: 'icon',
-    title: t('system.menu._todo110'),
+    title: t('system.menu.icon'),
     dataKey: 'icon',
     width: 100,
     align: 'center',
@@ -127,7 +127,7 @@ const columns: Column<MenuVO>[] = [
   },
   {
     key: 'permission',
-    title: t('system.menu._todo90'),
+    title: t('system.menu.permission'),
     dataKey: 'permission',
     width: 300
   },
@@ -273,7 +273,7 @@ const toggleExpandAll = () => {
 /** 刷新菜单缓存按钮操作 */
 const refreshMenu = async () => {
   try {
-    await message.confirm(t('system.menu._todo113'), t('system.menu._todo109'))
+    await message.confirm(t('system.menu._todo113'), t('system.menu.refreshMenuCache'))
     // 清空，从而触发刷新
     wsCache.delete(CACHE_KEY.USER)
     wsCache.delete(CACHE_KEY.ROLE_ROUTERS)

@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('system.notify.template._todo153')" :max-height="500">
+  <Dialog v-model="dialogVisible" :title="t('system.notify.template.testSend')" :max-height="500">
     <el-form
       ref="formRef"
       v-loading="formLoading"
@@ -26,11 +26,11 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-show="formData.userType === 1" :label="t('system.notify.template._todo154')" prop="userId">
+      <el-form-item v-show="formData.userType === 1" :label="t('system.notify.template.recipientId')" prop="userId">
         <el-input v-model="formData.userId" style="width: 160px" />
       </el-form-item>
-      <el-form-item v-show="formData.userType === 2" :label="t('system.notify.template._todo155')" prop="userId">
-        <el-select v-model="formData.userId" :placeholder="t('system.notify.template._todo156')">
+      <el-form-item v-show="formData.userType === 2" :label="t('system.notify.template.recipient')" prop="userId">
+        <el-select v-model="formData.userId" :placeholder="t('system.notify.template.selectRecipient')">
           <el-option
             v-for="item in userOption"
             :key="item.id"
@@ -79,7 +79,7 @@ const formData = ref({
 })
 const formRules = reactive({
   userId: [{ required: true, message: t('system.notify.template.userIdRequired'), trigger: 'change' }],
-  templateCode: [{ required: true, message: t('system.notify.template._todo157'), trigger: 'blur' }],
+  templateCode: [{ required: true, message: t('system.notify.template.templateIdRequired'), trigger: 'blur' }],
   templateParams: {}
 })
 const formRef = ref() // 表单 Ref

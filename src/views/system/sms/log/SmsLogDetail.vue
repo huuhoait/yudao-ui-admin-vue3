@@ -8,24 +8,24 @@
         {{ channelList.find((channel) => channel.id === detailData.channelId)?.signature }}
         <dict-tag :type="DICT_TYPE.SYSTEM_SMS_CHANNEL_CODE" :value="detailData.channelCode" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo243')">
+      <el-descriptions-item :label="t('system.sms.log.smsTemplate')">
         {{ detailData.templateId }} | {{ detailData.templateCode }}
         <dict-tag :type="DICT_TYPE.SYSTEM_SMS_TEMPLATE_TYPE" :value="detailData.templateType!" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo244')">
+      <el-descriptions-item :label="t('system.sms.log.apiTemplateId')">
         {{ detailData.apiTemplateId }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo245')">
+      <el-descriptions-item :label="t('system.sms.log.userInfo')">
         {{ detailData.mobile }}
         <span v-if="detailData.userType && detailData.userId">
           <dict-tag :type="DICT_TYPE.USER_TYPE" :value="detailData.userType" />
           ({{ detailData.userId }})
         </span>
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo246')">
+      <el-descriptions-item :label="t('system.sms.log.smsContent')">
         {{ detailData.templateContent }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo247')">
+      <el-descriptions-item :label="t('system.sms.log.smsParams')">
         {{ detailData.templateParams }}
       </el-descriptions-item>
       <el-descriptions-item :label="t('common.createTime')">
@@ -37,20 +37,20 @@
       <el-descriptions-item :label="t('system.sms.log.sendTime')">
         {{ formatDate(detailData.sendTime) }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo248')">
+      <el-descriptions-item :label="t('system.sms.log.apiSendResult')">
         {{ detailData.apiSendCode }} | {{ detailData.apiSendMsg }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo249')">
+      <el-descriptions-item :label="t('system.sms.log.apiSmsId')">
         {{ detailData.apiSerialNo }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo250')">
+      <el-descriptions-item :label="t('system.sms.log.apiRequestId')">
         {{ detailData.apiRequestId }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo251')">
+      <el-descriptions-item :label="t('system.sms.log.apiReceiveStatus')">
         <dict-tag :type="DICT_TYPE.SYSTEM_SMS_RECEIVE_STATUS" :value="detailData.receiveStatus!" />
         {{ formatDate(detailData.receiveTime) }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.sms.log._todo252')">
+      <el-descriptions-item :label="t('system.sms.log.apiReceiveResult')">
         {{ detailData.apiReceiveCode }} | {{ detailData.apiReceiveMsg }}
       </el-descriptions-item>
     </el-descriptions>

@@ -10,14 +10,14 @@
       <el-form-item :label="t('infra.demo.demo02.name')" prop="name">
         <el-input v-model="formData.name" :placeholder="t('infra.demo.demo02.inputName')" />
       </el-form-item>
-      <el-form-item :label="t('infra.demo.demo02._todo166')" prop="parentId">
+      <el-form-item :label="t('infra.demo.demo02.parentId')" prop="parentId">
         <el-tree-select
           v-model="formData.parentId"
           :data="demo02CategoryTree"
           :props="defaultProps"
           check-strictly
           default-expand-all
-          :placeholder="t('infra.demo.demo02._todo167')"
+          :placeholder="t('infra.demo.demo02.selectParentId')"
         />
       </el-form-item>
     </el-form>
@@ -45,7 +45,7 @@ const formData = ref({
 })
 const formRules = reactive({
   name: [{ required: true, message: t('infra.demo.demo02.nameRequired'), trigger: 'blur' }],
-  parentId: [{ required: true, message: t('infra.demo.demo02._todo168'), trigger: 'blur' }]
+  parentId: [{ required: true, message: t('infra.demo.demo02.parentIdCannotBeEmpty'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 const demo02CategoryTree = ref() // 树形结构
@@ -107,7 +107,7 @@ const resetForm = () => {
 const getDemo02CategoryTree = async () => {
   demo02CategoryTree.value = []
   const data = await Demo02CategoryApi.getDemo02CategoryList()
-  const root: Tree = { id: 0, name: t('infra.demo.demo02._todo169'), children: [] }
+  const root: Tree = { id: 0, name: t('infra.demo.demo02.topLevelExampleCategory'), children: [] }
   root.children = handleTree(data, 'id', 'parentId')
   demo02CategoryTree.value.push(root)
 }

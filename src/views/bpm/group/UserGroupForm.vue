@@ -7,14 +7,14 @@
       :rules="formRules"
       label-width="100px"
     >
-      <el-form-item :label="t('bpm.group._todo6')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('bpm.group._todo7')" />
+      <el-form-item :label="t('bpm.group.groupName')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('bpm.group.inputGroupName')" />
       </el-form-item>
       <el-form-item :label="t('bpm.group.description')">
         <el-input v-model="formData.description" :placeholder="t('bpm.group.inputDescription')" type="textarea" />
       </el-form-item>
-      <el-form-item :label="t('bpm.group._todo8')" prop="userIds">
-        <el-select v-model="formData.userIds" multiple :placeholder="t('bpm.group._todo9')">
+      <el-form-item :label="t('bpm.group.members')" prop="userIds">
+        <el-select v-model="formData.userIds" multiple :placeholder="t('bpm.group.selectMembers')">
           <el-option
             v-for="user in userList"
             :key="user.id"
@@ -64,9 +64,9 @@ const formData = ref({
   status: CommonStatusEnum.ENABLE
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('bpm.group._todo10'), trigger: 'blur' }],
+  name: [{ required: true, message: t('bpm.group.groupNameRequired'), trigger: 'blur' }],
   description: [{ required: true, message: t('bpm.group.descriptionRequired'), trigger: 'blur' }],
-  userIds: [{ required: true, message: t('bpm.group._todo11'), trigger: 'blur' }],
+  userIds: [{ required: true, message: t('bpm.group.membersRequired'), trigger: 'blur' }],
   status: [{ required: true, message: t('bpm.group.statusRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref

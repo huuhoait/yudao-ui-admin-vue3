@@ -15,7 +15,7 @@
       drag
     >
       <Icon icon="ep:upload" />
-      <div class="el-upload__text">{{ t('system.user._todo3') }}<em>{{ t('system.user.clickUpload') }}</em></div>
+      <div class="el-upload__text">{{ t('system.user.dropFileHere') }}<em>{{ t('system.user.clickUpload') }}</em></div>
       <template #tip>
         <div class="el-upload__tip text-center">
           <div class="el-upload__tip">
@@ -71,7 +71,7 @@ defineExpose({ open }) // 提供 open 方法，用于打开弹窗
 /** 提交表单 */
 const submitForm = async () => {
   if (fileList.value.length == 0) {
-    message.error(t('system.user._todo6'))
+    message.error(t('system.user.pleaseUploadFile'))
     return
   }
   // 提交请求
@@ -114,7 +114,7 @@ const submitFormSuccess = (response: any) => {
 
 /** 上传错误提示 */
 const submitFormError = (): void => {
-  message.error(t('system.user._todo7'))
+  message.error(t('system.user.uploadFailedPleaseTryAgain'))
   formLoading.value = false
 }
 

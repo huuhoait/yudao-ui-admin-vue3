@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('bpm.processInstance._todo241')" url="https://doc.iocoder.cn/bpm/process-instance/" />
+  <doc-alert :title="t('bpm.processInstance.startCancelRestartProcess')" url="https://doc.iocoder.cn/bpm/process-instance/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->

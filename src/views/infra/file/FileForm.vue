@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('infra.file._todo228')">
+  <Dialog v-model="dialogVisible" :title="t('infra.file.uploadFile')">
     <el-upload
       ref="uploadRef"
       v-model:file-list="fileList"
@@ -18,7 +18,7 @@
       drag
     >
       <i class="el-icon-upload"></i>
-      <div class="el-upload__text"> {{ t('infra.file._todo229') }} <em>{{ t('infra.file.clickUpload') }}</em></div>
+      <div class="el-upload__text"> {{ t('infra.file.dropFileHere') }} <em>{{ t('infra.file.clickUpload') }}</em></div>
       <template #tip>
         <div class="el-upload__tip" style="color: red">
           {{ t('infra.file._todo230') }}
@@ -68,7 +68,7 @@ const handleProgress = (upEvt: UploadProgressEvent, file: UploadFile) => {
 /** 提交表单 */
 const submitFileForm = () => {
   if (fileList.value.length == 0) {
-    message.error(t('infra.file._todo231'))
+    message.error(t('infra.file.pleaseUploadFile'))
     return
   }
   formLoading.value = true
@@ -89,7 +89,7 @@ const submitFormSuccess = () => {
 
 /** 上传错误提示 */
 const submitFormError = (): void => {
-  message.error(t('infra.file._todo232'))
+  message.error(t('infra.file.uploadFailedPleaseTryAgain'))
   formLoading.value = false
 }
 

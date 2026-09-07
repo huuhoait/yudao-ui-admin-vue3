@@ -54,7 +54,7 @@
           value-format="x"
         />
       </el-form-item>
-      <el-form-item :label="t('system.tenant._todo276')" prop="websites">
+      <el-form-item :label="t('system.tenant.bindDomain')" prop="websites">
         <el-input-tag
           v-model="formData.websites"
           :placeholder="t('system.tenant._todo277')"

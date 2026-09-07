@@ -3,10 +3,10 @@
     <div
       class="flex items-center gap-12px pb-18px border-b border-b-[var(--el-border-color-lighter)]"
     >
-      <div class="text-18px font-bold text-[var(--el-text-color-primary)]">{{ t('bpm.processInstance.detail._todo289') }}</div>
+      <div class="text-18px font-bold text-[var(--el-text-color-primary)]">{{ t('bpm.processInstance.detail.processComments') }}</div>
       <div class="text-13px text-[var(--el-text-color-secondary)]">{{ t('bpm.processInstance.detail.commentCount', { n: comments.length }) }}</div>
     </div>
-    <el-empty v-if="!comments.length" :description="t('bpm.processInstance.detail._todo288')" />
+    <el-empty v-if="!comments.length" :description="t('bpm.processInstance.detail.noCommentsYet')" />
     <el-timeline
       v-else
       class="mt-24px pl-8px [&_.el-timeline-item]:pl-42px [&_.el-timeline-item__tail]:left-16px [&_.el-timeline-item__dot]:left-0 [&_.el-timeline-item__wrapper]:top-0 [&_.el-timeline-item__wrapper]:pl-0"

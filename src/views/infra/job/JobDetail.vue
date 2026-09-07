@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('infra.job._todo294')" width="700px">
+  <Dialog v-model="dialogVisible" :title="t('infra.job.taskDetails')" width="700px">
     <el-descriptions :column="1" border>
       <el-descriptions-item :label="t('infra.job.taskId')" min-width="60">
         {{ detailData.id }}
@@ -7,32 +7,32 @@
       <el-descriptions-item :label="t('infra.job.taskName')">
         {{ detailData.name }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.job._todo295')">
+      <el-descriptions-item :label="t('infra.job.taskStatus')">
         <dict-tag :type="DICT_TYPE.INFRA_JOB_STATUS" :value="detailData.status" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.job._todo296')">
+      <el-descriptions-item :label="t('infra.job.handlerName')">
         {{ detailData.handlerName }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.job._todo297')">
+      <el-descriptions-item :label="t('infra.job.handlerParameters')">
         {{ detailData.handlerParam }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.job._todo298')">
+      <el-descriptions-item :label="t('infra.job.cronExpression')">
         {{ detailData.cronExpression }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.job._todo299')">
+      <el-descriptions-item :label="t('infra.job.retryCount')">
         {{ detailData.retryCount }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.job._todo300')">
+      <el-descriptions-item :label="t('infra.job.retryInterval')">
         {{ detailData.retryInterval }} {{ t('common.milliseconds') }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.job._todo301')">
+      <el-descriptions-item :label="t('infra.job.monitorTimeout')">
         {{
           detailData.monitorTimeout > 0
             ? detailData.monitorTimeout + ' ' + t('common.milliseconds')
             : t('infra.job.notEnabled')
         }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.job._todo302')">
+      <el-descriptions-item :label="t('infra.job.nextExecutionTime')">
         <el-timeline>
           <el-timeline-item
             v-for="(nextTime, index) in nextTimes"

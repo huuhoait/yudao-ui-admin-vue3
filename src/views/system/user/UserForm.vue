@@ -134,14 +134,14 @@ const formRules = reactive<FormRules>({
   email: [
     {
       type: 'email',
-      message: t('system.user._todo1'),
+      message: t('system.user.inputValidEmailAddress'),
       trigger: ['blur', 'change']
     }
   ],
   mobile: [
     {
       pattern: /^1[3-9]\d{9}$/,
-      message: t('system.user._todo2'),
+      message: t('system.user.inputValidMobileNumber'),
       trigger: 'blur'
     }
   ]

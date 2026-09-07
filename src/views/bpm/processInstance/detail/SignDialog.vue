@@ -10,13 +10,13 @@
         @click="signature.clear()"
       >
         <Icon icon="ep:delete" class="mr-5px" />
-        {{ t('bpm.processInstance.detail._todo328') }}
+        {{ t('bpm.processInstance.detail.clear') }}
       </el-button>
     </div>
     <template #footer>
       <div class="dialog-footer">
         <el-button @click="signDialogVisible = false">{{ t('common.cancel') }}</el-button>
-        <el-button type="primary" @click="submit"> {{ t('bpm.processInstance.detail._todo301') }} </el-button>
+        <el-button type="primary" @click="submit"> {{ t('bpm.processInstance.detail.submit') }} </el-button>
       </div>
     </template>
   </el-dialog>
@@ -39,7 +39,7 @@ defineExpose({ open })
 
 const emits = defineEmits(['success'])
 const submit = async () => {
-  message.success(t('bpm.processInstance.detail._todo329'))
+  message.success(t('bpm.processInstance.detail.uploadingSignaturePleaseWait'))
   const res = await FileApi.updateFile({
     file: download.base64ToFile(signature.value.save('image/png'), t('bpm.processInstance.detail.signature'))
   })

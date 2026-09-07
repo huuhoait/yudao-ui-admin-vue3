@@ -4,7 +4,7 @@
       <el-descriptions-item :label="t('infra.apiErrorLog.logId')" min-width="120">
         {{ detailData.id }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiErrorLog._todo23')">
+      <el-descriptions-item :label="t('infra.apiErrorLog.trace')">
         {{ detailData.traceId }}
       </el-descriptions-item>
       <el-descriptions-item :label="t('infra.apiErrorLog.appName')">
@@ -14,25 +14,25 @@
         {{ detailData.userId }}
         <dict-tag :type="DICT_TYPE.USER_TYPE" :value="detailData.userType" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiErrorLog._todo24')">
+      <el-descriptions-item :label="t('infra.apiErrorLog.userIp')">
         {{ detailData.userIp }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiErrorLog._todo25')">
+      <el-descriptions-item :label="t('infra.apiErrorLog.userAgent')">
         {{ detailData.userAgent }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiErrorLog._todo26')">
+      <el-descriptions-item :label="t('infra.apiErrorLog.requestInfo')">
         {{ detailData.requestMethod }} {{ detailData.requestUrl }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiErrorLog._todo27')">
+      <el-descriptions-item :label="t('infra.apiErrorLog.requestParameters')">
         {{ detailData.requestParams }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiErrorLog._todo28')">
+      <el-descriptions-item :label="t('infra.apiErrorLog.exceptionTime')">
         {{ formatDate(detailData.exceptionTime) }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiErrorLog._todo29')">
+      <el-descriptions-item :label="t('infra.apiErrorLog.exceptionName')">
         {{ detailData.exceptionName }}
       </el-descriptions-item>
-      <el-descriptions-item v-if="detailData.exceptionStackTrace" :label="t('infra.apiErrorLog._todo30')">
+      <el-descriptions-item v-if="detailData.exceptionStackTrace" :label="t('infra.apiErrorLog.exceptionStackTrace')">
         <el-input
           v-model="detailData.exceptionStackTrace"
           :autosize="{ maxRows: 20 }"
@@ -40,16 +40,16 @@
           type="textarea"
         />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiErrorLog._todo31')">
+      <el-descriptions-item :label="t('infra.apiErrorLog.processingStatus')">
         <dict-tag
           :type="DICT_TYPE.INFRA_API_ERROR_LOG_PROCESS_STATUS"
           :value="detailData.processStatus"
         />
       </el-descriptions-item>
-      <el-descriptions-item v-if="detailData.processUserId" :label="t('infra.apiErrorLog._todo32')">
+      <el-descriptions-item v-if="detailData.processUserId" :label="t('infra.apiErrorLog.handler')">
         {{ detailData.processUserId }}
       </el-descriptions-item>
-      <el-descriptions-item v-if="detailData.processTime" :label="t('infra.apiErrorLog._todo33')">
+      <el-descriptions-item v-if="detailData.processTime" :label="t('infra.apiErrorLog.processingTime')">
         {{ formatDate(detailData.processTime) }}
       </el-descriptions-item>
     </el-descriptions>

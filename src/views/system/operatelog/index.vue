@@ -10,12 +10,12 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="t('system.operatelog._todo197')" prop="userId">
+      <el-form-item :label="t('system.operatelog.operator')" prop="userId">
         <el-select
           v-model="queryParams.userId"
           clearable
           filterable
-          :placeholder="t('system.operatelog._todo198')"
+          :placeholder="t('system.operatelog.inputOperator')"
           class="!w-240px"
         >
           <el-option
@@ -26,34 +26,34 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('system.operatelog._todo190')" prop="type">
+      <el-form-item :label="t('system.operatelog.operationModule')" prop="type">
         <el-input
           v-model="queryParams.type"
-          :placeholder="t('system.operatelog._todo199')"
+          :placeholder="t('system.operatelog.inputOperationModule')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('system.operatelog._todo191')" prop="subType">
+      <el-form-item :label="t('system.operatelog.operationName')" prop="subType">
         <el-input
           v-model="queryParams.subType"
-          :placeholder="t('system.operatelog._todo200')"
+          :placeholder="t('system.operatelog.inputOperationName')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('system.operatelog._todo192')" prop="action">
+      <el-form-item :label="t('system.operatelog.operationContent')" prop="action">
         <el-input
           v-model="queryParams.action"
-          :placeholder="t('system.operatelog._todo200')"
+          :placeholder="t('system.operatelog.inputOperationName')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('system.operatelog._todo195')" prop="createTime">
+      <el-form-item :label="t('system.operatelog.operationTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
@@ -64,10 +64,10 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('system.operatelog._todo196')" prop="bizId">
+      <el-form-item :label="t('system.operatelog.businessId')" prop="bizId">
         <el-input
           v-model="queryParams.bizId"
-          :placeholder="t('system.operatelog._todo201')"
+          :placeholder="t('system.operatelog.inputBusinessId')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
@@ -93,19 +93,19 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
       <el-table-column :label="t('system.operatelog._todo202')" align="center" prop="id" width="100" />
-      <el-table-column :label="t('system.operatelog._todo197')" align="center" prop="userName" width="120" />
-      <el-table-column :label="t('system.operatelog._todo190')" align="center" prop="type" width="120" />
-      <el-table-column :label="t('system.operatelog._todo191')" align="center" prop="subType" width="160" />
-      <el-table-column :label="t('system.operatelog._todo192')" align="center" prop="action" />
+      <el-table-column :label="t('system.operatelog.operator')" align="center" prop="userName" width="120" />
+      <el-table-column :label="t('system.operatelog.operationModule')" align="center" prop="type" width="120" />
+      <el-table-column :label="t('system.operatelog.operationName')" align="center" prop="subType" width="160" />
+      <el-table-column :label="t('system.operatelog.operationContent')" align="center" prop="action" />
       <el-table-column
-        :label="t('system.operatelog._todo195')"
+        :label="t('system.operatelog.operationTime')"
         align="center"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column :label="t('system.operatelog._todo196')" align="center" prop="bizId" width="120" />
-      <el-table-column :label="t('system.operatelog._todo203')" align="center" prop="userIp" width="120" />
+      <el-table-column :label="t('system.operatelog.businessId')" align="center" prop="bizId" width="120" />
+      <el-table-column :label="t('system.operatelog.operationIp')" align="center" prop="userIp" width="120" />
       <el-table-column :label="t('system.operatelog.action')" align="center" fixed="right" width="60">
         <template #default="scope">
           <el-button

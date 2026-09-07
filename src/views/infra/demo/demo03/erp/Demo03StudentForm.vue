@@ -10,7 +10,7 @@
       <el-form-item :label="t('infra.demo.demo03.erp.name')" prop="name">
         <el-input v-model="formData.name" :placeholder="t('infra.demo.demo03.erp.inputName')" />
       </el-form-item>
-      <el-form-item :label="t('infra.demo.demo03.erp._todo172')" prop="sex">
+      <el-form-item :label="t('infra.demo.demo03.erp.gender')" prop="sex">
         <el-radio-group v-model="formData.sex">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_USER_SEX)"
@@ -21,15 +21,15 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :label="t('infra.demo.demo03.erp._todo173')" prop="birthday">
+      <el-form-item :label="t('infra.demo.demo03.erp.dateBirth')" prop="birthday">
         <el-date-picker
           v-model="formData.birthday"
           type="date"
           value-format="x"
-          :placeholder="t('infra.demo.demo03.erp._todo174')"
+          :placeholder="t('infra.demo.demo03.erp.selectDateBirth')"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.demo.demo03.erp._todo175')" prop="description">
+      <el-form-item :label="t('infra.demo.demo03.erp.bio')" prop="description">
         <Editor v-model="formData.description" height="150px" />
       </el-form-item>
     </el-form>
@@ -62,9 +62,9 @@ const formData = ref<Demo03Student>({
 })
 const formRules = reactive({
   name: [{ required: true, message: t('infra.demo.demo03.erp.nameRequired'), trigger: 'blur' }],
-  sex: [{ required: true, message: t('infra.demo.demo03.erp._todo176'), trigger: 'blur' }],
+  sex: [{ required: true, message: t('infra.demo.demo03.erp.genderCannotBeEmpty'), trigger: 'blur' }],
   birthday: [{ required: true, message: t('infra.demo.demo03.erp._todo177'), trigger: 'blur' }],
-  description: [{ required: true, message: t('infra.demo.demo03.erp._todo178'), trigger: 'blur' }]
+  description: [{ required: true, message: t('infra.demo.demo03.erp.bioCannotBeEmpty'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

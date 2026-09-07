@@ -44,7 +44,7 @@
           <Icon icon="ep:plus" class="mr-5px" /> {{ t('system.dept.create') }}
         </el-button>
         <el-button type="danger" plain @click="toggleExpandAll">
-          <Icon icon="ep:sort" class="mr-5px" /> {{ t('system.dept._todo15') }}
+          <Icon icon="ep:sort" class="mr-5px" /> {{ t('system.dept.expandCollapse') }}
         </el-button>
         <el-button
           type="danger"

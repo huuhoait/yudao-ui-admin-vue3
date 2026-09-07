@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('infra.skywalking._todo365')" url="https://doc.iocoder.cn/server-monitor/" />
+  <doc-alert :title="t('infra.skywalking.serverMonitor')" url="https://doc.iocoder.cn/server-monitor/" />
 
   <ContentWrap :bodyStyle="{ padding: '0px' }" class="!mb-0">
     <IFrame v-if="!loading" v-loading="loading" :src="src" />

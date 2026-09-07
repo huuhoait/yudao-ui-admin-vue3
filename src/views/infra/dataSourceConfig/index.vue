@@ -28,9 +28,9 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column :label="t('infra.dataSourceConfig._todo156')" align="center" prop="id" />
-      <el-table-column :label="t('infra.dataSourceConfig._todo147')" align="center" prop="name" />
-      <el-table-column :label="t('infra.dataSourceConfig._todo149')" align="center" prop="url" :show-overflow-tooltip="true" />
+      <el-table-column :label="t('infra.dataSourceConfig.primaryKeyId')" align="center" prop="id" />
+      <el-table-column :label="t('infra.dataSourceConfig.dataSourceName')" align="center" prop="name" />
+      <el-table-column :label="t('infra.dataSourceConfig.dataSourceConnection')" align="center" prop="url" :show-overflow-tooltip="true" />
       <el-table-column :label="t('infra.dataSourceConfig.username')" align="center" prop="username" />
       <el-table-column
         :label="t('common.createTime')"

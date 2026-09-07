@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-model="dialogVisible" :title="t('system.area._todo1')">
+  <Dialog v-model="dialogVisible" :title="t('system.area.ipQuery')">
     <el-form
       ref="formRef"
       v-loading="formLoading"
@@ -8,10 +8,10 @@
       label-width="80px"
     >
       <el-form-item label="IP" prop="ip">
-        <el-input v-model="formData.ip" :placeholder="t('system.area._todo2')" />
+        <el-input v-model="formData.ip" :placeholder="t('system.area.inputIpAddress')" />
       </el-form-item>
-      <el-form-item :label="t('system.area._todo3')" prop="result">
-        <el-input v-model="formData.result" :placeholder="t('system.area._todo4')" readonly />
+      <el-form-item :label="t('system.area.address')" prop="result">
+        <el-input v-model="formData.result" :placeholder="t('system.area.showIpQueryResult')" readonly />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -35,7 +35,7 @@ const formData = ref({
   result: undefined
 })
 const formRules = reactive({
-  ip: [{ required: true, message: t('system.area._todo5'), trigger: 'blur' }]
+  ip: [{ required: true, message: t('system.area.ipAddressRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 
@@ -56,7 +56,7 @@ const submitForm = async () => {
   formLoading.value = true
   try {
     formData.value.result = await AreaApi.getAreaByIp(formData.value.ip!.trim())
-    message.success(t('system.area._todo6'))
+    message.success(t('system.area.querySucceeded'))
   } finally {
     formLoading.value = false
   }

@@ -31,7 +31,7 @@
           v-model="queryParams.status"
           class="!w-240px"
           clearable
-          :placeholder="t('system.dict._todo36')"
+          :placeholder="t('system.dict.selectDictStatus')"
         >
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
@@ -98,7 +98,7 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column align="center" :label="t('system.dict._todo37')" prop="id" />
+      <el-table-column align="center" :label="t('system.dict.dictId')" prop="id" />
       <el-table-column align="center" :label="t('system.dict.dictName')" prop="name" show-overflow-tooltip />
       <el-table-column align="center" :label="t('system.dict.dictType')" prop="type" width="300" />
       <el-table-column align="center" :label="t('common.status')" prop="status">
@@ -125,7 +125,7 @@
             {{ t('system.dict.edit') }}
           </el-button>
           <router-link :to="'/dict/type/data/' + scope.row.type">
-            <el-button link type="primary">{{ t('system.dict._todo38') }}</el-button>
+            <el-button link type="primary">{{ t('system.dict.data') }}</el-button>
           </router-link>
           <el-button
             v-hasPermi="['system:dict:delete']"

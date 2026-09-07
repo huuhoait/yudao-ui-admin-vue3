@@ -13,26 +13,26 @@
       <el-form-item :label="t('system.mail.account.username')" prop="username">
         <el-input v-model="formData.username" :placeholder="t('system.mail.account.inputUsername')" />
       </el-form-item>
-      <el-form-item :label="t('system.mail.account._todo44')" prop="password">
+      <el-form-item :label="t('system.mail.account.password')" prop="password">
         <el-input
           v-model="formData.password"
-          :placeholder="t('system.mail.account._todo45')"
+          :placeholder="t('system.mail.account.inputPassword')"
           type="password"
           show-password
         />
       </el-form-item>
-      <el-form-item :label="t('system.mail.account._todo46')" prop="host">
-        <el-input v-model="formData.host" :placeholder="t('system.mail.account._todo47')" />
+      <el-form-item :label="t('system.mail.account.smtpServerDomain')" prop="host">
+        <el-input v-model="formData.host" :placeholder="t('system.mail.account.inputSmtpServerDomain')" />
       </el-form-item>
-      <el-form-item :label="t('system.mail.account._todo48')" prop="port">
+      <el-form-item :label="t('system.mail.account.smtpServerPort')" prop="port">
         <el-input-number
           v-model="formData.port"
-          :placeholder="t('system.mail.account._todo49')"
+          :placeholder="t('system.mail.account.inputSmtpServerPort')"
           :min="1"
           :max="65535"
         />
       </el-form-item>
-      <el-form-item :label="t('system.mail.account._todo50')">
+      <el-form-item :label="t('system.mail.account.enableSsl')">
         <el-radio-group v-model="formData.sslEnable">
           <el-radio
             v-for="dict in getBoolDictOptions(DICT_TYPE.INFRA_BOOLEAN_STRING)"
@@ -43,7 +43,7 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :label="t('system.mail.account._todo51')">
+      <el-form-item :label="t('system.mail.account.enableStarttls')">
         <el-radio-group v-model="formData.starttlsEnable">
           <el-radio
             v-for="dict in getBoolDictOptions(DICT_TYPE.INFRA_BOOLEAN_STRING)"
@@ -87,14 +87,14 @@ const formData = ref<MailAccountApi.MailAccountVO>({
 const formRules = reactive({
   mail: [
     { required: true, message: t('system.mail.account.emailRequired'), trigger: 'blur' },
-    { type: 'email', message: t('system.mail.account._todo52'), trigger: ['blur', 'change'] }
+    { type: 'email', message: t('system.mail.account.inputValidEmailFormat'), trigger: ['blur', 'change'] }
   ],
   username: [{ required: true, message: t('system.mail.account.usernameRequired'), trigger: 'blur' }],
-  password: [{ required: true, message: t('system.mail.account._todo53'), trigger: 'blur' }],
-  host: [{ required: true, message: t('system.mail.account._todo54'), trigger: 'blur' }],
-  port: [{ required: true, message: t('system.mail.account._todo55'), trigger: 'blur' }],
-  sslEnable: [{ required: true, message: t('system.mail.account._todo56'), trigger: 'blur' }],
-  starttlsEnable: [{ required: true, message: t('system.mail.account._todo57'), trigger: 'blur' }]
+  password: [{ required: true, message: t('system.mail.account.passwordRequired'), trigger: 'blur' }],
+  host: [{ required: true, message: t('system.mail.account.smtpServerDomainRequired'), trigger: 'blur' }],
+  port: [{ required: true, message: t('system.mail.account.smtpServerPortRequired'), trigger: 'blur' }],
+  sslEnable: [{ required: true, message: t('system.mail.account.enableSslRequired'), trigger: 'blur' }],
+  starttlsEnable: [{ required: true, message: t('system.mail.account.enableStarttlsRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

@@ -17,7 +17,7 @@
           :placeholder="t('bpm.task.copy.inputProcessName')"
         />
       </el-form-item>
-      <el-form-item :label="t('bpm.task.copy._todo259')" prop="createTime">
+      <el-form-item :label="t('bpm.task.copy.ccTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
@@ -64,18 +64,18 @@
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="t('bpm.task.copy._todo261')"
+        :label="t('bpm.task.copy.processStartTime')"
         prop="processInstanceStartTime"
         width="180"
       />
-      <el-table-column align="center" :label="t('bpm.task.copy._todo262')" prop="activityName" min-width="180" />
+      <el-table-column align="center" :label="t('bpm.task.copy.ccNode')" prop="activityName" min-width="180" />
       <el-table-column align="center" :label="t('bpm.task.copy.ccUser')" min-width="100">
         <template #default="scope"> {{ scope.row.createUser?.nickname || t('bpm.task.copy.system') }} </template>
       </el-table-column>
       <el-table-column align="center" :label="t('bpm.task.copy.ccOpinion')" prop="reason" width="150" />
       <el-table-column
         align="center"
-        :label="t('bpm.task.copy._todo259')"
+        :label="t('bpm.task.copy.ccTime')"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"

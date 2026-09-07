@@ -7,19 +7,19 @@
       :rules="formRules"
       label-width="80px"
     >
-      <el-form-item :label="t('infra.config._todo129')" prop="category">
-        <el-input v-model="formData.category" :placeholder="t('infra.config._todo130')" />
+      <el-form-item :label="t('infra.config.parameterCategory')" prop="category">
+        <el-input v-model="formData.category" :placeholder="t('infra.config.inputParameterCategory')" />
       </el-form-item>
-      <el-form-item :label="t('infra.config._todo131')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('infra.config._todo132')" />
+      <el-form-item :label="t('infra.config.parameterName')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('infra.config.inputParameterName')" />
       </el-form-item>
-      <el-form-item :label="t('infra.config._todo133')" prop="key">
-        <el-input v-model="formData.key" :placeholder="t('infra.config._todo134')" />
+      <el-form-item :label="t('infra.config.parameterKey')" prop="key">
+        <el-input v-model="formData.key" :placeholder="t('infra.config.inputParameterKey')" />
       </el-form-item>
-      <el-form-item :label="t('infra.config._todo135')" prop="value">
-        <el-input v-model="formData.value" :placeholder="t('infra.config._todo136')" />
+      <el-form-item :label="t('infra.config.parameterValue')" prop="value">
+        <el-input v-model="formData.value" :placeholder="t('infra.config.inputParameterValue')" />
       </el-form-item>
-      <el-form-item :label="t('infra.config._todo137')" prop="visible">
+      <el-form-item :label="t('infra.config.visibleNot')" prop="visible">
         <el-radio-group v-model="formData.visible">
           <el-radio
             v-for="dict in getBoolDictOptions(DICT_TYPE.INFRA_BOOLEAN_STRING)"
@@ -64,10 +64,10 @@ const formData = ref({
 })
 const formRules = reactive({
   category: [{ required: true, message: t('infra.config._todo138'), trigger: 'blur' }],
-  name: [{ required: true, message: t('infra.config._todo139'), trigger: 'blur' }],
-  key: [{ required: true, message: t('infra.config._todo140'), trigger: 'blur' }],
-  value: [{ required: true, message: t('infra.config._todo141'), trigger: 'blur' }],
-  visible: [{ required: true, message: t('infra.config._todo142'), trigger: 'blur' }]
+  name: [{ required: true, message: t('infra.config.parameterNameCannotBeEmpty'), trigger: 'blur' }],
+  key: [{ required: true, message: t('infra.config.parameterKeyCannotBeEmpty'), trigger: 'blur' }],
+  value: [{ required: true, message: t('infra.config.parameterValueCannotBeEmpty'), trigger: 'blur' }],
+  visible: [{ required: true, message: t('infra.config.visibilityRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

@@ -10,19 +10,19 @@
       <el-form-item :label="t('system.role.menuPermission')">
         <el-card class="w-full h-400px !overflow-y-scroll" shadow="never">
           <template #header>
-            {{ t('system.role._todo219') }}
+            {{ t('system.role.selectAllNone') }}
             <el-switch
               v-model="treeNodeAll"
-              :active-text="t('system.role._todo214')"
-              :inactive-text="t('system.role._todo215')"
+              :active-text="t('system.role.yes')"
+              :inactive-text="t('system.role.no')"
               inline-prompt
               @change="handleCheckedTreeNodeAll"
             />
-            {{ t('system.role._todo220') }}
+            {{ t('system.role.expandCollapseAll') }}
             <el-switch
               v-model="menuExpand"
-              :active-text="t('system.role._todo216')"
-              :inactive-text="t('system.role._todo217')"
+              :active-text="t('system.role.expand')"
+              :inactive-text="t('system.role.collapse')"
               inline-prompt
               @change="handleCheckedTreeExpand"
             />
@@ -31,7 +31,7 @@
             ref="treeRef"
             :data="menuOptions"
             :props="defaultProps"
-            :empty-text="t('system.role._todo218')"
+            :empty-text="t('system.role.loadingPleaseWait')"
             node-key="id"
             show-checkbox
           />

@@ -10,24 +10,24 @@
       <el-form-item :label="t('system.mail.template.templateContent')" prop="content">
         <Editor :model-value="formData.content" height="150px" readonly />
       </el-form-item>
-      <el-form-item :label="t('system.mail.template._todo76')" prop="toMails">
+      <el-form-item :label="t('system.mail.template.recipientEmail')" prop="toMails">
         <el-input-tag
           v-model="formData.toMails"
           :placeholder="t('system.mail.template._todo77')"
           class="!w-full"
         />
       </el-form-item>
-      <el-form-item :label="t('system.mail.template._todo78')" prop="ccMails">
+      <el-form-item :label="t('system.mail.template.ccEmail')" prop="ccMails">
         <el-input-tag
           v-model="formData.ccMails"
-          :placeholder="t('system.mail.template._todo79')"
+          :placeholder="t('system.mail.template.inputCcEmailsSeparatedByEnter')"
           class="!w-full"
         />
       </el-form-item>
-      <el-form-item :label="t('system.mail.template._todo80')" prop="bccMails">
+      <el-form-item :label="t('system.mail.template.bccEmail')" prop="bccMails">
         <el-input-tag
           v-model="formData.bccMails"
-          :placeholder="t('system.mail.template._todo81')"
+          :placeholder="t('system.mail.template.inputBccEmailsSeparatedByEnter')"
           class="!w-full"
         />
       </el-form-item>
@@ -69,7 +69,7 @@ const formData = ref({
   templateParams: new Map()
 })
 const formRules = reactive({
-  templateCode: [{ required: true, message: t('system.mail.template._todo82'), trigger: 'blur' }],
+  templateCode: [{ required: true, message: t('system.mail.template.templateIdRequired'), trigger: 'blur' }],
   templateParams: {}
 })
 const formRef = ref() // 表单 Ref

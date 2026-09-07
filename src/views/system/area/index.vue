@@ -1,10 +1,10 @@
 <template>
-  <doc-alert :title="t('system.area._todo7')" url="https://doc.iocoder.cn/area-and-ip/" />
+  <doc-alert :title="t('system.area.regionIp')" url="https://doc.iocoder.cn/area-and-ip/" />
 
   <!-- 操作栏 -->
   <ContentWrap>
     <el-button type="primary" plain @click="openForm()">
-      <Icon icon="ep:plus" class="mr-5px" /> {{ t('system.area._todo1') }}
+      <Icon icon="ep:plus" class="mr-5px" /> {{ t('system.area.ipQuery') }}
     </el-button>
   </ContentWrap>
 
@@ -50,7 +50,7 @@ const columns: Column[] = [
   },
   {
     dataKey: 'name',
-    title: t('system.area._todo8'),
+    title: t('system.area.placeName'),
     width: 200
   }
 ]

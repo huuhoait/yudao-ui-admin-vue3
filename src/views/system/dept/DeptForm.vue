@@ -7,14 +7,14 @@
       :rules="formRules"
       label-width="80px"
     >
-      <el-form-item :label="t('system.dept._todo9')" prop="parentId">
+      <el-form-item :label="t('system.dept.parentDepartment')" prop="parentId">
         <el-tree-select
           v-model="formData.parentId"
           :data="deptTree"
           :props="defaultProps"
           check-strictly
           default-expand-all
-          :placeholder="t('system.dept._todo10')"
+          :placeholder="t('system.dept.selectParentDepartment')"
           value-key="deptId"
         />
       </el-form-item>
@@ -86,11 +86,11 @@ const formData = ref({
   status: CommonStatusEnum.ENABLE
 })
 const formRules = reactive<FormRules>({
-  parentId: [{ required: true, message: t('system.dept._todo11'), trigger: 'blur' }],
+  parentId: [{ required: true, message: t('system.dept.parentDepartmentRequired'), trigger: 'blur' }],
   name: [{ required: true, message: t('system.dept.deptNameRequired'), trigger: 'blur' }],
   sort: [{ required: true, message: t('system.dept.displaySortRequired'), trigger: 'blur' }],
-  email: [{ type: 'email', message: t('system.dept._todo12'), trigger: ['blur', 'change'] }],
-  phone: [{ pattern: /^1[3-9]\d{9}$/, message: t('system.dept._todo13'), trigger: 'blur' }],
+  email: [{ type: 'email', message: t('system.dept.inputValidEmailAddress'), trigger: ['blur', 'change'] }],
+  phone: [{ pattern: /^1[3-9]\d{9}$/, message: t('system.dept.inputValidMobileNumber'), trigger: 'blur' }],
   status: [{ required: true, message: t('system.dept.statusRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
@@ -165,7 +165,7 @@ const resetForm = () => {
 const getTree = async () => {
   deptTree.value = []
   const data = await DeptApi.getSimpleDeptList()
-  let dept: Tree = { id: 0, name: t('system.dept._todo14'), children: [] }
+  let dept: Tree = { id: 0, name: t('system.dept.topDepartment'), children: [] }
   dept.children = handleTree(data)
   deptTree.value.push(dept)
 }

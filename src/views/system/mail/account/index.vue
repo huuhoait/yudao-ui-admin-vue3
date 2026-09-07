@@ -69,14 +69,14 @@
       <el-table-column :label="t('system.mail.account.id')" align="center" prop="id" />
       <el-table-column :label="t('system.mail.account.email')" align="center" prop="mail" />
       <el-table-column :label="t('system.mail.account.username')" align="center" prop="username" />
-      <el-table-column :label="t('system.mail.account._todo46')" align="center" prop="host" />
-      <el-table-column :label="t('system.mail.account._todo48')" align="center" prop="port" />
-      <el-table-column :label="t('system.mail.account._todo50')" align="center" prop="sslEnable">
+      <el-table-column :label="t('system.mail.account.smtpServerDomain')" align="center" prop="host" />
+      <el-table-column :label="t('system.mail.account.smtpServerPort')" align="center" prop="port" />
+      <el-table-column :label="t('system.mail.account.enableSsl')" align="center" prop="sslEnable">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_BOOLEAN_STRING" :value="scope.row.sslEnable" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('system.mail.account._todo51')" align="center" prop="starttlsEnable">
+      <el-table-column :label="t('system.mail.account.enableStarttls')" align="center" prop="starttlsEnable">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_BOOLEAN_STRING" :value="scope.row.starttlsEnable" />
         </template>

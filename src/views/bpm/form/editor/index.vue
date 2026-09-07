@@ -16,7 +16,7 @@
   </ContentWrap>
 
   <!-- 表单保存的弹窗 -->
-  <Dialog v-model="dialogVisible" :title="t('bpm.form.editor._todo3')" width="600">
+  <Dialog v-model="dialogVisible" :title="t('bpm.form.editor.saveForm')" width="600">
     <el-form ref="formRef" :model="formData" :rules="formRules" label-width="80px">
       <el-form-item :label="t('bpm.form.editor.formName')" prop="name">
         <el-input v-model="formData.name" :placeholder="t('bpm.form.editor.inputFormName')" />
@@ -107,7 +107,7 @@ const formData = ref({
 })
 const formRules = reactive({
   name: [{ required: true, message: t('bpm.form.editor.formNameRequired'), trigger: 'blur' }],
-  status: [{ required: true, message: t('bpm.form.editor._todo4'), trigger: 'blur' }]
+  status: [{ required: true, message: t('bpm.form.editor.enabledStatusRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

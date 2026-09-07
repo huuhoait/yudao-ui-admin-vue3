@@ -6,34 +6,34 @@
     <el-card :gutter="12" class="w-1/2" shadow="always">
       <template #header>
         <div class="card-header">
-          <span>{{ t('infra.webSocket._todo371') }}</span>
+          <span>{{ t('infra.webSocket.connect') }}</span>
         </div>
       </template>
       <div class="flex items-center">
-        <span class="mr-4 text-lg font-medium"> {{ t('infra.webSocket._todo372') }} </span>
+        <span class="mr-4 text-lg font-medium"> {{ t('infra.webSocket.connectionStatus') }} </span>
         <el-tag :color="getTagColor">{{ status }}</el-tag>
       </div>
       <hr class="my-4" />
       <div class="flex">
         <el-input v-model="server" disabled>
-          <template #prepend>{{ t('infra.webSocket._todo373') }}</template>
+          <template #prepend>{{ t('infra.webSocket.serviceAddress') }}</template>
         </el-input>
         <el-button :type="getIsOpen ? 'danger' : 'primary'" @click="toggleConnectStatus">
           {{ getIsOpen ? t('infra.webSocket.closeConnection') : t('infra.webSocket.openConnection') }}
         </el-button>
       </div>
-      <p class="mt-4 text-lg font-medium">{{ t('infra.webSocket._todo374') }}</p>
+      <p class="mt-4 text-lg font-medium">{{ t('infra.webSocket.messageInputBox') }}</p>
       <hr class="my-4" />
       <el-input
         v-model="sendText"
         :autosize="{ minRows: 2, maxRows: 4 }"
         :disabled="!getIsOpen"
         clearable
-        :placeholder="t('infra.webSocket._todo368')"
+        :placeholder="t('infra.webSocket.inputMessageYouWantSend')"
         type="textarea"
       />
-      <el-select v-model="sendUserId" class="mt-4" :placeholder="t('infra.webSocket._todo369')">
-        <el-option key="" :label="t('infra.webSocket._todo370')" value="" />
+      <el-select v-model="sendUserId" class="mt-4" :placeholder="t('infra.webSocket.selectSender')">
+        <el-option key="" :label="t('infra.webSocket.everyone')" value="" />
         <el-option
           v-for="user in userList"
           :key="user.id"
@@ -42,21 +42,21 @@
         />
       </el-select>
       <el-button :disabled="!getIsOpen" block class="ml-2 mt-4" type="primary" @click="handlerSend">
-        {{ t('infra.webSocket._todo375') }}
+        {{ t('infra.webSocket.send') }}
       </el-button>
     </el-card>
     <!-- 右侧：消息记录 -->
     <el-card :gutter="12" class="w-1/2" shadow="always">
       <template #header>
         <div class="card-header">
-          <span>{{ t('infra.webSocket._todo376') }}</span>
+          <span>{{ t('infra.webSocket.messageLog') }}</span>
         </div>
       </template>
       <div class="max-h-80 overflow-auto">
         <ul>
           <li v-for="msg in messageReverseList" :key="msg.time" class="mt-2">
             <div class="flex items-center">
-              <span class="text-primary mr-2 font-medium">{{ t('infra.webSocket._todo377') }}</span>
+              <span class="text-primary mr-2 font-medium">{{ t('infra.webSocket.messageReceived') }}</span>
               <span>{{ formatDate(msg.time) }}</span>
             </div>
             <div>

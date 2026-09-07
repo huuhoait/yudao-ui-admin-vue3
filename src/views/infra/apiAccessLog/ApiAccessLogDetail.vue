@@ -4,48 +4,48 @@
       <el-descriptions-item :label="t('infra.apiAccessLog.logId')" min-width="120">
         {{ detailData.id }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiAccessLog._todo1')">
+      <el-descriptions-item :label="t('infra.apiAccessLog.trace')">
         {{ detailData.traceId }}
       </el-descriptions-item>
       <el-descriptions-item :label="t('infra.apiAccessLog.appName')">
         {{ detailData.applicationName }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiAccessLog._todo2')">
+      <el-descriptions-item :label="t('infra.apiAccessLog.userInfo')">
         {{ detailData.userId }}
         <dict-tag :type="DICT_TYPE.USER_TYPE" :value="detailData.userType" />
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiAccessLog._todo3')">
+      <el-descriptions-item :label="t('infra.apiAccessLog.userIp')">
         {{ detailData.userIp }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiAccessLog._todo4')">
+      <el-descriptions-item :label="t('infra.apiAccessLog.userAgent')">
         {{ detailData.userAgent }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiAccessLog._todo5')">
+      <el-descriptions-item :label="t('infra.apiAccessLog.requestInfo')">
         {{ detailData.requestMethod }} {{ detailData.requestUrl }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiAccessLog._todo6')">
+      <el-descriptions-item :label="t('infra.apiAccessLog.requestParameters')">
         {{ detailData.requestParams }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiAccessLog._todo7')">
+      <el-descriptions-item :label="t('infra.apiAccessLog.requestResult')">
         {{ detailData.responseBody }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiAccessLog._todo8')">
+      <el-descriptions-item :label="t('infra.apiAccessLog.requestTime')">
         {{ formatDate(detailData.beginTime) }} ~ {{ formatDate(detailData.endTime) }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiAccessLog._todo9')">{{ detailData.duration }} ms</el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiAccessLog._todo10')">
-        <div v-if="detailData.resultCode === 0">{{ t('infra.apiAccessLog._todo13') }}</div>
+      <el-descriptions-item :label="t('infra.apiAccessLog.requestDuration')">{{ detailData.duration }} ms</el-descriptions-item>
+      <el-descriptions-item :label="t('infra.apiAccessLog.operationResult')">
+        <div v-if="detailData.resultCode === 0">{{ t('infra.apiAccessLog.normal') }}</div>
         <div v-else-if="detailData.resultCode > 0">
           {{ t('common.fail') }} | {{ detailData.resultCode }} | {{ detailData.resultMsg }}
         </div>
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiAccessLog._todo11')">
+      <el-descriptions-item :label="t('infra.apiAccessLog.operationModule')">
         {{ detailData.operateModule }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiAccessLog._todo12')">
+      <el-descriptions-item :label="t('infra.apiAccessLog.operationName')">
         {{ detailData.operateName }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('infra.apiAccessLog._todo12')">
+      <el-descriptions-item :label="t('infra.apiAccessLog.operationName')">
         <dict-tag :type="DICT_TYPE.INFRA_OPERATE_TYPE" :value="detailData.operateType" />
       </el-descriptions-item>
     </el-descriptions>

@@ -40,7 +40,7 @@ const validate = async () => {
   try {
     // 获取最新的流程数据
     if (!processData.value) {
-      throw new Error(t('bpm.model.form._todo126'))
+      throw new Error(t('bpm.model.form.pleaseDesignProcess'))
     }
     return true
   } catch (error) {

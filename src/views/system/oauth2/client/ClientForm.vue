@@ -16,10 +16,10 @@
       <el-form-item :label="t('system.oauth2.client.appName')" prop="name">
         <el-input v-model="formData.name" :placeholder="t('system.oauth2.client.inputAppName')" />
       </el-form-item>
-      <el-form-item :label="t('system.oauth2.client._todo158')">
+      <el-form-item :label="t('system.oauth2.client.appIcon')">
         <UploadImg v-model="formData.logo" :limit="1" />
       </el-form-item>
-      <el-form-item :label="t('system.oauth2.client._todo159')">
+      <el-form-item :label="t('system.oauth2.client.appDescription')">
         <el-input v-model="formData.description" :placeholder="t('system.oauth2.client.inputAppName')" type="textarea" />
       </el-form-item>
       <el-form-item :label="t('common.status')" prop="status">
@@ -33,18 +33,18 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :label="t('system.oauth2.client._todo160')" prop="accessTokenValiditySeconds">
-        <el-input-number v-model="formData.accessTokenValiditySeconds" :placeholder="t('system.oauth2.client._todo161')" />
+      <el-form-item :label="t('system.oauth2.client.accessTokenValidity')" prop="accessTokenValiditySeconds">
+        <el-input-number v-model="formData.accessTokenValiditySeconds" :placeholder="t('system.oauth2.client.unitSeconds')" />
       </el-form-item>
-      <el-form-item :label="t('system.oauth2.client._todo162')" prop="refreshTokenValiditySeconds">
-        <el-input-number v-model="formData.refreshTokenValiditySeconds" :placeholder="t('system.oauth2.client._todo161')" />
+      <el-form-item :label="t('system.oauth2.client.refreshTokenValidity')" prop="refreshTokenValiditySeconds">
+        <el-input-number v-model="formData.refreshTokenValiditySeconds" :placeholder="t('system.oauth2.client.unitSeconds')" />
       </el-form-item>
-      <el-form-item :label="t('system.oauth2.client._todo163')" prop="authorizedGrantTypes">
+      <el-form-item :label="t('system.oauth2.client.grantType')" prop="authorizedGrantTypes">
         <el-select
           v-model="formData.authorizedGrantTypes"
           filterable
           multiple
-          :placeholder="t('system.oauth2.client._todo164')"
+          :placeholder="t('system.oauth2.client.inputGrantType')"
           style="width: 500px"
         >
           <el-option
@@ -55,36 +55,36 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('system.oauth2.client._todo165')" prop="scopes">
+      <el-form-item :label="t('system.oauth2.client.grantScope')" prop="scopes">
         <el-select
           v-model="formData.scopes"
           filterable
           multiple
           allow-create
-          :placeholder="t('system.oauth2.client._todo166')"
+          :placeholder="t('system.oauth2.client.inputGrantScope')"
           style="width: 500px"
         >
           <el-option v-for="scope in formData.scopes" :key="scope" :label="scope" :value="scope" />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('system.oauth2.client._todo167')" prop="autoApproveScopes">
+      <el-form-item :label="t('system.oauth2.client.autoGrantScope')" prop="autoApproveScopes">
         <el-select
           v-model="formData.autoApproveScopes"
           filterable
           multiple
-          :placeholder="t('system.oauth2.client._todo166')"
+          :placeholder="t('system.oauth2.client.inputGrantScope')"
           style="width: 500px"
         >
           <el-option v-for="scope in formData.scopes" :key="scope" :label="scope" :value="scope" />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('system.oauth2.client._todo168')" prop="redirectUris">
+      <el-form-item :label="t('system.oauth2.client.redirectUri')" prop="redirectUris">
         <el-select
           v-model="formData.redirectUris"
           allow-create
           filterable
           multiple
-          :placeholder="t('system.oauth2.client._todo169')"
+          :placeholder="t('system.oauth2.client.inputRedirectUri')"
           style="width: 500px"
         >
           <el-option
@@ -95,13 +95,13 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('system.oauth2.client._todo170')" prop="authorities">
+      <el-form-item :label="t('system.oauth2.client.authority')" prop="authorities">
         <el-select
           v-model="formData.authorities"
           allow-create
           filterable
           multiple
-          :placeholder="t('system.oauth2.client._todo171')"
+          :placeholder="t('system.oauth2.client.inputAuthority')"
           style="width: 500px"
         >
           <el-option
@@ -129,10 +129,10 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('system.oauth2.client._todo172')" prop="additionalInformation">
+      <el-form-item :label="t('system.oauth2.client.additionalInfo')" prop="additionalInformation">
         <el-input
           v-model="formData.additionalInformation"
-          :placeholder="t('system.oauth2.client._todo173')"
+          :placeholder="t('system.oauth2.client.inputAdditionalInfoJsonFormat')"
           type="textarea"
         />
       </el-form-item>
@@ -179,7 +179,7 @@ const formRules = reactive({
   clientId: [{ required: true, message: t('system.oauth2.client.clientIdRequired'), trigger: 'blur' }],
   secret: [{ required: true, message: t('system.oauth2.client.clientSecretRequired'), trigger: 'blur' }],
   name: [{ required: true, message: t('system.oauth2.client.appNameRequired'), trigger: 'blur' }],
-  logo: [{ required: true, message: t('system.oauth2.client._todo174'), trigger: 'blur' }],
+  logo: [{ required: true, message: t('system.oauth2.client.appIconRequired'), trigger: 'blur' }],
   status: [{ required: true, message: t('system.oauth2.client.statusRequired'), trigger: 'blur' }],
   accessTokenValiditySeconds: [
     { required: true, message: t('system.oauth2.client._todo175'), trigger: 'blur' }
@@ -187,8 +187,8 @@ const formRules = reactive({
   refreshTokenValiditySeconds: [
     { required: true, message: t('system.oauth2.client._todo176'), trigger: 'blur' }
   ],
-  redirectUris: [{ required: true, message: t('system.oauth2.client._todo177'), trigger: 'blur' }],
-  authorizedGrantTypes: [{ required: true, message: t('system.oauth2.client._todo178'), trigger: 'blur' }]
+  redirectUris: [{ required: true, message: t('system.oauth2.client.redirectUriRequired'), trigger: 'blur' }],
+  authorizedGrantTypes: [{ required: true, message: t('system.oauth2.client.grantTypeRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

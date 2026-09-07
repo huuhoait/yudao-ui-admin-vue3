@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('infra.config._todo143')" url="https://doc.iocoder.cn/config-center/" />
+  <doc-alert :title="t('infra.config.configCenter')" url="https://doc.iocoder.cn/config-center/" />
 
   <!-- 搜索 -->
   <ContentWrap>
@@ -10,25 +10,25 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item :label="t('infra.config._todo131')" prop="name">
+      <el-form-item :label="t('infra.config.parameterName')" prop="name">
         <el-input
           v-model="queryParams.name"
-          :placeholder="t('infra.config._todo132')"
+          :placeholder="t('infra.config.inputParameterName')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.config._todo133')" prop="key">
+      <el-form-item :label="t('infra.config.parameterKey')" prop="key">
         <el-input
           v-model="queryParams.key"
-          :placeholder="t('infra.config._todo134')"
+          :placeholder="t('infra.config.inputParameterKey')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.config._todo144')" prop="type">
+      <el-form-item :label="t('infra.config.systemBuilt')" prop="type">
         <el-select
           v-model="queryParams.type"
           :placeholder="t('infra.config._todo145')"
@@ -91,17 +91,17 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column :label="t('infra.config._todo146')" align="center" prop="id" />
-      <el-table-column :label="t('infra.config._todo129')" align="center" prop="category" />
-      <el-table-column :label="t('infra.config._todo131')" align="center" prop="name" :show-overflow-tooltip="true" />
-      <el-table-column :label="t('infra.config._todo133')" align="center" prop="key" :show-overflow-tooltip="true" />
-      <el-table-column :label="t('infra.config._todo135')" align="center" prop="value" />
-      <el-table-column :label="t('infra.config._todo137')" align="center" prop="visible">
+      <el-table-column :label="t('infra.config.parameterId')" align="center" prop="id" />
+      <el-table-column :label="t('infra.config.parameterCategory')" align="center" prop="category" />
+      <el-table-column :label="t('infra.config.parameterName')" align="center" prop="name" :show-overflow-tooltip="true" />
+      <el-table-column :label="t('infra.config.parameterKey')" align="center" prop="key" :show-overflow-tooltip="true" />
+      <el-table-column :label="t('infra.config.parameterValue')" align="center" prop="value" />
+      <el-table-column :label="t('infra.config.visibleNot')" align="center" prop="visible">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_BOOLEAN_STRING" :value="scope.row.visible" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('infra.config._todo144')" align="center" prop="type">
+      <el-table-column :label="t('infra.config.systemBuilt')" align="center" prop="type">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_CONFIG_TYPE" :value="scope.row.type" />
         </template>

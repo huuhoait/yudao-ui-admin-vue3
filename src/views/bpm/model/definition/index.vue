@@ -1,18 +1,18 @@
 <template>
-  <doc-alert :title="t('bpm.model.definition._todo46')" url="https://doc.iocoder.cn/bpm/" />
+  <doc-alert :title="t('bpm.model.definition.workflowManual')" url="https://doc.iocoder.cn/bpm/" />
 
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column :label="t('bpm.model.definition._todo47')" align="center" prop="id" min-width="250" />
+      <el-table-column :label="t('bpm.model.definition.definitionId')" align="center" prop="id" min-width="250" />
       <el-table-column :label="t('bpm.model.definition.processName')" align="center" prop="name" min-width="250" />
-      <el-table-column :label="t('bpm.model.definition._todo48')" align="center" min-width="50">
+      <el-table-column :label="t('bpm.model.definition.processIcon')" align="center" min-width="50">
         <template #default="{ row }">
           <el-image v-if="row.icon" :src="row.icon" class="h-32px w-32pxrounded" />
         </template>
       </el-table-column>
-      <el-table-column :label="t('bpm.model.definition._todo49')" prop="startUserIds" min-width="100">
+      <el-table-column :label="t('bpm.model.definition.visibleScope')" prop="startUserIds" min-width="100">
         <template #default="{ row }">
-          <el-text v-if="!row.startUsers?.length"> {{ t('bpm.model.definition._todo52') }} </el-text>
+          <el-text v-if="!row.startUsers?.length"> {{ t('bpm.model.definition.visibleAll') }} </el-text>
           <el-text v-else-if="row.startUsers.length === 1">
             {{ row.startUsers[0].nickname }}
           </el-text>
@@ -51,16 +51,16 @@
           >
             <span>{{ scope.row.formCustomCreatePath }}</span>
           </el-button>
-          <label v-else>{{ t('bpm.model.definition._todo53') }}</label>
+          <label v-else>{{ t('bpm.model.definition.noFormYet') }}</label>
         </template>
       </el-table-column>
-      <el-table-column :label="t('bpm.model.definition._todo50')" align="center" min-width="80">
+      <el-table-column :label="t('bpm.model.definition.processVersion')" align="center" min-width="80">
         <template #default="scope">
           <el-tag>v{{ scope.row.version }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column
-        :label="t('bpm.model.definition._todo51')"
+        :label="t('bpm.model.definition.deployTime')"
         align="center"
         prop="deploymentTime"
         width="180"
@@ -74,7 +74,7 @@
             @click="openModelForm(scope.row.id)"
             v-hasPermi="['bpm:model:update']"
           >
-            {{ t('bpm.model.definition._todo54') }}
+            {{ t('bpm.model.definition.restore') }}
           </el-button>
         </template>
       </el-table-column>

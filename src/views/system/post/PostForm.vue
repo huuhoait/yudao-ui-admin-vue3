@@ -7,14 +7,14 @@
       :rules="formRules"
       label-width="80px"
     >
-      <el-form-item :label="t('system.post._todo204')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('system.post._todo205')" />
+      <el-form-item :label="t('system.post.postTitle')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('system.post.inputPostTitle')" />
       </el-form-item>
       <el-form-item :label="t('system.post.postCode')" prop="code">
         <el-input v-model="formData.code" :placeholder="t('system.post.inputPostCode')" />
       </el-form-item>
-      <el-form-item :label="t('system.post._todo206')" prop="sort">
-        <el-input v-model="formData.sort" :placeholder="t('system.post._todo207')" />
+      <el-form-item :label="t('system.post.postOrder')" prop="sort">
+        <el-input v-model="formData.sort" :placeholder="t('system.post.inputPostOrder')" />
       </el-form-item>
       <el-form-item :label="t('common.status')" prop="status">
         <el-select v-model="formData.status" clearable :placeholder="t('system.post.selectStatus')">
@@ -27,7 +27,7 @@
         </el-select>
       </el-form-item>
       <el-form-item :label="t('system.post.remark')" prop="remark">
-        <el-input v-model="formData.remark" :placeholder="t('system.post._todo208')" type="textarea" />
+        <el-input v-model="formData.remark" :placeholder="t('system.post.inputRemark')" type="textarea" />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -59,10 +59,10 @@ const formData = ref({
   remark: ''
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('system.post._todo209'), trigger: 'blur' }],
+  name: [{ required: true, message: t('system.post.postTitleRequired'), trigger: 'blur' }],
   code: [{ required: true, message: t('system.post.postCodeRequired'), trigger: 'change' }],
-  status: [{ required: true, message: t('system.post._todo210'), trigger: 'change' }],
-  remark: [{ required: false, message: t('system.post._todo211'), trigger: 'blur' }]
+  status: [{ required: true, message: t('system.post.postStatusRequired'), trigger: 'change' }],
+  remark: [{ required: false, message: t('system.post.postContentRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

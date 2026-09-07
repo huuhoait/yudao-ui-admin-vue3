@@ -2,12 +2,12 @@
   <el-form ref="formRef" :model="formData" :rules="rules" label-width="120px">
     <el-row>
       <el-col :span="12">
-        <el-form-item :label="t('infra.codegen.components._todo59')" prop="tableName">
-          <el-input v-model="formData.tableName" :placeholder="t('infra.codegen.components._todo60')" />
+        <el-form-item :label="t('infra.codegen.components.tableName')" prop="tableName">
+          <el-input v-model="formData.tableName" :placeholder="t('infra.codegen.components.inputRepositoryName')" />
         </el-form-item>
       </el-col>
       <el-col :span="12">
-        <el-form-item :label="t('infra.codegen.components._todo61')" prop="tableComment">
+        <el-form-item :label="t('infra.codegen.components.tableDescription')" prop="tableComment">
           <el-input v-model="formData.tableComment" :placeholder="t('common.inputText')" />
         </el-form-item>
       </el-col>
@@ -15,7 +15,7 @@
         <el-form-item prop="className">
           <template #label>
             <span>
-              {{ t('infra.codegen.components._todo64') }}
+              {{ t('infra.codegen.components.entityClassName') }}
               <el-tooltip
                 :content="t('infra.codegen.components._todo62')"
                 placement="top"
@@ -28,7 +28,7 @@
         </el-form-item>
       </el-col>
       <el-col :span="12">
-        <el-form-item :label="t('infra.codegen.components._todo63')" prop="author">
+        <el-form-item :label="t('infra.codegen.components.author')" prop="author">
           <el-input v-model="formData.author" :placeholder="t('common.inputText')" />
         </el-form-item>
       </el-col>

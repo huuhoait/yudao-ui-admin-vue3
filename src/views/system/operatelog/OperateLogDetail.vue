@@ -4,40 +4,40 @@
       <el-descriptions-item :label="t('system.operatelog.logId')" min-width="120">
         {{ detailData.id }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.operatelog._todo185')" v-if="detailData.traceId">
+      <el-descriptions-item :label="t('system.operatelog.trace')" v-if="detailData.traceId">
         {{ detailData.traceId }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.operatelog._todo186')">
+      <el-descriptions-item :label="t('system.operatelog.operatorId')">
         {{ detailData.userId }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.operatelog._todo187')">
+      <el-descriptions-item :label="t('system.operatelog.operatorName')">
         {{ detailData.userName }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.operatelog._todo188')">
+      <el-descriptions-item :label="t('system.operatelog.operatorIp')">
         {{ detailData.userIp }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.operatelog._todo189')">
+      <el-descriptions-item :label="t('system.operatelog.operatorUa')">
         {{ detailData.userAgent }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.operatelog._todo190')">
+      <el-descriptions-item :label="t('system.operatelog.operationModule')">
         {{ detailData.type }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.operatelog._todo191')">
+      <el-descriptions-item :label="t('system.operatelog.operationName')">
         {{ detailData.subType }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.operatelog._todo192')">
+      <el-descriptions-item :label="t('system.operatelog.operationContent')">
         {{ detailData.action }}
       </el-descriptions-item>
-      <el-descriptions-item v-if="detailData.extra" :label="t('system.operatelog._todo193')">
+      <el-descriptions-item v-if="detailData.extra" :label="t('system.operatelog.operationExtraParams')">
         {{ detailData.extra }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.operatelog._todo194')">
+      <el-descriptions-item :label="t('system.operatelog.requestUrl')">
         {{ detailData.requestMethod }} {{ detailData.requestUrl }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.operatelog._todo195')">
+      <el-descriptions-item :label="t('system.operatelog.operationTime')">
         {{ formatDate(detailData.createTime) }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.operatelog._todo196')">
+      <el-descriptions-item :label="t('system.operatelog.businessId')">
         {{ detailData.bizId }}
       </el-descriptions-item>
     </el-descriptions>

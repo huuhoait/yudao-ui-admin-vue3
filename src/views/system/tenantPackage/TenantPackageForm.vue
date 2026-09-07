@@ -7,25 +7,25 @@
       :rules="formRules"
       label-width="80px"
     >
-      <el-form-item :label="t('system.tenantPackage._todo281')" prop="name">
-        <el-input v-model="formData.name" :placeholder="t('system.tenantPackage._todo282')" />
+      <el-form-item :label="t('system.tenantPackage.packageName')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('system.tenantPackage.inputPackageName')" />
       </el-form-item>
       <el-form-item :label="t('system.tenantPackage.menuPermission')">
         <el-card class="w-full h-400px !overflow-y-scroll" shadow="never">
           <template #header>
-            {{ t('system.tenantPackage._todo288') }}
+            {{ t('system.tenantPackage.selectAllNone') }}
             <el-switch
               v-model="treeNodeAll"
-              :active-text="t('system.tenantPackage._todo283')"
-              :inactive-text="t('system.tenantPackage._todo284')"
+              :active-text="t('system.tenantPackage.yes')"
+              :inactive-text="t('system.tenantPackage.no')"
               inline-prompt
               @change="handleCheckedTreeNodeAll"
             />
-            {{ t('system.tenantPackage._todo289') }}
+            {{ t('system.tenantPackage.expandCollapseAll') }}
             <el-switch
               v-model="menuExpand"
-              :active-text="t('system.tenantPackage._todo285')"
-              :inactive-text="t('system.tenantPackage._todo286')"
+              :active-text="t('system.tenantPackage.expand')"
+              :inactive-text="t('system.tenantPackage.collapse')"
               inline-prompt
               @change="handleCheckedTreeExpand"
             />
@@ -34,7 +34,7 @@
             ref="treeRef"
             :data="menuOptions"
             :props="defaultProps"
-            :empty-text="t('system.tenantPackage._todo287')"
+            :empty-text="t('system.tenantPackage.loadingPleaseWait')"
             node-key="id"
             show-checkbox
           />
@@ -86,9 +86,9 @@ const formData = ref({
   status: CommonStatusEnum.ENABLE
 })
 const formRules = reactive({
-  name: [{ required: true, message: t('system.tenantPackage._todo290'), trigger: 'blur' }],
+  name: [{ required: true, message: t('system.tenantPackage.packageNameRequired'), trigger: 'blur' }],
   status: [{ required: true, message: t('system.tenantPackage.statusRequired'), trigger: 'blur' }],
-  menuIds: [{ required: true, message: t('system.tenantPackage._todo291'), trigger: 'blur' }]
+  menuIds: [{ required: true, message: t('system.tenantPackage.associatedMenuIdRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 const menuOptions = ref<any[]>([]) // 树形结构数据

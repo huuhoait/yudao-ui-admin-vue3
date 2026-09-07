@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('bpm.processExpression._todo178')" url="https://doc.iocoder.cn/bpm/expression/" />
+  <doc-alert :title="t('bpm.processExpression.processExpression')" url="https://doc.iocoder.cn/bpm/expression/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->

@@ -17,8 +17,8 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('infra.demo.demo03.inner._todo190')" prop="sex">
-        <el-select v-model="queryParams.sex" :placeholder="t('infra.demo.demo03.inner._todo207')" clearable class="!w-240px">
+      <el-form-item :label="t('infra.demo.demo03.inner.gender')" prop="sex">
+        <el-select v-model="queryParams.sex" :placeholder="t('infra.demo.demo03.inner.selectGender')" clearable class="!w-240px">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_USER_SEX)"
             :key="dict.value"
@@ -86,10 +86,10 @@
       <el-table-column type="expand">
         <template #default="scope">
           <el-tabs model-value="demo03Course">
-            <el-tab-pane :label="t('infra.demo.demo03.inner._todo194')" name="demo03Course">
+            <el-tab-pane :label="t('infra.demo.demo03.inner.studentCourses')" name="demo03Course">
               <Demo03CourseList :student-id="scope.row.id" />
             </el-tab-pane>
-            <el-tab-pane :label="t('infra.demo.demo03.inner._todo195')" name="demo03Grade">
+            <el-tab-pane :label="t('infra.demo.demo03.inner.studentClass')" name="demo03Grade">
               <Demo03GradeList :student-id="scope.row.id" />
             </el-tab-pane>
           </el-tabs>
@@ -97,19 +97,19 @@
       </el-table-column>
       <el-table-column :label="t('infra.demo.demo03.inner.id')" align="center" prop="id" />
       <el-table-column :label="t('infra.demo.demo03.inner.name')" align="center" prop="name" />
-      <el-table-column :label="t('infra.demo.demo03.inner._todo190')" align="center" prop="sex">
+      <el-table-column :label="t('infra.demo.demo03.inner.gender')" align="center" prop="sex">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_USER_SEX" :value="scope.row.sex" />
         </template>
       </el-table-column>
       <el-table-column
-        :label="t('infra.demo.demo03.inner._todo191')"
+        :label="t('infra.demo.demo03.inner.dateBirth')"
         align="center"
         prop="birthday"
         :formatter="dateFormatter"
         width="180px"
       />
-      <el-table-column :label="t('infra.demo.demo03.inner._todo193')" align="center" prop="description" />
+      <el-table-column :label="t('infra.demo.demo03.inner.bio')" align="center" prop="description" />
       <el-table-column
         :label="t('common.createTime')"
         align="center"

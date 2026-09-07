@@ -52,7 +52,7 @@
       <el-form-item :label="t('system.sms.template._todo261')" prop="apiTemplateId">
         <el-input
           v-model="queryParams.apiTemplateId"
-          :placeholder="t('system.sms.template._todo257')"
+          :placeholder="t('system.sms.template.inputSmsApiTemplateId')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"

@@ -71,10 +71,10 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item :label="t('system.sms.log._todo253')" prop="receiveStatus">
+      <el-form-item :label="t('system.sms.log.receiveStatus')" prop="receiveStatus">
         <el-select
           v-model="queryParams.receiveStatus"
-          :placeholder="t('system.sms.log._todo254')"
+          :placeholder="t('system.sms.log.selectReceiveStatus')"
           clearable
           class="!w-240px"
         >
@@ -86,7 +86,7 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('system.sms.log._todo255')" prop="receiveTime">
+      <el-form-item :label="t('system.sms.log.receiveTime')" prop="receiveTime">
         <el-date-picker
           v-model="queryParams.receiveTime"
           value-format="YYYY-MM-DD HH:mm:ss"
@@ -132,14 +132,14 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column :label="t('system.sms.log._todo246')" align="center" prop="templateContent" width="300" />
+      <el-table-column :label="t('system.sms.log.smsContent')" align="center" prop="templateContent" width="300" />
       <el-table-column :label="t('system.sms.log.sendStatus')" align="center" width="180">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_SMS_SEND_STATUS" :value="scope.row.sendStatus" />
           <div>{{ formatDate(scope.row.sendTime) }}</div>
         </template>
       </el-table-column>
-      <el-table-column :label="t('system.sms.log._todo253')" align="center" width="180">
+      <el-table-column :label="t('system.sms.log.receiveStatus')" align="center" width="180">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_SMS_RECEIVE_STATUS" :value="scope.row.receiveStatus" />
           <div>{{ formatDate(scope.row.receiveTime) }}</div>

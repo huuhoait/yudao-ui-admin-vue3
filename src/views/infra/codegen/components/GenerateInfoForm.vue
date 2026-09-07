@@ -2,7 +2,7 @@
   <el-form ref="formRef" :model="formData" :rules="rules" label-width="150px">
     <el-row>
       <el-col :span="12">
-        <el-form-item :label="t('infra.codegen.components._todo86')" prop="templateType">
+        <el-form-item :label="t('infra.codegen.components.generationTemplate')" prop="templateType">
           <el-select v-model="formData.templateType">
             <el-option
               v-for="dict in getIntDictOptions(DICT_TYPE.INFRA_CODEGEN_TEMPLATE_TYPE)"
@@ -14,7 +14,7 @@
         </el-form-item>
       </el-col>
       <el-col :span="12">
-        <el-form-item :label="t('infra.codegen.components._todo87')" prop="frontType">
+        <el-form-item :label="t('infra.codegen.components.frontendType')" prop="frontType">
           <el-select v-model="formData.frontType">
             <el-option
               v-for="dict in getIntDictOptions(DICT_TYPE.INFRA_CODEGEN_FRONT_TYPE)"
@@ -27,7 +27,7 @@
       </el-col>
 
       <el-col :span="12">
-        <el-form-item :label="t('infra.codegen.components._todo88')" prop="scene">
+        <el-form-item :label="t('infra.codegen.components.generationScenario')" prop="scene">
           <el-select v-model="formData.scene">
             <el-option
               v-for="dict in getIntDictOptions(DICT_TYPE.INFRA_CODEGEN_SCENE)"
@@ -42,7 +42,7 @@
         <el-form-item>
           <template #label>
             <span>
-              {{ t('infra.codegen.components._todo103') }}
+              {{ t('infra.codegen.components.parentMenu') }}
               <el-tooltip :content="t('infra.codegen.components._todo89')" placement="top">
                 <Icon icon="ep:question-filled" />
               </el-tooltip>
@@ -54,7 +54,7 @@
             :props="menuTreeProps"
             check-strictly
             node-key="id"
-            :placeholder="t('infra.codegen.components._todo90')"
+            :placeholder="t('infra.codegen.components.selectSystemMenu')"
           />
         </el-form-item>
       </el-col>
@@ -75,7 +75,7 @@
         <el-form-item prop="moduleName">
           <template #label>
             <span>
-              {{ t('infra.codegen.components._todo104') }}
+              {{ t('infra.codegen.components.moduleName') }}
               <el-tooltip
                 :content="t('infra.codegen.components._todo92')"
                 placement="top"
@@ -92,7 +92,7 @@
         <el-form-item prop="businessName">
           <template #label>
             <span>
-              {{ t('infra.codegen.components._todo105') }}
+              {{ t('infra.codegen.components.businessName') }}
               <el-tooltip
                 :content="t('infra.codegen.components._todo93')"
                 placement="top"
@@ -121,7 +121,7 @@
         <el-form-item prop="className">
           <template #label>
             <span>
-              {{ t('infra.codegen.components._todo106') }}
+              {{ t('infra.codegen.components.className') }}
               <el-tooltip
                 :content="t('infra.codegen.components._todo95')"
                 placement="top"
@@ -138,7 +138,7 @@
         <el-form-item prop="classComment">
           <template #label>
             <span>
-              {{ t('infra.codegen.components._todo107') }}
+              {{ t('infra.codegen.components.classDescription') }}
               <el-tooltip :content="t('infra.codegen.components._todo96')" placement="top">
                 <Icon icon="ep:question-filled" />
               </el-tooltip>
@@ -152,7 +152,7 @@
         <el-form-item prop="genPath">
           <template #label>
             <span>
-              {{ t('infra.codegen.components._todo108') }}
+              {{ t('infra.codegen.components.customPath') }}
               <el-tooltip
                 :content="t('infra.codegen.components._todo97')"
                 placement="top"
@@ -165,7 +165,7 @@
             <template #append>
               <el-dropdown>
                 <el-button type="primary">
-                  {{ t('infra.codegen.components._todo109') }}
+                  {{ t('infra.codegen.components.recentPathQuickSelect') }}
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </el-button>
                 <template #dropdown>
@@ -185,13 +185,13 @@
     <!-- 树表信息 -->
     <el-row v-if="formData.templateType == 2">
       <el-col :span="24">
-        <h4 class="form-header">{{ t('infra.codegen.components._todo111') }}</h4>
+        <h4 class="form-header">{{ t('infra.codegen.components.treeTableInfo') }}</h4>
       </el-col>
       <el-col :span="12">
         <el-form-item prop="treeParentColumnId">
           <template #label>
             <span>
-              {{ t('infra.codegen.components._todo112') }}
+              {{ t('infra.codegen.components.parentIdField') }}
               <el-tooltip :content="t('infra.codegen.components._todo98')" placement="top">
                 <Icon icon="ep:question-filled" />
               </el-tooltip>
@@ -211,7 +211,7 @@
         <el-form-item prop="treeNameColumnId">
           <template #label>
             <span>
-              {{ t('infra.codegen.components._todo113') }}
+              {{ t('infra.codegen.components.treeNameField') }}
               <el-tooltip :content="t('infra.codegen.components._todo99')" placement="top">
                 <Icon icon="ep:question-filled" />
               </el-tooltip>
@@ -232,13 +232,13 @@
     <!-- 主表信息 -->
     <el-row v-if="formData.templateType == 15">
       <el-col :span="24">
-        <h4 class="form-header">{{ t('infra.codegen.components._todo114') }}</h4>
+        <h4 class="form-header">{{ t('infra.codegen.components.mainTableInfo') }}</h4>
       </el-col>
       <el-col :span="12">
         <el-form-item prop="masterTableId">
           <template #label>
             <span>
-              {{ t('infra.codegen.components._todo115') }}
+              {{ t('infra.codegen.components.relatedMainTable') }}
               <el-tooltip :content="t('infra.codegen.components._todo100')" placement="top">
                 <Icon icon="ep:question-filled" />
               </el-tooltip>
@@ -258,7 +258,7 @@
         <el-form-item prop="subJoinColumnId">
           <template #label>
             <span>
-              {{ t('infra.codegen.components._todo116') }}
+              {{ t('infra.codegen.components.subTableRelatedField') }}
               <el-tooltip :content="t('infra.codegen.components._todo101')" placement="top">
                 <Icon icon="ep:question-filled" />
               </el-tooltip>
@@ -278,15 +278,15 @@
         <el-form-item prop="subJoinMany">
           <template #label>
             <span>
-              {{ t('infra.codegen.components._todo117') }}
+              {{ t('infra.codegen.components.relationship') }}
               <el-tooltip :content="t('infra.codegen.components._todo102')" placement="top">
                 <Icon icon="ep:question-filled" />
               </el-tooltip>
             </span>
           </template>
           <el-radio-group v-model="formData.subJoinMany" :placeholder="t('common.selectText')">
-            <el-radio :value="true">{{ t('infra.codegen.components._todo118') }}</el-radio>
-            <el-radio :value="false">{{ t('infra.codegen.components._todo119') }}</el-radio>
+            <el-radio :value="true">{{ t('infra.codegen.components.oneMany') }}</el-radio>
+            <el-radio :value="false">{{ t('infra.codegen.components.oneOne') }}</el-radio>
           </el-radio-group>
         </el-form-item>
       </el-col>

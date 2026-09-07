@@ -44,7 +44,7 @@
               :rows="4"
             />
           </el-form-item>
-          <el-form-item :label="t('bpm.processInstance.detail._todo291')" prop="attachments">
+          <el-form-item :label="t('bpm.processInstance.detail.uploadAttachmentImage')" prop="attachments">
             <UploadFile
               v-model="approveReasonForm.attachments"
               :limit="10"
@@ -54,7 +54,7 @@
             />
           </el-form-item>
           <el-form-item
-            :label="t('bpm.processInstance.detail._todo292')"
+            :label="t('bpm.processInstance.detail.approverNextNode')"
             prop="nextAssignees"
             v-if="nextAssigneesActivityNode.length > 0"
           >
@@ -74,7 +74,7 @@
             prop="signPicUrl"
             ref="approveSignFormRef"
           >
-            <el-button @click="signRef.open()">{{ t('bpm.processInstance.detail._todo300') }}</el-button>
+            <el-button @click="signRef.open()">{{ t('bpm.processInstance.detail.clickSign') }}</el-button>
             <el-image
               class="w-90px h-40px ml-5px"
               v-if="approveReasonForm.signPicUrl"
@@ -127,7 +127,7 @@
               :rows="4"
             />
           </el-form-item>
-          <el-form-item :label="t('bpm.processInstance.detail._todo291')" prop="attachments">
+          <el-form-item :label="t('bpm.processInstance.detail.uploadAttachmentImage')" prop="attachments">
             <UploadFile
               v-model="rejectReasonForm.attachments"
               :limit="10"
@@ -185,7 +185,7 @@
           </el-form-item>
           <el-form-item>
             <el-button :disabled="formLoading" type="primary" @click="handleComment">
-              {{ t('bpm.processInstance.detail._todo301') }}
+              {{ t('bpm.processInstance.detail.submit') }}
             </el-button>
             <el-button @click="closePopover('comment', commentFormRef)"> {{ t('common.cancel') }} </el-button>
           </el-form-item>
@@ -274,7 +274,7 @@
           :rules="transferFormRule"
           label-width="100px"
         >
-          <el-form-item :label="t('bpm.processInstance.detail._todo293')" prop="assigneeUserId">
+          <el-form-item :label="t('bpm.processInstance.detail.newApprover')" prop="assigneeUserId">
             <el-select v-model="transferForm.assigneeUserId" clearable style="width: 100%">
               <el-option
                 v-for="item in userOptions"
@@ -326,7 +326,7 @@
           :rules="delegateFormRule"
           label-width="100px"
         >
-          <el-form-item :label="t('bpm.processInstance.detail._todo294')" prop="delegateUserId">
+          <el-form-item :label="t('bpm.processInstance.detail.recipient')" prop="delegateUserId">
             <el-select v-model="delegateForm.delegateUserId" clearable style="width: 100%">
               <el-option
                 v-for="item in userOptions"
@@ -378,7 +378,7 @@
           :rules="addSignFormRule"
           label-width="100px"
         >
-          <el-form-item :label="t('bpm.processInstance.detail._todo295')" prop="addSignUserIds">
+          <el-form-item :label="t('bpm.processInstance.detail.addSignHandler')" prop="addSignUserIds">
             <el-select v-model="addSignForm.addSignUserIds" multiple clearable style="width: 100%">
               <el-option
                 v-for="item in userOptions"
@@ -432,7 +432,7 @@
           :rules="deleteSignFormRule"
           label-width="100px"
         >
-          <el-form-item :label="t('bpm.processInstance.detail._todo296')" prop="deleteSignTaskId">
+          <el-form-item :label="t('bpm.processInstance.detail.removeSignMembers')" prop="deleteSignTaskId">
             <el-select v-model="deleteSignForm.deleteSignTaskId" clearable style="width: 100%">
               <el-option
                 v-for="item in runningTask.children"
@@ -484,7 +484,7 @@
           :rules="returnFormRule"
           label-width="100px"
         >
-          <el-form-item :label="t('bpm.processInstance.detail._todo297')" prop="targetTaskDefinitionKey">
+          <el-form-item :label="t('bpm.processInstance.detail.returnNode')" prop="targetTaskDefinitionKey">
             <el-select v-model="returnForm.targetTaskDefinitionKey" clearable style="width: 100%">
               <el-option
                 v-for="item in returnList"
@@ -537,12 +537,12 @@
           :rules="cancelFormRule"
           label-width="100px"
         >
-          <el-form-item :label="t('bpm.processInstance.detail._todo298')" prop="cancelReason">
+          <el-form-item :label="t('bpm.processInstance.detail.cancelReason')" prop="cancelReason">
             <span class="text-#878c93 text-12px">&nbsp; {{ t('bpm.processInstance.detail.cancelHint') }}</span>
             <el-input
               v-model="cancelForm.cancelReason"
               clearable
-              :placeholder="t('bpm.processInstance.detail._todo299')"
+              :placeholder="t('bpm.processInstance.detail.inputCancelReason')"
               type="textarea"
               :rows="3"
             />
@@ -648,7 +648,7 @@ const APPROVAL_ATTACHMENT_FILE_SIZE = 5
 const runningTask = ref<any>() // 运行中的任务
 const approveForm = ref<any>({}) // 审批通过时，额外的补充信息
 const approveFormFApi = ref<any>({}) // approveForms 的 fAPi
-const nodeTypeName = ref(t('bpm.processInstance.detail._todo303')) // 节点类型名称
+const nodeTypeName = ref(t('bpm.processInstance.detail.approve')) // 节点类型名称
 
 // 审批通过意见表单
 const reasonRequire = ref()
@@ -675,7 +675,7 @@ const approveReasonRule = computed(() => {
       }
     ],
     signPicUrl: [{ required: true, message: t('bpm.processInstance.detail.signatureRequired'), trigger: 'change' }],
-    nextAssignees: [{ required: true, message: t('bpm.processInstance.detail._todo304'), trigger: 'blur' }]
+    nextAssignees: [{ required: true, message: t('bpm.processInstance.detail.approverRequired'), trigger: 'blur' }]
   }
 })
 
@@ -717,7 +717,7 @@ const transferForm = reactive({
   reason: ''
 })
 const transferFormRule = reactive<FormRules<typeof transferForm>>({
-  assigneeUserId: [{ required: true, message: t('bpm.processInstance.detail._todo305'), trigger: 'change' }],
+  assigneeUserId: [{ required: true, message: t('bpm.processInstance.detail.newApproverRequired'), trigger: 'change' }],
   reason: [{ required: true, message: t('bpm.processInstance.detail.approveOpinionRequired'), trigger: 'blur' }]
 })
 
@@ -728,7 +728,7 @@ const delegateForm = reactive({
   reason: ''
 })
 const delegateFormRule = reactive<FormRules<typeof delegateForm>>({
-  delegateUserId: [{ required: true, message: t('bpm.processInstance.detail._todo306'), trigger: 'change' }],
+  delegateUserId: [{ required: true, message: t('bpm.processInstance.detail.recipientRequired'), trigger: 'change' }],
   reason: [{ required: true, message: t('bpm.processInstance.detail.approveOpinionRequired'), trigger: 'blur' }]
 })
 
@@ -739,7 +739,7 @@ const addSignForm = reactive({
   reason: ''
 })
 const addSignFormRule = reactive<FormRules<typeof addSignForm>>({
-  addSignUserIds: [{ required: true, message: t('bpm.processInstance.detail._todo307'), trigger: 'change' }],
+  addSignUserIds: [{ required: true, message: t('bpm.processInstance.detail.addSignHandlerRequired'), trigger: 'change' }],
   reason: [{ required: true, message: t('bpm.processInstance.detail.approveOpinionRequired'), trigger: 'blur' }]
 })
 
@@ -750,7 +750,7 @@ const deleteSignForm = reactive({
   reason: ''
 })
 const deleteSignFormRule = reactive<FormRules<typeof deleteSignForm>>({
-  deleteSignTaskId: [{ required: true, message: t('bpm.processInstance.detail._todo308'), trigger: 'change' }],
+  deleteSignTaskId: [{ required: true, message: t('bpm.processInstance.detail.removeSignMemberRequired'), trigger: 'change' }],
   reason: [{ required: true, message: t('bpm.processInstance.detail.approveOpinionRequired'), trigger: 'blur' }]
 })
 
@@ -761,7 +761,7 @@ const returnForm = reactive({
   returnReason: ''
 })
 const returnFormRule = reactive<FormRules<typeof returnForm>>({
-  targetTaskDefinitionKey: [{ required: true, message: t('bpm.processInstance.detail._todo309'), trigger: 'change' }],
+  targetTaskDefinitionKey: [{ required: true, message: t('bpm.processInstance.detail.returnNodeRequired'), trigger: 'change' }],
   returnReason: [{ required: true, message: t('bpm.processInstance.detail.returnReasonRequired'), trigger: 'blur' }]
 })
 
@@ -771,7 +771,7 @@ const cancelForm = reactive({
   cancelReason: ''
 })
 const cancelFormRule = reactive<FormRules<typeof cancelForm>>({
-  cancelReason: [{ required: true, message: t('bpm.processInstance.detail._todo310'), trigger: 'blur' }]
+  cancelReason: [{ required: true, message: t('bpm.processInstance.detail.cancelReasonRequired'), trigger: 'blur' }]
 })
 
 /** 监听 approveFormFApis，实现它对应的 form-create 初始化后，隐藏掉对应的表单提交按钮 */
@@ -957,7 +957,7 @@ const handleAudit = async (pass: boolean, formRef: FormInstance | undefined) => 
       if (nextAssigneesTimelineRef.value) {
         nextAssigneesTimelineRef.value.batchSetCustomApproveUsers({})
       }
-      message.success(t('bpm.processInstance.detail._todo314'))
+      message.success(t('bpm.processInstance.detail.approvedSuccessfully'))
     } else {
       // 审批不通过数据
       const data = {
@@ -967,7 +967,7 @@ const handleAudit = async (pass: boolean, formRef: FormInstance | undefined) => 
       }
       await TaskApi.rejectTask(data)
       popOverVisible.value.reject = false
-      message.success(t('bpm.processInstance.detail._todo315'))
+      message.success(t('bpm.processInstance.detail.rejectedSuccessfully'))
     }
     // 重置表单
     formRef.resetFields()
@@ -996,7 +996,7 @@ const handleCopy = async () => {
     await TaskApi.copyTask(data)
     copyFormRef.value.resetFields()
     popOverVisible.value.copy = false
-    message.success(t('bpm.processInstance.detail._todo316'))
+    message.success(t('bpm.processInstance.detail.operationSucceeded'))
   } finally {
     formLoading.value = false
   }
@@ -1018,7 +1018,7 @@ const handleComment = async () => {
     await CommentApi.createComment(runningTask.value.id, content)
     commentFormRef.value.resetFields()
     popOverVisible.value.comment = false
-    message.success(t('bpm.processInstance.detail._todo317'))
+    message.success(t('bpm.processInstance.detail.commentPostedSuccessfully'))
     // 3. 加载最新数据
     reload()
   } finally {
@@ -1042,7 +1042,7 @@ const handleTransfer = async () => {
     await TaskApi.transferTask(data)
     transferFormRef.value.resetFields()
     popOverVisible.value.transfer = false
-    message.success(t('bpm.processInstance.detail._todo316'))
+    message.success(t('bpm.processInstance.detail.operationSucceeded'))
     // 2. 加载最新数据
     reload()
   } finally {
@@ -1067,7 +1067,7 @@ const handleDelegate = async () => {
     await TaskApi.delegateTask(data)
     popOverVisible.value.delegate = false
     delegateFormRef.value.resetFields()
-    message.success(t('bpm.processInstance.detail._todo316'))
+    message.success(t('bpm.processInstance.detail.operationSucceeded'))
     // 2. 加载最新数据
     reload()
   } finally {
@@ -1090,7 +1090,7 @@ const handlerAddSign = async (type: string) => {
       userIds: addSignForm.addSignUserIds
     }
     await TaskApi.signCreateTask(data)
-    message.success(t('bpm.processInstance.detail._todo316'))
+    message.success(t('bpm.processInstance.detail.operationSucceeded'))
     addSignFormRef.value.resetFields()
     popOverVisible.value.addSign = false
     // 2 加载最新数据
@@ -1117,7 +1117,7 @@ const handleReturn = async () => {
     await TaskApi.returnTask(data)
     popOverVisible.value.return = false
     returnFormRef.value.resetFields()
-    message.success(t('bpm.processInstance.detail._todo316'))
+    message.success(t('bpm.processInstance.detail.operationSucceeded'))
     // 2 重新加载数据
     reload()
   } finally {
@@ -1138,7 +1138,7 @@ const handleCancel = async () => {
       cancelForm.cancelReason
     )
     popOverVisible.value.return = false
-    message.success(t('bpm.processInstance.detail._todo316'))
+    message.success(t('bpm.processInstance.detail.operationSucceeded'))
     cancelFormRef.value.resetFields()
     // 2 重新加载数据
     reload()
@@ -1175,7 +1175,7 @@ const handlerDeleteSign = async () => {
       reason: deleteSignForm.reason
     }
     await TaskApi.signDeleteTask(data)
-    message.success(t('bpm.processInstance.detail._todo318'))
+    message.success(t('bpm.processInstance.detail.signRemovedSuccessfully'))
     deleteSignFormRef.value.resetFields()
     popOverVisible.value.deleteSign = false
     // 2 加载最新数据
@@ -1237,7 +1237,7 @@ const loadTodoTask = (task: any) => {
   nextApprovalRequestId += 1
   pendingNextNodesTask = null
   reasonRequire.value = task?.reasonRequire ?? false
-  nodeTypeName.value = task?.nodeType === NodeType.TRANSACTOR_NODE ? t('bpm.processInstance.detail._todo319') : t('bpm.processInstance.detail._todo303')
+  nodeTypeName.value = task?.nodeType === NodeType.TRANSACTOR_NODE ? t('bpm.processInstance.detail.handle') : t('bpm.processInstance.detail.approve')
   // 处理 approve 表单
   if (task && task.formId && task.formConf) {
     const tempApproveForm: { option?: any; rule?: any; value?: any } = {}

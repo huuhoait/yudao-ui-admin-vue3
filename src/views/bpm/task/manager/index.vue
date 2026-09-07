@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('bpm.task.manager._todo270')" url="https://doc.iocoder.cn/bpm/" />
+  <doc-alert :title="t('bpm.task.manager.workflowManual')" url="https://doc.iocoder.cn/bpm/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -64,25 +64,25 @@
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="t('bpm.task.manager._todo271')"
+        :label="t('bpm.task.manager.taskStartTime')"
         prop="createTime"
         width="180"
       />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
-        :label="t('bpm.task.manager._todo272')"
+        :label="t('bpm.task.manager.taskEndTime')"
         prop="endTime"
         width="180"
       />
-      <el-table-column align="center" :label="t('bpm.task.manager._todo273')" prop="assigneeUser.nickname" width="100" />
+      <el-table-column align="center" :label="t('bpm.task.manager.approver')" prop="assigneeUser.nickname" width="100" />
       <el-table-column align="center" :label="t('bpm.task.manager.approveStatus')" prop="status" width="120">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.BPM_TASK_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
       <el-table-column align="center" :label="t('bpm.task.manager.approveSuggestion')" prop="reason" min-width="180" />
-      <el-table-column align="center" :label="t('bpm.task.manager._todo274')" min-width="180">
+      <el-table-column align="center" :label="t('bpm.task.manager.attachmentSignature')" min-width="180">
         <template #default="scope">
           <TaskEvidenceCell
             :attachments="scope.row.attachments"

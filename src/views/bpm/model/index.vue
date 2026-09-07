@@ -1,7 +1,7 @@
 <template>
   <ContentWrap>
     <div class="flex justify-between pl-20px items-center">
-      <h3 class="font-extrabold">{{ t('bpm.model._todo154') }}</h3>
+      <h3 class="font-extrabold">{{ t('bpm.model.processModel') }}</h3>
       <!-- 搜索工作栏 -->
       <el-form
         v-if="!isCategorySorting"
@@ -15,7 +15,7 @@
         <el-form-item prop="name" class="ml-auto">
           <el-input
             v-model="queryParams.name"
-            :placeholder="t('bpm.model._todo153')"
+            :placeholder="t('bpm.model.searchProcess')"
             clearable
             @keyup.enter="handleQuery"
             class="!w-240px"
@@ -28,12 +28,12 @@
         <!-- 右上角：新建模型、更多操作 -->
         <el-form-item>
           <el-button type="primary" @click="openForm('create')" v-hasPermi="['bpm:model:create']">
-            <Icon icon="ep:plus" class="mr-5px" /> {{ t('bpm.model._todo155') }}
+            <Icon icon="ep:plus" class="mr-5px" /> {{ t('bpm.model.createModel') }}
           </el-button>
         </el-form-item>
         <el-form-item>
           <el-button @click="modelImportFormRef?.open()" v-hasPermi="['bpm:model:import']">
-            <Icon icon="ep:upload" class="mr-5px" /> {{ t('bpm.model._todo156') }}
+            <Icon icon="ep:upload" class="mr-5px" /> {{ t('bpm.model.importModel') }}
           </el-button>
         </el-form-item>
         <el-form-item>
@@ -45,7 +45,7 @@
               <el-dropdown-menu>
                 <el-dropdown-item command="handleCategoryAdd">
                   <Icon icon="ep:circle-plus" :size="13" class="mr-5px" />
-                  {{ t('bpm.model._todo157') }}
+                  {{ t('bpm.model.createCategory') }}
                 </el-dropdown-item>
                 <el-dropdown-item command="handleCategorySort">
                   <Icon icon="fa:sort-amount-desc" :size="13" class="mr-5px" />
@@ -58,7 +58,7 @@
       </el-form>
       <div class="mr-20px" v-else>
         <el-button @click="handleCategorySortCancel"> {{ t('common.cancel') }} </el-button>
-        <el-button type="primary" @click="handleCategorySortSubmit"> {{ t('bpm.model._todo21') }} </el-button>
+        <el-button type="primary" @click="handleCategorySortSubmit"> {{ t('bpm.model.saveSort') }} </el-button>
       </div>
     </div>
 
@@ -187,7 +187,7 @@ const handleCategorySortSubmit = async () => {
   await CategoryApi.updateCategorySortBatch(ids)
   // 刷新列表
   isCategorySorting.value = false
-  message.success(t('bpm.model._todo158'))
+  message.success(t('bpm.model.categorySortedSuccessfully'))
   await getList()
 }
 

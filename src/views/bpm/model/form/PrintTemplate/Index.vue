@@ -57,7 +57,7 @@ const toolbarConfig = {
   }
 }
 const editorConfig = {
-  placeholder: t('bpm.model.form.PrintTemplate._todo119'),
+  placeholder: t('bpm.model.form.PrintTemplate.inputContent'),
   EXTEND_CONF: {
     mentionConfig: {
       showModal,
@@ -83,7 +83,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <el-dialog v-model="dialogVisible" :title="t('bpm.model.form.PrintTemplate._todo117')" fullscreen>
+  <el-dialog v-model="dialogVisible" :title="t('bpm.model.form.PrintTemplate.customTemplate')" fullscreen>
     <div style="margin: 0 10px">
       <el-alert
         :title="t('bpm.model.form.PrintTemplate._todo118')"

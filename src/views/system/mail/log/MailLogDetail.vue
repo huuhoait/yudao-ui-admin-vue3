@@ -7,48 +7,48 @@
       <el-descriptions-item :label="t('system.mail.log.emailAccount')">
         {{ accountList.find((account) => account.id === detailData.accountId)?.mail }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo58')">
+      <el-descriptions-item :label="t('system.mail.log.mailTemplate')">
         {{ detailData.templateId }} | {{ detailData.templateCode }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo59')">
+      <el-descriptions-item :label="t('system.mail.log.templateSenderName')">
         {{ detailData.templateNickname }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo60')">
+      <el-descriptions-item :label="t('system.mail.log.recipientUser')">
         <span v-if="detailData.userType && detailData.userId">
           <dict-tag :type="DICT_TYPE.USER_TYPE" :value="detailData.userType" />
           ({{ detailData.userId }})
         </span>
-        <span v-else>{{ t('system.mail.log._todo67') }}</span>
+        <span v-else>{{ t('system.mail.log.none') }}</span>
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo61')">
+      <el-descriptions-item :label="t('system.mail.log.recipientInfo')">
         <div>
           <div v-if="detailData.toMails && detailData.toMails.length > 0">
-            {{ t('system.mail.log._todo68') }}
+            {{ t('system.mail.log.to') }}
             <span v-for="(mail, index) in detailData.toMails" :key="mail">
               {{ mail }}<span v-if="Number(index) < detailData.toMails.length - 1">、</span>
             </span>
           </div>
           <div v-if="detailData.ccMails && detailData.ccMails.length > 0">
-            {{ t('system.mail.log._todo69') }}
+            {{ t('system.mail.log.cc') }}
             <span v-for="(mail, index) in detailData.ccMails" :key="mail">
               {{ mail }}<span v-if="Number(index) < detailData.ccMails.length - 1">、</span>
             </span>
           </div>
           <div v-if="detailData.bccMails && detailData.bccMails.length > 0">
-            {{ t('system.mail.log._todo70') }}
+            {{ t('system.mail.log.bcc') }}
             <span v-for="(mail, index) in detailData.bccMails" :key="mail">
               {{ mail }}<span v-if="Number(index) < detailData.bccMails.length - 1">、</span>
             </span>
           </div>
         </div>
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo62')">
+      <el-descriptions-item :label="t('system.mail.log.mailSubject')">
         {{ detailData.templateTitle }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo63')">
+      <el-descriptions-item :label="t('system.mail.log.mailContent')">
         <div v-dompurify-html="detailData.templateContent"></div>
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo64')">
+      <el-descriptions-item :label="t('system.mail.log.mailParams')">
         {{ detailData.templateParams }}
       </el-descriptions-item>
       <el-descriptions-item :label="t('common.createTime')">
@@ -60,10 +60,10 @@
       <el-descriptions-item :label="t('system.mail.log.sendTime')">
         {{ formatDate(detailData.sendTime) }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo65')">
+      <el-descriptions-item :label="t('system.mail.log.messageIdReturnedSend')">
         {{ detailData.sendMessageId }}
       </el-descriptions-item>
-      <el-descriptions-item :label="t('system.mail.log._todo66')">
+      <el-descriptions-item :label="t('system.mail.log.sendException')">
         {{ detailData.sendException }}
       </el-descriptions-item>
     </el-descriptions>

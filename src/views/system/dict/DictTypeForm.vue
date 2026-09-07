@@ -14,7 +14,7 @@
         <el-input
           v-model="formData.type"
           :disabled="typeof formData.id !== 'undefined'"
-          :placeholder="t('system.dict._todo16')"
+          :placeholder="t('system.dict.inputParameterName')"
         />
       </el-form-item>
       <el-form-item :label="t('common.status')" prop="status">

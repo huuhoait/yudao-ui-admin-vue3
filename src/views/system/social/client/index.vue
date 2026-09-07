@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('system.social.client._todo266')" url="https://doc.iocoder.cn/social-user/" />
+  <doc-alert :title="t('system.social.client.socialLogin')" url="https://doc.iocoder.cn/social-user/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->

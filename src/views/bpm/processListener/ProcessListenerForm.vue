@@ -35,20 +35,18 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('bpm.processListener._todo247')" prop="event">
-        <el-select v-model="formData.event" :placeholder="t('bpm.processListener._todo248')">
+      <el-form-item :label="t('bpm.processListener.event')" prop="event">
+        <el-select v-model="formData.event" :placeholder="t('bpm.processListener.selectEvent')">
           <el-option
-            v-for="event in formData.type == 'execution'
-              ? ['开始', '结束']
-              : ['创建', '指派', '完成', '删除', '更新', '超时']"
-            :label="event"
-            :value="event"
-            :key="event"
+            v-for="opt in formData.type == 'execution' ? executionListenerEvents : taskListenerEvents"
+            :label="opt.label"
+            :value="opt.value"
+            :key="opt.value"
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('bpm.processListener._todo249')" prop="valueType">
-        <el-select v-model="formData.valueType" :placeholder="t('bpm.processListener._todo250')">
+      <el-form-item :label="t('bpm.processListener.valueType')" prop="valueType">
+        <el-select v-model="formData.valueType" :placeholder="t('bpm.processListener.selectValueType')">
           <el-option
             v-for="dict in getStrDictOptions(DICT_TYPE.BPM_PROCESS_LISTENER_VALUE_TYPE)"
             :key="dict.value"
@@ -57,8 +55,8 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="t('bpm.processListener._todo251')" prop="value" v-if="formData.type == 'class'">
-        <el-input v-model="formData.value" :placeholder="t('bpm.processListener._todo252')" />
+      <el-form-item :label="t('bpm.processListener.classPath')" prop="value" v-if="formData.type == 'class'">
+        <el-input v-model="formData.value" :placeholder="t('bpm.processListener.inputClassPath')" />
       </el-form-item>
       <el-form-item :label="t('bpm.processListener.expression')" prop="value" v-else>
         <el-input v-model="formData.value" :placeholder="t('bpm.processListener.inputExpression')" />
@@ -98,11 +96,26 @@ const formRules = reactive({
   name: [{ required: true, message: t('bpm.processListener.nameRequired'), trigger: 'blur' }],
   type: [{ required: true, message: t('bpm.processListener.typeRequired'), trigger: 'change' }],
   status: [{ required: true, message: t('bpm.processListener.statusRequired'), trigger: 'blur' }],
-  event: [{ required: true, message: t('bpm.processListener._todo253'), trigger: 'blur' }],
-  valueType: [{ required: true, message: t('bpm.processListener._todo254'), trigger: 'change' }],
-  value: [{ required: true, message: t('bpm.processListener._todo255'), trigger: 'blur' }]
+  event: [{ required: true, message: t('bpm.processListener.listenerEventRequired'), trigger: 'blur' }],
+  valueType: [{ required: true, message: t('bpm.processListener.valueTypeRequired'), trigger: 'change' }],
+  value: [{ required: true, message: t('bpm.processListener.valueRequired'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
+
+// 监听器事件的候选项：value 是 Flowable 监听器事件编码，保留原值以兼容已保存的数据，
+// 仅 label 做国际化展示
+const executionListenerEvents = [
+  { value: '开始', label: t('bpm.processListener.eventStart') },
+  { value: '结束', label: t('bpm.processListener.eventEnd') }
+]
+const taskListenerEvents = [
+  { value: '创建', label: t('bpm.processListener.eventCreate') },
+  { value: '指派', label: t('bpm.processListener.eventAssign') },
+  { value: '完成', label: t('bpm.processListener.eventComplete') },
+  { value: '删除', label: t('bpm.processListener.eventDelete') },
+  { value: '更新', label: t('bpm.processListener.eventUpdate') },
+  { value: '超时', label: t('bpm.processListener.eventTimeout') }
+]
 
 /** 打开弹窗 */
 const open = async (type: string, id?: number) => {

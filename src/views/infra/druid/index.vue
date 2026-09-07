@@ -1,5 +1,5 @@
 <template>
-  <doc-alert :title="t('infra.druid._todo226')" url="https://doc.iocoder.cn/mybatis/" />
+  <doc-alert :title="t('infra.druid.databaseMybatis')" url="https://doc.iocoder.cn/mybatis/" />
   <doc-alert :title="t('infra.druid._todo227')" url="https://doc.iocoder.cn/dynamic-datasource/" />
 
   <ContentWrap :bodyStyle="{ padding: '0px' }" class="!mb-0">

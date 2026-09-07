@@ -6,7 +6,7 @@ class ProcessRecordMenu implements IButtonMenu {
 
   constructor() {
     const { t } = useI18n()
-    this.title = t('bpm.model.form.PrintTemplate.module.menu._todo123')
+    this.title = t('bpm.model.form.PrintTemplate.module.menu.processRecord')
     this.tag = 'button'
   }
 

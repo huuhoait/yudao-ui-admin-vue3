@@ -1,6 +1,6 @@
 <template>
   <el-form ref="formRef" :model="modelData" :rules="rules" label-width="120px" class="mt-20px">
-    <el-form-item :label="t('bpm.model.form._todo107')" prop="formType" class="mb-20px">
+    <el-form-item :label="t('bpm.model.form.formType')" prop="formType" class="mb-20px">
       <el-radio-group v-model="modelData.formType">
         <el-radio
           v-for="dict in getIntDictOptions(DICT_TYPE.BPM_MODEL_FORM_TYPE)"
@@ -13,7 +13,7 @@
     </el-form-item>
     <el-form-item
       v-if="modelData.formType === BpmModelFormType.NORMAL"
-      :label="t('bpm.model.form._todo108')"
+      :label="t('bpm.model.form.processForm')"
       prop="formId"
     >
       <el-select v-model="modelData.formId" clearable style="width: 100%">
@@ -41,12 +41,12 @@
     </el-form-item>
     <el-form-item
       v-if="modelData.formType === BpmModelFormType.CUSTOM"
-      :label="t('bpm.model.form._todo110')"
+      :label="t('bpm.model.form.formViewPath')"
       prop="formCustomViewPath"
     >
       <el-input
         v-model="modelData.formCustomViewPath"
-        :placeholder="t('bpm.model.form._todo111')"
+        :placeholder="t('bpm.model.form.inputFormViewComponentPath')"
         style="width: 330px"
       />
       <el-tooltip
@@ -69,7 +69,7 @@
     >
       <div class="flex items-center mb-15px">
         <div class="h-15px w-4px bg-[#1890ff] mr-10px"></div>
-        <span class="text-15px font-bold">{{ t('bpm.model.form._todo113') }}</span>
+        <span class="text-15px font-bold">{{ t('bpm.model.form.formPreview') }}</span>
       </div>
       <form-create
         v-model="formPreview.formData"
@@ -127,10 +127,10 @@ watch(
 )
 
 const rules = {
-  formType: [{ required: true, message: t('bpm.model.form._todo114'), trigger: 'blur' }],
-  formId: [{ required: true, message: t('bpm.model.form._todo115'), trigger: 'blur' }],
+  formType: [{ required: true, message: t('bpm.model.form.formTypeRequired'), trigger: 'blur' }],
+  formId: [{ required: true, message: t('bpm.model.form.processFormRequired'), trigger: 'blur' }],
   formCustomCreatePath: [{ required: true, message: t('bpm.model.form.formSubmitRouteRequired'), trigger: 'blur' }],
-  formCustomViewPath: [{ required: true, message: t('bpm.model.form._todo116'), trigger: 'blur' }]
+  formCustomViewPath: [{ required: true, message: t('bpm.model.form.formViewPathRequired'), trigger: 'blur' }]
 }
 
 /** 表单校验 */

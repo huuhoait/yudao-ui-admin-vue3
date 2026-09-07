@@ -41,10 +41,10 @@
         />
       </el-select>
     </el-form-item>
-    <el-form-item :label="t('bpm.model.form._todo56')" class="mb-20px">
+    <el-form-item :label="t('bpm.model.form.processIcon')" class="mb-20px">
       <UploadImg v-model="modelData.icon" :limit="1" height="128px" width="128px" />
     </el-form-item>
-    <el-form-item :label="t('bpm.model.form._todo57')" prop="description" class="mb-20px">
+    <el-form-item :label="t('bpm.model.form.processDescription')" prop="description" class="mb-20px">
       <el-input v-model="modelData.description" clearable type="textarea" />
     </el-form-item>
     <el-form-item :label="t('bpm.model.form.processType')" prop="type" class="mb-20px">
@@ -58,7 +58,7 @@
         </el-radio>
       </el-radio-group>
     </el-form-item>
-    <el-form-item :label="t('bpm.model.form._todo58')" prop="visible" class="mb-20px">
+    <el-form-item :label="t('bpm.model.form.visibleNot')" prop="visible" class="mb-20px">
       <el-radio-group v-model="modelData.visible">
         <el-radio
           v-for="dict in getBoolDictOptions(DICT_TYPE.INFRA_BOOLEAN_STRING)"
@@ -75,9 +75,9 @@
         :placeholder="t('bpm.model.form.selectWhoCanStart')"
         @change="handleStartUserTypeChange"
       >
-        <el-option :label="t('bpm.model.form._todo59')" :value="0" />
-        <el-option :label="t('bpm.model.form._todo60')" :value="1" />
-        <el-option :label="t('bpm.model.form._todo61')" :value="2" />
+        <el-option :label="t('bpm.model.form.everyone')" :value="0" />
+        <el-option :label="t('bpm.model.form.specifiedUsers')" :value="1" />
+        <el-option :label="t('bpm.model.form.specifiedDepartments')" :value="2" />
       </el-select>
       <div v-if="modelData.startUserType === 1" class="mt-2 flex flex-wrap gap-2">
         <div
@@ -97,7 +97,7 @@
           />
         </div>
         <el-button type="primary" link @click="openStartUserSelect">
-          <Icon icon="ep:plus" /> {{ t('bpm.model.form._todo63') }}
+          <Icon icon="ep:plus" /> {{ t('bpm.model.form.selectUsers') }}
         </el-button>
       </div>
       <div v-if="modelData.startUserType === 2" class="mt-2 flex flex-wrap gap-2">
@@ -115,11 +115,11 @@
           />
         </div>
         <el-button type="primary" link @click="openStartDeptSelect">
-          <Icon icon="ep:plus" /> {{ t('bpm.model.form._todo64') }}
+          <Icon icon="ep:plus" /> {{ t('bpm.model.form.selectDepartments') }}
         </el-button>
       </div>
     </el-form-item>
-    <el-form-item :label="t('bpm.model.form._todo62')" prop="managerUserIds" class="mb-20px">
+    <el-form-item :label="t('bpm.model.form.processAdmin')" prop="managerUserIds" class="mb-20px">
       <div class="flex flex-wrap gap-2">
         <div
           v-for="user in selectedManagerUsers"
@@ -138,7 +138,7 @@
           />
         </div>
         <el-button type="primary" link @click="openManagerUserSelect">
-          <Icon icon="ep:plus" />{{ t('bpm.model.form._todo63') }}
+          <Icon icon="ep:plus" />{{ t('bpm.model.form.selectUsers') }}
         </el-button>
       </div>
     </el-form-item>
@@ -205,9 +205,9 @@ const rules = {
     }
   ],
   category: [{ required: true, message: t('bpm.model.form.processCategoryRequired'), trigger: 'blur' }],
-  type: [{ required: true, message: t('bpm.model.form._todo66'), trigger: 'blur' }],
-  visible: [{ required: true, message: t('bpm.model.form._todo66'), trigger: 'blur' }],
-  managerUserIds: [{ required: true, message: t('bpm.model.form._todo67'), trigger: 'blur' }]
+  type: [{ required: true, message: t('bpm.model.form.visibilityRequired'), trigger: 'blur' }],
+  visible: [{ required: true, message: t('bpm.model.form.visibilityRequired'), trigger: 'blur' }],
+  managerUserIds: [{ required: true, message: t('bpm.model.form.processAdminRequired'), trigger: 'blur' }]
 }
 
 // 创建本地数据副本
