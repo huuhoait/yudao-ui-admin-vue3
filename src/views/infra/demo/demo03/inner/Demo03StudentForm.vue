@@ -7,10 +7,10 @@
       label-width="100px"
       v-loading="formLoading"
     >
-      <el-form-item label="名字" prop="name">
-        <el-input v-model="formData.name" placeholder="请输入名字" />
+      <el-form-item :label="t('infra.demo.demo03.inner.name')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('infra.demo.demo03.inner.inputName')" />
       </el-form-item>
-      <el-form-item label="性别" prop="sex">
+      <el-form-item :label="t('infra.demo.demo03.inner._todo190')" prop="sex">
         <el-radio-group v-model="formData.sex">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_USER_SEX)"
@@ -21,30 +21,30 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="出生日期" prop="birthday">
+      <el-form-item :label="t('infra.demo.demo03.inner._todo191')" prop="birthday">
         <el-date-picker
           v-model="formData.birthday"
           type="date"
           value-format="x"
-          placeholder="选择出生日期"
+          :placeholder="t('infra.demo.demo03.inner._todo192')"
         />
       </el-form-item>
-      <el-form-item label="简介" prop="description">
+      <el-form-item :label="t('infra.demo.demo03.inner._todo193')" prop="description">
         <Editor v-model="formData.description" height="150px" />
       </el-form-item>
     </el-form>
     <!-- 子表的表单 -->
     <el-tabs v-model="subTabsName">
-      <el-tab-pane label="学生课程" name="demo03Course">
+      <el-tab-pane :label="t('infra.demo.demo03.inner._todo194')" name="demo03Course">
         <Demo03CourseForm ref="demo03CourseFormRef" :student-id="formData.id" />
       </el-tab-pane>
-      <el-tab-pane label="学生班级" name="demo03Grade">
+      <el-tab-pane :label="t('infra.demo.demo03.inner._todo195')" name="demo03Grade">
         <Demo03GradeForm ref="demo03GradeFormRef" :student-id="formData.id" />
       </el-tab-pane>
     </el-tabs>
     <template #footer>
-      <el-button @click="submitForm" type="primary" :disabled="formLoading">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button @click="submitForm" type="primary" :disabled="formLoading">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -72,10 +72,10 @@ const formData = ref<Demo03Student>({
   description: undefined
 })
 const formRules = reactive({
-  name: [{ required: true, message: '名字不能为空', trigger: 'blur' }],
-  sex: [{ required: true, message: '性别不能为空', trigger: 'blur' }],
-  birthday: [{ required: true, message: '出生日期不能为空', trigger: 'blur' }],
-  description: [{ required: true, message: '简介不能为空', trigger: 'blur' }]
+  name: [{ required: true, message: t('infra.demo.demo03.inner.nameRequired'), trigger: 'blur' }],
+  sex: [{ required: true, message: t('infra.demo.demo03.inner._todo196'), trigger: 'blur' }],
+  birthday: [{ required: true, message: t('infra.demo.demo03.inner._todo197'), trigger: 'blur' }],
+  description: [{ required: true, message: t('infra.demo.demo03.inner._todo198'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

@@ -420,6 +420,7 @@ for (const file of files) {
     let newTemplate = tplBlock ? tplBlock.content : null
     let scriptContent = scriptBlock ? scriptBlock.content : null
 
+    let templateEdited = false
     if (tplBlock) {
       const { candidates, reviews } = analyzeVueTemplate(tplBlock.content)
       const edits = []
@@ -450,9 +451,11 @@ for (const file of files) {
         }
       }
       for (const r of reviews) fileEntry.review.push({ where: 'template', ...r })
+      templateEdited = edits.length > 0
       if (APPLY) newTemplate = applyEdits(tplBlock.content, edits)
     }
 
+    let scriptEdited = false
     if (scriptBlock) {
       // script có thể lang="tsx"/"jsx" -> cần bật plugin jsx cho babel
       const scriptIsJsx = /(tsx|jsx)/.test(scriptBlock.lang || '')
@@ -472,13 +475,17 @@ for (const file of files) {
         edits.push({ start: c.start, end: c.end, replacement: `t('${rk.key}')` })
       }
       for (const r of reviews) fileEntry.review.push({ where: 'script', ...r })
-      if (APPLY) {
-        scriptContent = applyEdits(scriptBlock.content, edits)
-        if (edits.length) {
-          const ensured = ensureUseI18n(scriptContent)
-          scriptContent = ensured.content
-        }
-      }
+      scriptEdited = edits.length > 0
+      if (APPLY) scriptContent = applyEdits(scriptBlock.content, edits)
+    }
+
+    // `t()` có thể được chèn CHỈ vào <template> (vd doc-alert title) mà không đụng gì tới
+    // <script> — vẫn phải đảm bảo có `const { t } = useI18n()`, nếu không sẽ vỡ runtime
+    // `_ctx.t is not a function` (xem README mục "Thiếu hẳn useI18n()"). Trước đây chỉ gọi
+    // ensureUseI18n khi CHÍNH script bị sửa nên bỏ lọt trường hợp này.
+    if (APPLY && scriptBlock && (templateEdited || scriptEdited)) {
+      const ensured = ensureUseI18n(scriptContent)
+      scriptContent = ensured.content
     }
 
     if (

@@ -2,6 +2,7 @@ import { merge } from 'lodash-es'
 import userGenerated from './generated/user.zh-CN'
 import bpmGenerated from './generated/bpm.zh-CN'
 import systemGenerated from './generated/system.zh-CN'
+import infraGenerated from './generated/infra.zh-CN'
 
 const messages = {
   common: {
@@ -23,6 +24,10 @@ const messages = {
     close: '关闭',
     reload: '重新加载',
     success: '成功',
+    fail: '失败',
+    yes: '是',
+    no: '否',
+    milliseconds: '毫秒',
     closeTab: '关闭标签页',
     closeTheLeftTab: '关闭左侧标签页',
     closeTheRightTab: '关闭右侧标签页',
@@ -470,4 +475,4 @@ const messages = {
 }
 
 // 合并自动生成的 i18n（scripts/i18n）
-export default merge({}, messages, userGenerated, bpmGenerated, systemGenerated)
+export default merge({}, messages, userGenerated, bpmGenerated, systemGenerated, infraGenerated)

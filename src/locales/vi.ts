@@ -3,6 +3,7 @@ import { staticMessages as enBase } from './en'
 import userGenerated from './generated/user.vi'
 import bpmGenerated from './generated/bpm.vi'
 import systemGenerated from './generated/system.vi'
+import infraGenerated from './generated/infra.vi'
 
 /**
  * Bản dịch tiếng Việt.
@@ -33,6 +34,10 @@ const viOverrides = {
     close: 'Đóng',
     reload: 'Tải lại',
     success: 'Thành công',
+    fail: 'Thất bại',
+    yes: 'Có',
+    no: 'Không',
+    milliseconds: 'ms',
     query: 'Tìm kiếm',
     reset: 'Đặt lại',
     shrink: 'Thu gọn',
@@ -70,4 +75,4 @@ const viOverrides = {
   }
 }
 
-export default merge({}, enBase, viOverrides, userGenerated, bpmGenerated, systemGenerated)
+export default merge({}, enBase, viOverrides, userGenerated, bpmGenerated, systemGenerated, infraGenerated)

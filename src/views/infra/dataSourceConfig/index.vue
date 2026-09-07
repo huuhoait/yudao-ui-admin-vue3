@@ -9,7 +9,7 @@
           @click="openForm('create')"
           v-hasPermi="['infra:data-source-config:create']"
         >
-          <Icon icon="ep:plus" class="mr-5px" /> 新增
+          <Icon icon="ep:plus" class="mr-5px" /> {{ t('infra.dataSourceConfig.create') }}
         </el-button>
         <el-button
           type="danger"
@@ -18,7 +18,7 @@
           @click="handleDeleteBatch"
           v-hasPermi="['infra:data-source-config:delete']"
         >
-          <Icon icon="ep:delete" class="mr-5px" /> 批量删除
+          <Icon icon="ep:delete" class="mr-5px" /> {{ t('infra.dataSourceConfig.deleteBatch') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -28,18 +28,18 @@
   <ContentWrap>
     <el-table v-loading="loading" :data="list" @selection-change="handleRowCheckboxChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column label="主键编号" align="center" prop="id" />
-      <el-table-column label="数据源名称" align="center" prop="name" />
-      <el-table-column label="数据源连接" align="center" prop="url" :show-overflow-tooltip="true" />
-      <el-table-column label="用户名" align="center" prop="username" />
+      <el-table-column :label="t('infra.dataSourceConfig._todo156')" align="center" prop="id" />
+      <el-table-column :label="t('infra.dataSourceConfig._todo147')" align="center" prop="name" />
+      <el-table-column :label="t('infra.dataSourceConfig._todo149')" align="center" prop="url" :show-overflow-tooltip="true" />
+      <el-table-column :label="t('infra.dataSourceConfig.username')" align="center" prop="username" />
       <el-table-column
-        label="创建时间"
+        :label="t('common.createTime')"
         align="center"
         prop="createTime"
         width="180"
         :formatter="dateFormatter"
       />
-      <el-table-column label="操作" align="center">
+      <el-table-column :label="t('infra.dataSourceConfig.action')" align="center">
         <template #default="scope">
           <el-button
             link
@@ -48,7 +48,7 @@
             v-hasPermi="['infra:data-source-config:update']"
             :disabled="scope.row.id === 0"
           >
-            编辑
+            {{ t('infra.dataSourceConfig.edit') }}
           </el-button>
           <el-button
             link
@@ -57,7 +57,7 @@
             v-hasPermi="['infra:data-source-config:delete']"
             :disabled="scope.row.id === 0"
           >
-            删除
+            {{ t('infra.dataSourceConfig.delete') }}
           </el-button>
         </template>
       </el-table-column>

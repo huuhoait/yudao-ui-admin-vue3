@@ -8,11 +8,11 @@
       :stripe="true"
       :show-overflow-tooltip="true"
     >
-      <el-table-column label="编号" align="center" prop="id" />
-      <el-table-column label="名字" align="center" prop="name" />
-      <el-table-column label="分数" align="center" prop="score" />
+      <el-table-column :label="t('infra.demo.demo03.inner.components.id')" align="center" prop="id" />
+      <el-table-column :label="t('infra.demo.demo03.inner.components.name')" align="center" prop="name" />
+      <el-table-column :label="t('infra.demo.demo03.inner.components._todo199')" align="center" prop="score" />
       <el-table-column
-        label="创建时间"
+        :label="t('common.createTime')"
         align="center"
         prop="createTime"
         :formatter="dateFormatter"
@@ -24,6 +24,8 @@
 <script setup lang="ts">
 import { dateFormatter } from '@/utils/formatTime'
 import { Demo03StudentApi } from '@/api/infra/demo/demo03/inner'
+
+const { t } = useI18n() // 国际化
 
 const props = defineProps<{
   studentId?: number // 学生编号（主表的关联字段）

@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-model="dialogVisible" title="上传文件">
+  <Dialog v-model="dialogVisible" :title="t('infra.file._todo228')">
     <el-upload
       ref="uploadRef"
       v-model:file-list="fileList"
@@ -18,16 +18,16 @@
       drag
     >
       <i class="el-icon-upload"></i>
-      <div class="el-upload__text"> 将文件拖到此处，或 <em>点击上传</em></div>
+      <div class="el-upload__text"> {{ t('infra.file._todo229') }} <em>{{ t('infra.file.clickUpload') }}</em></div>
       <template #tip>
         <div class="el-upload__tip" style="color: red">
-          提示：仅允许导入 jpg、png、gif 格式文件！
+          {{ t('infra.file._todo230') }}
         </div>
       </template>
     </el-upload>
     <template #footer>
-      <el-button :disabled="formLoading" type="primary" @click="submitFileForm">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button :disabled="formLoading" type="primary" @click="submitFileForm">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -68,7 +68,7 @@ const handleProgress = (upEvt: UploadProgressEvent, file: UploadFile) => {
 /** 提交表单 */
 const submitFileForm = () => {
   if (fileList.value.length == 0) {
-    message.error('请上传文件')
+    message.error(t('infra.file._todo231'))
     return
   }
   formLoading.value = true
@@ -89,7 +89,7 @@ const submitFormSuccess = () => {
 
 /** 上传错误提示 */
 const submitFormError = (): void => {
-  message.error('上传失败，请您重新上传！')
+  message.error(t('infra.file._todo232'))
   formLoading.value = false
 }
 
@@ -102,6 +102,6 @@ const resetForm = () => {
 
 /** 文件数超出提示 */
 const handleExceed = (): void => {
-  message.error('最多只能上传一个文件！')
+  message.error(t('infra.file._todo233'))
 }
 </script>

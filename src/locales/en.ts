@@ -2,6 +2,7 @@ import { merge } from 'lodash-es'
 import userGenerated from './generated/user.en'
 import bpmGenerated from './generated/bpm.en'
 import systemGenerated from './generated/system.en'
+import infraGenerated from './generated/infra.en'
 
 const messages = {
   common: {
@@ -23,6 +24,10 @@ const messages = {
     close: 'Close',
     reload: 'Reload current',
     success: 'Success',
+    fail: 'Fail',
+    yes: 'Yes',
+    no: 'No',
+    milliseconds: 'ms',
     closeTab: 'Close current',
     closeTheLeftTab: 'Close left',
     closeTheRightTab: 'Close right',
@@ -477,4 +482,4 @@ const messages = {
 export const staticMessages = messages
 
 // Merge auto-generated i18n (scripts/i18n)
-export default merge({}, messages, userGenerated, bpmGenerated, systemGenerated)
+export default merge({}, messages, userGenerated, bpmGenerated, systemGenerated, infraGenerated)

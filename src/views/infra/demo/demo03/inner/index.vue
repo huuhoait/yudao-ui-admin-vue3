@@ -8,17 +8,17 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item label="名字" prop="name">
+      <el-form-item :label="t('infra.demo.demo03.inner.name')" prop="name">
         <el-input
           v-model="queryParams.name"
-          placeholder="请输入名字"
+          :placeholder="t('infra.demo.demo03.inner.inputName')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="性别" prop="sex">
-        <el-select v-model="queryParams.sex" placeholder="请选择性别" clearable class="!w-240px">
+      <el-form-item :label="t('infra.demo.demo03.inner._todo190')" prop="sex">
+        <el-select v-model="queryParams.sex" :placeholder="t('infra.demo.demo03.inner._todo207')" clearable class="!w-240px">
           <el-option
             v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_USER_SEX)"
             :key="dict.value"
@@ -27,27 +27,27 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="创建时间" prop="createTime">
+      <el-form-item :label="t('common.createTime')" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
+          :start-placeholder="t('infra.demo.demo03.inner.startDate')"
+          :end-placeholder="t('infra.demo.demo03.inner.endDate')"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-220px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
         <el-button
           type="primary"
           plain
           @click="openForm('create')"
           v-hasPermi="['infra:demo03-student:create']"
         >
-          <Icon icon="ep:plus" class="mr-5px" /> 新增
+          <Icon icon="ep:plus" class="mr-5px" /> {{ t('infra.demo.demo03.inner.create') }}
         </el-button>
         <el-button
           type="success"
@@ -56,7 +56,7 @@
           :loading="exportLoading"
           v-hasPermi="['infra:demo03-student:export']"
         >
-          <Icon icon="ep:download" class="mr-5px" /> 导出
+          <Icon icon="ep:download" class="mr-5px" /> {{ t('infra.demo.demo03.inner.export') }}
         </el-button>
         <el-button
           type="danger"
@@ -65,7 +65,7 @@
           @click="handleDeleteBatch"
           v-hasPermi="['infra:demo03-student:delete']"
         >
-          <Icon icon="ep:delete" class="mr-5px" /> 批量删除
+          <Icon icon="ep:delete" class="mr-5px" /> {{ t('infra.demo.demo03.inner.deleteBatch') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -86,38 +86,38 @@
       <el-table-column type="expand">
         <template #default="scope">
           <el-tabs model-value="demo03Course">
-            <el-tab-pane label="学生课程" name="demo03Course">
+            <el-tab-pane :label="t('infra.demo.demo03.inner._todo194')" name="demo03Course">
               <Demo03CourseList :student-id="scope.row.id" />
             </el-tab-pane>
-            <el-tab-pane label="学生班级" name="demo03Grade">
+            <el-tab-pane :label="t('infra.demo.demo03.inner._todo195')" name="demo03Grade">
               <Demo03GradeList :student-id="scope.row.id" />
             </el-tab-pane>
           </el-tabs>
         </template>
       </el-table-column>
-      <el-table-column label="编号" align="center" prop="id" />
-      <el-table-column label="名字" align="center" prop="name" />
-      <el-table-column label="性别" align="center" prop="sex">
+      <el-table-column :label="t('infra.demo.demo03.inner.id')" align="center" prop="id" />
+      <el-table-column :label="t('infra.demo.demo03.inner.name')" align="center" prop="name" />
+      <el-table-column :label="t('infra.demo.demo03.inner._todo190')" align="center" prop="sex">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_USER_SEX" :value="scope.row.sex" />
         </template>
       </el-table-column>
       <el-table-column
-        label="出生日期"
+        :label="t('infra.demo.demo03.inner._todo191')"
         align="center"
         prop="birthday"
         :formatter="dateFormatter"
         width="180px"
       />
-      <el-table-column label="简介" align="center" prop="description" />
+      <el-table-column :label="t('infra.demo.demo03.inner._todo193')" align="center" prop="description" />
       <el-table-column
-        label="创建时间"
+        :label="t('common.createTime')"
         align="center"
         prop="createTime"
         :formatter="dateFormatter"
         width="180px"
       />
-      <el-table-column label="操作" align="center" min-width="120px">
+      <el-table-column :label="t('infra.demo.demo03.inner.action')" align="center" min-width="120px">
         <template #default="scope">
           <el-button
             link
@@ -125,7 +125,7 @@
             @click="openForm('update', scope.row.id)"
             v-hasPermi="['infra:demo03-student:update']"
           >
-            编辑
+            {{ t('infra.demo.demo03.inner.edit') }}
           </el-button>
           <el-button
             link
@@ -133,7 +133,7 @@
             @click="handleDelete(scope.row.id)"
             v-hasPermi="['infra:demo03-student:delete']"
           >
-            删除
+            {{ t('infra.demo.demo03.inner.delete') }}
           </el-button>
         </template>
       </el-table-column>
@@ -249,7 +249,7 @@ const handleExport = async () => {
     // 发起导出
     exportLoading.value = true
     const data = await Demo03StudentApi.exportDemo03Student(queryParams)
-    download.excel(data, '学生.xls')
+    download.excel(data, t('infra.demo.demo03.inner.exportFileName'))
   } catch {
   } finally {
     exportLoading.value = false

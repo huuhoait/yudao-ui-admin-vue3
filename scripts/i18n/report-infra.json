@@ -1,7 +1,7 @@
 {
-  "mode": "scan",
+  "mode": "apply",
   "target": "src/views/infra",
-  "scannedAt": "2026-09-04T01:18:08.063Z",
+  "scannedAt": "2026-09-07T12:16:31.046Z",
   "totalFiles": 52,
   "toConvert": 784,
   "needReview": 29,

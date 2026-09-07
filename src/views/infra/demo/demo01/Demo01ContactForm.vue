@@ -7,10 +7,10 @@
       label-width="100px"
       v-loading="formLoading"
     >
-      <el-form-item label="名字" prop="name">
-        <el-input v-model="formData.name" placeholder="请输入名字" />
+      <el-form-item :label="t('infra.demo.demo01.name')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('infra.demo.demo01.inputName')" />
       </el-form-item>
-      <el-form-item label="性别" prop="sex">
+      <el-form-item :label="t('infra.demo.demo01._todo157')" prop="sex">
         <el-radio-group v-model="formData.sex">
           <el-radio
             v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_USER_SEX)"
@@ -21,24 +21,24 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="出生年" prop="birthday">
+      <el-form-item :label="t('infra.demo.demo01._todo158')" prop="birthday">
         <el-date-picker
           v-model="formData.birthday"
           type="date"
           value-format="x"
-          placeholder="选择出生年"
+          :placeholder="t('infra.demo.demo01._todo159')"
         />
       </el-form-item>
-      <el-form-item label="简介" prop="description">
+      <el-form-item :label="t('infra.demo.demo01._todo160')" prop="description">
         <Editor v-model="formData.description" height="150px" />
       </el-form-item>
-      <el-form-item label="头像" prop="avatar">
+      <el-form-item :label="t('infra.demo.demo01._todo161')" prop="avatar">
         <UploadImg v-model="formData.avatar" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="submitForm" type="primary" :disabled="formLoading">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button @click="submitForm" type="primary" :disabled="formLoading">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -65,10 +65,10 @@ const formData = ref({
   avatar: undefined
 })
 const formRules = reactive({
-  name: [{ required: true, message: '名字不能为空', trigger: 'blur' }],
-  sex: [{ required: true, message: '性别不能为空', trigger: 'blur' }],
-  birthday: [{ required: true, message: '出生年不能为空', trigger: 'blur' }],
-  description: [{ required: true, message: '简介不能为空', trigger: 'blur' }]
+  name: [{ required: true, message: t('infra.demo.demo01.nameRequired'), trigger: 'blur' }],
+  sex: [{ required: true, message: t('infra.demo.demo01._todo162'), trigger: 'blur' }],
+  birthday: [{ required: true, message: t('infra.demo.demo01._todo163'), trigger: 'blur' }],
+  description: [{ required: true, message: t('infra.demo.demo01._todo164'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

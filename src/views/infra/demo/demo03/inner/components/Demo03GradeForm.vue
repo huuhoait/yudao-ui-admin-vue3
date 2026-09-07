@@ -6,16 +6,17 @@
     label-width="100px"
     v-loading="formLoading"
   >
-    <el-form-item label="名字" prop="name">
-      <el-input v-model="formData.name" placeholder="请输入名字" />
+    <el-form-item :label="t('infra.demo.demo03.inner.components.name')" prop="name">
+      <el-input v-model="formData.name" :placeholder="t('infra.demo.demo03.inner.components.inputName')" />
     </el-form-item>
-    <el-form-item label="班主任" prop="teacher">
-      <el-input v-model="formData.teacher" placeholder="请输入班主任" />
+    <el-form-item :label="t('infra.demo.demo03.inner.components._todo204')" prop="teacher">
+      <el-input v-model="formData.teacher" :placeholder="t('infra.demo.demo03.inner.components._todo205')" />
     </el-form-item>
   </el-form>
 </template>
 <script setup lang="ts">
 import { Demo03StudentApi } from '@/api/infra/demo/demo03/inner'
+const { t } = useI18n() // 国际化
 
 const props = defineProps<{
   studentId?: number // 学生编号（主表的关联字段）
@@ -23,9 +24,9 @@ const props = defineProps<{
 const formLoading = ref(false) // 表单的加载中
 const formData = ref<any>({})
 const formRules = reactive({
-  studentId: [{ required: true, message: '学生编号不能为空', trigger: 'blur' }],
-  name: [{ required: true, message: '名字不能为空', trigger: 'blur' }],
-  teacher: [{ required: true, message: '班主任不能为空', trigger: 'blur' }]
+  studentId: [{ required: true, message: t('infra.demo.demo03.inner.components._todo202'), trigger: 'blur' }],
+  name: [{ required: true, message: t('infra.demo.demo03.inner.components.nameRequired'), trigger: 'blur' }],
+  teacher: [{ required: true, message: t('infra.demo.demo03.inner.components._todo206'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

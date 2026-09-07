@@ -7,7 +7,7 @@
       @click="openForm('create')"
       v-hasPermi="['infra:demo03-student:create']"
     >
-      <Icon icon="ep:plus" class="mr-5px" /> 新增
+      <Icon icon="ep:plus" class="mr-5px" /> {{ t('infra.demo.demo03.erp.components.create') }}
     </el-button>
     <el-button
       type="danger"
@@ -16,7 +16,7 @@
       @click="handleDeleteBatch"
       v-hasPermi="['infra:demo03-student:delete']"
     >
-      <Icon icon="ep:delete" class="mr-5px" /> 批量删除
+      <Icon icon="ep:delete" class="mr-5px" /> {{ t('infra.demo.demo03.erp.components.deleteBatch') }}
     </el-button>
     <el-table
       row-key="id"
@@ -27,17 +27,17 @@
       @selection-change="handleRowCheckboxChange"
     >
       <el-table-column type="selection" width="55" />
-      <el-table-column label="编号" align="center" prop="id" />
-      <el-table-column label="名字" align="center" prop="name" />
-      <el-table-column label="班主任" align="center" prop="teacher" />
+      <el-table-column :label="t('infra.demo.demo03.erp.components.id')" align="center" prop="id" />
+      <el-table-column :label="t('infra.demo.demo03.erp.components.name')" align="center" prop="name" />
+      <el-table-column :label="t('infra.demo.demo03.erp.components._todo184')" align="center" prop="teacher" />
       <el-table-column
-        label="创建时间"
+        :label="t('common.createTime')"
         align="center"
         prop="createTime"
         :formatter="dateFormatter"
         width="180px"
       />
-      <el-table-column label="操作" align="center">
+      <el-table-column :label="t('infra.demo.demo03.erp.components.action')" align="center">
         <template #default="scope">
           <el-button
             link
@@ -45,7 +45,7 @@
             @click="openForm('update', scope.row.id)"
             v-hasPermi="['infra:demo03-student:update']"
           >
-            编辑
+            {{ t('infra.demo.demo03.erp.components.edit') }}
           </el-button>
           <el-button
             link
@@ -53,7 +53,7 @@
             @click="handleDelete(scope.row.id)"
             v-hasPermi="['infra:demo03-student:delete']"
           >
-            删除
+            {{ t('infra.demo.demo03.erp.components.delete') }}
           </el-button>
         </template>
       </el-table-column>
@@ -125,7 +125,7 @@ const handleQuery = () => {
 const formRef = ref()
 const openForm = (type: string, id?: number) => {
   if (!props.studentId) {
-    message.error('请选择一个学生')
+    message.error(t('infra.demo.demo03.erp.components._todo183'))
     return
   }
   formRef.value.open(type, id, props.studentId)

@@ -7,23 +7,23 @@
       label-width="100px"
       v-loading="formLoading"
     >
-      <el-form-item label="名字" prop="name">
-        <el-input v-model="formData.name" placeholder="请输入名字" />
+      <el-form-item :label="t('infra.demo.demo02.name')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('infra.demo.demo02.inputName')" />
       </el-form-item>
-      <el-form-item label="父级编号" prop="parentId">
+      <el-form-item :label="t('infra.demo.demo02._todo166')" prop="parentId">
         <el-tree-select
           v-model="formData.parentId"
           :data="demo02CategoryTree"
           :props="defaultProps"
           check-strictly
           default-expand-all
-          placeholder="请选择父级编号"
+          :placeholder="t('infra.demo.demo02._todo167')"
         />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="submitForm" type="primary" :disabled="formLoading">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button @click="submitForm" type="primary" :disabled="formLoading">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -44,8 +44,8 @@ const formData = ref({
   parentId: undefined
 })
 const formRules = reactive({
-  name: [{ required: true, message: '名字不能为空', trigger: 'blur' }],
-  parentId: [{ required: true, message: '父级编号不能为空', trigger: 'blur' }]
+  name: [{ required: true, message: t('infra.demo.demo02.nameRequired'), trigger: 'blur' }],
+  parentId: [{ required: true, message: t('infra.demo.demo02._todo168'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 const demo02CategoryTree = ref() // 树形结构
@@ -107,7 +107,7 @@ const resetForm = () => {
 const getDemo02CategoryTree = async () => {
   demo02CategoryTree.value = []
   const data = await Demo02CategoryApi.getDemo02CategoryList()
-  const root: Tree = { id: 0, name: '顶级示例分类', children: [] }
+  const root: Tree = { id: 0, name: t('infra.demo.demo02._todo169'), children: [] }
   root.children = handleTree(data, 'id', 'parentId')
   demo02CategoryTree.value.push(root)
 }

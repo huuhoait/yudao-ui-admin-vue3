@@ -7,16 +7,16 @@
       label-width="100px"
       v-loading="formLoading"
     >
-      <el-form-item label="名字" prop="name">
-        <el-input v-model="formData.name" placeholder="请输入名字" />
+      <el-form-item :label="t('infra.demo.demo03.erp.components.name')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('infra.demo.demo03.erp.components.inputName')" />
       </el-form-item>
-      <el-form-item label="班主任" prop="teacher">
-        <el-input v-model="formData.teacher" placeholder="请输入班主任" />
+      <el-form-item :label="t('infra.demo.demo03.erp.components._todo184')" prop="teacher">
+        <el-input v-model="formData.teacher" :placeholder="t('infra.demo.demo03.erp.components._todo185')" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="submitForm" type="primary" :disabled="formLoading">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button @click="submitForm" type="primary" :disabled="formLoading">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -37,9 +37,9 @@ const formData = ref<Demo03Grade>({
   teacher: undefined
 })
 const formRules = reactive({
-  studentId: [{ required: true, message: '学生编号不能为空', trigger: 'blur' }],
-  name: [{ required: true, message: '名字不能为空', trigger: 'blur' }],
-  teacher: [{ required: true, message: '班主任不能为空', trigger: 'blur' }]
+  studentId: [{ required: true, message: t('infra.demo.demo03.erp.components._todo181'), trigger: 'blur' }],
+  name: [{ required: true, message: t('infra.demo.demo03.erp.components.nameRequired'), trigger: 'blur' }],
+  teacher: [{ required: true, message: t('infra.demo.demo03.erp.components._todo186'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 

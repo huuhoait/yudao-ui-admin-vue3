@@ -1,47 +1,51 @@
 <template>
-  <doc-alert title="Redis 缓存" url="https://doc.iocoder.cn/redis-cache/" />
-  <doc-alert title="本地缓存" url="https://doc.iocoder.cn/local-cache/" />
+  <doc-alert :title="t('infra.redis._todo344')" url="https://doc.iocoder.cn/redis-cache/" />
+  <doc-alert :title="t('infra.redis._todo345')" url="https://doc.iocoder.cn/local-cache/" />
 
   <el-scrollbar height="calc(100vh - 88px - 40px - 50px)">
     <el-row>
       <!-- 基本信息 -->
       <el-col :span="24" class="card-box" shadow="hover">
         <el-card>
-          <el-descriptions title="基本信息" :column="6" border>
-            <el-descriptions-item label="Redis版本 :">
+          <el-descriptions :title="t('infra.redis._todo346')" :column="6" border>
+            <el-descriptions-item :label="t('infra.redis._todo347')">
               {{ cache?.info?.redis_version }}
             </el-descriptions-item>
-            <el-descriptions-item label="运行模式 :">
-              {{ cache?.info?.redis_mode == 'standalone' ? '单机' : '集群' }}
+            <el-descriptions-item :label="t('infra.redis._todo348')">
+              {{
+                cache?.info?.redis_mode == 'standalone'
+                  ? t('infra.redis.standalone')
+                  : t('infra.redis.cluster')
+              }}
             </el-descriptions-item>
-            <el-descriptions-item label="端口 :">
+            <el-descriptions-item :label="t('infra.redis._todo349')">
               {{ cache?.info?.tcp_port }}
             </el-descriptions-item>
-            <el-descriptions-item label="客户端数 :">
+            <el-descriptions-item :label="t('infra.redis._todo350')">
               {{ cache?.info?.connected_clients }}
             </el-descriptions-item>
-            <el-descriptions-item label="运行时间(天) :">
+            <el-descriptions-item :label="t('infra.redis._todo351')">
               {{ cache?.info?.uptime_in_days }}
             </el-descriptions-item>
-            <el-descriptions-item label="使用内存 :">
+            <el-descriptions-item :label="t('infra.redis._todo352')">
               {{ cache?.info?.used_memory_human }}
             </el-descriptions-item>
-            <el-descriptions-item label="使用CPU :">
+            <el-descriptions-item :label="t('infra.redis._todo353')">
               {{ cache?.info ? parseFloat(cache?.info?.used_cpu_user_children).toFixed(2) : '' }}
             </el-descriptions-item>
-            <el-descriptions-item label="内存配置 :">
+            <el-descriptions-item :label="t('infra.redis._todo354')">
               {{ cache?.info?.maxmemory_human }}
             </el-descriptions-item>
-            <el-descriptions-item label="AOF是否开启 :">
-              {{ cache?.info?.aof_enabled == '0' ? '否' : '是' }}
+            <el-descriptions-item :label="t('infra.redis._todo355')">
+              {{ cache?.info?.aof_enabled == '0' ? t('common.no') : t('common.yes') }}
             </el-descriptions-item>
-            <el-descriptions-item label="RDB是否成功 :">
+            <el-descriptions-item :label="t('infra.redis._todo356')">
               {{ cache?.info?.rdb_last_bgsave_status }}
             </el-descriptions-item>
-            <el-descriptions-item label="Key数量 :">
+            <el-descriptions-item :label="t('infra.redis._todo357')">
               {{ cache?.dbSize }}
             </el-descriptions-item>
-            <el-descriptions-item label="网络入口/出口 :">
+            <el-descriptions-item :label="t('infra.redis._todo358')">
               {{ cache?.info?.instantaneous_input_kbps }}kps/
               {{ cache?.info?.instantaneous_output_kbps }}kps
             </el-descriptions-item>
@@ -67,6 +71,7 @@
 import * as RedisApi from '@/api/infra/redis'
 import { RedisMonitorInfoVO } from '@/api/infra/redis/types'
 import type { EChartsOption } from 'echarts'
+const { t } = useI18n() // 国际化
 
 const cache = ref<RedisMonitorInfoVO>()
 
@@ -79,7 +84,7 @@ const readRedisInfo = async () => {
 const usedmemoryEchartChika = reactive<EChartsOption>({
   title: {
     // 仪表盘标题。
-    text: '内存使用情况',
+    text: t('infra.redis._todo359'),
     left: 'center',
     show: true, // 是否显示标题,默认 true。
     textStyle: {
@@ -96,7 +101,7 @@ const usedmemoryEchartChika = reactive<EChartsOption>({
   },
   series: [
     {
-      name: '峰值',
+      name: t('infra.redis._todo360'),
       type: 'gauge',
       min: 0,
       max: 50,
@@ -164,7 +169,7 @@ const usedmemoryEchartChika = reactive<EChartsOption>({
 // 指令使用情况
 const commandStatsRefChika = reactive<EChartsOption>({
   title: {
-    text: '命令统计',
+    text: t('infra.redis._todo361'),
     left: 'center'
   },
   tooltip: {
@@ -184,7 +189,7 @@ const commandStatsRefChika = reactive<EChartsOption>({
   },
   series: [
     {
-      name: '命令',
+      name: t('infra.redis._todo362'),
       type: 'pie',
       radius: [20, 120],
       center: ['40%', '60%'],
@@ -252,7 +257,7 @@ const usedMemoryInstance = async () => {
 
     usedMemorySeries.data[0] = {
       value: cache.value!.info.used_memory_human,
-      name: '内存消耗'
+      name: t('infra.redis._todo363')
     }
     console.log(cache.value!.info)
     ;(usedmemoryEchartChika as any).tooltip = {

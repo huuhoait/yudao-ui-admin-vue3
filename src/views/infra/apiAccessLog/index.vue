@@ -1,5 +1,5 @@
 <template>
-  <doc-alert title="系统日志" url="https://doc.iocoder.cn/system-log/" />
+  <doc-alert :title="t('infra.apiAccessLog.systemLog')" url="https://doc.iocoder.cn/system-log/" />
 
   <ContentWrap>
     <!-- 搜索工作栏 -->
@@ -10,19 +10,19 @@
       :inline="true"
       label-width="68px"
     >
-      <el-form-item label="用户编号" prop="userId">
+      <el-form-item :label="t('infra.apiAccessLog.userId')" prop="userId">
         <el-input
           v-model="queryParams.userId"
-          placeholder="请输入用户编号"
+          :placeholder="t('infra.apiAccessLog.inputUserId')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="用户类型" prop="userType">
+      <el-form-item :label="t('infra.apiAccessLog.userType')" prop="userType">
         <el-select
           v-model="queryParams.userType"
-          placeholder="请选择用户类型"
+          :placeholder="t('infra.apiAccessLog.selectUserType')"
           clearable
           class="!w-240px"
         >
@@ -34,47 +34,47 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="应用名" prop="applicationName">
+      <el-form-item :label="t('infra.apiAccessLog.appName')" prop="applicationName">
         <el-input
           v-model="queryParams.applicationName"
-          placeholder="请输入应用名"
+          :placeholder="t('infra.apiAccessLog.inputAppName')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="请求时间" prop="beginTime">
+      <el-form-item :label="t('infra.apiAccessLog._todo8')" prop="beginTime">
         <el-date-picker
           v-model="queryParams.beginTime"
           value-format="YYYY-MM-DD HH:mm:ss"
           type="daterange"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
+          :start-placeholder="t('infra.apiAccessLog.startDate')"
+          :end-placeholder="t('infra.apiAccessLog.endDate')"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="执行时长" prop="duration">
+      <el-form-item :label="t('infra.apiAccessLog._todo14')" prop="duration">
         <el-input
           v-model="queryParams.duration"
-          placeholder="请输入执行时长"
+          :placeholder="t('infra.apiAccessLog._todo15')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="结果码" prop="resultCode">
+      <el-form-item :label="t('infra.apiAccessLog._todo16')" prop="resultCode">
         <el-input
           v-model="queryParams.resultCode"
-          placeholder="请输入结果码"
+          :placeholder="t('infra.apiAccessLog._todo17')"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
         />
       </el-form-item>
       <el-form-item>
-        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> 搜索</el-button>
-        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> 重置</el-button>
+        <el-button @click="handleQuery"><Icon icon="ep:search" class="mr-5px" /> {{ t('common.query') }}</el-button>
+        <el-button @click="resetQuery"><Icon icon="ep:refresh" class="mr-5px" /> {{ t('common.reset') }}</el-button>
         <el-button
           type="success"
           plain
@@ -82,7 +82,7 @@
           :loading="exportLoading"
           v-hasPermi="['infra:api-access-log:export']"
         >
-          <Icon icon="ep:download" class="mr-5px" /> 导出
+          <Icon icon="ep:download" class="mr-5px" /> {{ t('infra.apiAccessLog.export') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -91,37 +91,41 @@
   <!-- 列表 -->
   <ContentWrap>
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="日志编号" align="center" prop="id" width="100" fix="right" />
-      <el-table-column label="用户编号" align="center" prop="userId" />
-      <el-table-column label="用户类型" align="center" prop="userType">
+      <el-table-column :label="t('infra.apiAccessLog._todo18')" align="center" prop="id" width="100" fix="right" />
+      <el-table-column :label="t('infra.apiAccessLog.userId')" align="center" prop="userId" />
+      <el-table-column :label="t('infra.apiAccessLog.userType')" align="center" prop="userType">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.USER_TYPE" :value="scope.row.userType" />
         </template>
       </el-table-column>
-      <el-table-column label="应用名" align="center" prop="applicationName" width="150" />
-      <el-table-column label="请求方法" align="center" prop="requestMethod" width="80" />
-      <el-table-column label="请求地址" align="center" prop="requestUrl" width="500" />
-      <el-table-column label="请求时间" align="center" prop="beginTime" width="180">
+      <el-table-column :label="t('infra.apiAccessLog.appName')" align="center" prop="applicationName" width="150" />
+      <el-table-column :label="t('infra.apiAccessLog._todo19')" align="center" prop="requestMethod" width="80" />
+      <el-table-column :label="t('infra.apiAccessLog._todo20')" align="center" prop="requestUrl" width="500" />
+      <el-table-column :label="t('infra.apiAccessLog._todo8')" align="center" prop="beginTime" width="180">
         <template #default="scope">
           <span>{{ formatDate(scope.row.beginTime) }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="执行时长" align="center" prop="duration" width="180">
+      <el-table-column :label="t('infra.apiAccessLog._todo14')" align="center" prop="duration" width="180">
         <template #default="scope"> {{ scope.row.duration }} ms </template>
       </el-table-column>
-      <el-table-column label="操作结果" align="center" prop="status">
+      <el-table-column :label="t('infra.apiAccessLog._todo10')" align="center" prop="status">
         <template #default="scope">
-          {{ scope.row.resultCode === 0 ? '成功' : '失败(' + scope.row.resultMsg + ')' }}
+          {{
+            scope.row.resultCode === 0
+              ? t('common.success')
+              : t('infra.apiAccessLog.resultFailWithMsg', { msg: scope.row.resultMsg })
+          }}
         </template>
       </el-table-column>
-      <el-table-column label="操作模块" align="center" prop="operateModule" width="180" />
-      <el-table-column label="操作名" align="center" prop="operateName" width="180" />
-      <el-table-column label="操作类型" align="center" prop="operateType">
+      <el-table-column :label="t('infra.apiAccessLog._todo11')" align="center" prop="operateModule" width="180" />
+      <el-table-column :label="t('infra.apiAccessLog._todo12')" align="center" prop="operateName" width="180" />
+      <el-table-column :label="t('infra.apiAccessLog._todo21')" align="center" prop="operateType">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.INFRA_OPERATE_TYPE" :value="scope.row.operateType" />
         </template>
       </el-table-column>
-      <el-table-column label="操作" align="center" fixed="right" width="60">
+      <el-table-column :label="t('infra.apiAccessLog.action')" align="center" fixed="right" width="60">
         <template #default="scope">
           <el-button
             link
@@ -129,7 +133,7 @@
             @click="openDetail(scope.row)"
             v-hasPermi="['infra:api-access-log:query']"
           >
-            详细
+            {{ t('infra.apiAccessLog._todo22') }}
           </el-button>
         </template>
       </el-table-column>
@@ -154,6 +158,8 @@ import * as ApiAccessLogApi from '@/api/infra/apiAccessLog'
 import ApiAccessLogDetail from './ApiAccessLogDetail.vue'
 
 defineOptions({ name: 'InfraApiAccessLog' })
+
+const { t } = useI18n() // 国际化
 
 const message = useMessage() // 消息弹窗
 
@@ -212,7 +218,7 @@ const handleExport = async () => {
     // 发起导出
     exportLoading.value = true
     const data = await ApiAccessLogApi.exportApiAccessLog(queryParams)
-    download.excel(data, 'API 访问日志.xls')
+    download.excel(data, t('infra.apiAccessLog.exportFileName'))
   } catch {
   } finally {
     exportLoading.value = false

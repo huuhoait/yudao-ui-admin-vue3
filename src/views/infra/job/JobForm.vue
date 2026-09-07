@@ -7,41 +7,41 @@
       label-width="120px"
       v-loading="formLoading"
     >
-      <el-form-item label="任务名称" prop="name">
-        <el-input v-model="formData.name" placeholder="请输入任务名称" />
+      <el-form-item :label="t('infra.job.taskName')" prop="name">
+        <el-input v-model="formData.name" :placeholder="t('infra.job.inputTaskName')" />
       </el-form-item>
-      <el-form-item label="处理器的名字" prop="handlerName">
+      <el-form-item :label="t('infra.job._todo296')" prop="handlerName">
         <el-input
           :readonly="formData.id !== undefined"
           v-model="formData.handlerName"
-          placeholder="请输入处理器的名字"
+          :placeholder="t('infra.job._todo303')"
         />
       </el-form-item>
-      <el-form-item label="处理器的参数" prop="handlerParam">
-        <el-input v-model="formData.handlerParam" placeholder="请输入处理器的参数" />
+      <el-form-item :label="t('infra.job._todo297')" prop="handlerParam">
+        <el-input v-model="formData.handlerParam" :placeholder="t('infra.job._todo304')" />
       </el-form-item>
-      <el-form-item label="CRON 表达式" prop="cronExpression">
+      <el-form-item :label="t('infra.job._todo305')" prop="cronExpression">
         <crontab v-model="formData.cronExpression" />
       </el-form-item>
-      <el-form-item label="重试次数" prop="retryCount">
+      <el-form-item :label="t('infra.job._todo299')" prop="retryCount">
         <el-input
           v-model="formData.retryCount"
-          placeholder="请输入重试次数。设置为 0 时，不进行重试"
+          :placeholder="t('infra.job._todo306')"
         />
       </el-form-item>
-      <el-form-item label="重试间隔" prop="retryInterval">
+      <el-form-item :label="t('infra.job._todo300')" prop="retryInterval">
         <el-input
           v-model="formData.retryInterval"
-          placeholder="请输入重试间隔，单位：毫秒。设置为 0 时，无需间隔"
+          :placeholder="t('infra.job._todo307')"
         />
       </el-form-item>
-      <el-form-item label="监控超时时间" prop="monitorTimeout">
-        <el-input v-model="formData.monitorTimeout" placeholder="请输入监控超时时间，单位：毫秒" />
+      <el-form-item :label="t('infra.job._todo301')" prop="monitorTimeout">
+        <el-input v-model="formData.monitorTimeout" :placeholder="t('infra.job._todo308')" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button type="primary" @click="submitForm" :loading="formLoading">确 定</el-button>
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button type="primary" @click="submitForm" :loading="formLoading">{{ t('common.ok') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
     </template>
   </Dialog>
 </template>
@@ -68,11 +68,11 @@ const formData = ref({
   monitorTimeout: undefined
 })
 const formRules = reactive({
-  name: [{ required: true, message: '任务名称不能为空', trigger: 'blur' }],
-  handlerName: [{ required: true, message: '处理器的名字不能为空', trigger: 'blur' }],
-  cronExpression: [{ required: true, message: 'CRON 表达式不能为空', trigger: 'blur' }],
-  retryCount: [{ required: true, message: '重试次数不能为空', trigger: 'blur' }],
-  retryInterval: [{ required: true, message: '重试间隔不能为空', trigger: 'blur' }]
+  name: [{ required: true, message: t('infra.job.taskNameRequired'), trigger: 'blur' }],
+  handlerName: [{ required: true, message: t('infra.job._todo309'), trigger: 'blur' }],
+  cronExpression: [{ required: true, message: t('infra.job._todo310'), trigger: 'blur' }],
+  retryCount: [{ required: true, message: t('infra.job._todo311'), trigger: 'blur' }],
+  retryInterval: [{ required: true, message: t('infra.job._todo312'), trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 
